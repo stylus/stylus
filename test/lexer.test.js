@@ -176,5 +176,22 @@ module.exports = {
     lex.next.type.should.equal('newline');
     lex.next.type.should.equal('newline');
     lex.next.type.should.equal('eos');
+  },
+  
+  'test indentation with tabs': function(){
+    var lex = new Lexer('foo\n\tbar\n\t\tbaz\n\t\n\t\n\traz\n\n\n');
+    lex.next; // foo
+    lex.next.type.should.equal('indent');
+    lex.next; // bar
+    lex.next.type.should.equal('indent');
+    lex.next; // baz
+    lex.next.type.should.equal('outdent');
+    lex.next.type.should.equal('newline');
+    lex.next.type.should.equal('newline');
+    lex.next; // raz
+    lex.next.type.should.equal('outdent');
+    lex.next.type.should.equal('newline');
+    lex.next.type.should.equal('newline');
+    lex.next.type.should.equal('eos');
   }
 };
