@@ -1,0 +1,38 @@
+
+/**
+ * Module dependencies.
+ */
+
+var Lexer = require('../lib/lexer')
+  , should = require('should');
+
+function scan(str) {
+  return new Lexer(str).next;
+}
+
+module.exports = {
+  'test #nnn': function(){
+    scan('#000').type.should.equal('color');
+    scan('#000').val.should.eql({ r: 0, g: 0, b: 0, a: 1 });
+    scan('#fca').val.should.eql({ r: 255, g: 204, b: 170, a: 1 });
+  },
+  
+  'test #nnnnnn': function(){
+    scan('#ffffff').type.should.equal('color');
+    scan('#ffccaa').val.should.eql({ r: 255, g: 204, b: 170, a: 1 });
+  },
+  
+  'test rgb(n,n,n)': function(){
+    scan('rgb(255,204,170)').type.should.equal('color');
+    scan('rgb(255,204,170)').val.should.eql({ r: 255, g: 204, b: 170, a: 1 });
+    scan('rgb( 255 ,   204  , 170  )').val.should.eql({ r: 255, g: 204, b: 170, a: 1 });
+  },
+  
+  'test rgba(n,n,n,n)': function(){
+    scan('rgba(255,204,170,1)').type.should.equal('color');
+    scan('rgba(255,204,170,1)').val.should.eql({ r: 255, g: 204, b: 170, a: 1 });
+    scan('rgba(5,204,170,0.5)').val.should.eql({ r: 5, g: 204, b: 170, a: 0.5 });
+    scan('rgba( 5 ,   204 , 170, 0.5)').val.should.eql({ r: 5, g: 204, b: 170, a: 0.5 });
+    scan('rgba( 5 ,   204 , 170, 0.75)').val.should.eql({ r: 5, g: 204, b: 170, a: 0.75 });
+  }
+};
