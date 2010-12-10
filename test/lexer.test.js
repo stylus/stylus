@@ -34,5 +34,6 @@ module.exports = {
     scan('rgba(5,204,170,0.5)').val.should.eql({ r: 5, g: 204, b: 170, a: 0.5 });
     scan('rgba( 5 ,   204 , 170, 0.5)').val.should.eql({ r: 5, g: 204, b: 170, a: 0.5 });
     scan('rgba( 5 ,   204 , 170, 0.75)').val.should.eql({ r: 5, g: 204, b: 170, a: 0.75 });
+    scan('rgba( 5 ,   204 , 170, .75)').val.should.eql({ r: 5, g: 204, b: 170, a: 0.75 });
   }
 };
