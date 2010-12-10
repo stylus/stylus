@@ -35,5 +35,24 @@ module.exports = {
     scan('rgba( 5 ,   204 , 170, 0.5)').val.should.eql({ r: 5, g: 204, b: 170, a: 0.5 });
     scan('rgba( 5 ,   204 , 170, 0.75)').val.should.eql({ r: 5, g: 204, b: 170, a: 0.75 });
     scan('rgba( 5 ,   204 , 170, .75)').val.should.eql({ r: 5, g: 204, b: 170, a: 0.75 });
+  },
+  
+  'test selector': function(){
+    scan('body').type.should.equal('selector');
+    scan('body').val.should.equal('body');
+  },
+  
+  'test property': function(){
+    var lex = new Lexer('body a\n  color #fff');
+    
+    lex.peek.type.should.equal('selector');
+    lex.next.val.should.equal('body a');
+
+    lex.next.type.should.equal('indent');
+
+    lex.peek.type.should.equal('property');
+    lex.next.val.should.equal('color');
+
+    lex.next.type.should.equal('color');
   }
 };
