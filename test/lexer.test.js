@@ -33,6 +33,16 @@ module.exports = {
     lex.next.val.val.should.equal(3);
   },
   
+  'test .lookahead(n)': function(){
+    var lex = new Lexer('1px 2px 3px');
+    lex.lookahead(3).val.val.should.equal(3);
+    lex.lookahead(2).val.val.should.equal(2);
+    lex.lookahead(1).val.val.should.equal(1);
+    lex.peek.val.val.should.equal(1);
+    lex.next.val.val.should.equal(1);
+    lex.next.val.val.should.equal(2);
+  },
+  
   'test #nnn': function(){
     scan('#000').type.should.equal('color');
     scan('#000').val.should.eql({ r: 0, g: 0, b: 0, a: 1 });
