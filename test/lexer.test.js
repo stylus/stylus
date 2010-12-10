@@ -132,14 +132,15 @@ module.exports = {
       , 'deg', 'rad', 'grad', 'ms', 's', 'Hz', 'kHz', '%'];
 
     units.forEach(function(unit){
-      scan('1' + unit).type.should.equal(unit);
-      scan('1' + unit).val.should.equal(1);
+      scan('1' + unit).type.should.equal('unit');
+      scan('1' + unit).val.type.should.equal(unit);
+      scan('1' + unit).val.val.should.equal(1);
       
-      scan('150' + unit).type.should.equal(unit);
-      scan('150' + unit).val.should.equal(150);
+      scan('150' + unit).type.should.equal('unit');
+      scan('150' + unit).val.val.should.equal(150);
       
-      scan('15.99' + unit).type.should.equal(unit);
-      scan('15.99' + unit).val.should.equal(15.99);
+      scan('15.99' + unit).type.should.equal('unit');
+      scan('15.99' + unit).val.val.should.equal(15.99);
     });
   },
   
