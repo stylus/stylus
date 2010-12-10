@@ -10,6 +10,16 @@ function scan(str) {
   return new Lexer(str).next;
 }
 
+function err(fn, msg) {
+  try {
+    fn();
+  } catch (e) {
+    should.equal(msg, e.message);
+    return;
+  }
+  throw new Error('expected exception "' + msg + '", but nothing was thrown.');
+}
+
 module.exports = {
   'test #nnn': function(){
     scan('#000').type.should.equal('color');
@@ -79,6 +89,37 @@ module.exports = {
     lex.next.val.should.equal('color');
 
     lex.next.type.should.equal('color');
+    lex.next.type.should.equal('outdent');
+    lex.next.type.should.equal('eos');
+  },
+  
+  'test indentation': function(){
+    err(function(){
+      var lex = new Lexer('foo\n bar');
+      lex.next;
+      lex.next;
+    }, 'Invalid indentation, got 1 space(s), expected multiple of 2');
+    
+    err(function(){
+      var lex = new Lexer('foo\n   bar');
+      lex.next;
+      lex.next;
+    }, 'Invalid indentation, got 3 space(s), expected multiple of 2');
+    
+    err(function(){
+      var lex = new Lexer('foo\n    bar');
+      lex.next;
+      lex.next;
+    }, 'Invalid indentation, got 4 space(s), expected 2');
+    
+    var lex = new Lexer('foo\n  bar\n    baz\n  raz');
+    lex.next; // foo
+    lex.next.type.should.equal('indent');
+    lex.next; // bar
+    lex.next.type.should.equal('indent');
+    lex.next; // baz
+    lex.next.type.should.equal('outdent');
+    lex.next; // raz
     lex.next.type.should.equal('outdent');
     lex.next.type.should.equal('eos');
   }
