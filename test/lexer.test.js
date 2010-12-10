@@ -59,16 +59,16 @@ module.exports = {
   'test assignment': function(){
     var lex = new Lexer('@color: #fff');
     lex.next.type.should.equal('variable');
-    lex.next.type.should.equal('assignment');
+    lex.next.type.should.equal('=');
     lex.next.type.should.equal('color');
     
     var lex = new Lexer('@color: #fff\n@dark: #000');
     lex.next.type.should.equal('variable');
-    lex.next.type.should.equal('assignment');
+    lex.next.type.should.equal('=');
     lex.next.type.should.equal('color');
     
     lex.next.type.should.equal('variable');
-    lex.next.type.should.equal('assignment');
+    lex.next.type.should.equal('=');
     lex.next.type.should.equal('color');
   },
   
