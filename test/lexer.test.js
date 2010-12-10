@@ -46,6 +46,13 @@ module.exports = {
     scan('@base64').val.should.equal('base64');
   },
   
+  'test assignment': function(){
+    var lex = new Lexer('@color: #fff');
+    lex.next.type.should.equal('variable');
+    lex.next.type.should.equal('assignment');
+    lex.next.type.should.equal('color');
+  },
+  
   'test selector': function(){
     scan('body').type.should.equal('selector');
     scan('body').val.should.equal('body');
