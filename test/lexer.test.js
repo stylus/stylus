@@ -37,6 +37,15 @@ module.exports = {
     scan('rgba( 5 ,   204 , 170, .75)').val.should.eql({ r: 5, g: 204, b: 170, a: 0.75 });
   },
   
+  'test variable': function(){
+    scan('@foo').type.should.equal('variable');
+    scan('@foo-bar').type.should.equal('variable');
+    scan('@-foo-bar').type.should.equal('variable');
+    scan('@_foo_bar_Baz').type.should.equal('variable');
+    scan('@base64').type.should.equal('variable');
+    scan('@base64').val.should.equal('base64');
+  },
+  
   'test selector': function(){
     scan('body').type.should.equal('selector');
     scan('body').val.should.equal('body');
