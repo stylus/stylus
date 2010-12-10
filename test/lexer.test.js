@@ -43,6 +43,14 @@ module.exports = {
     lex.next.val.val.should.equal(2);
   },
   
+  'test string': function(){
+    scan('"foo"').type.should.equal('string');
+    scan('"foo"').val.val.should.equal('foo');
+
+    scan("'foo'").type.should.equal('string');
+    scan("'foo'").val.val.should.equal('foo');
+  },
+  
   'test #nnn': function(){
     scan('#000').type.should.equal('color');
     scan('#000').val.should.eql({ r: 0, g: 0, b: 0, a: 1 });
