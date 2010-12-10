@@ -1,4 +1,5 @@
-@foo-bar  : #fff
+@color: #fff
+@width: 700px
 
 body a
   background #000
