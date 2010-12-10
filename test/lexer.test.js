@@ -79,5 +79,7 @@ module.exports = {
     lex.next.val.should.equal('color');
 
     lex.next.type.should.equal('color');
+    lex.next.type.should.equal('outdent');
+    lex.next.type.should.equal('eos');
   }
 };
