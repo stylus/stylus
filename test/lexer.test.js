@@ -51,6 +51,11 @@ module.exports = {
     lex.next.type.should.equal('variable');
     lex.next.type.should.equal('assignment');
     lex.next.type.should.equal('color');
+    
+    var lex = new Lexer('@color: #fff\n@dark: #000');
+    lex.next.type.should.equal('variable');
+    lex.next.type.should.equal('assignment');
+    lex.next.type.should.equal('color');
   },
   
   'test selector': function(){
