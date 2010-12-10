@@ -95,6 +95,38 @@ module.exports = {
     lex.next.type.should.equal('eos');
   },
   
+  'test \r\n': function(){
+    var lex = new Lexer('body a\r\n  color #fff');
+    
+    lex.peek.type.should.equal('selector');
+    lex.next.val.should.equal('body a');
+
+    lex.next.type.should.equal('indent');
+
+    lex.peek.type.should.equal('property');
+    lex.next.val.should.equal('color');
+
+    lex.next.type.should.equal('color');
+    lex.next.type.should.equal('outdent');
+    lex.next.type.should.equal('eos');
+  },
+  
+  'test \r': function(){
+    var lex = new Lexer('body a\r  color #fff');
+    
+    lex.peek.type.should.equal('selector');
+    lex.next.val.should.equal('body a');
+
+    lex.next.type.should.equal('indent');
+
+    lex.peek.type.should.equal('property');
+    lex.next.val.should.equal('color');
+
+    lex.next.type.should.equal('color');
+    lex.next.type.should.equal('outdent');
+    lex.next.type.should.equal('eos');
+  },
+  
   'test units': function(){
     var units = ['em', 'ex', 'px', 'cm', 'mm', 'in', 'pt', 'pc'
       , 'deg', 'rad', 'grad', 'ms', 's', 'Hz', 'kHz', '%'];
