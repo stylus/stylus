@@ -56,6 +56,10 @@ module.exports = {
     lex.next.type.should.equal('variable');
     lex.next.type.should.equal('assignment');
     lex.next.type.should.equal('color');
+    
+    lex.next.type.should.equal('variable');
+    lex.next.type.should.equal('assignment');
+    lex.next.type.should.equal('color');
   },
   
   'test selector': function(){
