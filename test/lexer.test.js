@@ -112,7 +112,7 @@ module.exports = {
       lex.next;
     }, 'Invalid indentation, got 4 space(s), expected 2');
     
-    var lex = new Lexer('foo\n  bar\n    baz\n  raz');
+    var lex = new Lexer('foo\n  bar\n    baz\n  \n  \n  raz\n\n\n');
     lex.next; // foo
     lex.next.type.should.equal('indent');
     lex.next; // bar
