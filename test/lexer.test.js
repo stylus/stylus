@@ -165,6 +165,12 @@ module.exports = {
     var units = ['em', 'ex', 'px', 'cm', 'mm', 'in', 'pt', 'pc'
       , 'deg', 'rad', 'grad', 'ms', 's', 'Hz', 'kHz', '%'];
 
+    scan('150').type.should.equal('unit');
+    scan('150').val.val.should.equal(150);
+
+    scan('15.99').type.should.equal('unit');
+    scan('15.99').val.val.should.equal(15.99);
+
     units.forEach(function(unit){
       scan('1' + unit).type.should.equal('unit');
       scan('1' + unit).val.type.should.equal(unit);
