@@ -21,6 +21,40 @@ function err(fn, msg) {
 }
 
 module.exports = {
+  'test .peek': function(){
+    var lex = new Lexer('1px 2px 3px');
+    lex.peek.val.val.should.equal(1);
+    lex.next.val.val.should.equal(1);
+
+    lex.peek.val.val.should.equal(2);
+    lex.next.val.val.should.equal(2);
+
+    lex.peek.val.val.should.equal(3);
+    lex.next.val.val.should.equal(3);
+  },
+  
+  'test .lookahead(n)': function(){
+    var lex = new Lexer('1px 2px 3px');
+    lex.lookahead(3).val.val.should.equal(3);
+    lex.lookahead(2).val.val.should.equal(2);
+    lex.lookahead(1).val.val.should.equal(1);
+    lex.peek.val.val.should.equal(1);
+    lex.next.val.val.should.equal(1);
+    lex.next.val.val.should.equal(2);
+  },
+  
+  'test single-line comment': function(){
+    scan('// foo bar\n15px').type.should.equal('unit');
+  },
+  
+  'test string': function(){
+    scan('"foo"').type.should.equal('string');
+    scan('"foo"').val.val.should.equal('foo');
+
+    scan("'foo'").type.should.equal('string');
+    scan("'foo'").val.val.should.equal('foo');
+  },
+  
   'test #nnn': function(){
     scan('#000').type.should.equal('color');
     scan('#000').val.should.eql({ r: 0, g: 0, b: 0, a: 1 });
@@ -67,6 +101,8 @@ module.exports = {
     lex.next.type.should.equal('=');
     lex.next.type.should.equal('color');
     
+    lex.next.type.should.equal('newline');
+
     lex.next.type.should.equal('variable');
     lex.next.type.should.equal('=');
     lex.next.type.should.equal('color');
@@ -93,6 +129,61 @@ module.exports = {
     lex.next.type.should.equal('eos');
   },
   
+  'test \r\n': function(){
+    var lex = new Lexer('body a\r\n  color #fff');
+    
+    lex.peek.type.should.equal('selector');
+    lex.next.val.should.equal('body a');
+
+    lex.next.type.should.equal('indent');
+
+    lex.peek.type.should.equal('property');
+    lex.next.val.should.equal('color');
+
+    lex.next.type.should.equal('color');
+    lex.next.type.should.equal('outdent');
+    lex.next.type.should.equal('eos');
+  },
+  
+  'test \r': function(){
+    var lex = new Lexer('body a\r  color #fff');
+    
+    lex.peek.type.should.equal('selector');
+    lex.next.val.should.equal('body a');
+
+    lex.next.type.should.equal('indent');
+
+    lex.peek.type.should.equal('property');
+    lex.next.val.should.equal('color');
+
+    lex.next.type.should.equal('color');
+    lex.next.type.should.equal('outdent');
+    lex.next.type.should.equal('eos');
+  },
+  
+  'test units': function(){
+    var units = ['em', 'ex', 'px', 'cm', 'mm', 'in', 'pt', 'pc'
+      , 'deg', 'rad', 'grad', 'ms', 's', 'Hz', 'kHz', '%'];
+
+    scan('150').type.should.equal('unit');
+    scan('150').val.val.should.equal(150);
+
+    scan('15.99').type.should.equal('unit');
+    scan('15.99').val.val.should.equal(15.99);
+
+    units.forEach(function(unit){
+      scan('1' + unit).type.should.equal('unit');
+      scan('1' + unit).val.type.should.equal(unit);
+      scan('1' + unit).val.val.should.equal(1);
+      
+      scan('150' + unit).type.should.equal('unit');
+      scan('150' + unit).val.val.should.equal(150);
+      
+      scan('15.99' + unit).type.should.equal('unit');
+      scan('15.99' + unit).val.val.should.equal(15.99);
+    });
+  },
+  
   'test indentation': function(){
     err(function(){
       var lex = new Lexer('foo\n bar');
@@ -112,15 +203,36 @@ module.exports = {
       lex.next;
     }, 'Invalid indentation, got 4 space(s), expected 2');
     
-    var lex = new Lexer('foo\n  bar\n    baz\n  raz');
+    var lex = new Lexer('foo\n  bar\n    baz\n  \n  \n  raz\n\n\n');
     lex.next; // foo
     lex.next.type.should.equal('indent');
     lex.next; // bar
     lex.next.type.should.equal('indent');
     lex.next; // baz
     lex.next.type.should.equal('outdent');
+    lex.next.type.should.equal('newline');
+    lex.next.type.should.equal('newline');
     lex.next; // raz
     lex.next.type.should.equal('outdent');
+    lex.next.type.should.equal('newline');
+    lex.next.type.should.equal('newline');
+    lex.next.type.should.equal('eos');
+  },
+  
+  'test indentation with tabs': function(){
+    var lex = new Lexer('foo\n\tbar\n\t\tbaz\n\t\n\t\n\traz\n\n\n');
+    lex.next; // foo
+    lex.next.type.should.equal('indent');
+    lex.next; // bar
+    lex.next.type.should.equal('indent');
+    lex.next; // baz
+    lex.next.type.should.equal('outdent');
+    lex.next.type.should.equal('newline');
+    lex.next.type.should.equal('newline');
+    lex.next; // raz
+    lex.next.type.should.equal('outdent');
+    lex.next.type.should.equal('newline');
+    lex.next.type.should.equal('newline');
     lex.next.type.should.equal('eos');
   }
 };
