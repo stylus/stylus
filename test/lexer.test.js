@@ -43,6 +43,10 @@ module.exports = {
     lex.next.val.val.should.equal(2);
   },
   
+  'test single-line comment': function(){
+    scan('// foo bar\n15px').type.should.equal('unit');
+  },
+  
   'test string': function(){
     scan('"foo"').type.should.equal('string');
     scan('"foo"').val.val.should.equal('foo');
