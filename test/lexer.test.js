@@ -234,5 +234,17 @@ module.exports = {
     lex.next.type.should.equal('newline');
     lex.next.type.should.equal('newline');
     lex.next.type.should.equal('eos');
+  },
+  
+  'test keywords': function(){
+    scan('auto').type.should.equal('keyword');
+    scan('left').type.should.equal('keyword');
+    scan('right').type.should.equal('keyword');
+  },
+  
+  'test colors': function(){
+    scan('white').type.should.equal('color');
+    scan('white').val.should.eql({ r: 255, g: 255, b: 255, a: 1 });
+    scan('black').val.should.eql({ r: 0, g: 0, b: 0, a: 1 });
   }
 };
