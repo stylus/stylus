@@ -109,13 +109,16 @@ module.exports = {
   },
   
   'test selector': function(){
-    scan('body').type.should.equal('selector');
-    scan('body').val.should.equal('body');
+    var lex = new Lexer('body');
+    lex.isSelector = true;
+    lex.peek.type.should.equal('selector');
+    lex.next.val.should.equal('body');
   },
   
   'test property': function(){
     var lex = new Lexer('body a\n  color #fff');
-    
+
+    lex.isSelector = true;
     lex.peek.type.should.equal('selector');
     lex.next.val.should.equal('body a');
 
@@ -131,7 +134,8 @@ module.exports = {
   
   'test \r\n': function(){
     var lex = new Lexer('body a\r\n  color #fff');
-    
+  
+    lex.isSelector = true;
     lex.peek.type.should.equal('selector');
     lex.next.val.should.equal('body a');
 
@@ -147,7 +151,8 @@ module.exports = {
   
   'test \r': function(){
     var lex = new Lexer('body a\r  color #fff');
-    
+
+    lex.isSelector = true;
     lex.peek.type.should.equal('selector');
     lex.next.val.should.equal('body a');
 
