@@ -12,7 +12,7 @@ module.exports = {
     var parser = new Parser('@foo')
       , ast = parser.parse();
 
-    ast.should.be.an.instanceof(nodes.Block);
+    ast.should.be.an.instanceof(nodes.Root);
     ast.nodes[0].should.be.an.instanceof(nodes.Variable);
     ast.nodes[0].should.have.property('name', 'foo');
     ast.nodes[0].should.not.have.property('val');
@@ -22,7 +22,7 @@ module.exports = {
     var parser = new Parser('@light-color: #fff')
       , ast = parser.parse();
 
-    ast.should.be.an.instanceof(nodes.Block);
+    ast.should.be.an.instanceof(nodes.Root);
     ast.nodes[0].should.be.an.instanceof(nodes.Variable);
     ast.nodes[0].should.have.property('name', 'light-color');
     ast.nodes[0].val.should.be.an.instanceof(nodes.Color);
@@ -32,7 +32,7 @@ module.exports = {
     var parser = new Parser('body a\n  color #fff\n  font-size 12px')
       , ast = parser.parse();
 
-    ast.should.be.an.instanceof(nodes.Block);
+    ast.should.be.an.instanceof(nodes.Root);
     var selector = ast.nodes[0];
     selector.should.be.an.instanceof(nodes.Selector);
     selector.val.should.equal('body a');
