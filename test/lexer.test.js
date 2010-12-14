@@ -140,10 +140,14 @@ module.exports = {
     lex.next.type.should.equal('indent');
 
     lex.next.type.should.equal('property');
+    lex.isSelector = false;
 
     lex.next.type.should.equal('unit'); // 12px
     lex.next.type.should.equal('string'); // "Lucida Grande"
-    lex.next.type.should.equal('string'); // Arial
+    lex.next.type.should.equal('keyword'); // Arial
+    lex.next.type.should.equal('keyword'); // sans-serif
+    lex.next.type.should.equal('outdent');
+    lex.next.type.should.equal('eos');
   },
   
   'test \r\n': function(){
