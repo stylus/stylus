@@ -1,0 +1,9 @@
+
+@main-color: #00C3FF
+@width: 800px
+
+body
+  color @main-color
+
+#wrapper
+  width @width

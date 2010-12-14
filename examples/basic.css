@@ -1,11 +1,9 @@
 
-@color: rgba(255,80,33,0.2) 
-@width: 700px
-
 body a
-  color #fff
   font 12px "Lucida Grande", Arial, sans-serif
   background black
+  color #ccc
 
 form input
+  padding 5px
   border 1px solid

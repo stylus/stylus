@@ -39,3 +39,8 @@
   description: 
   length: 25
   name: mixins
+- !ruby/object:Pomo::Task 
+  complete: false
+  description: 
+  length: 25
+  name: better exceptions and tests for them
