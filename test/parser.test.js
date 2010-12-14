@@ -29,7 +29,7 @@ module.exports = {
   },
   
   'test selector': function(){
-    var parser = new Parser('body a\n  color #fff')
+    var parser = new Parser('body a\n  color #fff\n  font-size 12px')
       , ast = parser.parse();
 
     ast.should.be.an.instanceof(nodes.Block);
@@ -37,7 +37,11 @@ module.exports = {
     selector.should.be.an.instanceof(nodes.Selector);
     selector.val.should.equal('body a');
     var block = selector.block.nodes;
+
     block[0].should.be.an.instanceof(nodes.Property);
     block[0].should.have.property('name', 'color');
+    
+    block[1].should.be.an.instanceof(nodes.Property);
+    block[1].should.have.property('name', 'font-size');
   }
 };
