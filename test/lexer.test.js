@@ -132,6 +132,18 @@ module.exports = {
     lex.next.type.should.equal('color');
     lex.next.type.should.equal('outdent');
     lex.next.type.should.equal('eos');
+
+    var lex = new Lexer('body\n  font 12px "Lucida Grande", Arial, sans-serif');
+
+    lex.isSelector = true;
+    lex.next.type.should.equal('selector');
+    lex.next.type.should.equal('indent');
+
+    lex.next.type.should.equal('property');
+
+    lex.next.type.should.equal('unit'); // 12px
+    lex.next.type.should.equal('string'); // "Lucida Grande"
+    lex.next.type.should.equal('string'); // Arial
   },
   
   'test \r\n': function(){
