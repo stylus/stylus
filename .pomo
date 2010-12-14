@@ -1,0 +1,36 @@
+--- 
+- !ruby/object:Pomo::Task 
+  complete: false
+  description: 
+  length: 25
+  name: evaluation
+- !ruby/object:Pomo::Task 
+  complete: false
+  description: 
+  length: 25
+  name: nested selector resolution
+- !ruby/object:Pomo::Task 
+  complete: false
+  description: 
+  length: 25
+  name: resolving immediate nested selectors
+- !ruby/object:Pomo::Task 
+  complete: false
+  description: 
+  length: 25
+  name: gradients etc ... full css grammar
+- !ruby/object:Pomo::Task 
+  complete: false
+  description: 
+  length: 25
+  name: arithmetic
+- !ruby/object:Pomo::Task 
+  complete: false
+  description: 
+  length: 25
+  name: helper functions in core (defined in the language)
+- !ruby/object:Pomo::Task 
+  complete: false
+  description: 
+  length: 25
+  name: language constructs (if else unless etc)
