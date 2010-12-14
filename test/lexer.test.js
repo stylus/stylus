@@ -247,6 +247,11 @@ module.exports = {
     scan('auto').type.should.equal('keyword');
     scan('left').type.should.equal('keyword');
     scan('right').type.should.equal('keyword');
+    
+    var lex = new Lexer('black 14px sans-serif');
+    lex.next.type.should.equal('color');
+    lex.next.type.should.equal('unit');
+    lex.next.type.should.equal('keyword');
   },
   
   'test colors': function(){
