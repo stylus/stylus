@@ -11,13 +11,20 @@ module.exports = {
   'test Node#toObject()': function(){
     var parser = new Parser('@fav-color: white')
       , ast = parser.parse();
-    ast.toObject().should.eql([{ name: 'fav-color', val: [255,255,255,1] }]);
+    ast.toObject().should.eql([{
+        type: 'variable'
+      , name: 'fav-color'
+      , val: {
+          type: 'color'
+        , val: [255,255,255,1]
+      }
+    }]);
   },
 
   'test Node#toJSON()': function(){
-    var parser = new Parser('@fav-color: white')
+    var parser = new Parser('@size: 12px')
       , ast = parser.parse();
-    ast.nodes[0].toJSON().should.equal('{"name":"fav-color","val":[255,255,255,1]}');
+    ast.nodes[0].toJSON().should.equal('{"type":"variable","name":"size","val":{"type":"unit","unitType":"px","val":12}}');
     ast.toJSON().should.equal('[' + ast.nodes[0].toJSON() + ']');
   }
 };
