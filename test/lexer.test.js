@@ -132,7 +132,9 @@ module.exports = {
     lex.next.type.should.equal('color');
     lex.next.type.should.equal('outdent');
     lex.next.type.should.equal('eos');
-
+  },
+  
+  'test property with complex values': function(){
     var lex = new Lexer('body\n  font 12px "Lucida Grande", Arial, sans-serif');
 
     lex.isSelector = true;
