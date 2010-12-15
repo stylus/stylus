@@ -5,7 +5,8 @@
 @sidebar-width: @main-width
 
 body
-  font 12px @font-families, sans-serif
+  @size: 12px
+  font @size @font-families, sans-serif
   color @main-color
 
 #wrapper
