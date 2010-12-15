@@ -3,11 +3,6 @@
   complete: false
   description: 
   length: 25
-  name: evaluation
-- !ruby/object:Pomo::Task 
-  complete: false
-  description: 
-  length: 25
   name: nested selector resolution
 - !ruby/object:Pomo::Task 
   complete: false
