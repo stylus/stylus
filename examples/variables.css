@@ -3,6 +3,7 @@
 @width: 800px
 
 body
+  font 12px Arial
   color @main-color
 
 #wrapper
