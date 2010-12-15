@@ -1,0 +1,14 @@
+
+body
+  background #ccc
+  color #000
+
+form
+  .buttons
+    margin 10px 0
+    padding 5px
+    [type=submit]
+      padding 5px
+      border none
+  input
+    border 1px solid #ccc
