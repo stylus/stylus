@@ -89,7 +89,7 @@ module.exports = {
     scan('@-foo-bar').type.should.equal('variable');
     scan('@_foo_bar_Baz').type.should.equal('variable');
     scan('@base64').type.should.equal('variable');
-    scan('@base64').val.should.equal('base64');
+    scan('@base64').val.name.should.equal('base64');
   },
   
   'test assignment': function(){
