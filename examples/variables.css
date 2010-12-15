@@ -1,6 +1,7 @@
 
-@main-color: #fff
 @main-width: 800px
+@main-color: #fff
+@sidebar-width: @main-width
 
 body
   font 12px Arial
@@ -8,3 +9,6 @@ body
 
 #wrapper
   width @main-width
+
+.sidebar
+  width @sidebar-width
