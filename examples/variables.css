@@ -1,10 +1,11 @@
 
+@font: "Lucida Grande"
 @main-width: 80%
 @main-color: #fff
 @sidebar-width: @main-width
 
 body
-  font 12px Arial
+  font 12px @font, Arial, sans-serif
   color @main-color
 
 #wrapper
