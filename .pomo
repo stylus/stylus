@@ -44,3 +44,8 @@
   description: 
   length: 25
   name: better exceptions and tests for them
+- !ruby/object:Pomo::Task 
+  complete: false
+  description: 
+  length: 25
+  name: Expression node for props
