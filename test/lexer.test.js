@@ -146,7 +146,9 @@ module.exports = {
 
     lex.next.type.should.equal('unit'); // 12px
     lex.next.type.should.equal('string'); // "Lucida Grande"
+    lex.next.type.should.equal('comma');
     lex.next.type.should.equal('keyword'); // Arial
+    lex.next.type.should.equal('comma');
     lex.next.type.should.equal('keyword'); // sans-serif
     lex.next.type.should.equal('outdent');
     lex.next.type.should.equal('eos');
