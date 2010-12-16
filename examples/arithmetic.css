@@ -1,5 +1,6 @@
 
-@size: 22px
+@base: 5px
+@size: 22px + @base
 
 body
   font-size @size + 5
