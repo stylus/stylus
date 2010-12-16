@@ -6,7 +6,7 @@
 @pad: 20px
 
 body
-  font @font-size @font-families
+  font @font-size/1.5 @font-families
   background white
   color @primary-color
 

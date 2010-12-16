@@ -34,3 +34,8 @@
   description: 
   length: 25
   name: test for exceptions
+- !ruby/object:Pomo::Task 
+  complete: false
+  description: 
+  length: 25
+  name: escaping, for example '14px/1.5' needs to be escaped
