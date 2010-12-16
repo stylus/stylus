@@ -1,22 +1,23 @@
 
-@base: 5px
-@size: 22px + @base
-@string: "bar"
-@color: #ffcc00 - #ff0000
+@font-families: "Lucida Grande", Arial, sans-serif
+@font-size: 14px
+@primary-color: #3a3a3a
+@width: 800px
 
 body
-  font 10px - 2 * 2 "Lucida Grand", Arial, sans-serif
+  font @font-size @font-families
+  background white
+  color @primary-color
 
 h1
-  font-size 2 * @size
+  font-size @font-size + 10px
+  color @primary-color + #030303
 
 h2
-  font-size @size - 2px 5px + 3
-  line-height @size / 2
-  foo 2px * 4 + 5
-  foo 2px * (1 + (4 + 5) + 2 + 3)
-  foo 5.5 + 5.99
-  foo rgba(5,5,5,0.5) + rgba(200,200,200,0.5)
-  foo (#ffcc00 - #ff0000) - @color
-  foo @color
-  foo #111 * auto
+  color @primary-color - rgba(0,0,0,0.5)
+
+#wrapper
+  width @width
+
+.side-bar
+  width @width / 3
