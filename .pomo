@@ -44,3 +44,13 @@
   description: 
   length: 25
   name: contextual error messages
+- !ruby/object:Pomo::Task 
+  complete: false
+  description: 
+  length: 25
+  name: more operators
+- !ruby/object:Pomo::Task 
+  complete: false
+  description: 
+  length: 25
+  name: executable
