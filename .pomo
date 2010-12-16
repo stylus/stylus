@@ -49,8 +49,3 @@
   description: 
   length: 25
   name: build pretty printer into option, dump lexer and ast
-- !ruby/object:Pomo::Task 
-  complete: false
-  description: 
-  length: 25
-  name: block level scopes
