@@ -3,7 +3,7 @@
 @size: 22px + @base
 
 body
-  font-size 2px + 8px
+  font-size 2px + 8px + 10px - 19
 
 h1
   font-size 2 * @size
