@@ -39,3 +39,8 @@
   description: 
   length: 25
   name: escaping, for example '14px/1.5' needs to be escaped
+- !ruby/object:Pomo::Task 
+  complete: false
+  description: 
+  length: 25
+  name: contextual error messages
