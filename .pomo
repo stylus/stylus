@@ -38,14 +38,4 @@
   complete: false
   description: 
   length: 25
-  name: better exceptions and tests for them
-- !ruby/object:Pomo::Task 
-  complete: false
-  description: 
-  length: 25
-  name: Expression node for props
-- !ruby/object:Pomo::Task 
-  complete: false
-  description: 
-  length: 25
-  name: build pretty printer into option, dump lexer and ast
+  name: test for exceptions
