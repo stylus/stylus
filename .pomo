@@ -49,3 +49,13 @@
   description: 
   length: 25
   name: unit operations
+- !ruby/object:Pomo::Task 
+  complete: false
+  description: 
+  length: 25
+  name: operator precedence
+- !ruby/object:Pomo::Task 
+  complete: false
+  description: 
+  length: 25
+  name: operand validation via Evaluator
