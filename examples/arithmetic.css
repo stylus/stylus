@@ -12,5 +12,5 @@ h2
   font-size @size - 2px 5px + 3
   line-height @size / 2
   foo 2px * 4 + 5
-  foo 2px * (4 + 5)
+  foo 2px * (1 + (4 + 5))
   bar 5.5 + 5.99
