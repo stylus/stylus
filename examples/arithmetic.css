@@ -3,7 +3,7 @@
 @size: 22px + @base
 
 body
-  font 10px - 2 * 2
+  font 10px - 2 * 2 "Lucida Grand", Arial, sans-serif
 
 h1
   font-size 2 * @size
