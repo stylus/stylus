@@ -19,4 +19,4 @@ h2
   foo rgba(5,5,5,0.5) + rgba(200,200,200,0.5)
   foo (#ffcc00 - #ff0000) - @color
   foo @color
-  foo #111 * 3
+  foo #111 * auto
