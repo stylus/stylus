@@ -1,0 +1,18 @@
+
+@base: 5px
+@size: 22px + @base
+@string: "bar"
+
+body
+  font 10px - 2 * 2 "Lucida Grand", Arial, sans-serif
+
+h1
+  font-size 2 * @size
+
+h2
+  font-size @size - 2px 5px + 3
+  line-height @size / 2
+  foo 2px * 4 + 5
+  foo 2px * (1 + (4 + 5) + 2 + 3)
+  foo 5.5 + 5.99
+  foo 'foo ' + @string
