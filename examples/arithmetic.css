@@ -1,0 +1,13 @@
+
+@size: 22px
+
+body
+  font-size @size / 2
+
+h1
+  font-size 4px + @size
+
+h2
+  font-size @size - 2px
+  line-height @size / 2
+  
