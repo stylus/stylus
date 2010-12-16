@@ -3,6 +3,7 @@
 @font-size: 14px
 @primary-color: #3a3a3a
 @width: 800px
+@pad: 20px
 
 body
   font @font-size @font-families
@@ -20,4 +21,5 @@ h2
   width @width
 
 .side-bar
-  width @width / 3
+  padding @pad
+  width @width / 3 - @pad
