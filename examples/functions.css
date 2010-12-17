@@ -7,7 +7,10 @@
   padding-left @n 
   padding-right @n 
 
+@add(@a, @b)
+  @a + @b
+
 form
-  border 1px solid #eee
+  border @add(2px, 2px) solid #eee
   @pad-x(5px)
   @pad-y(2px)
