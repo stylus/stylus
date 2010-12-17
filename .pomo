@@ -69,3 +69,8 @@
   description: 
   length: 25
   name: compressed example
+- !ruby/object:Pomo::Task 
+  complete: false
+  description: 
+  length: 25
+  name: allow paren omission
