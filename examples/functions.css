@@ -1,14 +1,14 @@
 
+@add(@a, @b)
+  @a + @b
+
 @pad-y(@n)
   padding-top @n
   padding-bottom @n
 
 @pad-x(@n)
   padding-left @n 
-  padding-right @n 
-
-@add(@a, @b)
-  @a + @b
+  padding-right @n
 
 form
   border @add(2px, 2px) solid #eee
