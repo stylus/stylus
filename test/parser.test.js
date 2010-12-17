@@ -13,9 +13,10 @@ module.exports = {
       , ast = parser.parse();
 
     ast.should.be.an.instanceof(nodes.Root);
-    ast.nodes[0].should.be.an.instanceof(nodes.Variable);
-    ast.nodes[0].should.have.property('name', 'foo');
-    ast.nodes[0].should.not.have.property('val');
+    ast.nodes[0].should.be.an.instanceof(nodes.Expression);
+    ast.nodes[0].nodes[0].should.be.an.instanceof(nodes.Variable);
+    ast.nodes[0].nodes[0].should.have.property('name', 'foo');
+    ast.nodes[0].nodes[0].should.not.have.property('val');
   },
   
   'test variable assignment': function(){
