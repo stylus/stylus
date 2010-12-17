@@ -18,6 +18,9 @@
   padding-right 5px
   @margin()
 
+@pad(@x, @y)
+  padding @y @x @y @x
+
 form
-  @padding()
+  @pad(5px, 10px)
   background grey
