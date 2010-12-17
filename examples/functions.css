@@ -1,7 +1,6 @@
 
-// FIX
-//@add(@a, @b)
-//  @a + @b
+@add(@a, @b)
+  @a + @b
 
 @pad-y(@n)
   padding-top @n
@@ -11,9 +10,13 @@
   padding-left @n 
   padding-right @n
 
+@margin()
+  margin 0 auto
+
 @padding()
   padding-left 5px
   padding-right 5px
+  @margin()
 
 form
   @padding()
