@@ -24,10 +24,11 @@ module.exports = {
       , ast = parser.parse();
 
     ast.should.be.an.instanceof(nodes.Root);
-    ast.nodes[0].should.be.an.instanceof(nodes.Variable);
-    ast.nodes[0].should.have.property('name', 'light-color');
-    ast.nodes[0].val.should.be.an.instanceof(nodes.Expression);
-    ast.nodes[0].val.nodes[0].should.be.an.instanceof(nodes.Color);
+    ast.nodes[0].should.be.an.instanceof(nodes.Expression);
+    ast.nodes[0].nodes[0].should.be.an.instanceof(nodes.Variable);
+    ast.nodes[0].nodes[0].should.have.property('name', 'light-color');
+    ast.nodes[0].nodes[0].val.should.be.an.instanceof(nodes.Expression);
+    ast.nodes[0].nodes[0].val.nodes[0].should.be.an.instanceof(nodes.Color);
   },
   
   'test selector': function(){
