@@ -54,3 +54,23 @@
   description: 
   length: 25
   name: executable
+- !ruby/object:Pomo::Task 
+  complete: false
+  description: 
+  length: 25
+  name: BIFs http://sass-lang.com/docs/yardoc/Sass/Script/Functions.html
+- !ruby/object:Pomo::Task 
+  complete: false
+  description: 
+  length: 25
+  name: serialization example(s)
+- !ruby/object:Pomo::Task 
+  complete: false
+  description: 
+  length: 25
+  name: compressed example
+- !ruby/object:Pomo::Task 
+  complete: false
+  description: 
+  length: 25
+  name: allow paren omission
