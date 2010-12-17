@@ -10,7 +10,10 @@
   padding-left @n 
   padding-right @n
 
+@padding()
+  padding-left 5px
+  padding-right 5px
+
 form
-  border @add(2px, 2px) solid #eee
-  @pad-x(5px)
-  @pad-y(2px)
+  @padding()
+  background grey
