@@ -1,0 +1,13 @@
+
+@pad-y(@n)
+  padding-top @n
+  padding-bottom @n
+
+@pad-x(@n)
+  padding-left @n 
+  padding-right @n 
+
+form
+  border 1px solid #eee
+  @pad-x(5px)
+  @pad-y(2px)
