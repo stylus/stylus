@@ -84,3 +84,8 @@
   description: 
   length: 25
   name: stack traces
+- !ruby/object:Pomo::Task 
+  complete: false
+  description: 
+  length: 25
+  name: remove expressions at the statement level
