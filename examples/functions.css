@@ -10,16 +10,9 @@
   padding-left @n 
   padding-right @n
 
-@margin()
-  margin 0 auto
-
-@padding()
-  padding-left 5px
-  padding-right 5px
-  @margin()
-
 @pad(@x, @y)
-  padding @y @x @y @x
+  @pad-x(@x)
+  @pad-y(@x)
 
 form
   @pad(5px, 10px)
