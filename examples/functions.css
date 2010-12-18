@@ -1,19 +1,8 @@
 
-@add(@a, @b)
-  @a + @b
-
-@pad-y(@n)
-  padding-top @n
-  padding-bottom @n
-
-@pad-x(@n)
-  padding-left @n 
-  padding-right @n
-
-@pad(@x, @y)
-  @pad-x(@x)
-  @pad-y(@x)
+@border-radius(@size)
+  -webkit-border-radius @size
+  -moz-border-radius @size
+  border-radius @size
 
 form
-  @pad(5px, 10px)
-  background grey
+  @border-radius(5px)
