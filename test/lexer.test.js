@@ -118,7 +118,7 @@ module.exports = {
   },
   
   'test property': function(){
-    var lex = new Lexer('body a\n  color #fff');
+    var lex = new Lexer('body a\n  -webkit-border-radius 12px');
 
     lex.isSelector = true;
     lex.peek.type.should.equal('selector');
@@ -127,9 +127,9 @@ module.exports = {
     lex.next.type.should.equal('indent');
 
     lex.peek.type.should.equal('property');
-    lex.next.val.should.equal('color');
+    lex.next.val.should.equal('-webkit-border-radius');
 
-    lex.next.type.should.equal('color');
+    lex.next.type.should.equal('unit');
     lex.next.type.should.equal('outdent');
     lex.next.type.should.equal('eos');
   },
