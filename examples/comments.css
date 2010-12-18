@@ -1,0 +1,14 @@
+
+// This is a comment
+body
+  color white
+  // You can nest them as you wish
+
+/*
+We can also use multi-line comments
+like this, which are native to css
+*/
+
+form
+  color black
+
