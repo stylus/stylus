@@ -94,3 +94,8 @@
   description: 
   length: 25
   name: better exceptions when a function arg is missing
+- !ruby/object:Pomo::Task 
+  complete: false
+  description: 
+  length: 25
+  name: support for plain-js BIFs and custom in-language functions
