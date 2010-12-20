@@ -28,11 +28,6 @@
   complete: false
   description: 
   length: 25
-  name: mixins
-- !ruby/object:Pomo::Task 
-  complete: false
-  description: 
-  length: 25
   name: test for exceptions
 - !ruby/object:Pomo::Task 
   complete: false
