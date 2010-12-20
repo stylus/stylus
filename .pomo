@@ -99,3 +99,8 @@
   description: 
   length: 25
   name: support for plain-js BIFs and custom in-language functions
+- !ruby/object:Pomo::Task 
+  complete: false
+  description: 
+  length: 25
+  name: drop @ in assignment
