@@ -10,12 +10,10 @@ border-radius(@size)
   border-radius @size
 
 lighten(@color)
-  background @color - rgba(0,0,0,0.5)
-  -fail @size
-  // This shouldnt work
+  @color - rgba(0,0,0,0.5)
 
 form input
   @size: 5px
-  lighten(#fff)
+  background lighten(#fff)
   border-radius(@size)
   pad(@size, @size * 2)
