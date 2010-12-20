@@ -68,11 +68,6 @@
   complete: false
   description: 
   length: 25
-  name: multi-line comments
-- !ruby/object:Pomo::Task 
-  complete: false
-  description: 
-  length: 25
   name: remove expressions at the statement level
 - !ruby/object:Pomo::Task 
   complete: false
