@@ -13,11 +13,6 @@
   complete: false
   description: 
   length: 25
-  name: gradients etc ... full css grammar
-- !ruby/object:Pomo::Task 
-  complete: false
-  description: 
-  length: 25
   name: helper functions in core (defined in the language)
 - !ruby/object:Pomo::Task 
   complete: false
@@ -64,11 +59,6 @@
   description: 
   length: 25
   name: allow paren omission
-- !ruby/object:Pomo::Task 
-  complete: false
-  description: 
-  length: 25
-  name: remove expressions at the statement level
 - !ruby/object:Pomo::Task 
   complete: false
   description: 
