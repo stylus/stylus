@@ -104,3 +104,8 @@
   description: 
   length: 25
   name: drop @ in assignment
+- !ruby/object:Pomo::Task 
+  complete: false
+  description: 
+  length: 25
+  name: test and support @ rules
