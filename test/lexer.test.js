@@ -46,7 +46,9 @@ module.exports = {
   },
   
   'test single-line comment': function(){
-    scan('// foo bar\n15px').type.should.equal('unit');
+    var lex = new Lexer('// foo bar\n15px');
+    lex.next.type.should.equal('newline');
+    lex.next.type.should.equal('unit');
   },
   
   'test string': function(){
