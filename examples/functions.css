@@ -1,21 +1,21 @@
 
 @blue: #00C3FF
 
-@pad(@x, @y)
+pad(@x, @y)
   padding @y @x @y @x
 
-@border-radius(@size)
+border-radius(@size)
   -webkit-border-radius @size
   -moz-border-radius @size
   border-radius @size
 
-@lighten(@color)
+lighten(@color)
   background @color - rgba(0,0,0,0.5)
   -fail @size
   // This shouldnt work
 
 form input
   @size: 5px
-  @lighten(#fff)
-  @border-radius(@size)
-  @pad(@size, @size * 2)
+  lighten(#fff)
+  border-radius(@size)
+  pad(@size, @size * 2)
