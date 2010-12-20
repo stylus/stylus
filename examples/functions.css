@@ -10,7 +10,7 @@ border-radius(@size)
   border-radius @size
 
 lighten(@color)
-  @color - rgba(0,0,0,0.5)
+  #fff - rgba(0,0,0,0.5)
 
 form input
   @size: 5px
