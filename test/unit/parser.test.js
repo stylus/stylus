@@ -3,8 +3,8 @@
  * Module dependencies.
  */
 
-var Parser = require('../lib/parser')
-  , nodes = require('../lib/nodes')
+var Parser = require('../../lib/parser')
+  , nodes = require('../../lib/nodes')
   , should = require('should');
 
 module.exports = {

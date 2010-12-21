@@ -3,8 +3,8 @@
  * Module dependencies.
  */
 
-var Evaluator = require('../lib/visitor/evaluator')
-  , nodes = require('../lib/nodes')
+var Evaluator = require('../../lib/visitor/evaluator')
+  , nodes = require('../../lib/nodes')
   , should = require('should');
 
 var eval = new Evaluator(new nodes.Root);

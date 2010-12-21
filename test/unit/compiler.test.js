@@ -3,8 +3,8 @@
  * Module dependencies.
  */
 
-var Compiler = require('../lib/visitor/compiler')
-  , nodes = require('../lib/nodes')
+var Compiler = require('../../lib/visitor/compiler')
+  , nodes = require('../../lib/nodes')
   , should = require('should');
 
 var compiler = new Compiler;

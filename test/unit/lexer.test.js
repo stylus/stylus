@@ -3,7 +3,7 @@
  * Module dependencies.
  */
 
-var Lexer = require('../lib/lexer')
+var Lexer = require('../../lib/lexer')
   , should = require('should');
 
 function scan(str) {
