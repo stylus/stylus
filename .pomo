@@ -114,3 +114,8 @@
   description: 
   length: 25
   name: lexical scope
+- !ruby/object:Pomo::Task 
+  complete: false
+  description: 
+  length: 25
+  name: parens in defaults fail
