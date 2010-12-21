@@ -109,3 +109,8 @@
   description: 
   length: 25
   name: argument defaults
+- !ruby/object:Pomo::Task 
+  complete: false
+  description: 
+  length: 25
+  name: fix issue with several calls to a function that requires params ... state retained
