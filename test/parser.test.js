@@ -46,5 +46,20 @@ module.exports = {
     
     block[1].should.be.an.instanceof(nodes.Property);
     block[1].should.have.property('name', 'font-size');
+  },
+  
+  'test arithmetic': function(){
+    var parser = new Parser('15px + 5 - 2')
+      , ast = parser.parse();
+    
+    var op = ast.nodes[0].nodes[0];
+    op.should.be.an.instanceof(nodes.BinOp);
+    op.should.have.property('op', '-');
+    op.right.val.should.equal(2);
+
+    var op = op.left;
+    op.left.val.should.equal(15);
+    op.left.type.should.equal('px');
+    op.right.val.should.equal(5);
   }
 };
