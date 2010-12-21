@@ -4,7 +4,8 @@
  */
 
 var css = require('css')
-  , should = require('should');
+  , should = require('should')
+  , fs = require('fs');
 
 module.exports = {
   'test .version': function(){
@@ -41,3 +42,23 @@ module.exports = {
     });
   }
 };
+
+// TODO: move to integration
+
+(function test(fixture) {
+  var base = __dirname + '/fixtures/' + fixture
+    , path =  base + '.in'
+    , csspath = base + '.css';
+  fs.readFile(path, 'utf8', function(err, str){
+    if (err) throw err;
+    css.render(str, { filename: path }, function(err, actual){
+      if (err) throw err;
+      fs.readFile(csspath, 'utf8', function(err, expected){
+        if (err) throw err;
+        actual.should.equal(expected);
+      });
+    });
+  });
+  return test;
+})
+('variable');
