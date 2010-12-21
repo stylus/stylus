@@ -1,4 +1,4 @@
 
 body
-  background #fff - rgba(255,0,0,0.5)
+  background #fff - (rgba(250,0,0,0.5) + rgba(5,0,0,0))
   color #ffcc00 - #f00
