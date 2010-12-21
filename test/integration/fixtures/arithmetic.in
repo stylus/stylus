@@ -1,0 +1,13 @@
+
+@size: 12px
+@large: @size * (3 - 1)
+@huge: @size * 3
+
+body
+  font-size @size
+
+h1
+  font-size @huge
+
+h2
+  font-size @large
