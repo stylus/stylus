@@ -218,19 +218,19 @@ module.exports = {
       var lex = new Lexer('foo\n bar');
       lex.next;
       lex.next;
-    }, 'Invalid indentation, got 1 space(s), expected multiple of 2');
+    }, 'Invalid indentation, got one space and expected multiple of two');
     
     err(function(){
       var lex = new Lexer('foo\n   bar');
       lex.next;
       lex.next;
-    }, 'Invalid indentation, got 3 space(s), expected multiple of 2');
+    }, 'Invalid indentation, got 3 spaces and expected multiple of two');
     
     err(function(){
       var lex = new Lexer('foo\n    bar');
       lex.next;
       lex.next;
-    }, 'Invalid indentation, got 4 space(s), expected 2');
+    }, 'Invalid indentation, got 4 spaces and expected two');
     
     var lex = new Lexer('foo\n  bar\n    baz\n  \n  \n  raz\n\n\n');
     lex.next; // foo

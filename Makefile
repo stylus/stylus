@@ -2,6 +2,10 @@
 test:
 	@./support/expresso/bin/expresso \
 		-I support \
-		-I lib
+		-I lib \
+		$(TEST_FLAGS)
 
-.PHONY: test
+test-cov:
+	@$(MAKE) test TEST_FLAGS=--cov
+
+.PHONY: test test-cov
