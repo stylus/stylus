@@ -11,7 +11,7 @@ body
   color @primary-color
 
 h1
-  font-size @font-size + 10px
+  font-size @font-size * (5 - 3)
   color @primary-color + #030303
 
 h2
