@@ -48,14 +48,6 @@ module.exports = {
     ret.should.be.an.instanceof(nodes.Unit);
     ret.val.should.equal(10);
 
-    var invalid = new nodes.BinOp('+', new nodes.Keyword('auto'), new nodes.Keyword('foo'));
-    try {
-      eval.visitBinOp(invalid);
-      throw new Error('did not throw on invalid operand');
-    } catch (err) {
-      err.message.should.equal('cannot operate on keyword');
-    }
-    
     var str = new nodes.BinOp('+', new nodes.String('foo'), new nodes.String('bar'));
     ret = eval.visitBinOp(str);
     ret.val.should.equal('foobar');
