@@ -113,11 +113,10 @@ module.exports = {
     ret.val.should.equal(15);
 
     // Mixin
-    var block = new nodes.Block;
-    eval.block = block;
     eval.isProperty = false;
     var ret = eval.visitCall(call);
     ret.should.be.an.instanceof(nodes.Null);
+    var block = eval.stack.currentFrame.block;
     block.nodes[0].val.should.equal(15);
   }
 };
