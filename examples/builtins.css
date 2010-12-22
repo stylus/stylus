@@ -1,3 +1,7 @@
 
 body
-  background rgba(0,0,255,0.5)
+  @alpha: 0.5
+  background rgba(0,0,255,@alpha)
+  
+  @blue: 100
+  color rgb(200,100,@blue)
