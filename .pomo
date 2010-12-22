@@ -118,11 +118,6 @@
   complete: false
   description: 
   length: 25
-  name: parens in defaults fail
-- !ruby/object:Pomo::Task 
-  complete: false
-  description: 
-  length: 25
   name: unary
 - !ruby/object:Pomo::Task 
   complete: false
