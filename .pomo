@@ -129,3 +129,8 @@
   description: 
   length: 25
   name: omit 0 in 0.55 when compresed
+- !ruby/object:Pomo::Task 
+  complete: false
+  description: 
+  length: 25
+  name: tests for defauling args to other args
