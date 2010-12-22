@@ -124,3 +124,8 @@
   description: 
   length: 25
   name: "color compression, ex: #ff0000 -> #f00"
+- !ruby/object:Pomo::Task 
+  complete: false
+  description: 
+  length: 25
+  name: Null singleton Null -> Empty?
