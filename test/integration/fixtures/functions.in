@@ -3,7 +3,7 @@ add(@a, @b)
   @a + @b
 
 pad(@x, @y)
-  padding @y, @x, @y, @x
+  padding @y @x @y @x
 
 body
   pad(5px, 10px)
