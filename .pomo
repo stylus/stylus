@@ -134,3 +134,8 @@
   description: 
   length: 25
   name: tests for defauling args to other args
+- !ruby/object:Pomo::Task 
+  complete: false
+  description: 
+  length: 25
+  name: "color compression, ex: #ff0000 -> #f00"
