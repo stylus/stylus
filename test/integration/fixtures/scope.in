@@ -2,10 +2,11 @@
 @size: 12px
 @size-large: @size * 2
 
-pad(@x, @y)
+pad(@x, @y: @size)
+  margin @size-large
   padding @y @x @y @x
 
 body
   @size: 50px
-  pad(5px, 10px)
+  pad(5px)
   font-size @size
