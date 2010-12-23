@@ -16,3 +16,6 @@ body
   foo hue(hsl(#74DD23))
   foo saturation(hsl(#74DD23))
   foo lightness(hsl(#74DD23))
+  
+  color hsl(15,100,60)
+  color #FF6432

@@ -159,3 +159,8 @@
   description: 
   length: 25
   name: variable functions
+- !ruby/object:Pomo::Task 
+  complete: false
+  description: 
+  length: 25
+  name: prevent css context for library (regular js) exceptions, make custom exception
