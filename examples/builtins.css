@@ -12,3 +12,7 @@ body
   foo blue(#00f)
   
   foo alpha(rgba(0,0,0,0.3))
+  
+  foo hue(hsl(#74DD23))
+  foo saturation(hsl(#74DD23))
+  foo lightness(hsl(#74DD23))
