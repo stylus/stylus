@@ -179,3 +179,8 @@
   description: 
   length: 25
   name: move operations to nodes? easier for extensions
+- !ruby/object:Pomo::Task 
+  complete: false
+  description: 
+  length: 25
+  name: hue() etc convert to hsl first
