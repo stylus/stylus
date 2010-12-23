@@ -13,6 +13,11 @@ body
   
   foo alpha(rgba(0,0,0,0.3))
   
+  foo type(red)
+  foo type(hsl(#fff))
+  foo type(12)
+  foo type('test')
+  
   // 15deg
   hue hue(hsl(#FF6633))
   // 100%
