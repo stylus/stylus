@@ -12,6 +12,7 @@ body
   foo blue(#00f)
   
   foo alpha(rgba(0,0,0,0.3))
+  foo alpha(hsla(#fff))
   
   foo type(red)
   foo type(hsl(#fff))
