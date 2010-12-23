@@ -169,3 +169,8 @@
   description: 
   length: 25
   name: compiler 'transformations'
+- !ruby/object:Pomo::Task 
+  complete: false
+  description: 
+  length: 25
+  name: typeof instead of is a function?
