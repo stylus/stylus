@@ -19,7 +19,11 @@ body
   sat saturation(hsl(#FF6633))
   // 60%
   light lightness(hsl(#FF6633))
+  light lightness(hsla(rgba(255,66,33,1)))
   
   color hsl(15deg,100%,60%)
   color hsla(15deg,100%,60%,1)
   color #FF6633
+  
+  color rgb(rgba(255,100,0,0.5))
+  color rgb(#ff6633)
