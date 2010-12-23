@@ -18,4 +18,5 @@ body
   foo lightness(hsl(#74DD23))
   
   color hsl(15,100,60)
+  color hsla(15,100,60,0.8)
   color #FF6432
