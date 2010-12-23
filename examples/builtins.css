@@ -1,7 +1,11 @@
 
 body
   @alpha: 0.5
-  background rgba(0,0,255,@alpha)
+  color rgba(0,0,255,@alpha)
   
   @blue: 100
   color rgb(200,100,@blue)
+  foo red
+  foo red(#f00)
+  foo green(#0f0)
+  foo blue(#00f)
