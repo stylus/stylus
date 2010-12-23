@@ -13,10 +13,13 @@ body
   
   foo alpha(rgba(0,0,0,0.3))
   
-  foo hue(hsl(#74DD23))
-  foo saturation(hsl(#74DD23))
-  foo lightness(hsl(#74DD23))
+  // 15deg
+  hue hue(hsl(#FF6633))
+  // 100%
+  sat saturation(hsl(#FF6633))
+  // 60%
+  light lightness(hsl(#FF6633))
   
   color hsl(15deg,100%,60%)
   color hsla(15deg,100%,60%,1)
-  color #FF6432
+  color #FF6633
