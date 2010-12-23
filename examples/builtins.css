@@ -10,6 +10,7 @@ body
   foo red(green)
   foo green(#0f0)
   foo blue(#00f)
+  foo blue(hsl(15deg, 100%, 50%))
   
   foo alpha(rgba(0,0,0,0.3))
   foo alpha(hsla(#fff))
