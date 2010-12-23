@@ -17,6 +17,6 @@ body
   foo saturation(hsl(#74DD23))
   foo lightness(hsl(#74DD23))
   
-  color hsl(15,100,60)
-  color hsla(15,100,60,0.8)
+  color hsl(15deg,100%,60%)
+  color hsla(15deg,100%,60%,1)
   color #FF6432
