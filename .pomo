@@ -179,8 +179,3 @@
   description: 
   length: 25
   name: interpolation
-- !ruby/object:Pomo::Task 
-  complete: false
-  description: 
-  length: 25
-  name: 0px -> 0 when compressed

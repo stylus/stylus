@@ -62,6 +62,10 @@ module.exports = {
     compiler.visitUnit(new nodes.Unit(5, 'px')).should.equal('5px');
     compiler.visitUnit(new nodes.Unit(5.99, 'px')).should.equal('6px');
     compiler.visitUnit(new nodes.Unit(10, '%')).should.equal('10%');
+    compiler.compress = true;
+    compiler.visitUnit(new nodes.Unit(0, '%')).should.equal('0');
+    compiler.visitUnit(new nodes.Unit(0, 'px')).should.equal('0');
+    compiler.compress = false;
   },
   
   'test visitExpression()': function(){
