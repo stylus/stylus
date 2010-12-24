@@ -6,7 +6,7 @@ body
   foo 0px || 0px
   
   // false
-  foo 0px || false
+  foo 0px or false
   
   // true
   foo 0 || 0 || true
@@ -21,7 +21,7 @@ body
   foo 1px && 0
   
   // false
-  foo 1px && false
+  foo 1px and false
   
   // 10
   foo 5px && 5px && 10
