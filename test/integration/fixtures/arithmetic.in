@@ -11,3 +11,5 @@ h1
 
 h2
   font-size @large
+  font 5px % 3
+  font 5px % 5
