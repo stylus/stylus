@@ -61,13 +61,18 @@ module.exports = {
   
   'test #nnn': function(){
     scan('#000').type.should.equal('color');
-    scan('#000').val.should.eql({ r: 0, g: 0, b: 0, a: 1 });
-    scan('#fca').val.should.eql({ r: 255, g: 204, b: 170, a: 1 });
+    scan('#fc0').val.r.should.equal(255);
+    scan('#fc0').val.g.should.equal(204);
+    scan('#fc0').val.b.should.equal(0);
+    scan('#fc0').val.a.should.equal(1);
   },
   
   'test #nnnnnn': function(){
     scan('#ffffff').type.should.equal('color');
-    scan('#ffccaa').val.should.eql({ r: 255, g: 204, b: 170, a: 1 });
+    scan('#ffccaa').val.r.should.equal(255);
+    scan('#ffccaa').val.g.should.equal(204);
+    scan('#ffccaa').val.b.should.equal(170);
+    scan('#ffccaa').val.a.should.equal(1);
   },
   
   'test variable': function(){
