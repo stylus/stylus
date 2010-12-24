@@ -277,5 +277,15 @@ module.exports = {
     scan('black').val.g.should.equal(0);
     scan('black').val.b.should.equal(0);
     scan('black').val.a.should.equal(1);
+  },
+  
+  'test url()': function(){
+    var lex = new Lexer('url(/path/to some image.png)');
+    lex.peek.type.should.equal('variable');
+    lex.next.val.should.equal('url');
+    lex.next.type.should.equal('(');
+    lex.peek.type.should.equal('string');
+    lex.next.val.should.equal('/path/to some image.png');
+    lex.next.type.should.equal(')');
   }
 };
