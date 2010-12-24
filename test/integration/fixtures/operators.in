@@ -44,3 +44,10 @@ body
   
   // true
   foo 15px is a unit and #fff is a color
+  
+  // true
+  @foo: 'bar'
+  foo @foo is defined
+  
+  // false
+  foo @bar is defined
