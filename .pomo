@@ -193,9 +193,4 @@
   complete: false
   description: 
   length: 25
-  name: url()
-- !ruby/object:Pomo::Task 
-  complete: false
-  description: 
-  length: 25
   name: keyword -> ident, construct -> keyword
