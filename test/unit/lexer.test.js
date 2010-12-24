@@ -287,5 +287,12 @@ module.exports = {
     lex.peek.type.should.equal('string');
     lex.next.val.val.should.equal('/path/to some image.png');
     lex.next.type.should.equal(')');
+    
+    var lex = new Lexer('url("/my.png")');
+    lex.next.val.name.should.equal('url');
+    lex.next.type.should.equal('(');
+    lex.peek.type.should.equal('string');
+    lex.next.val.val.should.equal('/my.png');
+    lex.next.type.should.equal(')');
   }
 };
