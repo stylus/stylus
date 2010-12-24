@@ -263,7 +263,14 @@ module.exports = {
   
   'test colors': function(){
     scan('white').type.should.equal('color');
-    scan('white').val.should.eql({ r: 255, g: 255, b: 255, a: 1 });
-    scan('black').val.should.eql({ r: 0, g: 0, b: 0, a: 1 });
+    scan('white').val.r.should.equal(255);
+    scan('white').val.g.should.equal(255);
+    scan('white').val.b.should.equal(255);
+    scan('white').val.a.should.equal(1);
+    
+    scan('black').val.r.should.equal(0);
+    scan('black').val.g.should.equal(0);
+    scan('black').val.b.should.equal(0);
+    scan('black').val.a.should.equal(1);
   }
 };
