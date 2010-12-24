@@ -282,10 +282,10 @@ module.exports = {
   'test url()': function(){
     var lex = new Lexer('url(/path/to some image.png)');
     lex.peek.type.should.equal('variable');
-    lex.next.val.should.equal('url');
+    lex.next.val.name.should.equal('url');
     lex.next.type.should.equal('(');
     lex.peek.type.should.equal('string');
-    lex.next.val.should.equal('/path/to some image.png');
+    lex.next.val.val.should.equal('/path/to some image.png');
     lex.next.type.should.equal(')');
   }
 };
