@@ -64,3 +64,6 @@ body
   // nope
   foo @rawr is defined ? yes : nope
   
+  // true
+  foo (@foo is defined ? yes : nope) == yes
+  
