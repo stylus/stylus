@@ -1,0 +1,33 @@
+body
+  // 5px
+  foo 0px || 5px
+  
+  // 0px
+  foo 0px || 0px
+  
+  // false
+  foo 0px or false
+  
+  // true
+  foo 0 || 0 || true
+  
+  // 5px
+  foo 1px && 5px
+  
+  // 0px
+  foo 0px && 1px
+  
+  // 0
+  foo 1px && 0
+  
+  // false
+  foo 1px and false
+  
+  // 10
+  foo 5px && 5px && 10
+  
+  // #000
+  foo #000 && #fff
+  
+  // 1
+  foo 8 && (4 && 1)
