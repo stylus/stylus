@@ -33,7 +33,8 @@ body
   foo 8 && (4 && 1)
   
   // true
-  foo #fff is a Color
+  @type: "Color"
+  foo #fff is a @type
   foo #fff is a color
   
   // false
