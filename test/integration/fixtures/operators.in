@@ -47,10 +47,13 @@ body
   
   // true
   @foo: 'bar'
-  foo @foo is defined
+  
+  // true
+  @bar: 'baz'
+  foo @foo is defined and @bar is defined
   
   // false
-  foo @bar is defined
+  foo @baz is defined
   
   // true
   foo 5 < 10 and 10 > 5
