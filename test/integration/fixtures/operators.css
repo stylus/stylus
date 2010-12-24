@@ -10,4 +10,8 @@ body {
   foo: 10;
   foo: #000000;
   foo: 1;
+  foo: true;
+  foo: true;
+  foo: false;
+  foo: true;
 }
