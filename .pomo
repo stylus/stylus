@@ -183,14 +183,4 @@
   complete: false
   description: 
   length: 25
-  name: hue() etc convert to hsl first
-- !ruby/object:Pomo::Task 
-  complete: false
-  description: 
-  length: 25
   name: interpolation
-- !ruby/object:Pomo::Task 
-  complete: false
-  description: 
-  length: 25
-  name: keyword -> ident, construct -> keyword
