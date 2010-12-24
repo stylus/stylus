@@ -46,3 +46,5 @@ body
   
   foo min(5,10)
   foo max(5,10)
+  foo ceil(5.5)
+  foo floor(5.5)
