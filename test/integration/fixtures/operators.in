@@ -41,3 +41,6 @@ body
   foo 15px is a color
   // true
   foo 15px is a unit
+  
+  // true
+  foo 15px is a unit and #fff is a color
