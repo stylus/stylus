@@ -47,8 +47,8 @@ module.exports = {
     compiler.visitString(new nodes.String('testing')).should.equal('"testing"');
   },
   
-  'test visitKeyword()': function(){
-    compiler.visitKeyword(new nodes.Keyword('auto')).should.equal('auto');
+  'test visitIdent()': function(){
+    compiler.visitIdent(new nodes.Ident('auto')).should.equal('auto');
   },
   
   'test visitVariable()': function(){

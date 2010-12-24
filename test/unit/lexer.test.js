@@ -139,9 +139,9 @@ module.exports = {
     lex.next.type.should.equal('unit'); // 12px
     lex.next.type.should.equal('string'); // "Lucida Grande"
     lex.next.type.should.equal(',');
-    lex.next.type.should.equal('keyword'); // Arial
+    lex.next.type.should.equal('ident'); // Arial
     lex.next.type.should.equal(',');
-    lex.next.type.should.equal('keyword'); // sans-serif
+    lex.next.type.should.equal('ident'); // sans-serif
     lex.next.type.should.equal('outdent');
     lex.next.type.should.equal('eos');
   },
@@ -255,15 +255,15 @@ module.exports = {
     lex.next.type.should.equal('eos');
   },
   
-  'test keywords': function(){
-    scan('auto').type.should.equal('keyword');
-    scan('left').type.should.equal('keyword');
-    scan('right').type.should.equal('keyword');
+  'test identifiers': function(){
+    scan('auto').type.should.equal('ident');
+    scan('left').type.should.equal('ident');
+    scan('right').type.should.equal('ident');
     
     var lex = new Lexer('black 14px sans-serif');
     lex.next.type.should.equal('color');
     lex.next.type.should.equal('unit');
-    lex.next.type.should.equal('keyword');
+    lex.next.type.should.equal('ident');
   },
   
   'test colors': function(){
