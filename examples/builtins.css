@@ -43,3 +43,6 @@ body
   
   background url("/images/test.png")
   background url(/images/some image.png)
+  
+  foo min(5,10)
+  foo max(5,10)
