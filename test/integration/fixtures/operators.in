@@ -2,7 +2,7 @@ body
   // 5px
   foo 0px || 5px
   
-  // 0
+  // 0px
   foo 0px || 0px
   
   // false
