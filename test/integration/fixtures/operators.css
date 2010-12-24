@@ -8,4 +8,6 @@ body {
   foo: 0;
   foo: false;
   foo: 10;
+  foo: #000000;
+  foo: 1;
 }
