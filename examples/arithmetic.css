@@ -23,3 +23,7 @@ h2
 .side-bar
   padding @pad
   width @width / 3 - @pad
+  // 6
+  height 3 - - - - 3
+  // 7
+  height 1 + 2 * 3
