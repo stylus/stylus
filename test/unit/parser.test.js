@@ -20,7 +20,7 @@ module.exports = {
   },
   
   'test variable assignment': function(){
-    var parser = new Parser('@light-color: #fff')
+    var parser = new Parser('@light-color= #fff')
       , ast = parser.parse();
 
     ast.should.be.an.instanceof(nodes.Root);

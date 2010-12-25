@@ -1,9 +1,9 @@
 
-@font-families: "Lucida Grande", Arial, sans-serif
-@font-size: 14px
-@primary-color: #3a3a3a
-@width: 800px
-@pad: 20px
+@font-families = "Lucida Grande", Arial, sans-serif
+@font-size = 14px
+@primary-color = #3a3a3a
+@width = 800px
+@pad = 20px
 
 body
   font @font-size/1.5 @font-families
