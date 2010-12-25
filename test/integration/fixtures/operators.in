@@ -57,3 +57,13 @@ body
   
   // true
   foo 5 < 10 and 10 > 5
+  
+  // wahoo
+  foo @bar is defined ? wahoo : nope
+  
+  // nope
+  foo @rawr is defined ? yes : nope
+  
+  // true
+  foo (@foo is defined ? yes : nope) == yes
+  
