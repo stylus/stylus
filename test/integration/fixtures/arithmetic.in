@@ -1,7 +1,7 @@
 
-@size: 12px
-@large: @size * (3 - 1)
-@huge: @size * 3
+@size = 12px
+@large = @size * (3 - 1)
+@huge = @size * 3
 
 body
   font-size @size

@@ -33,7 +33,7 @@ body
   foo 8 && (4 && 1)
   
   // true
-  @type: "Color"
+  @type = "Color"
   foo #fff is a @type
   foo #fff is a color
   
@@ -46,10 +46,10 @@ body
   foo 15px is a unit and #fff is a color
   
   // true
-  @foo: 'bar'
+  @foo = 'bar'
   
   // true
-  @bar: 'baz'
+  @bar = 'baz'
   foo @foo is defined and @bar is defined
   
   // false
