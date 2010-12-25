@@ -1,4 +1,5 @@
 
+SRC = $(shell find lib -name "*.js")
 TESTS = $(shell find test -name "*.test.js")
 
 test:
@@ -12,4 +13,15 @@ test:
 test-cov:
 	@$(MAKE) test TEST_FLAGS=--cov
 
-.PHONY: test test-cov
+docs: docs/index.html
+
+docs/index.html: $(SRC)
+	@mkdir -p docs
+	dox \
+	  --title "Switch" \
+    --desc "Expressive CSS language for nodejs" \
+		--ribbon http://github.com/learnboost/switch \
+		--private \
+		$^ > $@
+
+.PHONY: test test-cov docs
