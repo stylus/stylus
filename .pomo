@@ -179,3 +179,13 @@
   description: 
   length: 25
   name: interpolation
+- !ruby/object:Pomo::Task 
+  complete: false
+  description: 
+  length: 25
+  name: "fix linenos, line 19 in function.css switch to :"
+- !ruby/object:Pomo::Task 
+  complete: false
+  description: 
+  length: 25
+  name: fix linenos for function calls
