@@ -10,8 +10,14 @@ pad-var(@x, @y = @size)
 pad-arg(@x, @y = @x)
   padding @y @x @y @x
 
+pad-call(@n = add(5, 5))
+  padding @n @n @n @n
+
 body
   pad-var(5px)
 
 a.button
   pad-arg(10px)
+
+form input
+  pad-call()
