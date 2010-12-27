@@ -23,38 +23,32 @@ module.exports = {
   
   'test visitColor()': function(){
     var color = new nodes.Color(0,255,0,1);
-    compiler.visitColor(color).should.equal('#00ff00');
+    compiler.visitColor(color).should.equal('#0f0');
     
     var color = new nodes.Color(5,255,30,1);
     compiler.visitColor(color).should.equal('#05ff1e');
     
     var color = new nodes.Color(0,80,0,0.5);
     compiler.visitColor(color).should.equal('rgba(0,80,0,0.5)');
-
-    compiler.compress = true;
-    var color = new nodes.Color(255,0,0,1);
-    compiler.visitColor(color).should.equal('#f00');
     
     var color = new nodes.Color(255,5,0,1);
-    compiler.visitColor(color).should.equal('#f00');
-
-    var color = new nodes.Color(5,255,30,1);
-    compiler.visitColor(color).should.equal('#05ff1e');
+    compiler.visitColor(color).should.equal('#ff0500');
     
-    compiler.compress = false;
+    var color = new nodes.Color(255,255,255,1);
+    compiler.visitColor(color).should.equal('#fff');
   },
   
   'test visitProperty()': function(){
     var prop = new nodes.Property('background');
     prop.expr = new nodes.Expression;
     prop.expr.push(new nodes.Color(255,255,0,1));
-    compiler.visitProperty(prop).should.equal('background: #ffff00;');
+    compiler.visitProperty(prop).should.equal('background: #ff0;');
   
     prop.expr.push(new nodes.Color(0,0,0,1));
-    compiler.visitProperty(prop).should.equal('background: #ffff00 #000000;');
+    compiler.visitProperty(prop).should.equal('background: #ff0 #000;');
     
     compiler.compress = true;
-    compiler.visitProperty(prop).should.equal('background:#ffff00 #000000;');
+    compiler.visitProperty(prop).should.equal('background:#ff0 #000;');
     compiler.compress = false;
   },
   
@@ -109,9 +103,9 @@ module.exports = {
     block.push(nodes.null);
     block.push(prop);
     
-    compiler.visitBlock(block).should.equal(' {\n  color: #ff0000;\n  color: #ff0000;\n}');
+    compiler.visitBlock(block).should.equal(' {\n  color: #f00;\n  color: #f00;\n}');
     compiler.compress = true;
-    compiler.visitBlock(block).should.equal('{color:#ff0000;color:#ff0000;}');
+    compiler.visitBlock(block).should.equal('{color:#f00;color:#f00;}');
     compiler.compress = false;
   },
   
@@ -127,9 +121,9 @@ module.exports = {
     block.push(new nodes.Expression);
     block.push(prop);
     
-    compiler.visitRoot(block).should.equal('color: #ff0000;\ncolor: #ff0000;');
+    compiler.visitRoot(block).should.equal('color: #f00;\ncolor: #f00;');
     compiler.compress = true;
-    compiler.visitRoot(block).should.equal('color:#ff0000;color:#ff0000;');
+    compiler.visitRoot(block).should.equal('color:#f00;color:#f00;');
     compiler.compress = false;
   }
 };
