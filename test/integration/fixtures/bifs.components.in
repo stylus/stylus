@@ -1,0 +1,4 @@
+body
+  background red(#fc0)
+  background green(#fc0)
+  background blue(#fc0)
