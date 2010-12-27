@@ -9,15 +9,15 @@ var css = require('../../lib/css')
   , fs = require('fs');
 
 /**
- * Test the given `fixture`.
+ * Test the given `test`.
  *
- * @param {String} fixture
+ * @param {String} test
  */
 
-function test(fixture) {
+function test(test) {
   // TODO: remove
-  if ('scope.complex' == fixture) return;
-  var base = __dirname + '/fixtures/' + fixture
+  if ('scope.complex' == test) return;
+  var base = __dirname + '/tests/' + test
     , path =  base + '.in'
     , csspath = base + '.css';
   fs.readFile(path, 'utf8', function(err, str){
@@ -39,10 +39,10 @@ function test(fixture) {
 };
 
 /**
- * Auto-load and test fixtures.
+ * Auto-load and run tests.
  */
 
-fs.readdir(__dirname + '/fixtures', function(err, files){
+fs.readdir(__dirname + '/tests', function(err, files){
   if (err) throw err;
   files.forEach(function(file){
     if (/\.in$/.test(file)) {

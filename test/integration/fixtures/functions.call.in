@@ -1,7 +1,0 @@
-
-add(@a, @b = @a)
-  @a + @b
-
-body
-  foo add(5)
-  foo add(5,2)
