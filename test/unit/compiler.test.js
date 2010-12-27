@@ -25,8 +25,18 @@ module.exports = {
     var color = new nodes.Color(0,255,0,1);
     compiler.visitColor(color).should.equal('#00ff00');
     
+    var color = new nodes.Color(5,255,30,1);
+    compiler.visitColor(color).should.equal('#05ff1e');
+    
     var color = new nodes.Color(0,80,0,0.5);
     compiler.visitColor(color).should.equal('rgba(0,80,0,0.5)');
+
+    // compiler.compress = true;
+    // var color = new nodes.Color(255,0,0,1);
+    // compiler.visitColor(color).should.equal('#f00');
+    // var color = new nodes.Color(255,5,0,1);
+    // compiler.visitColor(color).should.equal('#f00');
+    // compiler.compress = false;
   },
   
   'test visitProperty()': function(){
