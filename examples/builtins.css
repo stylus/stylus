@@ -64,3 +64,4 @@ body
   foo lighten(#331f00, 20%)
   foo darken(#fff, 40%)
   foo #fff - hsl(0,0,40%)
+  foo hsl(0,0,70%) - hsl(0,0,30%)
