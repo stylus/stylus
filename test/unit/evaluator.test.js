@@ -100,12 +100,12 @@ module.exports = {
     var call = new nodes.Call('add', args);
 
     // return value
-    eval.isProperty = true;
+    eval.return = true;
     var ret = eval.visitCall(call);
     ret.val.should.equal(15);
 
     // Mixin
-    eval.isProperty = false;
+    eval.return = false;
     var ret = eval.visitCall(call);
     ret.should.be.an.instanceof(nodes.Null);
     var block = eval.stack.currentFrame.block;
