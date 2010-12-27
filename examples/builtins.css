@@ -56,3 +56,7 @@ body
   foo abs(-5)
   foo round(1.46)
   foo round(1.55)
+  
+  foo unit(5)
+  foo unit(5px)
+  foo unit(5%)
