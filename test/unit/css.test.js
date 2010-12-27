@@ -29,8 +29,8 @@ module.exports = {
     css.render('body\n    color red', {}, function(err, css){
       err.message.should.equal('css:2\n  1: \'body\'\n  2: \'    color red\'\n\nInvalid indentation, got 4 spaces and expected two');
     });
-    css.render('body\n color red', {}, function(err, css){
-      err.message.should.equal('css:2\n  1: \'body\'\n  2: \' color red\'\n\nInvalid indentation, got one space and expected multiple of two');
+    css.render('body\n color red', { filename: 'foo.css' }, function(err, css){
+      err.message.should.equal('foo.css:2\n  1: \'body\'\n  2: \' color red\'\n\nInvalid indentation, got one space and expected multiple of two');
     });
   },
   
