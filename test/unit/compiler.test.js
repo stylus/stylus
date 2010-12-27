@@ -11,7 +11,7 @@ var compiler = new Compiler;
 
 module.exports = {
   'test visitNull()': function(){
-    compiler.visitNull(new nodes.Null).should.equal('');
+    compiler.visitNull(nodes.null).should.equal('');
   },
   
   'test visitCall()': function(){
@@ -88,9 +88,9 @@ module.exports = {
     prop.expr = new nodes.Expression;
     prop.expr.push(new nodes.Color(255,0,0,1));
     block.push(prop);
-    block.push(new nodes.Null);
-    block.push(new nodes.Null);
-    block.push(new nodes.Null);
+    block.push(nodes.null);
+    block.push(nodes.null);
+    block.push(nodes.null);
     block.push(prop);
     
     compiler.visitBlock(block).should.equal(' {\n  color: #ff0000;\n  color: #ff0000;\n}');
@@ -105,9 +105,9 @@ module.exports = {
     prop.expr = new nodes.Expression;
     prop.expr.push(new nodes.Color(255,0,0,1));
     block.push(prop);
-    block.push(new nodes.Null);
-    block.push(new nodes.Null);
-    block.push(new nodes.Null);
+    block.push(nodes.null);
+    block.push(nodes.null);
+    block.push(nodes.null);
     block.push(new nodes.Expression);
     block.push(prop);
     

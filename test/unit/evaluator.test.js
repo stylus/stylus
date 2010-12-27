@@ -11,7 +11,7 @@ var eval = new Evaluator(new nodes.Root);
 
 module.exports = {
   'test visitNull()': function(){
-    var node = new nodes.Null;
+    var node = nodes.null;
     eval.visitNull(node).should.equal(node);
   },
   
