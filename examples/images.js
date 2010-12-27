@@ -9,10 +9,12 @@ var css = require('../')
 
 function url() {
   var n = 0
-    , pending = 0;
+    , pending = 0
+    , urls = {};
   return function(url){
     ++pending;
     var tok = '__images[' + ++n + ']__';
+    urls[url] = { url: url, tok: tok };
     return new nodes.Ident(tok);
   }
 }
