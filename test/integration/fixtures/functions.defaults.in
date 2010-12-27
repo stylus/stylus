@@ -1,0 +1,8 @@
+
+@size = 15px
+
+pad(@x, @y = @size)
+  padding @y @x @y @x
+
+body
+  pad(5px)
