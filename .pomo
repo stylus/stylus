@@ -38,11 +38,6 @@
   complete: false
   description: 
   length: 25
-  name: allow paren omission
-- !ruby/object:Pomo::Task 
-  complete: false
-  description: 
-  length: 25
   name: transparent function/property support
 - !ruby/object:Pomo::Task 
   complete: false
