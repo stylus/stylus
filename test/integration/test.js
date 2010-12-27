@@ -15,8 +15,6 @@ var css = require('../../lib/css')
  */
 
 function test(test) {
-  // TODO: remove
-  if ('scope.complex' == test) return;
   var base = __dirname + '/tests/' + test
     , path =  base + '.in'
     , csspath = base + '.css';
