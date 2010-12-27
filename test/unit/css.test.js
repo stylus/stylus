@@ -11,6 +11,14 @@ module.exports = {
     css.version.should.match(/^\d+\.\d+\.\d+$/);
   },
   
+  'test .nodes': function(){
+    css.should.have.property('nodes');
+  },
+  
+  'test .functions': function(){
+    css.should.have.property('functions');
+  },
+  
   'test .render()': function(){
     css.render('body\n  color red', {}, function(err, css){
       should.equal(null, err);
