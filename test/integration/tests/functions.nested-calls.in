@@ -1,0 +1,9 @@
+
+sub(@a, @b)
+  @a / @b
+
+add(@a, @b)
+  @a + sub(@b, 2)
+
+body
+  foo add(5, add(5, 5))

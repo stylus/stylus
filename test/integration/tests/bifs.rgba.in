@@ -1,0 +1,4 @@
+body
+  background rgba(255,8,0,1)
+  background rgba(255,255,0,0.2)
+  background rgba(#fc0, 0.5)

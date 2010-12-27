@@ -1,0 +1,17 @@
+
+@size = 15px
+
+add(@a, @b)
+  @a + @b
+
+pad-var(@x, @y = @size)
+  padding @y @x @y @x
+
+pad-arg(@x, @y = @x)
+  padding @y @x @y @x
+
+body
+  pad-var(5px)
+
+a.button
+  pad-arg(10px)

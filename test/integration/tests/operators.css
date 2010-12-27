@@ -1,0 +1,24 @@
+body {
+  foo: 5px;
+  foo: 0px;
+  foo: false;
+  foo: true;
+  foo: 5px;
+  foo: 0px;
+  foo: 0;
+  foo: false;
+  foo: 10;
+  foo: #000;
+  foo: 1;
+  foo: true;
+  foo: true;
+  foo: false;
+  foo: true;
+  foo: true;
+  foo: true;
+  foo: false;
+  foo: true;
+  foo: wahoo;
+  foo: nope;
+  foo: true;
+}

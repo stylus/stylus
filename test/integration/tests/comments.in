@@ -1,0 +1,14 @@
+
+// @foo: 'bar'
+
+body
+  color red
+  // background green
+
+/*
+
+body
+  a
+    color blue
+
+*/

@@ -1,0 +1,12 @@
+
+add(@a, @b)
+  @a + @b
+
+pad(@x, @y)
+  padding @y @x @y @x
+
+body
+  pad(5px, 10px)
+
+form .button
+  padding-left add(10px, 5px)
