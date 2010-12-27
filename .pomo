@@ -88,17 +88,7 @@
   complete: false
   description: 
   length: 25
-  name: omit 0 in 0.55 when compresed
-- !ruby/object:Pomo::Task 
-  complete: false
-  description: 
-  length: 25
   name: tests for defauling args to other args
-- !ruby/object:Pomo::Task 
-  complete: false
-  description: 
-  length: 25
-  name: "color compression, ex: #ff0000 -> #f00"
 - !ruby/object:Pomo::Task 
   complete: false
   description: 

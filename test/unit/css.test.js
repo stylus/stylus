@@ -14,14 +14,14 @@ module.exports = {
   'test .render()': function(){
     css.render('body\n  color red', {}, function(err, css){
       should.equal(null, err);
-      css.should.equal('body {\n  color: #ff0000;\n}');
+      css.should.equal('body {\n  color: #f00;\n}');
     });
   },
   
   'test .render() compress option': function(){
     css.render('body\n  color red', { compress: true }, function(err, css){
       should.equal(null, err);
-      css.should.equal('body{color:#ff0000;}');
+      css.should.equal('body{color:#f00;}');
     });
   },
   
@@ -37,7 +37,7 @@ module.exports = {
   'test .render() without options': function(){
     css.render('body\n  color red', function(err, css){
       should.equal(null, err);
-      css.should.equal('body {\n  color: #ff0000;\n}');
+      css.should.equal('body {\n  color: #f00;\n}');
     });
   }
 };
