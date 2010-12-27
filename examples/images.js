@@ -9,9 +9,9 @@ var css = require('../')
 
 css(str)
   .set('filename', 'images.css')
-  // .define('url', function(url){
-  //   return new nodes.String
-  // })
+  .define('url', function(url){
+    return new nodes.String('wahoo');
+  })
   .render(function(err, css){
     if (err) throw err;
     console.log(css);
