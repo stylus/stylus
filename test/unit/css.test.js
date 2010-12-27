@@ -27,10 +27,10 @@ module.exports = {
   
   'test .render() exception': function(){
     css.render('body\n    color red', {}, function(err, css){
-      err.message.should.equal('Invalid indentation, got 4 spaces and expected two');
+      err.message.should.equal('css:2\n  1: \'body\'\n  2: \'    color red\'\n\nInvalid indentation, got 4 spaces and expected two');
     });
     css.render('body\n color red', {}, function(err, css){
-      err.message.should.equal('Invalid indentation, got one space and expected multiple of two');
+      err.message.should.equal('css:2\n  1: \'body\'\n  2: \' color red\'\n\nInvalid indentation, got one space and expected multiple of two');
     });
   },
   
