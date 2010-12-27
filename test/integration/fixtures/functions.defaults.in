@@ -4,14 +4,14 @@
 add(@a, @b)
   @a + @b
 
-pad(@x, @y = @size)
+pad-var(@x, @y = @size)
   padding @y @x @y @x
 
-pad2(@x, @y = @x)
+pad-arg(@x, @y = @x)
   padding @y @x @y @x
 
 body
-  pad(5px)
+  pad-var(5px)
 
 a.button
-  pad2(10px)
+  pad-arg(10px)
