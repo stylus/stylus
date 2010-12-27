@@ -2,3 +2,4 @@ body
   background red(#fc0)
   background green(#fc0)
   background blue(#fc0)
+  background alpha(#fff - rgba(0,0,0,.6))
