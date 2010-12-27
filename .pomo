@@ -138,16 +138,6 @@
   complete: false
   description: 
   length: 25
-  name: rgba() etc BIFs
-- !ruby/object:Pomo::Task 
-  complete: false
-  description: 
-  length: 25
-  name: "% unit / 100 in arithmetic, add util"
-- !ruby/object:Pomo::Task 
-  complete: false
-  description: 
-  length: 25
   name: issue with vars like @blue overriding fns
 - !ruby/object:Pomo::Task 
   complete: false
@@ -189,8 +179,3 @@
   description: 
   length: 25
   name: fix linenos for function calls
-- !ruby/object:Pomo::Task 
-  complete: false
-  description: 
-  length: 25
-  name: privatize methods
