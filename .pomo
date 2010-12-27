@@ -13,11 +13,6 @@
   complete: false
   description: 
   length: 25
-  name: helper functions in core (defined in the language)
-- !ruby/object:Pomo::Task 
-  complete: false
-  description: 
-  length: 25
   name: language constructs (if else unless etc)
 - !ruby/object:Pomo::Task 
   complete: false
@@ -33,17 +28,7 @@
   complete: false
   description: 
   length: 25
-  name: more operators
-- !ruby/object:Pomo::Task 
-  complete: false
-  description: 
-  length: 25
   name: executable
-- !ruby/object:Pomo::Task 
-  complete: false
-  description: 
-  length: 25
-  name: BIFs http://sass-lang.com/docs/yardoc/Sass/Script/Functions.html
 - !ruby/object:Pomo::Task 
   complete: false
   description: 
@@ -84,11 +69,6 @@
   description: 
   length: 25
   name: parent reference &
-- !ruby/object:Pomo::Task 
-  complete: false
-  description: 
-  length: 25
-  name: hsl
 - !ruby/object:Pomo::Task 
   complete: false
   description: 
@@ -154,11 +134,6 @@
   description: 
   length: 25
   name: compiler 'transformations'
-- !ruby/object:Pomo::Task 
-  complete: false
-  description: 
-  length: 25
-  name: typeof instead of is a function?
 - !ruby/object:Pomo::Task 
   complete: false
   description: 
