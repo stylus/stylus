@@ -60,3 +60,6 @@ body
   foo unit(5)
   foo unit(5px)
   foo unit(5%)
+  
+  foo lighten(#331f00, 20%)
+  foo darken(#fff, 40%)
