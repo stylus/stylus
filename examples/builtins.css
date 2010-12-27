@@ -40,6 +40,10 @@ body
   color rgb(hsl(15deg,100%,60%))
   foo unquote("sans-serif")
   foo unquote(sans-serif)
+  foo even(1)
+  foo even(2)
+  foo odd(1)
+  foo odd(2)
   
   background url("/images/test.png")
   background url(/images/some image.png)
