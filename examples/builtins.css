@@ -50,3 +50,5 @@ body
   foo floor(5.5)
   foo abs(5)
   foo abs(-5)
+  foo round(1.46)
+  foo round(1.55)
