@@ -23,3 +23,6 @@ body
   
   // 1kHz
   foo 3kHz - (1000Hz * 2)
+  
+  @n = 30%
+  foo unit(@n, 'px') 
