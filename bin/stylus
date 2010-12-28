@@ -19,6 +19,12 @@ var args = process.argv.slice(2);
 var compare = false;
 
 /**
+ * Compress flag.
+ */
+
+var compress = false;
+
+/**
  * Usage docs.
  */
 
@@ -28,8 +34,9 @@ var usage = [
   , ''
   , '  Options:'
   , ''
-  , '    -C, --compare  Display input along with output'
-  , '    -h, --help     Display help information'
+  , '    -c, --compress  Compress output'
+  , '    -C, --compare   Display input along with output'
+  , '    -h, --help      Display help information'
   , ''
 ].join('\n');
 
@@ -49,6 +56,10 @@ while (args.length) {
     case '--compare':
       compare = true;
       break;
+    case '-c':
+    case '--compress':
+      compress = true;
+      break;
   }
 }
 
@@ -66,8 +77,13 @@ stdin.on('data', function(chunk){
 // Output
 
 stdin.on('end', function(){
+  var options = {
+      filename: 'stdin'
+    , compress: compress
+  };
+
   // Compile to css
-  stylus(str, { filename: 'stdin' }).render(function(err, css){
+  stylus(str, options).render(function(err, css){
     if (err) throw err;
     if (compare) {
       console.log('\n\x1b[1mInput:\x1b[0m');
