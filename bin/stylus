@@ -12,6 +12,46 @@ var stylus = require('../lib/stylus');
 
 var args = process.argv.slice(2);
 
+/**
+ * Compare flag.
+ */
+
+var compare = false;
+
+/**
+ * Usage docs.
+ */
+
+var usage = [
+    ''
+  , '  Usage: stylus [options]'
+  , ''
+  , '  Options:'
+  , ''
+  , '    -C, --compare  Display input along with output'
+  , '    -h, --help     Display help information'
+  , ''
+].join('\n');
+
+/**
+ * Handle arguments.
+ */
+
+var arg;
+while (args.length) {
+  arg = args.shift();
+  switch (arg) {
+    case '-h':
+    case '--help':
+      console.log(usage);
+      process.exit(1);
+    case '-C':
+    case '--compare':
+      compare = true;
+      break;
+  }
+}
+
 // Buffer stdin
 
 var str = ''
@@ -29,6 +69,12 @@ stdin.on('end', function(){
   // Compile to css
   stylus(str, { filename: 'stdin' }).render(function(err, css){
     if (err) throw err;
+    if (compare) {
+      console.log('\n\x1b[1mInput:\x1b[0m');
+      console.log(str);
+      console.log('\n\x1b[1mOutput:\x1b[0m');
+    }
     console.log(css);
+    if (compare) console.log();
   });
 });
