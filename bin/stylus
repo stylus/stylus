@@ -1,0 +1,96 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+var stylus = require('../lib/stylus');
+
+/**
+ * Arguments.
+ */
+
+var args = process.argv.slice(2);
+
+/**
+ * Compare flag.
+ */
+
+var compare = false;
+
+/**
+ * Compress flag.
+ */
+
+var compress = false;
+
+/**
+ * Usage docs.
+ */
+
+var usage = [
+    ''
+  , '  Usage: stylus [options]'
+  , ''
+  , '  Options:'
+  , ''
+  , '    -c, --compress  Compress output'
+  , '    -C, --compare   Display input along with output'
+  , '    -h, --help      Display help information'
+  , ''
+].join('\n');
+
+/**
+ * Handle arguments.
+ */
+
+var arg;
+while (args.length) {
+  arg = args.shift();
+  switch (arg) {
+    case '-h':
+    case '--help':
+      console.log(usage);
+      process.exit(1);
+    case '-C':
+    case '--compare':
+      compare = true;
+      break;
+    case '-c':
+    case '--compress':
+      compress = true;
+      break;
+  }
+}
+
+// Buffer stdin
+
+var str = ''
+  , stdin = process.openStdin();
+
+stdin.setEncoding('utf8');
+
+stdin.on('data', function(chunk){
+  str += chunk;
+});
+
+// Output
+
+stdin.on('end', function(){
+  var options = {
+      filename: 'stdin'
+    , compress: compress
+  };
+
+  // Compile to css
+  stylus(str, options).render(function(err, css){
+    if (err) throw err;
+    if (compare) {
+      console.log('\n\x1b[1mInput:\x1b[0m');
+      console.log(str);
+      console.log('\n\x1b[1mOutput:\x1b[0m');
+    }
+    console.log(css);
+    if (compare) console.log();
+  });
+});
