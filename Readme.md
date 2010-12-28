@@ -1,6 +1,8 @@
 
 # Stylus
 
+
+
 ### Example
 
     body a
@@ -84,6 +86,61 @@ compiles to:
     body {
       font: 14px "Lucida Grande", Arial sans-serif;
     }
+
+### Arithmetic
+
+Stylus supports a plethora of operations on units, colors, and even strings.
+
+Example string operations:
+
+    body
+      font "Ari" + "al"
+
+compiles to:
+
+    body {
+      font: "Arial";
+    }
+
+Example unit operations:
+
+    @size = 14px
+
+    body
+      font @size - 2
+
+    a.large
+      font @size * 2
+
+compiles to:
+
+    body {
+      font: 12px;
+    }
+    a.large {
+      font: 28px;
+    }
+
+Example color operations:
+
+    body
+      @base = #414141
+      color @base
+      background @base / 2
+    a.button
+      background #eee - rgba(0,0,0,0.5)
+
+compiles to:
+
+    body {
+      color: #414141;
+      background: #212121;
+    }
+    a.button {
+      background: rgba(238,238,238,0.5);
+    }
+
+View the __Operators__ section for more information.
 
 ## License 
 
