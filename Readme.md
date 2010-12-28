@@ -1,5 +1,28 @@
 
-# CSS
+# Stylus
+
+### Example
+
+    body a
+      font 12px "Lucida Grande", Arial, sans-serif
+      background black
+      color #ccc
+
+    form input
+      padding 5px
+      border 1px solid
+
+compiles to:
+
+    body a {
+      font: 12px "Lucida Grande", Arial, sans-serif;
+      background: #000;
+      color: #ccc;
+    }
+    form input {
+      padding: 5px;
+      border: 1px solid;
+    }
 
 ## License 
 
