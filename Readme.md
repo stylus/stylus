@@ -42,6 +42,49 @@ View option help:
 
     $ stylus --help
 
+### Indentation
+
+Stylus is "pythonic" aka indentation-based. Whitespace is significant, so we substitute { and } with an indent, and and outdent as shown below:
+
+    body
+      color white
+
+which compiles to:
+
+    body {
+      color: #fff;
+    }
+
+
+### Variables
+
+We may assign expressions to variables and use them throughout our stylesheet:
+
+     @font-size = 14px
+
+     body
+       font @font-size Arial, sans-serif
+
+compiles to:
+
+     body {
+       font: 14px Arial, sans-serif;
+     }
+
+Variables can even consist of an expression list:
+
+    @font-size = 14px
+    @font = @font-size "Lucida Grande", Arial
+
+    body
+      font @font sans-serif
+
+compiles to:
+
+    body {
+      font: 14px "Lucida Grande", Arial sans-serif;
+    }
+
 ## License 
 
 (The MIT License)
