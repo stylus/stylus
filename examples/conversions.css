@@ -17,3 +17,9 @@ body
   
   // 3500ms
   foo 1500ms + 2s
+  
+  // 3000Hz
+  foo 1000Hz + 2kHz
+  
+  // 1kHz
+  foo 3kHz - (1000Hz * 2)
