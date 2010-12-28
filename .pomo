@@ -63,11 +63,6 @@
   complete: false
   description: 
   length: 25
-  name: unit conversion for operations
-- !ruby/object:Pomo::Task 
-  complete: false
-  description: 
-  length: 25
   name: skip blank lines
 - !ruby/object:Pomo::Task 
   complete: false
