@@ -142,6 +142,22 @@ compiles to:
 
 View the __Operators__ section for more information.
 
+### Comments
+
+Stylus supports both single-line and multi-line comments:
+
+    // I'm a comment!
+    
+    /*
+    
+    Cat, I'm a kitty cat
+    and I dance dance dance, and
+    I dance dance dance.
+    
+    */
+
+Both are rendered when uncompressed, however neither are when compressed.
+
 ## License 
 
 (The MIT License)
