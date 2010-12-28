@@ -29,7 +29,7 @@ module.exports = {
   'test .render() compress option': function(){
     stylus.render('body\n  color red', { compress: true }, function(err, stylus){
       should.equal(null, err);
-      stylus.should.equal('body{color:#f00;}');
+      stylus.should.equal('body{color:#f00}');
     });
   },
   

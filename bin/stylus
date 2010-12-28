@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-var stylus = require('../lib/stylus');
+var stylus = require('stylus');
 
 /**
  * Arguments.

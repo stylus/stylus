@@ -105,25 +105,7 @@ module.exports = {
     
     compiler.visitBlock(block).should.equal(' {\n  color: #f00;\n  color: #f00;\n}');
     compiler.compress = true;
-    compiler.visitBlock(block).should.equal('{color:#f00;color:#f00;}');
-    compiler.compress = false;
-  },
-  
-  'test visitRoot()': function(){
-    var block = new nodes.Root
-      , prop = new nodes.Property('color');
-    prop.expr = new nodes.Expression;
-    prop.expr.push(new nodes.Color(255,0,0,1));
-    block.push(prop);
-    block.push(nodes.null);
-    block.push(nodes.null);
-    block.push(nodes.null);
-    block.push(new nodes.Expression);
-    block.push(prop);
-    
-    compiler.visitRoot(block).should.equal('color: #f00;\ncolor: #f00;');
-    compiler.compress = true;
-    compiler.visitRoot(block).should.equal('color:#f00;color:#f00;');
+    compiler.visitBlock(block).should.equal('{color:#f00;color:#f00}');
     compiler.compress = false;
   }
 };
