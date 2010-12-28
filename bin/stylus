@@ -12,3 +12,23 @@ var stylus = require('../lib/stylus');
 
 var args = process.argv.slice(2);
 
+// Buffer stdin
+
+var str = ''
+  , stdin = process.openStdin();
+
+stdin.setEncoding('utf8');
+
+stdin.on('data', function(chunk){
+  str += chunk;
+});
+
+// Output
+
+stdin.on('end', function(){
+  // Compile to css
+  stylus(str, { filename: 'stdin' }).render(function(err, css){
+    if (err) throw err;
+    console.log(css);
+  });
+});
