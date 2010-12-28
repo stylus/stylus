@@ -11,3 +11,9 @@ body
   
   // 3in
   foo 5in - 5.08cm
+  
+  // 0.8s
+  foo 1s - 200ms
+  
+  // 3500ms
+  foo 1500ms + 2s
