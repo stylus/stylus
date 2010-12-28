@@ -3,7 +3,7 @@
  * Module dependencies.
  */
 
-var css = require('../../lib/css')
+var css = require('../../')
   , should = require('../../support/should')
   , basename = require('path').basename
   , fs = require('fs');

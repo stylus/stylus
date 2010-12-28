@@ -1,2 +1,2 @@
 
-module.exports = require('./lib/css');
+module.exports = require('./lib/stylus');
