@@ -1,0 +1,14 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+var stylus = require('../lib/stylus');
+
+/**
+ * Arguments.
+ */
+
+var args = process.argv.slice(2);
+
