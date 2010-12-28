@@ -1,3 +1,7 @@
+
+seconds(@n)
+  0s + @n
+
 body
   foo 15px - 5px
   foo 15px - 5
@@ -25,4 +29,6 @@ body
   foo 3kHz - (1000Hz * 2)
   
   @n = 30%
-  foo unit(@n, 'px') 
+  foo unit(@n, 'px')
+  
+  foo seconds(1500ms)
