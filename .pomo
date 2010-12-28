@@ -104,3 +104,8 @@
   description: 
   length: 25
   name: import support
+- !ruby/object:Pomo::Task 
+  complete: false
+  description: 
+  length: 25
+  name: TextMate bundle etc
