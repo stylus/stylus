@@ -156,7 +156,7 @@ Stylus supports both single-line and multi-line comments:
     
     */
 
-Both are rendered when uncompressed, however neither are when compressed.
+Neither are currently rendered.
 
 ## License 
 
