@@ -33,22 +33,12 @@
   complete: false
   description: 
   length: 25
-  name: serialization example(s)
-- !ruby/object:Pomo::Task 
-  complete: false
-  description: 
-  length: 25
   name: transparent function/property support
 - !ruby/object:Pomo::Task 
   complete: false
   description: 
   length: 25
   name: better exceptions when a function arg is missing
-- !ruby/object:Pomo::Task 
-  complete: false
-  description: 
-  length: 25
-  name: support for plain-js BIFs and custom in-language functions
 - !ruby/object:Pomo::Task 
   complete: false
   description: 
@@ -69,21 +59,6 @@
   description: 
   length: 25
   name: comma-separated selectors
-- !ruby/object:Pomo::Task 
-  complete: false
-  description: 
-  length: 25
-  name: data uris
-- !ruby/object:Pomo::Task 
-  complete: false
-  description: 
-  length: 25
-  name: lexical scope
-- !ruby/object:Pomo::Task 
-  complete: false
-  description: 
-  length: 25
-  name: tests for defauling args to other args
 - !ruby/object:Pomo::Task 
   complete: false
   description: 
@@ -109,11 +84,6 @@
   description: 
   length: 25
   name: prevent css context for library (regular js) exceptions, make custom exception
-- !ruby/object:Pomo::Task 
-  complete: false
-  description: 
-  length: 25
-  name: compiler 'transformations'
 - !ruby/object:Pomo::Task 
   complete: false
   description: 
