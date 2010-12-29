@@ -7,5 +7,11 @@ add(@a, @b)
 size(@n)
   @size-function(@n, @n)
 
+padding-x(@n)
+  padding-left @n
+  padding-right @n
+
 body
+  @fn = padding-x
   font size(14px)
+  @fn(5px)
