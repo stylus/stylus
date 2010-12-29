@@ -123,7 +123,7 @@ or assign the given `type` without unit conversion.
       odd(5mm)
       // => true
 
-### hsla(color | hsl | h[, s, l, a])
+### hsla(color | h[, s, l, a])
 
 Convert the given `color` to an `HSLA` node,
 or h,s,l,a component values.
@@ -134,7 +134,7 @@ or h,s,l,a component values.
      hsla(#ffcc00)
      // => HSLA
 
-### hsl(color | hsl | h[, s, l])
+### hsl(color | h[, s, l])
 
 Convert the given `color` to an `HSLA` node,
 or h,s,l component values.
@@ -145,7 +145,7 @@ or h,s,l component values.
      hsl(#ffcc00)
      // => HSLA
 
-### rgba(color | hsl | r[, g, b, a])
+### rgba(color | r[, g, b, a])
 
 Return a `Color` from the r,g,b,a channels or provide a color to tweak the alpha.
 
@@ -158,7 +158,7 @@ Return a `Color` from the r,g,b,a channels or provide a color to tweak the alpha
       rgba(#ffcc00, 0.5)
       // rgba(255,204,0,0.5)
 
-### rgb(color | hsl | r[, g, b])
+### rgb(color | r[, g, b])
 
 Return a `Color` from the r,g,b channels or cast to a color.
     
