@@ -122,6 +122,20 @@ Return a `Color` from the r,g,b channels or cast to a color.
     rgb(#fff)
     // => #fff
 
+### lighten(color|hsl, amount)
+
+Lighten the given `color` by `amount`.
+
+    lighten(black, 50%)
+    // => #808080
+
+### darken(color|hsl, amount)
+
+Darken the given `color` by `amount`.
+
+    darken(white, 50%)
+    // => #808080
+
 ### unquote(str|ident)
 
   Unquote the given `str` and pass through `ident`.
