@@ -19,7 +19,27 @@ multiplicative and additive binary operators work as expected, and type conversi
     
     20mm + 4in
     // => 121.6mm
+
+    "foo " + "bar"
+    // => "foo bar"
+
+We can also operator on colors, and values are clamped appropriately.
+
+    #fff - #111
+    => #eee
     
+    #111 + #fco
+    // => #fd1
+    
+    #fff - rgba(255,0,0,0.3)
+    // => rgba(0,255,255,0.7)
+    
+    #fff / 2
+    // => #808080
+    
+    #fff / rgb(2,0,4)
+    // #80ff40
+
 ### Multiplicative: / * %
 
     2000ms + (1s * 2)
