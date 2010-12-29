@@ -212,6 +212,44 @@ compiles to:
       background: rgba(238,238,238,0.5);
     }
 
+### JavaScript API
+
+Simply require the module, and call `render()` with the given string of stylus code, and (optional) options object. Frameworks utilizing stylus should pass the `filename` option to provide better error reporting.
+
+    var stylus = require('stylus');
+
+    stylus.render(str, { filename: 'nesting.css' }, function(err, css){
+      if (err) throw err;
+      console.log(css);
+    });
+
+We can also do the same thing in a more progressive manor:
+
+    var style = stylus(str)
+      .set('filename', 'nesting.css')
+      .render(function(err, css){
+        // logic
+      });
+
+### Data URI Image Inlining
+
+Stylus is bundled with an optional function named `url()`, which replaces the literal `url()` calls, and conditionally inlines them using base64 [Data URIs](http://en.wikipedia.org/wiki/Data_URI_scheme).
+
+The function itself is available via `stylus.url`, and takes an options object. The `.define(name, callback)` method assigned a JavaScript function that can be called from stylus source. In this case we have our images in `./images`, so we simply pass the lookup paths array with `__dirname`, the dirname of the executing script, this array tells stylus where to attempt looking for your image.
+
+    stylus(str)
+      .set('filename', 'images.css')
+      .define('url', stylus.url({ paths: [__dirname] }))
+      .render(function(err, css){
+        if (err) throw err;
+        console.log(css);
+      });
+
+supported options:
+
+  - `limit` bytesize limit defaulting to 30Kb (30000)
+  - `paths` image resolution path(s)
+
 ## License 
 
 (The MIT License)
