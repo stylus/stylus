@@ -21,4 +21,7 @@ body {
   foo: wahoo;
   foo: nope;
   foo: true;
+  foo: true;
+  foo: false;
+  foo: "got 15px";
 }

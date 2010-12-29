@@ -67,3 +67,12 @@ body
   // true
   foo (@foo is defined ? yes : nope) == yes
   
+  // true
+  foo 1000ms == 1s
+  
+  // false
+  foo 1ms == 1s
+  
+  // "got 15px"
+  foo "got " + 15px
+  
