@@ -63,6 +63,20 @@ Return type of `node.` as a string.
       type(#fff)
       // => 'color'
 
+### unit(unit[, type])
+
+Return a string for the type of `unit` or an empty string,
+or assign the given `type` without unit conversion.
+
+    unit(10)
+    // => ''
+    
+    unit(15in)
+    // => 'in'
+    
+    unit(15%, 'px')
+    // => 15px
+
 ### hsla(color|hsl|h[, s, l, a])
 
 Convert the given `color` to an `HSLA` node,
@@ -107,4 +121,62 @@ Return a `Color` from the r,g,b channels or cast to a color.
     
     rgb(#fff)
     // => #fff
-    
+
+### unquote(str|ident)
+
+  Unquote the given `str` and pass through `ident`.
+ 
+       unquote("sans-serif")
+       // => sans-serif
+ 
+       unquote(sans-serif)
+       // => sans-serif
+
+### abs(unit)
+
+      abs(-5px)
+      // => 5px
+
+      abs(5px)
+      // => 5px
+
+### ceil(unit)
+
+      ceil(5.5in)
+      // => 6in
+
+### floot(unit)
+
+      floor(5.6px)
+      // => 5px
+
+### round(unit)
+
+      round(5.5px)
+      // => 6px
+
+      round(5.4px)
+      // => 5px
+
+### min(a, b)
+
+      min(1, 5)
+      // => 1
+
+### max(a, b)
+
+      max(1, 5)
+      // => 5
+
+### even(unit)
+
+      even(6px)
+      // => true
+
+### odd(unit)
+
+      odd(5mm)
+      // => true
+
+
+
