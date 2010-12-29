@@ -256,7 +256,24 @@ A built-in function, or _BIF_ is simply a function that is supplied and exposed 
 
 #### red(color)
 
-foo
+Return the red component of the given `color`.
+
+   red(#c00)
+   // => 204
+
+#### green(color)
+
+Return the green component of the given `color`.
+
+   green(#0c0)
+   // => 204
+
+#### blue(color)
+
+Return the blue component of the given `color`.
+
+   red(#00c)
+   // => 204
 
 ## License 
 
