@@ -57,7 +57,7 @@ module.exports = {
       eval.visitBinOp(str);
       throw new Error('did not throw on invalid operation');
     } catch (err) {
-      err.message.should.equal('invalid operation - on string');
+      err.message.should.equal('cannot perform - operation on "foo"');
     }
   },
   
