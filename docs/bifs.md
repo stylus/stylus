@@ -1,26 +1,36 @@
 
 ## Built-in Functions
 
-### red(color)
+### red(color|hsl)
 
 Return the red component of the given `color`.
 
      red(#c00)
      // => 204
 
-### green(color)
+### green(color|hsl)
 
 Return the green component of the given `color`.
 
      green(#0c0)
      // => 204
 
-### blue(color)
+### blue(color|hsl)
 
 Return the blue component of the given `color`.
 
      red(#00c)
      // => 204
+
+### alpha(color|hsl)
+
+Return the alpha component of the given `color`.
+
+      alpha(#fff)
+      // => 1
+      
+      alpha(rgba(0,0,0,0.3))
+      // => 0.3
 
 ### hue(color|hsl)
 
@@ -74,3 +84,27 @@ or h,s,l component values.
 
      hsl(#ffcc00)
      // => HSLA
+
+### rgba(color|hsl|r[, g, b, a])
+
+Return a `Color` from the r,g,b,a channels or provide a color to tweak the alpha.
+
+      rgba(255,0,0,0.5)
+      // => rgba(255,0,0,0.5)
+  
+      rgba(255,0,0,1)
+      // => #ff0000
+  
+      rgba(#ffcc00, 0.5)
+      // rgba(255,204,0,0.5)
+
+### rgb(color|hsl|r[, g, b])
+
+Return a `Color` from the r,g,b channels or cast to a color.
+    
+    rgb(255,204,0)
+    // => #ffcc00
+    
+    rgb(#fff)
+    // => #fff
+    
