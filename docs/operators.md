@@ -83,6 +83,27 @@ Equality operators can be used to equate units, colors, strings, and even identi
     "test" == "test"
     // => true
 
+## Instance Check: is a
+
+Stylus provides a binary operator named `is a` used to type check. The technical name for unit constructors should be capitalized, however lowercase works as well.
+
+    15 is a unit
+    // => true
+    
+    15 is a Unit
+    // => true
+    
+    #fff is a color
+    // => true
+    
+    15 is a color
+    // => false
+
+Alternatively we could use the `type()` BIF:
+
+    type(#fff) == 'color'
+    // => true                                                                            
+
 ## Ternary
 
 The ternary operator works as you would expect in most languages, being the only operator with three operands, the _condition_ expression, the _truth_ expression and the _false_ expression.
