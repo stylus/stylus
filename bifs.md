@@ -22,6 +22,37 @@ Return the blue component of the given `color`.
      red(#00c)
      // => 204
 
+### hue(color|hsl)
+
+Return the hue of the given `color`.
+
+    hue(hsl(50deg, 100%, 80%))
+    // => 50deg
+
+### saturation(color|hsl)
+
+Return the saturation of the given `color`.
+
+    hue(hsl(50deg, 100%, 80%))
+    // => 100%
+
+### lightness(color|hsl)
+
+Return the lightness of the given `color`.
+
+    hue(hsl(50deg, 100%, 80%))
+    // => 80%
+
+### type(node)
+
+Return type of `node.` as a string.
+
+      type(12)
+      // => 'unit'
+      
+      type(#fff)
+      // => 'color'
+
 ### hsla(color|hsl|h[, s, l, a])
 
 Convert the given `color` to an `HSLA` node,
