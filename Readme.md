@@ -250,6 +250,14 @@ supported options:
   - `limit` bytesize limit defaulting to 30Kb (30000)
   - `paths` image resolution path(s)
 
+### Built-in Functions
+
+A built-in function, or _BIF_ is simply a function that is supplied and exposed by stylus, there is no need for an `@import` to access these.
+
+#### red(color)
+
+foo
+
 ## License 
 
 (The MIT License)
