@@ -83,6 +83,22 @@ Equality operators can be used to equate units, colors, strings, and even identi
     "test" == "test"
     // => true
 
+## Logical Operators: && || and or
+
+Logical operators `&&` and `||` are aliased `and` / `or` which apply the same precedence.
+
+    5 && 3
+    // => 3
+    
+    0 || 5
+    // => 5
+    
+    0 && 5
+    // => 0
+    
+    #fff is a color or 15 is a unit
+    // => true
+
 ## Instance Check: is a
 
 Stylus provides a binary operator named `is a` used to type check. The technical name for unit constructors should be capitalized, however lowercase works as well.
