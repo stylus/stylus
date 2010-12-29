@@ -120,6 +120,20 @@ Alternatively we could use the `type()` BIF:
     type(#fff) == 'color'
     // => true                                                                            
 
+## Variable Definition: is defined
+
+This pseudo binary operator does not accept a right-hand operator, and does _not_ evaluate the left. This allows us to check if a variable has a value assigned to it.
+
+    @foo is defined
+    // => false
+    
+    @foo = 15px
+    @foo is defined
+    // => true
+    
+    #fff is defined
+    // => 'invalid "is defined" check on non-variable #fff'
+
 ## Ternary
 
 The ternary operator works as you would expect in most languages, being the only operator with three operands, the _condition_ expression, the _truth_ expression and the _false_ expression.
