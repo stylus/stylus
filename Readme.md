@@ -140,7 +140,7 @@ compiles to:
       background: rgba(238,238,238,0.5);
     }
 
-View the __Operators__ section for more information.
+View the [Operators page](stylus/blob/master/docs/operators.md) for more information.
 
 ### Comments
 
