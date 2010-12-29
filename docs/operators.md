@@ -1,4 +1,32 @@
 
+## Unary Operators
+
+The following unary operators are available, `!`, `not`, `-`, `+`, and `~`.
+
+    !0
+    // => true
+    
+    !!0
+    // => false
+
+    !1
+    // => false
+    
+    !!5px
+    // => true
+
+    not true
+    // => false
+    
+    not not true
+    // => true
+    
+    -5px
+    // => -5px
+    
+    --5px
+    // => 5px
+
 ## Binary Operators
 
 ### Additive: + -
