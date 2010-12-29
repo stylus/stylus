@@ -194,6 +194,24 @@ When utilizing mixins, we can omit the parens all together, providing is with fa
 
 Note that the `border-radius` within our mixin is treated as a property, and not a recursive function invocation.
 
+### Functions
+
+As mentioned above, functions are defined as before, however they have a return value. Below we define a function named `transparent()` which accepts a color, and defaults alpha to `0.5`. We can then use the `-` operator to substract the given alpha from our left-hand operand, resulting in the same color with lowered transparency. 
+
+    transparent(@color, @alpha = 0.5)
+      @color - rgba(0,0,0,@alpha)
+
+    body
+      color transparent(#eee)
+      background transparent(#eee, 0.2)
+
+compiles to:
+
+    body {
+      color: rgba(238,238,238,0.5);
+      background: rgba(238,238,238,0.5);
+    }
+
 ## License 
 
 (The MIT License)
