@@ -254,7 +254,7 @@ supported options:
 
 A built-in function, or _BIF_ is simply a function that is supplied and exposed by stylus, there is no need for an `@import` to access these.
 
-Click to view the list of [built-in functions](docs/bifs.md) and examples.
+Click to view the list of [built-in functions](stylus/blob/master/docs/bifs.md) and examples.
 
 ## License 
 
