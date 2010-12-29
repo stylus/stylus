@@ -82,3 +82,11 @@ Equality operators can be used to equate units, colors, strings, and even identi
     
     "test" == "test"
     // => true
+
+## Ternary
+
+The ternary operator works as you would expect in most languages, being the only operator with three operands, the _condition_ expression, the _truth_ expression and the _false_ expression.
+
+    @num = 15
+    @num ? unit(@num, 'px') : 20px
+    // => 15px
