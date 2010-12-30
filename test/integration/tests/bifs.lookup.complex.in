@@ -1,0 +1,9 @@
+
+@dark-blue = #006269
+@light-blue = @dark-blue + hsl(0,0,50%)
+
+light(@color-name)
+  lookup('light-' + @color-name)
+
+body
+  color light('blue')
