@@ -192,5 +192,11 @@ Darken the given `color` by `amount`.
        unquote(sans-serif)
        // => sans-serif
 
+### operate(op, left, right)
 
+  Perform the given `op` on the `left` and `right` operands:
+  
+      @op = '+'
+      operate(@op, 15, 5)
+      // => 20
 
