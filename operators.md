@@ -162,6 +162,16 @@ This pseudo binary operator does not accept a right-hand operator, and does _not
     #fff is defined
     // => 'invalid "is defined" check on non-variable #fff'
 
+Alternatively one can use the `lookup(name)` built-in function to do this, or to perform dynamic lookups:
+
+    @name = 'blue'
+    lookup('light-' + @name)
+    // => null
+    
+    @light-blue = #80e2e9
+    lookup('light-' + @name)
+    // => #80e2e9
+
 ## Ternary
 
 The ternary operator works as you would expect in most languages, being the only operator with three operands, the _condition_ expression, the _truth_ expression and the _false_ expression.
