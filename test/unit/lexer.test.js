@@ -229,12 +229,8 @@ module.exports = {
     lex.next.type.should.equal('indent');
     lex.next; // baz
     lex.next.type.should.equal('outdent');
-    lex.next.type.should.equal('newline');
-    lex.next.type.should.equal('newline');
     lex.next; // raz
     lex.next.type.should.equal('outdent');
-    lex.next.type.should.equal('newline');
-    lex.next.type.should.equal('newline');
     lex.next.type.should.equal('eos');
   },
   
@@ -246,12 +242,8 @@ module.exports = {
     lex.next.type.should.equal('indent');
     lex.next; // baz
     lex.next.type.should.equal('outdent');
-    lex.next.type.should.equal('newline');
-    lex.next.type.should.equal('newline');
     lex.next; // raz
     lex.next.type.should.equal('outdent');
-    lex.next.type.should.equal('newline');
-    lex.next.type.should.equal('newline');
     lex.next.type.should.equal('eos');
   },
   
