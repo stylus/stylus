@@ -22,7 +22,6 @@ module.exports = {
     eval.visitVariable(node).should.equal(node.val);
 
     // Lookup
-    eval.lookup = true;
     var ret = eval.visitVariable(node);
     ret.val.should.equal(12);
 
@@ -33,8 +32,6 @@ module.exports = {
     } catch (err) {
       err.message.should.equal('undefined variable @foo');
     }
-    eval.lookup = false;
-    
   },
   
   'test visitBinOp()' : function(){
