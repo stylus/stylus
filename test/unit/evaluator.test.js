@@ -19,7 +19,7 @@ module.exports = {
     var node = new nodes.Variable('size', new nodes.Unit(12, 'px'));
 
     // Define
-    eval.visitVariable(node).should.be.an.instanceof(nodes.Null);
+    eval.visitVariable(node).should.equal(node.val);
 
     // Lookup
     eval.lookup = true;
@@ -74,7 +74,7 @@ module.exports = {
     var node = new nodes.Variable('size', new nodes.Unit(12, 'px'));
 
     // Define
-    eval.visitVariable(node).should.be.an.instanceof(nodes.Null);
+    eval.visitVariable(node).should.equal(node.val);
     prop = new nodes.Property('font');
     prop.expr = new nodes.Expression;
     prop.expr.push(new nodes.Variable('size'));

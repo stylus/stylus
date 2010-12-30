@@ -4,3 +4,5 @@
 
 body
   font @size @font-family
+  padding @pad = 5px
+  margin @pad
