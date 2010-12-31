@@ -9,4 +9,4 @@ css {
 
 form
   padding 10px
-  css { border: 1px solid #eee; }
+  border css { 1px solid #eee }
