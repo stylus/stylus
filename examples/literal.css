@@ -3,8 +3,10 @@ css {
   body {
     font: 14px;
   }
+  
+  a { text-decoration: none; }
 }
 
 form
   padding 10px
-  css { border 1px solid #eee; }
+  css { border: 1px solid #eee; }
