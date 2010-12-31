@@ -1,0 +1,10 @@
+
+css {
+  body {
+    font: 14px;
+  }
+}
+
+form
+  padding 10px
+  css { border 1px solid #eee; }
