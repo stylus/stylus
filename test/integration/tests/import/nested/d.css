@@ -4,4 +4,4 @@
 .d
   color black
 
-@import "nested/e"
+@import "../e"
