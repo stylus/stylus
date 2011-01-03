@@ -21,7 +21,8 @@ function test(test) {
     , csspath = base + '.css';
   fs.readFile(path, 'utf8', function(err, str){
     if (err) throw err;
-    css.render(str, { filename: path }, function(err, actual){
+    var paths = [__dirname + '/tests/import'];
+    css.render(str, { filename: path, paths: paths }, function(err, actual){
       if (err) throw err;
       fs.readFile(csspath, 'utf8', function(err, expected){
         if (err) throw err;

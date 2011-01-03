@@ -2,13 +2,17 @@
 SRC = $(shell find lib -name "*.js")
 TESTS = $(shell find test -name "*.test.js")
 
-test:
+test: test-unit test-integration
+
+test-unit:
 	@./support/expresso/bin/expresso \
 		-I support \
 		-I lib \
 		$(TEST_FLAGS) \
-		$(TESTS) \
-		&& node test/integration/test.js
+		$(TESTS)
+
+test-integration:
+	@node test/integration/test.js
 
 test-cov:
 	@$(MAKE) test TEST_FLAGS=--cov
@@ -24,4 +28,4 @@ docs/index.html: $(SRC)
 		--private \
 		$^ > $@
 
-.PHONY: test test-cov docs
+.PHONY: test test-unit test-integration test-cov docs
