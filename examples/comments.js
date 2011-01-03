@@ -4,8 +4,8 @@
  */
 
 var css = require('../')
-  , str = require('fs').readFileSync(__dirname + '/comments.css', 'utf8');
+  , str = require('fs').readFileSync(__dirname + '/comments.styl', 'utf8');
 
-css.render(str, { filename: 'comments.css' }, function(err, css){
+css.render(str, { filename: 'comments.styl' }, function(err, css){
   console.log(css);
 });

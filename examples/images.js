@@ -5,10 +5,10 @@
 
 var css = require('../')
   , nodes = css.nodes
-  , str = require('fs').readFileSync(__dirname + '/images.css', 'utf8');
+  , str = require('fs').readFileSync(__dirname + '/images.styl', 'utf8');
 
 css(str)
-  .set('filename', 'images.css')
+  .set('filename', 'images.styl')
   .define('url', css.url({ paths: [__dirname] }))
   .render(function(err, css){
     if (err) throw err;

@@ -4,9 +4,9 @@
  */
 
 var css = require('../')
-  , str = require('fs').readFileSync(__dirname + '/arithmetic.css', 'utf8');
+  , str = require('fs').readFileSync(__dirname + '/arithmetic.styl', 'utf8');
 
-css.render(str, { filename: 'arithmetic.css' }, function(err, css){
+css.render(str, { filename: 'arithmetic.styl' }, function(err, css){
   if (err) throw err;
   console.log(css);
 });

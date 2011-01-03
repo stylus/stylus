@@ -4,9 +4,9 @@
  */
 
 var css = require('../')
-  , str = require('fs').readFileSync(__dirname + '/conversions.css', 'utf8');
+  , str = require('fs').readFileSync(__dirname + '/conversions.styl', 'utf8');
 
-css.render(str, { filename: 'conversions.css' }, function(err, css){
+css.render(str, { filename: 'conversions.styl' }, function(err, css){
   if (err) throw err;
   console.log(css);
 });

@@ -4,9 +4,9 @@
  */
 
 var css = require('../')
-  , str = require('fs').readFileSync(__dirname + '/nesting.css', 'utf8');
+  , str = require('fs').readFileSync(__dirname + '/nesting.styl', 'utf8');
 
-css.render(str, { filename: 'nesting.css' }, function(err, css){
+css.render(str, { filename: 'nesting.styl' }, function(err, css){
   if (err) throw err;
   console.log(css);
 });
