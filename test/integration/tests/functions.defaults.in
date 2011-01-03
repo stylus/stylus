@@ -1,5 +1,6 @@
 
 @size = 15px
+@small = 5
 
 add(@a, @b)
   @a + @b
@@ -10,7 +11,7 @@ pad-var(@x, @y = @size)
 pad-arg(@x, @y = @x)
   padding @y @x @y @x
 
-pad-call(@n = add(5, 5))
+pad-call(@n = add(@small, @small))
   padding @n @n @n @n
 
 body
