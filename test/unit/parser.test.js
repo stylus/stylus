@@ -36,7 +36,11 @@ module.exports = {
       , ast = parser.parse();
 
     ast.should.be.an.instanceof(nodes.Root);
-    var selector = ast.nodes[0];
+    
+    var set = ast.nodes[0];
+    set.should.be.an.instanceof(nodes.RuleSet);
+
+    var selector = set.nodes[0];
     selector.should.be.an.instanceof(nodes.Selector);
     selector.val.should.equal('body a');
     var block = selector.block.nodes;
