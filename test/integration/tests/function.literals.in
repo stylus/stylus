@@ -1,2 +1,7 @@
+
+something(@arg)
+  bar @arg @arg
+
 body
   foo bar(1px, baz(5px))
+  something(baz(5px))
