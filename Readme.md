@@ -277,6 +277,20 @@ A built-in function, or _BIF_ is simply a function that is supplied and exposed 
 
 Click to view the list of [built-in functions](stylus/blob/master/docs/bifs.md) and examples.
 
+### Import
+
+ Literal css import:
+ 
+    @import "foo.css"
+
+compiles to:
+
+    @import "foo.css"
+
+ Import of _.styl_ files should omit the extension, resolving to _mixins.styl_ in this case. Functions, mixins, selectors etc can all be contained within imported files.
+ 
+    @import "mixins"
+
 ### Literal CSS
 
  If for any reason Stylus cannot accommodate a specific need, you can always resort to literal css via `@css`:
