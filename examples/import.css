@@ -1,0 +1,5 @@
+
+@import "mixins/box"
+
+body
+  pad(10px, 5px)
