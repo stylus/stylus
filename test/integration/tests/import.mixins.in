@@ -2,7 +2,7 @@
 @import "mixins/box"
 
 body
-  pad(5px, 10px)
+  pad 5px 10px
 
 form
   pad-x 5px
