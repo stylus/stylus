@@ -57,6 +57,27 @@ which compiles to:
       color: #fff;
     }
 
+### Rule Sets
+
+Stylus, just like css allows you to define properties for several selectors at once through comma separation.
+
+
+    textarea, input
+      border 1px solid #eee
+
+The same can be done with a newline:
+
+    
+    textarea
+    input
+      border 1px solid #eee
+
+both compiling to:
+
+    textarea,
+    input {
+      border: 1px solid #eee;
+    }
 
 ### Variables
 
