@@ -277,6 +277,24 @@ A built-in function, or _BIF_ is simply a function that is supplied and exposed 
 
 Click to view the list of [built-in functions](stylus/blob/master/docs/bifs.md) and examples.
 
+### Literal CSS
+
+ If for any reason Stylus cannot accommodate a specific need, you can always resort to literal css via `@css`:
+ 
+     
+     @css {
+       body {
+         font: 14px;
+       }
+     }
+
+compiling to:
+
+    body {
+      font: 14px;
+    }
+    
+
 ## License 
 
 (The MIT License)
