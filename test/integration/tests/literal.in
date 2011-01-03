@@ -1,0 +1,7 @@
+@css {
+  body {
+    font: 14px;
+  }
+  
+  a { text-decoration: none; }
+}
