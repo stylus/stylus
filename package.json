@@ -5,4 +5,7 @@
   , "keywords": []
   , "main": "./lib/mylib.js"
   , "engines": { "node": ">= 0.2.0" }
+  , "dependencies": {
+    "cssom": ">= 0.2.0"
+  }
 }
