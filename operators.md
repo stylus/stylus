@@ -127,6 +127,29 @@ Logical operators `&&` and `||` are aliased `and` / `or` which apply the same pr
     #fff is a color or 15 is a unit
     // => true
 
+## Conditional Assignment: ?=
+
+The conditional assignment operator `?=` lets us define variables without clobbering old values (when present). This operator expands to an `is defined` binary operation within a ternary, for example the following are equivalent:
+
+    @color ?= white
+    @color = @color is defined ? @color : white
+
+For example when using `=` we simply re-assign:
+
+    @color = white
+    @color = black
+    
+    @color
+    // => black
+
+However when using `?=` our second attempt fails since the variable is already defined:
+
+    @color = white
+    @color ?= black
+    
+    @color
+    // => white
+
 ## Instance Check: is a
 
 Stylus provides a binary operator named `is a` used to type check. The technical name for unit constructors should be capitalized, however lowercase works as well.
