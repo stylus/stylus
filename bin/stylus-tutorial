@@ -79,7 +79,9 @@ function Step(title, desc, src, fn) {
     var buf = '';
     stdin.on('data', function callback(chunk){
       if (0 == chunk.indexOf('quit')) process.exit(1);
-      if ('.' == chunk[0] || buf.trim() == self.src.trim()) {
+      var dot = '.' == chunk[0] && '\n' == chunk[1]
+        , equal = buf.trim() == self.src.trim();
+      if (dot || equal) {
         stdin.pause();
         stdin.removeListener('data', callback);
         stylus.render(buf, { filename: 'stdin' }, function(err, css){
@@ -176,6 +178,24 @@ steps.push(new Step(
   + '\n'
   + 'p\n'
   + '  margin-left -(@size - 2)'
+  ));
+
+steps.push(new Step(
+    'Coercion'
+  , 'Arithmetic operations coerce the right-hand operand when\n'
+  + ' applicable, for example converting _2s_ in _1000ms + 2s_\n'
+  + ' into _2000ms_ before evaluating the expression.\n'
+  + '\n'
+  + ' Examples:\n'
+  + '    _15px_ - _5_\n'
+  + '    _#000_ + _#eee_\n'
+  + '    _#fff_ - rgba(_0_,_0_,_0_,_.5_)\n'
+  + '    _#fff_ / _2_\n'
+  + '    _5in_ - _3cm_\n'
+  
+  , '@duration = 2s\n\n'
+  + '.fade\n'
+  + '  -webkit-transition opacity @duration - 1500ms linear'
   ));
 
 /**
