@@ -15,8 +15,7 @@ pad-x(@n)
   padding-right @n
 
 pad-y(@y)
-  @n = unit(@y, 'px')
-  padding-top @n
+  padding-top @n = unit(@y, 'px')
   padding-bottom @n
 
 pad(@x, @y)
