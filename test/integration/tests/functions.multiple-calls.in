@@ -10,10 +10,12 @@ body
   pad()
 
 pad-x(@n)
+  @n = unit(@n, 'px')
   padding-left @n
   padding-right @n
 
-pad-y(@n)
+pad-y(@y)
+  @n = unit(@y, 'px')
   padding-top @n
   padding-bottom @n
 
@@ -22,4 +24,4 @@ pad(@x, @y)
   pad-y(@y)
 
 form
-  pad(5px, 10px)
+  pad(5, 10)
