@@ -1,0 +1,164 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+try {
+  var stylus = require('stylus');
+} catch (err) {
+  var stylus = require('../lib/stylus');
+}
+
+/**
+ * Banner.
+ */
+
+var banner = '\n\
+                                    \n\
+             _         _            \n\
+         ___| |_ _   _| |_   _ ___  \n\
+        / __| __| | | | | | | / __| \n\
+        \\__ \\ |_| |_| | | |_| \\__ \\ \n\
+        |___/\\__|\\__, |_|\\__,_|___/ \n\
+                 |___/              \n\
+                                    \n\
+';
+
+/**
+ * Steps.
+ */
+
+var steps = [];
+
+/**
+ * Clear the screen and move the cursor up.
+ */
+
+function clear() {
+  console.log('\x1b[1J\x1b[H');
+}
+
+/**
+ * Initialize a `Step` with the given data.
+ *
+ * @param {String} title
+ * @param {String} desc
+ * @param {String} src
+ * @param {Function} fn
+ */
+
+function Step(title, desc, src, fn) {
+  var self = this;
+  this.n = steps.length;
+  
+  this.src = src;
+  
+  this.next = function(){
+    var step = steps[self.n + 1];
+    if (step) {
+      step.display();
+    } else {
+      console.log('     THE END\n');
+      process.exit(0);
+    }
+  };
+  
+  this.display = function(retry){
+    if (!retry) {
+      console.log(' %d) \x1b[1m%s\x1b[0m\n', self.n, title);
+      console.log(' \x1b[90m%s\x1b[0m', desc);
+    }
+    console.log('\n%s\n', src);
+    this.input();
+  };
+  
+  this.input = function(){
+    stdin.resume();
+    var buf = '';
+    stdin.on('data', function callback(chunk){
+      if (0 == chunk.indexOf('quit')) process.exit(1);
+      if ('.' == chunk[0] || buf.trim() == self.src.trim()) {
+        stdin.pause();
+        stdin.removeListener('data', callback);
+        stylus.render(buf, { filename: 'stdin' }, function(err, css){
+          if (err) {
+            console.log('\n\x1b[31mError: ' + err.message + '\x1b[0m\n');
+            self.display(true);
+            return;
+          }
+          clear();
+          console.log(buf.replace(/^/gm, '  '));
+          console.log('\x1b[90m--------------------\x1b[0m \n');
+          console.log(css.replace(/^/gm, '  '));
+          console.log();
+          process.stdout.write('\x1b[90mpress enter to continue:\x1b[0m ');
+          stdin.resume();
+          stdin.once('data', function(){
+            clear();
+            self.next();
+          });
+        });
+        return;
+      }
+      buf += chunk;
+    });
+  };
+}
+
+/**
+ * Step definitions.
+ */
+
+steps.push(new Step(
+    'Selector Properties'
+  , 'The Stylus grammar has indentation-based blocks,\n'
+  + ' meaning one does not surround selector properties\n'
+  + ' using braces "{" "}", but uses an indent of two \n'
+  + ' spaces, or a single tab.\n'
+  + '\n'
+  + ' To get started, type the stylus you see below\n'
+  + ' and then press return a few times or "." to render.'
+  , 'body\n  color black'));
+
+steps.push(new Step(
+    'Variables'
+  , 'Stylus allows you to define variables by utilizing\n'
+  + ' the = operator, much like you would in any other language.\n'
+  + '\n'
+  + ' These variables may be assigned to numbers, strings, booleans,\n'
+  + ' and virtually everything else you see in css.'
+  , '@size = 14px\n\n'
+  + 'body\n'
+  + '  font @size Arial, sans-serif'));
+
+/**
+ * Start tutorial.
+ */
+
+clear();
+console.log('\x1b[1m' + banner + '\x1b[0m');
+console.log('\n Welcome to the stylus interactive tutorial.\n');
+console.log('  - To quit at any time type \x1b[1mquit\x1b[0m.');
+console.log('  - To proceed to the next step simply type \x1b[1mnext\x1b[0m.');
+console.log('  - To force rendering type "." and press enter,');
+console.log('    however source will be automatically rendered');
+console.log('    when it matches the step\'s source.');
+console.log();
+console.log(' To get started, type \x1b[1mnext\x1b[0m\n ');
+
+var stdin = process.openStdin();
+stdin.setEncoding('utf8');
+
+stdin.once = function(event, fn){
+  this.on(event, function callback(chunk){
+    stdin.removeListener(event, callback);
+    fn(chunk);
+  });
+};
+
+stdin.once('data', function(chunk){
+  stdin.pause();
+  clear();
+  steps[0].display();
+});
