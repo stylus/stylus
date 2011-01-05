@@ -123,6 +123,20 @@ steps.push(new Step(
   , 'body\n  color black'));
 
 steps.push(new Step(
+    'Multiple Selectors'
+  , 'Blocks can be applied to several selectors at once\n'
+  + ' by separating them via comma, or newline.\n'
+  + '\n'
+  + ' Both examples shown below are equivalent.'
+  , 'a.button, input[type=button]\n'
+  + '  border 1px solid #eee\n'
+  + '  padding 5px\n\n'
+  + 'a.button\n'
+  + 'input[type=button]\n'
+  + '  border 1px solid #eee\n'
+  + '  padding 5px'));
+
+steps.push(new Step(
     'Variables'
   , 'Stylus allows you to define variables by utilizing\n'
   + ' the _=_ operator, much like you would in any other language.\n'
