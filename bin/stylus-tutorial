@@ -70,6 +70,7 @@ function Step(title, desc, src, fn) {
       console.log(' \x1b[90m%s\x1b[0m', desc);
     }
     console.log('\n%s\n', src);
+    console.log('\x1b[90m--------------------\x1b[0m \n');
     this.input();
   };
   
