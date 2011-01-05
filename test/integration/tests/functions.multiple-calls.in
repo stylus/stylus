@@ -1,0 +1,11 @@
+
+pad(@y = 100px)
+  padding unit(@y, 'px')
+
+body
+  pad(5px)
+  pad()
+  pad(10px)
+  pad(1)
+  pad()
+
