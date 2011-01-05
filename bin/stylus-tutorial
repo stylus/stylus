@@ -51,8 +51,8 @@ function clear() {
 function Step(title, desc, src, fn) {
   var self = this;
   this.n = steps.length;
-  
   this.src = src;
+  desc = desc.replace(/\_([^_]+)\_/g, '\x1b[33m$1\x1b[90m');
   
   this.next = function(){
     var step = steps[self.n + 1];
@@ -115,17 +115,17 @@ steps.push(new Step(
     'Selector Properties'
   , 'The Stylus grammar has indentation-based blocks,\n'
   + ' meaning one does not surround selector properties\n'
-  + ' using braces "{" "}", but uses an indent of two \n'
+  + ' using braces _{_ _}_, but uses an indent of two \n'
   + ' spaces, or a single tab.\n'
   + '\n'
   + ' To get started, type the stylus you see below\n'
-  + ' and then press return a few times or "." to render.'
+  + ' and then press return a few times or type _"."_ to render.'
   , 'body\n  color black'));
 
 steps.push(new Step(
     'Variables'
   , 'Stylus allows you to define variables by utilizing\n'
-  + ' the = operator, much like you would in any other language.\n'
+  + ' the _=_ operator, much like you would in any other language.\n'
   + '\n'
   + ' These variables may be assigned to numbers, strings, booleans,\n'
   + ' and virtually everything else you see in css.'
