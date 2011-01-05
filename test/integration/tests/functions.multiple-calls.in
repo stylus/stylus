@@ -9,3 +9,17 @@ body
   pad(1)
   pad()
 
+pad-x(@n)
+  padding-left @n
+  padding-right @n
+
+pad-y(@n)
+  padding-top @n
+  padding-bottom @n
+
+pad(@x, @y)
+  pad-x(@x)
+  pad-y(@y)
+
+form
+  pad(5px, 10px)

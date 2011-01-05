@@ -1,9 +1,9 @@
 
 sub(@a, @b)
-  @a / @b
+  @a - @b
 
 add(@a, @b)
-  @a + sub(@b, 2)
+  @a + @b
 
 body
-  foo add(5, add(5, 5))
+  foo add(5, add(5, sub(5, 2)))
