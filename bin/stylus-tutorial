@@ -127,10 +127,19 @@ steps.push(new Step(
   , 'Stylus allows you to define variables by utilizing\n'
   + ' the _=_ operator, much like you would in any other language.\n'
   + '\n'
-  + ' These variables may be assigned to numbers, strings, booleans,\n'
+  + ' These variables may be assigned to _numbers_, _strings_, _booleans_,\n'
   + ' and virtually everything else you see in css.'
   , '@size = 14px\n\n'
   + 'body\n'
+  + '  font @size Arial, sans-serif'));
+
+steps.push(new Step(
+    'Conditional Assignment'
+  , 'The conditional assignment operator _?=_ may be used to\n'
+  + ' define a variable only when previously undefined.'
+  , '@size = 14px\n\n'
+  + 'body\n'
+  + '  @size ?= 22px\n'
   + '  font @size Arial, sans-serif'));
 
 /**
