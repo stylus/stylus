@@ -88,8 +88,9 @@ function Step(title, desc, src, fn) {
             return;
           }
           clear();
+          console.log('\x1b[90m-------------------- stylus\x1b[0m \n');
           console.log(buf.replace(/^/gm, '  '));
-          console.log('\x1b[90m--------------------\x1b[0m \n');
+          console.log('\x1b[90m-------------------- css\x1b[0m \n');
           console.log(css.replace(/^/gm, '  '));
           console.log();
           process.stdout.write('\x1b[90mpress enter to continue:\x1b[0m ');
@@ -145,7 +146,7 @@ console.log('  - To force rendering type "." and press enter,');
 console.log('    however source will be automatically rendered');
 console.log('    when it matches the step\'s source.');
 console.log();
-console.log(' To get started, type \x1b[1mnext\x1b[0m\n ');
+process.stdout.write('\x1b[90mpress enter to continue:\x1b[0m ');
 
 var stdin = process.openStdin();
 stdin.setEncoding('utf8');
