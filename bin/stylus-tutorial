@@ -214,7 +214,6 @@ clear();
 console.log('\x1b[1m' + banner + '\x1b[0m');
 console.log('\n Welcome to the stylus interactive tutorial.\n');
 console.log('  - To quit at any time type \x1b[1mquit\x1b[0m.');
-console.log('  - To proceed to the next step simply type \x1b[1mnext\x1b[0m.');
 console.log('  - To force rendering type "." and press enter,');
 console.log('    however source will be automatically rendered');
 console.log('    when it matches the step\'s source.');
