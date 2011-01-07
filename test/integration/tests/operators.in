@@ -65,7 +65,7 @@ body
   foo rawr is defined ? yes : nope
   
   // true
-  foo (foo is defined ? yes : nope) == yes
+  foo yes == (foo is defined ? yes : nope)
   
   // true
   foo 1000ms == 1s
