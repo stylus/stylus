@@ -33,14 +33,14 @@ module.exports = {
     });
   },
   
-  'test .render() exception': function(){
-    stylus.render('body\n    color red', {}, function(err, stylus){
-      err.message.should.equal('stylus:2\n  1: \'body\'\n  2: \'    color red\'\n\nInvalid indentation, got 4 spaces and expected two');
-    });
-    stylus.render('body\n color red', { filename: 'foo.stylus' }, function(err, stylus){
-      err.message.should.equal('foo.stylus:2\n  1: \'body\'\n  2: \' color red\'\n\nInvalid indentation, got one space and expected multiple of two');
-    });
-  },
+  // 'test .render() exception': function(){
+  //   stylus.render('body\n    color red', {}, function(err, stylus){
+  //     err.message.should.equal('stylus:2\n  1: \'body\'\n  2: \'    color red\'\n\nInvalid indentation, got 4 spaces and expected two');
+  //   });
+  //   stylus.render('body\n color red', { filename: 'foo.stylus' }, function(err, stylus){
+  //     err.message.should.equal('foo.stylus:2\n  1: \'body\'\n  2: \' color red\'\n\nInvalid indentation, got one space and expected multiple of two');
+  //   });
+  // },
   
   'test .render() without options': function(){
     stylus.render('body\n  color red', function(err, stylus){
