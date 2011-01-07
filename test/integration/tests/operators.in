@@ -33,8 +33,8 @@ body
   foo 8 && (4 && 1)
   
   // true
-  @type = "Color"
-  foo #fff is a @type
+  type = "Color"
+  foo #fff is a type
   foo #fff is a color
   
   // false
@@ -46,26 +46,26 @@ body
   foo 15px is a unit and #fff is a color
   
   // true
-  @foo = 'bar'
+  foo = 'bar'
   
   // true
-  @bar = 'baz'
-  foo @foo is defined and @bar is defined
+  bar = 'baz'
+  foo foo is defined and bar is defined
   
   // false
-  foo @baz is defined
+  foo baz is defined
   
   // true
   foo 5 < 10 and 10 > 5
   
   // wahoo
-  foo @bar is defined ? wahoo : nope
+  foo bar is defined ? wahoo : nope
   
   // nope
-  foo @rawr is defined ? yes : nope
+  foo rawr is defined ? yes : nope
   
   // true
-  foo (@foo is defined ? yes : nope) == yes
+  foo (foo is defined ? yes : nope) == yes
   
   // true
   foo 1000ms == 1s
