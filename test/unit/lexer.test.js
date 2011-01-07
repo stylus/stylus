@@ -75,51 +75,38 @@ module.exports = {
     scan('#ffccaa').val.a.should.equal(1);
   },
   
-  'test variable': function(){
-    scan('@foo').type.should.equal('variable');
-    scan('@foo-bar').type.should.equal('variable');
-    scan('@-foo-bar').type.should.equal('variable');
-    scan('@_foo_bar_Baz').type.should.equal('variable');
-    scan('@base64').type.should.equal('variable');
-    scan('@base64').val.name.should.equal('base64');
-  },
-  
   'test assignment': function(){
-    var lex = new Lexer('@color = #fff');
-    lex.next.type.should.equal('variable');
+    var lex = new Lexer('color = #fff');
+    lex.next.type.should.equal('ident');
     lex.next.type.should.equal('=');
     lex.next.type.should.equal('color');
     
-    var lex = new Lexer('@color = #fff\n@dark= #000');
-    lex.next.type.should.equal('variable');
+    var lex = new Lexer('color = #fff\ndark= #000');
+    lex.next.type.should.equal('ident');
     lex.next.type.should.equal('=');
     lex.next.type.should.equal('color');
     
     lex.next.type.should.equal('newline');
 
-    lex.next.type.should.equal('variable');
+    lex.next.type.should.equal('ident');
     lex.next.type.should.equal('=');
     lex.next.type.should.equal('color');
-  },
-  
-  'test selector': function(){
-    var lex = new Lexer('body');
-    lex.isSelector = true;
-    lex.peek.type.should.equal('selector');
-    lex.next.val.should.equal('body');
   },
   
   'test property': function(){
     var lex = new Lexer('body a\n  -webkit-border-radius 12px');
 
     lex.isSelector = true;
-    lex.peek.type.should.equal('selector');
-    lex.next.val.should.equal('body a');
+    lex.peek.type.should.equal('ident');
+    lex.next.val.name.should.equal('body');
+
+    lex.peek.type.should.equal('ident');
+    lex.next.val.name.should.equal('a');
 
     lex.next.type.should.equal('indent');
 
-    lex.peek.type.should.equal('property');
-    lex.next.val.should.equal('-webkit-border-radius');
+    lex.peek.type.should.equal('ident');
+    lex.next.val.name.should.equal('-webkit-border-radius');
 
     lex.next.type.should.equal('unit');
     lex.next.type.should.equal('outdent');
@@ -130,10 +117,10 @@ module.exports = {
     var lex = new Lexer('body\n  font 12px "Lucida Grande", Arial, sans-serif');
 
     lex.isSelector = true;
-    lex.next.type.should.equal('selector');
+    lex.next.type.should.equal('ident');
     lex.next.type.should.equal('indent');
 
-    lex.next.type.should.equal('property');
+    lex.next.type.should.equal('ident');
     lex.isSelector = false;
 
     lex.next.type.should.equal('unit'); // 12px
@@ -150,13 +137,14 @@ module.exports = {
     var lex = new Lexer('body a\r\n  color #fff');
   
     lex.isSelector = true;
-    lex.peek.type.should.equal('selector');
-    lex.next.val.should.equal('body a');
+    lex.peek.type.should.equal('ident');
+    lex.next.val.name.should.equal('body');
+    lex.next.val.name.should.equal('a');
 
     lex.next.type.should.equal('indent');
 
-    lex.peek.type.should.equal('property');
-    lex.next.val.should.equal('color');
+    lex.peek.type.should.equal('ident');
+    lex.next.val.name.should.equal('color');
 
     lex.next.type.should.equal('color');
     lex.next.type.should.equal('outdent');
@@ -167,13 +155,13 @@ module.exports = {
     var lex = new Lexer('body a\r  color #fff');
 
     lex.isSelector = true;
-    lex.peek.type.should.equal('selector');
-    lex.next.val.should.equal('body a');
+    lex.next.type.should.equal('ident');
+    lex.next.type.should.equal('ident');
 
     lex.next.type.should.equal('indent');
 
-    lex.peek.type.should.equal('property');
-    lex.next.val.should.equal('color');
+    lex.peek.type.should.equal('ident');
+    lex.next.val.name.should.equal('color');
 
     lex.next.type.should.equal('color');
     lex.next.type.should.equal('outdent');
@@ -273,7 +261,7 @@ module.exports = {
   
   'test url()': function(){
     var lex = new Lexer('url(/path/to some image.png)');
-    lex.peek.type.should.equal('variable');
+    lex.peek.type.should.equal('ident');
     lex.next.val.name.should.equal('url');
     lex.next.type.should.equal('(');
     lex.peek.type.should.equal('string');
