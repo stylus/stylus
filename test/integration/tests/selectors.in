@@ -22,6 +22,14 @@ body > #container *
 
 #foo > #bar + .baz
   foo bar
-
 #foo>#bar
+  foo bar
+
+p + p ~ p
+  foo bar
+
+ul > li:last-child
+  foo bar
+
+ul > li:nth-child(2n)
   foo bar
