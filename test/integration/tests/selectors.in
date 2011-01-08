@@ -36,3 +36,6 @@ ul > li:last-child
 
 ul > li:nth-child(2n)
   foo bar
+
+*, p + p, ul > li
+  foo bar
