@@ -1,0 +1,18 @@
+
+foo bar baz
+  foo bar
+
+foo > bar
+  foo bar
+
+input[type=text]
+  foo bar
+
+input[type="text"]
+  foo bar
+
+*
+  foo bar
+
+* .foo-bar
+  foo bar
