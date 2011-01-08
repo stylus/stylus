@@ -28,6 +28,9 @@ body > #container * {
 p + p ~ p {
   foo: bar;
 }
+ul :odd {
+  foo: bar;
+}
 ul > li:last-child {
   foo: bar;
 }
