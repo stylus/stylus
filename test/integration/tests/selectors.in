@@ -16,3 +16,12 @@ input[type="text"]
 
 * .foo-bar
   foo bar
+
+body > #container *
+  foo bar
+
+#foo > #bar + .baz
+  foo bar
+
+#foo>#bar
+  foo bar
