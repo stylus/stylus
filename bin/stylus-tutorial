@@ -157,9 +157,9 @@ steps.push(new Step(
   + ' These variables may be assigned to _numbers_, _strings_, _booleans_,\n'
   + ' and virtually everything else you see in css.'
   
-  , '@size = 14px\n\n'
+  , 'size = 14px\n\n'
   + 'body\n'
-  + '  font @size Arial, sans-serif'
+  + '  font size Arial, sans-serif'
   ));
 
 steps.push(new Step(
@@ -167,10 +167,10 @@ steps.push(new Step(
   , 'The conditional assignment operator _?=_ may be used to\n'
   + ' define a variable only when previously undefined.'
   
-  , '@size = 14px\n\n'
+  , 'size = 14px\n\n'
   + 'body\n'
-  + '  @size ?= 22px\n'
-  + '  font @size Arial, sans-serif'
+  + '  size ?= 22px\n'
+  + '  font size Arial, sans-serif'
   ));
 
 steps.push(new Step(
@@ -178,14 +178,14 @@ steps.push(new Step(
   , 'A variety of binary arithmetic operators are supported\n'
   + ' as well as unary operators such as _-_, _+_, and _~_.'
   
-  , '@size = 14px\n'
-  + '@large-size = @size * 2\n'
+  , 'size = 14px\n'
+  + 'large-size = size * 2\n'
   + '\n'
   + 'body\n'
-  + '  font @large-size\n'
+  + '  font large-size\n'
   + '\n'
   + 'p\n'
-  + '  margin-left -(@size - 2)'
+  + '  margin-left -(size - 2)'
   ));
 
 steps.push(new Step(
@@ -201,9 +201,9 @@ steps.push(new Step(
   + '    _#fff_ / _2_\n'
   + '    _5in_ - _3cm_\n'
   
-  , '@duration = 2s\n\n'
+  , 'duration = 2s\n\n'
   + '.fade\n'
-  + '  -webkit-transition opacity @duration - 1500ms linear'
+  + '  -webkit-transition opacity duration - 1500ms linear'
   ));
 
 /**
