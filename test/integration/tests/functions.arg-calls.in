@@ -1,9 +1,9 @@
-add(@a, @b)
-  @a + @b
+add(a, b)
+  a + b
 
-pad(@x, @y = @x)
-  padding @y @x @y @x
+pad(x, y = x)
+  padding y x y x
 
 form input
-  @n = 5
-  pad(5px, unit(add(@n, @n), 'px'))
+  n = 5
+  pad(5px, unit(add(n, n), 'px'))

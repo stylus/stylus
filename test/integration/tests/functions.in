@@ -1,9 +1,9 @@
 
-add(@a, @b)
-  @a + @b
+add(a, b)
+  a + b
 
-pad(@x, @y)
-  padding @y @x @y @x
+pad(x, y)
+  padding y x y x
 
 body
   pad(5px, 10px)

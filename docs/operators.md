@@ -86,7 +86,7 @@ The Exponent operator:
     2 ** 8
     // => 256
 
-### Equality: == >= <= > <
+### Equality: == != >= <= > <
 
 Equality operators can be used to equate units, colors, strings, and even identifiers. This is a powerful concept, as even arbitrary identifiers such as as `wahoo` can be utilized as atoms, a function could return `yes` or `no` instead of `true` or `false` (although not advised). 
 

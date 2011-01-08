@@ -60,10 +60,6 @@ module.exports = {
     compiler.visitIdent(new nodes.Ident('auto')).should.equal('auto');
   },
   
-  'test visitVariable()': function(){
-    compiler.visitVariable(new nodes.Variable('foo')).should.equal('');
-  },
-  
   'test visitUnit()': function(){
     compiler.visitUnit(new nodes.Unit(12)).should.equal('12');
     compiler.visitUnit(new nodes.Unit(15.99)).should.equal('15.99');

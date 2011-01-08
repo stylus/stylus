@@ -28,8 +28,8 @@ function test(test) {
         if (err) throw err;
         if (actual != expected) {
           var msg = '"' + basename(path, '.in') + '" failed\n\n'
-            + 'expected: \n' + expected + '\n\n'
-            + 'actual: \n' + actual + '\n';
+            + '\033[33mexpected:\033[0m \n' + expected + '\n\n'
+            + '\033[33mactual:\033[0m \n' + actual + '\n';
           throw new Error(msg);
         }
       });

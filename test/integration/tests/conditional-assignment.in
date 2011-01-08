@@ -1,9 +1,9 @@
 
-@color ?= white
-@color ?= black
+color ?= white
+color ?= black
 
-@font-size ?= 14px
+font-size ?= 14px
 
 a.button
-  font @font-size
-  background @color
+  font font-size
+  background color

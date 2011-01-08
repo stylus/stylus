@@ -1,5 +1,5 @@
 
-// @foo: 'bar'
+// foo = 'bar'
 
 body
   color red

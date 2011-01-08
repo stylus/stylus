@@ -1,6 +1,6 @@
 
-something(@arg)
-  bar @arg @arg
+something(arg)
+  bar arg arg
 
 body
   foo bar(1px, baz(5px))

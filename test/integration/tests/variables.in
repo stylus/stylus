@@ -1,8 +1,8 @@
 
-@size = 14px
-@font-family = 'Lucida Grande', Arial, sans-serif
+size = 14px
+font-family = 'Lucida Grande', Arial, sans-serif
 
 body
-  font @size @font-family
-  padding @pad = 5px
-  margin @pad
+  font size font-family
+  padding pad = 5px
+  margin pad
