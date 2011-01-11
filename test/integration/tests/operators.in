@@ -33,17 +33,17 @@ body
   foo 8 && (4 && 1)
   
   // true
-  type = "Color"
+  type = "color"
   foo #fff is a type
-  foo #fff is a color
+  foo #fff is a 'color'
   
   // false
-  foo 15px is a color
+  foo 15px is a 'color'
   // true
-  foo 15px is a unit
+  foo 15px is a 'unit'
   
   // true
-  foo 15px is a unit and #fff is a color
+  foo 15px is a 'unit' and #fff is a 'color'
   
   // true
   foo = 'bar'
