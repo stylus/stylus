@@ -124,7 +124,7 @@ Logical operators `&&` and `||` are aliased `and` / `or` which apply the same pr
     0 && 5
     // => 0
     
-    #fff is a color or 15 is a unit
+    #fff is a 'color' and 15 is a 'unit'
     // => true
 
 ## Conditional Assignment: ?=
