@@ -22,14 +22,18 @@ module.exports = {
   'test .render()': function(){
     stylus.render('body\n  color red', {}, function(err, stylus){
       should.equal(null, err);
-      stylus.should.equal('body {\n  color: #f00;\n}');
+      stylus.should.include.string('body');
+      stylus.should.include.string('color');
+      stylus.should.include.string('#f00');
     });
   },
   
   'test .render() compress option': function(){
     stylus.render('body\n  color red', { compress: true }, function(err, stylus){
       should.equal(null, err);
-      stylus.should.equal('body{color:#f00}');
+      stylus.should.include.string('body');
+      stylus.should.include.string('color');
+      stylus.should.include.string('#f00');
     });
   },
   
@@ -45,7 +49,9 @@ module.exports = {
   'test .render() without options': function(){
     stylus.render('body\n  color red', function(err, stylus){
       should.equal(null, err);
-      stylus.should.equal('body {\n  color: #f00;\n}');
+      stylus.should.include.string('body');
+      stylus.should.include.string('color');
+      stylus.should.include.string('#f00');
     });
   }
 };
