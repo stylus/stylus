@@ -4,4 +4,7 @@ body {
   background: "unit";
   background: "hsla";
   background: "color";
+  background: "ident";
+  background: "unit";
+  background: "function";
 }
