@@ -3,7 +3,7 @@ ensure-unit(n)
   foo bar
   foo bar
   foo bar
-  n is a unit
+  n is a 'unit'
 
 body
   a = 15
@@ -16,13 +16,13 @@ body
   foo a == b and b == a
   
   // yay
-  foo 15px is a unit and #fff is a color?yay:nah
+  foo 15px is a 'unit' and #fff is a 'color'?yay:nah
   
   // nah
-  foo 15px is a color and #fff is a color?yay:nah
+  foo 15px is a 'color' and #fff is a 'color'?yay:nah
   
   // nah
-  foo 15px is a unit and #fff is a unit?yay:nah
+  foo 15px is a 'unit' and #fff is a 'unit'?  yay   : nah
   
   // true
   foo ensure-unit(15)
