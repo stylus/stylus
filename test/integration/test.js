@@ -15,6 +15,7 @@ var css = require('../../')
  */
 
 function test(test) {
+  // TODO: remove
   if ('functions.defaults' == test || 'scope.complex' == test) return;
   var base = __dirname + '/tests/' + test
     , path =  base + '.in'
