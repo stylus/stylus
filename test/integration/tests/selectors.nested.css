@@ -20,3 +20,15 @@ body .bar .sdf {
 .bar .raz {
   something: "else";
 }
+.foo .baz,
+.bar .baz,
+.foo .raz,
+.bar .raz {
+  background: #f00;
+}
+.foo .baz .ASDF,
+.bar .baz .ASDF,
+.foo .raz .ASDF,
+.bar .raz .ASDF {
+  background: #fff;
+}

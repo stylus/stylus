@@ -23,3 +23,11 @@ body
   .baz
   .raz
     something 'else'
+
+.foo
+.bar
+  .baz
+  .raz
+    background red
+    .ASDF
+      background white
