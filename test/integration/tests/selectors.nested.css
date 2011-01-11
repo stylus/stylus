@@ -8,7 +8,9 @@ form .foo .bar {
 body .foo .bar {
   display: none;
 }
-.foo .baz .raz,
-.bar .baz .raz {
-  something: "else";
+body .foo .baz,
+body .bar .baz,
+body .foo .sdf,
+body .bar .sdf {
+  display: none;
 }

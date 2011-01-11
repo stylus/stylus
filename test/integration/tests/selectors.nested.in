@@ -11,8 +11,9 @@ body
     .bar
       display none
 
-.foo
-.bar
-  .baz
-    .raz
-      something 'else'
+body
+  .foo
+  .bar
+    .baz
+    .sdf
+      display none
