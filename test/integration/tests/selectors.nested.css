@@ -1,0 +1,9 @@
+form .foo {
+  color: #000;
+}
+form .foo .bar {
+  color: #f00;
+}
+body .foo .bar {
+  display: none;
+}

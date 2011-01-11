@@ -1,0 +1,11 @@
+
+form
+  .foo
+    color black
+    .bar
+      color red
+
+body
+  .foo
+    .bar
+      display none
