@@ -26,6 +26,7 @@ function test(test) {
       if (err) throw err;
       fs.readFile(csspath, 'utf8', function(err, expected){
         if (err) throw err;
+        expected += '\n';
         if (actual != expected) {
           var msg = '"' + basename(path, '.in') + '" failed\n\n'
             + '\033[33mexpected:\033[0m \n' + expected + '\n\n'
