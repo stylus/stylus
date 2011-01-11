@@ -17,3 +17,9 @@ body
     .baz
     .sdf
       display none
+
+.foo
+.bar
+  .baz
+  .raz
+    something 'else'

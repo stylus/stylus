@@ -14,3 +14,9 @@ body .foo .sdf,
 body .bar .sdf {
   display: none;
 }
+.foo .baz,
+.bar .baz,
+.foo .raz,
+.bar .raz {
+  something: "else";
+}
