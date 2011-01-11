@@ -1,6 +1,8 @@
 
 SRC = $(shell find lib -name "*.js")
 TESTS = $(shell find test -name "*.test.js")
+TM_BUNDLE = editors/Stylus.tmbundle
+TM_BUNDLE_DEST = ~/Library/Application\ Support/TextMate/Bundles
 
 test: test-unit test-integration
 
@@ -28,4 +30,7 @@ docs/index.html: $(SRC)
 		--private \
 		$^ > $@
 
-.PHONY: test test-unit test-integration test-cov docs
+install-bundle:
+	cp -fr $(TM_BUNDLE) $(TM_BUNDLE_DEST)
+
+.PHONY: test test-unit test-integration install-bundle test-cov docs
