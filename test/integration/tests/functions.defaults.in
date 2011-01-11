@@ -15,3 +15,15 @@ a.button
 
 a.button-2
   pad-arg(10px, 2px)
+
+add(a, b)
+  a + b
+
+pad-call(n = unit(add(5, 5), 'px'))
+  padding n
+
+body
+  pad-call()
+
+.button
+  pad-call(5px)

@@ -7,3 +7,9 @@ a.button {
 a.button-2 {
   padding: 2px 10px 2px 10px;
 }
+body {
+  padding: 10px;
+}
+.button {
+  padding: 5px;
+}
