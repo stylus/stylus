@@ -3,9 +3,16 @@ form
   .foo
     color black
     .bar
+      padding 5px
       color red
 
 body
   .foo
     .bar
       display none
+
+.foo
+.bar
+  .baz
+    .raz
+      something 'else'
