@@ -1,5 +1,6 @@
 
 size = 15px
+small = 5
 
 pad-var(x, y = size)
   padding y x y x
@@ -19,7 +20,7 @@ a.button-2
 add(a, b)
   a + b
 
-pad-call(n = unit(add(5, 5), 'px'))
+pad-call(n = unit(add(small, small), 'px'))
   padding n
 
 body
