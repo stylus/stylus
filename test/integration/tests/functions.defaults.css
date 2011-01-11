@@ -4,6 +4,6 @@ body {
 a.button {
   padding: 10px 10px 10px 10px;
 }
-form input {
-  padding: 5px 5px 5px 5px;
+a.button-2 {
+  padding: 2px 10px 2px 10px;
 }

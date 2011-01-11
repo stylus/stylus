@@ -1,9 +1,5 @@
 
 size = 15px
-small = 5
-
-add(a, b)
-  a + b
 
 pad-var(x, y = size)
   padding y x y x
@@ -11,14 +7,11 @@ pad-var(x, y = size)
 pad-arg(x, y = x)
   padding y x y x
 
-pad-call(n = add(small, small))
-  padding n n n n
-
 body
   pad-var(5px)
 
 a.button
   pad-arg(10px)
 
-form input
-  pad-call()
+a.button-2
+  pad-arg(10px, 2px)
