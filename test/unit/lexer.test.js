@@ -35,7 +35,7 @@ module.exports = {
   
   'test .lookahead(n)': function(){
     var lex = new Lexer('1px 2px 3px');
-    lex.lookahead(7).type.should.equal('eos');
+    lex.lookahead(5).type.should.equal('eos');
     lex.lookahead(4).type.should.equal('eos');
     lex.lookahead(3).val.val.should.equal(3);
     lex.lookahead(2).val.val.should.equal(2);
