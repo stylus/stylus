@@ -1,0 +1,9 @@
+body {
+  font: 5;
+}
+body .large {
+  font: 10;
+}
+body .other {
+  font: 15;
+}
