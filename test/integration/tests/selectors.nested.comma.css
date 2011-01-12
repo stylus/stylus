@@ -1,0 +1,4 @@
+#container .hide,
+#footer .hide {
+  display: none;
+}

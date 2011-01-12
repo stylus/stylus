@@ -1,0 +1,3 @@
+#container, #footer
+  .hide
+    display none
