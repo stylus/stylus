@@ -11,8 +11,23 @@ body
     .bar
       display none
 
+body
+  .foo
+  .bar
+    .baz
+    .sdf
+      display none
+
 .foo
 .bar
   .baz
-    .raz
-      something 'else'
+  .raz
+    something 'else'
+
+.foo
+.bar
+  .baz
+  .raz
+    background red
+    .ASDF
+      background white

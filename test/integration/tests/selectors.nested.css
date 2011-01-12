@@ -8,7 +8,27 @@ form .foo .bar {
 body .foo .bar {
   display: none;
 }
-.foo .baz .raz,
-.bar .baz .raz {
+body .foo .baz,
+body .bar .baz,
+body .foo .sdf,
+body .bar .sdf {
+  display: none;
+}
+.foo .baz,
+.bar .baz,
+.foo .raz,
+.bar .raz {
   something: "else";
+}
+.foo .baz,
+.bar .baz,
+.foo .raz,
+.bar .raz {
+  background: #f00;
+}
+.foo .baz .ASDF,
+.bar .baz .ASDF,
+.foo .raz .ASDF,
+.bar .raz .ASDF {
+  background: #fff;
 }
