@@ -1,9 +1,10 @@
 body {
   padding: 5px;
+  color: "bar";
 }
 body .foo {
-  color: "var";
+  color: "bar";
 }
 body .foo .bar {
-  color: "var";
+  color: "bar";
 }

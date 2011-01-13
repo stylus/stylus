@@ -2,6 +2,7 @@
 mixin(n)
   padding n
   var = 'bar'
+  color var
   .foo
     color var
     .bar
