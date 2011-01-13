@@ -57,6 +57,16 @@ module.exports = {
     clone.nodes[1].val.should.equal(20);
   },
   
+  'test Ident': function(){
+    var n = new nodes.Unit(50)
+      , node = new nodes.Ident('n', n)
+      , clone = node.clone();
+
+    clone.should.not.equal(node);
+    clone.val.should.not.equal(n);
+    clone.val.val.should.equal(50);
+  },
+  
   'test Params': function(){
     var node = new nodes.Params
       , a = new nodes.Unit(15)
