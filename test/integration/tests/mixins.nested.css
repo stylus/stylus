@@ -2,8 +2,8 @@ body {
   padding: 5px;
 }
 body .foo {
-  color: "baz";
+  color: "var";
 }
 body .foo .bar {
-  color: "baz";
+  color: "var";
 }
