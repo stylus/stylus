@@ -1,12 +1,12 @@
 
 mixin(n)
   padding n
-  bar = 'bar'
+  var = 'bar'
+  color var
   .foo
-    baz = 'baz'
-    color baz
+    color var
     .bar
-      color baz
+      color var
 
 body
   foo = 'foo'
