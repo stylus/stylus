@@ -1,0 +1,13 @@
+
+mixin(n)
+  padding n
+  bar = 'bar'
+  .foo
+    baz = 'baz'
+    color baz
+    .bar
+      color baz
+
+body
+  foo = 'foo'
+  mixin(5px)
