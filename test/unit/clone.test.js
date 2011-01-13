@@ -81,5 +81,27 @@ module.exports = {
     clone.nodes[1].should.not.equal(b);
     clone.nodes[0].val.should.equal(15);
     clone.nodes[1].val.should.equal(20);
+  },
+  
+  'test Group': function(){
+    var parent = new nodes.Block('root')
+      , block = new nodes.Block(parent)
+      , a = new nodes.Unit(5)
+      , b = new nodes.Unit(10)
+      , group = new nodes.Group
+      , sel = new nodes.Selector('form input');
+
+    block.parent.should.equal(parent);
+    block.push(a);
+    block.push(b);
+    
+    sel.block = block;
+    group.push(sel);
+
+    var clone = group.clone();
+    clone.should.not.equal(group);
+    clone.block.should.not.equal(block);
+    clone.block.nodes[0].should.not.equal(a);
+    clone.block.nodes[1].should.not.equal(b);
   }
 };
