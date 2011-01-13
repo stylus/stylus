@@ -33,6 +33,14 @@ module.exports = {
     clone.a.should.equal(1);
   },
   
+  'test String': function(){
+    var node = new nodes.String('wahoo')
+      , clone = node.clone();
+
+    clone.should.not.equal(node);
+    clone.val.should.equal('wahoo');
+  },
+  
   'test Params': function(){
     var node = new nodes.Params
       , a = new nodes.Unit(15)
