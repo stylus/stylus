@@ -19,3 +19,19 @@ if not n
 
 body
   padding n
+
+if n
+  n = n / 2
+else
+  n = 10000
+
+body
+  padding n
+
+if n > 100
+  n = n * 2
+else
+  n = -1
+
+body
+  padding n
