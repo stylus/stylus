@@ -35,3 +35,16 @@ else
 
 body
   padding n
+
+n = 75
+
+if n < 50
+  n = n
+else
+  if n > 50 and n < 100
+    n = 1
+  else
+    n = -1
+
+body
+  padding n
