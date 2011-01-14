@@ -1,0 +1,21 @@
+n = false
+
+if !n
+  n = 100
+
+body
+  padding n
+
+n = false
+
+if not not n
+  n = 50
+
+body
+  padding n
+
+if not n
+  n = 150
+
+body
+  padding n
