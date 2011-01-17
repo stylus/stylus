@@ -12,6 +12,12 @@
 	<array>
 		<dict>
 			<key>match</key>
+			<string>^ *(&amp;)</string>
+			<key>name</key>
+			<string>variable.language.stylus</string>
+		</dict>
+		<dict>
+			<key>match</key>
 			<string>\b(if|else|unless|return)\b</string>
 			<key>name</key>
 			<string>keyword.control.stylus</string>
