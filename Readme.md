@@ -100,6 +100,22 @@ compiles to:
       color: #000;
     }
 
+### Disambiguation
+
+Expressions such as `padding - n` could be interpreted both as a subtraction operation, as well as a property with an unary minus. To disambiguate we can wrap the expression with parens:
+
+    pad(n)
+      padding (- n)
+
+    body
+      pad(5px)
+
+compiles to:
+
+    body {
+      padding: -5px;
+    }
+
 ### Variables
 
 We may assign expressions to variables and use them throughout our stylesheet:
