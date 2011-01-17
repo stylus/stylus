@@ -79,6 +79,27 @@ both compiling to:
       border: 1px solid #eee;
     }
 
+### Parent Reference
+
+The `&` character may precede a selector to reference the parent selector(s). In the example below our two selectors `textarea`, and `input` both alter the `color` on the `:hover` pseudo selector. 
+
+    textarea
+    input
+      color #A7A7A7
+      &:hover
+        color #000
+
+compiles to:
+
+    textarea,
+    input {
+      color: #a7a7a7;
+    }
+    textarea:hover,
+    input:hover {
+      color: #000;
+    }
+
 ### Variables
 
 We may assign expressions to variables and use them throughout our stylesheet:
