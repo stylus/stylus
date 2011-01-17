@@ -1,0 +1,8 @@
+textarea,
+input {
+  color: #A7A7A7;
+}
+textarea:hover,
+input:hover {
+  color: #000;
+}

@@ -1,0 +1,5 @@
+textarea
+input
+  color #A7A7A7
+  &:focus
+    color #000
