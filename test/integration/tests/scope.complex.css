@@ -4,5 +4,7 @@ body {
   padding: 12px 5px 12px 5px;
 }
 form input {
-  border: 3px solid #000000;
+  border: 3px solid #000;
+  margin: 24px;
+  padding: 2px 1px 2px 1px;
 }
