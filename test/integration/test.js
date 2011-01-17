@@ -18,7 +18,7 @@ function test(test) {
   // TODO: remove
   if ('scope.complex' == test) return;
   var base = __dirname + '/tests/' + test
-    , path =  base + '.in'
+    , path =  base + '.styl'
     , csspath = base + '.css';
   fs.readFile(path, 'utf8', function(err, str){
     if (err) throw err;
@@ -47,8 +47,8 @@ function test(test) {
 fs.readdir(__dirname + '/tests', function(err, files){
   if (err) throw err;
   files.forEach(function(file){
-    if (/\.in$/.test(file)) {
-      test(basename(file, '.in'));
+    if (/\.styl$/.test(file)) {
+      test(basename(file, '.styl'));
     }
   });
 });
