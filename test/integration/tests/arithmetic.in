@@ -14,3 +14,6 @@ h2
   font 5px % 3
   font 5px % 5
   font 2px ** 4
+  y = 10
+  x = 15
+  padding (y / 2) ( (1 - (( x )) / ((2))))
