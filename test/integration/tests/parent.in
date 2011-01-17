@@ -7,5 +7,5 @@ input
 .dim
   opacity .2
   &:hover
-  .show
+  &.show
     opacity 1
