@@ -6,3 +6,10 @@ textarea:hover,
 input:hover {
   color: #000;
 }
+.dim {
+  opacity: 0.2;
+}
+.dim:hover,
+.dim.show {
+  opacity: 1;
+}
