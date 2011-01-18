@@ -192,6 +192,17 @@ Darken the given `color` by `amount`.
        unquote(sans-serif)
        // => sans-serif
 
+  As an unquoted string will become literal css output,
+  you can use this to construct complex helpers.
+  
+      line-height(n)
+        unquote('/ ' + n)
+      
+      body
+        font 14px \/ 1.4
+        font 14px line-height(1.4)
+        // => font: 14px / 1.4;
+
 ### operate(op, left, right)
 
   Perform the given `op` on the `left` and `right` operands:
@@ -200,3 +211,17 @@ Darken the given `color` by `amount`.
       operate(op, 15, 5)
       // => 20
 
+### Undefined Functions
+
+  Undefined functions will output as literals, so for example
+  we may call `color-stop(50%, #fff)` within our css, and it will
+  output as you would expect. We can use this within helpers as well.
+  
+  In the example below we simply define the function `stop()` which 
+  returns the literal `color-stop()` call.
+  
+    stop(pos, color)
+      color-stop(pos, color)
+
+    stop(50%, orange)
+    // => color-stop(50%, $ffa500)
