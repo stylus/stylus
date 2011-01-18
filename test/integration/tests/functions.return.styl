@@ -10,8 +10,7 @@ large(n)
 awesome()
   yes
 
-nested()
-  a = 5
+nested(a = 5)
   if a is a 'unit'
     b = 10
     if a
@@ -37,3 +36,6 @@ body
   
   // yes
   foo nested()
+  
+  // 'a is not a unit'
+  foo nested('wahoo')
