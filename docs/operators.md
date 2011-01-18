@@ -131,23 +131,23 @@ Logical operators `&&` and `||` are aliased `and` / `or` which apply the same pr
 
 The conditional assignment operator `?=` lets us define variables without clobbering old values (when present). This operator expands to an `is defined` binary operation within a ternary, for example the following are equivalent:
 
-    @color ?= white
-    @color = @color is defined ? @color : white
+    color ?= white
+    color = color is defined ? color : white
 
 For example when using `=` we simply re-assign:
 
-    @color = white
-    @color = black
+    color = white
+    color = black
     
-    @color
+    color
     // => black
 
 However when using `?=` our second attempt fails since the variable is already defined:
 
-    @color = white
-    @color ?= black
+    color = white
+    color ?= black
     
-    @color
+    color
     // => white
 
 ## Instance Check: is a
@@ -175,11 +175,11 @@ Alternatively we could use the `type()` BIF:
 
 This pseudo binary operator does not accept a right-hand operator, and does _not_ evaluate the left. This allows us to check if a variable has a value assigned to it.
 
-    @foo is defined
+    foo is defined
     // => false
     
-    @foo = 15px
-    @foo is defined
+    foo = 15px
+    foo is defined
     // => true
     
     #fff is defined
@@ -187,18 +187,18 @@ This pseudo binary operator does not accept a right-hand operator, and does _not
 
 Alternatively one can use the `lookup(name)` built-in function to do this, or to perform dynamic lookups:
 
-    @name = 'blue'
-    lookup('light-' + @name)
+    name = 'blue'
+    lookup('light-' + name)
     // => null
     
-    @light-blue = #80e2e9
-    lookup('light-' + @name)
+    light-blue = #80e2e9
+    lookup('light-' + name)
     // => #80e2e9
 
 ## Ternary
 
 The ternary operator works as you would expect in most languages, being the only operator with three operands, the _condition_ expression, the _truth_ expression and the _false_ expression.
 
-    @num = 15
-    @num ? unit(@num, 'px') : 20px
+    num = 15
+    num ? unit(num, 'px') : 20px
     // => 15px
