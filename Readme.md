@@ -270,6 +270,33 @@ compiles to:
       background: rgba(238,238,238,0.5);
     }
 
+The `return` keyword can be used for early-returns, which otherwise evaluate to the last expression. For example:
+
+    sub(a, b)
+      n = a - b
+
+    sub(10, 5)
+    // => 5
+
+will return the result of `a` minus `b`, however the following will
+return the value of `a`, since it is the last expression.
+
+    sub(a, b)
+      n = a - b
+      a
+
+    sub(10, 5)
+    // => 10
+
+If we introduce the use of `return`, we have an explicit return value:
+
+    sub(a, b)
+      return n = a - b
+      a
+
+    sub(10, 5)
+    // => 5
+
 ### JavaScript API
 
 Simply require the module, and call `render()` with the given string of stylus code, and (optional) options object. Frameworks utilizing stylus should pass the `filename` option to provide better error reporting.
