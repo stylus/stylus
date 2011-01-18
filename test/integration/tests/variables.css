@@ -3,3 +3,6 @@ body {
   padding: 5px;
   margin: 5px;
 }
+a {
+  font: 11px Impact, "Lucida Grande", Arial, sans-serif, serif;
+}
