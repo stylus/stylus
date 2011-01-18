@@ -1,5 +1,7 @@
 
 large(n)
+  unless n is a 'unit'
+    return false
   if n > 100
     yes
   else
@@ -11,3 +13,6 @@ body
   
   // yes
   foo large(150)
+
+  // false
+  foo large('string')
