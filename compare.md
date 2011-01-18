@@ -29,7 +29,7 @@ Stylus:
 
 Webkit
 
-    @mixin pad(size x, size y) {
+    @mixin pad(size length x, size length y) {
       padding: var(y) var(x);
     }
 
