@@ -29,38 +29,38 @@ Stylus:
 
 Webkit
 
-    @mixin pad(size length x, size length y) {
-      padding: var(y) var(x);
-    }
+      @mixin pad(size length x, size length y) {
+        padding: var(y) var(x);
+      }
 
-    .msg {
-      @mixin pad(5px, 10px);
-    }
+      .msg {
+        @mixin pad(5px, 10px);
+      }
 
 SCSS:
 
-   @mixin pad($x, $y) {
-     padding: $y $x;
-   }
+     @mixin pad($x, $y) {
+       padding: $y $x;
+     }
    
-   .msg {
-     @include pad(5px, 10px);
-   }
+     .msg {
+       @include pad(5px, 10px);
+     }
 
 Less:
 
-    .pad(@x, @y) {
-      padding: @y @x;
-    }
+      .pad(@x, @y) {
+        padding: @y @x;
+      }
     
-    .msg {
-      .pad(5px, 10px);
-    }
+      .msg {
+        .pad(5px, 10px);
+      }
 
 Stylus:
 
-    pad(x, y)
-      padding y x
+      pad(x, y)
+        padding y x
 
-    .msg
-      pad(5px, 10px)
+      .msg
+        pad(5px, 10px)
