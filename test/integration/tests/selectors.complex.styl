@@ -13,6 +13,14 @@ body
 ul
   > li
     padding 5px
+    border 1px solid #eee
+    &:first-child,
+    &:last-child
+      border none
+    &:first-child
+      padding-top 0
+    &:last-child
+      padding-bottom 0
 
 body
   form > input:nth-child(2)

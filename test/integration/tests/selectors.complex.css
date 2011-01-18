@@ -11,6 +11,17 @@ body .hidden {
 }
 ul > li {
   padding: 5px;
+  border: 1px solid #eee;
+}
+ul > li:first-child,
+ul > li:last-child {
+  border: none;
+}
+ul > li:first-child {
+  padding-top: 0;
+}
+ul > li:last-child {
+  padding-bottom: 0;
 }
 body form > input:nth-child(2) {
   border: 1px solid #eee;
