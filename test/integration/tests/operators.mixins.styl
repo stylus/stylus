@@ -1,0 +1,18 @@
+
+stringish(val = false)
+  'string' == type(val) or 'ident' == type(val)
+
+body
+  // false
+  foo stringish(12)
+  
+  // true
+  foo stringish('12')
+
+  // true
+  foo stringish(wahoo)
+
+  // false
+  num = 12
+  foo stringish(num)
+  foo stringish()
