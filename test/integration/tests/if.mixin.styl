@@ -13,7 +13,12 @@ test-nested(a, b)
     else
       got unit(-5px)
 
+test-unless(n = 0)
+  unless n
+    padding 10px
+
 body
   test(5px)
   test(-5px)
   test-nested(5px, -5)
+  test-unless()
