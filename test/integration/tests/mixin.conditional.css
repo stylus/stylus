@@ -13,3 +13,7 @@ form input .two {
 form input .two:hover {
   level: three;
 }
+body {
+  foo: bar;
+  bar: baz;
+}
