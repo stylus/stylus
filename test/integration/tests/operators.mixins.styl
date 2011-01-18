@@ -2,6 +2,9 @@
 stringish(val = false)
   'string' == type(val) or 'ident' == type(val)
 
+string(val)
+  '' + val
+
 body
   // false
   foo stringish(12)
@@ -16,3 +19,7 @@ body
   num = 12
   foo stringish(num)
   foo stringish()
+
+  foo string(something)
+  foo string('something')
+  foo string(12)

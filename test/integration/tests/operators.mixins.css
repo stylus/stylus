@@ -4,4 +4,7 @@ body {
   foo: true;
   foo: false;
   foo: false;
+  foo: "something";
+  foo: "something";
+  foo: "12";
 }
