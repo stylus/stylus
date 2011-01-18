@@ -211,6 +211,15 @@ Darken the given `color` by `amount`.
       operate(op, 15, 5)
       // => 20
 
+### error(msg)
+
+  Fails with the given error `msg`.
+
+  add(a, b)
+    unless a is a 'unit' and b is a 'unit'
+      error('add() expects units')
+    a + b
+
 ### Undefined Functions
 
   Undefined functions will output as literals, so for example
