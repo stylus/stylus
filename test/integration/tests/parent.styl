@@ -1,3 +1,12 @@
+dim-on-hover()
+  -webkit-transition opacity 1s ease-out
+  &:hover
+    opacity 2
+
+.button
+  padding 5px
+  dim-on-hover()
+
 textarea
 input
   color #A7A7A7

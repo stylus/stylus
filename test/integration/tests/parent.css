@@ -1,3 +1,10 @@
+.button {
+  padding: 5px;
+  -webkit-transition: opacity 1s ease-out;
+}
+.button:hover {
+  opacity: 2;
+}
 textarea,
 input {
   color: #a7a7a7;
