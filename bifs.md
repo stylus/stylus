@@ -196,7 +196,7 @@ Darken the given `color` by `amount`.
 
   Perform the given `op` on the `left` and `right` operands:
   
-      @op = '+'
-      operate(@op, 15, 5)
+      op = '+'
+      operate(op, 15, 5)
       // => 20
 
