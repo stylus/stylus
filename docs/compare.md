@@ -25,3 +25,42 @@ Stylus:
      main-color = #006
      color main-color
 
+### Mixins
+
+Webkit
+
+    @mixin pad(size x, size y) {
+      padding: var(y) var(x);
+    }
+
+    .msg {
+      @mixin pad(5px, 10px);
+    }
+
+SCSS:
+
+   @mixin pad($x, $y) {
+     padding: $y $x;
+   }
+   
+   .msg {
+     @include pad(5px, 10px);
+   }
+
+Less:
+
+    .pad(@x, @y) {
+      padding: @y @x;
+    }
+    
+    .msg {
+      .pad(5px, 10px);
+    }
+
+Stylus:
+
+    pad(x, y)
+      padding y x
+
+    .msg
+      pad(5px, 10px)
