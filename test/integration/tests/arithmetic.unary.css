@@ -8,3 +8,7 @@ h1#logo {
   foo: false;
   foo: false;
 }
+body {
+  text-indent: -99999px;
+  background: #fff url("/some/image.png") no-repeat -29px 1px;
+}
