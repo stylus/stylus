@@ -13,7 +13,6 @@ Below is the operator precedence table, highest to lowest:
      && and || or
      ?:
      = ?=
-     ,
 
 ## Unary Operators
 
