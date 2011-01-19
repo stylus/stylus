@@ -22,3 +22,18 @@ ul
 
 ul li:first-child
   inline-block-list-item(true)
+
+pad(pad = false, margin = false)
+  if pad
+    padding 5px
+  if margin
+    margin 5px
+
+body
+  pad()
+
+body
+  pad(true)
+
+body
+  pad(true, true)

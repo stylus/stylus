@@ -18,3 +18,10 @@ ul li:first-child {
   display: inline-block;
   vertical-align: middle;
 }
+body {
+  padding: 5px;
+}
+body {
+  padding: 5px;
+  margin: 5px;
+}
