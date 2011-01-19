@@ -43,3 +43,6 @@ body {
   foo: true;
   foo: true;
 }
+body {
+  foo: 1;
+}

@@ -67,3 +67,8 @@ body
   // true
   foo not not (bar is a 'ident')
   foo not not bar is a 'ident'
+
+body
+  foo = type is a 'unit' ? type : 1
+  // 1
+  foo foo
