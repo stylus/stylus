@@ -1,4 +1,19 @@
 
+## Operator Precedence
+
+Below is the operator precedence table, highest to lowest:
+
+     ! not ~ + -
+     ** * / %
+     + -
+     is a
+     <= >= < >
+     == !=
+     is defined
+     && || and or
+     ?:
+     = ?=
+
 ## Unary Operators
 
 The following unary operators are available, `!`, `not`, `-`, `+`, and `~`.
