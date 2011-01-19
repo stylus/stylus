@@ -7,9 +7,9 @@ Below is the operator precedence table, highest to lowest:
      is defined
      ** * / %
      + -
-     is a
      <= >= < >
      == !=
+     is a
      && || and or
      ?:
      = ?=
