@@ -22,4 +22,6 @@ body {
   foo: "got 15px";
   foo: 1;
   foo: 5;
+  foo: true;
+  foo: true;
 }
