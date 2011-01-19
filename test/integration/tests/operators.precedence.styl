@@ -55,3 +55,12 @@ body
   // true
   foo (foo is defined) and (bar is defined)
   foo foo is defined and bar is defined
+
+body
+  // true
+  foo not not not (bar is defined)
+  foo not not not bar is defined
+
+  // true
+  foo not not (bar is a 'ident')
+  foo not not bar is a 'ident'
