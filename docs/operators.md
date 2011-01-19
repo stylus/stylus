@@ -4,12 +4,12 @@
 Below is the operator precedence table, highest to lowest:
 
      ! not ~ + -
+     is defined
      ** * / %
      + -
      is a
      <= >= < >
      == !=
-     is defined
      && || and or
      ?:
      = ?=
