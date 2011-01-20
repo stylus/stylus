@@ -4,6 +4,14 @@ main-width = 80%
 main-color = #fff
 sidebar-width = main-width / 2
 
+// Mixins can use conditionals
+// to supply defaults
+unless font-families is defined
+  font-families = 'WAHOO'
+
+// Alternatively we may use ?=
+font-families ?= 'WAHOO'
+
 body
   size = 12px
   font size font-families, sans-serif
