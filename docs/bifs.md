@@ -53,15 +53,23 @@ Return the lightness of the given `color`.
     hue(hsl(50deg, 100%, 80%))
     // => 80%
 
-### type(node)
+### typeof(node)
 
 Return type of `node.` as a string.
 
       type(12)
       // => 'unit'
+
+      typeof(12)
+      // => 'unit'
       
-      type(#fff)
+      typeof(#fff)
       // => 'color'
+
+      type-of(#fff)
+      // => 'color'
+
+Aliased as `type-of` and `type`.
 
 ### unit(unit[, type])
 
