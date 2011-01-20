@@ -77,6 +77,9 @@ or assign the given `type` without unit conversion.
     unit(15%, 'px')
     // => 15px
 
+    unit(15%, px)
+    // => 15px
+
 ### abs(unit)
 
       abs(-5px)
