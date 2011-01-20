@@ -42,3 +42,9 @@ body {
   foo: true;
   foo: 1;
 }
+body {
+  foo: true;
+  foo: true;
+  foo: false;
+  foo: true;
+}
