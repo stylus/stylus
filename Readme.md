@@ -79,6 +79,19 @@ both compiling to:
       border: 1px solid #eee;
     }
 
+The one exception to this rule, are selectors that look like properties, for example `foo bar baz` in the following may be a property, or a selector:
+
+    foo bar baz
+    > input
+      border 1px solid
+
+so for this reason, or if simply preferred we may trail with a comma:
+
+    foo bar baz,
+    form input,
+    > a
+      border 1px solid
+
 ### Parent Reference
 
 The `&` character may precede a selector to reference the parent selector(s). In the example below our two selectors `textarea`, and `input` both alter the `color` on the `:hover` pseudo selector. 
