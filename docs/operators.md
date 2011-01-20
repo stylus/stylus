@@ -14,6 +14,7 @@ Below is the operator precedence table, highest to lowest:
      ?:
      = ?=
      not
+     if unless
 
 ## Unary Operators
 
