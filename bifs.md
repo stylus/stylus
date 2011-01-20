@@ -80,6 +80,21 @@ or assign the given `type` without unit conversion.
     unit(15%, px)
     // => 15px
 
+### match(pattern, string)
+
+Test if `string` matches the given `pattern`.
+
+    match('^foo(bar)?', foo)
+    match('^foo(bar)?', foobar)
+    // => true
+
+    match('^foo(bar)?', 'foo')
+    match('^foo(bar)?', 'foobar')
+    // => true
+    
+    match('^foo(bar)?', 'bar')
+    // => false
+
 ### abs(unit)
 
       abs(-5px)
