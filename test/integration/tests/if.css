@@ -26,6 +26,15 @@ body .input {
   padding: 5px;
   no: margin;
 }
+body form input {
+  foo: bar;
+  bar: baz;
+  foo: no;
+}
+body something {
+  foo: bar;
+  bar: baz;
+}
 body .nested {
   foo: bar;
 }

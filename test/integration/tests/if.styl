@@ -75,6 +75,18 @@ body
     else
       no unquote('margin')
 
+mixin()
+  foo bar
+  bar baz
+
+body
+  form input
+    if true
+      foo negative(5)
+      mixin()
+  something
+    mixin()
+
 body
   .nested
     if true
