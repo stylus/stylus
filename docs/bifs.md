@@ -211,9 +211,15 @@ Darken the given `color` by `amount`.
       operate(op, 15, 5)
       // => 20
 
+### warn(msg)
+
+  Warn with the given error `msg`, does not exit.
+
+      warn("oh noes!")
+
 ### error(msg)
 
-  Fails with the given error `msg`.
+  Exits with the given error `msg`.
 
   add(a, b)
     unless a is a 'unit' and b is a 'unit'
