@@ -47,3 +47,31 @@ body
 
   // 2
   foo set()
+
+deep-implicit()
+  one
+  if false
+    two
+  else
+    if true
+      something
+      three
+    else
+      four
+  five
+
+deep-explicit()
+  one
+  if false
+    two
+  else
+    if true
+      return something
+      three
+    else
+      four
+  five
+
+body
+  foo deep-implicit()
+  foo deep-explicit()

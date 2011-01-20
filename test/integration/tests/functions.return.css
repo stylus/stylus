@@ -6,3 +6,7 @@ body {
   foo: "a is not a unit";
   foo: 2;
 }
+body {
+  foo: three;
+  foo: something;
+}
