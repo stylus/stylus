@@ -30,6 +30,7 @@ body {
 }
 body {
   foo: true;
+  foo: true;
   foo: false;
   foo: wahoo;
   foo: fail;
