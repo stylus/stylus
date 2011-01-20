@@ -3,7 +3,7 @@
 
 Below is the operator precedence table, highest to lowest:
 
-     ! not ~ + -
+     ! ~ + -
      is defined
      ** * / %
      + -
@@ -13,6 +13,7 @@ Below is the operator precedence table, highest to lowest:
      && and || or
      ?:
      = ?=
+     not
 
 ## Unary Operators
 
