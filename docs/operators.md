@@ -31,17 +31,32 @@ The following unary operators are available, `!`, `not`, `-`, `+`, and `~`.
     !!5px
     // => true
 
+    -5px
+    // => -5px
+    
+    --5px
+    // => 5px
+
     not true
     // => false
     
     not not true
     // => true
     
-    -5px
-    // => -5px
+The logical `not` operator has low precedence, therefore the following example could be replaced with
+
+    a = 0
+    b = 1
     
-    --5px
-    // => 5px
+    !a and !b
+    // => false
+    // pased as: (!a) and (!b)
+
+with:
+
+    not a or b
+    // => false
+    // parsed as: not (a or b)
 
 ## Binary Operators
 
