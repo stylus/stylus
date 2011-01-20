@@ -2,8 +2,10 @@
 bg(color = white)
   background color
 
-pad(x, y)
+pad(x, y, margin = false)
   padding y x y x
+  if margin
+    margin y x y x
 
 border-radius(size)
   -webkit-border-radius size
@@ -12,6 +14,9 @@ border-radius(size)
 
 lighten(color)
   color - rgba(0,0,0,0.5)
+
+body
+  pad(5px, 10px, true)
 
 form input
   size = 5px
