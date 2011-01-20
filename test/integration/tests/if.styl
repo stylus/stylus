@@ -48,3 +48,18 @@ else
 
 body
   padding n
+
+negative(n)
+  unless n is a 'unit'
+    invalid
+  if n < 0
+    yes
+  if n > 0
+    no
+  zero
+
+body
+  foo negative(-5)
+  foo negative(5)
+  foo negative(0)
+  foo negative('asdf')
