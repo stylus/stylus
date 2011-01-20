@@ -63,3 +63,16 @@ body
   foo = type is a 'unit' ? type : 1
   // 1
   foo foo
+
+body
+  padding = false
+  margin = false
+
+  // true
+  foo !padding or !margin
+  foo not padding or margin
+  
+  // false
+  foo not padding or margin == !padding or !margin
+  // true
+  foo (not padding or margin) == !padding or !margin
