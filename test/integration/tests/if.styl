@@ -63,3 +63,24 @@ body
   foo negative(5)
   foo negative(0)
   foo negative('asdf')
+
+body
+  .input
+    pad = true
+    margin = false
+    if pad
+      padding 5px
+    if margin
+      margin 5px
+    else
+      no unquote('margin')
+
+body
+  .nested
+    if true
+      if true
+        if true
+          foo bar
+          .hidden
+            if true
+              display none

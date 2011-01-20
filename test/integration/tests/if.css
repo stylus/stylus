@@ -22,3 +22,13 @@ body {
   foo: zero;
   foo: invalid;
 }
+body .input {
+  padding: 5px;
+  no: margin;
+}
+body .nested {
+  foo: bar;
+}
+body .nested .hidden {
+  display: none;
+}
