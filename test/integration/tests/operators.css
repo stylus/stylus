@@ -24,4 +24,8 @@ body {
   foo: 5;
   foo: true;
   foo: true;
+  foo: true;
+  foo: false;
+  foo: false;
+  foo: false;
 }
