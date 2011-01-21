@@ -53,6 +53,7 @@ compiles to:
 
 ### Documentation
 
+  - [variables](https:/github.com/LearnBoost/stylus/blob/master/docs/executable.md)
   - the [style](https:/github.com/LearnBoost/stylus/blob/master/docs/executable.md) executable
   - [Operators](https://github.com/LearnBoost/stylus/blob/master/docs/operators.md)
   - [Built-in Functions](https://github.com/LearnBoost/stylus/blob/master/docs/bifs.md)
@@ -141,35 +142,6 @@ compiles to:
 
     body {
       padding: -5px;
-    }
-
-### Variables
-
-We may assign expressions to variables and use them throughout our stylesheet:
-
-     @font-size = 14px
-
-     body
-       font @font-size Arial, sans-serif
-
-compiles to:
-
-     body {
-       font: 14px Arial, sans-serif;
-     }
-
-Variables can even consist of an expression list:
-
-    @font-size = 14px
-    @font = @font-size "Lucida Grande", Arial
-
-    body
-      font @font sans-serif
-
-compiles to:
-
-    body {
-      font: 14px "Lucida Grande", Arial sans-serif;
     }
 
 ### Arithmetic
