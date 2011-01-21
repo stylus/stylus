@@ -25,6 +25,12 @@ compiles to:
       border: 1px solid;
     }
 
+### Documentation
+
+  - [Operators](https://github.com/LearnBoost/stylus/blob/master/docs/operators.md)
+  - [Built-in Functions](https://github.com/LearnBoost/stylus/blob/master/docs/bifs.md)
+  - [Conditionals](https://github.com/LearnBoost/stylus/blob/master/docs/conditionals.md)
+
 ### Executable
 
 Stylus ships with the `stylus` executable for converting stylus to css. `stylus` reads from _stdin_ and outputs to _stdout_, so for example:
@@ -42,12 +48,6 @@ Try stylus some in the terminal, type below and press CTRL-D for __EOF__:
 View option help:
 
     $ stylus --help
-
-### Documentation
-
-  - [Operators](https://github.com/LearnBoost/stylus/blob/master/docs/operators.md)
-  - [Built-in Functions](https://github.com/LearnBoost/stylus/blob/master/docs/bifs.md)
-  - [Conditionals](https://github.com/LearnBoost/stylus/blob/master/docs/conditionals.md)
 
 ### Indentation
 
