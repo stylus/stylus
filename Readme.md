@@ -35,6 +35,22 @@ compiles to:
       border-radius: 5px;
     }
 
+### Features
+
+  - mixins
+  - variables
+  - arithmetic
+  - type coercion
+  - conditionals (`if`, `unless`)
+  - nested selectors
+  - parent reference
+  - in-language functions
+  - optional image inlining
+  - optional compression
+  - JavaScript function definition
+  - built-in functions (over 25)
+  - extremely terse syntax
+
 ### Documentation
 
   - [Operators](https://github.com/LearnBoost/stylus/blob/master/docs/operators.md)
