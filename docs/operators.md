@@ -65,7 +65,9 @@ with:
 
 ### Subscript []
 
- The subscript operator allows us to grab a value in an expression via index. Parenthesized expressions may act as tuples, so for example `(15px 5px)`, `(1 2 3)`. Below is an example where we utilize tuples for error handling, showing the versatility of such a construct.
+ The subscript operator allows us to grab a value in an expression via index. Parenthesized expressions may act as tuples, so for example `(15px 5px)`, `(1 2 3)`.
+ 
+ Below is an example where we utilize tuples for error handling, showing the versatility of such a construct. As 
  
      add(a, b)
        if a is a 'unit' and b is a 'unit'
@@ -82,6 +84,15 @@ with:
        
        padding add(1,'5')[0] == error
        // => padding: true;
+
+       padding add(1,'5')[1]
+       // => padding: "a and b must be units";
+
+ A more complex example, invoking the `error()` built-in function with the error message returned, when the ident (the first value) equals `error`.
+ 
+ 
+     if (val = add(1,'5'))[0] == error
+       error(val[1])
 
 ## Range .. ...
 
