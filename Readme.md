@@ -37,6 +37,8 @@ compiles to:
 
 ### Features
 
+ Stylus has _many_ features, click the links below for detailed documentation.
+
   - mixins
   - [variables](stylus/blob/master/docs/variables.md)
   - arithmetic, logical, and equality [operators](stylus/blob/master/docs/operators.md)
@@ -51,6 +53,7 @@ compiles to:
   - built-in [functions](stylus/blob/master/docs/bifs.md) (over 25)
   - extremely terse syntax
   - stylus [executable](stylus/blob/master/docs/executable.md)
+  - [error reporting](stylus/blob/master/docs/error-reporting.md)
 
 ### Indentation
 
