@@ -18,3 +18,13 @@ body {
   foo: error;
   foo: "message";
 }
+body {
+  foo: 5;
+  foo: 10;
+}
+body {
+  foo: 5 10;
+}
+body {
+  foo: 5 10;
+}

@@ -17,3 +17,22 @@ body
 body
   foo (error 'message')[0]
   foo (error 'message')[1]
+
+size(a, b)
+  return a b
+
+body
+  foo size(5, 10)[0]
+  foo size(5, 10)[1]
+
+size(a, b)
+  (a b)
+
+body
+  foo size(5, 10)[0]
+
+size(a, b)
+  return (a b)
+
+body
+  foo size(5, 10)[0]
