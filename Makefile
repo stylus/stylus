@@ -34,6 +34,6 @@ install-bundle:
 	cp -fr $(TM_BUNDLE) $(TM_BUNDLE_DEST)
 
 update-bundle:
-	cp -fr $(TM_BUNDLE_DEST)/Stylus.tmbundle $(TM_BUNDLE)
+	cp -fr $(TM_BUNDLE_DEST)/Stylus.tmbundle editors
 
 .PHONY: test test-unit test-integration install-bundle test-cov docs update-bundle

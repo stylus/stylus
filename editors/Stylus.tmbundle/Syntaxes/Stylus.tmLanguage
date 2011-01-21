@@ -5,6 +5,7 @@
 	<key>fileTypes</key>
 	<array>
 		<string>styl</string>
+		<string>stylus</string>
 	</array>
 	<key>name</key>
 	<string>Stylus</string>
@@ -18,7 +19,13 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(if|else|unless|return)\b</string>
+			<string>@([-\w]+)</string>
+			<key>name</key>
+			<string>keyword.stylus</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>(return|true|false|null|if|else|unless|return)\b</string>
 			<key>name</key>
 			<string>keyword.control.stylus</string>
 		</dict>
