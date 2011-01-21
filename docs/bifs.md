@@ -237,6 +237,31 @@ Darken the given `color` by `amount`.
       operate(op, 15, 5)
       // => 20
 
+### length([expr])
+
+  Parenthesized expressions may act as tuples, the `length()` function returns the length of such expressions.
+
+  length((1 2 3 4))
+  // => 4
+
+  length((1 2))
+  // => 2
+  
+  length((1))
+  // => 1
+  
+  length(())
+  // => 0
+  
+  length(1 2 3)
+  // => 1
+
+  length(1)
+  // => 1
+
+  length()
+  // => 0
+
 ### warn(msg)
 
   Warn with the given error `msg`, does not exit.

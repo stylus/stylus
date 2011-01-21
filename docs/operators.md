@@ -63,9 +63,39 @@ with:
 
 ## Binary Operators
 
+### Subscript []
+
+ The subscript operator allows us to grab a value in an expression via index. Parenthesized expressions may act as tuples, so for example `(15px 5px)`, `(1 2 3)`. Below is an example where we utilize tuples for error handling, showing the versatility of such a construct.
+ 
+     add(a, b)
+       if a is a 'unit' and b is a 'unit'
+         a + b
+       else
+         (error 'a and b must be units!')
+
+     body
+       padding add(1,'5')
+       // => padding: error "a and b must be units";
+       
+       padding add(1,'5')[0]
+       // => padding: error;
+       
+       padding add(1,'5')[0] == error
+       // => padding: true;
+
+## Range .. ...
+
+ Both the inclusive (`..`) and exclusive (`...`) range operators are provided, expanding to expressions:
+ 
+     1..5
+     // => 1 2 3 4 5
+
+     1...5
+     // => 1 2 3 4
+
 ### Additive: + -
 
-multiplicative and additive binary operators work as expected, and type conversion is applied within unit type classes, or default to the literal value. For example if you perform `5s - 2px` you will get `3s`.
+multiplicative and additive binary operators work as expected, and type conversion is applied within unit type classes, or default to the literal value. For example if we perform `5s - 2px` we will get `3s`.
 
     15px - 5px
     // => 10px
@@ -229,19 +259,9 @@ Alternatively one can use the `lookup(name)` built-in function to do this, or to
     lookup('light-' + name)
     // => #80e2e9
 
-## Range
-
- Both the inclusive (`..`) and exclusive (`...`) range operators are provided, expanding to expressions:
- 
-     1..5
-     // => 1 2 3 4 5
-
-     1...5
-     // => 1 2 3 4
-
 ## Ternary
 
-The ternary operator works as you would expect in most languages, being the only operator with three operands, the _condition_ expression, the _truth_ expression and the _false_ expression.
+The ternary operator works as we would expect in most languages, being the only operator with three operands, the _condition_ expression, the _truth_ expression and the _false_ expression.
 
     num = 15
     num ? unit(num, 'px') : 20px
