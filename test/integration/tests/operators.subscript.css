@@ -10,4 +10,6 @@ body {
   foo: true;
   foo: false;
   foo: -5;
+  foo: 2 3;
+  foo: 1 2 3;
 }
