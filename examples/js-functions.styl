@@ -1,9 +1,15 @@
 
+image-size(img)
+  (image-width(img) image-height(img))
+
 body
   font add(5px, 10px)
   font sub(5px, 10px)
+  
   // 337 273
+  width image-width('images/jesus.gif')
+  height image-height('images/jesus.gif')
+  
   size = image-size('images/jesus.gif')
-  dimensions size
   width size[0]
   height size[1]
