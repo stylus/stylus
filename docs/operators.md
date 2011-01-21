@@ -229,6 +229,16 @@ Alternatively one can use the `lookup(name)` built-in function to do this, or to
     lookup('light-' + name)
     // => #80e2e9
 
+## Range
+
+ Both the inclusive (`..`) and exclusive (`...`) range operators are provided, expanding to expressions:
+ 
+     1..5
+     // => 1 2 3 4 5
+
+     1...5
+     // => 1 2 3 4
+
 ## Ternary
 
 The ternary operator works as you would expect in most languages, being the only operator with three operands, the _condition_ expression, the _truth_ expression and the _false_ expression.
