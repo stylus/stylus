@@ -270,6 +270,24 @@ Alternatively one can use the `lookup(name)` built-in function to do this, or to
     lookup('light-' + name)
     // => #80e2e9
 
+This operator is essential, as an undefined identifier is still a truthy value. For example:
+
+    body
+      if ohnoes
+        padding 5px
+
+_will_ yield the following css when undefined:
+
+    body {
+      padding: 5px;
+    }
+
+however this will be safe:
+
+    body
+      if ohnoes is defined
+        padding 5px
+
 ## Ternary
 
 The ternary operator works as we would expect in most languages, being the only operator with three operands, the _condition_ expression, the _truth_ expression and the _false_ expression.
