@@ -3,9 +3,11 @@
 
  Conditionals provide control flow to a language which is otherwise static, providing conditional imports, mixins, functions, and more. The examples below are simply examples, and not recommended :)
 
-### if
+### if / else if / else
 
- The `if` conditional works as you would expect, simply accepting an expression, evaluating the following block when `true`. The example below would conditionally overload the `padding` property, swapping it for margin.
+ The `if` conditional works as you would expect, simply accepting an expression, evaluating the following block when `true`. Along with `if` are the typical `else if` and `else` tokens, acting as fallbacks.
+ 
+ The example below would conditionally overload the `padding` property, swapping it for margin.
 
     overload-padding = true
 
@@ -26,12 +28,10 @@ Another example:
     body
       box(5px, 10px, true)
 
-### else
+Another `box()` helper:
 
- This conditional accepts a block, evaluated when the `if` condition fails:
-
-    box(x, y, margin = false)
-      if margin
+    box(x, y, margin-only = false)
+      if margin-only
         margin y x
       else
         padding y x
