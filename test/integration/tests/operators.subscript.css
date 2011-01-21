@@ -36,3 +36,7 @@ body {
   foo: 6;
   foo: 1;
 }
+body {
+  foo: 1 2;
+  foo: 3 4;
+}
