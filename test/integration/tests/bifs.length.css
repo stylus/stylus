@@ -4,6 +4,9 @@ body {
   foo: 2;
   foo: 1;
   foo: 0;
+  foo: 1;
+  foo: 1;
+  foo: 0;
   padding: 5 10 15;
   margin: true;
 }
