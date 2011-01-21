@@ -39,14 +39,14 @@ compiles to:
 
  Stylus has _many_ features, click the links below for detailed documentation.
 
-  - mixins
+  - [mixins](stylus/blob/master/docs/mixins.md)
   - [variables](stylus/blob/master/docs/variables.md)
   - arithmetic, logical, and equality [operators](stylus/blob/master/docs/operators.md)
   - type coercion
   - [conditionals](stylus/blob/master/docs/conditionals.md)
   - nested selectors
   - parent reference
-  - in-language functions
+  - in-language [functions](stylus/blob/master/docs/functions.md)
   - optional image inlining
   - optional compression
   - JavaScript function definition
