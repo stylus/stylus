@@ -81,13 +81,3 @@ body
   foo 0 == true
   foo true == 0
   foo #fff == undefined
-
-body
-  foo ()[0] == null
-  foo ((1 2 3))[0]
-  foo (1 2 3)[0]
-  foo (1 2 3)[1]
-  foo (1 2 3)[2]
-  foo (1 2 3)[3] == null
-  foo (1 2 3)[-1] == null
-  foo (1 2 3)['test'] == null
