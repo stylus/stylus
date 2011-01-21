@@ -34,3 +34,35 @@ When utilizing mixins, we can omit the parens all together, providing is with fa
       border-radius 5px
 
 Note that the `border-radius` within our mixin is treated as a property, and not a recursive function invocation.
+
+### Parent References
+
+ Mixins may utilize the parent reference character `&`, acting on the parent instead of further nesting. For example lets say we wish to create a `stripe(even, odd)` mixin for striping table row, we provide both `even` and `odd` with default color values, and assign the `background-color` property on the row. Nested within the `tr` we use `&` to reference the `tr`, providing the `even` color.
+ 
+     stripe(even = #fff, odd = #eee)
+       tr
+         background-color odd
+         &.even
+         &:nth-child(even)
+           background-color even
+
+We may then utilize the mixin as shown below:
+
+     table
+       stripe()
+       td
+         padding 4px 10px
+
+     table#users
+       stripe(#303030, #494848)
+       td
+         color white
+
+Another way to define the `stripe()` mixin without parent reference:
+
+    stripe(even = #fff, odd = #eee)
+      tr
+        background-color odd
+      tr.even
+      tr:nth-child(even)
+        background-color even
