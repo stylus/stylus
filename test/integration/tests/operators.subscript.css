@@ -1,6 +1,6 @@
 body {
   foo: true;
-  foo: 1;
+  foo: 1 2 3;
   foo: 1;
   foo: 2;
   foo: 3;
@@ -17,4 +17,14 @@ body {
 body {
   foo: error;
   foo: "message";
+}
+body {
+  foo: 5;
+  foo: 10;
+}
+body {
+  foo: 5 10;
+}
+body {
+  foo: 5 10;
 }
