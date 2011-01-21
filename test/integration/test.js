@@ -15,8 +15,6 @@ var css = require('../../')
  */
 
 function test(test) {
-  // TODO: remove
-  if ('mixins.nested' == test) return;
   var base = __dirname + '/tests/' + test
     , path =  base + '.styl'
     , csspath = base + '.css';
