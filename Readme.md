@@ -38,26 +38,19 @@ compiles to:
 ### Features
 
   - mixins
-  - variables
-  - arithmetic
+  - [variables](stylus/blob/master/docs/variables.md)
+  - arithmetic, logical, and equality [operators](stylus/blob/master/docs/operators.md)
   - type coercion
-  - conditionals (`if`, `unless`)
+  - [conditionals](stylus/blob/master/docs/conditionals.md)
   - nested selectors
   - parent reference
   - in-language functions
   - optional image inlining
   - optional compression
   - JavaScript function definition
-  - built-in functions (over 25)
+  - built-in [functions](stylus/blob/master/docs/bifs.md) (over 25)
   - extremely terse syntax
-
-### Documentation
-
-  - [variables](stylus/blob/master/docs/executable.md)
-  - the [style](https:/github.com/LearnBoost/stylus/blob/master/docs/executable.md) executable
-  - [Operators](https://github.com/LearnBoost/stylus/blob/master/docs/operators.md)
-  - [Built-in Functions](https://github.com/LearnBoost/stylus/blob/master/docs/bifs.md)
-  - [Conditionals](https://github.com/LearnBoost/stylus/blob/master/docs/conditionals.md)
+  - stylus [executable](stylus/blob/master/docs/executable.md)
 
 ### Indentation
 
