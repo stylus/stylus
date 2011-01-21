@@ -1,5 +1,5 @@
 {   "name": "stylus"
-  , "description": "Expressive, feature-rich css superset inspired by jade"
+  , "description": "Robust, expressive language which compiles to CSS"
   , "version": "0.0.1"
   , "author": "TJ Holowaychuk <tj@vision-media.ca>"
   , "keywords": ["css", "parser", "style", "stylesheets", "jade", "language"]
