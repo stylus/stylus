@@ -66,3 +66,40 @@ Another way to define the `stripe()` mixin without parent reference:
       tr.even
       tr:nth-child(even)
         background-color even
+
+If we wished, we could invoke `stripe()` as if it were a property:
+
+    stripe #fff #000
+
+### Mixing Mixins in Mixins
+
+ Mixins can of course utilize other mixins, to build up their own selector's and properties. For example, below we create `comma-list()` to inline (via `inline-list()`) and comma-separate an un-ordered list.
+ 
+ 
+     inline-list()
+       li
+         display inline
+
+     comma-list()
+       inline-list()
+       li
+         &:after
+           content ', '
+         &:last-child:after
+           content ''
+
+     ul
+       comma-list()
+
+rendering:
+
+    ul li:after {
+      content: ", ";
+    }
+    ul li:last-child:after {
+      content: "";
+    }
+    ul li {
+      display: inline;
+    }
+
