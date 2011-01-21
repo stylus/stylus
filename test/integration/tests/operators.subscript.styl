@@ -13,3 +13,7 @@ body
   foo (1 (2 3))[1]
   foo (1 (2 (3)))
   foo (1 (2 (3)))[0]
+
+body
+  foo (error 'message')[0]
+  foo (error 'message')[1]
