@@ -20,8 +20,12 @@ function imageDimensions(img) {
   // assert that the node (img) is a String node, passing
   // the param name for error reporting
   css.utils.assertType(img, nodes.String, 'img');
-  var path = img.val
-    , data = fs.readFileSync(__dirname + '/' + path);
+  var path = img.val;
+
+  // Grab bytes necessary to retrieve dimensions.
+  // if this was real you would do this per format,
+  // instead of reading the entire image :)
+  var data = fs.readFileSync(__dirname + '/' + path);
 
   // GIF
   // of course you would support.. more :)

@@ -4,7 +4,7 @@
 image-size(img)
   w = image-width(img)
   h = image-height(img)
-  (w h)
+  return w h
 
 body
   font add(5px, 10px)
@@ -16,6 +16,5 @@ body
   height image-height('images/jesus.gif')
 
 #jesus-2
-  size = image-size('images/jesus.gif')
-  width size[0]
-  height size[1]
+  width image-size('images/jesus.gif')[0]
+  width image-size('images/jesus.gif')[1]
