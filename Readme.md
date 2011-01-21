@@ -1,8 +1,14 @@
 
 # Stylus
 
+ Stylus is a revolutionary new language, providing an efficient, dynamic, and expressive way to generate CSS.
 
 ### Example
+
+    border-radius(n)
+      -webkit-border-radius n
+      -moz-border-radius n
+      border-radius n
 
     body a
       font 12px "Lucida Grande", Arial, sans-serif
@@ -12,6 +18,7 @@
     form input
       padding 5px
       border 1px solid
+      border-radius 5px
 
 compiles to:
 
@@ -23,6 +30,9 @@ compiles to:
     form input {
       padding: 5px;
       border: 1px solid;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
     }
 
 ### Documentation
