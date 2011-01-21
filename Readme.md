@@ -53,7 +53,7 @@ compiles to:
 
 ### Documentation
 
-  - [variables](blob/master/docs/executable.md)
+  - [variables](stylus/blob/master/docs/executable.md)
   - the [style](https:/github.com/LearnBoost/stylus/blob/master/docs/executable.md) executable
   - [Operators](https://github.com/LearnBoost/stylus/blob/master/docs/operators.md)
   - [Built-in Functions](https://github.com/LearnBoost/stylus/blob/master/docs/bifs.md)
