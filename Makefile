@@ -33,4 +33,7 @@ docs/index.html: $(SRC)
 install-bundle:
 	cp -fr $(TM_BUNDLE) $(TM_BUNDLE_DEST)
 
-.PHONY: test test-unit test-integration install-bundle test-cov docs
+update-bundle:
+	cp -fr $(TM_BUNDLE_DEST)/Stylus.tmbundle $(TM_BUNDLE)
+
+.PHONY: test test-unit test-integration install-bundle test-cov docs update-bundle
