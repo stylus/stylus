@@ -241,26 +241,26 @@ Darken the given `color` by `amount`.
 
   Parenthesized expressions may act as tuples, the `length()` function returns the length of such expressions.
 
-  length((1 2 3 4))
-  // => 4
+    length((1 2 3 4))
+    // => 4
 
-  length((1 2))
-  // => 2
+    length((1 2))
+    // => 2
   
-  length((1))
-  // => 1
+    length((1))
+    // => 1
   
-  length(())
-  // => 0
+    length(())
+    // => 0
   
-  length(1 2 3)
-  // => 1
+    length(1 2 3)
+    // => 1
 
-  length(1)
-  // => 1
+    length(1)
+    // => 1
 
-  length()
-  // => 0
+    length()
+    // => 0
 
 ### warn(msg)
 
@@ -272,10 +272,10 @@ Darken the given `color` by `amount`.
 
   Exits with the given error `msg`.
 
-  add(a, b)
-    unless a is a 'unit' and b is a 'unit'
-      error('add() expects units')
-    a + b
+    add(a, b)
+      unless a is a 'unit' and b is a 'unit'
+        error('add() expects units')
+      a + b
 
 ### Undefined Functions
 
