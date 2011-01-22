@@ -232,7 +232,28 @@ steps.push(new Step(
   + '\n'
   + 'body\n'
   + '  padding add(5px, 10px)\n'
-  + '  margin add(5, 10)\n'
+  + '  margin add(5, 10)'
+  ));
+
+steps.push(new Step(
+    'Mixins'
+  , 'Mixins are defined in the same manner as functions\n'
+  + 'with return values, however they "mix in" their properties\n'
+  + 'and selectors into the caller.\n'
+  + '\n'
+  + 'Mixin parens are optional in most cases, so we may apply\n'
+  + 'the transparently.'
+  
+  , 'border-radius(n)\n'
+  + '  -webkit-border-radius n\n'
+  + '  -moz-border-radius n\n'
+  + '  border-radius n\n'
+  + '\n'
+  + 'body\n'
+  + '  border-radius(5px)\n'
+  + '\n'
+  + 'form input\n'
+  + '  border-radius 5px'
   ));
 
 /**
