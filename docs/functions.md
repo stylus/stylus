@@ -61,10 +61,37 @@
 usage:
 
    stringish('yay') == yes
+   // => true
+   
    stringish(yay) == yes
+   // => true
+   
    stringish(0) == no
+   // => true
 
 __note__: `yes` and `no` are not boolean literals, they are simply undefined identifiers in this case.
+
+Another example:
+
+
+    compare(a, b)
+      if a > b
+        higher
+      else if a < b
+        lower
+      else
+        equal
+
+usage:
+
+    compare(5, 2)
+    // => higher
+
+    compare(1, 5)
+    // => lower
+
+    compare(10, 10)
+    // => equal
 
 ### Aliasing
 
