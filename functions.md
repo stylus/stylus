@@ -83,3 +83,25 @@
       
       plus(1, 2)
       // => 3
+
+### Variable Functions
+
+  In the same way that we can "alias" a function, we can pass a function as well, here our `invoke()` function accepts a function, so we can pass it `add()` or `sub()`.
+
+    invoke(a, b, fn)
+      fn(a, b)
+
+    add(a, b)
+      a + b
+
+    body
+      padding invoke(5, 10, add)
+      padding invoke(5, 10, sub)
+
+yielding:
+
+    body {
+      padding: 15;
+      padding: -5;
+    }
+
