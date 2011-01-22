@@ -86,7 +86,10 @@ compiling to:
     body {
       font: 14px;
     }
-    
+
+## Authors
+
+  - [TJ Holowaychuk (visionmedia)](http://github.com/visionmedia)
 
 ## License 
 

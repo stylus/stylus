@@ -5,6 +5,10 @@
   , "keywords": ["css", "parser", "style", "stylesheets", "jade", "language"]
   , "main": "./index.js"
   , "engines": { "node": ">= 0.2.4" }
+  , "bin": {
+      "stylus": "./bin/stylus"
+    , "stylus-tutorial": "./bin/stylus-tutorial"
+  }
   , "dependencies": {
     "cssom": ">= 0.2.0"
   }
