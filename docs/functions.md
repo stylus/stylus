@@ -60,14 +60,14 @@
 
 usage:
 
-   stringish('yay') == yes
-   // => true
+     stringish('yay') == yes
+     // => true
    
-   stringish(yay) == yes
-   // => true
+     stringish(yay) == yes
+     // => true
    
-   stringish(0) == no
-   // => true
+     stringish(0) == no
+     // => true
 
 __note__: `yes` and `no` are not boolean literals, they are simply undefined identifiers in this case.
 
