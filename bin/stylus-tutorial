@@ -150,6 +150,16 @@ steps.push(new Step(
   ));
 
 steps.push(new Step(
+    'Nested Selectors'
+  , 'Selectors may also be nested.\n'
+  
+  , 'ul\n'
+  + '  li\n'
+  + '    a\n'
+  + '      color black\n'
+  ));
+
+steps.push(new Step(
     'Variables'
   , 'Stylus allows you to define variables by utilizing\n'
   + ' the _=_ operator, much like you would in any other language.\n'
@@ -204,6 +214,25 @@ steps.push(new Step(
   , 'duration = 2s\n\n'
   + '.fade\n'
   + '  -webkit-transition opacity duration - 1500ms linear'
+  ));
+
+steps.push(new Step(
+    'Functions'
+  , 'Stylus functions may act as mixins or have a return value.\n'
+  + 'For example here we use the unit() built-in function to.\n'
+  + 'forcing both unit\'s type to _px_, and then add them.\n'
+  + '\n'
+  + 'Note that we may also use the _return_ keyword, however it\n'
+  + 'is optional in most cases.'
+  
+  , 'add(a, b)\n'
+  + '  a = unit(a, "px")\n'
+  + '  b = unit(b, "px")\n'
+  + '  a + b\n'
+  + '\n'
+  + 'body\n'
+  + '  padding add(5px, 10px)\n'
+  + '  margin add(5, 10)\n'
   ));
 
 /**
