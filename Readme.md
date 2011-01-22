@@ -49,31 +49,12 @@ compiles to:
   - in-language [functions](stylus/blob/master/docs/functions.md)
   - optional image inlining
   - optional compression
-  - JavaScript function definition
+  - JavaScript [API](stylus/blob/master/docs/js.md)
   - built-in [functions](stylus/blob/master/docs/bifs.md) (over 25)
   - extremely terse syntax
   - stylus [executable](stylus/blob/master/docs/executable.md)
   - [error reporting](stylus/blob/master/docs/error-reporting.md)
   - single-line and multi-line [comments](stylus/blob/master/docs/comments.md)
-
-### JavaScript API
-
-Simply require the module, and call `render()` with the given string of stylus code, and (optional) options object. Frameworks utilizing stylus should pass the `filename` option to provide better error reporting.
-
-    var stylus = require('stylus');
-
-    stylus.render(str, { filename: 'nesting.css' }, function(err, css){
-      if (err) throw err;
-      console.log(css);
-    });
-
-We can also do the same thing in a more progressive manor:
-
-    var style = stylus(str)
-      .set('filename', 'nesting.css')
-      .render(function(err, css){
-        // logic
-      });
 
 ### Data URI Image Inlining
 
@@ -93,12 +74,6 @@ supported options:
 
   - `limit` bytesize limit defaulting to 30Kb (30000)
   - `paths` image resolution path(s)
-
-### Built-in Functions
-
-A built-in function, or _BIF_ is simply a function that is supplied and exposed by stylus, there is no need for an `@import` to access these.
-
-Click to view the list of [built-in functions](stylus/blob/master/docs/bifs.md) and examples.
 
 ### Import
 
