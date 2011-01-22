@@ -47,7 +47,7 @@ compiles to:
   - nested [selectors](stylus/blob/master/docs/selectors.md)
   - parent reference
   - in-language [functions](stylus/blob/master/docs/functions.md)
-  - optional image inlining
+  - optional [image inlining](stylus/blob/master/docs/functions.url.md)
   - optional compression
   - JavaScript [API](stylus/blob/master/docs/js.md)
   - built-in [functions](stylus/blob/master/docs/bifs.md) (over 25)
@@ -55,25 +55,6 @@ compiles to:
   - stylus [executable](stylus/blob/master/docs/executable.md)
   - [error reporting](stylus/blob/master/docs/error-reporting.md)
   - single-line and multi-line [comments](stylus/blob/master/docs/comments.md)
-
-### Data URI Image Inlining
-
-Stylus is bundled with an optional function named `url()`, which replaces the literal `url()` calls, and conditionally inlines them using base64 [Data URIs](http://en.wikipedia.org/wiki/Data_URI_scheme).
-
-The function itself is available via `stylus.url`, and takes an options object. The `.define(name, callback)` method assigned a JavaScript function that can be called from stylus source. In this case we have our images in `./images`, so we simply pass the lookup paths array with `__dirname`, the dirname of the executing script, this array tells stylus where to attempt looking for your image.
-
-    stylus(str)
-      .set('filename', 'images.css')
-      .define('url', stylus.url({ paths: [__dirname] }))
-      .render(function(err, css){
-        if (err) throw err;
-        console.log(css);
-      });
-
-supported options:
-
-  - `limit` bytesize limit defaulting to 30Kb (30000)
-  - `paths` image resolution path(s)
 
 ### Import
 
