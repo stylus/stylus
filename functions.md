@@ -49,31 +49,22 @@
 
 ### Conditionals
 
- The `type()` built-in returns a string representing the type of expression given, so for example `type(15)` would return 'unit'. Let's say we want to create our own `type-as-ident()` returning the `string` ident instead, which when not bound (previously assigned) to a value, acts like an atom.
+ Let's say we want to create a function named `stringish()` to see if the value given can be transformed to a string. We check if `val` is a string, or an ident which is string-like. Because undefined identifiers yield themselves as the value, we may compare them to them-selves as shown below, where `yes` and `no` are used in place of `true` and `false`.
  
  
-     type-as-ident(val)
-       if val is a 'unit'
-         number
-       else if val is a 'string'
-         string
-       else if val is a 'color'
-         color
-       else if val is a 'function'
-         function
+     stringish(val)
+       if val is a 'string' or val is a 'ident'
+         yes
        else
-         unknown
+         no
 
- May be used like:
- 
-     type('test')
-     // => "string"
+usage:
 
-     type-as-ident('test')
-     // => string
-     
-     type-as-ident(12) == number
-     // => true
+   stringish('yay') == yes
+   stringish(yay) == yes
+   stringish(0) == no
+
+__note__: `yes` and `no` are not boolean literals, they are simply undefined identifiers in this case.
 
 ### Aliasing
 
