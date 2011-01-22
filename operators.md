@@ -126,6 +126,9 @@ multiplicative and additive binary operators work as expected, and type conversi
     "foo " + "bar"
     // => "foo bar"
 
+    "num " + 15
+    // => "num 15"
+
 We can also operator on colors, and values are clamped appropriately.
 
     #fff - #111
