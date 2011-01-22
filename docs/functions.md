@@ -74,3 +74,12 @@
      
      type-as-ident(12) == number
      // => true
+
+### Aliasing
+
+  To alias a function we can simply assign a function's name to a new identifier. For example our previous `add()` function could be exposed as `plus()` as well, simply by:
+  
+      plus = add
+      
+      plus(1, 2)
+      // => 3
