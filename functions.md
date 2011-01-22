@@ -46,3 +46,31 @@
 
      add(15%, 10deg)
      // => 25
+
+### Conditionals
+
+ The `type()` built-in returns a string representing the type of expression given, so for example `type(15)` would return 'unit'. Let's say we want to create our own `type-as-ident()` returning the `string` ident instead, which when not bound (previously assigned) to a value, acts like an atom.
+ 
+ 
+     type-as-ident(val)
+       if val is a 'unit'
+         number
+       else if val is a 'string'
+         string
+       else if val is a 'color'
+         color
+       else if val is a 'function'
+         function
+       else
+         unknown
+
+ May be used like:
+ 
+     type('test')
+     // => "string"
+
+     type-as-ident('test')
+     // => string
+     
+     type-as-ident(12) == number
+     // => true
