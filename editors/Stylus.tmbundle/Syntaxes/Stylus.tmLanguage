@@ -25,7 +25,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(return|true|false|null|if|else|unless|return)\b</string>
+			<string>(!important|return|true|false|null|if|else|unless|return)\b</string>
 			<key>name</key>
 			<string>keyword.control.stylus</string>
 		</dict>
