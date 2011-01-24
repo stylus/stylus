@@ -42,3 +42,23 @@ body {
   foo: 4;
   foo: 4;
 }
+body {
+  foo: 100 200;
+  foo: 100;
+  foo: 200;
+}
+body {
+  foo: 100 200;
+  foo: 100;
+  foo: 200;
+}
+body {
+  foo: 100 200;
+  foo: 100;
+  foo: 200;
+}
+body {
+  foo: 100 200;
+  foo: 100;
+  foo: 200;
+}
