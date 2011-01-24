@@ -36,16 +36,7 @@ size(a, b)
 
 body
   foo size(5, 10)[0]
-
-body
-  nums = ((1 2 3) (4 5 6))
-  foo nums[0]
-  foo nums[0][0]
-  foo nums[0][1]
-  foo nums[0][2]
-  foo nums[1][2]
-  
-  foo (nums)[0][0][0][0]
+  foo size(5, 10)[0][1]
 
 size()
   (1 2) (3 4)
@@ -66,7 +57,7 @@ body
   foo size
   foo size[0]
   foo size[1]
-  //foo length(size)
+  foo length(size)
 
 image-size(path)
   100 200
@@ -76,7 +67,7 @@ body
   foo size
   foo size[0]
   foo size[1]
-  //foo length(size)
+  foo length(size)
 
 size = 100 200
 
@@ -84,7 +75,7 @@ body
   foo size
   foo size[0]
   foo size[1]
-  //foo length(size)
+  foo length(size)
 
 size = (100 200)
 
@@ -92,5 +83,5 @@ body
   foo size
   foo size[0]
   foo size[1]
-  //foo length(size)
+  foo length(size)
 
