@@ -35,6 +35,11 @@
      add(10)
      // => 20
 
+note that since argument defaults are assignments, we can also utilize function calls for defaults:
+
+     add(a, b = unit(a, px))
+       a + b
+
 ### Function Bodies
 
  We can take our simple `add()` function further, by casting all units passed as `px` via the `unit()` built-in. Re-assigning each argument and providing a unit type string (or identifier), which disregards unit conversion.
