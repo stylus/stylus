@@ -22,3 +22,23 @@ yielding:
         box-shadow: 1px 2px 5px #eee;
       }
 
+If we wanted to peek at a specific argument, for example the x-offset we could simply use `args[0]`, or for example we may wish to re-define the mixin:
+
+        box-shadow(offset-x, args...)
+          got-offset-x offset-x
+          -webkit-box-shadow offset-x args
+          -moz-box-shadow offset-x args
+          box-shadow offset-x args
+
+        #login
+          box-shadow 1px 2px 5px #eee
+
+yielding:
+
+        #login {
+          got-offset-x: 1px;
+          -webkit-box-shadow: 1px 2px 5px #eee;
+          -moz-box-shadow: 1px 2px 5px #eee;
+          box-shadow: 1px 2px 5px #eee;
+        }
+
