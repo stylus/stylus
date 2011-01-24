@@ -56,37 +56,7 @@ compiles to:
   - stylus [executable](stylus/blob/master/docs/executable.md)
   - [error reporting](stylus/blob/master/docs/error-reporting.md)
   - single-line and multi-line [comments](stylus/blob/master/docs/comments.md)
-
-### Import
-
- Literal css import:
- 
-    @import "foo.css"
-
-compiles to:
-
-    @import "foo.css"
-
- Import of _.styl_ files should omit the extension, resolving to _mixins.styl_ in this case. Functions, mixins, selectors etc can all be contained within imported files.
- 
-    @import "mixins"
-
-### Literal CSS
-
- If for any reason Stylus cannot accommodate a specific need, you can always resort to literal css via `@css`:
- 
-     
-     @css {
-       body {
-         font: 14px;
-       }
-     }
-
-compiling to:
-
-    body {
-      font: 14px;
-    }
+  - css [literal](stylus/blob/master/docs/literal.md)
 
 ## Authors
 
