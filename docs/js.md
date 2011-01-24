@@ -19,6 +19,13 @@ We can also do the same thing in a more progressive manner:
         // logic
       });
 
+## .set(setting, value)
+
+ Apply a setting such as a `filename`, or import `paths`:
+ 
+     .set('filename', __dirname + '/test.styl')
+     .set('paths', [__dirname, __dirname + '/mixins'])
+
 ## .define(name, fn)
 
  This method allows you to provide a JavaScript-defined function to Stylus, think of these as you would JavaScript to C++ bindings. When you have something you cannot do within Stylus, you define it in JavaScript.
