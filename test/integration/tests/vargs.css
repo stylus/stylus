@@ -22,3 +22,9 @@ body {
   test-y: 1px;
   test-x: 2px;
 }
+body {
+  pad: 1;
+  pad: 2;
+  pad: 3 4 5;
+  len: 3;
+}
