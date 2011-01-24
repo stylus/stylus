@@ -116,7 +116,7 @@ Test if `string` matches the given `pattern`.
       ceil(5.5in)
       // => 6in
 
-### floot(unit)
+### floor(unit)
 
       floor(5.6px)
       // => 5px

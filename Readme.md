@@ -48,10 +48,11 @@ compiles to:
   - nested [selectors](stylus/blob/master/docs/selectors.md)
   - parent reference
   - in-language [functions](stylus/blob/master/docs/functions.md)
+  - [variable arguments](stylus/blob/master/docs/vargs.md)
+  - built-in [functions](stylus/blob/master/docs/bifs.md) (over 25)
   - optional [image inlining](stylus/blob/master/docs/functions.url.md)
   - optional compression
   - JavaScript [API](stylus/blob/master/docs/js.md)
-  - built-in [functions](stylus/blob/master/docs/bifs.md) (over 25)
   - extremely terse syntax
   - stylus [executable](stylus/blob/master/docs/executable.md)
   - [error reporting](stylus/blob/master/docs/error-reporting.md)
