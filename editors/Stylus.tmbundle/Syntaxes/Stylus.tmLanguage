@@ -24,6 +24,62 @@
 			<string>keyword.stylus</string>
 		</dict>
 		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.entity.stylus</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(\.)[a-zA-Z0-9_-]+</string>
+			<key>name</key>
+			<string>entity.other.attribute-name.class.stylus</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.entity.stylus</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(:+)\b(after|before|first-child|first-letter|first-line|selection)\b</string>
+			<key>name</key>
+			<string>entity.other.attribute-name.pseudo-element.stylus</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.entity.stylus</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(:)\b(active|hover|link|visited|focus)\b</string>
+			<key>name</key>
+			<string>entity.other.attribute-name.pseudo-class.stylus</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.entity.css</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(#)[a-zA-Z][a-zA-Z0-9_-]*</string>
+			<key>name</key>
+			<string>entity.other.attribute-name.id.stylus</string>
+		</dict>
+		<dict>
 			<key>match</key>
 			<string>(!important|return|true|false|null|if|else|unless|return)\b</string>
 			<key>name</key>
@@ -91,7 +147,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>^([-a-zA-Z_][-\w]*)?(\()(.*?)(\))</string>
+			<string>^([-a-zA-Z_][-\w]*)?(\()</string>
 			<key>name</key>
 			<string>meta.function.stylus</string>
 		</dict>
