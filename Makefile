@@ -26,7 +26,7 @@ docs/index.html: $(SRC)
 	dox \
 	  --title "Switch" \
     --desc "Expressive CSS language for nodejs" \
-		--ribbon http://github.com/learnboost/switch \
+		--ribbon http://github.com/learnboost/stylus \
 		--private \
 		$^ > $@
 
