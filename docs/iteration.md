@@ -1,14 +1,14 @@
 
 ## Iteration
 
- Stylus allows you to iterate expressions via the `each` construct, taking the form of:
+ Stylus allows you to iterate expressions via the `for/in` construct, taking the form of:
  
-      each <val-name> [, <key-name>] in <expression>
+      for <val-name> [, <key-name>] in <expression>
 
 For example:
 
     body
-      each num in 1 2 3
+      for num in 1 2 3
         foo num
 
 yields:
@@ -23,7 +23,7 @@ The example below shows how to use the `<key-name>`:
 
       body
         fonts = Impact Arial sans-serif
-        each font, i in fonts
+        for font, i in fonts
           foo i font
 
 yielding:
