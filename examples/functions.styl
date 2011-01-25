@@ -7,10 +7,10 @@ pad(x, y, margin = false)
   if margin
     margin y x y x
 
-border-radius(size)
-  -webkit-border-radius size
-  -moz-border-radius size
-  border-radius size
+border-radius(args...)
+  -webkit-border-radius args
+  -moz-border-radius args
+  border-radius args
 
 lighten(color)
   color - rgba(0,0,0,0.5)
