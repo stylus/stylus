@@ -1,14 +1,13 @@
-padding(n, margin = false)
-  foo length((1 2 3 4))
-  foo length(n)
-  foo length((1 2))
-  foo length((1))
-  foo length(())
-  foo length(1 2 3)
-  foo length(1)
-  foo length()
-  padding n
-  margin margin
+args(n)
+  length(n)
+
+vargs(args...)
+  length(args)
 
 body
-  padding(5 10 15, true)
+  foo length()
+  foo length(1)
+  foo length(1 2 3)
+  foo length((1 2) (3 4))
+  foo vargs(1, 2, 3, 4)
+  foo args(1 2 3)
