@@ -45,6 +45,7 @@ compiles to:
   - [importing](stylus/blob/master/docs/import.md) of other stylus sheets
   - type coercion
   - [conditionals](stylus/blob/master/docs/conditionals.md)
+  - [iteration](stylus/blob/master/docs/iteration.md)
   - nested [selectors](stylus/blob/master/docs/selectors.md)
   - parent reference
   - in-language [functions](stylus/blob/master/docs/functions.md)
