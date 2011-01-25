@@ -16,3 +16,20 @@ add(a, b)
 body
   padding add(1,5)
   // => 3.5
+
+getFunction(name)
+  if name == 'add'
+    add(a, b)
+      a + b
+  else
+    sub(a, b)
+      a - b
+
+body
+  fn = getFunction('add')
+  padding fn(5, 5)
+  // => 10
+  
+  fn = getFunction('sub')
+  padding fn(5, 5)
+  // => 0
