@@ -60,6 +60,7 @@ compiles to:
   - single-line and multi-line [comments](stylus/blob/master/docs/comments.md)
   - css [literal](stylus/blob/master/docs/literal.md)
   - character [escaping](stylus/blob/master/docs/escape.md)
+  - TextMate [bundle](stylus/blob/master/docs/textmate.md)
 
 ## Authors
 
