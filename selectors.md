@@ -86,6 +86,14 @@ compiles to:
 
 however this is only true in functions, since functions act both as mixins, or calls with return values. For example this is fine, and will yield the same results as above:
 
-
     body
       padding -5px
+
+Have weird property values that Stylus cannot process? `unquote()` can help you out:
+
+    filter unquote('progid:DXImageTransform.Microsoft.BasicImage(rotation=1)')
+
+yields:
+
+    filter progid:DXImageTransform.Microsoft.BasicImage(rotation=1)
+    
