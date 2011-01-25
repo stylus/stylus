@@ -59,6 +59,7 @@ compiles to:
   - [error reporting](stylus/blob/master/docs/error-reporting.md)
   - single-line and multi-line [comments](stylus/blob/master/docs/comments.md)
   - css [literal](stylus/blob/master/docs/literal.md)
+  - character [escaping](stylus/blob/master/docs/escape.md)
 
 ## Authors
 
