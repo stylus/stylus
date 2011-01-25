@@ -288,6 +288,11 @@ Darken the given `color` by `amount`.
      p(fonts)
      p(#fff)
      p(rgba(0,0,0,0.2))
+     
+     add(a, b)
+       a + b
+    
+     p(add)
 
 stdout:
 
@@ -297,6 +302,7 @@ stdout:
      inspect: Arial, sans-serif
      inspect: #fff
      inspect: rgba(0,0,0,0.2)
+     inspect: add(a, b)
 
 ### Undefined Functions
 
