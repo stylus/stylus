@@ -1,0 +1,44 @@
+
+test(args...)
+  test-args args
+  each arg in args
+    foo arg
+
+size(a, b)
+  return a b
+
+body
+  test 1 2 3
+  test (1 2) (3 4) 5
+  test size(1, 2) size(3, 4)
+
+body
+  sizes = size(1, 2) size(3, 4)
+  each size in sizes
+    foo size
+
+body
+  each n in 1..5
+    foo n
+
+body
+  each n in 1 2 3
+    foo n
+
+body
+  each n in 1 2 3
+    foo
+      bar n
+
+test(args...)
+  foo
+    each arg in args
+      bar
+        baz arg
+
+body
+  test 1 2 3
+
+body
+  each val, index in foo bar baz
+    foo index val
