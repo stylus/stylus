@@ -52,6 +52,36 @@ note that since argument defaults are assignments, we can also utilize function 
      add(15%, 10deg)
      // => 25
 
+### Multiple Return Values
+
+ Stylus functions can return several values, just as you can assign several values to a variable. For example the following is a valid assignment:
+ 
+       sizes = 15px 10px
+     
+       sizes[0]
+       // => 15px 
+
+Similarly we may return several values:
+
+       sizes()
+         15px 10px
+
+       sizes()[0]
+       // => 15px
+
+One slight exception is when return values are identifiers, for example the following looks like a property assignment to Stylus since no operators are present.
+
+     swap(a, b)
+       b a
+
+To disambiguate we may either wrap in parens, or utilize the `return` keyword.
+
+      swap(a, b)
+        (b a)
+
+      swap(a, b)
+        return b a
+
 ### Conditionals
 
  Let's say we want to create a function named `stringish()` to see if the value given can be transformed to a string. We check if `val` is a string, or an ident which is string-like. Because undefined identifiers yield themselves as the value, we may compare them to them-selves as shown below, where `yes` and `no` are used in place of `true` and `false`.
