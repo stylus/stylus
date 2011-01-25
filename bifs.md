@@ -277,6 +277,27 @@ Darken the given `color` by `amount`.
         error('add() expects units')
       a + b
 
+### p(expr)
+
+ Inspect the given `expr`:
+ 
+     fonts = Arial, sans-serif
+     p('test')
+     p(123)
+     p((1 2 3))
+     p(fonts)
+     p(#fff)
+     p(rgba(0,0,0,0.2))
+
+stdout:
+
+     inspect: "test"
+     inspect: 123
+     inspect: 1 2 3
+     inspect: Arial, sans-serif
+     inspect: #fff
+     inspect: rgba(0,0,0,0.2)
+
 ### Undefined Functions
 
   Undefined functions will output as literals, so for example
