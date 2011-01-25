@@ -5,10 +5,10 @@
 
 ### Example
 
-    border-radius(n)
-      -webkit-border-radius n
-      -moz-border-radius n
-      border-radius n
+    border-radius(args...)
+      -webkit-border-radius args
+      -moz-border-radius args
+      border-radius args
 
     body a
       font 12px "Lucida Grande", Arial, sans-serif
@@ -60,7 +60,7 @@ compiles to:
   - single-line and multi-line [comments](stylus/blob/master/docs/comments.md)
   - css [literal](stylus/blob/master/docs/literal.md)
   - character [escaping](stylus/blob/master/docs/escape.md)
-  - TextMate [bundle](stylus/blob/master/docs/textmate.md)
+  - TextMate [bundle](stylus/blob/master/docs/textmates.md)
 
 ## Authors
 
