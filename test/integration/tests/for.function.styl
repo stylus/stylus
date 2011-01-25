@@ -24,12 +24,13 @@ join(delim, strings...)
     if i
       buf = buf + delim + s
     else
-      buf = s
+      buf = '' + s
   buf
 
 body
   foo join(', ', 'one', 'two', 'three')
   foo join(' ', '1', '2', '3')
+  foo join(', ', 1, 2, 3)
 
 body
   fonts = Impact Arial sans-serif

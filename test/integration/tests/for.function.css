@@ -7,9 +7,11 @@ body {
 body {
   foo: "one, two, three";
   foo: "1 2 3";
+  foo: "1, 2, 3";
 }
 body {
   foo: 0 Impact;
   foo: 1 Arial;
   foo: 2 sans-serif;
 }
+
