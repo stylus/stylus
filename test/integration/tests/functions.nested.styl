@@ -1,0 +1,18 @@
+
+add(a, b)
+  div(a, b)
+    a / b
+  a + div(b, 2)
+
+body
+  padding add(1,5)
+  // => 3.5
+
+add(a, b)
+  half()
+    b / 2
+  a + half()
+
+body
+  padding add(1,5)
+  // => 3.5
