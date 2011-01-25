@@ -16,7 +16,7 @@ function sub(a, b) {
   return a.operate('-', b);
 }
 
-function imageDimensions(img) {
+function imageSize(img) {
   // assert that the node (img) is a String node, passing
   // the param name for error reporting
   css.utils.assertType(img, nodes.String, 'img');
@@ -36,23 +36,19 @@ function imageDimensions(img) {
     h = h[1] << 8 | h[0];
   }
 
-  return [w, h];
-}
+  // Return (w h)
+  var expr = new nodes.Expression;
+  expr.push(new nodes.Unit(w));
+  expr.push(new nodes.Unit(h));
 
-function imageWidth(img) {
-  return new nodes.Unit(imageDimensions(img)[0]);
-}
-
-function imageHeight(img) {
-  return new nodes.Unit(imageDimensions(img)[1]);
+  return expr;
 }
 
 css(str)
   .set('filename', 'js-functions.styl')
   .define('add', add)
   .define('sub', sub)
-  .define('image-width', imageWidth)
-  .define('image-height', imageHeight)
+  .define('image-size', imageSize)
   .render(function(err, css){
     if (err) throw err;
     console.log(css);

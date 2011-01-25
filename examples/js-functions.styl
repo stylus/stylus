@@ -1,10 +1,9 @@
 
-// image-size(img) -> (width height)
+image-width(path)
+  return image-size(path)[0]
 
-image-size(img)
-  w = image-width(img)
-  h = image-height(img)
-  return w h
+image-height(path)
+  return image-size(path)[1]
 
 body
   font add(5px, 10px)
