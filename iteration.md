@@ -33,3 +33,32 @@ yielding:
           foo: 1 Arial;
           foo: 2 sans-serif;
         }
+
+### Functions
+
+ Stylus functions may also contain for-loops, below are some example use-cases:
+
+sum:
+
+      sum(nums...)
+        sum = 0
+        for n in nums
+          sum = sum + n
+        n
+
+      sum(1,2,3,4)
+      // => 10
+
+join:
+
+      join(delim, strings...)
+        buf = ''
+        for s, i in strings
+          buf = buf + (i ? delim : '') + s
+        buf
+
+      foo join(', ', 'one', 'two', 'three')
+      // => "one, two, three"
+
+      join(' ', 1, 2, 3)
+      // => "1 2 3"
