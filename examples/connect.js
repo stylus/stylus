@@ -17,8 +17,12 @@ function compile(str, path, fn) {
 }
 
 var server = connect.createServer(
-    stylus.middleware({ src: __dirname, compile: compile })
-  , connect.staticProvider(__dirname)
+    stylus.middleware({
+        src: __dirname
+      , dest: __dirname + '/public'
+      , compile: compile
+    })
+  , connect.staticProvider(__dirname + '/public')
 );
 
 server.listen(3000);
