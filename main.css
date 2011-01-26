@@ -29,7 +29,7 @@ h1 {
 }
 #example {
   float: left;
-  margin: 20px 0;
+  margin: 40px 0;
   border-top: 1px dotted #eee;
   border-bottom: 1px dotted #eee;
 }
