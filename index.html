@@ -1,22 +1,22 @@
-<!DOCTYPE html><html><head><title>Stylus</title><link rel="stylesheet" href="main.css"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head><body><h1>Stylus</h1><p class="tagline"><em class="expressive">Expressive, </em><em class="dynamic">dynamic, </em><em class="robust">robust </em><em class="css">CSS</em></p><div id="ribbon"><a href="http://github.com/learnboost/stylus">Fork me on GitHub</a></div><div id="content"><div id="example"><pre id="stylus">border-radius(args...)
-  -webkit-border-radius args
-  -moz-border-radius args
-  border-radius args
- 
-size = 12px
-families = Helvetica, Arial, sans-serif
- 
-body
-  font size families
+<!DOCTYPE html><html><head><title>Stylus</title><link rel="stylesheet" href="main.css"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head><body><div id="container"><h1>Stylus</h1><p class="tagline"><em class="expressive">Expressive, </em><em class="dynamic">dynamic, </em><em class="robust">robust </em><em class="css">CSS</em></p><div id="ribbon"><a href="http://github.com/learnboost/stylus">Fork me on GitHub</a></div><div id="content"><div class="example"><h2>What if we could omit braces?</h2><pre>body
+  font: 12px Helvetica, Arial, sans-serif;
  
 a.button
-  border-radius 5px
-</pre><div id="arrow">➡</div><pre id="css">body {
-  font: 12px Helvetica, Arial, sans-serif;
-}
-a.button {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-}
-</pre></div><a href="http://github.com/learnboost/stylus" class="button">View source</a></div></body></html>
+</pre></div><div class="example"><h2>How about semi-colons?</h2><pre>body
+  font: 12px Helvetica, Arial, sans-serif
+ 
+a.button
+  -webkit-border-radius: 5px
+  -moz-border-radius: 5px
+  border-radius: 5px
+</pre></div><div class="example"><h2>Why stop there, drop the colons</h2><pre>body
+  font 12px Helvetica, Arial, sans-serif
+ 
+a.button
+  -webkit-border-radius 5px
+  -moz-border-radius 5px
+  border-radius 5px
+</pre></div></div></div></body></html>

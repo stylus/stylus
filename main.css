@@ -1,5 +1,10 @@
+html {
+  background: #dadada;
+  background: -moz-linear-gradient(-90deg, #f1f1f1, #dadada) fixed;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f1f1f1), to(#dadada)) fixed;
+}
 body {
-  padding: 80px 130px;
+  padding: 120px 150px;
   font: 14px "helvetica neue", helvetica, arial, sans-serif;
   color: #222;
 }
@@ -7,6 +12,10 @@ h1 {
   margin: 10px 0 15px 0;
   font-weight: bold;
   font-size: 60px;
+}
+h2 {
+  margin: 0;
+  font-size: 18px;
 }
 .tagline {
   margin: 0;
@@ -27,33 +36,30 @@ h1 {
 .tagline em.css {
   color: #bbb;
 }
-#example {
-  position: relative;
-  float: left;
-  margin: 20px 0;
-  padding: 20px 0;
-  border-top: 1px dotted #eee;
-  border-bottom: 1px dotted #eee;
+#container {
+  text-align: center;
 }
-#example pre {
+#container #content {
+  margin: 0 auto;
+  width: 300px;
+  text-align: left;
+}
+.example {
+  margin-top: 65px;
+}
+.example pre {
   float: left;
+  background: #fff;
+  padding: 25px;
   color: #8d8d8d;
-  font-family: monaco, "helvetica neue", helvetica;
-}
-#example pre#css {
-  margin-left: 100px;
-}
-#example #arrow {
-  position: absolute;
-  font-size: 50px;
-  top: 85px;
-  left: 335px;
-  text-shadow: 2px 2px 3px #ddd;
-  color: #a00;
+  font: 12px / 1.4 monaco, "helvetica neue", helvetica;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
 }
 a.button {
-  float: left;
   clear: both;
+  float: left;
   display: block;
   padding: 8px 0 9px;
   background: #e3e3e3;

@@ -5,38 +5,46 @@ html
     link(rel='stylesheet', href='main.css')
     meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
   body
-    h1 Stylus
-    p.tagline 
-      em.expressive Expressive, 
-      em.dynamic dynamic, 
-      em.robust robust 
-      em.css CSS
-    #ribbon
-      a(href='http://github.com/learnboost/stylus') Fork me on GitHub
-    #content
-      #example
-        pre#stylus
-          | border-radius(args...)
-          |   -webkit-border-radius args
-          |   -moz-border-radius args
-          |   border-radius args
-          | 
-          | size = 12px
-          | families = Helvetica, Arial, sans-serif
-          | 
-          | body
-          |   font size families
-          | 
-          | a.button
-          |   border-radius 5px
-        #arrow ➡
-        pre#css
-          | body {
-          |   font: 12px Helvetica, Arial, sans-serif;
-          | }
-          | a.button {
-          |   -webkit-border-radius: 5px;
-          |   -moz-border-radius: 5px;
-          |   border-radius: 5px;
-          | }
-      a.button(href='http://github.com/learnboost/stylus') View source
+    #container
+      h1 Stylus
+      p.tagline 
+        em.expressive Expressive, 
+        em.dynamic dynamic, 
+        em.robust robust 
+        em.css CSS
+      #ribbon
+        a(href='http://github.com/learnboost/stylus') Fork me on GitHub
+      #content
+        .example
+          h2 What if we could omit braces?
+          pre
+            | body
+            |   font: 12px Helvetica, Arial, sans-serif;
+            | 
+            | a.button
+            |   -webkit-border-radius: 5px;
+            |   -moz-border-radius: 5px;
+            |   border-radius: 5px;
+
+        .example
+          h2 How about semi-colons?
+          pre
+            | body
+            |   font: 12px Helvetica, Arial, sans-serif
+            | 
+            | a.button
+            |   -webkit-border-radius: 5px
+            |   -moz-border-radius: 5px
+            |   border-radius: 5px
+
+        .example
+          h2 Why stop there, drop the colons
+          pre
+            | body
+            |   font 12px Helvetica, Arial, sans-serif
+            | 
+            | a.button
+            |   -webkit-border-radius 5px
+            |   -moz-border-radius 5px
+            |   border-radius 5px
+          
