@@ -73,7 +73,7 @@ fs.readdir(__dirname + '/tests', function(err, files){
 
 function done() {
   console.log(
-      '  \033[90mcompleted\033[0m'
+      '\n  \033[90mcompleted\033[0m'
     + ' \033[32m%d\033[0m'
-    + ' \033[90mtests\033[0m', count);
+    + ' \033[90mtests\033[0m\n', count);
 }
