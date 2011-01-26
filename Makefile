@@ -13,7 +13,7 @@ docs: docs/index.html
 docs/index.html: $(SRC)
 	@mkdir -p docs
 	dox \
-	  --title "Switch" \
+	  --title "Stylus" \
     --desc "Expressive CSS language for nodejs" \
 		--ribbon http://github.com/learnboost/stylus \
 		--private \
