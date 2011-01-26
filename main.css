@@ -1,7 +1,7 @@
 body {
   padding: 80px 100px;
   font: 14px "helvetica neue", helvetica, arial, sans-serif;
-  color: #2c2c2c;
+  color: #222;
 }
 h1 {
   margin: 10px 0 15px 0;
@@ -16,16 +16,16 @@ h1 {
   font-style: normal;
 }
 .tagline em.expressive {
-  color: #2c2c2c;
+  color: #222;
 }
 .tagline em.dynamic {
-  color: #5f5f5f;
+  color: #555;
 }
 .tagline em.robust {
-  color: #929292;
+  color: #888;
 }
 .tagline em.css {
-  color: #c5c5c5;
+  color: #bbb;
 }
 #example {
   float: left;
@@ -90,7 +90,7 @@ a.button:active {
 }
 #ribbon a {
   color: #fff;
-  border: 1px solid #faa;
+  border: 1px solid #f11;
   display: block;
   margin: 0.05em 0;
   padding: 0.5em 3.5em;

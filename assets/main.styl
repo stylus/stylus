@@ -1,7 +1,7 @@
 
 large = 60px
 small = 14px
-dark-gray = #2C2C2C
+dark-gray = #222
 
 border-radius(args...)
   -webkit-border-radius args
@@ -20,18 +20,18 @@ transform(args...)
   -webkit-transform args
   -moz-transform args
 
-ribbon()
+ribbon(color)
   position absolute
   top 2.5em
   left -3.75em
   transform rotate(-45deg)
-  background-color #a00
+  background-color color
   padding 1px 0
   overflow hidden
   box-shadow 2px 2px 8px rgba(0,0,0,0.3)
   a
     color #fff
-    border 1px solid #faa
+    border 1px solid lighten(color, 20%)
     display block
     margin 0.05em 0
     padding 0.5em 3.5em
@@ -104,4 +104,4 @@ a.button
   button()
 
 #ribbon
-  ribbon()
+  ribbon(#a00)
