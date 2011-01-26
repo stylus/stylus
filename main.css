@@ -6,6 +6,11 @@ html {
 body {
   padding: 120px 150px;
   font: 14px "helvetica neue", helvetica, arial, sans-serif;
+  color: #484848;
+}
+h1,
+h2,
+h3 {
   color: #222;
 }
 h1 {
@@ -71,6 +76,9 @@ ul li {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
+  -moz-box-shadow: rgba(34,34,34,0.1) -1px -1px;
+  -webkit-box-shadow: rgba(34,34,34,0.1) -1px -1px;
+  box-shadow: rgba(34,34,34,0.1) -1px -1px;
 }
 a.button {
   clear: both;
