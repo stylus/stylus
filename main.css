@@ -28,6 +28,7 @@ h1 {
   color: #bbb;
 }
 #example {
+  position: relative;
   float: left;
   margin: 40px 0;
   border-top: 1px dotted #eee;
@@ -38,7 +39,16 @@ h1 {
   color: #8d8d8d;
 }
 #example pre#css {
-  margin-left: 35px;
+  margin-left: 100px;
+}
+#example #arrow {
+  position: absolute;
+  font-size: 50px;
+  top: 85px;
+  left: 335px;
+  text-shadow: 2px 2px 3px #ddd;
+  color: #a00;
+  opacity: 0.75;
 }
 a.button {
   float: left;
