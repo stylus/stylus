@@ -74,4 +74,23 @@ a.button:active {
   -webkit-box-shadow: inset 0 0 1px 1px #e3e3e3;
   box-shadow: inset 0 0 1px 1px #e3e3e3;
 }
+#ribbon {
+  position: absolute;
+  top: 2.5em;
+  right: 0;
+  background-color: #a00;
+  padding: 1px 0;
+  overflow: hidden;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+}
+#ribbon a {
+  color: #fff;
+  border: 1px solid #faa;
+  display: block;
+  margin: 0.05em 0;
+  padding: 0.5em 3.5em;
+  text-align: center;
+  text-decoration: none;
+}
 

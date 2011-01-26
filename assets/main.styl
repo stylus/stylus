@@ -16,6 +16,27 @@ box-shadow(args...)
   -webkit-box-shadow args
   box-shadow args
 
+transform(args...)
+  -webkit-transform args
+  -moz-transform args
+
+ribbon()
+  position absolute
+  top 2.5em
+  right 0
+  transform rotate(45deg)
+  background-color #a00
+  padding 1px 0
+  overflow hidden
+  a
+    color #fff
+    border 1px solid #faa
+    display block
+    margin 0.05em 0
+    padding 0.5em 3.5em
+    text-align center
+    text-decoration none
+
 button(font-size = 12px)
   display block
   padding 8px 0 9px
@@ -79,3 +100,6 @@ a.button
   float left
   clear both
   button()
+
+#ribbon
+  ribbon()
