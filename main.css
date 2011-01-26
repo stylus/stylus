@@ -1,5 +1,5 @@
 body {
-  padding: 80px 100px;
+  padding: 80px 130px;
   font: 14px "helvetica neue", helvetica, arial, sans-serif;
   color: #222;
 }
@@ -98,9 +98,9 @@ a.button:active {
   overflow: hidden;
   -webkit-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
-  -moz-box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-  -webkit-box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-  box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+  -moz-box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  -webkit-box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
 }
 #ribbon a {
   color: #fff;
