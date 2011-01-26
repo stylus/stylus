@@ -17,6 +17,20 @@ h2 {
   margin: 0;
   font-size: 18px;
 }
+a {
+  text-decoration: none;
+  color: #b90101;
+}
+a:hover {
+  text-decoration: underline;
+}
+ul {
+  margin: 0;
+  padding: 0 25px;
+}
+ul li {
+  list-style: square;
+}
 .tagline {
   margin: 0;
   padding: 0;
