@@ -1,29 +1,27 @@
 
 large = 60px
 small = 14px
-bright-blue = #03AFFF
-bright-orange = #FF4A03
-bright-yellow = #FFCD03
+dark-gray = #2C2C2C
 
 body
   padding 50px
   font small 'helvetica neue', helvetica, arial, sans-serif
 
 h1
-  margin 5px
+  margin 10px 0 15px 0
   font-weight bold
   font-size large
 
 .tagline
-  margin 5px 0
+  margin 0
   padding 0
   em
     font-style normal
     &.expressive
-      color bright-blue
+      color dark-gray
     &.dynamic
-      color bright-orange
+      color lighten(dark-gray, 20%)
     &.robust
-      color bright-yellow
+      color lighten(dark-gray, 40%)
     &.css
-      color #858585
+      color lighten(dark-gray, 60%)
