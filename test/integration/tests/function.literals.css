@@ -1,6 +1,0 @@
-body {
-  foo: bar(1px, baz(5px));
-  bar: baz(5px) baz(5px);
-  foo: recurse;
-  foo: recurse;
-}
