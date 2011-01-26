@@ -41,3 +41,26 @@ will render to:
           if (err) throw err;
           console.log(css);
         });
+
+### JavaScript Import API
+
+ When using the `.import(path)` method, these imports are deferred until evaluation:
+ 
+       var stylus = require('../')
+         , str = require('fs').readFileSync(__dirname + '/test.styl', 'utf8');
+
+       stylus(str)
+         .set('filename', __dirname + '/test.styl')
+         .import('mixins/vendor')
+         .render(function(err, css){
+         if (err) throw err;
+         console.log(css);
+       });
+
+ The following are essentially equivalent:
+ 
+     @import 'mixins/vendor'
+
+and
+     .import('mixins/vendor') 
+ 

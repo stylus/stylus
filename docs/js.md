@@ -19,14 +19,29 @@ We can also do the same thing in a more progressive manner:
         // logic
       });
 
-## .set(setting, value)
+### .set(setting, value)
 
  Apply a setting such as a `filename`, or import `paths`:
  
      .set('filename', __dirname + '/test.styl')
      .set('paths', [__dirname, __dirname + '/mixins'])
 
-## .define(name, fn)
+### .import(path)
+
+Defer importing of the given `path` until evaluation is performed. The example below is essentially the same as doing `@import 'mixins/vendor'` within your Stylus sheet.
+
+      var stylus = require('../')
+        , str = require('fs').readFileSync(__dirname + '/test.styl', 'utf8');
+
+      stylus(str)
+        .set('filename', __dirname + '/test.styl')
+        .import('mixins/vendor')
+        .render(function(err, css){
+        if (err) throw err;
+        console.log(css);
+      });
+
+### .define(name, fn)
 
  This method allows you to provide a JavaScript-defined function to Stylus, think of these as you would JavaScript to C++ bindings. When you have something you cannot do within Stylus, you define it in JavaScript.
 
