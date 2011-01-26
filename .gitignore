@@ -2,3 +2,5 @@ css
 lib-cov
 testing
 .DS_Store
+main.css
+index.html
