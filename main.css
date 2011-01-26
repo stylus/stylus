@@ -41,14 +41,14 @@ h2 {
 }
 #container #content {
   margin: 0 auto;
+  padding-top: 40px;
   width: 300px;
   text-align: left;
 }
 .example {
-  margin-top: 65px;
+  margin-top: 25px;
 }
 .example pre {
-  float: left;
   background: #fff;
   padding: 25px;
   color: #8d8d8d;
