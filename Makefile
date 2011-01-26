@@ -1,23 +1,12 @@
 
 SRC = $(shell find lib -name "*.js")
-TESTS = $(shell find test -name "*.test.js")
 TM_BUNDLE = editors/Stylus.tmbundle
 TM_BUNDLE_DEST = ~/Library/Application\ Support/TextMate/Bundles
 
-test: test-unit test-integration
-
-test-unit:
-	@./support/expresso/bin/expresso \
-		-I support \
-		-I lib \
-		$(TEST_FLAGS) \
-		$(TESTS)
+test: test-integration
 
 test-integration:
 	@node test/integration/test.js
-
-test-cov:
-	@$(MAKE) test TEST_FLAGS=--cov
 
 docs: docs/index.html
 
@@ -36,4 +25,4 @@ install-bundle:
 update-bundle:
 	cp -fr $(TM_BUNDLE_DEST)/Stylus.tmbundle editors
 
-.PHONY: test test-unit test-integration install-bundle test-cov docs update-bundle
+.PHONY: test test-integration install-bundle docs update-bundle
