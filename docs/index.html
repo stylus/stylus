@@ -1,4 +1,4 @@
-<a href="http://github.com/learnboost/switch"><img alt="Fork me on GitHub" id="ribbon" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a><html>
+<a href="http://github.com/learnboost/stylus"><img alt="Fork me on GitHub" id="ribbon" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a><html>
 	<head>
 		<title>Switch</title>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
@@ -866,12 +866,27 @@ match('^foo(bar)?', 'bar')
 <pre><code>(<span class="variable">exports</span>.<span class="variable">length</span> = <span class="keyword">function</span>(<span class="variable">expr</span>){
   <span class="keyword">if</span> (<span class="variable">expr</span>) {
     <span class="keyword">if</span> (<span class="variable">expr</span>.<span class="variable">nodes</span>) {
-      <span class="keyword">return</span> <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Unit</span>(<span class="variable">expr</span>.<span class="variable">nodes</span>.<span class="variable">length</span>);
+      <span class="keyword">return</span> <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Unit</span>(<span class="variable">utils</span>.<span class="variable">unwrap</span>(<span class="variable">expr</span>).<span class="variable">nodes</span>.<span class="variable">length</span>);
     } <span class="keyword">else</span> {
       <span class="keyword">return</span> <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Unit</span>(<span class="number integer">1</span>);
     }
   }
   <span class="keyword">return</span> <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Unit</span>(<span class="number integer">0</span>);
+}).<span class="variable">tuple</span> = <span class="variable">true</span>;</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Inspect the given <code>node</code>.</p>
+
+<h2></h2>
+
+<ul><li><p><strong>param</strong>: <em>Node</em>  node</p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
+</td>
+<td class="code">
+<pre><code>(<span class="variable">exports</span>.<span class="variable">p</span> = <span class="keyword">function</span>(<span class="variable">node</span>){
+  <span class="variable">console</span>.<span class="variable">log</span>(<span class="string">'\033[90minspect:\033[0m %s'</span>, <span class="variable">node</span>);
+  <span class="keyword">return</span> <span class="variable">nodes</span>.<span class="keyword">null</span>;
 }).<span class="variable">tuple</span> = <span class="variable">true</span>;</code></pre>
 </td>
 </tr>
@@ -1226,7 +1241,7 @@ match('^foo(bar)?', 'bar')
  </p>
 </td>
 <td class="code">
-<pre><code><span class="keyword">var</span> <span class="variable">color</span> = <span class="keyword">new</span> <span class="class">RegExp</span>(<span class="string">'^('</span> + <span class="class">Object</span>.<span class="variable">keys</span>(<span class="variable">colors</span>).<span class="variable">join</span>(<span class="string">'|'</span>) + <span class="string">')(\\()? *'</span>)</code></pre>
+<pre><code><span class="keyword">var</span> <span class="variable">color</span> = <span class="keyword">new</span> <span class="class">RegExp</span>(<span class="string">'^('</span> + <span class="class">Object</span>.<span class="variable">keys</span>(<span class="variable">colors</span>).<span class="variable">join</span>(<span class="string">'|'</span>) + <span class="string">')(?![-])(\\()? *'</span>);</code></pre>
 </td>
 </tr>
 <tr class="code">
@@ -1244,7 +1259,7 @@ match('^foo(bar)?', 'bar')
   <span class="this">this</span>.<span class="variable">filename</span> = <span class="variable">options</span>.<span class="variable">filename</span> || <span class="string">'stylus'</span>;
   <span class="this">this</span>.<span class="variable">stash</span> = [];
   <span class="this">this</span>.<span class="variable">prevIndents</span> = <span class="number integer">0</span>;
-  <span class="this">this</span>.<span class="variable">lineno</span> = <span class="number integer">1</span>;
+  <span class="this">this</span>.<span class="variable">lineno</span> = <span class="number integer">0</span>;
 };</code></pre>
 </td>
 </tr>
@@ -1503,12 +1518,14 @@ match('^foo(bar)?', 'bar')
 | 'else'
 | 'unless'
 | 'return'
+| 'for'
+| 'in'
    </p>
 </td>
 <td class="code">
 <pre><code><span class="variable">get</span> <span class="variable">keyword</span>() {
     <span class="keyword">var</span> <span class="variable">captures</span>;
-    <span class="keyword">if</span> (<span class="variable">captures</span> = <span class="regexp">/^(return|if|else|unless)\b */</span>.<span class="variable">exec</span>(<span class="this">this</span>.<span class="variable">str</span>)) {
+    <span class="keyword">if</span> (<span class="variable">captures</span> = <span class="regexp">/^(return|if|else|unless|for|in)\b */</span>.<span class="variable">exec</span>(<span class="this">this</span>.<span class="variable">str</span>)) {
       <span class="keyword">var</span> <span class="variable">keyword</span> = <span class="variable">captures</span>[<span class="number integer">1</span>];
       <span class="this">this</span>.<span class="variable">skip</span>(<span class="variable">captures</span>);
       <span class="keyword">return</span> <span class="keyword">new</span> <span class="class">Token</span>(<span class="variable">keyword</span>, <span class="variable">keyword</span>);
@@ -1617,10 +1634,13 @@ match('^foo(bar)?', 'bar')
     <span class="keyword">if</span> (<span class="string">'/'</span> == <span class="this">this</span>.<span class="variable">str</span>[<span class="number integer">0</span>] &<span class="variable">amp</span>;&<span class="variable">amp</span>; <span class="string">'*'</span> == <span class="this">this</span>.<span class="variable">str</span>[<span class="number integer">1</span>]) {
       <span class="keyword">var</span> <span class="variable">end</span> = <span class="this">this</span>.<span class="variable">str</span>.<span class="variable">indexOf</span>(<span class="string">'*/'</span>);
       <span class="keyword">if</span> (-<span class="number integer">1</span> == <span class="variable">end</span>) <span class="variable">end</span> = <span class="this">this</span>.<span class="variable">str</span>.<span class="variable">length</span>;
-      <span class="keyword">var</span> <span class="variable">lines</span> = <span class="this">this</span>.<span class="variable">str</span>.<span class="variable">substr</span>(<span class="number integer">0</span>, <span class="variable">end</span>).<span class="variable">split</span>(<span class="string">'\n'</span>).<span class="variable">length</span> - <span class="number integer">1</span>;
+      <span class="keyword">var</span> <span class="variable">str</span> = <span class="this">this</span>.<span class="variable">str</span>.<span class="variable">substr</span>(<span class="number integer">0</span>, <span class="variable">end</span> + <span class="number integer">2</span>)
+        , <span class="variable">lines</span> = <span class="variable">str</span>.<span class="variable">split</span>(<span class="string">'\n'</span>).<span class="variable">length</span> - <span class="number integer">1</span>;
       <span class="this">this</span>.<span class="variable">lineno</span> += <span class="variable">lines</span>;
       <span class="this">this</span>.<span class="variable">skip</span>(<span class="variable">end</span> + <span class="number integer">2</span>);
-      <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">advance</span>;
+      <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">allowComments</span>
+        ? <span class="keyword">new</span> <span class="class">Token</span>(<span class="string">'comment'</span>, <span class="variable">str</span>)
+        : <span class="this">this</span>.<span class="variable">advance</span>;
     }
   },</code></pre>
 </td>
@@ -1861,7 +1881,7 @@ match('^foo(bar)?', 'bar')
 </tr>
 <tr class="code">
 <td class="docs">
-<p>[^\n,]+
+<p>[^\n,;]+
    </p>
 </td>
 <td class="code">
@@ -2009,6 +2029,7 @@ match('^foo(bar)?', 'bar')
 <pre><code><span class="class">Block</span>.<span class="variable">prototype</span>.<span class="variable">clone</span> = <span class="keyword">function</span>(){
   <span class="keyword">var</span> <span class="variable">clone</span> = <span class="keyword">new</span> <span class="class">Block</span>(<span class="class">Block</span>.<span class="variable">parent</span> || <span class="this">this</span>.<span class="variable">parent</span>, <span class="this">this</span>.<span class="variable">node</span>);
   <span class="variable">clone</span>.<span class="variable">lineno</span> = <span class="this">this</span>.<span class="variable">lineno</span>;
+  <span class="variable">clone</span>.<span class="variable">scope</span> = <span class="this">this</span>.<span class="variable">scope</span>;
   <span class="class">Block</span>.<span class="variable">parent</span> = <span class="variable">clone</span>;
   <span class="keyword">for</span> (<span class="keyword">var</span> <span class="variable">i</span> = <span class="number integer">0</span>; <span class="variable">i</span> &<span class="variable">lt</span>; <span class="this">this</span>.<span class="variable">nodes</span>.<span class="variable">length</span>; ++<span class="variable">i</span>) {
     <span class="variable">clone</span>.<span class="variable">push</span>(<span class="this">this</span>.<span class="variable">nodes</span>[<span class="variable">i</span>].<span class="variable">clone</span>());
@@ -2125,6 +2146,54 @@ match('^foo(bar)?', 'bar')
   <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">val</span> ? <span class="string">'true'</span> : <span class="string">'false'</span>;
 };</code></pre>
 </td>
+</tr><tr class="filename"><td><h2 id="lib/nodes/charset.js"><a href="#">charset</a></h2></td><td>lib/nodes/charset.js</td></tr><tr class="code">
+<td class="docs">
+<p>Module dependencies.
+ </p>
+</td>
+<td class="code">
+<pre><code><span class="keyword">var</span> <span class="class">Node</span> = <span class="variable">require</span>(<span class="string">'./node'</span>)
+  , <span class="variable">nodes</span> = <span class="variable">require</span>(<span class="string">'./'</span>);</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Initialize a new <code>Charset</code> with the given <code>val</code></p>
+
+<h2></h2>
+
+<ul><li><p><strong>param</strong>: <em>String</em>  val</p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
+</td>
+<td class="code">
+<pre><code><span class="keyword">var</span> <span class="class">Charset</span> = <span class="variable">module</span>.<span class="variable">exports</span> = <span class="keyword">function</span> <span class="class">Charset</span>(<span class="variable">val</span>){
+  <span class="class">Node</span>.<span class="variable">call</span>(<span class="this">this</span>);
+  <span class="this">this</span>.<span class="variable">val</span> = <span class="variable">val</span>;
+};</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Inherit from <code>Node.prototype</code>.
+ </p>
+</td>
+<td class="code">
+<pre><code><span class="class">Charset</span>.<span class="variable">prototype</span>.<span class="variable">__proto__</span> = <span class="class">Node</span>.<span class="variable">prototype</span>;</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Return @charset "val".</p>
+
+<h2></h2>
+
+<ul><li><p><strong>return</strong>: <em>String</em> </p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
+</td>
+<td class="code">
+<pre><code><span class="class">Charset</span>.<span class="variable">prototype</span>.<span class="variable">toString</span> = <span class="keyword">function</span>(){
+  <span class="keyword">return</span> <span class="string">'@charset '</span> + <span class="this">this</span>.<span class="variable">vals</span>;
+};
+</code></pre>
+</td>
 </tr><tr class="filename"><td><h2 id="lib/nodes/call.js"><a href="#">call</a></h2></td><td>lib/nodes/call.js</td></tr><tr class="code">
 <td class="docs">
 <p>Module dependencies.
@@ -2186,54 +2255,6 @@ match('^foo(bar)?', 'bar')
 <td class="code">
 <pre><code><span class="class">Call</span>.<span class="variable">prototype</span>.<span class="variable">toString</span> = <span class="keyword">function</span>(){
   <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">name</span> + <span class="string">'()'</span>;
-};
-</code></pre>
-</td>
-</tr><tr class="filename"><td><h2 id="lib/nodes/charset.js"><a href="#">charset</a></h2></td><td>lib/nodes/charset.js</td></tr><tr class="code">
-<td class="docs">
-<p>Module dependencies.
- </p>
-</td>
-<td class="code">
-<pre><code><span class="keyword">var</span> <span class="class">Node</span> = <span class="variable">require</span>(<span class="string">'./node'</span>)
-  , <span class="variable">nodes</span> = <span class="variable">require</span>(<span class="string">'./'</span>);</code></pre>
-</td>
-</tr>
-<tr class="code">
-<td class="docs">
-<p>Initialize a new <code>Charset</code> with the given <code>val</code></p>
-
-<h2></h2>
-
-<ul><li><p><strong>param</strong>: <em>String</em>  val</p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
-</td>
-<td class="code">
-<pre><code><span class="keyword">var</span> <span class="class">Charset</span> = <span class="variable">module</span>.<span class="variable">exports</span> = <span class="keyword">function</span> <span class="class">Charset</span>(<span class="variable">val</span>){
-  <span class="class">Node</span>.<span class="variable">call</span>(<span class="this">this</span>);
-  <span class="this">this</span>.<span class="variable">val</span> = <span class="variable">val</span>;
-};</code></pre>
-</td>
-</tr>
-<tr class="code">
-<td class="docs">
-<p>Inherit from <code>Node.prototype</code>.
- </p>
-</td>
-<td class="code">
-<pre><code><span class="class">Charset</span>.<span class="variable">prototype</span>.<span class="variable">__proto__</span> = <span class="class">Node</span>.<span class="variable">prototype</span>;</code></pre>
-</td>
-</tr>
-<tr class="code">
-<td class="docs">
-<p>Return @charset "val".</p>
-
-<h2></h2>
-
-<ul><li><p><strong>return</strong>: <em>String</em> </p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
-</td>
-<td class="code">
-<pre><code><span class="class">Charset</span>.<span class="variable">prototype</span>.<span class="variable">toString</span> = <span class="keyword">function</span>(){
-  <span class="keyword">return</span> <span class="string">'@charset '</span> + <span class="this">this</span>.<span class="variable">vals</span>;
 };
 </code></pre>
 </td>
@@ -2500,6 +2521,63 @@ match('^foo(bar)?', 'bar')
 }
 </code></pre>
 </td>
+</tr><tr class="filename"><td><h2 id="lib/nodes/each.js"><a href="#">each</a></h2></td><td>lib/nodes/each.js</td></tr><tr class="code">
+<td class="docs">
+<p>Module dependencies.
+ </p>
+</td>
+<td class="code">
+<pre><code><span class="keyword">var</span> <span class="class">Node</span> = <span class="variable">require</span>(<span class="string">'./node'</span>)
+  , <span class="variable">nodes</span> = <span class="variable">require</span>(<span class="string">'./'</span>);</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Initialize a new <code>Each</code> node with the given <code>val</code> name,
+<code>key</code> name, <code>expr</code>, and <code>block</code>.</p>
+
+<h2></h2>
+
+<ul><li><p><strong>param</strong>: <em>String</em>  val</p></li><li><p><strong>param</strong>: <em>String</em>  key</p></li><li><p><strong>param</strong>: <em>Expression</em>  expr</p></li><li><p><strong>param</strong>: <em>Block</em>  block</p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
+</td>
+<td class="code">
+<pre><code><span class="keyword">var</span> <span class="class">Each</span> = <span class="variable">module</span>.<span class="variable">exports</span> = <span class="keyword">function</span> <span class="class">Each</span>(<span class="variable">val</span>, <span class="variable">key</span>, <span class="variable">expr</span>, <span class="variable">block</span>){
+  <span class="class">Node</span>.<span class="variable">call</span>(<span class="this">this</span>);
+  <span class="this">this</span>.<span class="variable">val</span> = <span class="variable">val</span>;
+  <span class="this">this</span>.<span class="variable">key</span> = <span class="variable">key</span>;
+  <span class="this">this</span>.<span class="variable">expr</span> = <span class="variable">expr</span>;
+  <span class="this">this</span>.<span class="variable">block</span> = <span class="variable">block</span>;
+};</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Inherit from <code>Node.prototype</code>.
+ </p>
+</td>
+<td class="code">
+<pre><code><span class="class">Each</span>.<span class="variable">prototype</span>.<span class="variable">__proto__</span> = <span class="class">Node</span>.<span class="variable">prototype</span>;</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Return a clone of this node.</p>
+
+<h2></h2>
+
+<ul><li><p><strong>return</strong>: <em>Node</em> </p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
+</td>
+<td class="code">
+<pre><code><span class="class">Each</span>.<span class="variable">prototype</span>.<span class="variable">clone</span> = <span class="keyword">function</span>(){
+  <span class="keyword">var</span> <span class="variable">clone</span> = <span class="keyword">new</span> <span class="class">Each</span>(
+      <span class="this">this</span>.<span class="variable">val</span>
+    , <span class="this">this</span>.<span class="variable">key</span>
+    , <span class="this">this</span>.<span class="variable">expr</span>.<span class="variable">clone</span>()
+    , <span class="this">this</span>.<span class="variable">block</span>.<span class="variable">clone</span>());
+  <span class="variable">clone</span>.<span class="variable">lineno</span> = <span class="this">this</span>.<span class="variable">lineno</span>;
+  <span class="keyword">return</span> <span class="variable">clone</span>;
+};</code></pre>
+</td>
 </tr><tr class="filename"><td><h2 id="lib/nodes/expression.js"><a href="#">expression</a></h2></td><td>lib/nodes/expression.js</td></tr><tr class="code">
 <td class="docs">
 <p>Module dependencies.
@@ -2550,21 +2628,9 @@ match('^foo(bar)?', 'bar')
 </td>
 <td class="code">
 <pre><code><span class="class">Expression</span>.<span class="variable">prototype</span>.<span class="variable">__defineGetter__</span>(<span class="string">'first'</span>, <span class="keyword">function</span>(){
-  <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">nodes</span>[<span class="number integer">0</span>].<span class="variable">first</span>;
-});</code></pre>
-</td>
-</tr>
-<tr class="code">
-<td class="docs">
-<p>Return the last node in this expression.</p>
-
-<h2></h2>
-
-<ul><li><p><strong>return</strong>: <em>Node</em> </p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
-</td>
-<td class="code">
-<pre><code><span class="class">Expression</span>.<span class="variable">prototype</span>.<span class="variable">__defineGetter__</span>(<span class="string">'last'</span>, <span class="keyword">function</span>(){
-  <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">nodes</span>[<span class="this">this</span>.<span class="variable">nodes</span>.<span class="variable">length</span> - <span class="number integer">1</span>].<span class="variable">first</span>;
+  <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">nodes</span>[<span class="number integer">0</span>]
+    ? <span class="this">this</span>.<span class="variable">nodes</span>[<span class="number integer">0</span>].<span class="variable">first</span>
+    : <span class="variable">nodes</span>.<span class="keyword">null</span>;
 });</code></pre>
 </td>
 </tr>
@@ -2626,8 +2692,128 @@ match('^foo(bar)?', 'bar')
     <span class="keyword">default</span>:
       <span class="keyword">return</span> <span class="class">Node</span>.<span class="variable">prototype</span>.<span class="variable">operate</span>.<span class="variable">call</span>(<span class="this">this</span>, <span class="variable">op</span>, <span class="variable">right</span>);
   }
+};</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Return "&lt;a&gt; &lt;b&gt; &lt;c&gt;" or "&lt;a&gt;, &lt;b&gt;, &lt;c&gt;" if
+the expression represents a list.</p>
+
+<h2></h2>
+
+<ul><li><p><strong>return</strong>: <em>String</em> </p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
+</td>
+<td class="code">
+<pre><code><span class="class">Expression</span>.<span class="variable">prototype</span>.<span class="variable">toString</span> = <span class="keyword">function</span>(){
+  <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">nodes</span>.<span class="variable">map</span>(<span class="keyword">function</span>(<span class="variable">node</span>){
+    <span class="keyword">return</span> <span class="variable">node</span>.<span class="variable">toString</span>();
+  }).<span class="variable">join</span>(<span class="this">this</span>.<span class="variable">isList</span> ? <span class="string">', '</span> : <span class="string">' '</span>);
 };
 
+
+</code></pre>
+</td>
+</tr><tr class="filename"><td><h2 id="lib/nodes/function.js"><a href="#">function</a></h2></td><td>lib/nodes/function.js</td></tr><tr class="code">
+<td class="docs">
+<p>Module dependencies.
+ </p>
+</td>
+<td class="code">
+<pre><code><span class="keyword">var</span> <span class="class">Node</span> = <span class="variable">require</span>(<span class="string">'./node'</span>);</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Initialize a new <code>Function</code> with <code>name</code>, <code>params</code>, and <code>body</code>.</p>
+
+<h2></h2>
+
+<ul><li><p><strong>param</strong>: <em>String</em>  name</p></li><li><p><strong>param</strong>: <em>Params | Function</em>  params</p></li><li><p><strong>param</strong>: <em>Block</em>  body</p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
+</td>
+<td class="code">
+<pre><code><span class="keyword">var</span> <span class="class">Function</span> = <span class="variable">module</span>.<span class="variable">exports</span> = <span class="keyword">function</span> <span class="class">Function</span>(<span class="variable">name</span>, <span class="variable">params</span>, <span class="variable">body</span>){
+  <span class="class">Node</span>.<span class="variable">call</span>(<span class="this">this</span>);
+  <span class="this">this</span>.<span class="variable">name</span> = <span class="variable">name</span>;
+  <span class="this">this</span>.<span class="variable">params</span> = <span class="variable">params</span>;
+  <span class="this">this</span>.<span class="variable">block</span> = <span class="variable">body</span>;
+  <span class="keyword">if</span> (<span class="string">'function'</span> == <span class="keyword">typeof</span> <span class="variable">params</span>) <span class="this">this</span>.<span class="variable">fn</span> = <span class="variable">params</span>;
+};</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Check function arity.</p>
+
+<h2></h2>
+
+<ul><li><p><strong>return</strong>: <em>Boolean</em> </p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
+</td>
+<td class="code">
+<pre><code><span class="class">Function</span>.<span class="variable">prototype</span>.<span class="variable">__defineGetter__</span>(<span class="string">'arity'</span>, <span class="keyword">function</span>(){
+  <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">params</span>.<span class="variable">length</span>;
+});</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Inherit from <code>Node.prototype</code>.
+ </p>
+</td>
+<td class="code">
+<pre><code><span class="class">Function</span>.<span class="variable">prototype</span>.<span class="variable">__proto__</span> = <span class="class">Node</span>.<span class="variable">prototype</span>;</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Return a clone of this node.</p>
+
+<h2></h2>
+
+<ul><li><p><strong>return</strong>: <em>Node</em> </p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
+</td>
+<td class="code">
+<pre><code><span class="class">Function</span>.<span class="variable">prototype</span>.<span class="variable">clone</span> = <span class="keyword">function</span>(){
+  <span class="keyword">if</span> (<span class="this">this</span>.<span class="variable">fn</span>) {
+    <span class="keyword">var</span> <span class="variable">clone</span> = <span class="keyword">new</span> <span class="class">Function</span>(
+        <span class="this">this</span>.<span class="variable">name</span>
+      , <span class="this">this</span>.<span class="variable">fn</span>);
+  } <span class="keyword">else</span> {
+    <span class="keyword">var</span> <span class="variable">clone</span> = <span class="keyword">new</span> <span class="class">Function</span>(
+        <span class="this">this</span>.<span class="variable">name</span>
+      , <span class="this">this</span>.<span class="variable">params</span>.<span class="variable">clone</span>()
+      , <span class="this">this</span>.<span class="variable">block</span>.<span class="variable">clone</span>());
+  }
+  <span class="variable">clone</span>.<span class="variable">lineno</span> = <span class="this">this</span>.<span class="variable">lineno</span>;
+  <span class="keyword">return</span> <span class="variable">clone</span>;
+};</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Return &lt;name&gt;(param1, param2, ...).</p>
+
+<h2></h2>
+
+<ul><li><p><strong>return</strong>: <em>String</em> </p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
+</td>
+<td class="code">
+<pre><code><span class="class">Function</span>.<span class="variable">prototype</span>.<span class="variable">toString</span> = <span class="keyword">function</span>(){
+  <span class="keyword">if</span> (<span class="this">this</span>.<span class="variable">fn</span>) {
+    <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">name</span>
+      + <span class="string">'('</span>
+      + <span class="this">this</span>.<span class="variable">fn</span>.<span class="variable">toString</span>()
+        .<span class="variable">match</span>(<span class="regexp">/^function *\((.*?)\)/</span>)
+        .<span class="variable">slice</span>(<span class="number integer">1</span>)
+        .<span class="variable">join</span>(<span class="string">', '</span>)
+      + <span class="string">')'</span>;
+  } <span class="keyword">else</span> {
+    <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">name</span>
+      + <span class="string">'('</span>
+      + <span class="this">this</span>.<span class="variable">params</span>.<span class="variable">nodes</span>.<span class="variable">join</span>(<span class="string">', '</span>)
+      + <span class="string">')'</span>;
+  }
+};
 </code></pre>
 </td>
 </tr><tr class="filename"><td><h2 id="lib/nodes/group.js"><a href="#">group</a></h2></td><td>lib/nodes/group.js</td></tr><tr class="code">
@@ -3111,6 +3297,7 @@ match('^foo(bar)?', 'bar')
 <pre><code><span class="variable">exports</span>.<span class="class">Node</span> = <span class="variable">require</span>(<span class="string">'./node'</span>);
 <span class="variable">exports</span>.<span class="class">Root</span> = <span class="variable">require</span>(<span class="string">'./root'</span>);
 <span class="variable">exports</span>.<span class="class">Null</span> = <span class="variable">require</span>(<span class="string">'./null'</span>);
+<span class="variable">exports</span>.<span class="class">Each</span> = <span class="variable">require</span>(<span class="string">'./each'</span>);
 <span class="variable">exports</span>.<span class="class">If</span> = <span class="variable">require</span>(<span class="string">'./if'</span>);
 <span class="variable">exports</span>.<span class="class">Call</span> = <span class="variable">require</span>(<span class="string">'./call'</span>);
 <span class="variable">exports</span>.<span class="class">UnaryOp</span> = <span class="variable">require</span>(<span class="string">'./unaryop'</span>);
@@ -3214,6 +3401,7 @@ match('^foo(bar)?', 'bar')
   <span class="this">this</span>.<span class="variable">lineno</span> = <span class="variable">nodes</span>.<span class="variable">lineno</span>;
   <span class="class">Object</span>.<span class="variable">defineProperty</span>(<span class="this">this</span>, <span class="string">'filename'</span>, { <span class="variable">value</span>: <span class="variable">nodes</span>.<span class="variable">filename</span> });
   <span class="class">Object</span>.<span class="variable">defineProperty</span>(<span class="this">this</span>, <span class="string">'source'</span>, { <span class="variable">value</span>: <span class="variable">nodes</span>.<span class="variable">source</span> });
+  <span class="comment">// TODO: remove from nodes. to prevent the (small) leak</span>
 };</code></pre>
 </td>
 </tr>
@@ -3373,98 +3561,6 @@ match('^foo(bar)?', 'bar')
 };
 </code></pre>
 </td>
-</tr><tr class="filename"><td><h2 id="lib/nodes/function.js"><a href="#">function</a></h2></td><td>lib/nodes/function.js</td></tr><tr class="code">
-<td class="docs">
-<p>Module dependencies.
- </p>
-</td>
-<td class="code">
-<pre><code><span class="keyword">var</span> <span class="class">Node</span> = <span class="variable">require</span>(<span class="string">'./node'</span>);</code></pre>
-</td>
-</tr>
-<tr class="code">
-<td class="docs">
-<p>Initialize a new <code>Function</code> with <code>name</code>, <code>params</code>, and <code>body</code>.</p>
-
-<h2></h2>
-
-<ul><li><p><strong>param</strong>: <em>String</em>  name</p></li><li><p><strong>param</strong>: <em>Params | Function</em>  params</p></li><li><p><strong>param</strong>: <em>Block</em>  body</p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
-</td>
-<td class="code">
-<pre><code><span class="keyword">var</span> <span class="class">Function</span> = <span class="variable">module</span>.<span class="variable">exports</span> = <span class="keyword">function</span> <span class="class">Function</span>(<span class="variable">name</span>, <span class="variable">params</span>, <span class="variable">body</span>){
-  <span class="class">Node</span>.<span class="variable">call</span>(<span class="this">this</span>);
-  <span class="this">this</span>.<span class="variable">name</span> = <span class="variable">name</span>;
-  <span class="this">this</span>.<span class="variable">params</span> = <span class="variable">params</span>;
-  <span class="this">this</span>.<span class="variable">block</span> = <span class="variable">body</span>;
-  <span class="keyword">if</span> (<span class="string">'function'</span> == <span class="keyword">typeof</span> <span class="variable">params</span>) <span class="this">this</span>.<span class="variable">fn</span> = <span class="variable">params</span>;
-};</code></pre>
-</td>
-</tr>
-<tr class="code">
-<td class="docs">
-<p>Check function arity.</p>
-
-<h2></h2>
-
-<ul><li><p><strong>return</strong>: <em>Boolean</em> </p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
-</td>
-<td class="code">
-<pre><code><span class="class">Function</span>.<span class="variable">prototype</span>.<span class="variable">__defineGetter__</span>(<span class="string">'arity'</span>, <span class="keyword">function</span>(){
-  <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">params</span>.<span class="variable">length</span>;
-});</code></pre>
-</td>
-</tr>
-<tr class="code">
-<td class="docs">
-<p>Inherit from <code>Node.prototype</code>.
- </p>
-</td>
-<td class="code">
-<pre><code><span class="class">Function</span>.<span class="variable">prototype</span>.<span class="variable">__proto__</span> = <span class="class">Node</span>.<span class="variable">prototype</span>;</code></pre>
-</td>
-</tr>
-<tr class="code">
-<td class="docs">
-<p>Return a clone of this node.</p>
-
-<h2></h2>
-
-<ul><li><p><strong>return</strong>: <em>Node</em> </p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
-</td>
-<td class="code">
-<pre><code><span class="class">Function</span>.<span class="variable">prototype</span>.<span class="variable">clone</span> = <span class="keyword">function</span>(){
-  <span class="keyword">if</span> (<span class="this">this</span>.<span class="variable">fn</span>) {
-    <span class="keyword">var</span> <span class="variable">clone</span> = <span class="keyword">new</span> <span class="class">Function</span>(
-        <span class="this">this</span>.<span class="variable">name</span>
-      , <span class="this">this</span>.<span class="variable">fn</span>);
-  } <span class="keyword">else</span> {
-    <span class="keyword">var</span> <span class="variable">clone</span> = <span class="keyword">new</span> <span class="class">Function</span>(
-        <span class="this">this</span>.<span class="variable">name</span>
-      , <span class="this">this</span>.<span class="variable">params</span>.<span class="variable">clone</span>()
-      , <span class="this">this</span>.<span class="variable">block</span>.<span class="variable">clone</span>());
-  }
-  <span class="variable">clone</span>.<span class="variable">lineno</span> = <span class="this">this</span>.<span class="variable">lineno</span>;
-  <span class="keyword">return</span> <span class="variable">clone</span>;
-};</code></pre>
-</td>
-</tr>
-<tr class="code">
-<td class="docs">
-<p>Return &lt;name&gt;(param1, param2, ...).</p>
-
-<h2></h2>
-
-<ul><li><p><strong>return</strong>: <em>String</em> </p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
-</td>
-<td class="code">
-<pre><code><span class="class">Function</span>.<span class="variable">prototype</span>.<span class="variable">toString</span> = <span class="keyword">function</span>(){
-  <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">name</span>
-    + <span class="string">'('</span>
-    + <span class="this">this</span>.<span class="variable">params</span>.<span class="variable">nodes</span>.<span class="variable">join</span>(<span class="string">', '</span>)
-    + <span class="string">')'</span>;
-};
-</code></pre>
-</td>
 </tr><tr class="filename"><td><h2 id="lib/nodes/null.js"><a href="#">null</a></h2></td><td>lib/nodes/null.js</td></tr><tr class="code">
 <td class="docs">
 <p>Module dependencies.
@@ -3535,6 +3631,87 @@ match('^foo(bar)?', 'bar')
 <pre><code><span class="class">Null</span>.<span class="variable">prototype</span>.<span class="variable">__defineGetter__</span>(<span class="string">'hash'</span>, <span class="keyword">function</span>(){
   <span class="keyword">return</span> <span class="keyword">null</span>;
 });</code></pre>
+</td>
+</tr><tr class="filename"><td><h2 id="lib/nodes/params.js"><a href="#">params</a></h2></td><td>lib/nodes/params.js</td></tr><tr class="code">
+<td class="docs">
+<p>Module dependencies.
+ </p>
+</td>
+<td class="code">
+<pre><code><span class="keyword">var</span> <span class="class">Node</span> = <span class="variable">require</span>(<span class="string">'./node'</span>);</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Initialize a new <code>Params</code> with <code>name</code>, <code>params</code>, and <code>body</code>.</p>
+
+<h2></h2>
+
+<ul><li><p><strong>param</strong>: <em>String</em>  name</p></li><li><p><strong>param</strong>: <em>Params</em>  params</p></li><li><p><strong>param</strong>: <em>Expression</em>  body</p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
+</td>
+<td class="code">
+<pre><code><span class="keyword">var</span> <span class="class">Params</span> = <span class="variable">module</span>.<span class="variable">exports</span> = <span class="keyword">function</span> <span class="class">Params</span>(){
+  <span class="class">Node</span>.<span class="variable">call</span>(<span class="this">this</span>);
+  <span class="this">this</span>.<span class="variable">nodes</span> = [];
+};</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Check function arity.</p>
+
+<h2></h2>
+
+<ul><li><p><strong>return</strong>: <em>Boolean</em> </p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
+</td>
+<td class="code">
+<pre><code><span class="class">Params</span>.<span class="variable">prototype</span>.<span class="variable">__defineGetter__</span>(<span class="string">'length'</span>, <span class="keyword">function</span>(){
+  <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">nodes</span>.<span class="variable">length</span>;
+});</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Inherit from <code>Node.prototype</code>.
+ </p>
+</td>
+<td class="code">
+<pre><code><span class="class">Params</span>.<span class="variable">prototype</span>.<span class="variable">__proto__</span> = <span class="class">Node</span>.<span class="variable">prototype</span>;</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Push the given <code>node</code>.</p>
+
+<h2></h2>
+
+<ul><li><p><strong>param</strong>: <em>Node</em>  node</p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
+</td>
+<td class="code">
+<pre><code><span class="class">Params</span>.<span class="variable">prototype</span>.<span class="variable">push</span> = <span class="keyword">function</span>(<span class="variable">node</span>){
+  <span class="this">this</span>.<span class="variable">nodes</span>.<span class="variable">push</span>(<span class="variable">node</span>);
+};</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Return a clone of this node.</p>
+
+<h2></h2>
+
+<ul><li><p><strong>return</strong>: <em>Node</em> </p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
+</td>
+<td class="code">
+<pre><code><span class="class">Params</span>.<span class="variable">prototype</span>.<span class="variable">clone</span> = <span class="keyword">function</span>(){
+  <span class="keyword">var</span> <span class="variable">clone</span> = <span class="keyword">new</span> <span class="class">Params</span>;
+  <span class="variable">clone</span>.<span class="variable">lineno</span> = <span class="this">this</span>.<span class="variable">lineno</span>;
+  <span class="keyword">for</span> (<span class="keyword">var</span> <span class="variable">i</span> = <span class="number integer">0</span>, <span class="variable">len</span> = <span class="this">this</span>.<span class="variable">length</span>; <span class="variable">i</span> &<span class="variable">lt</span>; <span class="variable">len</span>; ++<span class="variable">i</span>) {
+    <span class="variable">clone</span>.<span class="variable">push</span>(<span class="this">this</span>.<span class="variable">nodes</span>[<span class="variable">i</span>].<span class="variable">clone</span>());
+  }
+  <span class="keyword">return</span> <span class="variable">clone</span>;
+};
+
+</code></pre>
 </td>
 </tr><tr class="filename"><td><h2 id="lib/nodes/property.js"><a href="#">property</a></h2></td><td>lib/nodes/property.js</td></tr><tr class="code">
 <td class="docs">
@@ -4194,6 +4371,7 @@ such as "px", "pt", "in", etc.</p>
   , <span class="string">'string'</span>
   , <span class="string">'selector'</span>
   , <span class="string">'function'</span>
+  , <span class="string">'comment'</span>
   , <span class="string">'color'</span>
   , <span class="string">'unit'</span>
   , <span class="string">'['</span>
@@ -4413,6 +4591,7 @@ otherwise return <code>undefined</code>.</p>
  | literal
  | charset
  | import
+ | for
  | expression
  | 'return' expression
    </p>
@@ -4428,6 +4607,7 @@ otherwise return <code>undefined</code>.</p>
       <span class="keyword">case</span> <span class="string">'ident'</span>:
       <span class="keyword">case</span> <span class="string">'unless'</span>:
       <span class="keyword">case</span> <span class="string">'function'</span>:
+      <span class="keyword">case</span> <span class="string">'for'</span>:
       <span class="keyword">case</span> <span class="string">'if'</span>:
         <span class="keyword">return</span> <span class="this">this</span>[<span class="variable">type</span>];
       <span class="keyword">case</span> <span class="string">'return'</span>:
@@ -4438,7 +4618,8 @@ otherwise return <code>undefined</code>.</p>
           <span class="keyword">case</span> <span class="string">'root'</span>:
           <span class="keyword">case</span> <span class="string">'selector'</span>:
           <span class="keyword">case</span> <span class="string">'conditional'</span>:
-          <span class="keyword">case</span> <span class="string">'function body'</span>:
+          <span class="keyword">case</span> <span class="string">'function'</span>:
+          <span class="keyword">case</span> <span class="string">'for'</span>:
             <span class="keyword">switch</span> (<span class="variable">type</span>) {
               <span class="keyword">case</span> <span class="string">'color'</span>:
               <span class="keyword">case</span> <span class="string">'~'</span>:
@@ -4480,6 +4661,26 @@ otherwise return <code>undefined</code>.</p>
     <span class="this">this</span>.<span class="variable">expect</span>(<span class="string">'outdent'</span>);
     <span class="this">this</span>.<span class="variable">parent</span> = <span class="variable">block</span>.<span class="variable">parent</span>;
     <span class="keyword">return</span> <span class="variable">block</span>;
+  },</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>for val (',' key) in expr
+   </p>
+</td>
+<td class="code">
+<pre><code><span class="variable">get</span> <span class="keyword">for</span>() {
+    <span class="this">this</span>.<span class="variable">expect</span>(<span class="string">'for'</span>);
+    <span class="keyword">var</span> <span class="variable">key</span>
+      , <span class="variable">val</span> = <span class="this">this</span>.<span class="variable">expect</span>(<span class="string">'ident'</span>).<span class="variable">val</span>.<span class="variable">name</span>;
+    <span class="keyword">if</span> (<span class="this">this</span>.<span class="variable">accept</span>(<span class="string">','</span>)) <span class="variable">key</span> = <span class="this">this</span>.<span class="variable">expect</span>(<span class="string">'ident'</span>).<span class="variable">val</span>.<span class="variable">name</span>;
+    <span class="this">this</span>.<span class="variable">expect</span>(<span class="string">'in'</span>);
+    <span class="keyword">var</span> <span class="variable">each</span> = <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Each</span>(<span class="variable">val</span>, <span class="variable">key</span>, <span class="this">this</span>.<span class="variable">expression</span>);
+    <span class="this">this</span>.<span class="variable">state</span>.<span class="variable">push</span>(<span class="string">'for'</span>);
+    <span class="variable">each</span>.<span class="variable">block</span> = <span class="this">this</span>.<span class="variable">block</span>(<span class="variable">each</span>);
+    <span class="this">this</span>.<span class="variable">state</span>.<span class="variable">pop</span>();
+    <span class="keyword">return</span> <span class="variable">each</span>;
   },</code></pre>
 </td>
 </tr>
@@ -4595,7 +4796,6 @@ otherwise return <code>undefined</code>.</p>
       <span class="keyword">case</span> <span class="string">'?='</span>:
         <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">assignment</span>;
       <span class="comment">// Operation</span>
-      <span class="comment">// TODO: cleanup / abstract</span>
       <span class="keyword">case</span> <span class="string">'-'</span>:
       <span class="keyword">case</span> <span class="string">'+'</span>:
       <span class="keyword">case</span> <span class="string">'/'</span>:
@@ -4612,6 +4812,7 @@ otherwise return <code>undefined</code>.</p>
       <span class="keyword">case</span> <span class="string">'&lt;='</span>:
       <span class="keyword">case</span> <span class="string">'!='</span>:
       <span class="keyword">case</span> <span class="string">'=='</span>:
+      <span class="keyword">case</span> <span class="string">'['</span>:
       <span class="keyword">case</span> <span class="string">'?'</span>:
       <span class="keyword">case</span> <span class="string">'is a'</span>:
       <span class="keyword">case</span> <span class="string">'is defined'</span>:
@@ -4639,8 +4840,9 @@ otherwise return <code>undefined</code>.</p>
         <span class="keyword">switch</span> (<span class="this">this</span>.<span class="variable">currentState</span>) {
           <span class="keyword">case</span> <span class="string">'root'</span>:
             <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">selector</span>;
+          <span class="keyword">case</span> <span class="string">'for'</span>:
           <span class="keyword">case</span> <span class="string">'selector'</span>:
-          <span class="keyword">case</span> <span class="string">'function body'</span>:
+          <span class="keyword">case</span> <span class="string">'function'</span>:
           <span class="keyword">case</span> <span class="string">'conditional'</span>:
             <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">property</span>;
           <span class="keyword">default</span>:
@@ -4709,6 +4911,10 @@ otherwise return <code>undefined</code>.</p>
       , <span class="variable">parent</span>
       , <span class="variable">group</span> = <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Group</span>;
 
+    <span class="comment">// Allow comments in selectors</span>
+    <span class="comment">// for hacks</span>
+    <span class="this">this</span>.<span class="variable">lexer</span>.<span class="variable">allowComments</span> = <span class="variable">true</span>;
+
     <span class="keyword">do</span> {
       <span class="variable">val</span> = <span class="variable">prev</span> = <span class="keyword">null</span>;
       <span class="variable">arr</span> = [];
@@ -4749,6 +4955,8 @@ otherwise return <code>undefined</code>.</p>
     <span class="this">this</span>.<span class="variable">state</span>.<span class="variable">push</span>(<span class="string">'selector'</span>);
     <span class="variable">group</span>.<span class="variable">block</span> = <span class="this">this</span>.<span class="variable">block</span>(<span class="variable">group</span>);
     <span class="this">this</span>.<span class="variable">state</span>.<span class="variable">pop</span>();
+
+    <span class="this">this</span>.<span class="variable">lexer</span>.<span class="variable">allowComments</span> = <span class="variable">false</span>;
 
     <span class="keyword">return</span> <span class="variable">group</span>;
   },</code></pre>
@@ -4827,7 +5035,7 @@ otherwise return <code>undefined</code>.</p>
 <pre><code><span class="variable">get</span> <span class="variable">functionCall</span>() {
     <span class="this">this</span>.<span class="variable">state</span>.<span class="variable">push</span>(<span class="string">'function arguments'</span>);
     <span class="keyword">var</span> <span class="variable">name</span> = <span class="this">this</span>.<span class="variable">_name</span>
-      , <span class="variable">args</span> = <span class="this">this</span>.<span class="variable">list</span>;
+      , <span class="variable">args</span> = <span class="this">this</span>.<span class="variable">args</span>;
     <span class="this">this</span>.<span class="variable">expect</span>(<span class="string">')'</span>);
     <span class="this">this</span>.<span class="variable">state</span>.<span class="variable">pop</span>();
     <span class="keyword">return</span> <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Call</span>(<span class="variable">name</span>, <span class="variable">args</span>);
@@ -4849,7 +5057,7 @@ otherwise return <code>undefined</code>.</p>
     <span class="this">this</span>.<span class="variable">state</span>.<span class="variable">pop</span>();
 
     <span class="comment">// Body</span>
-    <span class="this">this</span>.<span class="variable">state</span>.<span class="variable">push</span>(<span class="string">'function body'</span>);
+    <span class="this">this</span>.<span class="variable">state</span>.<span class="variable">push</span>(<span class="string">'function'</span>);
     <span class="keyword">var</span> <span class="variable">fn</span> = <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Function</span>(<span class="variable">name</span>, <span class="variable">params</span>);
     <span class="variable">fn</span>.<span class="variable">block</span> = <span class="this">this</span>.<span class="variable">block</span>(<span class="variable">fn</span>);
     <span class="this">this</span>.<span class="variable">state</span>.<span class="variable">pop</span>();
@@ -4859,21 +5067,42 @@ otherwise return <code>undefined</code>.</p>
 </tr>
 <tr class="code">
 <td class="docs">
-<p>(ident (',' ident ('=' expression)?)*)?
+<p>  ident
+| ident '...'
+| ident '=' expression
+| ident ',' ident
    </p>
 </td>
 <td class="code">
 <pre><code><span class="variable">get</span> <span class="variable">params</span>() {
     <span class="keyword">var</span> <span class="variable">tok</span>
+      , <span class="variable">node</span>
       , <span class="variable">params</span> = <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Params</span>;
     <span class="keyword">while</span> (<span class="variable">tok</span> = <span class="this">this</span>.<span class="variable">accept</span>(<span class="string">'ident'</span>)) {
-      <span class="variable">params</span>.<span class="variable">push</span>(<span class="variable">tok</span>.<span class="variable">val</span>);
-      <span class="keyword">if</span> (<span class="this">this</span>.<span class="variable">accept</span>(<span class="string">'='</span>)) {
-        <span class="variable">tok</span>.<span class="variable">val</span>.<span class="variable">val</span> = <span class="this">this</span>.<span class="variable">expression</span>;
+      <span class="variable">params</span>.<span class="variable">push</span>(<span class="variable">node</span> = <span class="variable">tok</span>.<span class="variable">val</span>);
+      <span class="keyword">if</span> (<span class="this">this</span>.<span class="variable">accept</span>(<span class="string">'...'</span>)) {
+        <span class="variable">node</span>.<span class="variable">varg</span> = <span class="variable">true</span>;
+      } <span class="keyword">else</span> <span class="keyword">if</span> (<span class="this">this</span>.<span class="variable">accept</span>(<span class="string">'='</span>)) {
+        <span class="variable">node</span>.<span class="variable">val</span> = <span class="this">this</span>.<span class="variable">expression</span>;
       }
       <span class="this">this</span>.<span class="variable">accept</span>(<span class="string">','</span>);
     }
     <span class="keyword">return</span> <span class="variable">params</span>;
+  },</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>expression (',' expression)*
+   </p>
+</td>
+<td class="code">
+<pre><code><span class="variable">get</span> <span class="variable">args</span>() {
+    <span class="keyword">var</span> <span class="variable">args</span> = <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Expression</span>;
+    <span class="keyword">do</span> {
+      <span class="variable">args</span>.<span class="variable">push</span>(<span class="this">this</span>.<span class="variable">expression</span>);
+    } <span class="keyword">while</span> (<span class="this">this</span>.<span class="variable">accept</span>(<span class="string">','</span>));
+    <span class="keyword">return</span> <span class="variable">args</span>;
   },</code></pre>
 </td>
 </tr>
@@ -5261,15 +5490,18 @@ otherwise return <code>undefined</code>.</p>
 </tr>
 <tr class="code">
 <td class="docs">
-<p>Define function with the given <code>name</code>.</p>
+<p>Define function with the given <code>name</code>. Optionally
+the function may accept tuples, by setting <code>tuple</code>
+to <code>true</code>.</p>
 
 <h2></h2>
 
 <ul><li><p><strong>param</strong>: <em>String</em>  name</p></li><li><p><strong>param</strong>: <em>Function</em>  fn</p></li><li><p><strong>return</strong>: <em>Renderer</em>  for chaining</p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
 </td>
 <td class="code">
-<pre><code><span class="class">Renderer</span>.<span class="variable">prototype</span>.<span class="variable">define</span> = <span class="keyword">function</span>(<span class="variable">name</span>, <span class="variable">fn</span>){
+<pre><code><span class="class">Renderer</span>.<span class="variable">prototype</span>.<span class="variable">define</span> = <span class="keyword">function</span>(<span class="variable">name</span>, <span class="variable">fn</span>, <span class="variable">tuple</span>){
   <span class="this">this</span>.<span class="variable">options</span>.<span class="variable">functions</span>[<span class="variable">name</span>] = <span class="variable">fn</span>;
+  <span class="variable">fn</span>.<span class="variable">tuple</span> = <span class="variable">tuple</span>;
   <span class="keyword">return</span> <span class="this">this</span>;
 };
 
@@ -5780,7 +6012,7 @@ css.parse(str).toJSON();
       ? <span class="variable">renderer</span>.<span class="variable">evaluator</span>.<span class="variable">lineno</span>
       : <span class="variable">renderer</span>.<span class="variable">parser</span>.<span class="variable">lexer</span>.<span class="variable">lineno</span>
     , <span class="variable">contextLineno</span> = <span class="variable">lineno</span> - <span class="number integer">2</span>
-    , <span class="variable">contextLines</span> = <span class="variable">options</span>.<span class="variable">context</span> || <span class="number integer">6</span>
+    , <span class="variable">contextLines</span> = <span class="variable">options</span>.<span class="variable">context</span> || <span class="number integer">8</span>
     , <span class="variable">lastWidth</span> = (<span class="variable">contextLineno</span> + <span class="variable">contextLines</span>).<span class="variable">toString</span>().<span class="variable">length</span>;
 
   <span class="keyword">var</span> <span class="variable">src</span> = (<span class="variable">err</span>.<span class="variable">str</span> || <span class="variable">renderer</span>.<span class="variable">str</span>).<span class="variable">split</span>(<span class="string">'\n'</span>)
@@ -5853,7 +6085,7 @@ css.parse(str).toJSON();
   <span class="keyword">if</span> (<span class="variable">node</span> <span class="variable">instanceof</span> <span class="variable">nodes</span>.<span class="class">Color</span>) <span class="keyword">return</span>;
   <span class="keyword">if</span> (<span class="variable">node</span> <span class="variable">instanceof</span> <span class="variable">nodes</span>.<span class="class">HSLA</span>) <span class="keyword">return</span>;
   <span class="keyword">var</span> <span class="variable">actual</span> = <span class="variable">node</span>.<span class="variable">constructor</span>.<span class="variable">name</span>;
-  <span class="variable">msg</span> = <span class="variable">msg</span> || <span class="string">'expected Color or HSLA, but got '</span> + <span class="variable">actual</span> + <span class="string">':'</span> + <span class="variable">node</span>;
+  <span class="keyword">var</span> <span class="variable">msg</span> = <span class="string">'expected Color or HSLA, but got '</span> + <span class="variable">actual</span> + <span class="string">':'</span> + <span class="variable">node</span>;
   <span class="keyword">throw</span> <span class="keyword">new</span> <span class="class">Error</span>(<span class="string">'TypeError: '</span> + <span class="variable">msg</span>);
 };</code></pre>
 </td>
@@ -5871,7 +6103,27 @@ css.parse(str).toJSON();
   <span class="keyword">if</span> (<span class="variable">node</span>) <span class="keyword">return</span>;
   <span class="keyword">if</span> (<span class="variable">name</span>) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="class">Error</span>(<span class="string">'ArgumentError: argument '</span> + <span class="variable">name</span> + <span class="string">' required'</span>);
   <span class="keyword">throw</span> <span class="keyword">new</span> <span class="class">Error</span>(<span class="string">'ArgumentError: argument missing'</span>);
-}</code></pre>
+};</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Unwrap <code>expr</code>.</p>
+
+<p>Takes an expressions with length of 1
+such as <code>(1 2 3)</code> and unwraps it to <code>1 2 3</code>.</p>
+
+<h2></h2>
+
+<ul><li><p><strong>param</strong>: <em>Expression</em>  expr</p></li><li><p><strong>return</strong>: <em>Node</em> </p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
+</td>
+<td class="code">
+<pre><code><span class="variable">exports</span>.<span class="variable">unwrap</span> = <span class="keyword">function</span>(<span class="variable">expr</span>){
+  <span class="keyword">if</span> (<span class="string">'expression'</span> != <span class="variable">expr</span>.<span class="variable">nodeName</span>) <span class="keyword">return</span> <span class="variable">expr</span>;
+  <span class="keyword">if</span> (<span class="number integer">1</span> != <span class="variable">expr</span>.<span class="variable">nodes</span>.<span class="variable">length</span>) <span class="keyword">return</span> <span class="variable">expr</span>;
+  <span class="keyword">if</span> (<span class="string">'expression'</span> != <span class="variable">expr</span>.<span class="variable">nodes</span>[<span class="number integer">0</span>].<span class="variable">nodeName</span>) <span class="keyword">return</span> <span class="variable">expr</span>;
+  <span class="keyword">return</span> <span class="variable">expr</span>.<span class="variable">nodes</span>[<span class="number integer">0</span>];
+};</code></pre>
 </td>
 </tr><tr class="filename"><td><h2 id="lib/visitor/compiler.js"><a href="#">compiler</a></h2></td><td>lib/visitor/compiler.js</td></tr><tr class="code">
 <td class="docs">
@@ -6205,7 +6457,10 @@ and the following <code>options</code>.</p>
 </td>
 <td class="code">
 <pre><code><span class="class">Compiler</span>.<span class="variable">prototype</span>.<span class="variable">visitCall</span> = <span class="keyword">function</span>(<span class="variable">call</span>){
-  <span class="keyword">return</span> <span class="variable">call</span>.<span class="variable">name</span> + <span class="string">'('</span> + <span class="this">this</span>.<span class="variable">visit</span>(<span class="variable">call</span>.<span class="variable">args</span>) + <span class="string">')'</span>;
+  <span class="keyword">var</span> <span class="variable">args</span> = <span class="variable">call</span>.<span class="variable">args</span>.<span class="variable">nodes</span>.<span class="variable">map</span>(<span class="keyword">function</span>(<span class="variable">arg</span>){
+    <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">visit</span>(<span class="variable">arg</span>);
+  }, <span class="this">this</span>).<span class="variable">join</span>(<span class="string">', '</span>);
+  <span class="keyword">return</span> <span class="variable">call</span>.<span class="variable">name</span> + <span class="string">'('</span> + <span class="variable">args</span> + <span class="string">')'</span>;
 };</code></pre>
 </td>
 </tr>
@@ -6317,11 +6572,11 @@ and the following <code>options</code>.</p>
 <pre><code><span class="keyword">var</span> <span class="variable">visit</span> = <span class="class">Visitor</span>.<span class="variable">prototype</span>.<span class="variable">visit</span>;
 <span class="class">Evaluator</span>.<span class="variable">prototype</span>.<span class="variable">visit</span> = <span class="keyword">function</span>(<span class="variable">node</span>){
   <span class="keyword">try</span> {
-    <span class="this">this</span>.<span class="variable">lineno</span> = <span class="variable">node</span>.<span class="variable">lineno</span>;
     <span class="keyword">return</span> <span class="variable">visit</span>.<span class="variable">call</span>(<span class="this">this</span>, <span class="variable">node</span>);
   } <span class="keyword">catch</span> (<span class="variable">err</span>) {
     <span class="comment">// TODO: less-lame hack to reference</span>
     <span class="comment">// the origin node source input</span>
+    <span class="this">this</span>.<span class="variable">lineno</span> = <span class="this">this</span>.<span class="variable">lineno</span> || <span class="variable">node</span>.<span class="variable">lineno</span>;
     <span class="variable">err</span>.<span class="variable">str</span> = <span class="variable">err</span>.<span class="variable">str</span> || <span class="variable">node</span>.<span class="variable">source</span>;
     <span class="variable">err</span>.<span class="variable">stylusStack</span> = <span class="variable">err</span>.<span class="variable">stylusStack</span> || <span class="this">this</span>.<span class="variable">stack</span>.<span class="variable">toString</span>();
     <span class="keyword">throw</span> <span class="variable">err</span>;
@@ -6470,6 +6725,37 @@ and the following <code>options</code>.</p>
 </tr>
 <tr class="code">
 <td class="docs">
+<p>Visit Each.
+ </p>
+</td>
+<td class="code">
+<pre><code><span class="class">Evaluator</span>.<span class="variable">prototype</span>.<span class="variable">visitEach</span> = <span class="keyword">function</span>(<span class="variable">each</span>){
+  <span class="keyword">var</span> <span class="variable">body</span>
+    , <span class="variable">eachBlock</span> = <span class="variable">each</span>.<span class="variable">block</span>
+    , <span class="variable">expr</span> = <span class="variable">utils</span>.<span class="variable">unwrap</span>(<span class="this">this</span>.<span class="variable">visit</span>(<span class="variable">each</span>.<span class="variable">expr</span>))
+    , <span class="variable">len</span> = <span class="variable">expr</span>.<span class="variable">nodes</span>.<span class="variable">length</span>
+    , <span class="variable">val</span> = <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Ident</span>(<span class="variable">each</span>.<span class="variable">val</span>)
+    , <span class="variable">key</span> = <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Ident</span>(<span class="variable">each</span>.<span class="variable">key</span> || <span class="string">'__index__'</span>)
+    , <span class="variable">scope</span> = <span class="this">this</span>.<span class="variable">stack</span>.<span class="variable">currentFrame</span>.<span class="variable">scope</span>
+    , <span class="variable">block</span> = <span class="this">this</span>.<span class="variable">stack</span>.<span class="variable">currentFrame</span>.<span class="variable">block</span>;
+
+  <span class="variable">eachBlock</span>.<span class="variable">scope</span> = <span class="variable">false</span>;
+  <span class="keyword">for</span> (<span class="keyword">var</span> <span class="variable">i</span> = <span class="number integer">0</span>; <span class="variable">i</span> &<span class="variable">lt</span>; <span class="variable">len</span>; ++<span class="variable">i</span>) {
+    <span class="variable">val</span>.<span class="variable">val</span> = <span class="variable">expr</span>.<span class="variable">nodes</span>[<span class="variable">i</span>];
+    <span class="variable">key</span>.<span class="variable">val</span> = <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Unit</span>(<span class="variable">i</span>);
+    <span class="variable">scope</span>.<span class="variable">add</span>(<span class="variable">val</span>);
+    <span class="variable">scope</span>.<span class="variable">add</span>(<span class="variable">key</span>);
+    <span class="variable">body</span> = <span class="this">this</span>.<span class="variable">visit</span>(<span class="variable">eachBlock</span>.<span class="variable">clone</span>());
+    <span class="this">this</span>.<span class="variable">mixin</span>(<span class="variable">body</span>.<span class="variable">nodes</span>, <span class="variable">block</span>);
+  }
+  <span class="variable">block</span>.<span class="variable">scope</span> = <span class="variable">true</span>;
+
+  <span class="keyword">return</span> <span class="variable">nodes</span>.<span class="keyword">null</span>;
+};</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
 <p>Visit Call.
  </p>
 </td>
@@ -6556,28 +6842,6 @@ and the following <code>options</code>.</p>
   <span class="comment">// Coercion</span>
   <span class="keyword">switch</span> (<span class="variable">op</span>) {
     <span class="keyword">case</span> <span class="string">'[]'</span>:
-      <span class="comment">// Special-case usage from an assignment.</span>
-      <span class="comment">// For example:</span>
-      <span class="comment">//</span>
-      <span class="comment">//    size = image-size('path-to-image.png')</span>
-      <span class="comment">//</span>
-      <span class="comment">// size is an Expression it-self, so if image-size()</span>
-      <span class="comment">// returns an expression, we have to access height via</span>
-      <span class="comment">// the less ideal size[0][1] vs size[1].</span>
-      <span class="comment">//</span>
-      <span class="comment">// This means that you will only be able to access the first</span>
-      <span class="comment">// tuple, [0] yielding 1, and [1] yielding 2</span>
-      <span class="comment">//</span>
-      <span class="comment">//    size = (1 2) (3 4)</span>
-      <span class="comment">//</span>
-      <span class="comment">// However in the following [0] will give you (1 2), and [1]</span>
-      <span class="comment">// will give you (3 4)</span>
-      <span class="comment">//</span>
-      <span class="keyword">if</span> (<span class="variable">ident</span>) {
-        <span class="keyword">if</span> (<span class="variable">left</span>.<span class="variable">nodes</span>[<span class="number integer">0</span>] <span class="variable">instanceof</span> <span class="variable">nodes</span>.<span class="class">Expression</span>) {
-          <span class="variable">left</span> = <span class="variable">left</span>.<span class="variable">nodes</span>[<span class="number integer">0</span>];
-        }
-      }
     <span class="keyword">case</span> <span class="string">'||'</span>:
     <span class="keyword">case</span> <span class="string">'&amp;&amp;'</span>:
     <span class="keyword">case</span> <span class="string">'is a'</span>:
@@ -6836,7 +7100,7 @@ and the following <code>options</code>.</p>
 
 <h2></h2>
 
-<ul><li><p><strong>param</strong>: <em>Function</em>  fn</p></li><li><p><strong>param</strong>: <em>Array</em>  args</p></li><li><p><strong>return</strong>: <em>Node</em> </p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
+<ul><li><p><strong>param</strong>: <em>Function</em>  fn</p></li><li><p><strong>param</strong>: <em>Array</em>  args</p></li><li><p><strong>return</strong>: <em>Node</em> </p></li><li><p><strong>api</strong>: <em>private</em></p></li></ul>
 </td>
 <td class="code">
 <pre><code><span class="class">Evaluator</span>.<span class="variable">prototype</span>.<span class="variable">invokeFunction</span> = <span class="keyword">function</span>(<span class="variable">fn</span>, <span class="variable">args</span>){
@@ -6851,15 +7115,26 @@ and the following <code>options</code>.</p>
   <span class="comment">// Inject arguments as locals</span>
   <span class="this">this</span>.<span class="variable">stack</span>.<span class="variable">push</span>(<span class="keyword">new</span> <span class="class">Frame</span>(<span class="variable">block</span>));
   <span class="variable">fn</span>.<span class="variable">params</span>.<span class="variable">nodes</span>.<span class="variable">forEach</span>(<span class="keyword">function</span>(<span class="variable">node</span>, <span class="variable">i</span>){
+    <span class="comment">// varg support</span>
+    <span class="keyword">if</span> (<span class="variable">node</span>.<span class="variable">varg</span>) {
+      <span class="variable">node</span>.<span class="variable">val</span> = <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Expression</span>;
+      <span class="keyword">for</span> (<span class="keyword">var</span> <span class="variable">len</span> = <span class="variable">args</span>.<span class="variable">nodes</span>.<span class="variable">length</span>; <span class="variable">i</span> &<span class="variable">lt</span>; <span class="variable">len</span>; ++<span class="variable">i</span>) {
+        <span class="variable">node</span>.<span class="variable">val</span>.<span class="variable">push</span>(<span class="variable">args</span>.<span class="variable">nodes</span>[<span class="variable">i</span>]);
+      }
     <span class="comment">// Argument default support</span>
-    <span class="keyword">var</span> <span class="variable">val</span> = <span class="variable">args</span>.<span class="variable">nodes</span>[<span class="variable">i</span>] || <span class="variable">node</span>.<span class="variable">val</span>;
-    <span class="variable">node</span> = <span class="variable">node</span>.<span class="variable">clone</span>();
-    <span class="variable">node</span>.<span class="variable">val</span> = <span class="variable">val</span>;
-
-    <span class="comment">// Required argument not satisfied</span>
-    <span class="keyword">if</span> (<span class="variable">node</span>.<span class="variable">val</span> <span class="variable">instanceof</span> <span class="variable">nodes</span>.<span class="class">Null</span>) {
-      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="class">Error</span>(<span class="string">'argument '</span> + <span class="variable">node</span> + <span class="string">' required for '</span> + <span class="variable">fn</span>);
+    } <span class="keyword">else</span> {
+      <span class="keyword">var</span> <span class="variable">arg</span> = <span class="variable">args</span>.<span class="variable">nodes</span>[<span class="variable">i</span>];
+      <span class="keyword">var</span> <span class="variable">val</span> = <span class="variable">arg</span> &<span class="variable">amp</span>;&<span class="variable">amp</span>; !<span class="variable">arg</span>.<span class="variable">isEmpty</span>
+        ? <span class="variable">args</span>.<span class="variable">nodes</span>[<span class="variable">i</span>]
+        : <span class="variable">node</span>.<span class="variable">val</span>;
+      <span class="variable">node</span> = <span class="variable">node</span>.<span class="variable">clone</span>();
+      <span class="variable">node</span>.<span class="variable">val</span> = <span class="variable">val</span>;
+      <span class="comment">// Required argument not satisfied</span>
+      <span class="keyword">if</span> (<span class="variable">node</span>.<span class="variable">val</span> <span class="variable">instanceof</span> <span class="variable">nodes</span>.<span class="class">Null</span>) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="class">Error</span>(<span class="string">'argument '</span> + <span class="variable">node</span> + <span class="string">' required for '</span> + <span class="variable">fn</span>);
+      }
     }
+
     <span class="this">this</span>.<span class="variable">stack</span>.<span class="variable">currentFrame</span>.<span class="variable">scope</span>.<span class="variable">add</span>(<span class="variable">node</span>);
   }, <span class="this">this</span>);
 
@@ -6878,7 +7153,7 @@ and the following <code>options</code>.</p>
 
 <h2></h2>
 
-<ul><li><p><strong>param</strong>: <em>Function</em>  fn</p></li><li><p><strong>param</strong>: <em>Array</em>  args</p></li><li><p><strong>return</strong>: <em>Node</em> </p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
+<ul><li><p><strong>param</strong>: <em>Function</em>  fn</p></li><li><p><strong>param</strong>: <em>Array</em>  args</p></li><li><p><strong>return</strong>: <em>Node</em> </p></li><li><p><strong>api</strong>: <em>private</em></p></li></ul>
 </td>
 <td class="code">
 <pre><code><span class="class">Evaluator</span>.<span class="variable">prototype</span>.<span class="variable">invokeBuiltin</span> = <span class="keyword">function</span>(<span class="variable">fn</span>, <span class="variable">args</span>){
@@ -6897,14 +7172,12 @@ and the following <code>options</code>.</p>
   <span class="comment">// Invoke the BIF</span>
   <span class="variable">body</span> = <span class="variable">fn</span>.<span class="variable">apply</span>(<span class="this">this</span>, <span class="variable">args</span>);
 
-  <span class="comment">// Wrap non-expressions as an Expression,</span>
-  <span class="comment">// again just providing a nicer api</span>
-  <span class="comment">// to work with.</span>
-  <span class="keyword">if</span> (!(<span class="variable">body</span> <span class="variable">instanceof</span> <span class="variable">nodes</span>.<span class="class">Expression</span>)) {
-    <span class="keyword">var</span> <span class="variable">expr</span> = <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Expression</span>;
-    <span class="variable">expr</span>.<span class="variable">push</span>(<span class="variable">body</span>);
-    <span class="variable">body</span> = <span class="variable">expr</span>;
-  }
+  <span class="comment">// Always wrapping allows js functions</span>
+  <span class="comment">// to return several values with a single</span>
+  <span class="comment">// Expression node</span>
+  <span class="keyword">var</span> <span class="variable">expr</span> = <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Expression</span>;
+  <span class="variable">expr</span>.<span class="variable">push</span>(<span class="variable">body</span>);
+  <span class="variable">body</span> = <span class="variable">expr</span>;
 
   <span class="comment">// Invoke</span>
   <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">invoke</span>(<span class="variable">body</span>);
@@ -6917,7 +7190,7 @@ and the following <code>options</code>.</p>
 
 <h2></h2>
 
-<ul><li><p><strong>param</strong>: <em>Block</em>  body</p></li><li><p><strong>return</strong>: <em>Node</em> </p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
+<ul><li><p><strong>param</strong>: <em>Block</em>  body</p></li><li><p><strong>return</strong>: <em>Node</em> </p></li><li><p><strong>api</strong>: <em>private</em></p></li></ul>
 </td>
 <td class="code">
 <pre><code><span class="class">Evaluator</span>.<span class="variable">prototype</span>.<span class="variable">invoke</span> = <span class="keyword">function</span>(<span class="variable">body</span>){
@@ -6990,7 +7263,7 @@ and the following <code>options</code>.</p>
 
 <h2></h2>
 
-<ul><li><p><strong>param</strong>: <em>Call</em>  call</p></li><li><p><strong>return</strong>: <em>call</em> </p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
+<ul><li><p><strong>param</strong>: <em>Call</em>  call</p></li><li><p><strong>return</strong>: <em>call</em> </p></li><li><p><strong>api</strong>: <em>private</em></p></li></ul>
 </td>
 <td class="code">
 <pre><code><span class="class">Evaluator</span>.<span class="variable">prototype</span>.<span class="variable">literalCall</span> = <span class="keyword">function</span>(<span class="variable">call</span>){
@@ -7006,14 +7279,17 @@ functions, and BIFs.</p>
 
 <h2></h2>
 
-<ul><li><p><strong>param</strong>: <em>String</em>  name</p></li><li><p><strong>return</strong>: <em>Node</em> </p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
+<ul><li><p><strong>param</strong>: <em>String</em>  name</p></li><li><p><strong>return</strong>: <em>Node</em> </p></li><li><p><strong>api</strong>: <em>private</em></p></li></ul>
 </td>
 <td class="code">
 <pre><code><span class="class">Evaluator</span>.<span class="variable">prototype</span>.<span class="variable">lookup</span> = <span class="keyword">function</span>(<span class="variable">name</span>){
-  <span class="keyword">var</span> <span class="variable">val</span> = <span class="this">this</span>.<span class="variable">stack</span>.<span class="variable">lookup</span>(<span class="variable">name</span>);
-  <span class="keyword">if</span> (<span class="variable">val</span>) <span class="keyword">return</span> <span class="variable">val</span>;
-  <span class="keyword">var</span> <span class="variable">fn</span> = <span class="this">this</span>.<span class="variable">functions</span>[<span class="variable">name</span>] || <span class="variable">bifs</span>[<span class="variable">name</span>];
-  <span class="keyword">if</span> (<span class="variable">fn</span>) <span class="keyword">return</span> <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Function</span>(<span class="variable">name</span>, <span class="variable">fn</span>);
+  <span class="keyword">var</span> <span class="variable">val</span>;
+  <span class="keyword">if</span> (<span class="variable">val</span> = <span class="this">this</span>.<span class="variable">stack</span>.<span class="variable">lookup</span>(<span class="variable">name</span>)) {
+    <span class="keyword">return</span> <span class="variable">utils</span>.<span class="variable">unwrap</span>(<span class="variable">val</span>);
+  } <span class="keyword">else</span> {
+    <span class="keyword">var</span> <span class="variable">fn</span> = <span class="this">this</span>.<span class="variable">functions</span>[<span class="variable">name</span>] || <span class="variable">bifs</span>[<span class="variable">name</span>];
+    <span class="keyword">if</span> (<span class="variable">fn</span>) <span class="keyword">return</span> <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Function</span>(<span class="variable">name</span>, <span class="variable">fn</span>);
+  }
 };</code></pre>
 </td>
 </tr>
@@ -7063,87 +7339,6 @@ functions, and BIFs.</p>
     , <span class="variable">cons</span> = <span class="this">this</span>.<span class="variable">constructor</span>.<span class="variable">name</span>;
   <span class="keyword">if</span> (!<span class="this">this</span>[<span class="variable">method</span>]) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="class">Error</span>(<span class="variable">cons</span> + <span class="string">' visitor method '</span> + <span class="variable">method</span> + <span class="string">'() not defined'</span>);
   <span class="keyword">return</span> <span class="this">this</span>[<span class="variable">method</span>](<span class="variable">node</span>);
-};
-
-</code></pre>
-</td>
-</tr><tr class="filename"><td><h2 id="lib/nodes/params.js"><a href="#">params</a></h2></td><td>lib/nodes/params.js</td></tr><tr class="code">
-<td class="docs">
-<p>Module dependencies.
- </p>
-</td>
-<td class="code">
-<pre><code><span class="keyword">var</span> <span class="class">Node</span> = <span class="variable">require</span>(<span class="string">'./node'</span>);</code></pre>
-</td>
-</tr>
-<tr class="code">
-<td class="docs">
-<p>Initialize a new <code>Params</code> with <code>name</code>, <code>params</code>, and <code>body</code>.</p>
-
-<h2></h2>
-
-<ul><li><p><strong>param</strong>: <em>String</em>  name</p></li><li><p><strong>param</strong>: <em>Params</em>  params</p></li><li><p><strong>param</strong>: <em>Expression</em>  body</p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
-</td>
-<td class="code">
-<pre><code><span class="keyword">var</span> <span class="class">Params</span> = <span class="variable">module</span>.<span class="variable">exports</span> = <span class="keyword">function</span> <span class="class">Params</span>(){
-  <span class="class">Node</span>.<span class="variable">call</span>(<span class="this">this</span>);
-  <span class="this">this</span>.<span class="variable">nodes</span> = [];
-};</code></pre>
-</td>
-</tr>
-<tr class="code">
-<td class="docs">
-<p>Check function arity.</p>
-
-<h2></h2>
-
-<ul><li><p><strong>return</strong>: <em>Boolean</em> </p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
-</td>
-<td class="code">
-<pre><code><span class="class">Params</span>.<span class="variable">prototype</span>.<span class="variable">__defineGetter__</span>(<span class="string">'length'</span>, <span class="keyword">function</span>(){
-  <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">nodes</span>.<span class="variable">length</span>;
-});</code></pre>
-</td>
-</tr>
-<tr class="code">
-<td class="docs">
-<p>Inherit from <code>Node.prototype</code>.
- </p>
-</td>
-<td class="code">
-<pre><code><span class="class">Params</span>.<span class="variable">prototype</span>.<span class="variable">__proto__</span> = <span class="class">Node</span>.<span class="variable">prototype</span>;</code></pre>
-</td>
-</tr>
-<tr class="code">
-<td class="docs">
-<p>Push the given <code>node</code>.</p>
-
-<h2></h2>
-
-<ul><li><p><strong>param</strong>: <em>Node</em>  node</p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
-</td>
-<td class="code">
-<pre><code><span class="class">Params</span>.<span class="variable">prototype</span>.<span class="variable">push</span> = <span class="keyword">function</span>(<span class="variable">node</span>){
-  <span class="this">this</span>.<span class="variable">nodes</span>.<span class="variable">push</span>(<span class="variable">node</span>);
-};</code></pre>
-</td>
-</tr>
-<tr class="code">
-<td class="docs">
-<p>Return a clone of this node.</p>
-
-<h2></h2>
-
-<ul><li><p><strong>return</strong>: <em>Node</em> </p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
-</td>
-<td class="code">
-<pre><code><span class="class">Params</span>.<span class="variable">prototype</span>.<span class="variable">clone</span> = <span class="keyword">function</span>(){
-  <span class="keyword">var</span> <span class="variable">clone</span> = <span class="keyword">new</span> <span class="class">Params</span>;
-  <span class="variable">clone</span>.<span class="variable">lineno</span> = <span class="this">this</span>.<span class="variable">lineno</span>;
-  <span class="keyword">for</span> (<span class="keyword">var</span> <span class="variable">i</span> = <span class="number integer">0</span>, <span class="variable">len</span> = <span class="this">this</span>.<span class="variable">length</span>; <span class="variable">i</span> &<span class="variable">lt</span>; <span class="variable">len</span>; ++<span class="variable">i</span>) {
-    <span class="variable">clone</span>.<span class="variable">push</span>(<span class="this">this</span>.<span class="variable">nodes</span>[<span class="variable">i</span>].<span class="variable">clone</span>());
-  }
-  <span class="keyword">return</span> <span class="variable">clone</span>;
 };
 
 </code></pre>
