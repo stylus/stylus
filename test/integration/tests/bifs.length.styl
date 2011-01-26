@@ -1,4 +1,4 @@
-args(n)
+args(n = null)
   length(n)
 
 vargs(args...)
@@ -6,8 +6,9 @@ vargs(args...)
 
 body
   foo length()
+  foo length(args())
   foo length(1)
-  foo length(1 2 3)
   foo length((1 2) (3 4))
+  foo length(1 2 3)
   foo vargs(1, 2, 3, 4)
-  foo args(1 2 3)
+  foo args(1 2 3 4 5)
