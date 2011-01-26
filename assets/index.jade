@@ -5,38 +5,129 @@ html
     link(rel='stylesheet', href='main.css')
     meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
   body
-    h1 Stylus
-    p.tagline 
-      em.expressive Expressive, 
-      em.dynamic dynamic, 
-      em.robust robust 
-      em.css CSS
-    #ribbon
-      a(href='http://github.com/learnboost/stylus') Fork me on GitHub
-    #content
-      #example
-        pre#stylus
-          | border-radius(args...)
-          |   -webkit-border-radius args
-          |   -moz-border-radius args
-          |   border-radius args
-          | 
-          | size = 12px
-          | families = Helvetica, Arial, sans-serif
-          | 
-          | body
-          |   font size families
-          | 
-          | a.button
-          |   border-radius 5px
-        #arrow ➡
-        pre#css
-          | body {
-          |   font: 12px Helvetica, Arial, sans-serif;
-          | }
-          | a.button {
-          |   -webkit-border-radius: 5px;
-          |   -moz-border-radius: 5px;
-          |   border-radius: 5px;
-          | }
-      a.button(href='http://github.com/learnboost/stylus') View source
+    #container
+      h1 Stylus
+      p.tagline 
+        em.expressive Expressive, 
+        em.dynamic dynamic, 
+        em.robust robust 
+        em.css CSS
+      #ribbon
+        a(href='http://github.com/learnboost/stylus') Fork me on GitHub
+      #content
+        .example
+          h2 CSS needs a hero
+          pre
+            | body {
+            |   font: 12px Helvetica, Arial, sans-serif;
+            | }
+            | a.button {
+            |   -webkit-border-radius: 5px;
+            |   -moz-border-radius: 5px;
+            |   border-radius: 5px;
+            | }
+        
+        .example
+          h2 What if we could omit braces?
+          pre
+            | body
+            |   font: 12px Helvetica, Arial, sans-serif;
+            | 
+            | a.button
+            |   -webkit-border-radius: 5px;
+            |   -moz-border-radius: 5px;
+            |   border-radius: 5px;
+        
+        .example
+          h2 How about semi-colons?
+          pre
+            | body
+            |   font: 12px Helvetica, Arial, sans-serif
+            | 
+            | a.button
+            |   -webkit-border-radius: 5px
+            |   -moz-border-radius: 5px
+            |   border-radius: 5px
+
+        .example
+          h2 Why stop there, drop the colons
+          pre
+            | body
+            |   font 12px Helvetica, Arial, sans-serif
+            | 
+            | a.button
+            |   -webkit-border-radius 5px
+            |   -moz-border-radius 5px
+            |   border-radius 5px
+        
+        .example
+          h2 Keep things DRY
+          pre
+            | border-radius(args...)
+            |   -webkit-border-radius args
+            |   -moz-border-radius args
+            |   border-radius args
+            | 
+            | body
+            |   font 12px Helvetica, Arial, sans-serif
+            | 
+            | a.button
+            |   border-radius(5px)
+        
+        .example
+          h2 How about transparent mixins?
+          pre
+            | border-radius(args...)
+            |   -webkit-border-radius args
+            |   -moz-border-radius args
+            |   border-radius args
+            | 
+            | body
+            |   font 12px Helvetica, Arial, sans-serif
+            | 
+            | a.button
+            |   border-radius 5px
+
+        .example
+          h2 Create &amp; Share
+          pre
+            | @import 'vendor'
+            | 
+            | body
+            |   font 12px Helvetica, Arial, sans-serif
+            | 
+            | a.button
+            |   border-radius 5px
+
+        .example.closing
+          h2 Get styling with Stylus
+          p
+            | If you want an expressive css language for nodejs with these
+            | features or the features listed below, head over to
+            a(href='http://github.com/learnboost/stylus') GitHub
+            | for more information.
+          .features
+            h3 Features
+            ul
+              li Variables              
+              li Mixins
+              li Arithmetic
+              li Type coercion
+              li Dynamic importing
+              li Conditionals
+              li Iteration
+              li Nested selectors
+              li Parent referencing
+              li Variable function calls
+              li Lexical scoping
+              li Built-in functions (over 25)
+              li In-language functions
+              li Optional compression
+              li Optional image inlining
+              li Stylus executable
+              li Robust error reporting
+              li Single-line and multi-line comments
+              li CSS literal for those tricky times
+              li Character escaping
+              li TextMate bundle
+              li and more!

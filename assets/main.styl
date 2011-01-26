@@ -66,15 +66,42 @@ button(font-size = 12px)
     box-shadow inset 0 0 1px 1px #e3e3e3
     color #000
 
+html
+  dark = #dadada
+  background dark
+  background -moz-linear-gradient(-90deg, #f1f1f1, dark) fixed
+  background -webkit-gradient(linear, left top, left bottom, from(#f1f1f1), to(dark)) fixed
+
 body
-  padding 80px 130px
+  padding 120px 150px
   font small 'helvetica neue', helvetica, arial, sans-serif
+  color lighten(dark-gray, 15%)
+
+h1
+h2
+h3
   color dark-gray
 
 h1
   margin 10px 0 15px 0
   font-weight bold
   font-size large
+
+h2
+  margin 0
+  font-size 18px
+
+a
+  text-decoration none
+  color #B90101
+  &:hover
+    text-decoration underline
+
+ul
+  margin 0
+  padding 0 25px
+  li
+    list-style square
 
 .tagline
   margin 0
@@ -90,30 +117,28 @@ h1
     &.css
       color lighten(dark-gray, 60%)
 
-#example
-  position relative
-  float left
-  margin 20px 0
-  padding 20px 0
-  border-top 1px dotted #eee
-  border-bottom 1px dotted #eee
+#container
+  text-align center
+  #content
+    margin 0 auto
+    padding-top 40px
+    width 300px
+    text-align left
+
+.example
+  margin-top 25px
   pre
-    float left
+    width 300px
+    background white
+    border-radius 5px
+    padding 30px
     color #8D8D8D
-    font-family monaco, 'helvetica neue', helvetica
-    &#css
-      margin-left 100px
-  #arrow
-    position absolute
-    font-size 50px
-    top 85px
-    left 335px
-    text-shadow 2px 2px 3px #ddd
-    color #a00
+    font 12px\/1.4 monaco, 'helvetica neue', helvetica
+    box-shadow rgba(dark-gray, 0.1) -1px -1px
   
 a.button
-  float left
   clear both
+  float left
   button()
 
 #ribbon
