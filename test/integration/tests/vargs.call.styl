@@ -11,15 +11,15 @@ padding(y, x = null)
 
 body
   padding(5px)
-  padding(5px 10px)
+  padding(5px, 10px)
 
 padding(args...)
   padding args
 
 body
   padding(5px)
-  padding(5px 10px)
-  padding(5px 10px 0 2px)
+  padding(5px, 10px)
+  padding(5px, 10px, 0 2px)
 
 padding(y, rest...)
   test-y y
@@ -28,7 +28,7 @@ padding(y, rest...)
 
 body
   padding(1px)
-  padding(1px 2px 3px)
+  padding(1px, 2px, 3px)
 
 padding(args...)
   if args
@@ -37,4 +37,4 @@ padding(args...)
 
 body
   padding(1px)
-  padding(1px 2px)
+  padding(1px, 2px)
