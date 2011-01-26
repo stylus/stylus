@@ -7,4 +7,7 @@ index.html: assets/index.jade
 main.css: assets/main.styl
 	stylus < $< > $@
 
-.PHONY: site
+clean:
+	rm -f main.css index.html
+
+.PHONY: site clean
