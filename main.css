@@ -26,12 +26,15 @@ h1 {
 .tagline em.css {
   color: #c5c5c5;
 }
-#content {
-  margin: 25px 0;
+#example {
+  float: left;
+  margin: 20px 0;
 }
 #example pre {
   float: left;
-  padding: 10px 25px;
+}
+#example pre#css {
+  margin-left: 35px;
 }
 a.button {
   float: left;
