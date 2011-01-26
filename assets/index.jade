@@ -11,4 +11,28 @@ html
       em.robust robust 
       em.css CSS
     #content
+      #example
+        pre#stylus
+          | border-radius(args...)
+          |   -webkit-border-radius args
+          |   -moz-border-radius args
+          |   border-radius args
+          | 
+          | size = 12px
+          | families = Helvetica, Arial, sans-serif
+          | 
+          | body
+          |   font size families
+          | 
+          | a.button
+          |   border-radius 5px
+        pre#css
+          | body {
+          |   font: 12px Helvetica, Arial, sans-serif;
+          | }
+          | a.button {
+          |   -webkit-border-radius: 5px;
+          |   -moz-border-radius: 5px;
+          |   border-radius: 5px;
+          | }
       a.button(href='http://github.com/learnboost/stylus') View source
