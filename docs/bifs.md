@@ -208,6 +208,20 @@ Darken the given `color` by `amount`.
     darken(white, 50%)
     // => #808080
 
+### desaturate(color | hsl, amount)
+
+Desaturate the given `color` by `amount`.
+
+    desaturate(#f00, 40%)
+    // => #c33
+
+### saturate(color | hsl, amount)
+
+Saturate the given `color` by `amount`.
+
+    saturate(#c33, 40%)
+    // => #f00
+
 ### unquote(str | ident)
 
   Unquote the given `str` and pass through `ident`.
