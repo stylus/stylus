@@ -33,6 +33,7 @@ h1 {
 }
 #example pre {
   float: left;
+  color: #8d8d8d;
 }
 #example pre#css {
   margin-left: 35px;
