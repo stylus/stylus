@@ -9,6 +9,18 @@ var css = require('../../')
   , fs = require('fs');
 
 /**
+ * Test count.
+ */
+
+var count = 0;
+
+/**
+ * Tests pending.
+ */
+
+var pending = 0;
+
+/**
  * Test the given `test`.
  *
  * @param {String} test
@@ -26,7 +38,9 @@ function test(test) {
       fs.readFile(csspath, 'utf8', function(err, expected){
         if (err) throw err;
         expected += '\n';
-        if (actual != expected) {
+        if (actual == expected) {
+          --pending || done();
+        } else {
           var msg = '"' + basename(path, '.in') + '" failed\n\n'
             + '\033[33mexpected:\033[0m \n' + expected + '\n\n'
             + '\033[33mactual:\033[0m \n' + actual + '\n';
@@ -46,7 +60,20 @@ fs.readdir(__dirname + '/tests', function(err, files){
   if (err) throw err;
   files.forEach(function(file){
     if (/\.styl$/.test(file)) {
+      ++pending;
+      ++count;
       test(basename(file, '.styl'));
     }
   });
 });
+
+/**
+ * Done!!!
+ */
+
+function done() {
+  console.log(
+      '  \033[90mcompleted\033[0m'
+    + ' \033[32m%d\033[0m'
+    + ' \033[90mtests\033[0m', count);
+}
