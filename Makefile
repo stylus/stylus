@@ -14,7 +14,7 @@ docs/index.html: $(SRC)
 	@mkdir -p docs
 	dox \
 	  --title "Stylus" \
-    --desc "Expressive CSS language for nodejs" \
+    --desc "Expressive, dynamic, robust CSS for nodejs" \
 		--ribbon http://github.com/learnboost/stylus \
 		--private \
 		$^ > $@
