@@ -1,2 +1,38 @@
-body
-  padding 5px
+
+border-radius(args...)
+  -webkit-border-radius args
+  -moz-border-radius args
+  border-radius args
+
+button()
+  background #c63929
+  background -moz-linear-gradient(0% 100% 90deg, #891100 0%, #B51700 50%, #c63929 50%, #EE432E 100%)
+  background -webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #ee432e), color-stop(0.5, #c63929), color-stop(0.5, #b51700), color-stop(1, #891100))
+  border 1px solid #951100
+  border-radius 5px
+  -moz-box-shadow inset 0px 0px 0px 1px rgba(255, 115, 100, 0.4), 0 1px 3px #333
+  -webkit-box-shadow inset 0px 0px 0px 1px rgba(255, 115, 100, 0.4), 0 1px 3px #333
+  box-shadow inset 0px 0px 0px 1px rgba(255, 115, 100, 0.4), 0 1px 3px #333
+  color #fff
+  font bold 20px "helvetica neue", helvetica, arial, sans-serif
+  display block
+  padding 12px 0 14px 0
+  text-align center
+  text-shadow 0px -1px 1px rgba(0, 0, 0, .8)
+  width 150px
+  &:hover
+    background #cb0500
+    background -moz-linear-gradient(0% 100% 90deg, #a20601 0%, #cb0500 50%, #db504d 50%, #f37873 100%)
+    background -webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #f37873), color-stop(0.5, #db504d), color-stop(0.5, #cb0500), color-stop(1, #a20601))
+    cursor pointer
+  &:active
+    background #b30300
+    background -moz-linear-gradient(0% 100% 90deg, #700d00 0%, #9c1500 50%, #ad3224 50%, #d43c28 100%)
+    background -webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #d43c28), color-stop(0.5, #ad3224), color-stop(0.5, #9c1500), color-stop(1, #700d00))
+    -moz-box-shadow inset 0px 0px 0px 1px rgba(255, 115, 100, 0.4)
+    -webkit-box-shadow inset 0px 0px 0px 1px rgba(255, 115, 100, 0.4)
+    box-shadow inset 0px 0px 0px 1px rgba(255, 115, 100, 0.4)
+
+button
+.button
+  button()
