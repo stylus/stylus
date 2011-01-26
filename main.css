@@ -30,6 +30,8 @@ h1 {
 #example {
   float: left;
   margin: 20px 0;
+  border-top: 1px dotted #eee;
+  border-bottom: 1px dotted #eee;
 }
 #example pre {
   float: left;
