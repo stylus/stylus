@@ -19,6 +19,12 @@
 		</dict>
 		<dict>
 			<key>match</key>
+			<string>(arguments)</string>
+			<key>name</key>
+			<string>variable.language.stylus</string>
+		</dict>
+		<dict>
+			<key>match</key>
 			<string>@([-\w]+)</string>
 			<key>name</key>
 			<string>keyword.stylus</string>
