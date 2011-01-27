@@ -1,7 +1,7 @@
 
-## Variable Arguments
+## Rest Parameters
 
- Stylus supports variable-length arguments in the form of `name...`. These arguments consume the remaining arguments passed to a mixin or function. This is useful for example when utilizing the implicit function call support to apply vendor prefixes like `-webkit` or `-moz`.
+ Stylus supports rest parameters in the form of `name...`. These params consume the remaining arguments passed to a mixin or function. This is useful for example when utilizing the implicit function call support to apply vendor prefixes like `-webkit` or `-moz`.
  
 
 In the example below we consume all the arguments passed and simply apply them to multiple properties.
