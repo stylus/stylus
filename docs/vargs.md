@@ -42,3 +42,43 @@ yielding:
           box-shadow: 1px 2px 5px #eee;
         }
 
+### arguments
+
+  The `arguments` variable is injected into mixin and function bodies, containing the exact expression passed. This is useful for several reasons, primarily for vendor support, as you get the _exact_ expression, commas and all.
+
+  For example, if we use a rest param, the comma is simply consumed since it is an expression delimiter:
+  
+      box-shadow(args...)
+        -webkit-box-shadow args
+        -moz-box-shadow args
+        box-shadow args
+
+      #login
+        box-shadow #ddd 1px 1px, #eee 2px 2px 
+
+yielding slightly unexpected results:
+
+      #login {
+        -webkit-box-shadow: #ddd 1px 1px #eee 2px 2px;
+        -moz-box-shadow: #ddd 1px 1px #eee 2px 2px;
+        box-shadow: #ddd 1px 1px #eee 2px 2px;
+      }
+
+Let's redefine the mixin using `arguments`:
+
+      box-shadow()
+        -webkit-box-shadow arguments
+        -moz-box-shadow arguments
+        box-shadow arguments
+
+      body
+        box-shadow #ddd 1px 1px, #eee 2px 2px
+
+now yielding the desired result:
+
+      body {
+        -webkit-box-shadow: #ddd 1px 1px, #eee 2px 2px;
+        -moz-box-shadow: #ddd 1px 1px, #eee 2px 2px;
+        box-shadow: #ddd 1px 1px, #eee 2px 2px;
+      }
+
