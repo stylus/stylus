@@ -1,0 +1,18 @@
+vals = a b c d e f g
+
+body
+  for val in vals
+    foo val
+
+body
+  for val in vals[0]
+    foo val
+
+body
+  for val, i in vals[1..3]
+    foo i unquote(':') val
+
+body
+  for msg in (error 'test') (error 'foo')
+    foo msg[0] test msg[1]
+

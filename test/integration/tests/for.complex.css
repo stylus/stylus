@@ -1,0 +1,21 @@
+body {
+  foo: a;
+  foo: b;
+  foo: c;
+  foo: d;
+  foo: e;
+  foo: f;
+  foo: g;
+}
+body {
+  foo: a;
+}
+body {
+  foo: 0 : b;
+  foo: 1 : c;
+  foo: 2 : d;
+}
+body {
+  foo: error test "test";
+  foo: error test "foo";
+}
