@@ -232,16 +232,8 @@ Saturate the given `color` by `amount`.
        unquote(sans-serif)
        // => sans-serif
 
-  As an unquoted string will become literal css output,
-  you can use this to construct complex helpers.
-  
-      line-height(n)
-        unquote('/ ' + n)
-      
-      body
-        font 14px \/ 1.4
-        font 14px line-height(1.4)
-        // => font: 14px / 1.4;
+       unquote('1px / 2px')
+       // => 1px / 2px
 
 ### operate(op, left, right)
 
