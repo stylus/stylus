@@ -11,7 +11,7 @@
       border-radius args
 
     body a
-      font 12px "Lucida Grande", Arial, sans-serif
+      font 12px/1.4 "Lucida Grande", Arial, sans-serif
       background black
       color #ccc
 
@@ -23,7 +23,7 @@
 compiles to:
 
     body a {
-      font: 12px "Lucida Grande", Arial, sans-serif;
+      font: 12px/1.4 "Lucida Grande", Arial, sans-serif;
       background: #000;
       color: #ccc;
     }
