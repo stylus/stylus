@@ -37,3 +37,8 @@ body {
   foo: 2 d;
   foo: 3 d;
 }
+body {
+  foo: helvetica;
+  foo: arial;
+  foo: sans-serif;
+}
