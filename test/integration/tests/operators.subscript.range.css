@@ -1,0 +1,14 @@
+body {
+  foo: a b;
+  foo: a b c;
+  foo: d e f;
+  foo: c d e;
+}
+body {
+  foo: 1 2 3 4;
+}
+body {
+  foo: ;
+  foo: ;
+  foo: ;
+}
