@@ -40,7 +40,7 @@ var convertCSS = false;
 
 var usage = [
     ''
-  , '  Usage: stylus [options]'
+  , '  Usage: stylus [options] [< in [> out]]'
   , ''
   , '  Options:'
   , ''
