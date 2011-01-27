@@ -60,8 +60,9 @@ compiles to:
   - single-line and multi-line [comments](stylus/blob/master/docs/comments.md)
   - css [literal](stylus/blob/master/docs/literal.md)
   - character [escaping](stylus/blob/master/docs/escape.md)
-  - [keyframes](stylus/blob/master/docs/keyframes.md) support
-  - [font-face](stylus/blob/master/docs/fontface.md) support
+  - [@keyframes](stylus/blob/master/docs/keyframes.md) support
+  - [@font-face](stylus/blob/master/docs/fontface.md) support
+  - [@media](stylus/blob/master/docs/media.md) support
   - TextMate [bundle](stylus/blob/master/docs/textmates.md)
 
 ## Screencasts
