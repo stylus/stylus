@@ -1,0 +1,15 @@
+body
+  vals = a b c d e f g
+  foo vals[0...2]
+  foo vals[0..2]
+  foo vals[3..5]
+  foo vals[2 3 4]
+
+body
+  vals = (1 2) (3 4)
+  foo vals[0..1]
+
+body
+  foo ()[]
+  foo ()[1]
+  foo ()[1..3]
