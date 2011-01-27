@@ -3,6 +3,10 @@
 
  Stylus is a revolutionary new language, providing an efficient, dynamic, and expressive way to generate CSS.
 
+## Installation
+
+    $ npm install stylus
+
 ### Example
 
     border-radius(args...)
