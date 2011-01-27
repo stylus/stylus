@@ -1,7 +1,7 @@
 html {
   background: #dadada;
-  background: -moz-linear-gradient(-90deg, #f1f1f1, #dadada) fixed;
-  background: -webkit-gradient(linear, left top, left bottom, from(#f1f1f1), to(#dadada)) fixed;
+  background: -moz-linear-gradient(-90deg, #fff, #dadada) fixed;
+  background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#dadada)) fixed;
 }
 body {
   padding: 120px 150px;
