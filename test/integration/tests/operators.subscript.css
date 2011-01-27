@@ -1,18 +1,20 @@
 body {
   foo: true;
   foo: 1 2 3;
-  foo: 1;
-  foo: 2;
-  foo: 3;
-  foo: true;
-  foo: true;
   foo: true;
   foo: true;
   foo: false;
   foo: -5;
-  foo: 2 3;
-  foo: 1 2 3;
+}
+body {
+  foo: 1 2 3 4;
   foo: 1;
+  foo: 2 3 4;
+  foo: 2;
+  foo: 3 4;
+  foo: 3;
+  foo: 4;
+  foo: ;
 }
 body {
   foo: error;
@@ -23,10 +25,7 @@ body {
   foo: 10;
 }
 body {
-  foo: 5 10;
-}
-body {
-  foo: 5 10;
+  foo: 5;
   foo: 10;
 }
 body {
