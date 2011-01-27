@@ -61,6 +61,7 @@ compiles to:
   - css [literal](stylus/blob/master/docs/literal.md)
   - character [escaping](stylus/blob/master/docs/escape.md)
   - [keyframes](stylus/blob/master/docs/keyframes.md) support
+  - [font-face](stylus/blob/master/docs/fontface.md) support
   - TextMate [bundle](stylus/blob/master/docs/textmates.md)
 
 ## Authors
