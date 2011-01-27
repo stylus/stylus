@@ -158,3 +158,15 @@ yielding:
       padding: -5;
     }
 
+### arguments
+
+ The `arguments` local is available to all function bodies, and contains all the arguments passed. For example:
+ 
+     sum()
+       n = 0
+       for num in arguments
+         n = n + num
+       n
+
+     sum(1,2,3,4,5)
+     // => 15
