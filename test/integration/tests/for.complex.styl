@@ -16,3 +16,7 @@ body
   for msg in (error 'test') (error 'foo')
     foo msg[0] test msg[1]
 
+body
+  for char in a b c d
+    for num in 0 1 2 3
+      foo num char

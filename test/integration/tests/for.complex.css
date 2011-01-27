@@ -19,3 +19,21 @@ body {
   foo: error test "test";
   foo: error test "foo";
 }
+body {
+  foo: 0 a;
+  foo: 1 a;
+  foo: 2 a;
+  foo: 3 a;
+  foo: 0 b;
+  foo: 1 b;
+  foo: 2 b;
+  foo: 3 b;
+  foo: 0 c;
+  foo: 1 c;
+  foo: 2 c;
+  foo: 3 c;
+  foo: 0 d;
+  foo: 1 d;
+  foo: 2 d;
+  foo: 3 d;
+}
