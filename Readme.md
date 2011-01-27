@@ -64,6 +64,10 @@ compiles to:
   - [font-face](stylus/blob/master/docs/fontface.md) support
   - TextMate [bundle](stylus/blob/master/docs/textmates.md)
 
+## Screencasts
+
+  - [Stylus Intro](http://screenr.com/bNY)
+
 ## Authors
 
   - [TJ Holowaychuk (visionmedia)](http://github.com/visionmedia)
