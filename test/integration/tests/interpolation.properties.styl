@@ -1,0 +1,24 @@
+
+vendor(prop, args)
+  -webkit-{prop} args
+  -moz-{prop} args
+  {prop} args
+
+border-radius()
+  vendor('border-radius', arguments)
+
+#login
+  border-radius 1px 2px / 3px 4px
+
+body
+  prop = 'something'
+  foo bar
+  foo-{prop} foo
+  foo-{prop}-bar foo
+  {prop}-foo foo
+  {prop} foo
+
+body
+  {'test' + '-stuff'}-yup awesome
+  -webkit-{border-radius} awesome
+  -webkit-{box-shadow} awesome
