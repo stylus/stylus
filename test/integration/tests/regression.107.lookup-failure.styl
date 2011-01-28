@@ -1,0 +1,13 @@
+minimal-button(bg = #e3e3e3)
+  background bg
+  &:hover
+    background darken(bg, 3%)
+  &:active
+    background darken(bg, 5%)
+  nested
+    really-nested
+      with-even-more-nesting
+        background bg
+
+button
+  minimal-button()

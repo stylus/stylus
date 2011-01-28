@@ -1,0 +1,12 @@
+button {
+  background: #e3e3e3;
+}
+button:hover {
+  background: #dbdbdb;
+}
+button:active {
+  background: #d6d6d6;
+}
+button nested really-nested with-even-more-nesting {
+  background: #e3e3e3;
+}
