@@ -80,6 +80,15 @@ ul li {
   -webkit-box-shadow: rgba(34,34,34,0.1) -1px -1px;
   box-shadow: rgba(34,34,34,0.1) -1px -1px;
 }
+.example pre.terminal {
+  width: 340px;
+  padding: 10px;
+  background: #2b2b2b;
+  color: #dadada;
+  -moz-box-shadow: #fff -1px -1px;
+  -webkit-box-shadow: #fff -1px -1px;
+  box-shadow: #fff -1px -1px;
+}
 a.button {
   clear: both;
   float: left;

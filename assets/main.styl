@@ -128,13 +128,19 @@ ul
 .example
   margin-top 25px
   pre
-    width 300px
+    width width = 300px
     background white
     border-radius 5px
     padding 30px
-    color #8D8D8D
+    color color = #8D8D8D
     font 12px\/1.4 monaco, 'helvetica neue', helvetica
     box-shadow rgba(dark-gray, 0.1) -1px -1px
+    &.terminal
+      width width + 40
+      padding 10px
+      background #2B2B2B
+      color lighten(color, 30%)
+      box-shadow white -1px -1px
   
 a.button
   clear both
