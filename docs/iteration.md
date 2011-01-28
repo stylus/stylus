@@ -44,7 +44,6 @@ sum:
         sum = 0
         for n in nums
           sum = sum + n
-        n
 
       sum(1,2,3,4)
       // => 10
@@ -55,7 +54,6 @@ join:
         buf = ''
         for s, i in strings
           buf = buf + (i ? delim : '') + s
-        buf
 
       foo join(', ', 'one', 'two', 'three')
       // => "one, two, three"
