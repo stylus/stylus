@@ -2,6 +2,7 @@
 large = 60px
 small = 14px
 dark-gray = #222
+light-gray = lighten(dark-gray, 15%)
 red = #a00
 
 border-radius(args...)
@@ -53,7 +54,7 @@ html
 body
   padding 120px 150px
   font small/1.4 'helvetica neue', helvetica, arial, sans-serif
-  color lighten(dark-gray, 15%)
+  color light-gray
 
 h1
 h2
@@ -108,6 +109,30 @@ ul
     padding-top 40px
     width 300px
     text-align left
+
+#menu
+  position fixed
+  top -5px
+  right 30px
+  margin 0
+  padding 15px 0 10px 0
+  background rgba(white,0.4)
+  border 1px solid #ddd
+  box-shadow rgba(dark-gray, 0.1) 0 2px 4px
+  border-radius 5px
+  text-align left
+  li
+    list-style none
+    a
+      display block
+      width 100px
+      padding 2px 10px
+      color lighten(light-gray, 20%)
+      font-size 13px
+      &:hover
+        color black
+        text-decoration none
+      
 
 .example
   margin-top 25px

@@ -70,6 +70,36 @@ ul li {
   width: 300px;
   text-align: left;
 }
+#menu {
+  position: fixed;
+  top: -5px;
+  right: 30px;
+  margin: 0;
+  padding: 15px 0 10px 0;
+  background: rgba(255,255,255,0.4);
+  border: 1px solid #ddd;
+  text-align: left;
+  -moz-box-shadow: rgba(34,34,34,0.1) 0 2px 4px;
+  -webkit-box-shadow: rgba(34,34,34,0.1) 0 2px 4px;
+  box-shadow: rgba(34,34,34,0.1) 0 2px 4px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+#menu li {
+  list-style: none;
+}
+#menu li a {
+  display: block;
+  width: 100px;
+  padding: 2px 10px;
+  color: #7b7b7b;
+  font-size: 13px;
+}
+#menu li a:hover {
+  color: #000;
+  text-decoration: none;
+}
 .example {
   margin-top: 25px;
 }
