@@ -11,9 +11,12 @@ main.css: assets/main.styl
 	stylus < $< > $@
 
 %.html: %.md
-	ronn --html --fragment < $< > $@
+	ronn --html --fragment < $< \
+		| cat assets/head.html - assets/foot.html \
+		> $@
 
 clean:
 	rm -f main.css index.html
+	rm -f docs/*.html
 
 .PHONY: site clean
