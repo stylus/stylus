@@ -78,6 +78,7 @@ pre {
   padding: 30px;
   color: #8d8d8d;
   font: 12px / 1.4 monaco, "helvetica neue", helvetica;
+  overflow-x: auto;
   background: #fff;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
