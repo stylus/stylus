@@ -1,0 +1,33 @@
+<!DOCTYPE html><html><head><title>Stylus</title><link rel="stylesheet" href="../main.css"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head><body><div id="container"><h1>Stylus</h1><p class="tagline"><em class="expressive">Expressive, </em><em class="dynamic">dynamic, </em><em class="robust">robust </em><em class="css">CSS</em></p><div id="ribbon"><a href="http://github.com/learnboost/stylus">Fork me on GitHub</a></div><ul id="menu"><li><a href="../docs/selectors.html">Selectors</a></li><li><a href="../docs/variables.html">Variables</a></li><li><a href="../docs/operators.html">Operators</a></li><li><a href="../docs/mixins.html">Mixins</a></li><li><a href="../docs/functions.html">Functions</a></li><li><a href="../docs/bifs.html">Built-in Functions</a></li><li><a href="../docs/vargs.html">Rest Params</a></li><li><a href="../docs/comments.html">Comments</a></li><li><a href="../docs/conditionals.html">Conditionals</a></li><li><a href="../docs/iteration.html">Iteration</a></li><li><a href="../docs/import.html">@import</a></li><li><a href="../docs/media.html">@media</a></li><li><a href="../docs/font-face.html">@font-face</a></li><li><a href="../docs/keyframes.html">@keyframes</a></li><li><a href="../docs/functions.url.html">url()</a></li><li><a href="../docs/literal.html">CSS Literal</a></li><li><a href="../docs/escape.html">Char Escaping</a></li><li><a href="../docs/executable.html">Executable</a></li><li><a href="../docs/error-reporting.html">Error Reporting</a></li><li><a href="../docs/middleware.html">Connect Middleware</a></li><li><a href="../docs/js.html">JavaScript API</a></li></ul><div id="content"><div class='mp'>
+<h2 id="Interpolation">Interpolation</h2>
+
+<p>  Stylus supports interpolation by using the <code>{}</code> characters to surround an expression, which then becomes part of the identifier. For example <code>-webkit-{'border' + '-radius'}</code> would evaluate to <code>-webkit-border-radius</code>.</p>
+
+<p> A great example use-case for this is expanding properties with vendor prefixes.</p>
+
+<pre><code>  vendor(prop, args)
+    -webkit-{prop} args
+    -moz-{prop} args
+    {prop} args
+
+  border-radius()
+    vendor('border-radius', arguments)
+
+  box-shadow()
+    vendor('box-shadow', arguments)
+
+  button
+    border-radius 1px 2px / 3px 4px
+</code></pre>
+
+<p>yielding:</p>
+
+<pre><code>  button {
+    -webkit-border-radius: 1px 2px / 3px 4px;
+    -moz-border-radius: 1px 2px / 3px 4px;
+    border-radius: 1px 2px / 3px 4px;
+  }
+</code></pre>
+
+</div>
+</div></div></body></html>
