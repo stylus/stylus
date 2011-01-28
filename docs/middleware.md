@@ -7,7 +7,7 @@
 
  Return Connect middleware with the given `options`.
 
- Options:
+#### Options
 
       `src`      Source directory used to find .styl files
       `dest`     Destination directory used to output .css files
@@ -15,7 +15,7 @@
       `compile`  Custom compile function, accepting the arguments
                  `(str, path, callback)`.
 
- Examples:
+#### Examples
  
  Here we set up the custom compile function so that we may
  set the `compress` option, or define additional functions.
