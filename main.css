@@ -128,6 +128,8 @@ pre.terminal {
 }
 p code {
   padding: 2px 4px;
+  color: #626262;
+  font-size: 85%;
   background: #fff;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
