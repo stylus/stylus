@@ -45,6 +45,7 @@ compiles to:
 
   - [mixins](stylus/blob/master/docs/mixins.md)
   - [variables](stylus/blob/master/docs/variables.md)
+  - [interpolation](stylus/blob/master/docs/interpolation.md)
   - arithmetic, logical, and equality [operators](stylus/blob/master/docs/operators.md)
   - [importing](stylus/blob/master/docs/import.md) of other stylus sheets
   - type coercion
