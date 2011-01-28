@@ -1,0 +1,22 @@
+<div class='mp'>
+<h2 id="-media">@media</h2>
+
+<p> The <code>@media</code> works just as it does within regular css, however with Stylus block notation:</p>
+
+<pre><code> @media print
+   #header
+   #footer
+     display none
+</code></pre>
+
+<p>yielding:</p>
+
+<pre><code>  @media print {
+    #header,
+    #footer {
+      display: none;
+    }
+  }
+</code></pre>
+
+</div>

@@ -1,0 +1,27 @@
+<div class='mp'>
+<h2 id="-font-face">@font-face</h2>
+
+<p> The <code>@font-face</code> at-rule expects as you would expect, simply followed by a block of properties:</p>
+
+<pre><code> @font-face
+   font-family Geo
+   font-style normal
+   src url(fonts/geo_sans_light/GensansLight.ttf)
+
+ .ingeo
+   font-family Geo
+</code></pre>
+
+<p>yielding:</p>
+
+<pre><code>  @font-face {
+    font-family: Geo;
+    font-style: normal;
+    src: url("fonts/geo_sans_light/GensansLight.ttf");
+  }
+  .ingeo {
+    font-family: Geo;
+  }
+</code></pre>
+
+</div>

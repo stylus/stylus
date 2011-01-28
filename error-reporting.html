@@ -1,0 +1,75 @@
+<div class='mp'>
+<h2 id="Error-Reporting">Error Reporting</h2>
+
+<p> Stylus has fantastic error reporting built in for syntax, parse, and evaluation errors, complete with stack traces, line numbers, and filenames.</p>
+
+<h3 id="Syntax-Error">Syntax Error</h3>
+
+<p> Stylus lets us know the following syntax error, as we have indented to far, providing <code>6</code> spaces instead of <code>4</code>.</p>
+
+<pre><code>  body
+    form input
+        padding 5px
+</code></pre>
+
+<p>yielding:</p>
+
+<pre><code>Error: /Users/tj/Projects/stylus/testing/test.styl:2
+  1: 'body'
+  2: '  form input'
+  3: '      padding 5px'
+
+Invalid indentation, got 6 spaces and expected 4
+</code></pre>
+
+<h3 id="Parse-Error">Parse Error</h3>
+
+<p> Like-wise parse errors are reported in context as well:</p>
+
+<pre><code> body
+   form input
+     == padding 5px
+</code></pre>
+
+<p>yielding:</p>
+
+<pre><code> Error: /Users/tj/Projects/stylus/testing/test.styl:4
+   3: '  form input'
+   4: '    == padding 5px'
+
+ illegal unary ==
+</code></pre>
+
+<h3 id="Evaluation-Error">Evaluation Error</h3>
+
+<p> This "runtime" or evaluation error is caused due to passing a string to <code>border-radius()</code> instead of the expected <code>Unit</code> by using our helper <code>ensure(n, 'unit')</code>.</p>
+
+<pre><code>  ensure(val, type)
+    unless val is a type
+      error('expected a ' + type + ', but got ' + typeof(val))
+
+  border-radius(n)
+    ensure(n, 'unit')
+    -webkit-border-radius n
+    -moz-border-radius n
+    border-radius n
+
+  body
+    border-radius '5px'
+</code></pre>
+
+<p>yielding:</p>
+
+<pre><code>  Error: /Users/tj/Projects/stylus/examples/error.styl:12
+    11: ''
+    12: 'body'
+    13: '  border-radius \'5px\''
+    14: ''
+
+  expected a unit, but got string
+      at ensure() (/Users/tj/Projects/stylus/examples/error.styl:2)
+      at border-radius() (/Users/tj/Projects/stylus/examples/error.styl:5)
+      at "body" (/Users/tj/Projects/stylus/examples/error.styl:10)
+</code></pre>
+
+</div>

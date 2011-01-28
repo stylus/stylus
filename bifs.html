@@ -1,0 +1,362 @@
+<div class='mp'>
+<h2 id="Built-in-Functions">Built-in Functions</h2>
+
+<h3 id="red-color-hsl-">red(color | hsl)</h3>
+
+<p>Return the red component of the given <code>color</code>.</p>
+
+<pre><code> red(#c00)
+ // =&gt; 204
+</code></pre>
+
+<h3 id="green-color-hsl-">green(color | hsl)</h3>
+
+<p>Return the green component of the given <code>color</code>.</p>
+
+<pre><code> green(#0c0)
+ // =&gt; 204
+</code></pre>
+
+<h3 id="blue-color-hsl-">blue(color | hsl)</h3>
+
+<p>Return the blue component of the given <code>color</code>.</p>
+
+<pre><code> red(#00c)
+ // =&gt; 204
+</code></pre>
+
+<h3 id="alpha-color-hsl-">alpha(color | hsl)</h3>
+
+<p>Return the alpha component of the given <code>color</code>.</p>
+
+<pre><code>  alpha(#fff)
+  // =&gt; 1
+
+  alpha(rgba(0,0,0,0.3))
+  // =&gt; 0.3
+</code></pre>
+
+<h3 id="hue-color-hsl-">hue(color | hsl)</h3>
+
+<p>Return the hue of the given <code>color</code>.</p>
+
+<pre><code>hue(hsl(50deg, 100%, 80%))
+// =&gt; 50deg
+</code></pre>
+
+<h3 id="saturation-color-hsl-">saturation(color | hsl)</h3>
+
+<p>Return the saturation of the given <code>color</code>.</p>
+
+<pre><code>hue(hsl(50deg, 100%, 80%))
+// =&gt; 100%
+</code></pre>
+
+<h3 id="lightness-color-hsl-">lightness(color | hsl)</h3>
+
+<p>Return the lightness of the given <code>color</code>.</p>
+
+<pre><code>hue(hsl(50deg, 100%, 80%))
+// =&gt; 80%
+</code></pre>
+
+<h3 id="typeof-node-">typeof(node)</h3>
+
+<p>Return type of <code>node.</code> as a string.</p>
+
+<pre><code>  type(12)
+  // =&gt; 'unit'
+
+  typeof(12)
+  // =&gt; 'unit'
+
+  typeof(#fff)
+  // =&gt; 'color'
+
+  type-of(#fff)
+  // =&gt; 'color'
+</code></pre>
+
+<p>Aliased as <code>type-of</code> and <code>type</code>.</p>
+
+<h3 id="unit-unit-type-">unit(unit[, type])</h3>
+
+<p>Return a string for the type of <code>unit</code> or an empty string,
+or assign the given <code>type</code> without unit conversion.</p>
+
+<pre><code>unit(10)
+// =&gt; ''
+
+unit(15in)
+// =&gt; 'in'
+
+unit(15%, 'px')
+// =&gt; 15px
+
+unit(15%, px)
+// =&gt; 15px
+</code></pre>
+
+<h3 id="match-pattern-string-">match(pattern, string)</h3>
+
+<p>Test if <code>string</code> matches the given <code>pattern</code>.</p>
+
+<pre><code>match('^foo(bar)?', foo)
+match('^foo(bar)?', foobar)
+// =&gt; true
+
+match('^foo(bar)?', 'foo')
+match('^foo(bar)?', 'foobar')
+// =&gt; true
+
+match('^foo(bar)?', 'bar')
+// =&gt; false
+</code></pre>
+
+<h3 id="abs-unit-">abs(unit)</h3>
+
+<pre><code>  abs(-5px)
+  // =&gt; 5px
+
+  abs(5px)
+  // =&gt; 5px
+</code></pre>
+
+<h3 id="ceil-unit-">ceil(unit)</h3>
+
+<pre><code>  ceil(5.5in)
+  // =&gt; 6in
+</code></pre>
+
+<h3 id="floor-unit-">floor(unit)</h3>
+
+<pre><code>  floor(5.6px)
+  // =&gt; 5px
+</code></pre>
+
+<h3 id="round-unit-">round(unit)</h3>
+
+<pre><code>  round(5.5px)
+  // =&gt; 6px
+
+  round(5.4px)
+  // =&gt; 5px
+</code></pre>
+
+<h3 id="min-a-b-">min(a, b)</h3>
+
+<pre><code>  min(1, 5)
+  // =&gt; 1
+</code></pre>
+
+<h3 id="max-a-b-">max(a, b)</h3>
+
+<pre><code>  max(1, 5)
+  // =&gt; 5
+</code></pre>
+
+<h3 id="even-unit-">even(unit)</h3>
+
+<pre><code>  even(6px)
+  // =&gt; true
+</code></pre>
+
+<h3 id="odd-unit-">odd(unit)</h3>
+
+<pre><code>  odd(5mm)
+  // =&gt; true
+</code></pre>
+
+<h3 id="hsla-color-h-s-l-a-">hsla(color | h[, s, l, a])</h3>
+
+<p>Convert the given <code>color</code> to an <code>HSLA</code> node,
+or h,s,l,a component values.</p>
+
+<pre><code> hsla(10deg, 50%, 30%, 0.5)
+ // =&gt; HSLA
+
+ hsla(#ffcc00)
+ // =&gt; HSLA
+</code></pre>
+
+<h3 id="hsl-color-h-s-l-">hsl(color | h[, s, l])</h3>
+
+<p>Convert the given <code>color</code> to an <code>HSLA</code> node,
+or h,s,l component values.</p>
+
+<pre><code> hsl(10, 50, 30)
+ // =&gt; HSLA
+
+ hsl(#ffcc00)
+ // =&gt; HSLA
+</code></pre>
+
+<h3 id="rgba-color-r-g-b-a-">rgba(color | r[, g, b, a])</h3>
+
+<p>Return a <code>Color</code> from the r,g,b,a channels or provide a color to tweak the alpha.</p>
+
+<pre><code>  rgba(255,0,0,0.5)
+  // =&gt; rgba(255,0,0,0.5)
+
+  rgba(255,0,0,1)
+  // =&gt; #ff0000
+
+  rgba(#ffcc00, 0.5)
+  // rgba(255,204,0,0.5)
+</code></pre>
+
+<h3 id="rgb-color-r-g-b-">rgb(color | r[, g, b])</h3>
+
+<p>Return a <code>Color</code> from the r,g,b channels or cast to a color.</p>
+
+<pre><code>rgb(255,204,0)
+// =&gt; #ffcc00
+
+rgb(#fff)
+// =&gt; #fff
+</code></pre>
+
+<h3 id="lighten-color-hsl-amount-">lighten(color | hsl, amount)</h3>
+
+<p>Lighten the given <code>color</code> by <code>amount</code>.</p>
+
+<pre><code>lighten(black, 50%)
+// =&gt; #808080
+</code></pre>
+
+<h3 id="darken-color-hsl-amount-">darken(color | hsl, amount)</h3>
+
+<p>Darken the given <code>color</code> by <code>amount</code>.</p>
+
+<pre><code>darken(white, 50%)
+// =&gt; #808080
+</code></pre>
+
+<h3 id="desaturate-color-hsl-amount-">desaturate(color | hsl, amount)</h3>
+
+<p>Desaturate the given <code>color</code> by <code>amount</code>.</p>
+
+<pre><code>desaturate(#f00, 40%)
+// =&gt; #c33
+</code></pre>
+
+<h3 id="saturate-color-hsl-amount-">saturate(color | hsl, amount)</h3>
+
+<p>Saturate the given <code>color</code> by <code>amount</code>.</p>
+
+<pre><code>saturate(#c33, 40%)
+// =&gt; #f00
+</code></pre>
+
+<h3 id="unquote-str-ident-">unquote(str | ident)</h3>
+
+<p>  Unquote the given <code>str</code> and pass through <code>ident</code>.</p>
+
+<pre><code>   unquote("sans-serif")
+   // =&gt; sans-serif
+
+   unquote(sans-serif)
+   // =&gt; sans-serif
+
+   unquote('1px / 2px')
+   // =&gt; 1px / 2px
+</code></pre>
+
+<h3 id="operate-op-left-right-">operate(op, left, right)</h3>
+
+<p>  Perform the given <code>op</code> on the <code>left</code> and <code>right</code> operands:</p>
+
+<pre><code>  op = '+'
+  operate(op, 15, 5)
+  // =&gt; 20
+</code></pre>
+
+<h3 id="length-expr-">length([expr])</h3>
+
+<p>  Parenthesized expressions may act as tuples, the <code>length()</code> function returns the length of such expressions.</p>
+
+<pre><code>length((1 2 3 4))
+// =&gt; 4
+
+length((1 2))
+// =&gt; 2
+
+length((1))
+// =&gt; 1
+
+length(())
+// =&gt; 0
+
+length(1 2 3)
+// =&gt; 1
+
+length(1)
+// =&gt; 1
+
+length()
+// =&gt; 0
+</code></pre>
+
+<h3 id="warn-msg-">warn(msg)</h3>
+
+<p>  Warn with the given error <code>msg</code>, does not exit.</p>
+
+<pre><code>  warn("oh noes!")
+</code></pre>
+
+<h3 id="error-msg-">error(msg)</h3>
+
+<p>  Exits with the given error <code>msg</code>.</p>
+
+<pre><code>add(a, b)
+  unless a is a 'unit' and b is a 'unit'
+    error('add() expects units')
+  a + b
+</code></pre>
+
+<h3 id="p-expr-">p(expr)</h3>
+
+<p> Inspect the given <code>expr</code>:</p>
+
+<pre><code> fonts = Arial, sans-serif
+ p('test')
+ p(123)
+ p((1 2 3))
+ p(fonts)
+ p(#fff)
+ p(rgba(0,0,0,0.2))
+
+ add(a, b)
+   a + b
+
+ p(add)
+</code></pre>
+
+<p>stdout:</p>
+
+<pre><code> inspect: "test"
+ inspect: 123
+ inspect: 1 2 3
+ inspect: Arial, sans-serif
+ inspect: #fff
+ inspect: rgba(0,0,0,0.2)
+ inspect: add(a, b)
+</code></pre>
+
+<h3 id="Undefined-Functions">Undefined Functions</h3>
+
+<p>  Undefined functions will output as literals, so for example
+  we may call <code>color-stop(50%, #fff)</code> within our css, and it will
+  output as you would expect. We can use this within helpers as well.</p>
+
+<p>  In the example below we simply define the function <code>stop()</code> which
+  returns the literal <code>color-stop()</code> call.</p>
+
+<pre><code>stop(pos, color)
+  color-stop(pos, color)
+
+stop(50%, orange)
+// =&gt; color-stop(50%, $ffa500)
+</code></pre>
+
+</div>

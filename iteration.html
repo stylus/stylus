@@ -1,0 +1,73 @@
+<div class='mp'>
+<h2 id="Iteration">Iteration</h2>
+
+<p> Stylus allows you to iterate expressions via the <code>for/in</code> construct, taking the form of:</p>
+
+<pre><code>  for &lt;val-name> [, &lt;key-name>] in &lt;expression>
+</code></pre>
+
+<p>For example:</p>
+
+<pre><code>body
+  for num in 1 2 3
+    foo num
+</code></pre>
+
+<p>yields:</p>
+
+<pre><code>  body {
+    foo: 1;
+    foo: 2;
+    foo: 3;
+  }
+</code></pre>
+
+<p>The example below shows how to use the <code>&lt;key-name></code>:</p>
+
+<pre><code>  body
+    fonts = Impact Arial sans-serif
+    for font, i in fonts
+      foo i font
+</code></pre>
+
+<p>yielding:</p>
+
+<pre><code>    body {
+      foo: 0 Impact;
+      foo: 1 Arial;
+      foo: 2 sans-serif;
+    }
+</code></pre>
+
+<h3 id="Functions">Functions</h3>
+
+<p> Stylus functions may also contain for-loops, below are some example use-cases:</p>
+
+<p>sum:</p>
+
+<pre><code>  sum(nums...)
+    sum = 0
+    for n in nums
+      sum = sum + n
+    n
+
+  sum(1,2,3,4)
+  // =&gt; 10
+</code></pre>
+
+<p>join:</p>
+
+<pre><code>  join(delim, strings...)
+    buf = ''
+    for s, i in strings
+      buf = buf + (i ? delim : '') + s
+    buf
+
+  foo join(', ', 'one', 'two', 'three')
+  // =&gt; "one, two, three"
+
+  join(' ', 1, 2, 3)
+  // =&gt; "1 2 3"
+</code></pre>
+
+</div>

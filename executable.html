@@ -1,0 +1,43 @@
+<div class='mp'>
+<h2 id="Stylus-Executable">Stylus Executable</h2>
+
+<p>Stylus ships with the <code>stylus</code> executable for converting stylus to css.</p>
+
+<pre><code>Usage: stylus [options] [command] [&lt; in [> out]]
+
+Commands:
+
+  help &lt;prop>     Opens help info for &lt;prop> in
+                  your default browser. (osx only)
+
+Options:
+
+  -c, --css       Convert css input to stylus
+  -C, --compress  Compress css output
+  -d, --compare   Display input along with output
+  -h, --help      Display help information
+</code></pre>
+
+<h3 id="Compilation-Example">Compilation Example</h3>
+
+<p> <code>stylus</code> reads from <em>stdin</em> and outputs to <em>stdout</em>, so for example:</p>
+
+<pre><code>  $ stylus --compress &lt; some.styl &gt; some.css
+</code></pre>
+
+<p>Try stylus some in the terminal, type below and press CTRL-D for <strong>EOF</strong>:</p>
+
+<pre><code>  $ stylus
+  body
+    color red
+    font 14px Arial, sans-serif
+</code></pre>
+
+<h3 id="CSS-Property-Help">CSS Property Help</h3>
+
+<p>  On osx <code>stylus help &lt;prop></code> will open your default browser and display help documentation for the given <code>&lt;prop></code>.</p>
+
+<pre><code>$ stylus help box-shadow
+</code></pre>
+
+</div>

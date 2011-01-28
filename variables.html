@@ -1,0 +1,35 @@
+<div class='mp'>
+<h2 id="Variables">Variables</h2>
+
+<p>We may assign expressions to variables and use them throughout our stylesheet:</p>
+
+<pre><code> font-size = 14px
+
+ body
+   font font-size Arial, sans-serif
+</code></pre>
+
+<p>compiles to:</p>
+
+<pre><code> body {
+   font: 14px Arial, sans-serif;
+ }
+</code></pre>
+
+<p>Variables can even consist of an expression list:</p>
+
+<pre><code>font-size = 14px
+font = font-size "Lucida Grande", Arial
+
+body
+  font font sans-serif
+</code></pre>
+
+<p>compiles to:</p>
+
+<pre><code>body {
+  font: 14px "Lucida Grande", Arial sans-serif;
+}
+</code></pre>
+
+</div>

@@ -1,0 +1,55 @@
+<div class='mp'>
+<h2 id="-keyframes">@keyframes</h2>
+
+<p> Stylus supports the <code>@keyframes</code> at-rule, which is converted to <code>@-webkit-keyframes</code> when compiled:</p>
+
+<pre><code> @keyframes pulse
+   0%
+     background-color red
+     opacity 1.0
+     -webkit-transform scale(1.0) rotate(0deg)
+   33%
+     background-color blue
+     opacity 0.75
+     -webkit-transform scale(1.1) rotate(-5deg)
+   67%
+     background-color green
+     opacity 0.5
+     -webkit-transform scale(1.1) rotate(5deg)
+   100%
+     background-color red
+     opacity 1.0
+     -webkit-transform scale(1.0) rotate(0deg)
+</code></pre>
+
+<p>yielding:</p>
+
+<pre><code>  @-webkit-keyframes pulse {
+    0% {
+      background-color: red;
+      opacity: 1;
+      -webkit-transform: scale(1) rotate(0deg);
+    }
+
+    33% {
+      background-color: blue;
+      opacity: 0.75;
+      -webkit-transform: scale(1.1) rotate(-5deg);
+    }
+
+    67% {
+      background-color: green;
+      opacity: 0.5;
+      -webkit-transform: scale(1.1) rotate(5deg);
+    }
+
+    100% {
+      background-color: red;
+      opacity: 1;
+      -webkit-transform: scale(1) rotate(0deg);
+    }
+
+  }
+</code></pre>
+
+</div>
