@@ -196,7 +196,8 @@ body {
   -webkit-box-shadow: inset rgba(72,72,72,0.5) 0 2px 2px;
   box-shadow: inset rgba(72,72,72,0.5) 0 2px 2px;
 }
-::-webkit-scrollbar-thumb:vertical {
+::-webkit-scrollbar-thumb:vertical,
+::-webkit-scrollbar-thumb:horizontal {
   height: 50px;
   background-color: #666;
   -webkit-border-radius: 6px;
