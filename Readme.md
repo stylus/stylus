@@ -67,6 +67,7 @@ compiles to:
   - [@keyframes](stylus/blob/master/docs/keyframes.md) support
   - [@font-face](stylus/blob/master/docs/fontface.md) support
   - [@media](stylus/blob/master/docs/media.md) support
+  - Connect [Middleware](stylus/blob/master/docs/middleware.md)
   - TextMate [bundle](stylus/blob/master/docs/textmates.md)
 
 ## Screencasts
