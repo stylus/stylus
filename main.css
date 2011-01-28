@@ -72,10 +72,10 @@ ul li {
 }
 pre {
   width: 300px;
-  background: #fff;
   padding: 30px;
   color: #8d8d8d;
   font: 12px / 1.4 monaco, "helvetica neue", helvetica;
+  background: #fff;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
@@ -91,6 +91,16 @@ pre.terminal {
   -moz-box-shadow: #fff -1px -1px;
   -webkit-box-shadow: #fff -1px -1px;
   box-shadow: #fff -1px -1px;
+}
+p code {
+  padding: 2px 4px;
+  background: #fff;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: rgba(34,34,34,0.1) -1px -1px;
+  -webkit-box-shadow: rgba(34,34,34,0.1) -1px -1px;
+  box-shadow: rgba(34,34,34,0.1) -1px -1px;
 }
 #ribbon {
   position: absolute;

@@ -39,6 +39,11 @@ ribbon(color)
     text-align center
     text-decoration none
 
+inset()
+  background white
+  border-radius 5px
+  box-shadow rgba(dark-gray, 0.1) -1px -1px
+
 html
   dark = #dadada
   background dark
@@ -106,18 +111,21 @@ ul
 
 pre
   width width = 300px
-  background white
-  border-radius 5px
   padding 30px
   color color = #8D8D8D
   font 12px\/1.4 monaco, 'helvetica neue', helvetica
-  box-shadow rgba(dark-gray, 0.1) -1px -1px
+  inset()
   &.terminal
     width width + 40
     padding 10px
     background #2B2B2B
     color lighten(color, 30%)
     box-shadow white -1px -1px
-  
+
+p
+  code
+    padding 2px 4px
+    inset()
+
 #ribbon
   ribbon(red)
