@@ -2,6 +2,7 @@
 large = 60px
 small = 14px
 dark-gray = #222
+red = #a00
 
 border-radius(args...)
   -webkit-border-radius args
@@ -38,34 +39,6 @@ ribbon(color)
     text-align center
     text-decoration none
 
-button(font-size = 12px)
-  display block
-  padding 8px 0 9px
-  background #e3e3e3
-  border 1px solid #bbb
-  border-radius 3px
-  box-shadow inset 0 0 1px 1px #f6f6f6
-  text-shadow 0 1px 0 #fff
-  font-size font-size
-  font-weight bold
-  line-height 1
-  text-align center
-  text-decoration none
-  user-select none
-  width 150px
-  color #333
-
-  &:hover
-    background #d9d9d9
-    box-shadow inset 0 0 1px 1px #eaeaea
-    color #222
-    cursor pointer
-
-  &:active
-    background #d0d0d0
-    box-shadow inset 0 0 1px 1px #e3e3e3
-    color #000
-
 html
   dark = #dadada
   background dark
@@ -74,7 +47,7 @@ html
 
 body
   padding 120px 150px
-  font small 'helvetica neue', helvetica, arial, sans-serif
+  font small/1.4 'helvetica neue', helvetica, arial, sans-serif
   color lighten(dark-gray, 15%)
 
 h1
@@ -96,6 +69,9 @@ a
   color #B90101
   &:hover
     text-decoration underline
+
+strong
+  color red
 
 ul
   margin 0
@@ -127,25 +103,21 @@ ul
 
 .example
   margin-top 25px
-  pre
-    width width = 300px
-    background white
-    border-radius 5px
-    padding 30px
-    color color = #8D8D8D
-    font 12px\/1.4 monaco, 'helvetica neue', helvetica
-    box-shadow rgba(dark-gray, 0.1) -1px -1px
-    &.terminal
-      width width + 40
-      padding 10px
-      background #2B2B2B
-      color lighten(color, 30%)
-      box-shadow white -1px -1px
-  
-a.button
-  clear both
-  float left
-  button()
 
+pre
+  width width = 300px
+  background white
+  border-radius 5px
+  padding 30px
+  color color = #8D8D8D
+  font 12px\/1.4 monaco, 'helvetica neue', helvetica
+  box-shadow rgba(dark-gray, 0.1) -1px -1px
+  &.terminal
+    width width + 40
+    padding 10px
+    background #2B2B2B
+    color lighten(color, 30%)
+    box-shadow white -1px -1px
+  
 #ribbon
-  ribbon(#a00)
+  ribbon(red)
