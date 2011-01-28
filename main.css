@@ -70,6 +70,36 @@ ul li {
   width: 300px;
   text-align: left;
 }
+#menu {
+  position: fixed;
+  top: -5px;
+  right: 60px;
+  margin: 0;
+  padding: 15px 0 10px 5px;
+  background: rgba(255,255,255,0.3);
+  border: 1px solid #ddd;
+  text-align: left;
+  -moz-box-shadow: inset rgba(34,34,34,0.1) 0 4px 4px;
+  -webkit-box-shadow: inset rgba(34,34,34,0.1) 0 4px 4px;
+  box-shadow: inset rgba(34,34,34,0.1) 0 4px 4px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+#menu li {
+  list-style: none;
+}
+#menu li a {
+  display: block;
+  width: 150px;
+  padding: 1px 10px;
+  color: #7b7b7b;
+  font-size: 13px;
+}
+#menu li a:hover {
+  color: #000;
+  text-decoration: none;
+}
 .example {
   margin-top: 25px;
 }
@@ -98,6 +128,8 @@ pre.terminal {
 }
 p code {
   padding: 2px 4px;
+  color: #626262;
+  font-size: 85%;
   background: #fff;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -127,5 +159,51 @@ p code {
   padding: 0.5em 3.5em;
   text-align: center;
   text-decoration: none;
+}
+html {
+  overflow-y: auto;
+  background-color: transparent;
+}
+body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 10px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-button:start:decrement,
+::-webkit-scrollbar-button:start:increment {
+  display: block;
+  height: 30px;
+  background-color: transparent;
+}
+::-webkit-scrollbar-track-piece {
+  background-color: rgba(72,72,72,0.1);
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -moz-box-shadow: inset rgba(72,72,72,0.5) 0 1px 2px;
+  -webkit-box-shadow: inset rgba(72,72,72,0.5) 0 1px 2px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  -moz-box-shadow: inset rgba(72,72,72,0.5) 0 1px 2px;
+  -webkit-box-shadow: inset rgba(72,72,72,0.5) 0 1px 2px;
+  box-shadow: inset rgba(72,72,72,0.5) 0 1px 2px;
+}
+::-webkit-scrollbar-thumb:vertical {
+  height: 50px;
+  background-color: #666;
+  border: 1px solid #eee;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
 }
 

@@ -2,6 +2,7 @@
 large = 60px
 small = 14px
 dark-gray = #222
+light-gray = lighten(dark-gray, 15%)
 red = #a00
 
 border-radius(args...)
@@ -44,6 +45,38 @@ inset()
   border-radius 5px
   box-shadow rgba(dark-gray, 0.1) -1px -1px
 
+scrollbar()
+  html
+    overflow-y auto
+    background-color transparent
+  body
+    position absolute
+    top 0
+    left 0
+    bottom 0
+    right 10px
+    overflow-y scroll
+    overflow-x hidden
+  ::-webkit-scrollbar
+    width 10px
+    height 10px
+  ::-webkit-scrollbar-button:start:decrement
+  ::-webkit-scrollbar-button:start:increment
+    display block
+    height 30px
+    background-color transparent
+  ::-webkit-scrollbar-track-piece
+    background-color rgba(light-gray, .1)
+    border-radius 6px
+    box-shadow inset rgba(light-gray, .5) 0 1px 2px
+  ::-webkit-scrollbar-thumb:vertical
+    height 50px
+    background-color #666
+    border 1px solid #eee
+    border-radius 6px
+
+scrollbar()
+
 html
   dark = #dadada
   background dark
@@ -53,7 +86,7 @@ html
 body
   padding 120px 150px
   font small/1.4 'helvetica neue', helvetica, arial, sans-serif
-  color lighten(dark-gray, 15%)
+  color light-gray
 
 h1
 h2
@@ -109,6 +142,30 @@ ul
     width 300px
     text-align left
 
+#menu
+  position fixed
+  top -5px
+  right 60px
+  margin 0
+  padding 15px 0 10px 5px
+  background rgba(white,0.3)
+  border 1px solid #ddd
+  box-shadow inset rgba(dark-gray, 0.1) 0 4px 4px
+  border-radius 5px
+  text-align left
+  li
+    list-style none
+    a
+      display block
+      width 150px
+      padding 1px 10px
+      color lighten(light-gray, 20%)
+      font-size 13px
+      &:hover
+        color black
+        text-decoration none
+      
+
 .example
   margin-top 25px
 
@@ -129,6 +186,8 @@ pre
 p
   code
     padding 2px 4px
+    color lighten(light-gray, 10%)
+    font-size 85%
     inset()
 
 #ribbon
