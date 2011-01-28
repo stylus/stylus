@@ -187,27 +187,27 @@ body {
   background-color: rgba(72,72,72,0.1);
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
-  -moz-box-shadow: inset rgba(72,72,72,0.5) 0 1px 2px;
-  -webkit-box-shadow: inset rgba(72,72,72,0.5) 0 1px 2px;
+  -moz-box-shadow: inset rgba(72,72,72,0.5) 0 2px 2px;
+  -webkit-box-shadow: inset rgba(72,72,72,0.5) 0 2px 2px;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   border-radius: 6px;
-  -moz-box-shadow: inset rgba(72,72,72,0.5) 0 1px 2px;
-  -webkit-box-shadow: inset rgba(72,72,72,0.5) 0 1px 2px;
-  box-shadow: inset rgba(72,72,72,0.5) 0 1px 2px;
+  -moz-box-shadow: inset rgba(72,72,72,0.5) 0 2px 2px;
+  -webkit-box-shadow: inset rgba(72,72,72,0.5) 0 2px 2px;
+  box-shadow: inset rgba(72,72,72,0.5) 0 2px 2px;
 }
 ::-webkit-scrollbar-thumb:vertical {
   height: 50px;
   background-color: #666;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
-  -moz-box-shadow: inset #222 0 1px 3px;
-  -webkit-box-shadow: inset #222 0 1px 3px;
+  -moz-box-shadow: inset #222 0 0 3px;
+  -webkit-box-shadow: inset #222 0 0 3px;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   border-radius: 6px;
-  -moz-box-shadow: inset #222 0 1px 3px;
-  -webkit-box-shadow: inset #222 0 1px 3px;
-  box-shadow: inset #222 0 1px 3px;
+  -moz-box-shadow: inset #222 0 0 3px;
+  -webkit-box-shadow: inset #222 0 0 3px;
+  box-shadow: inset #222 0 0 3px;
 }
 
