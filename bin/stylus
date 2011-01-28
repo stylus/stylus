@@ -40,7 +40,12 @@ var convertCSS = false;
 
 var usage = [
     ''
-  , '  Usage: stylus [options] [< in [> out]]'
+  , '  Usage: stylus [options] [command] [< in [> out]]'
+  , ''
+  , '  Commands:'
+  , ''
+  , '    help <prop>     Opens help info for <prop> in'
+  , '                    your default browser. (osx only)'
   , ''
   , '  Options:'
   , ''
@@ -75,7 +80,26 @@ while (args.length) {
     case '--css':
       convertCSS = true;
       break;
+    case 'help':
+      var name = args.shift();
+      if (!name) throw new Error('help <property> required');
+      help(name);
+      break;
   }
+}
+
+/**
+ * Open the default browser to the CSS property `name`.
+ *
+ * @param {String} name
+ */
+
+function help(name) {
+  var url = 'https://developer.mozilla.org/en/CSS/' + name
+    , exec = require('child_process').exec;
+  exec('open "' + url + '"', function(){
+    process.exit(0);
+  });
 }
 
 // Buffer stdin
