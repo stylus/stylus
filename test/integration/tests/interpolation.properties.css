@@ -3,3 +3,15 @@
   -moz-border-radius: 1px 2px / 3px 4px;
   border-radius: 1px 2px / 3px 4px;
 }
+body {
+  foo: bar;
+  foo-something: foo;
+  foo-something-bar: foo;
+  something-foo: foo;
+  something: foo;
+}
+body {
+  test-stuff-yup: awesome;
+  -webkit-border-radius: awesome;
+  -webkit-box-shadow: awesome;
+}
