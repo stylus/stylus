@@ -73,15 +73,15 @@ ul li {
 #menu {
   position: fixed;
   top: -5px;
-  right: 30px;
+  right: 0;
   margin: 0;
-  padding: 15px 0 10px 0;
-  background: rgba(255,255,255,0.4);
+  padding: 15px 0 10px 5px;
+  background: rgba(255,255,255,0.3);
   border: 1px solid #ddd;
   text-align: left;
-  -moz-box-shadow: rgba(34,34,34,0.1) 0 2px 4px;
-  -webkit-box-shadow: rgba(34,34,34,0.1) 0 2px 4px;
-  box-shadow: rgba(34,34,34,0.1) 0 2px 4px;
+  -moz-box-shadow: inset rgba(34,34,34,0.1) 0 4px 4px;
+  -webkit-box-shadow: inset rgba(34,34,34,0.1) 0 4px 4px;
+  box-shadow: inset rgba(34,34,34,0.1) 0 4px 4px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
