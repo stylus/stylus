@@ -22,6 +22,9 @@ h2 {
   margin: 0;
   font-size: 18px;
 }
+h3 {
+  font-size: 14px;
+}
 a {
   text-decoration: none;
   color: #b90101;
