@@ -91,8 +91,8 @@ ul li {
 }
 #menu li a {
   display: block;
-  width: 100px;
-  padding: 2px 10px;
+  width: 150px;
+  padding: 1px 10px;
   color: #7b7b7b;
   font-size: 13px;
 }
