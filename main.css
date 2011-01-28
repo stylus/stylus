@@ -180,7 +180,7 @@ body {
 ::-webkit-scrollbar-button:start:decrement,
 ::-webkit-scrollbar-button:start:increment {
   display: block;
-  height: 30px;
+  height: 0;
   background-color: transparent;
 }
 ::-webkit-scrollbar-track-piece {
@@ -199,11 +199,15 @@ body {
 ::-webkit-scrollbar-thumb:vertical {
   height: 50px;
   background-color: #666;
-  border: 1px solid #eee;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
+  -moz-box-shadow: inset #222 0 1px 3px;
+  -webkit-box-shadow: inset #222 0 1px 3px;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   border-radius: 6px;
+  -moz-box-shadow: inset #222 0 1px 3px;
+  -webkit-box-shadow: inset #222 0 1px 3px;
+  box-shadow: inset #222 0 1px 3px;
 }
 
