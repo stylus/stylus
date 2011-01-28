@@ -15,3 +15,7 @@ body {
   -webkit-border-radius: awesome;
   -webkit-box-shadow: awesome;
 }
+body {
+  foo: "one";
+  foo: "two";
+}
