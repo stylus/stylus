@@ -1,0 +1,25 @@
+<div class='mp'>
+<h2 id="Data-URI-Image-Inlining">Data URI Image Inlining</h2>
+
+<p>Stylus is bundled with an optional function named <code>url()</code>, which replaces the literal <code>url()</code> calls, and conditionally inlines them using base64 <a href="http://en.wikipedia.org/wiki/Data_URI_scheme">Data URIs</a>.</p>
+
+<p>The function itself is available via <code>require('stylus').url</code>, and accepts an options object. The <code>.define(name, callback)</code> method assigned a JavaScript function that can be called from stylus source. In this case we have our images in <code>./images</code>, so we simply pass the lookup paths array with <code>__dirname</code> the directory of the executing script. This array tells stylus where to attempt looking for your image.</p>
+
+<pre><code>stylus(str)
+  .set('filename', 'images.css')
+  .define('url', stylus.url({ paths: [__dirname] }))
+  .render(function(err, css){
+    if (err) throw err;
+    console.log(css);
+  });
+</code></pre>
+
+<p>supported options:</p>
+
+<ul>
+<li><code>limit</code> bytesize limit defaulting to 30Kb (30000)</li>
+<li><code>paths</code> image resolution path(s)</li>
+</ul>
+
+
+</div>

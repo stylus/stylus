@@ -1,0 +1,76 @@
+<div class='mp'>
+<h2 id="Implementation-Comparisons">Implementation Comparisons</h2>
+
+<p>Below we go head to head with other implementations.</p>
+
+<h3 id="Variables">Variables</h3>
+
+<p>Webkit:</p>
+
+<pre><code> @var main-color color #006
+ color: var(main-color);
+</code></pre>
+
+<p>SCSS:</p>
+
+<pre><code> $main-color: #006;
+ color: $main-color;
+</code></pre>
+
+<p>Less:</p>
+
+<pre><code> @main-color: #006;
+ color: @main-color;
+</code></pre>
+
+<p>Stylus:</p>
+
+<pre><code> main-color = #006
+ color main-color
+</code></pre>
+
+<h3 id="Mixins">Mixins</h3>
+
+<p>Webkit</p>
+
+<pre><code>  @mixin pad(size length x, size length y) {
+    padding: var(y) var(x);
+  }
+
+  .msg {
+    @mixin pad(5px, 10px);
+  }
+</code></pre>
+
+<p>SCSS:</p>
+
+<pre><code> @mixin pad($x, $y) {
+   padding: $y $x;
+ }
+
+ .msg {
+   @include pad(5px, 10px);
+ }
+</code></pre>
+
+<p>Less:</p>
+
+<pre><code>  .pad(@x, @y) {
+    padding: @y @x;
+  }
+
+  .msg {
+    .pad(5px, 10px);
+  }
+</code></pre>
+
+<p>Stylus:</p>
+
+<pre><code>  pad(x, y)
+    padding y x
+
+  .msg
+    pad(5px, 10px)
+</code></pre>
+
+</div>

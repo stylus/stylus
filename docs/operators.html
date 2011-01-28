@@ -1,0 +1,325 @@
+<div class='mp'>
+<h2 id="Operator-Precedence">Operator Precedence</h2>
+
+<p>Below is the operator precedence table, highest to lowest:</p>
+
+<pre><code> []
+ ! ~ + -
+ is defined
+ ** * / %
+ + -
+ ... ..
+ &lt;= >= &lt; >
+ == !=
+ is a
+ &amp;&amp; and || or
+ ?:
+ = ?=
+ not
+ if unless
+</code></pre>
+
+<h2 id="Unary-Operators">Unary Operators</h2>
+
+<p>The following unary operators are available, <code>!</code>, <code>not</code>, <code>-</code>, <code>+</code>, and <code>~</code>.</p>
+
+<pre><code>!0
+// =&gt; true
+
+!!0
+// =&gt; false
+
+!1
+// =&gt; false
+
+!!5px
+// =&gt; true
+
+-5px
+// =&gt; -5px
+
+--5px
+// =&gt; 5px
+
+not true
+// =&gt; false
+
+not not true
+// =&gt; true
+</code></pre>
+
+<p>The logical <code>not</code> operator has low precedence, therefore the following example could be replaced with</p>
+
+<pre><code>a = 0
+b = 1
+
+!a and !b
+// =&gt; false
+// pased as: (!a) and (!b)
+</code></pre>
+
+<p>with:</p>
+
+<pre><code>not a or b
+// =&gt; false
+// parsed as: not (a or b)
+</code></pre>
+
+<h2 id="Binary-Operators">Binary Operators</h2>
+
+<h3 id="Subscript-">Subscript []</h3>
+
+<p> The subscript operator allows us to grab a value in an expression via index. Parenthesized expressions may act as tuples, so for example <code>(15px 5px)</code>, <code>(1 2 3)</code>.</p>
+
+<p> Below is an example where we utilize tuples for error handling, showing the versatility of such a construct. As</p>
+
+<pre><code> add(a, b)
+   if a is a 'unit' and b is a 'unit'
+     a + b
+   else
+     (error 'a and b must be units!')
+
+ body
+   padding add(1,'5')
+   // =&gt; padding: error "a and b must be units";
+
+   padding add(1,'5')[0]
+   // =&gt; padding: error;
+
+   padding add(1,'5')[0] == error
+   // =&gt; padding: true;
+
+   padding add(1,'5')[1]
+   // =&gt; padding: "a and b must be units";
+</code></pre>
+
+<p> A more complex example, invoking the <code>error()</code> built-in function with the error message returned, when the ident (the first value) equals <code>error</code>.</p>
+
+<pre><code> if (val = add(1,'5'))[0] == error
+   error(val[1])
+</code></pre>
+
+<h2 id="Range-">Range .. ...</h2>
+
+<p> Both the inclusive (<code>..</code>) and exclusive (<code>...</code>) range operators are provided, expanding to expressions:</p>
+
+<pre><code> 1..5
+ // =&gt; 1 2 3 4 5
+
+ 1...5
+ // =&gt; 1 2 3 4
+</code></pre>
+
+<h3 id="Additive-">Additive: + -</h3>
+
+<p>multiplicative and additive binary operators work as expected, and type conversion is applied within unit type classes, or default to the literal value. For example if we perform <code>5s - 2px</code> we will get <code>3s</code>.</p>
+
+<pre><code>15px - 5px
+// =&gt; 10px
+
+5 - 2
+// =&gt; 3
+
+5in - 50mm
+// =&gt; 3.031in
+
+5s - 1000ms
+// =&gt; 4s
+
+20mm + 4in
+// =&gt; 121.6mm
+
+"foo " + "bar"
+// =&gt; "foo bar"
+
+"num " + 15
+// =&gt; "num 15"
+</code></pre>
+
+<p>We can also operator on colors, and values are clamped appropriately.</p>
+
+<pre><code>#fff - #111
+=&gt; #eee
+
+#111 + #fco
+// =&gt; #fd1
+
+#fff - rgba(255,0,0,0.3)
+// =&gt; rgba(0,255,255,0.7)
+
+#fff / 2
+// =&gt; #808080
+
+#fff / rgb(2,0,4)
+// #80ff40
+</code></pre>
+
+<h3 id="Multiplicative-">Multiplicative: / * %</h3>
+
+<pre><code>2000ms + (1s * 2)
+// =&gt; 4ms
+
+5s / 2
+// =&gt; 2.5s
+
+4 % 2
+// =&gt; 0
+</code></pre>
+
+<h3 id="Exponent-">Exponent: **</h3>
+
+<p>The Exponent operator:</p>
+
+<pre><code>2 ** 8
+// =&gt; 256
+</code></pre>
+
+<h3 id="Equality-">Equality: == != >= <var>= </var> &lt;</h3>
+
+<p>Equality operators can be used to equate units, colors, strings, and even identifiers. This is a powerful concept, as even arbitrary identifiers such as as <code>wahoo</code> can be utilized as atoms, a function could return <code>yes</code> or <code>no</code> instead of <code>true</code> or <code>false</code> (although not advised).</p>
+
+<pre><code>5 == 5
+// =&gt; true
+
+10 &lt; 5
+// =&gt; true
+
+#fff == #fff
+// =&gt; true
+
+true == false
+// =&gt; false
+
+wahoo == yay
+// =&gt; false
+
+wahoo == wahoo
+// =&gt; true
+
+"test" == "test"
+// =&gt; true
+</code></pre>
+
+<h2 id="Logical-Operators-and-or">Logical Operators: &amp;&amp; || and or</h2>
+
+<p>Logical operators <code>&amp;&amp;</code> and <code>||</code> are aliased <code>and</code> / <code>or</code> which apply the same precedence.</p>
+
+<pre><code>5 &amp;&amp; 3
+// =&gt; 3
+
+0 || 5
+// =&gt; 5
+
+0 &amp;&amp; 5
+// =&gt; 0
+
+#fff is a 'color' and 15 is a 'unit'
+// =&gt; true
+</code></pre>
+
+<h2 id="Conditional-Assignment-">Conditional Assignment: ?=</h2>
+
+<p>The conditional assignment operator <code>?=</code> lets us define variables without clobbering old values (when present). This operator expands to an <code>is defined</code> binary operation within a ternary, for example the following are equivalent:</p>
+
+<pre><code>color ?= white
+color = color is defined ? color : white
+</code></pre>
+
+<p>For example when using <code>=</code> we simply re-assign:</p>
+
+<pre><code>color = white
+color = black
+
+color
+// =&gt; black
+</code></pre>
+
+<p>However when using <code>?=</code> our second attempt fails since the variable is already defined:</p>
+
+<pre><code>color = white
+color ?= black
+
+color
+// =&gt; white
+</code></pre>
+
+<h2 id="Instance-Check-is-a">Instance Check: is a</h2>
+
+<p>Stylus provides a binary operator named <code>is a</code> used to type check. The technical name for unit constructors should be capitalized, however lowercase works as well.</p>
+
+<pre><code>15 is a unit
+// =&gt; true
+
+15 is a Unit
+// =&gt; true
+
+#fff is a color
+// =&gt; true
+
+15 is a color
+// =&gt; false
+</code></pre>
+
+<p>Alternatively we could use the <code>type()</code> BIF:</p>
+
+<pre><code>type(#fff) == 'color'
+// =&gt; true                                                                            
+</code></pre>
+
+<h2 id="Variable-Definition-is-defined">Variable Definition: is defined</h2>
+
+<p>This pseudo binary operator does not accept a right-hand operator, and does <em>not</em> evaluate the left. This allows us to check if a variable has a value assigned to it.</p>
+
+<pre><code>foo is defined
+// =&gt; false
+
+foo = 15px
+foo is defined
+// =&gt; true
+
+#fff is defined
+// =&gt; 'invalid "is defined" check on non-variable #fff'
+</code></pre>
+
+<p>Alternatively one can use the <code>lookup(name)</code> built-in function to do this, or to perform dynamic lookups:</p>
+
+<pre><code>name = 'blue'
+lookup('light-' + name)
+// =&gt; null
+
+light-blue = #80e2e9
+lookup('light-' + name)
+// =&gt; #80e2e9
+</code></pre>
+
+<p>This operator is essential, as an undefined identifier is still a truthy value. For example:</p>
+
+<pre><code>body
+  if ohnoes
+    padding 5px
+</code></pre>
+
+<p><em>will</em> yield the following css when undefined:</p>
+
+<pre><code>body {
+  padding: 5px;
+}
+</code></pre>
+
+<p>however this will be safe:</p>
+
+<pre><code>body
+  if ohnoes is defined
+    padding 5px
+</code></pre>
+
+<h2 id="Ternary">Ternary</h2>
+
+<p>The ternary operator works as we would expect in most languages, being the only operator with three operands, the <em>condition</em> expression, the <em>truth</em> expression and the <em>false</em> expression.</p>
+
+<pre><code>num = 15
+num ? unit(num, 'px') : 20px
+// =&gt; 15px
+</code></pre>
+
+</div>

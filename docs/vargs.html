@@ -1,0 +1,92 @@
+<div class='mp'>
+<h2 id="Rest-Parameters">Rest Parameters</h2>
+
+<p> Stylus supports rest parameters in the form of <code>name...</code>. These params consume the remaining arguments passed to a mixin or function. This is useful for example when utilizing the implicit function call support to apply vendor prefixes like <code>-webkit</code> or <code>-moz</code>.</p>
+
+<p>In the example below we consume all the arguments passed and simply apply them to multiple properties.</p>
+
+<pre><code> box-shadow(args...)
+   -webkit-box-shadow args
+   -moz-box-shadow args
+   box-shadow args
+
+ #login
+   box-shadow 1px 2px 5px #eee
+</code></pre>
+
+<p>yielding:</p>
+
+<pre><code>  #login {
+    -webkit-box-shadow: 1px 2px 5px #eee;
+    -moz-box-shadow: 1px 2px 5px #eee;
+    box-shadow: 1px 2px 5px #eee;
+  }
+</code></pre>
+
+<p>If we wanted to peek at a specific argument, for example the x-offset we could simply use <code>args[0]</code>, or for example we may wish to re-define the mixin:</p>
+
+<pre><code>    box-shadow(offset-x, args...)
+      got-offset-x offset-x
+      -webkit-box-shadow offset-x args
+      -moz-box-shadow offset-x args
+      box-shadow offset-x args
+
+    #login
+      box-shadow 1px 2px 5px #eee
+</code></pre>
+
+<p>yielding:</p>
+
+<pre><code>    #login {
+      got-offset-x: 1px;
+      -webkit-box-shadow: 1px 2px 5px #eee;
+      -moz-box-shadow: 1px 2px 5px #eee;
+      box-shadow: 1px 2px 5px #eee;
+    }
+</code></pre>
+
+<h3 id="arguments">arguments</h3>
+
+<p>  The <code>arguments</code> variable is injected into mixin and function bodies, containing the exact expression passed. This is useful for several reasons, primarily for vendor support, as you get the <em>exact</em> expression, commas and all.</p>
+
+<p>  For example, if we use a rest param, the comma is simply consumed since it is an expression delimiter:</p>
+
+<pre><code>  box-shadow(args...)
+    -webkit-box-shadow args
+    -moz-box-shadow args
+    box-shadow args
+
+  #login
+    box-shadow #ddd 1px 1px, #eee 2px 2px 
+</code></pre>
+
+<p>yielding slightly unexpected results:</p>
+
+<pre><code>  #login {
+    -webkit-box-shadow: #ddd 1px 1px #eee 2px 2px;
+    -moz-box-shadow: #ddd 1px 1px #eee 2px 2px;
+    box-shadow: #ddd 1px 1px #eee 2px 2px;
+  }
+</code></pre>
+
+<p>Let's redefine the mixin using <code>arguments</code>:</p>
+
+<pre><code>  box-shadow()
+    -webkit-box-shadow arguments
+    -moz-box-shadow arguments
+    box-shadow arguments
+
+  body
+    box-shadow #ddd 1px 1px, #eee 2px 2px
+</code></pre>
+
+<p>now yielding the desired result:</p>
+
+<pre><code>  body {
+    -webkit-box-shadow: #ddd 1px 1px, #eee 2px 2px;
+    -moz-box-shadow: #ddd 1px 1px, #eee 2px 2px;
+    box-shadow: #ddd 1px 1px, #eee 2px 2px;
+  }
+</code></pre>
+
+</div>

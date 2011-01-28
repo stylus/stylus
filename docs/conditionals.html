@@ -1,0 +1,58 @@
+<div class='mp'>
+<h2 id="Conditionals">Conditionals</h2>
+
+<p> Conditionals provide control flow to a language which is otherwise static, providing conditional imports, mixins, functions, and more. The examples below are simply examples, and not recommended :)</p>
+
+<h3 id="if-else-if-else">if / else if / else</h3>
+
+<p> The <code>if</code> conditional works as you would expect, simply accepting an expression, evaluating the following block when <code>true</code>. Along with <code>if</code> are the typical <code>else if</code> and <code>else</code> tokens, acting as fallbacks.</p>
+
+<p> The example below would conditionally overload the <code>padding</code> property, swapping it for margin.</p>
+
+<pre><code>overload-padding = true
+
+if overload-padding
+  padding(y, x)
+    margin y x
+
+body
+  padding 5px 10px
+</code></pre>
+
+<p>Another example:</p>
+
+<pre><code>box(x, y, margin = false)
+  padding y x
+  if margin
+    margin y x
+
+body
+  box(5px, 10px, true)
+</code></pre>
+
+<p>Another <code>box()</code> helper:</p>
+
+<pre><code>box(x, y, margin-only = false)
+  if margin-only
+    margin y x
+  else
+    padding y x
+</code></pre>
+
+<h3 id="unless">unless</h3>
+
+<p> For users familiar with the ruby programming language, we have the <code>unless</code> conditional, which is essentially the opposite of <code>if</code>, essentially <code>if (!(expr))</code>.</p>
+
+<p>In the example below, if <code>disable-padding-override</code> is undefined or <code>false</code> padding will be overridden, displaying <code>margin</code> instead. However when <code>true</code> padding will remain outputting <code>padding 5px 10px</code> as expected.</p>
+
+<pre><code> disable-padding-override = true
+
+ unless disable-padding-override is defined and disable-padding-override
+   padding(x, y)
+     margin y x
+
+ body
+   padding 5px 10px
+</code></pre>
+
+</div>

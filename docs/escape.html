@@ -1,0 +1,32 @@
+<div class='mp'>
+<h2 id="Escaping">Escaping</h2>
+
+<p> Stylus allows you to escape characters, effectively turning them into identifiers, so that they can be rendered as literals. For example:</p>
+
+<pre><code> body
+   padding 1 \+ 2
+</code></pre>
+
+<p>will compile to:</p>
+
+<pre><code> body {
+   padding: 1 + 2;
+ }
+</code></pre>
+
+<p>Not that Stylus requires that <code>/</code> is parenthesized when used in a property:</p>
+
+<pre><code>body
+  font 14px/1.4
+  font (14px/1.4)
+</code></pre>
+
+<p>yields:</p>
+
+<pre><code>body {
+  font: 14px/1.4;
+  font: 10px;
+}
+</code></pre>
+
+</div>

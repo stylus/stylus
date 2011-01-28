@@ -1,0 +1,189 @@
+<div class='mp'>
+<h2 id="Functions">Functions</h2>
+
+<p> Stylus features powerful in-language function definition. Function definition appears identical to mixins, however functions may return a value.</p>
+
+<h3 id="Return-Values">Return Values</h3>
+
+<p> Let's try a trivial example, creating a function that adds two numbers.</p>
+
+<pre><code>add(a, b)
+  a + b
+</code></pre>
+
+<p> We may then utilize this function in conditions, as property values, etc.</p>
+
+<pre><code> body 
+   padding add(10px, 5)
+</code></pre>
+
+<p> Rendering</p>
+
+<pre><code> body {
+   padding: 15px;
+ }
+</code></pre>
+
+<h3 id="Argument-Defaults">Argument Defaults</h3>
+
+<p> Optional arguments may default to a given expression. With Stylus we may even default arguments to leading arguments! For example:</p>
+
+<pre><code> add(a, b = a)
+   a + b
+
+ add(10, 5)
+ // =&gt; 15
+
+ add(10)
+ // =&gt; 20
+</code></pre>
+
+<p>note that since argument defaults are assignments, we can also utilize function calls for defaults:</p>
+
+<pre><code> add(a, b = unit(a, px))
+   a + b
+</code></pre>
+
+<h3 id="Function-Bodies">Function Bodies</h3>
+
+<p> We can take our simple <code>add()</code> function further, by casting all units passed as <code>px</code> via the <code>unit()</code> built-in. Re-assigning each argument and providing a unit type string (or identifier), which disregards unit conversion.</p>
+
+<pre><code> add(a, b = a)
+   a = unit(a, px)
+   b = unit(b, px)
+   a + b
+
+ add(15%, 10deg)
+ // =&gt; 25
+</code></pre>
+
+<h3 id="Multiple-Return-Values">Multiple Return Values</h3>
+
+<p> Stylus functions can return several values, just as you can assign several values to a variable. For example the following is a valid assignment:</p>
+
+<pre><code>   sizes = 15px 10px
+
+   sizes[0]
+   // =&gt; 15px 
+</code></pre>
+
+<p>Similarly we may return several values:</p>
+
+<pre><code>   sizes()
+     15px 10px
+
+   sizes()[0]
+   // =&gt; 15px
+</code></pre>
+
+<p>One slight exception is when return values are identifiers, for example the following looks like a property assignment to Stylus since no operators are present.</p>
+
+<pre><code> swap(a, b)
+   b a
+</code></pre>
+
+<p>To disambiguate we may either wrap in parens, or utilize the <code>return</code> keyword.</p>
+
+<pre><code>  swap(a, b)
+    (b a)
+
+  swap(a, b)
+    return b a
+</code></pre>
+
+<h3 id="Conditionals">Conditionals</h3>
+
+<p> Let's say we want to create a function named <code>stringish()</code> to see if the value given can be transformed to a string. We check if <code>val</code> is a string, or an ident which is string-like. Because undefined identifiers yield themselves as the value, we may compare them to them-selves as shown below, where <code>yes</code> and <code>no</code> are used in place of <code>true</code> and <code>false</code>.</p>
+
+<pre><code> stringish(val)
+   if val is a 'string' or val is a 'ident'
+     yes
+   else
+     no
+</code></pre>
+
+<p>usage:</p>
+
+<pre><code> stringish('yay') == yes
+ // =&gt; true
+
+ stringish(yay) == yes
+ // =&gt; true
+
+ stringish(0) == no
+ // =&gt; true
+</code></pre>
+
+<p><strong>note</strong>: <code>yes</code> and <code>no</code> are not boolean literals, they are simply undefined identifiers in this case.</p>
+
+<p>Another example:</p>
+
+<pre><code>compare(a, b)
+  if a &gt; b
+    higher
+  else if a &lt; b
+    lower
+  else
+    equal
+</code></pre>
+
+<p>usage:</p>
+
+<pre><code>compare(5, 2)
+// =&gt; higher
+
+compare(1, 5)
+// =&gt; lower
+
+compare(10, 10)
+// =&gt; equal
+</code></pre>
+
+<h3 id="Aliasing">Aliasing</h3>
+
+<p>  To alias a function we can simply assign a function's name to a new identifier. For example our previous <code>add()</code> function could be exposed as <code>plus()</code> as well, simply by:</p>
+
+<pre><code>  plus = add
+
+  plus(1, 2)
+  // =&gt; 3
+</code></pre>
+
+<h3 id="Variable-Functions">Variable Functions</h3>
+
+<p>  In the same way that we can "alias" a function, we can pass a function as well, here our <code>invoke()</code> function accepts a function, so we can pass it <code>add()</code> or <code>sub()</code>.</p>
+
+<pre><code>invoke(a, b, fn)
+  fn(a, b)
+
+add(a, b)
+  a + b
+
+body
+  padding invoke(5, 10, add)
+  padding invoke(5, 10, sub)
+</code></pre>
+
+<p>yielding:</p>
+
+<pre><code>body {
+  padding: 15;
+  padding: -5;
+}
+</code></pre>
+
+<h3 id="arguments">arguments</h3>
+
+<p> The <code>arguments</code> local is available to all function bodies, and contains all the arguments passed. For example:</p>
+
+<pre><code> sum()
+   n = 0
+   for num in arguments
+     n = n + num
+   n
+
+ sum(1,2,3,4,5)
+ // =&gt; 15
+</code></pre>
+
+</div>

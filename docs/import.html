@@ -1,0 +1,73 @@
+<div class='mp'>
+<h2 id="Import">Import</h2>
+
+<p> Stylus supports both literal <strong>@import</strong> for CSS, as well as dynamic importing of other Stylus sheets.</p>
+
+<h3 id="Literal-CSS">Literal CSS</h3>
+
+<p>  Any filename with the extension <code>.css</code> will become a literal, for example:</p>
+
+<pre><code> @import "reset.css"
+</code></pre>
+
+<p>will render to:</p>
+
+<pre><code> @import "reset.css"
+</code></pre>
+
+<h3 id="Stylus-Import">Stylus Import</h3>
+
+<p> When using <strong>@import</strong> without the <code>.css</code> extension, it is assumed to be a Stylus sheet, for example <code>@import "mixins/border-radius"</code>.</p>
+
+<p> <strong>@import</strong> works by iterating an array of directories, and seeing if this file lives in any of them, similar to node's <code>require.paths</code>. This array defaults to a single path which is derived from the <code>filename</code> option's dirname. So if your filename is <code>/tmp/testing/stylus/main.styl</code>, then import will look in <code>/tmp/testing/stylus/</code>.</p>
+
+<p> In the example below we set the <code>paths</code> options to provide additional paths to Stylus. Within <code>./test.styl</code> we could then <code>@import "mixins/border-radius"</code> or <code>@import "border-radius"</code> since <code>./mixins</code> is exposed to Stylus.</p>
+
+<pre><code>  /**
+   * Module dependencies.
+   */
+
+  var stylus = require('../')
+    , str = require('fs').readFileSync(__dirname + '/test.styl', 'utf8');
+
+  var paths = [
+      __dirname
+    , __dirname + '/mixins'
+  ];
+
+  stylus(str)
+    .set('filename', __dirname + '/test.styl')
+    .set('paths', paths)
+    .render(function(err, css){
+      if (err) throw err;
+      console.log(css);
+    });
+</code></pre>
+
+<h3 id="JavaScript-Import-API">JavaScript Import API</h3>
+
+<p> When using the <code>.import(path)</code> method, these imports are deferred until evaluation:</p>
+
+<pre><code>   var stylus = require('../')
+     , str = require('fs').readFileSync(__dirname + '/test.styl', 'utf8');
+
+   stylus(str)
+     .set('filename', __dirname + '/test.styl')
+     .import('mixins/vendor')
+     .render(function(err, css){
+     if (err) throw err;
+     console.log(css);
+   });
+</code></pre>
+
+<p> The following are essentially equivalent:</p>
+
+<pre><code> @import 'mixins/vendor'
+</code></pre>
+
+<p>and</p>
+
+<pre><code> .import('mixins/vendor') 
+</code></pre>
+
+</div>
