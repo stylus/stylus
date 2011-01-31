@@ -11,7 +11,7 @@ body
 form .button
   padding-left add(10px, 5px)
 
-opposite-position(pos)
+-opposite-position(pos)
   if pos == top
     bottom
   else if pos == bottom
@@ -25,7 +25,7 @@ opposite-position(pos)
 
 opposite(positions)
   for pos in positions
-    pos = opposite-position(pos)
+    pos = -opposite-position(pos)
     ret = ret is defined ? ret pos : pos
 
 body
