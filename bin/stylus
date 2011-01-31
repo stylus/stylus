@@ -52,6 +52,7 @@ var usage = [
   , '    -c, --css       Convert css input to stylus'
   , '    -C, --compress  Compress css output'
   , '    -d, --compare   Display input along with output'
+  , '    -V, --version   Display the version of stylus'
   , '    -h, --help      Display help information'
   , ''
 ].join('\n');
@@ -79,6 +80,11 @@ while (args.length) {
     case '-c':
     case '--css':
       convertCSS = true;
+      break;
+    case '-V':
+    case '--version':
+      console.log(stylus.version);
+      process.exit(0);
       break;
     case 'help':
       var name = args.shift();
