@@ -45,39 +45,6 @@ inset()
   border-radius 5px
   box-shadow rgba(dark-gray, 0.1) -1px -1px
 
-scrollbar()
-  html
-    overflow-y auto
-    background-color transparent
-  body
-    position absolute
-    top 0
-    left 0
-    bottom 0
-    right 10px
-    overflow-y scroll
-    overflow-x hidden
-  ::-webkit-scrollbar
-    width 10px
-    height 10px
-  ::-webkit-scrollbar-button:start:decrement
-  ::-webkit-scrollbar-button:start:increment
-    display block
-    height 0
-    background-color transparent
-  ::-webkit-scrollbar-track-piece
-    background-color rgba(light-gray, .1)
-    border-radius 6px
-    box-shadow inset rgba(light-gray, .5) 0 2px 2px
-  ::-webkit-scrollbar-thumb:vertical
-  ::-webkit-scrollbar-thumb:horizontal
-    height 50px
-    background-color #666
-    border-radius 6px
-    box-shadow inset dark-gray 0 0 3px
-
-scrollbar()
-
 html
   dark = #dadada
   background dark
