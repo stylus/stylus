@@ -1,6 +1,6 @@
 <a href="http://github.com/learnboost/stylus"><img alt="Fork me on GitHub" id="ribbon" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a><html>
 	<head>
-		<title>Switch</title>
+		<title>Stylus</title>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 		<style>body {
     margin: 0;
@@ -108,7 +108,162 @@ code .this { color: #19469D; }</style>
 		</script>
 	</head>
 	<body>
-<table id="source"><tbody><tr><td><h1>Switch</h1><p>Expressive CSS language for nodejs</p></td><td></td></tr><tr class="filename"><td><h2 id="lib/convert/css.js"><a href="#">css</a></h2></td><td>lib/convert/css.js</td></tr><tr class="code">
+<table id="source"><tbody><tr><td><h1>Stylus</h1><p>Expressive, dynamic, robust CSS for nodejs</p></td><td></td></tr><tr class="filename"><td><h2 id="lib/colors.js"><a href="#">colors</a></h2></td><td>lib/colors.js</td></tr><tr class="code">
+<td class="docs">
+<p>module.exports = {
+    aliceblue: [240, 248, 255]
+  , antiquewhite: [250, 235, 215]
+  , aqua: [0, 255, 255]
+  , aquamarine: [127, 255, 212]
+  , azure: [240, 255, 255]
+  , beige: [245, 245, 220]
+  , bisque: [255, 228, 196]
+  , black: [0, 0, 0]
+  , blanchedalmond: [255, 235, 205]
+  , blue: [0, 0, 255]
+  , blueviolet: [138, 43, 226]
+  , brown: [165, 42, 42]
+  , burlywood: [222, 184, 135]
+  , cadetblue: [95, 158, 160]
+  , chartreuse: [127, 255, 0]
+  , chocolate: [210, 105, 30]
+  , coral: [255, 127, 80]
+  , cornflowerblue: [100, 149, 237]
+  , cornsilk: [255, 248, 220]
+  , crimson: [220, 20, 60]
+  , cyan: [0, 255, 255]
+  , darkblue: [0, 0, 139]
+  , darkcyan: [0, 139, 139]
+  , darkgoldenrod: [184, 132, 11]
+  , darkgray: [169, 169, 169]
+  , darkgreen: [0, 100, 0]
+  , darkgrey: [169, 169, 169]
+  , darkkhaki: [189, 183, 107]
+  , darkmagenta: [139, 0, 139]
+  , darkolivegreen: [85, 107, 47]
+  , darkorange: [255, 140, 0]
+  , darkorchid: [153, 50, 204]
+  , darkred: [139, 0, 0]
+  , darksalmon: [233, 150, 122]
+  , darkseagreen: [143, 188, 143]
+  , darkslateblue: [72, 61, 139]
+  , darkslategray: [47, 79, 79]
+  , darkslategrey: [47, 79, 79]
+  , darkturquoise: [0, 206, 209]
+  , darkviolet: [148, 0, 211]
+  , deeppink: [255, 20, 147]
+  , deepskyblue: [0, 191, 255]
+  , dimgray: [105, 105, 105]
+  , dimgrey: [105, 105, 105]
+  , dodgerblue: [30, 144, 255]
+  , firebrick: [178, 34, 34]
+  , floralwhite: [255, 255, 240]
+  , forestgreen: [34, 139, 34]
+  , fuchsia: [255, 0, 255]
+  , gainsboro: [220, 220, 220]
+  , ghostwhite: [248, 248, 255]
+  , gold: [255, 215, 0]
+  , goldenrod: [218, 165, 32]
+  , gray: [128, 128, 128]
+  , green: [0, 128, 0]
+  , greenyellow: [173, 255, 47]
+  , grey: [128, 128, 128]
+  , honeydew: [240, 255, 240]
+  , hotpink: [255, 105, 180]
+  , indianred: [205, 92, 92]
+  , indigo: [75, 0, 130]
+  , ivory: [255, 255, 240]
+  , khaki: [240, 230, 140]
+  , lavender: [230, 230, 250]
+  , lavenderblush: [255, 240, 245]
+  , lawngreen: [124, 252, 0]
+  , lemonchiffon: [255, 250, 205]
+  , lightblue: [173, 216, 230]
+  , lightcoral: [240, 128, 128]
+  , lightcyan: [224, 255, 255]
+  , lightgoldenrodyellow: [250, 250, 210]
+  , lightgray: [211, 211, 211]
+  , lightgreen: [144, 238, 144]
+  , lightgrey: [211, 211, 211]
+  , lightpink: [255, 182, 193]
+  , lightsalmon: [255, 160, 122]
+  , lightseagreen: [32, 178, 170]
+  , lightskyblue: [135, 206, 250]
+  , lightslategray: [119, 136, 153]
+  , lightslategrey: [119, 136, 153]
+  , lightsteelblue: [176, 196, 222]
+  , lightyellow: [255, 255, 224]
+  , lime: [0, 255, 0]
+  , limegreen: [50, 205, 50]
+  , linen: [250, 240, 230]
+  , magenta: [255, 0, 255]
+  , maroon: [128, 0, 0]
+  , mediumaquamarine: [102, 205, 170]
+  , mediumblue: [0, 0, 205]
+  , mediumorchid: [186, 85, 211]
+  , mediumpurple: [147, 112, 219]
+  , mediumseagreen: [60, 179, 113]
+  , mediumslateblue: [123, 104, 238]
+  , mediumspringgreen: [0, 250, 154]
+  , mediumturquoise: [72, 209, 204]
+  , mediumvioletred: [199, 21, 133]
+  , midnightblue: [25, 25, 112]
+  , mintcream: [245, 255, 250]
+  , mistyrose: [255, 228, 225]
+  , moccasin: [255, 228, 181]
+  , navajowhite: [255, 222, 173]
+  , navy: [0, 0, 128]
+  , oldlace: [253, 245, 230]
+  , olive: [128, 128, 0]
+  , olivedrab: [107, 142, 35]
+  , orange: [255, 165, 0]
+  , orangered: [255, 69, 0]
+  , orchid: [218, 112, 214]
+  , palegoldenrod: [238, 232, 170]
+  , palegreen: [152, 251, 152]
+  , paleturquoise: [175, 238, 238]
+  , palevioletred: [219, 112, 147]
+  , papayawhip: [255, 239, 213]
+  , peachpuff: [255, 218, 185]
+  , peru: [205, 133, 63]
+  , pink: [255, 192, 203]
+  , plum: [221, 160, 203]
+  , powderblue: [176, 224, 230]
+  , purple: [128, 0, 128]
+  , red: [255, 0, 0]
+  , rosybrown: [188, 143, 143]
+  , royalblue: [65, 105, 225]
+  , saddlebrown: [139, 69, 19]
+  , salmon: [250, 128, 114]
+  , sandybrown: [244, 164, 96]
+  , seagreen: [46, 139, 87]
+  , seashell: [255, 245, 238]
+  , sienna: [160, 82, 45]
+  , silver: [192, 192, 192]
+  , skyblue: [135, 206, 235]
+  , slateblue: [106, 90, 205]
+  , slategray: [119, 128, 144]
+  , slategrey: [119, 128, 144]
+  , snow: [255, 255, 250]
+  , springgreen: [0, 255, 127]
+  , steelblue: [70, 130, 180]
+  , tan: [210, 180, 140]
+  , teal: [0, 128, 128]
+  , thistle: [216, 191, 216]
+  , tomato: [255, 99, 71]
+  , turquoise: [64, 224, 208]
+  , violet: [238, 130, 238]
+  , wheat: [245, 222, 179]
+  , white: [255, 255, 255]
+  , whitesmoke: [245, 245, 245]
+  , yellow: [255, 255, 0]
+  , yellowgreen: [154, 205, 5]
+};</p>
+</td>
+<td class="code">
+
+</td>
+</tr><tr class="filename"><td><h2 id="lib/convert/css.js"><a href="#">css</a></h2></td><td>lib/convert/css.js</td></tr><tr class="code">
 <td class="docs">
 <p>Convert the given <code>css</code> to stylus source.</p>
 
@@ -730,6 +885,48 @@ or h,s,l component values.</p>
 </tr>
 <tr class="code">
 <td class="docs">
+<p>Saturate <code>color</code> by <code>amount</code>.</p>
+
+<h2></h2>
+
+<ul><li><p><strong>param</strong>: <em>Color | HSLA</em>  color</p></li><li><p><strong>param</strong>: <em>Unit</em>  amount</p></li><li><p><strong>return</strong>: <em>HSLA</em> </p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
+</td>
+<td class="code">
+<pre><code><span class="variable">exports</span>.<span class="variable">saturate</span> = <span class="keyword">function</span>(<span class="variable">color</span>, <span class="variable">amount</span>){
+  <span class="variable">utils</span>.<span class="variable">assertColor</span>(<span class="variable">color</span>, <span class="string">'color'</span>);
+  <span class="variable">utils</span>.<span class="variable">assertType</span>(<span class="variable">amount</span>, <span class="variable">nodes</span>.<span class="class">Unit</span>, <span class="string">'amount'</span>);
+  <span class="keyword">var</span> <span class="variable">hsl</span> = <span class="variable">color</span>.<span class="variable">hsl</span>;
+  <span class="keyword">return</span> <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">HSLA</span>(
+      <span class="variable">hsl</span>.<span class="variable">h</span>
+    , <span class="variable">hsl</span>.<span class="variable">s</span> + <span class="variable">amount</span>.<span class="variable">val</span>
+    , <span class="variable">hsl</span>.<span class="variable">l</span>
+    , <span class="variable">hsl</span>.<span class="variable">a</span>);
+};</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Desaturate <code>color</code> by <code>amount</code>.</p>
+
+<h2></h2>
+
+<ul><li><p><strong>param</strong>: <em>Color | HSLA</em>  color</p></li><li><p><strong>param</strong>: <em>Unit</em>  amount</p></li><li><p><strong>return</strong>: <em>HSLA</em> </p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
+</td>
+<td class="code">
+<pre><code><span class="variable">exports</span>.<span class="variable">desaturate</span> = <span class="keyword">function</span>(<span class="variable">color</span>, <span class="variable">amount</span>){
+  <span class="variable">utils</span>.<span class="variable">assertColor</span>(<span class="variable">color</span>, <span class="string">'color'</span>);
+  <span class="variable">utils</span>.<span class="variable">assertType</span>(<span class="variable">amount</span>, <span class="variable">nodes</span>.<span class="class">Unit</span>, <span class="string">'amount'</span>);
+  <span class="keyword">var</span> <span class="variable">hsl</span> = <span class="variable">color</span>.<span class="variable">hsl</span>;
+  <span class="keyword">return</span> <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">HSLA</span>(
+      <span class="variable">hsl</span>.<span class="variable">h</span>
+    , <span class="variable">hsl</span>.<span class="variable">s</span> - <span class="variable">amount</span>.<span class="variable">val</span>
+    , <span class="variable">hsl</span>.<span class="variable">l</span>
+    , <span class="variable">hsl</span>.<span class="variable">a</span>);
+};</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
 <p>Lighten <code>color</code> by <code>amount</code>.</p>
 
 <h2></h2>
@@ -1009,7 +1206,10 @@ match('^foo(bar)?', 'bar')
     <span class="keyword">if</span> (<span class="variable">buf</span>.<span class="variable">length</span> &<span class="variable">gt</span>; <span class="variable">sizeLimit</span>) <span class="keyword">return</span> <span class="variable">literal</span>;
 
     <span class="comment">// Encode</span>
-    <span class="keyword">return</span> <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">String</span>(<span class="string">'data:'</span> + <span class="variable">mime</span> + <span class="string">';base64,'</span> + <span class="variable">buf</span>.<span class="variable">toString</span>(<span class="string">'base64'</span>));
+    <span class="keyword">var</span> <span class="variable">str</span> = <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">String</span>(<span class="string">'data:'</span> + <span class="variable">mime</span> + <span class="string">';base64,'</span> + <span class="variable">buf</span>.<span class="variable">toString</span>(<span class="string">'base64'</span>))
+      , <span class="variable">args</span> = <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Expression</span>;
+    <span class="variable">args</span>.<span class="variable">push</span>(<span class="variable">str</span>);
+    <span class="keyword">return</span> <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Call</span>(<span class="string">'url'</span>, <span class="variable">args</span>);
   }
 };</code></pre>
 </td>
@@ -1075,173 +1275,7 @@ match('^foo(bar)?', 'bar')
  </p>
 </td>
 <td class="code">
-<pre><code><span class="keyword">var</span> <span class="variable">unit</span> = <span class="keyword">new</span> <span class="class">RegExp</span>(<span class="string">'^(\\d+\\.\\d+|\\d+|\\.\\d+)('</span> + <span class="variable">units</span> + <span class="string">')? *'</span>);</code></pre>
-</td>
-</tr>
-<tr class="code">
-<td class="docs">
-<p>Color names.
- </p>
-</td>
-<td class="code">
-<pre><code><span class="keyword">var</span> <span class="variable">colors</span> = {
-    <span class="variable">aliceblue</span>: [<span class="number integer">240</span>, <span class="number integer">248</span>, <span class="number integer">255</span>]
-  , <span class="variable">antiquewhite</span>: [<span class="number integer">250</span>, <span class="number integer">235</span>, <span class="number integer">215</span>]
-  , <span class="variable">aqua</span>: [<span class="number integer">0</span>, <span class="number integer">255</span>, <span class="number integer">255</span>]
-  , <span class="variable">aquamarine</span>: [<span class="number integer">127</span>, <span class="number integer">255</span>, <span class="number integer">212</span>]
-  , <span class="variable">azure</span>: [<span class="number integer">240</span>, <span class="number integer">255</span>, <span class="number integer">255</span>]
-  , <span class="variable">beige</span>: [<span class="number integer">245</span>, <span class="number integer">245</span>, <span class="number integer">220</span>]
-  , <span class="variable">bisque</span>: [<span class="number integer">255</span>, <span class="number integer">228</span>, <span class="number integer">196</span>]
-  , <span class="variable">black</span>: [<span class="number integer">0</span>, <span class="number integer">0</span>, <span class="number integer">0</span>]
-  , <span class="variable">blanchedalmond</span>: [<span class="number integer">255</span>, <span class="number integer">235</span>, <span class="number integer">205</span>]
-  , <span class="variable">blue</span>: [<span class="number integer">0</span>, <span class="number integer">0</span>, <span class="number integer">255</span>]
-  , <span class="variable">blueviolet</span>: [<span class="number integer">138</span>, <span class="number integer">43</span>, <span class="number integer">226</span>]
-  , <span class="variable">brown</span>: [<span class="number integer">165</span>, <span class="number integer">42</span>, <span class="number integer">42</span>]
-  , <span class="variable">burlywood</span>: [<span class="number integer">222</span>, <span class="number integer">184</span>, <span class="number integer">135</span>]
-  , <span class="variable">cadetblue</span>: [<span class="number integer">95</span>, <span class="number integer">158</span>, <span class="number integer">160</span>]
-  , <span class="variable">chartreuse</span>: [<span class="number integer">127</span>, <span class="number integer">255</span>, <span class="number integer">0</span>]
-  , <span class="variable">chocolate</span>: [<span class="number integer">210</span>, <span class="number integer">105</span>, <span class="number integer">30</span>]
-  , <span class="variable">coral</span>: [<span class="number integer">255</span>, <span class="number integer">127</span>, <span class="number integer">80</span>]
-  , <span class="variable">cornflowerblue</span>: [<span class="number integer">100</span>, <span class="number integer">149</span>, <span class="number integer">237</span>]
-  , <span class="variable">cornsilk</span>: [<span class="number integer">255</span>, <span class="number integer">248</span>, <span class="number integer">220</span>]
-  , <span class="variable">crimson</span>: [<span class="number integer">220</span>, <span class="number integer">20</span>, <span class="number integer">60</span>]
-  , <span class="variable">cyan</span>: [<span class="number integer">0</span>, <span class="number integer">255</span>, <span class="number integer">255</span>]
-  , <span class="variable">darkblue</span>: [<span class="number integer">0</span>, <span class="number integer">0</span>, <span class="number integer">139</span>]
-  , <span class="variable">darkcyan</span>: [<span class="number integer">0</span>, <span class="number integer">139</span>, <span class="number integer">139</span>]
-  , <span class="variable">darkgoldenrod</span>: [<span class="number integer">184</span>, <span class="number integer">132</span>, <span class="number integer">11</span>]
-  , <span class="variable">darkgray</span>: [<span class="number integer">169</span>, <span class="number integer">169</span>, <span class="number integer">169</span>]
-  , <span class="variable">darkgreen</span>: [<span class="number integer">0</span>, <span class="number integer">100</span>, <span class="number integer">0</span>]
-  , <span class="variable">darkgrey</span>: [<span class="number integer">169</span>, <span class="number integer">169</span>, <span class="number integer">169</span>]
-  , <span class="variable">darkkhaki</span>: [<span class="number integer">189</span>, <span class="number integer">183</span>, <span class="number integer">107</span>]
-  , <span class="variable">darkmagenta</span>: [<span class="number integer">139</span>, <span class="number integer">0</span>, <span class="number integer">139</span>]
-  , <span class="variable">darkolivegreen</span>: [<span class="number integer">85</span>, <span class="number integer">107</span>, <span class="number integer">47</span>]
-  , <span class="variable">darkorange</span>: [<span class="number integer">255</span>, <span class="number integer">140</span>, <span class="number integer">0</span>]
-  , <span class="variable">darkorchid</span>: [<span class="number integer">153</span>, <span class="number integer">50</span>, <span class="number integer">204</span>]
-  , <span class="variable">darkred</span>: [<span class="number integer">139</span>, <span class="number integer">0</span>, <span class="number integer">0</span>]
-  , <span class="variable">darksalmon</span>: [<span class="number integer">233</span>, <span class="number integer">150</span>, <span class="number integer">122</span>]
-  , <span class="variable">darkseagreen</span>: [<span class="number integer">143</span>, <span class="number integer">188</span>, <span class="number integer">143</span>]
-  , <span class="variable">darkslateblue</span>: [<span class="number integer">72</span>, <span class="number integer">61</span>, <span class="number integer">139</span>]
-  , <span class="variable">darkslategray</span>: [<span class="number integer">47</span>, <span class="number integer">79</span>, <span class="number integer">79</span>]
-  , <span class="variable">darkslategrey</span>: [<span class="number integer">47</span>, <span class="number integer">79</span>, <span class="number integer">79</span>]
-  , <span class="variable">darkturquoise</span>: [<span class="number integer">0</span>, <span class="number integer">206</span>, <span class="number integer">209</span>]
-  , <span class="variable">darkviolet</span>: [<span class="number integer">148</span>, <span class="number integer">0</span>, <span class="number integer">211</span>]
-  , <span class="variable">deeppink</span>: [<span class="number integer">255</span>, <span class="number integer">20</span>, <span class="number integer">147</span>]
-  , <span class="variable">deepskyblue</span>: [<span class="number integer">0</span>, <span class="number integer">191</span>, <span class="number integer">255</span>]
-  , <span class="variable">dimgray</span>: [<span class="number integer">105</span>, <span class="number integer">105</span>, <span class="number integer">105</span>]
-  , <span class="variable">dimgrey</span>: [<span class="number integer">105</span>, <span class="number integer">105</span>, <span class="number integer">105</span>]
-  , <span class="variable">dodgerblue</span>: [<span class="number integer">30</span>, <span class="number integer">144</span>, <span class="number integer">255</span>]
-  , <span class="variable">firebrick</span>: [<span class="number integer">178</span>, <span class="number integer">34</span>, <span class="number integer">34</span>]
-  , <span class="variable">floralwhite</span>: [<span class="number integer">255</span>, <span class="number integer">255</span>, <span class="number integer">240</span>]
-  , <span class="variable">forestgreen</span>: [<span class="number integer">34</span>, <span class="number integer">139</span>, <span class="number integer">34</span>]
-  , <span class="variable">fuchsia</span>: [<span class="number integer">255</span>, <span class="number integer">0</span>, <span class="number integer">255</span>]
-  , <span class="variable">gainsboro</span>: [<span class="number integer">220</span>, <span class="number integer">220</span>, <span class="number integer">220</span>]
-  , <span class="variable">ghostwhite</span>: [<span class="number integer">248</span>, <span class="number integer">248</span>, <span class="number integer">255</span>]
-  , <span class="variable">gold</span>: [<span class="number integer">255</span>, <span class="number integer">215</span>, <span class="number integer">0</span>]
-  , <span class="variable">goldenrod</span>: [<span class="number integer">218</span>, <span class="number integer">165</span>, <span class="number integer">32</span>]
-  , <span class="variable">gray</span>: [<span class="number integer">128</span>, <span class="number integer">128</span>, <span class="number integer">128</span>]
-  , <span class="variable">green</span>: [<span class="number integer">0</span>, <span class="number integer">128</span>, <span class="number integer">0</span>]
-  , <span class="variable">greenyellow</span>: [<span class="number integer">173</span>, <span class="number integer">255</span>, <span class="number integer">47</span>]
-  , <span class="variable">grey</span>: [<span class="number integer">128</span>, <span class="number integer">128</span>, <span class="number integer">128</span>]
-  , <span class="variable">honeydew</span>: [<span class="number integer">240</span>, <span class="number integer">255</span>, <span class="number integer">240</span>]
-  , <span class="variable">hotpink</span>: [<span class="number integer">255</span>, <span class="number integer">105</span>, <span class="number integer">180</span>]
-  , <span class="variable">indianred</span>: [<span class="number integer">205</span>, <span class="number integer">92</span>, <span class="number integer">92</span>]
-  , <span class="variable">indigo</span>: [<span class="number integer">75</span>, <span class="number integer">0</span>, <span class="number integer">130</span>]
-  , <span class="variable">ivory</span>: [<span class="number integer">255</span>, <span class="number integer">255</span>, <span class="number integer">240</span>]
-  , <span class="variable">khaki</span>: [<span class="number integer">240</span>, <span class="number integer">230</span>, <span class="number integer">140</span>]
-  , <span class="variable">lavender</span>: [<span class="number integer">230</span>, <span class="number integer">230</span>, <span class="number integer">250</span>]
-  , <span class="variable">lavenderblush</span>: [<span class="number integer">255</span>, <span class="number integer">240</span>, <span class="number integer">245</span>]
-  , <span class="variable">lawngreen</span>: [<span class="number integer">124</span>, <span class="number integer">252</span>, <span class="number integer">0</span>]
-  , <span class="variable">lemonchiffon</span>: [<span class="number integer">255</span>, <span class="number integer">250</span>, <span class="number integer">205</span>]
-  , <span class="variable">lightblue</span>: [<span class="number integer">173</span>, <span class="number integer">216</span>, <span class="number integer">230</span>]
-  , <span class="variable">lightcoral</span>: [<span class="number integer">240</span>, <span class="number integer">128</span>, <span class="number integer">128</span>]
-  , <span class="variable">lightcyan</span>: [<span class="number integer">224</span>, <span class="number integer">255</span>, <span class="number integer">255</span>]
-  , <span class="variable">lightgoldenrodyellow</span>: [<span class="number integer">250</span>, <span class="number integer">250</span>, <span class="number integer">210</span>]
-  , <span class="variable">lightgray</span>: [<span class="number integer">211</span>, <span class="number integer">211</span>, <span class="number integer">211</span>]
-  , <span class="variable">lightgreen</span>: [<span class="number integer">144</span>, <span class="number integer">238</span>, <span class="number integer">144</span>]
-  , <span class="variable">lightgrey</span>: [<span class="number integer">211</span>, <span class="number integer">211</span>, <span class="number integer">211</span>]
-  , <span class="variable">lightpink</span>: [<span class="number integer">255</span>, <span class="number integer">182</span>, <span class="number integer">193</span>]
-  , <span class="variable">lightsalmon</span>: [<span class="number integer">255</span>, <span class="number integer">160</span>, <span class="number integer">122</span>]
-  , <span class="variable">lightseagreen</span>: [<span class="number integer">32</span>, <span class="number integer">178</span>, <span class="number integer">170</span>]
-  , <span class="variable">lightskyblue</span>: [<span class="number integer">135</span>, <span class="number integer">206</span>, <span class="number integer">250</span>]
-  , <span class="variable">lightslategray</span>: [<span class="number integer">119</span>, <span class="number integer">136</span>, <span class="number integer">153</span>]
-  , <span class="variable">lightslategrey</span>: [<span class="number integer">119</span>, <span class="number integer">136</span>, <span class="number integer">153</span>]
-  , <span class="variable">lightsteelblue</span>: [<span class="number integer">176</span>, <span class="number integer">196</span>, <span class="number integer">222</span>]
-  , <span class="variable">lightyellow</span>: [<span class="number integer">255</span>, <span class="number integer">255</span>, <span class="number integer">224</span>]
-  , <span class="variable">lime</span>: [<span class="number integer">0</span>, <span class="number integer">255</span>, <span class="number integer">0</span>]
-  , <span class="variable">limegreen</span>: [<span class="number integer">50</span>, <span class="number integer">205</span>, <span class="number integer">50</span>]
-  , <span class="variable">linen</span>: [<span class="number integer">250</span>, <span class="number integer">240</span>, <span class="number integer">230</span>]
-  , <span class="variable">magenta</span>: [<span class="number integer">255</span>, <span class="number integer">0</span>, <span class="number integer">255</span>]
-  , <span class="variable">maroon</span>: [<span class="number integer">128</span>, <span class="number integer">0</span>, <span class="number integer">0</span>]
-  , <span class="variable">mediumaquamarine</span>: [<span class="number integer">102</span>, <span class="number integer">205</span>, <span class="number integer">170</span>]
-  , <span class="variable">mediumblue</span>: [<span class="number integer">0</span>, <span class="number integer">0</span>, <span class="number integer">205</span>]
-  , <span class="variable">mediumorchid</span>: [<span class="number integer">186</span>, <span class="number integer">85</span>, <span class="number integer">211</span>]
-  , <span class="variable">mediumpurple</span>: [<span class="number integer">147</span>, <span class="number integer">112</span>, <span class="number integer">219</span>]
-  , <span class="variable">mediumseagreen</span>: [<span class="number integer">60</span>, <span class="number integer">179</span>, <span class="number integer">113</span>]
-  , <span class="variable">mediumslateblue</span>: [<span class="number integer">123</span>, <span class="number integer">104</span>, <span class="number integer">238</span>]
-  , <span class="variable">mediumspringgreen</span>: [<span class="number integer">0</span>, <span class="number integer">250</span>, <span class="number integer">154</span>]
-  , <span class="variable">mediumturquoise</span>: [<span class="number integer">72</span>, <span class="number integer">209</span>, <span class="number integer">204</span>]
-  , <span class="variable">mediumvioletred</span>: [<span class="number integer">199</span>, <span class="number integer">21</span>, <span class="number integer">133</span>]
-  , <span class="variable">midnightblue</span>: [<span class="number integer">25</span>, <span class="number integer">25</span>, <span class="number integer">112</span>]
-  , <span class="variable">mintcream</span>: [<span class="number integer">245</span>, <span class="number integer">255</span>, <span class="number integer">250</span>]
-  , <span class="variable">mistyrose</span>: [<span class="number integer">255</span>, <span class="number integer">228</span>, <span class="number integer">225</span>]
-  , <span class="variable">moccasin</span>: [<span class="number integer">255</span>, <span class="number integer">228</span>, <span class="number integer">181</span>]
-  , <span class="variable">navajowhite</span>: [<span class="number integer">255</span>, <span class="number integer">222</span>, <span class="number integer">173</span>]
-  , <span class="variable">navy</span>: [<span class="number integer">0</span>, <span class="number integer">0</span>, <span class="number integer">128</span>]
-  , <span class="variable">oldlace</span>: [<span class="number integer">253</span>, <span class="number integer">245</span>, <span class="number integer">230</span>]
-  , <span class="variable">olive</span>: [<span class="number integer">128</span>, <span class="number integer">128</span>, <span class="number integer">0</span>]
-  , <span class="variable">olivedrab</span>: [<span class="number integer">107</span>, <span class="number integer">142</span>, <span class="number integer">35</span>]
-  , <span class="variable">orange</span>: [<span class="number integer">255</span>, <span class="number integer">165</span>, <span class="number integer">0</span>]
-  , <span class="variable">orangered</span>: [<span class="number integer">255</span>, <span class="number integer">69</span>, <span class="number integer">0</span>]
-  , <span class="variable">orchid</span>: [<span class="number integer">218</span>, <span class="number integer">112</span>, <span class="number integer">214</span>]
-  , <span class="variable">palegoldenrod</span>: [<span class="number integer">238</span>, <span class="number integer">232</span>, <span class="number integer">170</span>]
-  , <span class="variable">palegreen</span>: [<span class="number integer">152</span>, <span class="number integer">251</span>, <span class="number integer">152</span>]
-  , <span class="variable">paleturquoise</span>: [<span class="number integer">175</span>, <span class="number integer">238</span>, <span class="number integer">238</span>]
-  , <span class="variable">palevioletred</span>: [<span class="number integer">219</span>, <span class="number integer">112</span>, <span class="number integer">147</span>]
-  , <span class="variable">papayawhip</span>: [<span class="number integer">255</span>, <span class="number integer">239</span>, <span class="number integer">213</span>]
-  , <span class="variable">peachpuff</span>: [<span class="number integer">255</span>, <span class="number integer">218</span>, <span class="number integer">185</span>]
-  , <span class="variable">peru</span>: [<span class="number integer">205</span>, <span class="number integer">133</span>, <span class="number integer">63</span>]
-  , <span class="variable">pink</span>: [<span class="number integer">255</span>, <span class="number integer">192</span>, <span class="number integer">203</span>]
-  , <span class="variable">plum</span>: [<span class="number integer">221</span>, <span class="number integer">160</span>, <span class="number integer">203</span>]
-  , <span class="variable">powderblue</span>: [<span class="number integer">176</span>, <span class="number integer">224</span>, <span class="number integer">230</span>]
-  , <span class="variable">purple</span>: [<span class="number integer">128</span>, <span class="number integer">0</span>, <span class="number integer">128</span>]
-  , <span class="variable">red</span>: [<span class="number integer">255</span>, <span class="number integer">0</span>, <span class="number integer">0</span>]
-  , <span class="variable">rosybrown</span>: [<span class="number integer">188</span>, <span class="number integer">143</span>, <span class="number integer">143</span>]
-  , <span class="variable">royalblue</span>: [<span class="number integer">65</span>, <span class="number integer">105</span>, <span class="number integer">225</span>]
-  , <span class="variable">saddlebrown</span>: [<span class="number integer">139</span>, <span class="number integer">69</span>, <span class="number integer">19</span>]
-  , <span class="variable">salmon</span>: [<span class="number integer">250</span>, <span class="number integer">128</span>, <span class="number integer">114</span>]
-  , <span class="variable">sandybrown</span>: [<span class="number integer">244</span>, <span class="number integer">164</span>, <span class="number integer">96</span>]
-  , <span class="variable">seagreen</span>: [<span class="number integer">46</span>, <span class="number integer">139</span>, <span class="number integer">87</span>]
-  , <span class="variable">seashell</span>: [<span class="number integer">255</span>, <span class="number integer">245</span>, <span class="number integer">238</span>]
-  , <span class="variable">sienna</span>: [<span class="number integer">160</span>, <span class="number integer">82</span>, <span class="number integer">45</span>]
-  , <span class="variable">silver</span>: [<span class="number integer">192</span>, <span class="number integer">192</span>, <span class="number integer">192</span>]
-  , <span class="variable">skyblue</span>: [<span class="number integer">135</span>, <span class="number integer">206</span>, <span class="number integer">235</span>]
-  , <span class="variable">slateblue</span>: [<span class="number integer">106</span>, <span class="number integer">90</span>, <span class="number integer">205</span>]
-  , <span class="variable">slategray</span>: [<span class="number integer">119</span>, <span class="number integer">128</span>, <span class="number integer">144</span>]
-  , <span class="variable">slategrey</span>: [<span class="number integer">119</span>, <span class="number integer">128</span>, <span class="number integer">144</span>]
-  , <span class="variable">snow</span>: [<span class="number integer">255</span>, <span class="number integer">255</span>, <span class="number integer">250</span>]
-  , <span class="variable">springgreen</span>: [<span class="number integer">0</span>, <span class="number integer">255</span>, <span class="number integer">127</span>]
-  , <span class="variable">steelblue</span>: [<span class="number integer">70</span>, <span class="number integer">130</span>, <span class="number integer">180</span>]
-  , <span class="variable">tan</span>: [<span class="number integer">210</span>, <span class="number integer">180</span>, <span class="number integer">140</span>]
-  , <span class="variable">teal</span>: [<span class="number integer">0</span>, <span class="number integer">128</span>, <span class="number integer">128</span>]
-  , <span class="variable">tle</span>: [<span class="number integer">216</span>, <span class="number integer">191</span>, <span class="number integer">216</span>]
-  , <span class="variable">tomato</span>: [<span class="number integer">255</span>, <span class="number integer">99</span>, <span class="number integer">71</span>]
-  , <span class="variable">turquoise</span>: [<span class="number integer">64</span>, <span class="number integer">224</span>, <span class="number integer">208</span>]
-  , <span class="variable">violet</span>: [<span class="number integer">238</span>, <span class="number integer">130</span>, <span class="number integer">238</span>]
-  , <span class="variable">wheat</span>: [<span class="number integer">245</span>, <span class="number integer">222</span>, <span class="number integer">179</span>]
-  , <span class="variable">white</span>: [<span class="number integer">255</span>, <span class="number integer">255</span>, <span class="number integer">255</span>]
-  , <span class="variable">whitesmoke</span>: [<span class="number integer">245</span>, <span class="number integer">245</span>, <span class="number integer">245</span>]
-  , <span class="variable">yellow</span>: [<span class="number integer">255</span>, <span class="number integer">255</span>, <span class="number integer">0</span>]
-  , <span class="variable">yellowgreen</span>: [<span class="number integer">154</span>, <span class="number integer">205</span>, <span class="number integer">5</span>]
-};</code></pre>
-</td>
-</tr>
-<tr class="code">
-<td class="docs">
-<p>Color RegExp.
- </p>
-</td>
-<td class="code">
-<pre><code><span class="keyword">var</span> <span class="variable">color</span> = <span class="keyword">new</span> <span class="class">RegExp</span>(<span class="string">'^('</span> + <span class="class">Object</span>.<span class="variable">keys</span>(<span class="variable">colors</span>).<span class="variable">join</span>(<span class="string">'|'</span>) + <span class="string">')(?![-])(\\()? *'</span>);</code></pre>
+<pre><code><span class="keyword">var</span> <span class="variable">unit</span> = <span class="keyword">new</span> <span class="class">RegExp</span>(<span class="string">'^(-)?(\\d+\\.\\d+|\\d+|\\.\\d+)('</span> + <span class="variable">units</span> + <span class="string">')? *'</span>);</code></pre>
 </td>
 </tr>
 <tr class="code">
@@ -1256,7 +1290,6 @@ match('^foo(bar)?', 'bar')
 <pre><code><span class="keyword">var</span> <span class="class">Lexer</span> = <span class="variable">module</span>.<span class="variable">exports</span> = <span class="keyword">function</span> <span class="class">Lexer</span>(<span class="variable">str</span>, <span class="variable">options</span>) {
   <span class="variable">options</span> = <span class="variable">options</span> || {};
   <span class="this">this</span>.<span class="variable">str</span> = <span class="variable">str</span>.<span class="variable">replace</span>(<span class="regexp">/\r\n?/g</span>, <span class="string">'\n'</span>).<span class="variable">replace</span>(<span class="regexp">/\t/g</span>, <span class="string">'  '</span>);
-  <span class="this">this</span>.<span class="variable">filename</span> = <span class="variable">options</span>.<span class="variable">filename</span> || <span class="string">'stylus'</span>;
   <span class="this">this</span>.<span class="variable">stash</span> = [];
   <span class="this">this</span>.<span class="variable">prevIndents</span> = <span class="number integer">0</span>;
   <span class="this">this</span>.<span class="variable">lineno</span> = <span class="number integer">0</span>;
@@ -1358,15 +1391,16 @@ match('^foo(bar)?', 'bar')
     <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">eos</span>
       || <span class="this">this</span>.<span class="keyword">null</span>
       || <span class="this">this</span>.<span class="variable">keyword</span>
-      || <span class="this">this</span>.<span class="variable">charset</span>
+      || <span class="this">this</span>.<span class="variable">atrule</span>
+      || <span class="this">this</span>.<span class="variable">media</span>
       || <span class="this">this</span>.<span class="variable">comment</span>
       || <span class="this">this</span>.<span class="variable">newline</span>
       || <span class="this">this</span>.<span class="variable">escaped</span>
       || <span class="this">this</span>.<span class="variable">important</span>
       || <span class="this">this</span>.<span class="variable">literal</span>
       || <span class="this">this</span>.<span class="keyword">function</span>
+      || <span class="this">this</span>.<span class="variable">brace</span>
       || <span class="this">this</span>.<span class="variable">paren</span>
-      || <span class="this">this</span>.<span class="keyword">import</span>
       || <span class="this">this</span>.<span class="variable">color</span>
       || <span class="this">this</span>.<span class="variable">string</span>
       || <span class="this">this</span>.<span class="variable">unit</span>
@@ -1374,6 +1408,7 @@ match('^foo(bar)?', 'bar')
       || <span class="this">this</span>.<span class="variable">boolean</span>
       || <span class="this">this</span>.<span class="variable">ident</span>
       || <span class="this">this</span>.<span class="variable">op</span>
+      || <span class="this">this</span>.<span class="variable">space</span>
       || <span class="this">this</span>.<span class="variable">selector</span>;
   },</code></pre>
 </td>
@@ -1417,6 +1452,21 @@ match('^foo(bar)?', 'bar')
     <span class="keyword">return</span> --<span class="this">this</span>.<span class="variable">prevIndents</span> &<span class="variable">lt</span>; <span class="number integer">0</span>
       ? <span class="keyword">new</span> <span class="class">Token</span>(<span class="string">'eos'</span>)
       : <span class="keyword">new</span> <span class="class">Token</span>(<span class="string">'outdent'</span>);
+  },</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>' '+
+   </p>
+</td>
+<td class="code">
+<pre><code><span class="variable">get</span> <span class="variable">space</span>() {
+    <span class="keyword">var</span> <span class="variable">captures</span>;
+    <span class="keyword">if</span> (<span class="variable">captures</span> = <span class="regexp">/^( +)/</span>.<span class="variable">exec</span>(<span class="this">this</span>.<span class="variable">str</span>)) {
+      <span class="this">this</span>.<span class="variable">skip</span>(<span class="variable">captures</span>);
+      <span class="keyword">return</span> <span class="keyword">new</span> <span class="class">Token</span>(<span class="string">'space'</span>);
+    }
   },</code></pre>
 </td>
 </tr>
@@ -1476,6 +1526,22 @@ match('^foo(bar)?', 'bar')
     <span class="keyword">if</span> (<span class="variable">captures</span> = <span class="regexp">/^!important */</span>.<span class="variable">exec</span>(<span class="this">this</span>.<span class="variable">str</span>)) {
       <span class="this">this</span>.<span class="variable">skip</span>(<span class="variable">captures</span>);
       <span class="keyword">return</span> <span class="keyword">new</span> <span class="class">Token</span>(<span class="string">'ident'</span>, <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Ident</span>(<span class="string">'!important'</span>));
+    }
+  },</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>'{' | '}'
+   </p>
+</td>
+<td class="code">
+<pre><code><span class="variable">get</span> <span class="variable">brace</span>() {
+    <span class="keyword">var</span> <span class="variable">captures</span>;
+    <span class="keyword">if</span> (<span class="variable">captures</span> = <span class="regexp">/^([{}])/</span>.<span class="variable">exec</span>(<span class="this">this</span>.<span class="variable">str</span>)) {
+      <span class="this">this</span>.<span class="variable">skip</span>(<span class="number integer">1</span>);
+      <span class="keyword">var</span> <span class="variable">brace</span> = <span class="variable">captures</span>[<span class="number integer">1</span>];
+      <span class="keyword">return</span> <span class="keyword">new</span> <span class="class">Token</span>(<span class="variable">brace</span>, <span class="variable">brace</span>);
     }
   },</code></pre>
 </td>
@@ -1603,14 +1669,30 @@ match('^foo(bar)?', 'bar')
 </tr>
 <tr class="code">
 <td class="docs">
-<ul><li><p><strong>impor</strong>: <em>t</em></p></li></ul>
+<p>'@media' ([^\n]+)
+   </p>
 </td>
 <td class="code">
-<pre><code><span class="variable">get</span> <span class="keyword">import</span>() {
+<pre><code><span class="variable">get</span> <span class="variable">media</span>() {
     <span class="keyword">var</span> <span class="variable">captures</span>;
-    <span class="keyword">if</span> (<span class="variable">captures</span> = <span class="regexp">/^@import */</span>.<span class="variable">exec</span>(<span class="this">this</span>.<span class="variable">str</span>)) {
-      <span class="this">this</span>.<span class="variable">str</span> = <span class="this">this</span>.<span class="variable">str</span>.<span class="variable">substr</span>(<span class="variable">captures</span>[<span class="number integer">0</span>].<span class="variable">length</span>);
-      <span class="keyword">return</span> <span class="keyword">new</span> <span class="class">Token</span>(<span class="string">'import'</span>);
+    <span class="keyword">if</span> (<span class="variable">captures</span> = <span class="regexp">/^@media *([^\n]+)/</span>.<span class="variable">exec</span>(<span class="this">this</span>.<span class="variable">str</span>)) {
+      <span class="this">this</span>.<span class="variable">skip</span>(<span class="variable">captures</span>);
+      <span class="keyword">return</span> <span class="keyword">new</span> <span class="class">Token</span>(<span class="string">'media'</span>, <span class="variable">captures</span>[<span class="number integer">1</span>]);
+    }
+  },</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>'@' ('import' | 'keyframes' | 'charset' | 'page')
+   </p>
+</td>
+<td class="code">
+<pre><code><span class="variable">get</span> <span class="variable">atrule</span>() {
+    <span class="keyword">var</span> <span class="variable">captures</span>;
+    <span class="keyword">if</span> (<span class="variable">captures</span> = <span class="regexp">/^@(import|keyframes|charset|page) */</span>.<span class="variable">exec</span>(<span class="this">this</span>.<span class="variable">str</span>)) {
+      <span class="this">this</span>.<span class="variable">skip</span>(<span class="variable">captures</span>);
+      <span class="keyword">return</span> <span class="keyword">new</span> <span class="class">Token</span>(<span class="variable">captures</span>[<span class="number integer">1</span>]);
     }
   },</code></pre>
 </td>
@@ -1692,27 +1774,10 @@ match('^foo(bar)?', 'bar')
 <td class="code">
 <pre><code><span class="variable">get</span> <span class="variable">ident</span>() {
     <span class="keyword">var</span> <span class="variable">captures</span>;
-    <span class="keyword">if</span> (<span class="variable">captures</span> = <span class="regexp">/^(-?[a-zA-Z][-\w\d]*)( *)/</span>.<span class="variable">exec</span>(<span class="this">this</span>.<span class="variable">str</span>)) {
+    <span class="keyword">if</span> (<span class="variable">captures</span> = <span class="regexp">/^(-?[a-zA-Z][-\w\d]*)/</span>.<span class="variable">exec</span>(<span class="this">this</span>.<span class="variable">str</span>)) {
       <span class="keyword">var</span> <span class="variable">name</span> = <span class="variable">captures</span>[<span class="number integer">1</span>];
       <span class="this">this</span>.<span class="variable">skip</span>(<span class="variable">captures</span>);
-      <span class="keyword">var</span> <span class="variable">tok</span> = <span class="keyword">new</span> <span class="class">Token</span>(<span class="string">'ident'</span>, <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Ident</span>(<span class="variable">name</span>));
-      <span class="variable">tok</span>.<span class="variable">space</span> = <span class="variable">captures</span>[<span class="number integer">2</span>];
-      <span class="keyword">return</span> <span class="variable">tok</span>;
-    }
-  },</code></pre>
-</td>
-</tr>
-<tr class="code">
-<td class="docs">
-<p>'@charset'
-   </p>
-</td>
-<td class="code">
-<pre><code><span class="variable">get</span> <span class="variable">charset</span>() {
-    <span class="keyword">var</span> <span class="variable">captures</span>;
-    <span class="keyword">if</span> (<span class="variable">captures</span> = <span class="regexp">/^@charset */</span>.<span class="variable">exec</span>(<span class="this">this</span>.<span class="variable">str</span>)) {
-      <span class="this">this</span>.<span class="variable">skip</span>(<span class="variable">captures</span>);
-      <span class="keyword">return</span> <span class="keyword">new</span> <span class="class">Token</span>(<span class="string">'charset'</span>);
+      <span class="keyword">return</span> <span class="keyword">new</span> <span class="class">Token</span>(<span class="string">'ident'</span>, <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Ident</span>(<span class="variable">name</span>));
     }
   },</code></pre>
 </td>
@@ -1775,7 +1840,7 @@ match('^foo(bar)?', 'bar')
 </tr>
 <tr class="code">
 <td class="docs">
-<p>(digit+ | digit* '.' digit+) unit
+<p>'-'? (digit+ | digit* '.' digit+) unit
    </p>
 </td>
 <td class="code">
@@ -1783,7 +1848,10 @@ match('^foo(bar)?', 'bar')
     <span class="keyword">var</span> <span class="variable">captures</span>;
     <span class="keyword">if</span> (<span class="variable">captures</span> = <span class="variable">unit</span>.<span class="variable">exec</span>(<span class="this">this</span>.<span class="variable">str</span>)) {
       <span class="this">this</span>.<span class="variable">skip</span>(<span class="variable">captures</span>);
-      <span class="keyword">return</span> <span class="keyword">new</span> <span class="class">Token</span>(<span class="string">'unit'</span>, <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Unit</span>(<span class="variable">parseFloat</span>(<span class="variable">captures</span>[<span class="number integer">1</span>]), <span class="variable">captures</span>[<span class="number integer">2</span>]));
+      <span class="keyword">var</span> <span class="variable">n</span> = <span class="variable">parseFloat</span>(<span class="variable">captures</span>[<span class="number integer">2</span>]);
+      <span class="keyword">if</span> (<span class="string">'-'</span> == <span class="variable">captures</span>[<span class="number integer">1</span>]) <span class="variable">n</span> = -<span class="variable">n</span>;
+      <span class="keyword">var</span> <span class="variable">node</span> = <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Unit</span>(<span class="variable">n</span>, <span class="variable">captures</span>[<span class="number integer">3</span>]);
+      <span class="keyword">return</span> <span class="keyword">new</span> <span class="class">Token</span>(<span class="string">'unit'</span>, <span class="variable">node</span>);
     }
   },</code></pre>
 </td>
@@ -1814,13 +1882,11 @@ match('^foo(bar)?', 'bar')
 </tr>
 <tr class="code">
 <td class="docs">
-<h1>nnnnnn | #nnn | colorString</h1>
+<h1>nnnnnn | #nnn</h1>
 </td>
 <td class="code">
 <pre><code><span class="variable">get</span> <span class="variable">color</span>() {
-    <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">hex6</span>
-      || <span class="this">this</span>.<span class="variable">hex3</span>
-      || <span class="this">this</span>.<span class="variable">colorString</span>;
+    <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">hex6</span> || <span class="this">this</span>.<span class="variable">hex3</span>;
   },</code></pre>
 </td>
 </tr>
@@ -1862,25 +1928,6 @@ match('^foo(bar)?', 'bar')
 </tr>
 <tr class="code">
 <td class="docs">
-<p>Color string.
-   </p>
-</td>
-<td class="code">
-<pre><code><span class="variable">get</span> <span class="variable">colorString</span>() {
-    <span class="keyword">var</span> <span class="variable">captures</span>;
-    <span class="keyword">if</span> (<span class="variable">captures</span> = <span class="variable">color</span>.<span class="variable">exec</span>(<span class="this">this</span>.<span class="variable">str</span>)) {
-      <span class="keyword">var</span> <span class="variable">name</span> = <span class="variable">captures</span>[<span class="number integer">1</span>]
-        , <span class="variable">rgb</span> = <span class="variable">colors</span>[<span class="variable">name</span>]
-        , <span class="variable">fn</span> = <span class="variable">captures</span>[<span class="number integer">2</span>];
-      <span class="keyword">if</span> (<span class="variable">fn</span>) <span class="keyword">return</span>;
-      <span class="this">this</span>.<span class="variable">skip</span>(<span class="variable">captures</span>);
-      <span class="keyword">return</span> <span class="keyword">new</span> <span class="class">Token</span>(<span class="string">'color'</span>, <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Color</span>(<span class="variable">rgb</span>[<span class="number integer">0</span>], <span class="variable">rgb</span>[<span class="number integer">1</span>], <span class="variable">rgb</span>[<span class="number integer">2</span>], <span class="number integer">1</span>));
-    }
-  },</code></pre>
-</td>
-</tr>
-<tr class="code">
-<td class="docs">
 <p>[^\n,;]+
    </p>
 </td>
@@ -1895,6 +1942,154 @@ match('^foo(bar)?', 'bar')
   }
 };
 </code></pre>
+</td>
+</tr><tr class="filename"><td><h2 id="lib/middleware.js"><a href="#">middleware</a></h2></td><td>lib/middleware.js</td></tr><tr class="code">
+<td class="docs">
+<p>Module dependencies.
+ </p>
+</td>
+<td class="code">
+<pre><code><span class="keyword">var</span> <span class="variable">stylus</span> = <span class="variable">require</span>(<span class="string">'./stylus'</span>)
+  , <span class="variable">fs</span> = <span class="variable">require</span>(<span class="string">'fs'</span>)
+  , <span class="variable">url</span> = <span class="variable">require</span>(<span class="string">'url'</span>)
+  , <span class="variable">basename</span> = <span class="variable">require</span>(<span class="string">'path'</span>).<span class="variable">basename</span>
+  , <span class="variable">join</span> = <span class="variable">require</span>(<span class="string">'path'</span>).<span class="variable">join</span>
+  , <span class="class">ENOENT</span> = <span class="variable">process</span>.<span class="class">ENOENT</span>;</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Return Connect middleware with the given <code>options</code>.</p>
+
+<h2>Options</h2>
+
+<p>   <code>force</code>    Always re-compile
+   <code>src</code>      Source directory used to find .styl files
+   <code>dest</code>     Destination directory used to output .css files
+              when undefined defaults to <code>src</code>.
+   <code>compile</code>  Custom compile function, accepting the arguments
+              <code>(str, path, callback)</code>.</p>
+
+<h2>Examples</h2>
+
+<p>Here we set up the custom compile function so that we may
+set the <code>compress</code> option, or define additional functions.</p>
+
+<p>By default the compile function simply sets the <code>filename</code>
+and renders the CSS.</p>
+
+<pre><code> function compile(str, path, fn) {
+   stylus(str)
+     .set('filename', path)
+     .set('compress', true)
+     .render(fn);
+ }</code></pre>
+
+<p>Pass the middleware to Connect, grabbing .styl files from this directory
+and saving .css files to <em>./public</em>. Also supplying our custom <code>compile</code> function.</p>
+
+<p>Following that we have a <code>staticProvider</code> layer setup to serve the .css
+files generated by Stylus.</p>
+
+<pre><code> var server = connect.createServer(
+     stylus.middleware({
+         src: __dirname
+       , dest: __dirname + '/public'
+       , compile: compile
+     })
+   , connect.staticProvider(__dirname + '/public')
+ );</code></pre>
+
+<h2></h2>
+
+<ul><li><p><strong>param</strong>: <em>Object</em>  options</p></li><li><p><strong>return</strong>: <em>Function</em> </p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
+</td>
+<td class="code">
+<pre><code><span class="variable">module</span>.<span class="variable">exports</span> = <span class="keyword">function</span>(<span class="variable">options</span>){
+  <span class="variable">options</span> = <span class="variable">options</span> || {};
+
+  <span class="comment">// Accept src/dest dir</span>
+  <span class="keyword">if</span> (<span class="string">'string'</span> == <span class="keyword">typeof</span> <span class="variable">options</span>) {
+    <span class="variable">options</span> = { <span class="variable">src</span>: <span class="variable">options</span> };
+  }
+
+  <span class="comment">// Force compilation</span>
+  <span class="keyword">var</span> <span class="variable">force</span> = <span class="variable">options</span>.<span class="variable">force</span>;
+
+  <span class="comment">// Source dir required</span>
+  <span class="keyword">var</span> <span class="variable">src</span> = <span class="variable">options</span>.<span class="variable">src</span>;
+  <span class="keyword">if</span> (!<span class="variable">src</span>) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="class">Error</span>(<span class="string">'stylus.middleware() requires &quot;src&quot; directory'</span>);
+
+  <span class="comment">// Default dest dir to source</span>
+  <span class="keyword">var</span> <span class="variable">dest</span> = <span class="variable">options</span>.<span class="variable">dest</span>
+    ? <span class="variable">options</span>.<span class="variable">dest</span>
+    : <span class="variable">src</span>;
+
+  <span class="comment">// Default compile callback</span>
+  <span class="variable">options</span>.<span class="variable">compile</span> = <span class="variable">options</span>.<span class="variable">compile</span> || <span class="keyword">function</span>(<span class="variable">str</span>, <span class="variable">path</span>, <span class="variable">fn</span>){
+    <span class="variable">stylus</span>(<span class="variable">str</span>)
+      .<span class="variable">set</span>(<span class="string">'filename'</span>, <span class="variable">path</span>)
+      .<span class="variable">render</span>(<span class="variable">fn</span>);
+  };
+
+  <span class="comment">// Middleware</span>
+  <span class="keyword">return</span> <span class="keyword">function</span>(<span class="variable">req</span>, <span class="variable">res</span>, <span class="variable">next</span>){
+    <span class="keyword">if</span> (<span class="string">'GET'</span> != <span class="variable">req</span>.<span class="variable">method</span> &<span class="variable">amp</span>;&<span class="variable">amp</span>; <span class="string">'HEAD'</span> != <span class="variable">req</span>.<span class="variable">method</span>) <span class="keyword">return</span> <span class="variable">next</span>();
+    <span class="keyword">var</span> <span class="variable">path</span> = <span class="variable">url</span>.<span class="variable">parse</span>(<span class="variable">req</span>.<span class="variable">url</span>).<span class="variable">pathname</span>;
+    <span class="keyword">if</span> (<span class="regexp">/\.css$/</span>.<span class="variable">test</span>(<span class="variable">path</span>)) {
+      <span class="keyword">var</span> <span class="variable">cssPath</span> = <span class="variable">join</span>(<span class="variable">dest</span>, <span class="variable">path</span>)
+        , <span class="variable">stylusPath</span> = <span class="variable">join</span>(<span class="variable">src</span>, <span class="variable">path</span>.<span class="variable">replace</span>(<span class="string">'.css'</span>, <span class="string">'.styl'</span>));
+
+      <span class="comment">// Ignore ENOENT to fall through as 404</span>
+      <span class="keyword">function</span> <span class="variable">error</span>(<span class="variable">err</span>) {
+        <span class="variable">next</span>(<span class="class">ENOENT</span> == <span class="variable">err</span>.<span class="variable">errno</span>
+            ? <span class="keyword">null</span>
+            : <span class="variable">err</span>);
+      }
+
+      <span class="comment">// Force</span>
+      <span class="keyword">if</span> (<span class="variable">force</span>) <span class="keyword">return</span> <span class="variable">compile</span>();
+
+      <span class="comment">// Compile to cssPath</span>
+      <span class="keyword">function</span> <span class="variable">compile</span>() {
+        <span class="variable">fs</span>.<span class="variable">readFile</span>(<span class="variable">stylusPath</span>, <span class="string">'utf8'</span>, <span class="keyword">function</span>(<span class="variable">err</span>, <span class="variable">str</span>){
+          <span class="keyword">if</span> (<span class="variable">err</span>) <span class="keyword">return</span> <span class="variable">error</span>(<span class="variable">err</span>);
+          <span class="variable">options</span>.<span class="variable">compile</span>(<span class="variable">str</span>, <span class="variable">stylusPath</span>, <span class="keyword">function</span>(<span class="variable">err</span>, <span class="variable">css</span>){
+            <span class="keyword">if</span> (<span class="variable">err</span>) <span class="keyword">return</span> <span class="variable">next</span>(<span class="variable">err</span>);
+            <span class="variable">fs</span>.<span class="variable">writeFile</span>(<span class="variable">cssPath</span>, <span class="variable">css</span>, <span class="string">'utf8'</span>, <span class="keyword">function</span>(<span class="variable">err</span>){
+              <span class="variable">next</span>(<span class="variable">err</span>);
+            });
+          });
+        });
+      }
+
+      <span class="comment">// Compare mtimes</span>
+      <span class="variable">fs</span>.<span class="variable">stat</span>(<span class="variable">stylusPath</span>, <span class="keyword">function</span>(<span class="variable">err</span>, <span class="variable">stylusStats</span>){
+        <span class="keyword">if</span> (<span class="variable">err</span>) <span class="keyword">return</span> <span class="variable">error</span>(<span class="variable">err</span>);
+        <span class="variable">fs</span>.<span class="variable">stat</span>(<span class="variable">cssPath</span>, <span class="keyword">function</span>(<span class="variable">err</span>, <span class="variable">cssStats</span>){
+          <span class="comment">// CSS has not been compiled, compile it!</span>
+          <span class="keyword">if</span> (<span class="variable">err</span>) {
+            <span class="keyword">if</span> (<span class="class">ENOENT</span> == <span class="variable">err</span>.<span class="variable">errno</span>) {
+              <span class="variable">compile</span>();
+            } <span class="keyword">else</span> {
+              <span class="variable">next</span>(<span class="variable">err</span>);
+            }
+          } <span class="keyword">else</span> {
+            <span class="comment">// Source has changed, compile it</span>
+            <span class="keyword">if</span> (<span class="variable">stylusStats</span>.<span class="variable">mtime</span> &<span class="variable">gt</span>; <span class="variable">cssStats</span>.<span class="variable">mtime</span>) {
+              <span class="variable">compile</span>();
+            <span class="comment">// Already compiled, defer serving</span>
+            } <span class="keyword">else</span> {
+              <span class="variable">next</span>();
+            }
+          }
+        });
+      });
+    } <span class="keyword">else</span> {
+      <span class="variable">next</span>();
+    }
+  }
+};</code></pre>
 </td>
 </tr><tr class="filename"><td><h2 id="lib/nodes/binop.js"><a href="#">binop</a></h2></td><td>lib/nodes/binop.js</td></tr><tr class="code">
 <td class="docs">
@@ -1944,7 +2139,9 @@ match('^foo(bar)?', 'bar')
   <span class="keyword">var</span> <span class="variable">clone</span> = <span class="keyword">new</span> <span class="class">BinOp</span>(
       <span class="this">this</span>.<span class="variable">op</span>
     , <span class="this">this</span>.<span class="variable">left</span>.<span class="variable">clone</span>()
-    , <span class="this">this</span>.<span class="variable">right</span> ? <span class="this">this</span>.<span class="variable">right</span>.<span class="variable">clone</span>() : <span class="keyword">null</span>);
+    , <span class="this">this</span>.<span class="variable">right</span> ?
+      <span class="this">this</span>.<span class="variable">right</span>.<span class="variable">clone</span>()
+      : <span class="keyword">null</span>);
   <span class="variable">clone</span>.<span class="variable">lineno</span> = <span class="this">this</span>.<span class="variable">lineno</span>;
   <span class="keyword">return</span> <span class="variable">clone</span>;
 };</code></pre>
@@ -2027,14 +2224,23 @@ match('^foo(bar)?', 'bar')
 </td>
 <td class="code">
 <pre><code><span class="class">Block</span>.<span class="variable">prototype</span>.<span class="variable">clone</span> = <span class="keyword">function</span>(){
-  <span class="keyword">var</span> <span class="variable">clone</span> = <span class="keyword">new</span> <span class="class">Block</span>(<span class="class">Block</span>.<span class="variable">parent</span> || <span class="this">this</span>.<span class="variable">parent</span>, <span class="this">this</span>.<span class="variable">node</span>);
+  <span class="keyword">var</span> <span class="variable">clone</span> = <span class="keyword">new</span> <span class="class">Block</span>(<span class="this">this</span>.<span class="variable">parent</span>, <span class="this">this</span>.<span class="variable">node</span>);
   <span class="variable">clone</span>.<span class="variable">lineno</span> = <span class="this">this</span>.<span class="variable">lineno</span>;
   <span class="variable">clone</span>.<span class="variable">scope</span> = <span class="this">this</span>.<span class="variable">scope</span>;
-  <span class="class">Block</span>.<span class="variable">parent</span> = <span class="variable">clone</span>;
-  <span class="keyword">for</span> (<span class="keyword">var</span> <span class="variable">i</span> = <span class="number integer">0</span>; <span class="variable">i</span> &<span class="variable">lt</span>; <span class="this">this</span>.<span class="variable">nodes</span>.<span class="variable">length</span>; ++<span class="variable">i</span>) {
-    <span class="variable">clone</span>.<span class="variable">push</span>(<span class="this">this</span>.<span class="variable">nodes</span>[<span class="variable">i</span>].<span class="variable">clone</span>());
-  }
-  <span class="keyword">delete</span> <span class="class">Block</span>.<span class="variable">parent</span>;
+  <span class="this">this</span>.<span class="variable">nodes</span>.<span class="variable">forEach</span>(<span class="keyword">function</span>(<span class="variable">node</span>){
+    <span class="variable">node</span> = <span class="variable">node</span>.<span class="variable">clone</span>();
+    <span class="keyword">switch</span> (<span class="variable">node</span>.<span class="variable">nodeName</span>) {
+      <span class="keyword">case</span> <span class="string">'each'</span>:
+      <span class="keyword">case</span> <span class="string">'group'</span>:
+        <span class="variable">node</span>.<span class="variable">block</span>.<span class="variable">parent</span> = <span class="variable">clone</span>;
+        <span class="keyword">break</span>;
+      <span class="keyword">case</span> <span class="string">'ident'</span>:
+        <span class="keyword">if</span> (<span class="string">'function'</span> == <span class="variable">node</span>.<span class="variable">val</span>.<span class="variable">nodeName</span>) {
+          <span class="variable">node</span>.<span class="variable">val</span>.<span class="variable">block</span>.<span class="variable">parent</span> = <span class="variable">clone</span>;
+        }
+    }
+    <span class="variable">clone</span>.<span class="variable">push</span>(<span class="variable">node</span>);
+  });
   <span class="keyword">return</span> <span class="variable">clone</span>;
 };</code></pre>
 </td>
@@ -2115,7 +2321,9 @@ match('^foo(bar)?', 'bar')
 </td>
 <td class="code">
 <pre><code><span class="class">Boolean</span>.<span class="variable">prototype</span>.<span class="variable">negate</span> = <span class="keyword">function</span>(){
-  <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">val</span> ? <span class="variable">nodes</span>.<span class="variable">false</span> : <span class="variable">nodes</span>.<span class="variable">true</span>;
+  <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">val</span>
+    ? <span class="variable">nodes</span>.<span class="variable">false</span>
+    : <span class="variable">nodes</span>.<span class="variable">true</span>;
 };</code></pre>
 </td>
 </tr>
@@ -2143,56 +2351,10 @@ match('^foo(bar)?', 'bar')
 </td>
 <td class="code">
 <pre><code><span class="class">Boolean</span>.<span class="variable">prototype</span>.<span class="variable">toString</span> = <span class="keyword">function</span>(){
-  <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">val</span> ? <span class="string">'true'</span> : <span class="string">'false'</span>;
+  <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">val</span>
+    ? <span class="string">'true'</span>
+    : <span class="string">'false'</span>;
 };</code></pre>
-</td>
-</tr><tr class="filename"><td><h2 id="lib/nodes/charset.js"><a href="#">charset</a></h2></td><td>lib/nodes/charset.js</td></tr><tr class="code">
-<td class="docs">
-<p>Module dependencies.
- </p>
-</td>
-<td class="code">
-<pre><code><span class="keyword">var</span> <span class="class">Node</span> = <span class="variable">require</span>(<span class="string">'./node'</span>)
-  , <span class="variable">nodes</span> = <span class="variable">require</span>(<span class="string">'./'</span>);</code></pre>
-</td>
-</tr>
-<tr class="code">
-<td class="docs">
-<p>Initialize a new <code>Charset</code> with the given <code>val</code></p>
-
-<h2></h2>
-
-<ul><li><p><strong>param</strong>: <em>String</em>  val</p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
-</td>
-<td class="code">
-<pre><code><span class="keyword">var</span> <span class="class">Charset</span> = <span class="variable">module</span>.<span class="variable">exports</span> = <span class="keyword">function</span> <span class="class">Charset</span>(<span class="variable">val</span>){
-  <span class="class">Node</span>.<span class="variable">call</span>(<span class="this">this</span>);
-  <span class="this">this</span>.<span class="variable">val</span> = <span class="variable">val</span>;
-};</code></pre>
-</td>
-</tr>
-<tr class="code">
-<td class="docs">
-<p>Inherit from <code>Node.prototype</code>.
- </p>
-</td>
-<td class="code">
-<pre><code><span class="class">Charset</span>.<span class="variable">prototype</span>.<span class="variable">__proto__</span> = <span class="class">Node</span>.<span class="variable">prototype</span>;</code></pre>
-</td>
-</tr>
-<tr class="code">
-<td class="docs">
-<p>Return @charset "val".</p>
-
-<h2></h2>
-
-<ul><li><p><strong>return</strong>: <em>String</em> </p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
-</td>
-<td class="code">
-<pre><code><span class="class">Charset</span>.<span class="variable">prototype</span>.<span class="variable">toString</span> = <span class="keyword">function</span>(){
-  <span class="keyword">return</span> <span class="string">'@charset '</span> + <span class="this">this</span>.<span class="variable">vals</span>;
-};
-</code></pre>
 </td>
 </tr><tr class="filename"><td><h2 id="lib/nodes/call.js"><a href="#">call</a></h2></td><td>lib/nodes/call.js</td></tr><tr class="code">
 <td class="docs">
@@ -2255,6 +2417,54 @@ match('^foo(bar)?', 'bar')
 <td class="code">
 <pre><code><span class="class">Call</span>.<span class="variable">prototype</span>.<span class="variable">toString</span> = <span class="keyword">function</span>(){
   <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">name</span> + <span class="string">'()'</span>;
+};
+</code></pre>
+</td>
+</tr><tr class="filename"><td><h2 id="lib/nodes/charset.js"><a href="#">charset</a></h2></td><td>lib/nodes/charset.js</td></tr><tr class="code">
+<td class="docs">
+<p>Module dependencies.
+ </p>
+</td>
+<td class="code">
+<pre><code><span class="keyword">var</span> <span class="class">Node</span> = <span class="variable">require</span>(<span class="string">'./node'</span>)
+  , <span class="variable">nodes</span> = <span class="variable">require</span>(<span class="string">'./'</span>);</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Initialize a new <code>Charset</code> with the given <code>val</code></p>
+
+<h2></h2>
+
+<ul><li><p><strong>param</strong>: <em>String</em>  val</p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
+</td>
+<td class="code">
+<pre><code><span class="keyword">var</span> <span class="class">Charset</span> = <span class="variable">module</span>.<span class="variable">exports</span> = <span class="keyword">function</span> <span class="class">Charset</span>(<span class="variable">val</span>){
+  <span class="class">Node</span>.<span class="variable">call</span>(<span class="this">this</span>);
+  <span class="this">this</span>.<span class="variable">val</span> = <span class="variable">val</span>;
+};</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Inherit from <code>Node.prototype</code>.
+ </p>
+</td>
+<td class="code">
+<pre><code><span class="class">Charset</span>.<span class="variable">prototype</span>.<span class="variable">__proto__</span> = <span class="class">Node</span>.<span class="variable">prototype</span>;</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Return @charset "val".</p>
+
+<h2></h2>
+
+<ul><li><p><strong>return</strong>: <em>String</em> </p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
+</td>
+<td class="code">
+<pre><code><span class="class">Charset</span>.<span class="variable">prototype</span>.<span class="variable">toString</span> = <span class="keyword">function</span>(){
+  <span class="keyword">return</span> <span class="string">'@charset '</span> + <span class="this">this</span>.<span class="variable">val</span>;
 };
 </code></pre>
 </td>
@@ -2585,7 +2795,8 @@ match('^foo(bar)?', 'bar')
 </td>
 <td class="code">
 <pre><code><span class="keyword">var</span> <span class="class">Node</span> = <span class="variable">require</span>(<span class="string">'./node'</span>)
-  , <span class="variable">nodes</span> = <span class="variable">require</span>(<span class="string">'../nodes'</span>);</code></pre>
+  , <span class="variable">nodes</span> = <span class="variable">require</span>(<span class="string">'../nodes'</span>)
+  , <span class="variable">utils</span> = <span class="variable">require</span>(<span class="string">'../utils'</span>);</code></pre>
 </td>
 </tr>
 <tr class="code">
@@ -2688,7 +2899,18 @@ match('^foo(bar)?', 'bar')
 <pre><code><span class="class">Expression</span>.<span class="variable">prototype</span>.<span class="variable">operate</span> = <span class="keyword">function</span>(<span class="variable">op</span>, <span class="variable">right</span>){
   <span class="keyword">switch</span> (<span class="variable">op</span>) {
     <span class="keyword">case</span> <span class="string">'[]'</span>:
-      <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">nodes</span>[<span class="variable">right</span>.<span class="variable">val</span>] || <span class="variable">nodes</span>.<span class="keyword">null</span>;
+      <span class="keyword">var</span> <span class="variable">expr</span> = <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Expression</span>
+        , <span class="variable">vals</span> = <span class="variable">utils</span>.<span class="variable">unwrap</span>(<span class="this">this</span>).<span class="variable">nodes</span>
+        , <span class="variable">range</span> = <span class="variable">utils</span>.<span class="variable">unwrap</span>(<span class="variable">right</span>).<span class="variable">nodes</span>;
+      <span class="variable">range</span>.<span class="variable">forEach</span>(<span class="keyword">function</span>(<span class="variable">unit</span>){
+        <span class="keyword">if</span> (<span class="string">'unit'</span> == <span class="variable">unit</span>.<span class="variable">nodeName</span>) {
+          <span class="keyword">var</span> <span class="variable">node</span> = <span class="variable">vals</span>[<span class="variable">unit</span>.<span class="variable">val</span>];
+          <span class="keyword">if</span> (<span class="variable">node</span>) <span class="variable">expr</span>.<span class="variable">push</span>(<span class="variable">node</span>);
+        }
+      });
+      <span class="keyword">return</span> <span class="variable">expr</span>.<span class="variable">isEmpty</span>
+        ? <span class="variable">nodes</span>.<span class="keyword">null</span>
+        : <span class="variable">expr</span>;
     <span class="keyword">default</span>:
       <span class="keyword">return</span> <span class="class">Node</span>.<span class="variable">prototype</span>.<span class="variable">operate</span>.<span class="variable">call</span>(<span class="this">this</span>, <span class="variable">op</span>, <span class="variable">right</span>);
   }
@@ -2900,9 +3122,9 @@ the expression represents a list.</p>
 <pre><code><span class="class">Group</span>.<span class="variable">prototype</span>.<span class="variable">clone</span> = <span class="keyword">function</span>(){
   <span class="keyword">var</span> <span class="variable">clone</span> = <span class="keyword">new</span> <span class="class">Group</span>;
   <span class="variable">clone</span>.<span class="variable">lineno</span> = <span class="this">this</span>.<span class="variable">lineno</span>;
-  <span class="keyword">for</span> (<span class="keyword">var</span> <span class="variable">i</span> = <span class="number integer">0</span>, <span class="variable">len</span> = <span class="this">this</span>.<span class="variable">nodes</span>.<span class="variable">length</span>; <span class="variable">i</span> &<span class="variable">lt</span>; <span class="variable">len</span>; ++<span class="variable">i</span>) {
-    <span class="variable">clone</span>.<span class="variable">push</span>(<span class="this">this</span>.<span class="variable">nodes</span>[<span class="variable">i</span>].<span class="variable">clone</span>());
-  }
+  <span class="this">this</span>.<span class="variable">nodes</span>.<span class="variable">forEach</span>(<span class="keyword">function</span>(<span class="variable">node</span>){
+    <span class="variable">clone</span>.<span class="variable">push</span>(<span class="variable">node</span>.<span class="variable">clone</span>());
+  });
   <span class="variable">clone</span>.<span class="variable">block</span> = <span class="this">this</span>.<span class="variable">block</span>.<span class="variable">clone</span>();
   <span class="keyword">return</span> <span class="variable">clone</span>;
 };
@@ -3275,6 +3497,7 @@ the expression represents a list.</p>
 </td>
 <td class="code">
 <pre><code><span class="keyword">var</span> <span class="class">Import</span> = <span class="variable">module</span>.<span class="variable">exports</span> = <span class="keyword">function</span> <span class="class">Import</span>(<span class="variable">path</span>){
+  <span class="class">Node</span>.<span class="variable">call</span>(<span class="this">this</span>);
   <span class="this">this</span>.<span class="variable">path</span> = <span class="variable">path</span>;
 };</code></pre>
 </td>
@@ -3300,6 +3523,7 @@ the expression represents a list.</p>
 <span class="variable">exports</span>.<span class="class">Each</span> = <span class="variable">require</span>(<span class="string">'./each'</span>);
 <span class="variable">exports</span>.<span class="class">If</span> = <span class="variable">require</span>(<span class="string">'./if'</span>);
 <span class="variable">exports</span>.<span class="class">Call</span> = <span class="variable">require</span>(<span class="string">'./call'</span>);
+<span class="variable">exports</span>.<span class="class">Page</span> = <span class="variable">require</span>(<span class="string">'./page'</span>);
 <span class="variable">exports</span>.<span class="class">UnaryOp</span> = <span class="variable">require</span>(<span class="string">'./unaryop'</span>);
 <span class="variable">exports</span>.<span class="class">BinOp</span> = <span class="variable">require</span>(<span class="string">'./binop'</span>);
 <span class="variable">exports</span>.<span class="class">Ternary</span> = <span class="variable">require</span>(<span class="string">'./ternary'</span>);
@@ -3313,7 +3537,9 @@ the expression represents a list.</p>
 <span class="variable">exports</span>.<span class="class">Literal</span> = <span class="variable">require</span>(<span class="string">'./literal'</span>);
 <span class="variable">exports</span>.<span class="class">Boolean</span> = <span class="variable">require</span>(<span class="string">'./boolean'</span>);
 <span class="variable">exports</span>.<span class="class">Return</span> = <span class="variable">require</span>(<span class="string">'./return'</span>);
+<span class="variable">exports</span>.<span class="class">Media</span> = <span class="variable">require</span>(<span class="string">'./media'</span>);
 <span class="variable">exports</span>.<span class="class">Params</span> = <span class="variable">require</span>(<span class="string">'./params'</span>);
+<span class="variable">exports</span>.<span class="class">Keyframes</span> = <span class="variable">require</span>(<span class="string">'./keyframes'</span>);
 <span class="variable">exports</span>.<span class="class">Charset</span> = <span class="variable">require</span>(<span class="string">'./charset'</span>);
 <span class="variable">exports</span>.<span class="class">Import</span> = <span class="variable">require</span>(<span class="string">'./import'</span>);
 <span class="variable">exports</span>.<span class="class">Function</span> = <span class="variable">require</span>(<span class="string">'./function'</span>);
@@ -3331,6 +3557,71 @@ the expression represents a list.</p>
 <pre><code><span class="variable">exports</span>.<span class="variable">true</span> = <span class="keyword">new</span> <span class="variable">exports</span>.<span class="class">Boolean</span>(<span class="variable">true</span>);
 <span class="variable">exports</span>.<span class="variable">false</span> = <span class="keyword">new</span> <span class="variable">exports</span>.<span class="class">Boolean</span>(<span class="variable">false</span>);
 <span class="variable">exports</span>.<span class="keyword">null</span> = <span class="keyword">new</span> <span class="variable">exports</span>.<span class="class">Null</span>;</code></pre>
+</td>
+</tr><tr class="filename"><td><h2 id="lib/nodes/keyframes.js"><a href="#">keyframes</a></h2></td><td>lib/nodes/keyframes.js</td></tr><tr class="code">
+<td class="docs">
+<p>Module dependencies.
+ </p>
+</td>
+<td class="code">
+<pre><code><span class="keyword">var</span> <span class="class">Node</span> = <span class="variable">require</span>(<span class="string">'./node'</span>);</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Initialize a new <code>Keyframes</code> with the given <code>name</code>.</p>
+
+<h2></h2>
+
+<ul><li><p><strong>param</strong>: <em>String</em>  name</p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
+</td>
+<td class="code">
+<pre><code><span class="keyword">var</span> <span class="class">Keyframes</span> = <span class="variable">module</span>.<span class="variable">exports</span> = <span class="keyword">function</span> <span class="class">Keyframes</span>(<span class="variable">name</span>){
+  <span class="class">Node</span>.<span class="variable">call</span>(<span class="this">this</span>);
+  <span class="this">this</span>.<span class="variable">name</span> = <span class="variable">name</span>;
+  <span class="this">this</span>.<span class="variable">frames</span> = [];
+};</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Inherit from <code>Node.prototype</code>.
+ </p>
+</td>
+<td class="code">
+<pre><code><span class="class">Keyframes</span>.<span class="variable">prototype</span>.<span class="variable">__proto__</span> = <span class="class">Node</span>.<span class="variable">prototype</span>;</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Push the given <code>block</code> at <code>pos</code>.</p>
+
+<h2></h2>
+
+<ul><li><p><strong>param</strong>: <em>Unit</em>  pos</p></li><li><p><strong>param</strong>: <em>Block</em>  block</p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
+</td>
+<td class="code">
+<pre><code><span class="class">Keyframes</span>.<span class="variable">prototype</span>.<span class="variable">push</span> = <span class="keyword">function</span>(<span class="variable">pos</span>, <span class="variable">block</span>){
+  <span class="this">this</span>.<span class="variable">frames</span>.<span class="variable">push</span>({
+      <span class="variable">pos</span>: <span class="variable">pos</span>
+    , <span class="variable">block</span>: <span class="variable">block</span>
+  });
+};</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Return <code>@keyframes name</code>.</p>
+
+<h2></h2>
+
+<ul><li><p><strong>return</strong>: <em>String</em> </p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
+</td>
+<td class="code">
+<pre><code><span class="class">Keyframes</span>.<span class="variable">prototype</span>.<span class="variable">toString</span> = <span class="keyword">function</span>(){
+  <span class="keyword">return</span> <span class="string">'@keyframes '</span> + <span class="this">this</span>.<span class="variable">name</span>;
+};
+</code></pre>
 </td>
 </tr><tr class="filename"><td><h2 id="lib/nodes/literal.js"><a href="#">literal</a></h2></td><td>lib/nodes/literal.js</td></tr><tr class="code">
 <td class="docs">
@@ -3380,6 +3671,54 @@ the expression represents a list.</p>
 };
 </code></pre>
 </td>
+</tr><tr class="filename"><td><h2 id="lib/nodes/media.js"><a href="#">media</a></h2></td><td>lib/nodes/media.js</td></tr><tr class="code">
+<td class="docs">
+<p>Module dependencies.
+ </p>
+</td>
+<td class="code">
+<pre><code><span class="keyword">var</span> <span class="class">Node</span> = <span class="variable">require</span>(<span class="string">'./node'</span>)
+  , <span class="variable">nodes</span> = <span class="variable">require</span>(<span class="string">'./'</span>);</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Initialize a new <code>Media</code> with the given <code>val</code></p>
+
+<h2></h2>
+
+<ul><li><p><strong>param</strong>: <em>String</em>  val</p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
+</td>
+<td class="code">
+<pre><code><span class="keyword">var</span> <span class="class">Media</span> = <span class="variable">module</span>.<span class="variable">exports</span> = <span class="keyword">function</span> <span class="class">Media</span>(<span class="variable">val</span>){
+  <span class="class">Node</span>.<span class="variable">call</span>(<span class="this">this</span>);
+  <span class="this">this</span>.<span class="variable">val</span> = <span class="variable">val</span>;
+};</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Inherit from <code>Node.prototype</code>.
+ </p>
+</td>
+<td class="code">
+<pre><code><span class="class">Media</span>.<span class="variable">prototype</span>.<span class="variable">__proto__</span> = <span class="class">Node</span>.<span class="variable">prototype</span>;</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Return @media "val".</p>
+
+<h2></h2>
+
+<ul><li><p><strong>return</strong>: <em>String</em> </p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
+</td>
+<td class="code">
+<pre><code><span class="class">Media</span>.<span class="variable">prototype</span>.<span class="variable">toString</span> = <span class="keyword">function</span>(){
+  <span class="keyword">return</span> <span class="string">'@media '</span> + <span class="this">this</span>.<span class="variable">val</span>;
+};
+</code></pre>
+</td>
 </tr><tr class="filename"><td><h2 id="lib/nodes/node.js"><a href="#">node</a></h2></td><td>lib/nodes/node.js</td></tr><tr class="code">
 <td class="docs">
 <p>Module dependencies.
@@ -3401,7 +3740,6 @@ the expression represents a list.</p>
   <span class="this">this</span>.<span class="variable">lineno</span> = <span class="variable">nodes</span>.<span class="variable">lineno</span>;
   <span class="class">Object</span>.<span class="variable">defineProperty</span>(<span class="this">this</span>, <span class="string">'filename'</span>, { <span class="variable">value</span>: <span class="variable">nodes</span>.<span class="variable">filename</span> });
   <span class="class">Object</span>.<span class="variable">defineProperty</span>(<span class="this">this</span>, <span class="string">'source'</span>, { <span class="variable">value</span>: <span class="variable">nodes</span>.<span class="variable">source</span> });
-  <span class="comment">// TODO: remove from nodes. to prevent the (small) leak</span>
 };</code></pre>
 </td>
 </tr>
@@ -3632,6 +3970,54 @@ the expression represents a list.</p>
   <span class="keyword">return</span> <span class="keyword">null</span>;
 });</code></pre>
 </td>
+</tr><tr class="filename"><td><h2 id="lib/nodes/page.js"><a href="#">page</a></h2></td><td>lib/nodes/page.js</td></tr><tr class="code">
+<td class="docs">
+<p>Module dependencies.
+ </p>
+</td>
+<td class="code">
+<pre><code><span class="keyword">var</span> <span class="class">Node</span> = <span class="variable">require</span>(<span class="string">'./node'</span>);</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Initialize a new <code>Page</code> with the given <code>selector</code> and <code>block</code>.</p>
+
+<h2></h2>
+
+<ul><li><p><strong>param</strong>: <em>Selector</em>  selector</p></li><li><p><strong>param</strong>: <em>Block</em>  block</p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
+</td>
+<td class="code">
+<pre><code><span class="keyword">var</span> <span class="class">Page</span> = <span class="variable">module</span>.<span class="variable">exports</span> = <span class="keyword">function</span> <span class="class">Page</span>(<span class="variable">selector</span>, <span class="variable">block</span>){
+  <span class="class">Node</span>.<span class="variable">call</span>(<span class="this">this</span>);
+  <span class="this">this</span>.<span class="variable">selector</span> = <span class="variable">selector</span>;
+  <span class="this">this</span>.<span class="variable">block</span> = <span class="variable">block</span>;
+};</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Inherit from <code>Node.prototype</code>.
+ </p>
+</td>
+<td class="code">
+<pre><code><span class="class">Page</span>.<span class="variable">prototype</span>.<span class="variable">__proto__</span> = <span class="class">Node</span>.<span class="variable">prototype</span>;</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Return <code>@oage name</code>.</p>
+
+<h2></h2>
+
+<ul><li><p><strong>return</strong>: <em>String</em> </p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
+</td>
+<td class="code">
+<pre><code><span class="class">Page</span>.<span class="variable">prototype</span>.<span class="variable">toString</span> = <span class="keyword">function</span>(){
+  <span class="keyword">return</span> <span class="string">'@page '</span> + <span class="this">this</span>.<span class="variable">selector</span>;
+};
+</code></pre>
+</td>
 </tr><tr class="filename"><td><h2 id="lib/nodes/params.js"><a href="#">params</a></h2></td><td>lib/nodes/params.js</td></tr><tr class="code">
 <td class="docs">
 <p>Module dependencies.
@@ -3705,9 +4091,9 @@ the expression represents a list.</p>
 <pre><code><span class="class">Params</span>.<span class="variable">prototype</span>.<span class="variable">clone</span> = <span class="keyword">function</span>(){
   <span class="keyword">var</span> <span class="variable">clone</span> = <span class="keyword">new</span> <span class="class">Params</span>;
   <span class="variable">clone</span>.<span class="variable">lineno</span> = <span class="this">this</span>.<span class="variable">lineno</span>;
-  <span class="keyword">for</span> (<span class="keyword">var</span> <span class="variable">i</span> = <span class="number integer">0</span>, <span class="variable">len</span> = <span class="this">this</span>.<span class="variable">length</span>; <span class="variable">i</span> &<span class="variable">lt</span>; <span class="variable">len</span>; ++<span class="variable">i</span>) {
-    <span class="variable">clone</span>.<span class="variable">push</span>(<span class="this">this</span>.<span class="variable">nodes</span>[<span class="variable">i</span>].<span class="variable">clone</span>());
-  }
+  <span class="this">this</span>.<span class="variable">nodes</span>.<span class="variable">forEach</span>(<span class="keyword">function</span>(<span class="variable">node</span>){
+    <span class="variable">clone</span>.<span class="variable">push</span>(<span class="variable">node</span>.<span class="variable">clone</span>());
+  });
   <span class="keyword">return</span> <span class="variable">clone</span>;
 };
 
@@ -3724,16 +4110,16 @@ the expression represents a list.</p>
 </tr>
 <tr class="code">
 <td class="docs">
-<p>Initialize a new <code>Property</code> with the given <code>name</code> and optional <code>expr</code>.</p>
+<p>Initialize a new <code>Property</code> with the given <code>segs</code> and optional <code>expr</code>.</p>
 
 <h2></h2>
 
-<ul><li><p><strong>param</strong>: <em>String</em>  name</p></li><li><p><strong>param</strong>: <em>Expression</em>  expr</p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
+<ul><li><p><strong>param</strong>: <em>Array</em>  segs</p></li><li><p><strong>param</strong>: <em>Expression</em>  expr</p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
 </td>
 <td class="code">
-<pre><code><span class="keyword">var</span> <span class="class">Property</span> = <span class="variable">module</span>.<span class="variable">exports</span> = <span class="keyword">function</span> <span class="class">Property</span>(<span class="variable">name</span>, <span class="variable">expr</span>){
+<pre><code><span class="keyword">var</span> <span class="class">Property</span> = <span class="variable">module</span>.<span class="variable">exports</span> = <span class="keyword">function</span> <span class="class">Property</span>(<span class="variable">segs</span>, <span class="variable">expr</span>){
   <span class="class">Node</span>.<span class="variable">call</span>(<span class="this">this</span>);
-  <span class="this">this</span>.<span class="variable">name</span> = <span class="variable">name</span>;
+  <span class="this">this</span>.<span class="variable">segments</span> = <span class="variable">segs</span>;
   <span class="this">this</span>.<span class="variable">expr</span> = <span class="variable">expr</span>;
 };</code></pre>
 </td>
@@ -3757,8 +4143,9 @@ the expression represents a list.</p>
 </td>
 <td class="code">
 <pre><code><span class="class">Property</span>.<span class="variable">prototype</span>.<span class="variable">clone</span> = <span class="keyword">function</span>(){
-  <span class="keyword">var</span> <span class="variable">clone</span> = <span class="keyword">new</span> <span class="class">Property</span>(<span class="this">this</span>.<span class="variable">name</span>);
+  <span class="keyword">var</span> <span class="variable">clone</span> = <span class="keyword">new</span> <span class="class">Property</span>(<span class="this">this</span>.<span class="variable">segments</span>);
   <span class="variable">clone</span>.<span class="variable">lineno</span> = <span class="this">this</span>.<span class="variable">lineno</span>;
+  <span class="this">this</span>.<span class="variable">segments</span> = <span class="this">this</span>.<span class="variable">segments</span>.<span class="variable">map</span>(<span class="keyword">function</span>(<span class="variable">node</span>){ <span class="keyword">return</span> <span class="variable">node</span>.<span class="variable">clone</span>(); });
   <span class="keyword">if</span> (<span class="this">this</span>.<span class="variable">expr</span>) <span class="variable">clone</span>.<span class="variable">expr</span> = <span class="this">this</span>.<span class="variable">expr</span>.<span class="variable">clone</span>();
   <span class="keyword">return</span> <span class="variable">clone</span>;
 };
@@ -4372,6 +4759,7 @@ such as "px", "pt", "in", etc.</p>
   , <span class="string">'selector'</span>
   , <span class="string">'function'</span>
   , <span class="string">'comment'</span>
+  , <span class="string">'space'</span>
   , <span class="string">'color'</span>
   , <span class="string">'unit'</span>
   , <span class="string">'['</span>
@@ -4402,7 +4790,6 @@ such as "px", "pt", "in", etc.</p>
 <pre><code><span class="keyword">var</span> <span class="class">Parser</span> = <span class="variable">module</span>.<span class="variable">exports</span> = <span class="keyword">function</span> <span class="class">Parser</span>(<span class="variable">str</span>, <span class="variable">options</span>) {
   <span class="variable">options</span> = <span class="variable">options</span> || {};
   <span class="this">this</span>.<span class="variable">str</span> = <span class="variable">nodes</span>.<span class="variable">source</span> = <span class="variable">str</span>;
-  <span class="this">this</span>.<span class="variable">filename</span> = <span class="variable">nodes</span>.<span class="variable">filename</span> = <span class="variable">options</span>.<span class="variable">filename</span> || <span class="string">'stylus'</span>;
   <span class="this">this</span>.<span class="variable">lexer</span> = <span class="keyword">new</span> <span class="class">Lexer</span>(<span class="variable">str</span>, <span class="variable">options</span>);
   <span class="this">this</span>.<span class="variable">root</span> = <span class="variable">options</span>.<span class="variable">root</span> || <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Root</span>;
   <span class="this">this</span>.<span class="variable">state</span> = [<span class="string">'root'</span>];
@@ -4591,7 +4978,12 @@ otherwise return <code>undefined</code>.</p>
  | literal
  | charset
  | import
+ | media
+ | keyframes
+ | page
  | for
+ | if
+ | unless
  | expression
  | 'return' expression
    </p>
@@ -4602,8 +4994,11 @@ otherwise return <code>undefined</code>.</p>
     <span class="keyword">switch</span> (<span class="variable">type</span>) {
       <span class="keyword">case</span> <span class="string">'selector'</span>:
       <span class="keyword">case</span> <span class="string">'literal'</span>:
+      <span class="keyword">case</span> <span class="string">'keyframes'</span>:
       <span class="keyword">case</span> <span class="string">'charset'</span>:
       <span class="keyword">case</span> <span class="string">'import'</span>:
+      <span class="keyword">case</span> <span class="string">'media'</span>:
+      <span class="keyword">case</span> <span class="string">'page'</span>:
       <span class="keyword">case</span> <span class="string">'ident'</span>:
       <span class="keyword">case</span> <span class="string">'unless'</span>:
       <span class="keyword">case</span> <span class="string">'function'</span>:
@@ -4612,12 +5007,15 @@ otherwise return <code>undefined</code>.</p>
         <span class="keyword">return</span> <span class="this">this</span>[<span class="variable">type</span>];
       <span class="keyword">case</span> <span class="string">'return'</span>:
         <span class="keyword">return</span> <span class="this">this</span>.<span class="keyword">return</span>;
+      <span class="keyword">case</span> <span class="string">'{'</span>:
+        <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">property</span>;
       <span class="keyword">default</span>:
         <span class="comment">// Contextual selectors</span>
         <span class="keyword">switch</span> (<span class="this">this</span>.<span class="variable">currentState</span>) {
           <span class="keyword">case</span> <span class="string">'root'</span>:
           <span class="keyword">case</span> <span class="string">'selector'</span>:
           <span class="keyword">case</span> <span class="string">'conditional'</span>:
+          <span class="keyword">case</span> <span class="string">'keyframe'</span>:
           <span class="keyword">case</span> <span class="string">'function'</span>:
           <span class="keyword">case</span> <span class="string">'for'</span>:
             <span class="keyword">switch</span> (<span class="variable">type</span>) {
@@ -4673,8 +5071,8 @@ otherwise return <code>undefined</code>.</p>
 <pre><code><span class="variable">get</span> <span class="keyword">for</span>() {
     <span class="this">this</span>.<span class="variable">expect</span>(<span class="string">'for'</span>);
     <span class="keyword">var</span> <span class="variable">key</span>
-      , <span class="variable">val</span> = <span class="this">this</span>.<span class="variable">expect</span>(<span class="string">'ident'</span>).<span class="variable">val</span>.<span class="variable">name</span>;
-    <span class="keyword">if</span> (<span class="this">this</span>.<span class="variable">accept</span>(<span class="string">','</span>)) <span class="variable">key</span> = <span class="this">this</span>.<span class="variable">expect</span>(<span class="string">'ident'</span>).<span class="variable">val</span>.<span class="variable">name</span>;
+      , <span class="variable">val</span> = <span class="this">this</span>.<span class="variable">id</span>.<span class="variable">name</span>;
+    <span class="keyword">if</span> (<span class="this">this</span>.<span class="variable">accept</span>(<span class="string">','</span>)) <span class="variable">key</span> = <span class="this">this</span>.<span class="variable">id</span>.<span class="variable">name</span>;
     <span class="this">this</span>.<span class="variable">expect</span>(<span class="string">'in'</span>);
     <span class="keyword">var</span> <span class="variable">each</span> = <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Each</span>(<span class="variable">val</span>, <span class="variable">key</span>, <span class="this">this</span>.<span class="variable">expression</span>);
     <span class="this">this</span>.<span class="variable">state</span>.<span class="variable">push</span>(<span class="string">'for'</span>);
@@ -4743,6 +5141,22 @@ otherwise return <code>undefined</code>.</p>
 </tr>
 <tr class="code">
 <td class="docs">
+<p>media
+   </p>
+</td>
+<td class="code">
+<pre><code><span class="variable">get</span> <span class="variable">media</span>() {
+    <span class="keyword">var</span> <span class="variable">val</span> = <span class="this">this</span>.<span class="variable">expect</span>(<span class="string">'media'</span>).<span class="variable">val</span>
+      , <span class="variable">media</span> = <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Media</span>(<span class="variable">val</span>);
+    <span class="this">this</span>.<span class="variable">state</span>.<span class="variable">push</span>(<span class="string">'media'</span>);
+    <span class="variable">media</span>.<span class="variable">block</span> = <span class="this">this</span>.<span class="variable">block</span>(<span class="variable">media</span>);
+    <span class="this">this</span>.<span class="variable">state</span>.<span class="variable">pop</span>();
+    <span class="keyword">return</span> <span class="variable">media</span>;
+  },</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
 <p>import string
    </p>
 </td>
@@ -4768,12 +5182,87 @@ otherwise return <code>undefined</code>.</p>
 </tr>
 <tr class="code">
 <td class="docs">
+<p>page selector? block
+   </p>
+</td>
+<td class="code">
+<pre><code><span class="variable">get</span> <span class="variable">page</span>() {
+    <span class="keyword">var</span> <span class="variable">selector</span>;
+    <span class="this">this</span>.<span class="variable">expect</span>(<span class="string">'page'</span>);
+    <span class="keyword">if</span> (<span class="this">this</span>.<span class="variable">accept</span>(<span class="string">':'</span>)) {
+      <span class="keyword">var</span> <span class="variable">str</span> = <span class="this">this</span>.<span class="variable">expect</span>(<span class="string">'ident'</span>).<span class="variable">val</span>.<span class="variable">name</span>;
+      <span class="variable">selector</span> = <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Ident</span>(<span class="string">':'</span> + <span class="variable">str</span>);
+    }
+    <span class="keyword">var</span> <span class="variable">page</span> = <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Page</span>(<span class="variable">selector</span>);
+    <span class="this">this</span>.<span class="variable">state</span>.<span class="variable">push</span>(<span class="string">'page'</span>);
+    <span class="variable">page</span>.<span class="variable">block</span> = <span class="this">this</span>.<span class="variable">block</span>(<span class="variable">page</span>);
+    <span class="this">this</span>.<span class="variable">state</span>.<span class="variable">pop</span>();
+    <span class="keyword">return</span> <span class="variable">page</span>;
+  },</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>keyframes name ((unit | from | to) block)+
+   </p>
+</td>
+<td class="code">
+<pre><code><span class="variable">get</span> <span class="variable">keyframes</span>() {
+    <span class="this">this</span>.<span class="variable">expect</span>(<span class="string">'keyframes'</span>);
+    <span class="keyword">var</span> <span class="variable">pos</span>
+      , <span class="variable">name</span> = <span class="this">this</span>.<span class="variable">id</span>.<span class="variable">name</span>
+      , <span class="variable">keyframes</span> = <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Keyframes</span>(<span class="variable">name</span>);
+    <span class="this">this</span>.<span class="variable">expect</span>(<span class="string">'indent'</span>);
+    <span class="keyword">while</span> (<span class="variable">pos</span> = <span class="this">this</span>.<span class="variable">accept</span>(<span class="string">'unit'</span>) || <span class="this">this</span>.<span class="variable">accept</span>(<span class="string">'ident'</span>)) {
+      <span class="comment">// from | to</span>
+      <span class="keyword">if</span> (<span class="string">'ident'</span> == <span class="variable">pos</span>.<span class="variable">type</span>) {
+        <span class="this">this</span>.<span class="variable">accept</span>(<span class="string">'space'</span>);
+        <span class="keyword">switch</span> (<span class="variable">pos</span>.<span class="variable">val</span>.<span class="variable">name</span>) {
+          <span class="keyword">case</span> <span class="string">'from'</span>:
+            <span class="variable">pos</span> = <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Unit</span>(<span class="number integer">0</span>, <span class="string">'%'</span>);
+            <span class="keyword">break</span>;
+          <span class="keyword">case</span> <span class="string">'to'</span>:
+            <span class="variable">pos</span> = <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Unit</span>(<span class="number integer">100</span>, <span class="string">'%'</span>);
+            <span class="keyword">break</span>;
+          <span class="keyword">default</span>:
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="class">Error</span>(<span class="string">'invalid ident &quot;'</span> + <span class="variable">pos</span>.<span class="variable">val</span>.<span class="variable">name</span> + <span class="string">'&quot; in selector'</span>);
+        }
+      } <span class="keyword">else</span> {
+        <span class="variable">pos</span> = <span class="variable">pos</span>.<span class="variable">val</span>;
+      }
+
+      <span class="comment">// block</span>
+      <span class="this">this</span>.<span class="variable">state</span>.<span class="variable">push</span>(<span class="string">'keyframe'</span>);
+      <span class="keyword">var</span> <span class="variable">block</span> = <span class="this">this</span>.<span class="variable">block</span>(<span class="variable">keyframes</span>);
+      <span class="variable">keyframes</span>.<span class="variable">push</span>(<span class="variable">pos</span>, <span class="variable">block</span>);
+      <span class="this">this</span>.<span class="variable">state</span>.<span class="variable">pop</span>();
+    }
+    <span class="this">this</span>.<span class="variable">expect</span>(<span class="string">'outdent'</span>);
+    <span class="keyword">return</span> <span class="variable">keyframes</span>;
+  },</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
 <p>literal
    </p>
 </td>
 <td class="code">
 <pre><code><span class="variable">get</span> <span class="variable">literal</span>() {
     <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">expect</span>(<span class="string">'literal'</span>).<span class="variable">val</span>;
+  },</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>ident space?
+   </p>
+</td>
+<td class="code">
+<pre><code><span class="variable">get</span> <span class="variable">id</span>() {
+    <span class="keyword">var</span> <span class="variable">tok</span> = <span class="this">this</span>.<span class="variable">expect</span>(<span class="string">'ident'</span>);
+    <span class="this">this</span>.<span class="variable">accept</span>(<span class="string">'space'</span>);
+    <span class="keyword">return</span> <span class="variable">tok</span>.<span class="variable">val</span>;
   },</code></pre>
 </td>
 </tr>
@@ -4787,8 +5276,11 @@ otherwise return <code>undefined</code>.</p>
 </td>
 <td class="code">
 <pre><code><span class="variable">get</span> <span class="variable">ident</span>() {
-    <span class="keyword">var</span> <span class="variable">la</span> = <span class="this">this</span>.<span class="variable">lookahead</span>(<span class="number integer">2</span>).<span class="variable">type</span>
+    <span class="keyword">var</span> <span class="variable">i</span> = <span class="number integer">2</span>
+      , <span class="variable">la</span> = <span class="this">this</span>.<span class="variable">lookahead</span>(<span class="variable">i</span>).<span class="variable">type</span>
       , <span class="variable">ident</span> = <span class="this">this</span>.<span class="variable">_ident</span>;
+
+    <span class="keyword">while</span> (<span class="string">'space'</span> == <span class="variable">la</span>) <span class="variable">la</span> = <span class="this">this</span>.<span class="variable">lookahead</span>(++<span class="variable">i</span>).<span class="variable">type</span>;
 
     <span class="keyword">switch</span> (<span class="variable">la</span>) {
       <span class="comment">// Assignment</span>
@@ -4818,7 +5310,7 @@ otherwise return <code>undefined</code>.</p>
       <span class="keyword">case</span> <span class="string">'is defined'</span>:
         <span class="comment">// Prevent cyclic .ident, return literal</span>
         <span class="keyword">if</span> (<span class="this">this</span>.<span class="variable">_ident</span> == <span class="this">this</span>.<span class="variable">peek</span>) {
-          <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">next</span>.<span class="variable">val</span>;
+          <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">id</span>;
         } <span class="keyword">else</span> {
           <span class="this">this</span>.<span class="variable">_ident</span> = <span class="this">this</span>.<span class="variable">peek</span>;
           <span class="keyword">switch</span> (<span class="this">this</span>.<span class="variable">currentState</span>) {
@@ -4831,7 +5323,7 @@ otherwise return <code>undefined</code>.</p>
             <span class="comment">// Do not disrupt the ident when an operand</span>
             <span class="keyword">default</span>:
               <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">operand</span>
-                ? <span class="this">this</span>.<span class="variable">next</span>.<span class="variable">val</span>
+                ? <span class="this">this</span>.<span class="variable">id</span>
                 : <span class="this">this</span>.<span class="variable">expression</span>;
           }
         }
@@ -4841,12 +5333,15 @@ otherwise return <code>undefined</code>.</p>
           <span class="keyword">case</span> <span class="string">'root'</span>:
             <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">selector</span>;
           <span class="keyword">case</span> <span class="string">'for'</span>:
+          <span class="keyword">case</span> <span class="string">'page'</span>:
+          <span class="keyword">case</span> <span class="string">'media'</span>:
           <span class="keyword">case</span> <span class="string">'selector'</span>:
           <span class="keyword">case</span> <span class="string">'function'</span>:
+          <span class="keyword">case</span> <span class="string">'keyframe'</span>:
           <span class="keyword">case</span> <span class="string">'conditional'</span>:
             <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">property</span>;
           <span class="keyword">default</span>:
-            <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">next</span>.<span class="variable">val</span>;
+            <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">id</span>;
         }
     }
   },</code></pre>
@@ -4854,7 +5349,31 @@ otherwise return <code>undefined</code>.</p>
 </tr>
 <tr class="code">
 <td class="docs">
-<p>  property expression
+<p>(ident | '{' expression '}')+
+   </p>
+</td>
+<td class="code">
+<pre><code><span class="variable">get</span> <span class="variable">interpolate</span>() {
+    <span class="keyword">var</span> <span class="variable">node</span>
+      , <span class="variable">segs</span> = [];
+    <span class="keyword">while</span> (<span class="variable">true</span>) {
+      <span class="keyword">if</span> (<span class="this">this</span>.<span class="variable">accept</span>(<span class="string">'{'</span>)) {
+        <span class="variable">segs</span>.<span class="variable">push</span>(<span class="this">this</span>.<span class="variable">expression</span>);
+        <span class="this">this</span>.<span class="variable">expect</span>(<span class="string">'}'</span>);
+      } <span class="keyword">else</span> <span class="keyword">if</span> (<span class="variable">node</span> = <span class="this">this</span>.<span class="variable">accept</span>(<span class="string">'ident'</span>)){
+        <span class="variable">segs</span>.<span class="variable">push</span>(<span class="variable">node</span>.<span class="variable">val</span>);
+      } <span class="keyword">else</span> {
+        <span class="keyword">break</span>;
+      }
+    }
+    <span class="keyword">if</span> (!<span class="variable">segs</span>.<span class="variable">length</span>) <span class="this">this</span>.<span class="variable">expect</span>(<span class="string">'ident'</span>);
+    <span class="keyword">return</span> <span class="variable">segs</span>;
+  },</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>  property :? expression
 | ident
    </p>
 </td>
@@ -4882,13 +5401,20 @@ otherwise return <code>undefined</code>.</p>
       <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">selector</span>;
 
     <span class="comment">// Property</span>
-    <span class="keyword">var</span> <span class="variable">ident</span> = <span class="this">this</span>.<span class="variable">expect</span>(<span class="string">'ident'</span>).<span class="variable">val</span>
-      , <span class="variable">name</span> = <span class="variable">ident</span>.<span class="variable">name</span>
-      , <span class="variable">prop</span> = <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Property</span>(<span class="variable">name</span>);
+    <span class="keyword">var</span> <span class="variable">ident</span> = <span class="this">this</span>.<span class="variable">interpolate</span>
+      , <span class="variable">prop</span> = <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Property</span>(<span class="variable">ident</span>);
 
-    <span class="this">this</span>.<span class="variable">state</span>.<span class="variable">push</span>(<span class="string">'property value'</span>);
+    <span class="comment">// Optional ':'</span>
+    <span class="this">this</span>.<span class="variable">accept</span>(<span class="string">'space'</span>);
+    <span class="keyword">if</span> (<span class="this">this</span>.<span class="variable">accept</span>(<span class="string">':'</span>)) {
+      <span class="this">this</span>.<span class="variable">accept</span>(<span class="string">'space'</span>);
+    }
+
+    <span class="this">this</span>.<span class="variable">state</span>.<span class="variable">push</span>(<span class="string">'property'</span>);
+    <span class="this">this</span>.<span class="variable">inProperty</span> = <span class="variable">true</span>;
     <span class="variable">prop</span>.<span class="variable">expr</span> = <span class="this">this</span>.<span class="variable">list</span>;
-    <span class="keyword">if</span> (<span class="variable">prop</span>.<span class="variable">expr</span>.<span class="variable">isEmpty</span>) <span class="keyword">return</span> <span class="variable">ident</span>;
+    <span class="keyword">if</span> (<span class="variable">prop</span>.<span class="variable">expr</span>.<span class="variable">isEmpty</span>) <span class="keyword">return</span> <span class="variable">ident</span>[<span class="number integer">0</span>];
+    <span class="this">this</span>.<span class="variable">inProperty</span> = <span class="variable">false</span>;
     <span class="this">this</span>.<span class="variable">state</span>.<span class="variable">pop</span>();
 
     <span class="keyword">return</span> <span class="variable">prop</span>;
@@ -4936,6 +5462,7 @@ otherwise return <code>undefined</code>.</p>
           <span class="keyword">case</span> <span class="string">'function'</span>: <span class="variable">val</span> = <span class="variable">tok</span>.<span class="variable">val</span>.<span class="variable">name</span> + <span class="string">'('</span>; <span class="keyword">break</span>;
           <span class="keyword">case</span> <span class="string">'string'</span>: <span class="variable">val</span> = <span class="variable">tok</span>.<span class="variable">val</span>.<span class="variable">toString</span>(); <span class="keyword">break</span>;
           <span class="keyword">case</span> <span class="string">'color'</span>: <span class="variable">val</span> = <span class="variable">tok</span>.<span class="variable">val</span>.<span class="variable">toString</span>(); <span class="keyword">break</span>;
+          <span class="keyword">case</span> <span class="string">'space'</span>: <span class="variable">val</span> = <span class="string">' '</span>; <span class="keyword">break</span>;
           <span class="keyword">default</span>: <span class="variable">val</span> = <span class="variable">tok</span>.<span class="variable">val</span>;
         }
 
@@ -4969,7 +5496,7 @@ otherwise return <code>undefined</code>.</p>
 </td>
 <td class="code">
 <pre><code><span class="variable">get</span> <span class="variable">assignment</span>() {
-    <span class="keyword">var</span> <span class="variable">name</span> = <span class="this">this</span>.<span class="variable">expect</span>(<span class="string">'ident'</span>).<span class="variable">val</span>.<span class="variable">name</span>
+    <span class="keyword">var</span> <span class="variable">name</span> = <span class="this">this</span>.<span class="variable">id</span>.<span class="variable">name</span>
       , <span class="variable">op</span> = <span class="this">this</span>.<span class="variable">accept</span>(<span class="string">'='</span>) || <span class="this">this</span>.<span class="variable">accept</span>(<span class="string">'?='</span>);
 
     <span class="this">this</span>.<span class="variable">state</span>.<span class="variable">push</span>(<span class="string">'assignment'</span>);
@@ -5079,9 +5606,10 @@ otherwise return <code>undefined</code>.</p>
       , <span class="variable">node</span>
       , <span class="variable">params</span> = <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Params</span>;
     <span class="keyword">while</span> (<span class="variable">tok</span> = <span class="this">this</span>.<span class="variable">accept</span>(<span class="string">'ident'</span>)) {
+      <span class="this">this</span>.<span class="variable">accept</span>(<span class="string">'space'</span>);
       <span class="variable">params</span>.<span class="variable">push</span>(<span class="variable">node</span> = <span class="variable">tok</span>.<span class="variable">val</span>);
       <span class="keyword">if</span> (<span class="this">this</span>.<span class="variable">accept</span>(<span class="string">'...'</span>)) {
-        <span class="variable">node</span>.<span class="variable">varg</span> = <span class="variable">true</span>;
+        <span class="variable">node</span>.<span class="variable">rest</span> = <span class="variable">true</span>;
       } <span class="keyword">else</span> <span class="keyword">if</span> (<span class="this">this</span>.<span class="variable">accept</span>(<span class="string">'='</span>)) {
         <span class="variable">node</span>.<span class="variable">val</span> = <span class="this">this</span>.<span class="variable">expression</span>;
       }
@@ -5310,9 +5838,16 @@ otherwise return <code>undefined</code>.</p>
       || <span class="this">this</span>.<span class="variable">accept</span>(<span class="string">'/'</span>)
       || <span class="this">this</span>.<span class="variable">accept</span>(<span class="string">'%'</span>)) {
       <span class="this">this</span>.<span class="variable">operand</span> = <span class="variable">true</span>;
-      <span class="keyword">if</span> (!<span class="variable">node</span>) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="class">Error</span>(<span class="string">'illegal unary '</span> + <span class="variable">op</span>);
-      <span class="variable">node</span> = <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">BinOp</span>(<span class="variable">op</span>.<span class="variable">type</span>, <span class="variable">node</span>, <span class="this">this</span>.<span class="variable">defined</span>);
-      <span class="this">this</span>.<span class="variable">operand</span> = <span class="variable">false</span>;
+      <span class="keyword">if</span> (<span class="string">'/'</span> == <span class="variable">op</span> &<span class="variable">amp</span>;&<span class="variable">amp</span>; <span class="this">this</span>.<span class="variable">inProperty</span> &<span class="variable">amp</span>;&<span class="variable">amp</span>; !<span class="this">this</span>.<span class="variable">parens</span>) {
+        <span class="keyword">var</span> <span class="variable">expr</span> = <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Expression</span>;
+        <span class="variable">expr</span>.<span class="variable">push</span>(<span class="variable">node</span>);
+        <span class="variable">expr</span>.<span class="variable">push</span>(<span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Ident</span>(<span class="string">'/'</span>));
+        <span class="keyword">return</span> <span class="variable">expr</span>;
+      } <span class="keyword">else</span> {
+        <span class="keyword">if</span> (!<span class="variable">node</span>) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="class">Error</span>(<span class="string">'illegal unary '</span> + <span class="variable">op</span>);
+        <span class="variable">node</span> = <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">BinOp</span>(<span class="variable">op</span>.<span class="variable">type</span>, <span class="variable">node</span>, <span class="this">this</span>.<span class="variable">defined</span>);
+        <span class="this">this</span>.<span class="variable">operand</span> = <span class="variable">false</span>;
+      }
     }
     <span class="keyword">return</span> <span class="variable">node</span>;
   },</code></pre>
@@ -5393,8 +5928,10 @@ otherwise return <code>undefined</code>.</p>
 
     <span class="comment">// Parenthesis</span>
     <span class="keyword">if</span> (<span class="this">this</span>.<span class="variable">accept</span>(<span class="string">'('</span>)) {
+      <span class="this">this</span>.<span class="variable">parens</span> = <span class="variable">true</span>;
       <span class="keyword">var</span> <span class="variable">expr</span> = <span class="this">this</span>.<span class="variable">expression</span>;
       <span class="this">this</span>.<span class="variable">expect</span>(<span class="string">')'</span>);
+      <span class="this">this</span>.<span class="variable">parens</span> = <span class="variable">false</span>;
       <span class="keyword">return</span> <span class="variable">expr</span>;
     }
 
@@ -5441,9 +5978,10 @@ otherwise return <code>undefined</code>.</p>
 <pre><code><span class="keyword">var</span> <span class="class">Renderer</span> = <span class="variable">module</span>.<span class="variable">exports</span> = <span class="keyword">function</span> <span class="class">Renderer</span>(<span class="variable">str</span>, <span class="variable">options</span>) {
   <span class="variable">options</span> = <span class="variable">options</span> || {};
   <span class="variable">options</span>.<span class="variable">functions</span> = {};
-  <span class="this">this</span>.<span class="variable">options</span> = <span class="variable">options</span>;
+  <span class="variable">options</span>.<span class="variable">imports</span> = [];
+  <span class="variable">options</span>.<span class="variable">filename</span> = <span class="variable">options</span>.<span class="variable">filename</span> || <span class="string">'stylus'</span>;
   <span class="this">this</span>.<span class="variable">str</span> = <span class="variable">str</span>;
-  <span class="this">this</span>.<span class="variable">filename</span> = <span class="variable">options</span>.<span class="variable">filename</span> || <span class="string">'stylus'</span>;
+  <span class="this">this</span>.<span class="variable">options</span> = <span class="variable">options</span>;
   <span class="this">this</span>.<span class="variable">parser</span> = <span class="keyword">new</span> <span class="class">Parser</span>(<span class="variable">str</span>, <span class="variable">options</span>);
 };</code></pre>
 </td>
@@ -5503,7 +6041,23 @@ to <code>true</code>.</p>
   <span class="this">this</span>.<span class="variable">options</span>.<span class="variable">functions</span>[<span class="variable">name</span>] = <span class="variable">fn</span>;
   <span class="variable">fn</span>.<span class="variable">tuple</span> = <span class="variable">tuple</span>;
   <span class="keyword">return</span> <span class="this">this</span>;
+};</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Import the given <code>file</code>.</p>
+
+<h2></h2>
+
+<ul><li><p><strong>param</strong>: <em>String</em>  file</p></li><li><p><strong>return</strong>: <em>Renderer</em>  for chaining</p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
+</td>
+<td class="code">
+<pre><code><span class="class">Renderer</span>.<span class="variable">prototype</span>.<span class="keyword">import</span> = <span class="keyword">function</span>(<span class="variable">file</span>){
+  <span class="this">this</span>.<span class="variable">options</span>.<span class="variable">imports</span>.<span class="variable">push</span>(<span class="variable">file</span>);
+  <span class="keyword">return</span> <span class="this">this</span>;
 };
+
 
 </code></pre>
 </td>
@@ -5826,6 +6380,15 @@ returning the identifier itself.</p>
 </tr>
 <tr class="code">
 <td class="docs">
+<p>Expose middleware.
+ </p>
+</td>
+<td class="code">
+<pre><code><span class="variable">exports</span>.<span class="variable">middleware</span> = <span class="variable">require</span>(<span class="string">'./middleware'</span>);</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
 <p>Convert the given <code>css</code> to <code>stylus</code> source.</p>
 
 <h2></h2>
@@ -5977,7 +6540,7 @@ css.parse(str).toJSON();
 </tr>
 <tr class="code">
 <td class="docs">
-<p>Attempt to lookup <code>path</code> within <code>paths</code>.</p>
+<p>Attempt to lookup <code>path</code> within <code>paths</code> from tail to head.</p>
 
 <h2></h2>
 
@@ -5985,8 +6548,9 @@ css.parse(str).toJSON();
 </td>
 <td class="code">
 <pre><code><span class="variable">exports</span>.<span class="variable">lookup</span> = <span class="keyword">function</span>(<span class="variable">path</span>, <span class="variable">paths</span>){
-  <span class="keyword">var</span> <span class="variable">lookup</span>;
-  <span class="keyword">for</span> (<span class="keyword">var</span> <span class="variable">i</span> = <span class="number integer">0</span>, <span class="variable">len</span> = <span class="variable">paths</span>.<span class="variable">length</span>; <span class="variable">i</span> &<span class="variable">lt</span>; <span class="variable">len</span>; ++<span class="variable">i</span>) {
+  <span class="keyword">var</span> <span class="variable">lookup</span>
+    , <span class="variable">i</span> = <span class="variable">paths</span>.<span class="variable">length</span>;
+  <span class="keyword">while</span> (<span class="variable">i</span>--) {
     <span class="keyword">try</span> {
       <span class="variable">lookup</span> = <span class="variable">paths</span>[<span class="variable">i</span>] + <span class="string">'/'</span> + <span class="variable">path</span>;
       <span class="variable">fs</span>.<span class="variable">statSync</span>(<span class="variable">lookup</span>);
@@ -6024,7 +6588,7 @@ css.parse(str).toJSON();
       <span class="keyword">return</span> <span class="string">'  '</span> + <span class="variable">pad</span> + <span class="variable">n</span> + <span class="string">': '</span> + <span class="variable">inspect</span>(<span class="variable">line</span>);
     }).<span class="variable">join</span>(<span class="string">'\n'</span>);
 
-  <span class="variable">err</span>.<span class="variable">message</span> = <span class="variable">renderer</span>.<span class="variable">filename</span>
+  <span class="variable">err</span>.<span class="variable">message</span> = <span class="variable">renderer</span>.<span class="variable">options</span>.<span class="variable">filename</span>
     + <span class="string">':'</span> + <span class="variable">lineno</span>
     + <span class="string">'\n'</span> + <span class="variable">src</span>
     + <span class="string">'\n\n'</span> + <span class="variable">err</span>.<span class="variable">message</span> + <span class="string">'\n'</span>
@@ -6239,7 +6803,7 @@ and the following <code>options</code>.</p>
       <span class="variable">arr</span>.<span class="variable">push</span>(<span class="this">this</span>.<span class="variable">visit</span>(<span class="variable">node</span>));
     }
     --<span class="this">this</span>.<span class="variable">indents</span>;
-    <span class="variable">arr</span>.<span class="variable">push</span>(<span class="string">'}'</span>);
+    <span class="variable">arr</span>.<span class="variable">push</span>(<span class="this">this</span>.<span class="variable">indent</span> + <span class="string">'}'</span>);
     <span class="this">this</span>.<span class="variable">buf</span> += <span class="variable">arr</span>.<span class="variable">join</span>(<span class="this">this</span>.<span class="variable">compress</span> ? <span class="string">''</span> : <span class="string">'\n'</span>);
     <span class="this">this</span>.<span class="variable">buf</span> += <span class="string">'\n'</span>;
   }
@@ -6249,6 +6813,56 @@ and the following <code>options</code>.</p>
   <span class="keyword">for</span> (<span class="keyword">var</span> <span class="variable">i</span> = <span class="number integer">0</span>, <span class="variable">len</span> = <span class="variable">block</span>.<span class="variable">nodes</span>.<span class="variable">length</span>; <span class="variable">i</span> &<span class="variable">lt</span>; <span class="variable">len</span>; ++<span class="variable">i</span>) {
     <span class="this">this</span>.<span class="variable">visit</span>(<span class="variable">block</span>.<span class="variable">nodes</span>[<span class="variable">i</span>]);
   }
+};</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Visit Keyframes.
+ </p>
+</td>
+<td class="code">
+<pre><code><span class="class">Compiler</span>.<span class="variable">prototype</span>.<span class="variable">visitKeyframes</span> = <span class="keyword">function</span>(<span class="variable">node</span>){
+  <span class="this">this</span>.<span class="variable">buf</span> += <span class="string">'@-webkit-keyframes '</span>
+    + <span class="this">this</span>.<span class="variable">visit</span>(<span class="variable">node</span>.<span class="variable">name</span>)
+    + (<span class="this">this</span>.<span class="variable">compress</span> ? <span class="string">'{'</span> : <span class="string">' {'</span>);
+  ++<span class="this">this</span>.<span class="variable">indents</span>;
+  <span class="variable">node</span>.<span class="variable">frames</span>.<span class="variable">forEach</span>(<span class="keyword">function</span>(<span class="variable">frame</span>){
+    <span class="keyword">if</span> (!<span class="this">this</span>.<span class="variable">compress</span>) <span class="this">this</span>.<span class="variable">buf</span> += <span class="string">'\n  '</span>;
+    <span class="this">this</span>.<span class="variable">buf</span> += <span class="this">this</span>.<span class="variable">visit</span>(<span class="variable">frame</span>.<span class="variable">pos</span>);
+    <span class="this">this</span>.<span class="variable">visit</span>(<span class="variable">frame</span>.<span class="variable">block</span>);
+  }, <span class="this">this</span>);
+  --<span class="this">this</span>.<span class="variable">indents</span>;
+  <span class="this">this</span>.<span class="variable">buf</span> += <span class="string">'}'</span> + (<span class="this">this</span>.<span class="variable">compress</span> ? <span class="string">''</span> : <span class="string">'\n'</span>);
+};</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Visit Media.
+ </p>
+</td>
+<td class="code">
+<pre><code><span class="class">Compiler</span>.<span class="variable">prototype</span>.<span class="variable">visitMedia</span> = <span class="keyword">function</span>(<span class="variable">media</span>){
+  <span class="this">this</span>.<span class="variable">buf</span> += <span class="string">'@media '</span> + <span class="variable">media</span>.<span class="variable">val</span>;
+  <span class="this">this</span>.<span class="variable">buf</span> += <span class="this">this</span>.<span class="variable">compress</span> ? <span class="string">'{'</span> : <span class="string">' {\n'</span>;
+  ++<span class="this">this</span>.<span class="variable">indents</span>;
+  <span class="this">this</span>.<span class="variable">visit</span>(<span class="variable">media</span>.<span class="variable">block</span>);
+  --<span class="this">this</span>.<span class="variable">indents</span>;
+  <span class="this">this</span>.<span class="variable">buf</span> += <span class="string">'}'</span> + (<span class="this">this</span>.<span class="variable">compress</span> ? <span class="string">''</span> : <span class="string">'\n'</span>);
+};</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Visit Page.
+ </p>
+</td>
+<td class="code">
+<pre><code><span class="class">Compiler</span>.<span class="variable">prototype</span>.<span class="variable">visitPage</span> = <span class="keyword">function</span>(<span class="variable">page</span>){
+  <span class="this">this</span>.<span class="variable">buf</span> += <span class="this">this</span>.<span class="variable">indent</span> + <span class="string">'@page'</span>;
+  <span class="this">this</span>.<span class="variable">buf</span> += <span class="variable">page</span>.<span class="variable">selector</span> ? <span class="string">' '</span> + <span class="variable">page</span>.<span class="variable">selector</span> : <span class="string">''</span>;
+  <span class="this">this</span>.<span class="variable">visit</span>(<span class="variable">page</span>.<span class="variable">block</span>);
 };</code></pre>
 </td>
 </tr>
@@ -6337,17 +6951,17 @@ and the following <code>options</code>.</p>
 <td class="code">
 <pre><code><span class="class">Compiler</span>.<span class="variable">prototype</span>.<span class="variable">visitUnit</span> = <span class="keyword">function</span>(<span class="variable">unit</span>){
   <span class="keyword">var</span> <span class="variable">type</span> = <span class="variable">unit</span>.<span class="variable">type</span> || <span class="string">''</span>
-    , <span class="variable">n</span> = <span class="variable">unit</span>.<span class="variable">val</span>;
+    , <span class="variable">n</span> = <span class="variable">unit</span>.<span class="variable">val</span>
+    , <span class="variable">float</span> = <span class="variable">n</span> != (<span class="variable">n</span> | <span class="number integer">0</span>);
 
   <span class="comment">// Int</span>
   <span class="keyword">if</span> (<span class="string">'px'</span> == <span class="variable">type</span>) <span class="variable">n</span> = <span class="variable">n</span>.<span class="variable">toFixed</span>(<span class="number integer">0</span>);
-
   <span class="comment">// Compress</span>
   <span class="keyword">if</span> (<span class="this">this</span>.<span class="variable">compress</span>) {
     <span class="comment">// Zero is always '0'</span>
     <span class="keyword">if</span> (<span class="number integer">0</span> == <span class="variable">unit</span>.<span class="variable">val</span>) <span class="keyword">return</span> <span class="string">'0'</span>;
-    <span class="comment">// Omit leading '0'</span>
-    <span class="keyword">if</span> (<span class="variable">unit</span>.<span class="variable">val</span> &<span class="variable">lt</span>; <span class="number integer">1</span>) {
+    <span class="comment">// Omit leading '0' on floats</span>
+    <span class="keyword">if</span> (<span class="variable">float</span> &<span class="variable">amp</span>;&<span class="variable">amp</span>; <span class="variable">n</span> &<span class="variable">lt</span>; <span class="number integer">1</span>) {
       <span class="keyword">return</span> <span class="variable">n</span>.<span class="variable">toString</span>().<span class="variable">substr</span>(<span class="number integer">1</span>) + <span class="variable">type</span>;
     }
   }
@@ -6363,7 +6977,8 @@ and the following <code>options</code>.</p>
 </td>
 <td class="code">
 <pre><code><span class="class">Compiler</span>.<span class="variable">prototype</span>.<span class="variable">visitGroup</span> = <span class="keyword">function</span>(<span class="variable">group</span>){
-  <span class="keyword">var</span> <span class="variable">tree</span> = <span class="this">this</span>.<span class="variable">tree</span>
+  <span class="keyword">var</span> <span class="variable">self</span> = <span class="this">this</span>
+    , <span class="variable">tree</span> = <span class="this">this</span>.<span class="variable">tree</span>
     , <span class="variable">prev</span> = <span class="variable">tree</span>[<span class="variable">tree</span>.<span class="variable">length</span> - <span class="number integer">1</span>]
     , <span class="variable">curr</span> = [];
 
@@ -6400,7 +7015,7 @@ and the following <code>options</code>.</p>
               : <span class="string">' '</span> + <span class="variable">str</span>;
           }).<span class="variable">join</span>(<span class="string">''</span>)
           : <span class="string">''</span>;
-        <span class="variable">selectors</span>.<span class="variable">push</span>(<span class="variable">selector</span> + <span class="variable">str</span>);
+        <span class="variable">selectors</span>.<span class="variable">push</span>(<span class="variable">self</span>.<span class="variable">indent</span> + <span class="variable">selector</span> + <span class="variable">str</span>);
       });
     }
   }
@@ -6459,7 +7074,7 @@ and the following <code>options</code>.</p>
 <pre><code><span class="class">Compiler</span>.<span class="variable">prototype</span>.<span class="variable">visitCall</span> = <span class="keyword">function</span>(<span class="variable">call</span>){
   <span class="keyword">var</span> <span class="variable">args</span> = <span class="variable">call</span>.<span class="variable">args</span>.<span class="variable">nodes</span>.<span class="variable">map</span>(<span class="keyword">function</span>(<span class="variable">arg</span>){
     <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">visit</span>(<span class="variable">arg</span>);
-  }, <span class="this">this</span>).<span class="variable">join</span>(<span class="string">', '</span>);
+  }, <span class="this">this</span>).<span class="variable">join</span>(<span class="this">this</span>.<span class="variable">compress</span> ? <span class="string">','</span> : <span class="string">', '</span>);
   <span class="keyword">return</span> <span class="variable">call</span>.<span class="variable">name</span> + <span class="string">'('</span> + <span class="variable">args</span> + <span class="string">')'</span>;
 };</code></pre>
 </td>
@@ -6499,7 +7114,7 @@ and the following <code>options</code>.</p>
 <pre><code><span class="class">Compiler</span>.<span class="variable">prototype</span>.<span class="variable">visitProperty</span> = <span class="keyword">function</span>(<span class="variable">prop</span>){
   <span class="keyword">var</span> <span class="variable">self</span> = <span class="this">this</span>
     , <span class="variable">val</span> = <span class="this">this</span>.<span class="variable">visit</span>(<span class="variable">prop</span>.<span class="variable">expr</span>);
-  <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">indent</span> + <span class="variable">prop</span>.<span class="variable">name</span>
+  <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">indent</span> + (<span class="variable">prop</span>.<span class="variable">name</span> || <span class="variable">prop</span>.<span class="variable">segments</span>.<span class="variable">join</span>(<span class="string">''</span>))
     + (<span class="this">this</span>.<span class="variable">compress</span> ? <span class="string">':'</span> + <span class="variable">val</span> : <span class="string">': '</span> + <span class="variable">val</span>)
     + (<span class="this">this</span>.<span class="variable">compress</span>
         ? (<span class="this">this</span>.<span class="variable">last</span> ? <span class="string">''</span> : <span class="string">';'</span>)
@@ -6521,6 +7136,7 @@ and the following <code>options</code>.</p>
   , <span class="variable">utils</span> = <span class="variable">require</span>(<span class="string">'../utils'</span>)
   , <span class="variable">bifs</span> = <span class="variable">require</span>(<span class="string">'../functions'</span>)
   , <span class="variable">dirname</span> = <span class="variable">require</span>(<span class="string">'path'</span>).<span class="variable">dirname</span>
+  , <span class="variable">colors</span> = <span class="variable">require</span>(<span class="string">'../colors'</span>)
   , <span class="variable">fs</span> = <span class="variable">require</span>(<span class="string">'fs'</span>);</code></pre>
 </td>
 </tr>
@@ -6535,18 +7151,19 @@ and the following <code>options</code>.</p>
 
 <h2></h2>
 
-<ul><li><p><strong>param</strong>: <em>Node</em>  root</p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
+<ul><li><p><strong>param</strong>: <em>Node</em>  root</p></li><li><p><strong>api</strong>: <em>private</em></p></li></ul>
 </td>
 <td class="code">
 <pre><code><span class="keyword">var</span> <span class="class">Evaluator</span> = <span class="variable">module</span>.<span class="variable">exports</span> = <span class="keyword">function</span> <span class="class">Evaluator</span>(<span class="variable">root</span>, <span class="variable">options</span>) {
   <span class="variable">options</span> = <span class="variable">options</span> || {};
   <span class="class">Visitor</span>.<span class="variable">call</span>(<span class="this">this</span>, <span class="variable">root</span>);
   <span class="this">this</span>.<span class="variable">stack</span> = <span class="keyword">new</span> <span class="class">Stack</span>;
-  <span class="this">this</span>.<span class="variable">filename</span> = <span class="variable">options</span>.<span class="variable">filename</span>;
+  <span class="this">this</span>.<span class="variable">imports</span> = <span class="variable">options</span>.<span class="variable">imports</span> || [];
   <span class="this">this</span>.<span class="variable">functions</span> = <span class="variable">options</span>.<span class="variable">functions</span> || {};
   <span class="this">this</span>.<span class="variable">paths</span> = <span class="variable">options</span>.<span class="variable">paths</span> || [];
   <span class="this">this</span>.<span class="variable">paths</span>.<span class="variable">push</span>(<span class="variable">dirname</span>(<span class="variable">options</span>.<span class="variable">filename</span> || <span class="string">'.'</span>));
   <span class="this">this</span>.<span class="variable">stack</span>.<span class="variable">push</span>(<span class="this">this</span>.<span class="variable">global</span> = <span class="keyword">new</span> <span class="class">Frame</span>(<span class="variable">root</span>));
+  <span class="this">this</span>.<span class="variable">setup</span>();
   <span class="this">this</span>.<span class="variable">calling</span> = []; <span class="comment">// TODO: remove, use stack</span>
 };</code></pre>
 </td>
@@ -6566,7 +7183,7 @@ and the following <code>options</code>.</p>
 
 <h2></h2>
 
-<ul><li><p><strong>param</strong>: <em>Node</em>  node</p></li><li><p><strong>return</strong>: <em>Node</em> </p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
+<ul><li><p><strong>param</strong>: <em>Node</em>  node</p></li><li><p><strong>return</strong>: <em>Node</em> </p></li><li><p><strong>api</strong>: <em>private</em></p></li></ul>
 </td>
 <td class="code">
 <pre><code><span class="keyword">var</span> <span class="variable">visit</span> = <span class="class">Visitor</span>.<span class="variable">prototype</span>.<span class="variable">visit</span>;
@@ -6586,103 +7203,48 @@ and the following <code>options</code>.</p>
 </tr>
 <tr class="code">
 <td class="docs">
+<p>Perform evaluation setup:</p>
+
+<ul><li>populate global scope</li><li><p>iterate imports</p><ul><li><p><strong>api</strong>: <em>private</em></p></li></ul></li></ul>
+</td>
+<td class="code">
+<pre><code><span class="class">Evaluator</span>.<span class="variable">prototype</span>.<span class="variable">setup</span> = <span class="keyword">function</span>(){
+  <span class="this">this</span>.<span class="variable">populateGlobalScope</span>();
+  <span class="this">this</span>.<span class="variable">imports</span>.<span class="variable">forEach</span>(<span class="keyword">function</span>(<span class="variable">file</span>){
+    <span class="this">this</span>.<span class="variable">visit</span>(<span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Import</span>(<span class="variable">file</span>));
+  }, <span class="this">this</span>);
+};</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Populate the global scope with:</p>
+
+<ul><li><p>css colors</p><ul><li><p><strong>api</strong>: <em>private</em></p></li></ul></li></ul>
+</td>
+<td class="code">
+<pre><code><span class="class">Evaluator</span>.<span class="variable">prototype</span>.<span class="variable">populateGlobalScope</span> = <span class="keyword">function</span>(){
+  <span class="keyword">var</span> <span class="variable">scope</span> = <span class="this">this</span>.<span class="variable">global</span>.<span class="variable">scope</span>;
+  <span class="class">Object</span>.<span class="variable">keys</span>(<span class="variable">colors</span>).<span class="variable">forEach</span>(<span class="keyword">function</span>(<span class="variable">name</span>){
+    <span class="keyword">var</span> <span class="variable">rgb</span> = <span class="variable">colors</span>[<span class="variable">name</span>]
+      , <span class="variable">color</span> = <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Color</span>(<span class="variable">rgb</span>[<span class="number integer">0</span>], <span class="variable">rgb</span>[<span class="number integer">1</span>], <span class="variable">rgb</span>[<span class="number integer">2</span>], <span class="number integer">1</span>)
+      , <span class="variable">node</span> = <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Ident</span>(<span class="variable">name</span>, <span class="variable">color</span>);
+    <span class="variable">scope</span>.<span class="variable">add</span>(<span class="variable">node</span>);
+  });
+};</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
 <p>Evaluate the tree.</p>
 
 <h2></h2>
 
-<ul><li><p><strong>return</strong>: <em>Node</em> </p></li><li><p><strong>api</strong>: <em>public</em></p></li></ul>
+<ul><li><p><strong>return</strong>: <em>Node</em> </p></li><li><p><strong>api</strong>: <em>private</em></p></li></ul>
 </td>
 <td class="code">
 <pre><code><span class="class">Evaluator</span>.<span class="variable">prototype</span>.<span class="variable">evaluate</span> = <span class="keyword">function</span>(){
   <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">visit</span>(<span class="this">this</span>.<span class="variable">root</span>);
-};</code></pre>
-</td>
-</tr>
-<tr class="code">
-<td class="docs">
-<p>Visit Color.
- </p>
-</td>
-<td class="code">
-<pre><code><span class="class">Evaluator</span>.<span class="variable">prototype</span>.<span class="variable">visitColor</span> = <span class="keyword">function</span>(<span class="variable">color</span>){
-  <span class="keyword">return</span> <span class="variable">color</span>;
-};</code></pre>
-</td>
-</tr>
-<tr class="code">
-<td class="docs">
-<p>Visit HSLA.
- </p>
-</td>
-<td class="code">
-<pre><code><span class="class">Evaluator</span>.<span class="variable">prototype</span>.<span class="variable">visitHSLA</span> = <span class="keyword">function</span>(<span class="variable">hsla</span>){
-  <span class="keyword">return</span> <span class="variable">hsla</span>;
-};</code></pre>
-</td>
-</tr>
-<tr class="code">
-<td class="docs">
-<p>Visit Literal.
- </p>
-</td>
-<td class="code">
-<pre><code><span class="class">Evaluator</span>.<span class="variable">prototype</span>.<span class="variable">visitLiteral</span> = <span class="keyword">function</span>(<span class="variable">lit</span>){
-  <span class="keyword">return</span> <span class="variable">lit</span>;
-};</code></pre>
-</td>
-</tr>
-<tr class="code">
-<td class="docs">
-<p>Visit Boolean.
- </p>
-</td>
-<td class="code">
-<pre><code><span class="class">Evaluator</span>.<span class="variable">prototype</span>.<span class="variable">visitBoolean</span> = <span class="keyword">function</span>(<span class="variable">bool</span>){
-  <span class="keyword">return</span> <span class="variable">bool</span>;
-};</code></pre>
-</td>
-</tr>
-<tr class="code">
-<td class="docs">
-<p>Visit Unit.
- </p>
-</td>
-<td class="code">
-<pre><code><span class="class">Evaluator</span>.<span class="variable">prototype</span>.<span class="variable">visitUnit</span> = <span class="keyword">function</span>(<span class="variable">unit</span>){
-  <span class="keyword">return</span> <span class="variable">unit</span>;
-};</code></pre>
-</td>
-</tr>
-<tr class="code">
-<td class="docs">
-<p>Visit String.
- </p>
-</td>
-<td class="code">
-<pre><code><span class="class">Evaluator</span>.<span class="variable">prototype</span>.<span class="variable">visitString</span> = <span class="keyword">function</span>(<span class="variable">string</span>){
-  <span class="keyword">return</span> <span class="variable">string</span>;
-};</code></pre>
-</td>
-</tr>
-<tr class="code">
-<td class="docs">
-<p>Visit Null.
- </p>
-</td>
-<td class="code">
-<pre><code><span class="class">Evaluator</span>.<span class="variable">prototype</span>.<span class="variable">visitNull</span> = <span class="keyword">function</span>(<span class="variable">node</span>){
-  <span class="keyword">return</span> <span class="variable">node</span>;
-};</code></pre>
-</td>
-</tr>
-<tr class="code">
-<td class="docs">
-<p>Visit Function.
- </p>
-</td>
-<td class="code">
-<pre><code><span class="class">Evaluator</span>.<span class="variable">prototype</span>.<span class="variable">visitFunction</span> = <span class="keyword">function</span>(<span class="variable">fn</span>){
-  <span class="keyword">return</span> <span class="variable">fn</span>;
 };</code></pre>
 </td>
 </tr>
@@ -6732,7 +7294,7 @@ and the following <code>options</code>.</p>
 <pre><code><span class="class">Evaluator</span>.<span class="variable">prototype</span>.<span class="variable">visitEach</span> = <span class="keyword">function</span>(<span class="variable">each</span>){
   <span class="keyword">var</span> <span class="variable">body</span>
     , <span class="variable">eachBlock</span> = <span class="variable">each</span>.<span class="variable">block</span>
-    , <span class="variable">expr</span> = <span class="variable">utils</span>.<span class="variable">unwrap</span>(<span class="this">this</span>.<span class="variable">visit</span>(<span class="variable">each</span>.<span class="variable">expr</span>))
+    , <span class="variable">expr</span> = <span class="variable">utils</span>.<span class="variable">unwrap</span>(<span class="this">this</span>.<span class="variable">visit</span>(<span class="variable">utils</span>.<span class="variable">unwrap</span>(<span class="variable">each</span>.<span class="variable">expr</span>)))
     , <span class="variable">len</span> = <span class="variable">expr</span>.<span class="variable">nodes</span>.<span class="variable">length</span>
     , <span class="variable">val</span> = <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Ident</span>(<span class="variable">each</span>.<span class="variable">val</span>)
     , <span class="variable">key</span> = <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Ident</span>(<span class="variable">each</span>.<span class="variable">key</span> || <span class="string">'__index__'</span>)
@@ -6761,10 +7323,21 @@ and the following <code>options</code>.</p>
 </td>
 <td class="code">
 <pre><code><span class="class">Evaluator</span>.<span class="variable">prototype</span>.<span class="variable">visitCall</span> = <span class="keyword">function</span>(<span class="variable">call</span>){
-  <span class="keyword">var</span> <span class="variable">fn</span> = <span class="this">this</span>.<span class="variable">lookup</span>(<span class="variable">call</span>.<span class="variable">name</span>);
+  <span class="keyword">var</span> <span class="variable">ret</span>
+    , <span class="variable">fn</span> = <span class="this">this</span>.<span class="variable">lookup</span>(<span class="variable">call</span>.<span class="variable">name</span>);
+
+  <span class="comment">// Variable function</span>
+  <span class="keyword">if</span> (<span class="variable">fn</span> &<span class="variable">amp</span>;&<span class="variable">amp</span>; <span class="string">'expression'</span> == <span class="variable">fn</span>.<span class="variable">nodeName</span>) {
+    <span class="variable">fn</span> = <span class="variable">fn</span>.<span class="variable">nodes</span>[<span class="number integer">0</span>];
+  }
+
+  <span class="comment">// Not a function? try user-defined or built-ins</span>
+  <span class="keyword">if</span> (<span class="variable">fn</span> &<span class="variable">amp</span>;&<span class="variable">amp</span>; <span class="string">'function'</span> != <span class="variable">fn</span>.<span class="variable">nodeName</span>) {
+    <span class="variable">fn</span> = <span class="this">this</span>.<span class="variable">lookupFunction</span>(<span class="variable">call</span>.<span class="variable">name</span>);
+  }
 
   <span class="comment">// Undefined function, render literal css</span>
-  <span class="keyword">if</span> (!<span class="variable">fn</span>) <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">literalCall</span>(<span class="variable">call</span>);
+  <span class="keyword">if</span> (!<span class="variable">fn</span> || <span class="variable">fn</span>.<span class="variable">nodeName</span> != <span class="string">'function'</span>) <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">literalCall</span>(<span class="variable">call</span>);
   <span class="this">this</span>.<span class="variable">calling</span>.<span class="variable">push</span>(<span class="variable">call</span>.<span class="variable">name</span>);
 
   <span class="comment">// Massive stack</span>
@@ -6833,11 +7406,14 @@ and the following <code>options</code>.</p>
   <span class="keyword">var</span> <span class="variable">op</span> = <span class="variable">binop</span>.<span class="variable">op</span>
     , <span class="variable">ident</span> = <span class="string">'ident'</span> == <span class="variable">binop</span>.<span class="variable">left</span>.<span class="variable">nodeName</span>
     , <span class="variable">left</span> = <span class="this">this</span>.<span class="variable">visit</span>(<span class="variable">binop</span>.<span class="variable">left</span>)
-    , <span class="variable">right</span> = <span class="this">this</span>.<span class="variable">visit</span>(<span class="variable">binop</span>.<span class="variable">right</span>).<span class="variable">first</span>;
+    , <span class="variable">right</span> = <span class="this">this</span>.<span class="variable">visit</span>(<span class="variable">binop</span>.<span class="variable">right</span>);
   <span class="this">this</span>.<span class="keyword">return</span> = <span class="variable">_</span>;
 
   <span class="comment">// First node in expression</span>
-  <span class="keyword">if</span> (<span class="string">'[]'</span> != <span class="variable">op</span>) <span class="variable">left</span> = <span class="variable">left</span>.<span class="variable">first</span>;
+  <span class="keyword">if</span> (<span class="string">'[]'</span> != <span class="variable">op</span>) {
+    <span class="variable">left</span> = <span class="variable">left</span>.<span class="variable">first</span>;
+    <span class="variable">right</span> = <span class="variable">right</span>.<span class="variable">first</span>;
+  }
 
   <span class="comment">// Coercion</span>
   <span class="keyword">switch</span> (<span class="variable">op</span>) {
@@ -6942,7 +7518,7 @@ and the following <code>options</code>.</p>
 </td>
 <td class="code">
 <pre><code><span class="class">Evaluator</span>.<span class="variable">prototype</span>.<span class="variable">visitProperty</span> = <span class="keyword">function</span>(<span class="variable">prop</span>){
-  <span class="keyword">var</span> <span class="variable">name</span> = <span class="variable">prop</span>.<span class="variable">name</span>
+  <span class="keyword">var</span> <span class="variable">name</span> = <span class="this">this</span>.<span class="variable">interpolate</span>(<span class="variable">prop</span>)
     , <span class="variable">fn</span> = <span class="this">this</span>.<span class="variable">lookup</span>(<span class="variable">name</span>)
     , <span class="variable">call</span> = <span class="variable">fn</span> <span class="variable">instanceof</span> <span class="variable">nodes</span>.<span class="class">Function</span>
     , <span class="variable">literal</span> = ~<span class="this">this</span>.<span class="variable">calling</span>.<span class="variable">indexOf</span>(<span class="variable">name</span>);
@@ -6958,6 +7534,7 @@ and the following <code>options</code>.</p>
     <span class="keyword">var</span> <span class="variable">_</span> = <span class="this">this</span>.<span class="keyword">return</span>;
     <span class="this">this</span>.<span class="keyword">return</span> = <span class="variable">true</span>;
     <span class="variable">prop</span>.<span class="variable">expr</span> = <span class="this">this</span>.<span class="variable">visit</span>(<span class="variable">prop</span>.<span class="variable">expr</span>);
+    <span class="variable">prop</span>.<span class="variable">name</span> = <span class="variable">name</span>;
     <span class="this">this</span>.<span class="keyword">return</span> = <span class="variable">_</span>;
     <span class="keyword">return</span> <span class="variable">prop</span>;
   }
@@ -7112,11 +7689,17 @@ and the following <code>options</code>.</p>
   <span class="keyword">var</span> <span class="variable">block</span> = <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Block</span>(<span class="variable">body</span>.<span class="variable">parent</span>);
   <span class="variable">body</span>.<span class="variable">parent</span> = <span class="variable">block</span>;
 
-  <span class="comment">// Inject arguments as locals</span>
+  <span class="comment">// New block scope</span>
   <span class="this">this</span>.<span class="variable">stack</span>.<span class="variable">push</span>(<span class="keyword">new</span> <span class="class">Frame</span>(<span class="variable">block</span>));
+  <span class="keyword">var</span> <span class="variable">scope</span> = <span class="this">this</span>.<span class="variable">stack</span>.<span class="variable">currentFrame</span>.<span class="variable">scope</span>;
+
+  <span class="comment">// arguments local</span>
+  <span class="variable">scope</span>.<span class="variable">add</span>(<span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Ident</span>(<span class="string">'arguments'</span>, <span class="variable">args</span>));
+
+  <span class="comment">// Inject arguments as locals</span>
   <span class="variable">fn</span>.<span class="variable">params</span>.<span class="variable">nodes</span>.<span class="variable">forEach</span>(<span class="keyword">function</span>(<span class="variable">node</span>, <span class="variable">i</span>){
-    <span class="comment">// varg support</span>
-    <span class="keyword">if</span> (<span class="variable">node</span>.<span class="variable">varg</span>) {
+    <span class="comment">// rest param support</span>
+    <span class="keyword">if</span> (<span class="variable">node</span>.<span class="variable">rest</span>) {
       <span class="variable">node</span>.<span class="variable">val</span> = <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Expression</span>;
       <span class="keyword">for</span> (<span class="keyword">var</span> <span class="variable">len</span> = <span class="variable">args</span>.<span class="variable">nodes</span>.<span class="variable">length</span>; <span class="variable">i</span> &<span class="variable">lt</span>; <span class="variable">len</span>; ++<span class="variable">i</span>) {
         <span class="variable">node</span>.<span class="variable">val</span>.<span class="variable">push</span>(<span class="variable">args</span>.<span class="variable">nodes</span>[<span class="variable">i</span>]);
@@ -7135,8 +7718,8 @@ and the following <code>options</code>.</p>
       }
     }
 
-    <span class="this">this</span>.<span class="variable">stack</span>.<span class="variable">currentFrame</span>.<span class="variable">scope</span>.<span class="variable">add</span>(<span class="variable">node</span>);
-  }, <span class="this">this</span>);
+    <span class="variable">scope</span>.<span class="variable">add</span>(<span class="variable">node</span>);
+  });
 
   <span class="comment">// Evaluate</span>
   <span class="variable">body</span> = <span class="this">this</span>.<span class="variable">visit</span>(<span class="variable">body</span>);
@@ -7287,9 +7870,51 @@ functions, and BIFs.</p>
   <span class="keyword">if</span> (<span class="variable">val</span> = <span class="this">this</span>.<span class="variable">stack</span>.<span class="variable">lookup</span>(<span class="variable">name</span>)) {
     <span class="keyword">return</span> <span class="variable">utils</span>.<span class="variable">unwrap</span>(<span class="variable">val</span>);
   } <span class="keyword">else</span> {
-    <span class="keyword">var</span> <span class="variable">fn</span> = <span class="this">this</span>.<span class="variable">functions</span>[<span class="variable">name</span>] || <span class="variable">bifs</span>[<span class="variable">name</span>];
-    <span class="keyword">if</span> (<span class="variable">fn</span>) <span class="keyword">return</span> <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Function</span>(<span class="variable">name</span>, <span class="variable">fn</span>);
+    <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">lookupFunction</span>(<span class="variable">name</span>);
   }
+};</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Map segments in <code>node</code> returning a string.</p>
+
+<h2></h2>
+
+<ul><li><p><strong>param</strong>: <em>Node</em>  node</p></li><li><p><strong>return</strong>: <em>String</em> </p></li><li><p><strong>api</strong>: <em>private</em></p></li></ul>
+</td>
+<td class="code">
+<pre><code><span class="class">Evaluator</span>.<span class="variable">prototype</span>.<span class="variable">interpolate</span> = <span class="keyword">function</span>(<span class="variable">node</span>){
+  <span class="keyword">var</span> <span class="variable">self</span> = <span class="this">this</span>;
+  <span class="keyword">return</span> <span class="variable">node</span>.<span class="variable">segments</span>.<span class="variable">map</span>(<span class="keyword">function</span>(<span class="variable">node</span>){
+    <span class="keyword">function</span> <span class="variable">toString</span>(<span class="variable">node</span>) {
+      <span class="keyword">switch</span> (<span class="variable">node</span>.<span class="variable">nodeName</span>) {
+        <span class="keyword">case</span> <span class="string">'function'</span>:
+        <span class="keyword">case</span> <span class="string">'ident'</span>:
+          <span class="keyword">return</span> <span class="variable">node</span>.<span class="variable">name</span>;
+        <span class="keyword">case</span> <span class="string">'string'</span>:
+          <span class="keyword">return</span> <span class="variable">node</span>.<span class="variable">val</span>;
+        <span class="keyword">case</span> <span class="string">'expression'</span>:
+          <span class="keyword">return</span> <span class="variable">toString</span>(<span class="variable">self</span>.<span class="variable">visit</span>(<span class="variable">node</span>).<span class="variable">first</span>);
+      }
+    }
+    <span class="keyword">return</span> <span class="variable">toString</span>(<span class="variable">node</span>);
+  }).<span class="variable">join</span>(<span class="string">''</span>);
+};</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>Lookup JavaScript user-defined or built-in function.</p>
+
+<h2></h2>
+
+<ul><li><p><strong>param</strong>: <em>String</em>  name</p></li><li><p><strong>return</strong>: <em>Function</em> </p></li><li><p><strong>api</strong>: <em>private</em></p></li></ul>
+</td>
+<td class="code">
+<pre><code><span class="class">Evaluator</span>.<span class="variable">prototype</span>.<span class="variable">lookupFunction</span> = <span class="keyword">function</span>(<span class="variable">name</span>){
+  <span class="keyword">var</span> <span class="variable">fn</span> = <span class="this">this</span>.<span class="variable">functions</span>[<span class="variable">name</span>] || <span class="variable">bifs</span>[<span class="variable">name</span>];
+  <span class="keyword">if</span> (<span class="variable">fn</span>) <span class="keyword">return</span> <span class="keyword">new</span> <span class="variable">nodes</span>.<span class="class">Function</span>(<span class="variable">name</span>, <span class="variable">fn</span>);
 };</code></pre>
 </td>
 </tr>
@@ -7327,7 +7952,7 @@ functions, and BIFs.</p>
 </tr>
 <tr class="code">
 <td class="docs">
-<p>Visit the given <code>node</code> or an array of nodes.</p>
+<p>Visit the given <code>node</code>.</p>
 
 <h2></h2>
 
@@ -7337,8 +7962,8 @@ functions, and BIFs.</p>
 <pre><code><span class="class">Visitor</span>.<span class="variable">prototype</span>.<span class="variable">visit</span> = <span class="keyword">function</span>(<span class="variable">node</span>, <span class="variable">fn</span>){
   <span class="keyword">var</span> <span class="variable">method</span> = <span class="string">'visit'</span> + <span class="variable">node</span>.<span class="variable">constructor</span>.<span class="variable">name</span>
     , <span class="variable">cons</span> = <span class="this">this</span>.<span class="variable">constructor</span>.<span class="variable">name</span>;
-  <span class="keyword">if</span> (!<span class="this">this</span>[<span class="variable">method</span>]) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="class">Error</span>(<span class="variable">cons</span> + <span class="string">' visitor method '</span> + <span class="variable">method</span> + <span class="string">'() not defined'</span>);
-  <span class="keyword">return</span> <span class="this">this</span>[<span class="variable">method</span>](<span class="variable">node</span>);
+  <span class="keyword">if</span> (<span class="this">this</span>[<span class="variable">method</span>]) <span class="keyword">return</span> <span class="this">this</span>[<span class="variable">method</span>](<span class="variable">node</span>);
+  <span class="keyword">return</span> <span class="variable">node</span>;
 };
 
 </code></pre>
