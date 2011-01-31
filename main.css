@@ -13,6 +13,16 @@ h2,
 h3 {
   color: #222;
 }
+h1 a,
+h2 a,
+h3 a {
+  color: #222;
+}
+h1 a:hover,
+h2 a:hover,
+h3 a:hover {
+  text-decoration: none;
+}
 h1 {
   margin: 10px 0 15px 0;
   font-weight: bold;
