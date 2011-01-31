@@ -9,10 +9,10 @@
 
 ### Example
 
-    border-radius(args...)
-      -webkit-border-radius args
-      -moz-border-radius args
-      border-radius args
+    border-radius()
+      -webkit-border-radius arguments
+      -moz-border-radius arguments
+      border-radius arguments
 
     body a
       font 12px/1.4 "Lucida Grande", Arial, sans-serif
