@@ -79,6 +79,10 @@ compiles to:
 
   - [TJ Holowaychuk (visionmedia)](http://github.com/visionmedia)
 
+## More Information
+
+  - Language [comparisons](stylus/blob/master/docs/compare.md)
+
 ## License 
 
 (The MIT License)
