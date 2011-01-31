@@ -43,6 +43,7 @@ compiles to:
 
  Stylus has _many_ features, click the links below for detailed documentation.
 
+  - optional property colons
   - [mixins](stylus/blob/master/docs/mixins.md)
   - [variables](stylus/blob/master/docs/variables.md)
   - [interpolation](stylus/blob/master/docs/interpolation.md)
