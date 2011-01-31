@@ -224,7 +224,7 @@ Saturate the given `color` by `amount`.
 
 ### unquote(str | ident)
 
-  Unquote the given `str` and pass through `ident`.
+  Unquote the given `str` and returned as a `Literal` node.
  
        unquote("sans-serif")
        // => sans-serif
