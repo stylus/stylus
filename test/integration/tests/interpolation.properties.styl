@@ -29,3 +29,14 @@ test(var, one, two)
 body
   foo test('one', 1, 2)
   foo test('two', 1, 2)
+
+body
+  nested(prop)
+    -webkit-{prop} foo
+    {prop} foo
+    form input
+      -webkit-{prop} foo
+      {prop} foo
+      p
+        {prop} foo
+  nested('something')

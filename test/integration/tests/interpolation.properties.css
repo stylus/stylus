@@ -19,3 +19,14 @@ body {
   foo: "one";
   foo: "two";
 }
+body {
+  -webkit-something: foo;
+  something: foo;
+}
+body form input {
+  -webkit-something: foo;
+  something: foo;
+}
+body form input p {
+  something: foo;
+}
