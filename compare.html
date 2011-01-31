@@ -73,5 +73,38 @@
     pad(5px, 10px)
 </code></pre>
 
+<h3 id="Larger-Example">Larger Example</h3>
+
+<p>Less:</p>
+
+<pre><code>.box-shadow (@x: 0, @y: 0, @blur: 1px, @alpha) {
+  @val: @x @y @blur rgba(0, 0, 0, @alpha);
+  box-shadow:         @val;
+  -webkit-box-shadow: @val;
+  -moz-box-shadow:    @val;
+}
+.box {
+  @base: #f938ab;
+  color:        saturate(@base, 5%);
+  border-color: lighten(@base, 30%);
+  div { .box-shadow(0, 0, 5px, 0.4) }
+}
+</code></pre>
+
+<p>Stylus:</p>
+
+<pre><code>box-shadow()
+  -webkit-box-shadow arguments
+  -moz-box-shadow arguments
+  box-shadow arguments
+
+.box
+  base = #f938ab
+  color saturate(base, 5%)
+  border-color lighten(base, 30%)
+  div
+    box-shadow 0 0 5px 0.4
+</code></pre>
+
 </div>
 </div></div></body></html>
