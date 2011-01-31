@@ -9,14 +9,13 @@
   
      @import "reset.css"
 
-will render to:
+will render to the literal css __@import__ shown below:
 
      @import "reset.css"
 
 ### Stylus Import
 
  When using __@import__ without the `.css` extension, it is assumed to be a Stylus sheet, for example `@import "mixins/border-radius"`.
-
 
  __@import__ works by iterating an array of directories, and seeing if this file lives in any of them, similar to node's `require.paths`. This array defaults to a single path which is derived from the `filename` option's dirname. So if your filename is `/tmp/testing/stylus/main.styl`, then import will look in `/tmp/testing/stylus/`.
 

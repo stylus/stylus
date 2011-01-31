@@ -14,6 +14,11 @@ which compiles to:
       color: #fff;
     }
 
+Optionally if preferred we may utilize colons to separate properties and their values:
+
+    body
+      color: white
+
 ### Rule Sets
 
 Stylus, just like css allows you to define properties for several selectors at once through comma separation.
