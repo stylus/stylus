@@ -310,6 +310,19 @@ stdout:
      inspect: rgba(0,0,0,0.2)
      inspect: add(a, b)
 
+### opposite-position(positions)
+
+ Return the opposites of the given `positions`.
+  
+     opposite-position(right)
+     // => left
+
+     opposite-position(top left)
+     // => bottom right
+
+     opposite-position('top' 'left')
+     // => bottom right
+
 ### Undefined Functions
 
   Undefined functions will output as literals, so for example
