@@ -5,10 +5,10 @@ Both mixins and functions are defined in the same manor, however they are applie
 
 When `border-radius()` is invoked within a selector, the properties are expanded and copied into the selector.
 
-    border-radius(@num)
-      -webkit-border-radius @num
-      -moz-border-radius @num
-      border-radius @num
+    border-radius(n)
+      -webkit-border-radius n
+      -moz-border-radius n
+      border-radius n
 
     form input[type=button]
       border-radius(5px)
@@ -33,7 +33,14 @@ When utilizing mixins, we can omit the parens all together, providing is with fa
     form input[type=button]
       border-radius 5px
 
-Note that the `border-radius` within our mixin is treated as a property, and not a recursive function invocation.
+Note that the `border-radius` within our mixin is treated as a property, and not a recursive function invocation. To take this further we we may utilize the automatic `arguments` local variable, containing the expression passed, allowing more than one value to be passed:
+
+    border-radius()
+      -webkit-border-radius arguments
+      -moz-border-radius arguments
+      border-radius arguments
+
+now allowing us to pass values such as `border-radius 1px 2px / 3px 4px`.
 
 ### Parent References
 
