@@ -5,10 +5,10 @@
 
 <p>When <code>border-radius()</code> is invoked within a selector, the properties are expanded and copied into the selector.</p>
 
-<pre><code>border-radius(@num)
-  -webkit-border-radius @num
-  -moz-border-radius @num
-  border-radius @num
+<pre><code>border-radius(n)
+  -webkit-border-radius n
+  -moz-border-radius n
+  border-radius n
 
 form input[type=button]
   border-radius(5px)
@@ -36,7 +36,15 @@ form input[type=button]
   border-radius 5px
 </code></pre>
 
-<p>Note that the <code>border-radius</code> within our mixin is treated as a property, and not a recursive function invocation.</p>
+<p>Note that the <code>border-radius</code> within our mixin is treated as a property, and not a recursive function invocation. To take this further we we may utilize the automatic <code>arguments</code> local variable, containing the expression passed, allowing more than one value to be passed:</p>
+
+<pre><code>border-radius()
+  -webkit-border-radius arguments
+  -moz-border-radius arguments
+  border-radius arguments
+</code></pre>
+
+<p>now allowing us to pass values such as <code>border-radius 1px 2px / 3px 4px</code>.</p>
 
 <h3 id="Parent-References">Parent References</h3>
 
