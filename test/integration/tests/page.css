@@ -1,0 +1,13 @@
+@page {
+  margin: 2.5cm;
+}
+@page :left {
+  margin-left: 5cm;
+}
+@page :right {
+  margin-right: 5cm;
+}
+@page :first {
+  margin-top: 8cm;
+  background: white;
+}
