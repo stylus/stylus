@@ -144,7 +144,31 @@ html
             | 
             | a.button
             |   border-radius 5px
-
+        .example
+          h2 What if we had powerful in-language functions?
+            | opposite-position(pos)
+            |   if pos == top
+            |     bottom
+            |   else if pos == bottom
+            |     top
+            |   else if pos == left
+            |     right
+            |   else if pos == right
+            |     left
+            |   else
+            |     error('Invalid position ' + pos)
+            | 
+            | opposite(positions)
+            |   for pos in positions
+            |     pos = opposite-position(pos)
+            |     ret = ret is defined ? ret pos : pos
+            | 
+            | opposite(top)
+            | // => bottom
+            | opposite(left)
+            | // => right
+            | opposite(top left)
+            | // => bottom right
         .example.closing
           h2 Get styling with Stylus
           pre.terminal $ npm install stylus
