@@ -169,3 +169,37 @@ yielding:
 
      sum(1,2,3,4,5)
      // => 15
+
+### Complex Example
+
+Below we construct two functions, one named `opposite()` which will give the opposite of each positional identifier passed in, for example `left` will become `right`, and `top right`, will become `bottom left`.
+
+First our helper function `opposite-position()` performs the this condition, simply returning a new identifier. Secondly `opposite()` iterates the positions given, appending them to our previous or empty expression.
+
+    opposite-position(pos)
+      if pos == top
+        bottom
+      else if pos == bottom
+        top
+      else if pos == left
+        right
+      else if pos == right
+        left
+      else
+        error('Invalid position ' + pos)
+
+    opposite(positions)
+      for pos in positions
+        pos = opposite-position(pos)
+        ret = ret is defined ? ret pos : pos
+
+usage:
+
+    opposite(top)
+    // => bottom
+    
+    opposite(left)
+    // => right
+    
+    opposite(top left)
+    // => bottom right
