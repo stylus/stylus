@@ -10,3 +10,25 @@ body
 
 form .button
   padding-left add(10px, 5px)
+
+opposite-position(pos)
+  if pos == top
+    bottom
+  else if pos == bottom
+    top
+  else if pos == left
+    right
+  else if pos == right
+    left
+  else
+    error('Invalid position ' + pos)
+
+opposite(positions)
+  for pos in positions
+    pos = opposite-position(pos)
+    ret = ret is defined ? ret pos : pos
+
+body
+  foo opposite(top)
+  foo opposite(left)
+  foo opposite(top left)

@@ -4,3 +4,8 @@ body {
 form .button {
   padding-left: 15px;
 }
+body {
+  foo: bottom;
+  foo: right;
+  foo: bottom right;
+}
