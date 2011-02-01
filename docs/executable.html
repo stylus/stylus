@@ -3,22 +3,26 @@
 
 <p>Stylus ships with the <code>stylus</code> executable for converting stylus to css.</p>
 
-<pre><code>Usage: stylus [options] [command] [&lt; in [> out]]
+<pre><code>  Usage: stylus [options] [command] [&lt; in [> out]]
+                [file|dir ...]
 
-Commands:
+  Commands:
 
-  help &lt;prop>     Opens help info for &lt;prop> in
-                  your default browser. (osx only)
+    help &lt;prop>     Opens help info for &lt;prop> in
+                    your default browser. (osx only)
 
-Options:
+  Options:
 
-  -c, --css       Convert css input to stylus
-  -C, --compress  Compress css output
-  -d, --compare   Display input along with output
-  -h, --help      Display help information
+    -w, --watch      Watch file(s) and re-compile when changed
+    -o, --out &lt;dir&gt;  Output to &lt;dir&gt; when passing files
+    -c, --css        Convert css input to stylus
+    -C, --compress   Compress css output
+    -d, --compare    Display input along with output
+    -V, --version    Display the version of stylus
+    -h, --help       Display help information
 </code></pre>
 
-<h3 id="Compilation-Example">Compilation Example</h3>
+<h3 id="STDIO-Compilation-Example">STDIO Compilation Example</h3>
 
 <p> <code>stylus</code> reads from <em>stdin</em> and outputs to <em>stdout</em>, so for example:</p>
 
@@ -31,6 +35,23 @@ Options:
   body
     color red
     font 14px Arial, sans-serif
+</code></pre>
+
+<h3 id="Compiling-Files-Example">Compiling Files Example</h3>
+
+<p> <code>stylus</code> also accepts files and directories, for example a directory named <code>css</code> will compile and output the <code>.css</code> files in the same directory.</p>
+
+<pre><code>  $ stylus css
+</code></pre>
+
+<p>  The following will output to <code>./public/stylesheets</code>:</p>
+
+<pre><code>  $ stylus css --out public/stylesheets
+</code></pre>
+
+<p>  Or a few files:</p>
+
+<pre><code>  $ stylus one.styl two.styl
 </code></pre>
 
 <h3 id="CSS-Property-Help">CSS Property Help</h3>

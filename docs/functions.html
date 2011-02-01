@@ -185,5 +185,41 @@ body
  // =&gt; 15
 </code></pre>
 
+<h3 id="Complex-Example">Complex Example</h3>
+
+<p>Below we construct two functions, one named <code>opposite()</code> which will give the opposite of each positional identifier passed in, for example <code>left</code> will become <code>right</code>, and <code>top right</code>, will become <code>bottom left</code>.</p>
+
+<p>First our helper function <code>opposite-position()</code> performs the this condition, simply returning a new identifier. Secondly <code>opposite()</code> iterates the positions given, appending them to our previous or empty expression.</p>
+
+<pre><code>opposite-position(pos)
+  if pos == top
+    bottom
+  else if pos == bottom
+    top
+  else if pos == left
+    right
+  else if pos == right
+    left
+  else
+    error('Invalid position ' + pos)
+
+opposite(positions)
+  for pos in positions
+    pos = opposite-position(pos)
+    ret = ret is defined ? ret pos : pos
+</code></pre>
+
+<p>usage:</p>
+
+<pre><code>opposite(top)
+// =&gt; bottom
+
+opposite(left)
+// =&gt; right
+
+opposite(top left)
+// =&gt; bottom right
+</code></pre>
+
 </div>
 </div></div></body></html>
