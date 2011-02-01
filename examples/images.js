@@ -4,7 +4,7 @@
  */
 
 var stylus = require('../')
-  , nodes = css.nodes
+  , nodes = stylus.nodes
   , path = __dirname + '/images.styl'
   , str = require('fs').readFileSync(path, 'utf8');
 
@@ -14,7 +14,7 @@ var stylus = require('../')
 
 stylus(str)
   .set('filename', path)
-  .define('url', css.url({ paths: [__dirname + '/images'] }))
+  .define('url', stylus.url({ paths: [__dirname + '/images'] }))
   .render(function(err, css){
     if (err) throw err;
     console.log(css);
