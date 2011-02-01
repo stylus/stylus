@@ -4,7 +4,8 @@
  * Module dependencies.
  */
 
-var fs = require('fs');
+var fs = require('fs')
+  , basename = require('path').basename;
 
 try {
   var stylus = require('stylus');
@@ -41,6 +42,12 @@ var convertCSS = false;
  */
 
 var files = [];
+
+/**
+ * Destination directory.
+ */
+
+var dest;
 
 /**
  * Usage docs.
@@ -93,6 +100,11 @@ while (args.length) {
     case '--version':
       console.log(stylus.version);
       process.exit(0);
+      break;
+    case '-o':
+    case '--out':
+      dest = args.shift();
+      if (!dest) throw new Error('--out <dir> required');
       break;
     case 'help':
       var name = args.shift();
@@ -210,7 +222,12 @@ function compileFile(file) {
  */
 
 function writeFile(file, css) {
-  var path = file.replace('.styl', '.css');
+  // --out support
+  if (dest) {
+    path = dest + '/' + basename(file, '.styl') + '.css';
+  } else {
+    path = file.replace('.styl', '.css');
+  }
   fs.writeFile(path, css, function(err){
     if (err) throw err;
   });
