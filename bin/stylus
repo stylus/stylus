@@ -224,12 +224,9 @@ function compileFile(file) {
  */
 
 function writeFile(file, css) {
-  var path;
-  if (dest) {
-    path = dest + '/' + basename(file, '.styl') + '.css';
-  } else {
-    path = file.replace('.styl', '.css');
-  }
+  var path = dest
+    ? dest + '/' + basename(file, '.styl') + '.css'
+    : file.replace('.styl', '.css');
   fs.writeFile(path, css, function(err){
     if (err) throw err;
     console.log('  \033[90mcompiled\033[0m %s', path);
