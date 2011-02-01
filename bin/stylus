@@ -128,6 +128,7 @@ if (convertCSS) {
     var options = {
         filename: 'stdin'
       , compress: compress
+      , paths: [process.cwd()]
     };
 
     // Compile to css
