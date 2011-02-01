@@ -145,7 +145,8 @@ html
             | a.button
             |   border-radius 5px
         .example
-          h2 What if we had powerful in-language functions?
+          h2 Even in-language functions!
+          pre  
             | opposite-position(pos)
             |   if pos == top
             |     bottom
@@ -165,8 +166,10 @@ html
             | 
             | opposite(top)
             | // => bottom
+            | 
             | opposite(left)
             | // => right
+            | 
             | opposite(top left)
             | // => bottom right
         .example.closing
