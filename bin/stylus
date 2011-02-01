@@ -4,6 +4,9 @@
  * Module dependencies.
  */
 
+var fs = require('fs')
+  , basename = require('path').basename;
+
 try {
   var stylus = require('stylus');
 } catch (err) {
@@ -33,6 +36,18 @@ var compress = false;
  */
 
 var convertCSS = false;
+
+/**
+ * Files to processes.
+ */
+
+var files = [];
+
+/**
+ * Destination directory.
+ */
+
+var dest;
 
 /**
  * Usage docs.
@@ -86,11 +101,18 @@ while (args.length) {
       console.log(stylus.version);
       process.exit(0);
       break;
+    case '-o':
+    case '--out':
+      dest = args.shift();
+      if (!dest) throw new Error('--out <dir> required');
+      break;
     case 'help':
       var name = args.shift();
       if (!name) throw new Error('help <property> required');
       help(name);
       break;
+    default:
+      files.push(arg);
   }
 }
 
@@ -110,20 +132,34 @@ function help(name) {
 
 // Buffer stdin
 
-var str = ''
-  , stdin = process.openStdin();
-
-stdin.setEncoding('utf8');
-stdin.on('data', function(chunk){ str += chunk; });
+var str = '';
 
 // Convert css to stylus
 
 if (convertCSS) {
+  var stdin = process.openStdin();
+  stdin.setEncoding('utf8');
+  stdin.on('data', function(chunk){ str += chunk; });
   stdin.on('end', function(){
     var out = stylus.convertCSS(str);
     console.log(out);
   });
 } else {
+  if (files.length) {
+    compileFiles(files);
+  } else {
+    compileStdio();
+  }
+}
+
+/**
+ * Compile with stdio.
+ */
+
+function compileStdio() {
+  var stdin = process.openStdin();
+  stdin.setEncoding('utf8');
+  stdin.on('data', function(chunk){ str += chunk; });
   stdin.on('end', function(){
     var options = {
         filename: 'stdin'
@@ -142,5 +178,57 @@ if (convertCSS) {
       console.log(css);
       if (compare) console.log();
     });
+  });
+}
+
+/**
+ * Compile the given files.
+ */
+
+function compileFiles(files) {
+  files.forEach(compileFile);
+}
+
+/**
+ * Compile the given file.
+ */
+
+function compileFile(file) {
+  fs.lstat(file, function(err, stat){
+    if (err) throw err;
+    if (stat.isFile()) {
+      fs.readFile(file, 'utf8', function(err, str){
+        if (err) throw err;
+        stylus(str, { filename: file }).render(function(err, css){
+          if (err) throw err;
+          writeFile(file, css);
+        });
+      });
+    } else if (stat.isDirectory()) {
+      fs.readdir(file, function(err, files){
+        if (err) throw err;
+        files.filter(function(path){
+          return path.match(/\.styl$/);
+        }).map(function(path){
+          return file + '/' + path;
+        }).forEach(compileFile);
+      });
+    }
+  });
+}
+
+/**
+ * Write the given css output.
+ */
+
+function writeFile(file, css) {
+  // --out support
+  if (dest) {
+    path = dest + '/' + basename(file, '.styl') + '.css';
+  } else {
+    path = file.replace('.styl', '.css');
+  }
+  fs.writeFile(path, css, function(err){
+    if (err) throw err;
   });
 }
