@@ -333,10 +333,6 @@ stdout:
       height(img)
         return image-size(img)[1]
 
-        foo image-size('gif')
-        foo image-size('gif')[0] == width('gif')
-        foo image-size('gif')[1] == height('gif')
-
       image-size('tux.png')
       // => 405px 250px
 
