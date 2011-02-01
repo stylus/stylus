@@ -224,7 +224,7 @@ Saturate the given `color` by `amount`.
 
 ### unquote(str | ident)
 
-  Unquote the given `str` and pass through `ident`.
+  Unquote the given `str` and returned as a `Literal` node.
  
        unquote("sans-serif")
        // => sans-serif
@@ -310,6 +310,35 @@ stdout:
      inspect: rgba(0,0,0,0.2)
      inspect: add(a, b)
 
+### opposite-position(positions)
+
+ Return the opposites of the given `positions`.
+  
+     opposite-position(right)
+     // => left
+
+     opposite-position(top left)
+     // => bottom right
+
+     opposite-position('top' 'left')
+     // => bottom right
+
+### image-size(path)
+
+  Returns the `width` and `height` of the image found at `path`. Lookups are performed in the same manner as `@import`, altered by the `paths` setting.
+
+      width(img)
+        return image-size(img)[0]
+
+      height(img)
+        return image-size(img)[1]
+
+      image-size('tux.png')
+      // => 405px 250px
+
+      image-size('tux.png')[0] == width('tux.png')
+      // => true
+
 ### Undefined Functions
 
   Undefined functions will output as literals, so for example
@@ -323,4 +352,4 @@ stdout:
       color-stop(pos, color)
 
     stop(50%, orange)
-    // => color-stop(50%, $ffa500)
+    // => color-stop(50%, #ffa500)
