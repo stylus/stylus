@@ -250,7 +250,7 @@ rgb(#fff)
 
 <h3 id="unquote-str-ident-">unquote(str | ident)</h3>
 
-<p>  Unquote the given <code>str</code> and pass through <code>ident</code>.</p>
+<p>  Unquote the given <code>str</code> and returned as a <code>Literal</code> node.</p>
 
 <pre><code>   unquote("sans-serif")
    // =&gt; sans-serif
@@ -343,6 +343,37 @@ length()
  inspect: add(a, b)
 </code></pre>
 
+<h3 id="opposite-position-positions-">opposite-position(positions)</h3>
+
+<p> Return the opposites of the given <code>positions</code>.</p>
+
+<pre><code> opposite-position(right)
+ // =&gt; left
+
+ opposite-position(top left)
+ // =&gt; bottom right
+
+ opposite-position('top' 'left')
+ // =&gt; bottom right
+</code></pre>
+
+<h3 id="image-size-path-">image-size(path)</h3>
+
+<p>  Returns the <code>width</code> and <code>height</code> of the image found at <code>path</code>. Lookups are performed in the same manner as <code>@import</code>, altered by the <code>paths</code> setting.</p>
+
+<pre><code>  width(img)
+    return image-size(img)[0]
+
+  height(img)
+    return image-size(img)[1]
+
+  image-size('tux.png')
+  // =&gt; 405px 250px
+
+  image-size('tux.png')[0] == width('tux.png')
+  // =&gt; true
+</code></pre>
+
 <h3 id="Undefined-Functions">Undefined Functions</h3>
 
 <p>  Undefined functions will output as literals, so for example
@@ -356,7 +387,7 @@ length()
   color-stop(pos, color)
 
 stop(50%, orange)
-// =&gt; color-stop(50%, $ffa500)
+// =&gt; color-stop(50%, #ffa500)
 </code></pre>
 
 </div>
