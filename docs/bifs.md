@@ -323,6 +323,26 @@ stdout:
      opposite-position('top' 'left')
      // => bottom right
 
+### image-size(path)
+
+  Returns the `width` and `height` of the image found at `path`. Lookups are performed in the same manner as `@import`, altered by the `paths` setting.
+
+      width(img)
+        return image-size(img)[0]
+
+      height(img)
+        return image-size(img)[1]
+
+        foo image-size('gif')
+        foo image-size('gif')[0] == width('gif')
+        foo image-size('gif')[1] == height('gif')
+
+      image-size('tux.png')
+      // => 405px 250px
+
+      image-size('tux.png')[0] == width('tux.png')
+      // => true
+
 ### Undefined Functions
 
   Undefined functions will output as literals, so for example
