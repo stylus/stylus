@@ -3,13 +3,18 @@
  * Module dependencies.
  */
 
-var css = require('../')
+var stylus = require('../')
   , nodes = css.nodes
-  , str = require('fs').readFileSync(__dirname + '/images.styl', 'utf8');
+  , path = __dirname + '/images.styl'
+  , str = require('fs').readFileSync(path, 'utf8');
 
-css(str)
-  .set('filename', 'images.styl')
-  .define('url', css.url({ paths: [__dirname] }))
+// the paths option is merged with the general options
+// so it is completely optional, however this now allows us to use
+// url(sprite.gif) instead of url(images/sprite.gif) 
+
+stylus(str)
+  .set('filename', path)
+  .define('url', css.url({ paths: [__dirname + '/images'] }))
   .render(function(err, css){
     if (err) throw err;
     console.log(css);
