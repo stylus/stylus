@@ -32,7 +32,7 @@ function test(test) {
     , csspath = base + '.css';
   fs.readFile(path, 'utf8', function(err, str){
     if (err) throw err;
-    var paths = [__dirname + '/tests/import.basic'];
+    var paths = [__dirname + '/images', __dirname + '/tests/import.basic'];
     css.render(str, { filename: path, paths: paths }, function(err, actual){
       if (err) throw err;
       fs.readFile(csspath, 'utf8', function(err, expected){
