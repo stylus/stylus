@@ -352,4 +352,4 @@ stdout:
       color-stop(pos, color)
 
     stop(50%, orange)
-    // => color-stop(50%, $ffa500)
+    // => color-stop(50%, #ffa500)
