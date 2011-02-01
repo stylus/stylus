@@ -56,6 +56,7 @@ var dest;
 var usage = [
     ''
   , '  Usage: stylus [options] [command] [< in [> out]]'
+  , '                [file|dir ...]'
   , ''
   , '  Commands:'
   , ''
@@ -64,11 +65,12 @@ var usage = [
   , ''
   , '  Options:'
   , ''
-  , '    -c, --css       Convert css input to stylus'
-  , '    -C, --compress  Compress css output'
-  , '    -d, --compare   Display input along with output'
-  , '    -V, --version   Display the version of stylus'
-  , '    -h, --help      Display help information'
+  , '    -o, --out <dir>  Output to <dir> when passing files'
+  , '    -c, --css        Convert css input to stylus'
+  , '    -C, --compress   Compress css output'
+  , '    -d, --compare    Display input along with output'
+  , '    -V, --version    Display the version of stylus'
+  , '    -h, --help       Display help information'
   , ''
 ].join('\n');
 
