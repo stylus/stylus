@@ -50,6 +50,12 @@ var files = [];
 var dest;
 
 /**
+ * Watcher hash.
+ */
+
+var watchers;
+
+/**
  * Usage docs.
  */
 
@@ -65,6 +71,7 @@ var usage = [
   , ''
   , '  Options:'
   , ''
+  , '    -w, --watch      Watch file(s) for changes and re-compile'
   , '    -o, --out <dir>  Output to <dir> when passing files'
   , '    -c, --css        Convert css input to stylus'
   , '    -C, --compress   Compress css output'
@@ -112,6 +119,10 @@ while (args.length) {
       var name = args.shift();
       if (!name) throw new Error('help <property> required');
       help(name);
+      break;
+    case '-w':
+    case '--watch':
+      watchers = {};
       break;
     default:
       files.push(arg);
@@ -224,11 +235,23 @@ function compileFile(file) {
  */
 
 function writeFile(file, css) {
+  // --out support
   var path = dest
     ? dest + '/' + basename(file, '.styl') + '.css'
     : file.replace('.styl', '.css');
   fs.writeFile(path, css, function(err){
     if (err) throw err;
     console.log('  \033[90mcompiled\033[0m %s', path);
+    // --watch support
+    if (watchers) {
+      if (!watchers[file]) {
+        watchers[file] = true;
+        fs.watchFile(file, { interval: 50 }, function(curr, prev){
+          if (curr.mtime > prev.mtime) {
+            compileFile(file);
+          }
+        });
+      }
+    }
   });
 }
