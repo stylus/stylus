@@ -224,7 +224,7 @@ function compileFile(file) {
  */
 
 function writeFile(file, css) {
-  // --out support
+  var path;
   if (dest) {
     path = dest + '/' + basename(file, '.styl') + '.css';
   } else {
@@ -232,5 +232,6 @@ function writeFile(file, css) {
   }
   fs.writeFile(path, css, function(err){
     if (err) throw err;
+    console.log('  \033[90mcompiled\033[0m %s', path);
   });
 }
