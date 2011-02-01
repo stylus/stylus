@@ -205,6 +205,10 @@ function compileFile(file) {
   });
 }
 
+/**
+ * Write the given css output.
+ */
+
 function writeFile(file, css) {
   var path = file.replace('.styl', '.css');
   fs.writeFile(path, css, function(err){
