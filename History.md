@@ -1,4 +1,13 @@
 
+0.2.0 / 2011-02-01 
+==================
+
+  * Added; `url()` utilizing general lookup paths.
+    This means that `{ paths: [] }` is optional now, as lookups
+    will be relative to the file being rendered by default.
+
+  * Added `-w, --watch` support to stylus(1). Closes #113
+
 0.1.0 / 2011-02-01 
 ==================
 
