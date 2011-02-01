@@ -3,23 +3,24 @@
 
 Stylus ships with the `stylus` executable for converting stylus to css.
 
+      Usage: stylus [options] [command] [< in [> out]]
+                    [file|dir ...]
 
-    Usage: stylus [options] [command] [< in [> out]]
+      Commands:
 
-    Commands:
+        help <prop>     Opens help info for <prop> in
+                        your default browser. (osx only)
 
-      help <prop>     Opens help info for <prop> in
-                      your default browser. (osx only)
+      Options:
 
-    Options:
+        -o, --out <dir>  Output to <dir> when passing files
+        -c, --css        Convert css input to stylus
+        -C, --compress   Compress css output
+        -d, --compare    Display input along with output
+        -V, --version    Display the version of stylus
+        -h, --help       Display help information
 
-      -c, --css       Convert css input to stylus
-      -C, --compress  Compress css output
-      -d, --compare   Display input along with output
-      -h, --help      Display help information
-
-
-### Compilation Example
+### STDIO Compilation Example
 
  `stylus` reads from _stdin_ and outputs to _stdout_, so for example:
 
@@ -31,6 +32,20 @@ Try stylus some in the terminal, type below and press CTRL-D for __EOF__:
       body
         color red
         font 14px Arial, sans-serif
+
+### Compiling Files Example
+
+ `stylus` also accepts files and directories, for example a directory named `css` will compile and output the `.css` files in the same directory.
+ 
+      $ stylus css
+
+  The following will output to `./public/stylesheets`:
+  
+      $ stylus css --out public/stylesheets
+
+  Or a few files:
+  
+      $ stylus one.styl two.styl
 
 ### CSS Property Help
 
