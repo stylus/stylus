@@ -1,0 +1,19 @@
+
+width(img)
+  return image-size(img)[0]
+
+height(img)
+  return image-size(img)[1]
+
+body
+  foo image-size('gif')
+  foo image-size('gif')[0] == width('gif')
+  foo image-size('gif')[1] == height('gif')
+
+body
+  foo image-size('tux.png')
+  foo image-size('tux.png')
+/*
+body
+  foo image-size('jpeg')
+
