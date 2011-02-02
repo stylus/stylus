@@ -72,15 +72,20 @@ compiles to:
   - Connect [Middleware](stylus/blob/master/docs/middleware.md)
   - TextMate [bundle](stylus/blob/master/docs/textmates.md)
 
-## Screencasts
+### Framework Support
+
+   - [Connect](stylus/blob/master/docs/middleware.md)
+   - [Ruby On Rails](https://github.com/lucasmazza/stylus_rails)
+
+### Screencasts
 
   - [Stylus Intro](http://screenr.com/bNY)
 
-## Authors
+### Authors
 
   - [TJ Holowaychuk (visionmedia)](http://github.com/visionmedia)
 
-## More Information
+### More Information
 
   - Language [comparisons](stylus/blob/master/docs/compare.md)
 
