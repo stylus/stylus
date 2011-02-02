@@ -1,4 +1,12 @@
 
+0.2.1 / 2011-02-02 
+==================
+
+  * Fixed `--compress` when passing files for stylus(1). Closes #115
+  * Fixed bug preventing absolute paths from being passed to `@import`
+  * Fixed `opposite-position()` with nested expressions, unwrapping
+  * Fixed a couple global var leaks [aheckmann]
+
 0.2.0 / 2011-02-01 
 ==================
 
