@@ -143,6 +143,14 @@ function help(name) {
   });
 }
 
+// Compilation options
+
+var options = {
+    filename: 'stdin'
+  , compress: compress
+  , paths: [process.cwd()]
+};
+
 // Buffer stdin
 
 var str = '';
@@ -174,12 +182,6 @@ function compileStdio() {
   stdin.setEncoding('utf8');
   stdin.on('data', function(chunk){ str += chunk; });
   stdin.on('end', function(){
-    var options = {
-        filename: 'stdin'
-      , compress: compress
-      , paths: [process.cwd()]
-    };
-
     // Compile to css
     stylus(str, options).render(function(err, css){
       if (err) throw err;
@@ -212,7 +214,8 @@ function compileFile(file) {
     if (stat.isFile()) {
       fs.readFile(file, 'utf8', function(err, str){
         if (err) throw err;
-        stylus(str, { filename: file }).render(function(err, css){
+        options.filename = file;
+        stylus(str, options).render(function(err, css){
           if (err) throw err;
           writeFile(file, css);
         });
