@@ -42,10 +42,7 @@ join(delim, strings...)
 join2(delim, strings...)
   buf = ''
   for s, i in strings
-    if i
-      buf += delim + s
-    else
-      buf += '' + s
+    buf += i ? delim + s : '' + s
 
 body
   foo join(', ', 'one', 'two', 'three')
