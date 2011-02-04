@@ -1,0 +1,39 @@
+
+test(n)
+  n += 5
+  n += 5
+  foo n
+
+body
+  test(10)
+
+test(n)
+  n -= 2
+  n -= 3
+  foo n
+
+body
+  test(10)
+
+test(n)
+  n *= 2
+  n *= 2
+  foo n
+
+body
+  test(5)
+
+test(n)
+  n /= 2
+  n /= 4
+  foo n
+
+body
+  test(20)
+
+test(n)
+  n %= 2
+  foo n
+
+body
+  test(5)
