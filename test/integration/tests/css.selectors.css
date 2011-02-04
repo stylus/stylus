@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  padding: 5px;
+}
+body ul {
+  margin: 0;
+}
+body ul li:first-child {
+  border-top: none;
+}
+body ul li:last-child {
+  border-bottom: none;
+}
+ul li:first-child,
+ul li:last-child {
+  display: none;
+}
