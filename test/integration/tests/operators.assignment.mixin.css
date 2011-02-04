@@ -1,0 +1,15 @@
+body {
+  foo: 20;
+}
+body {
+  foo: 5;
+}
+body {
+  foo: 20;
+}
+body {
+  foo: 2.5;
+}
+body {
+  foo: 1;
+}
