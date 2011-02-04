@@ -29,3 +29,9 @@ baz {
 input[type=button] {
   border-radius: 5px;
 }
+button,
+input[type=button],
+input[type=submit],
+a.button {
+  border-radius: 5px;
+}
