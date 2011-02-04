@@ -5,8 +5,14 @@ sum(nums...)
     sum = sum + n
   n
 
+sum2(nums...)
+  sum = 0
+  for n in nums
+    sum += n
+
 body
   foo sum(1,2,3,4)
+  foo sum2(1,2,3,4)
 
 concat(strings...)
   buf = ''
@@ -33,10 +39,19 @@ join(delim, strings...)
       buf = '' + s
   buf
 
+join2(delim, strings...)
+  buf = ''
+  for s, i in strings
+    if i
+      buf += delim + s
+    else
+      buf += '' + s
+
 body
   foo join(', ', 'one', 'two', 'three')
   foo join(' ', '1', '2', '3')
   foo join(', ', 1, 2, 3)
+  foo join2(', ', 1, 2, 3)
 
 body
   fonts = Impact Arial sans-serif

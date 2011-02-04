@@ -1,5 +1,6 @@
 body {
   foo: 10;
+  foo: 10;
 }
 body {
   foo: "onetwothree";
@@ -8,6 +9,7 @@ body {
 body {
   foo: "one, two, three";
   foo: "1 2 3";
+  foo: "1, 2, 3";
   foo: "1, 2, 3";
 }
 body {
