@@ -3,6 +3,7 @@ body {
 }
 body {
   foo: "onetwothree";
+  foo: "onetwothree";
 }
 body {
   foo: "one, two, three";

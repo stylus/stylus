@@ -14,8 +14,14 @@ concat(strings...)
     buf = buf + s
   buf
 
+concat2(strings...)
+  buf = ''
+  for s in strings
+    buf += s
+
 body
   foo concat('one', 'two', 'three')
+  foo concat2('one', 'two', 'three')
 
 
 join(delim, strings...)
