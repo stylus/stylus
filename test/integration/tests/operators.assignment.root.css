@@ -1,5 +1,9 @@
 body {
   foo: 20;
+  foo: 21;
+}
+body {
+  foo: 20;
 }
 body {
   foo: 5;
