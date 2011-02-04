@@ -1,0 +1,27 @@
+ul td:nth-of-type(2),
+ul td:nth-of-type(3) {
+  background: #000;
+}
+table td:nth-child(2),
+table td:nth-child(3),
+table td:nth-child(4),
+table td:nth-child(5),
+table td::first-letter {
+  background: #000;
+}
+table td:nth-child(2) li:first-child,
+table td:nth-child(3) li:first-child,
+table td:nth-child(4) li:first-child,
+table td:nth-child(5) li:first-child,
+table td::first-letter li:first-child,
+table td:nth-child(2) li:last-child,
+table td:nth-child(3) li:last-child,
+table td:nth-child(4) li:last-child,
+table td:nth-child(5) li:last-child,
+table td::first-letter li:last-child {
+  background: #fff;
+}
+table :nth-child(2),
+table :nth-child(3) {
+  background: #000;
+}
