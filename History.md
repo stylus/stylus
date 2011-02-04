@@ -1,4 +1,11 @@
 
+0.3.1 / 2011-02-04 
+==================
+
+  * Fixed property disambiguation logic. Closes #117
+    You no longer need to add a trailing comma when
+    chaining selectors such as 'td:nth-child(2)\ntd:nth-child(3)'
+
 0.3.0 / 2011-02-04 
 ==================
 
