@@ -43,7 +43,7 @@ sum:
       sum(nums...)
         sum = 0
         for n in nums
-          sum = sum + n
+          sum += n
 
       sum(1,2,3,4)
       // => 10
@@ -53,7 +53,7 @@ join:
       join(delim, strings...)
         buf = ''
         for s, i in strings
-          buf = buf + (i ? delim : '') + s
+          buf += (i ? delim : '') + s
 
       foo join(', ', 'one', 'two', 'three')
       // => "one, two, three"

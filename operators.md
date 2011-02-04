@@ -14,7 +14,7 @@ Below is the operator precedence table, highest to lowest:
      is a
      && and || or
      ?:
-     = ?=
+     = ?= += -= *= /= %=
      not
      if unless
 
