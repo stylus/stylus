@@ -15,3 +15,17 @@ ul li:first-child,
 ul li:last-child {
   display: none;
 }
+foo {
+  border-radius: 5px;
+}
+foo bar baz {
+  border-radius: 5px;
+}
+foo,
+bar,
+baz {
+  border-radius: 5px;
+}
+input[type=button] {
+  border-radius: 5px;
+}
