@@ -1,0 +1,26 @@
+button,
+a.button,
+input[type=submit],
+input[type=button] {
+  padding: 5px 10px;
+}
+button:hover,
+a.button:hover,
+input[type=submit]:hover,
+input[type=button]:hover {
+  color: #fff;
+  background: #000;
+}
+button:hover em,
+a.button:hover em,
+input[type=submit]:hover em,
+input[type=button]:hover em {
+  color: #808080;
+}
+button:active,
+a.button:active,
+input[type=submit]:active,
+input[type=button]:active {
+  color: #000;
+  background: #fff;
+}
