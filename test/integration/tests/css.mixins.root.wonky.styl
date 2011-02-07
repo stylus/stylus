@@ -1,0 +1,17 @@
+
+hover()
+  &:hover { color: white; background: black;
+    em {
+      color: gray;
+    }
+  }
+  &:active { color: black; background: white; }
+
+
+button(pad)
+  button,
+  a.button,
+  input[type=submit],
+  input[type=button] { padding: pad; hover(); }
+
+button(5px 10px);
