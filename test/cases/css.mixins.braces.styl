@@ -1,0 +1,53 @@
+
+/*
+ * Reset button related properties so that
+ * a, button, and input's are supported.
+ */
+
+-reset() {
+  display: block;
+  text-decoration: none;
+}
+
+// just testing stuff
+
+get-width() { 150px; }
+
+/*
+ * Minimalistic flat button with white inset.
+ */
+
+minimal-button(bg = #e3e3e3, intensity = 1) {
+  -reset();
+  background: bg;
+  border: 1px solid darken(bg, 15% * intensity);
+  border-radius: 3px;
+  box-shadow: inset 0 0 1px 1px rgba(white, 0.8 * intensity);
+  color: #333;
+  font-family: 'helvetica neue', helvetica, arial, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1;
+  padding: 8px 0 9px;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(white, 1 * intensity);
+  width: get-width();
+
+  &:hover {
+    background: darken(bg, 3%);
+    box-shadow: inset 0 0 1px 1px rgba(white, 0.5 * intensity);
+    color: #222;
+    cursor: pointer;
+  }
+
+  &:active {
+    background: darken(bg, 5%);
+    box-shadow: inset 0 0 1px 1px rgba(white, 0.2 * intensity);
+    color: #000;
+  }
+}
+
+button,
+a.button {
+  minimal-button();
+}
