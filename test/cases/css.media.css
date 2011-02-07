@@ -1,0 +1,15 @@
+@media print {
+  body {
+    margin: 5px;
+    padding: 5px;
+  }
+}
+@media print {
+  body {
+    margin: 5px;
+    padding: 5px;
+  }
+  .no-print {
+    display: none;
+  }
+}
