@@ -3,8 +3,8 @@
  * Module dependencies.
  */
 
-var css = require('../../')
-  , should = require('../../support/should')
+var css = require('../')
+  , should = require('../support/should')
   , basename = require('path').basename
   , fs = require('fs');
 
@@ -27,12 +27,12 @@ var pending = 0;
  */
 
 function test(test) {
-  var base = __dirname + '/tests/' + test
+  var base = __dirname + '/cases/' + test
     , path =  base + '.styl'
     , csspath = base + '.css';
   fs.readFile(path, 'utf8', function(err, str){
     if (err) throw err;
-    var paths = [__dirname + '/images', __dirname + '/tests/import.basic'];
+    var paths = [__dirname + '/images', __dirname + '/cases/import.basic'];
     css.render(str, { filename: path, paths: paths }, function(err, actual){
       if (err) throw err;
       fs.readFile(csspath, 'utf8', function(err, expected){
@@ -56,7 +56,7 @@ function test(test) {
  * Auto-load and run tests.
  */
 
-fs.readdir(__dirname + '/tests', function(err, files){
+fs.readdir(__dirname + '/cases', function(err, files){
   if (err) throw err;
   files.forEach(function(file){
     if (/\.styl$/.test(file)) {

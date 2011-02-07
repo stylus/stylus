@@ -6,7 +6,7 @@ TM_BUNDLE_DEST = ~/Library/Application\ Support/TextMate/Bundles
 test: test-integration
 
 test-integration:
-	@node test/integration/test.js
+	@node test/run.js
 
 docs: docs/index.html
 
