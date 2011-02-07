@@ -1,4 +1,10 @@
 
+0.4.0 / 2011-02-07 
+==================
+
+  * Added css-style syntax support
+  * Fixed support for `*` selector within __@media__ blocks
+
 0.3.1 / 2011-02-04 
 ==================
 
