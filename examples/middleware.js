@@ -19,7 +19,7 @@ function compile(str, path, fn) {
 var server = connect.createServer(
     stylus.middleware({
         src: __dirname + '/views'
-      , dest: __dirname + '/public/css'
+      , dest: __dirname + '/public'
       , compile: compile
     })
   , connect.staticProvider(__dirname + '/public')
