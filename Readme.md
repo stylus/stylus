@@ -43,6 +43,7 @@ compiles to:
 
  Stylus has _many_ features, click the links below for detailed documentation.
 
+  - optional braces
   - optional property colons
   - optional selector commas (newlines are fine)
   - [mixins](stylus/blob/master/docs/mixins.md)
