@@ -24,22 +24,41 @@
 
  Since braces, colons, and semi-colons are optional, we could write this example just as we would with normal css:
  
-      border-radius() 
-        -webkit-border-radius: arguments;
-        -moz-border-radius: arguments;
-        border-radius: arguments;
+     border-radius() {
+       -webkit-border-radius: arguments;
+       -moz-border-radius: arguments;
+       border-radius: arguments;
+     }
 
-      body a {
-        font: 12px/1.4 "Lucida Grande", Arial, sans-serif;
-        background: black;
-        color: #ccc;
-      }
+     body a {
+       font: 12px/1.4 "Lucida Grande", Arial, sans-serif;
+       background: black;
+       color: #ccc;
+     }
 
-      form input {
-        padding: 5px;
-        border: 1px solid;
-        border-radius: 5px;
-      }
+     form input {
+       padding: 5px;
+       border: 1px solid;
+       border-radius: 5px;
+     }
+
+ Since we may mix and match the two variants, the following is valid as well:
+ 
+     border-radius()
+       -webkit-border-radius: arguments;
+       -moz-border-radius: arguments;
+       border-radius: arguments;
+
+     body a {
+       font: 12px/1.4 "Lucida Grande", Arial, sans-serif;
+       background: black;
+       color: #ccc;
+     }
+
+     form input
+       padding: 5px;
+       border: 1px solid;
+       border-radius: 5px;
 
  Variables, functions, mixins, and all of the other features that Stylus provides still work as expected:
  
