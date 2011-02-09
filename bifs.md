@@ -208,6 +208,38 @@ Darken the given `color` by `amount`.
     darken(white, 50%)
     // => #808080
 
+### lighten-by(color | hsl, amount)
+
+ Lighten by `amount` of the current lightness value.
+    
+    lighten-by(black, 50%)
+    // => #808080
+    
+    lighten-by(lighten-by(black, 50%), 50%)
+    // => #bfbfbf
+
+    lighten-by(lighten-by(lighten-by(black, 50%), 50%), 50%)
+    // => #fff
+
+essentially the same as:
+
+    black + hsl(0,0,50%)
+    black + hsl(0,0,75%)
+    black + hsl(0,0,100%)
+
+### darken-by(color | hsl, amount)
+
+ Darken by `amount` of the current lightness value.
+
+    darken-by(white, 50%)
+    // => #808080
+    
+    darken-by(darken-by(white, 50%), 50%)
+    // => #404040
+    
+    darken-by(darken-by(darken-by(white, 50%), 50%), 50%)
+    // => #202020
+
 ### desaturate(color | hsl, amount)
 
 Desaturate the given `color` by `amount`.
