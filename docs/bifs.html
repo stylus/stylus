@@ -232,6 +232,41 @@ rgb(#fff)
 // =&gt; #808080
 </code></pre>
 
+<h3 id="lighten-by-color-hsl-amount-">lighten-by(color | hsl, amount)</h3>
+
+<p> Lighten by <code>amount</code> of the current lightness value.</p>
+
+<pre><code>lighten-by(black, 50%)
+// =&gt; #808080
+
+lighten-by(lighten-by(black, 50%), 50%)
+// =&gt; #bfbfbf
+
+lighten-by(lighten-by(lighten-by(black, 50%), 50%), 50%)
+// =&gt; #fff
+</code></pre>
+
+<p>essentially the same as:</p>
+
+<pre><code>black + hsl(0,0,50%)
+black + hsl(0,0,75%)
+black + hsl(0,0,100%)
+</code></pre>
+
+<h3 id="darken-by-color-hsl-amount-">darken-by(color | hsl, amount)</h3>
+
+<p> Darken by <code>amount</code> of the current lightness value.</p>
+
+<pre><code>darken-by(white, 50%)
+// =&gt; #808080
+
+darken-by(darken-by(white, 50%), 50%)
+// =&gt; #404040
+
+darken-by(darken-by(darken-by(white, 50%), 50%), 50%)
+// =&gt; #202020
+</code></pre>
+
 <h3 id="desaturate-color-hsl-amount-">desaturate(color | hsl, amount)</h3>
 
 <p>Desaturate the given <code>color</code> by <code>amount</code>.</p>
