@@ -1,4 +1,10 @@
 
+0.4.1 / 2011-02-09 
+==================
+
+  * Added support for function definition braces
+  * Fixed issue with invalid color output. Closes #127
+
 0.4.0 / 2011-02-07 
 ==================
 
