@@ -1,4 +1,6 @@
 body {
   background: url("/path/to/my image.png");
   background: url("/path/to/my image.png");
+  background: url("foo.png");
+  background: url("bar.png");
 }
