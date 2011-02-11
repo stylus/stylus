@@ -1,7 +1,7 @@
 body {
   one: 1;
-  -two: 1 b c;
   two: 1 2;
-  -three: 1 2 c;
   three: 1 2 3;
+  -three: 1 2 c;
+  -two: 1 b c;
 }

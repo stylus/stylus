@@ -1,5 +1,7 @@
 button,
 a.button {
+  display: block;
+  text-decoration: none;
   background: #e3e3e3;
   border: 1px solid #bdbdbd;
   border-radius: 3px;
@@ -13,8 +15,6 @@ a.button {
   text-align: center;
   text-shadow: 0 1px 0 #fff;
   width: 150px;
-  display: block;
-  text-decoration: none;
 }
 button:hover,
 a.button:hover {

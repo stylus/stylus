@@ -8,8 +8,6 @@ ul li {
   vertical-align: middle;
 }
 ul li:first-child {
-  padding-left: 5px;
-  padding-right: 5px;
   list-style-image: none;
   list-style-type: none;
   margin-left: 0;
@@ -17,6 +15,8 @@ ul li:first-child {
   -moz-box-orient: vertical;
   display: inline-block;
   vertical-align: middle;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 body {
   did: nothing;
