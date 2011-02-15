@@ -1,4 +1,10 @@
 
+0.5.2 / 2011-02-15 
+==================
+
+  * Fixed spaces after "}" with css-style. Closes #131
+  * Fixed single-line css-style support. Closes #130
+
 0.5.1 / 2011-02-11 
 ==================
 
