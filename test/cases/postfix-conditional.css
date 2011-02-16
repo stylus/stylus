@@ -1,0 +1,31 @@
+body {
+  foo: 1;
+  foo: 2;
+  foo: 3;
+  foo: 4;
+  foo: 5;
+  foo: 6;
+  foo: 7;
+}
+body {
+  foo: 3;
+}
+body {
+  foo: true;
+  foo: true;
+}
+body {
+  foo: true;
+  foo: true;
+}
+body {
+  foo: 5;
+}
+body {
+  foo: bar;
+  foo: baz;
+}
+body {
+  foo: bar;
+  foo: baz;
+}
