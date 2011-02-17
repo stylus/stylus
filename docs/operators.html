@@ -10,6 +10,7 @@
  + -
  ... ..
  &lt;= >= &lt; >
+ in
  == !=
  is a
  &amp;&amp; and || or
@@ -200,7 +201,7 @@ wahoo == wahoo
 // =&gt; true
 </code></pre>
 
-<h2 id="Logical-Operators-and-or">Logical Operators: &amp;&amp; || and or</h2>
+<h3 id="Logical-Operators-and-or">Logical Operators: &amp;&amp; || and or</h3>
 
 <p>Logical operators <code>&amp;&amp;</code> and <code>||</code> are aliased <code>and</code> / <code>or</code> which apply the same precedence.</p>
 
@@ -217,7 +218,79 @@ wahoo == wahoo
 // =&gt; true
 </code></pre>
 
-<h2 id="Conditional-Assignment-">Conditional Assignment: ?=</h2>
+<h3 id="Existence-Operator-in">Existence Operator: in</h3>
+
+<p> Checks for the existence of the <em>left-hand</em> operand within the <em>right-hand</em> expression.</p>
+
+<p>Simple examples:</p>
+
+<pre><code>  nums = 1 2 3
+  1 in nums
+  // =&gt; true
+
+  foo 5 in nums
+  // =&gt; false
+</code></pre>
+
+<p>Some undefined identifiers:</p>
+
+<pre><code>  words = foo bar baz
+  bar in words
+  // =&gt; true
+
+  HEY in words
+  // =&gt; false
+</code></pre>
+
+<p>Works with tuples too:</p>
+
+<pre><code>  vals = (error 'one') (error 'two')
+  foo error in vals
+  // =&gt; false
+
+  foo (error 'one') in vals
+  // =&gt; true
+
+  foo (error 'two') in vals
+  // =&gt; true
+
+  foo (error 'something') in vals
+  // =&gt; false
+</code></pre>
+
+<p>Example usage in mixin:</p>
+
+<pre><code>  pad(types = padding, n = 5px)
+    if padding in types
+      padding n
+    if margin in types
+      margin n
+
+  body
+    pad()
+
+  body
+    pad(margin)
+
+  body
+    pad(padding margin, 10px)
+</code></pre>
+
+<p>yielding:</p>
+
+<pre><code>  body {
+    padding: 5px;
+  }
+  body {
+    margin: 5px;
+  }
+  body {
+    padding: 10px;
+    margin: 10px;
+  }
+</code></pre>
+
+<h3 id="Conditional-Assignment-">Conditional Assignment: ?=</h3>
 
 <p>The conditional assignment operator <code>?=</code> lets us define variables without clobbering old values (when present). This operator expands to an <code>is defined</code> binary operation within a ternary, for example the following are equivalent:</p>
 
@@ -243,7 +316,7 @@ color
 // =&gt; white
 </code></pre>
 
-<h2 id="Instance-Check-is-a">Instance Check: is a</h2>
+<h3 id="Instance-Check-is-a">Instance Check: is a</h3>
 
 <p>Stylus provides a binary operator named <code>is a</code> used to type check. The technical name for unit constructors should be capitalized, however lowercase works as well.</p>
 
@@ -266,7 +339,7 @@ color
 // =&gt; true                                                                            
 </code></pre>
 
-<h2 id="Variable-Definition-is-defined">Variable Definition: is defined</h2>
+<h3 id="Variable-Definition-is-defined">Variable Definition: is defined</h3>
 
 <p>This pseudo binary operator does not accept a right-hand operator, and does <em>not</em> evaluate the left. This allows us to check if a variable has a value assigned to it.</p>
 
