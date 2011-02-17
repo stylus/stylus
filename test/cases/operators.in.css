@@ -1,0 +1,33 @@
+body {
+  foo: true;
+  foo: true;
+  foo: false;
+}
+body {
+  foo: true;
+  foo: false;
+}
+body {
+  foo: true;
+  foo: true;
+  foo: false;
+}
+body {
+  foo: false;
+  foo: true;
+  foo: true;
+  foo: false;
+}
+body {
+  foo: false;
+  foo: false;
+  foo: true;
+  foo: true;
+  foo: true;
+}
+body {
+  foo: true;
+  foo: false;
+  foo: true;
+  foo: true;
+}
