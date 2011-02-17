@@ -10,6 +10,7 @@ Below is the operator precedence table, highest to lowest:
      + -
      ... ..
      <= >= < >
+     in
      == !=
      is a
      && and || or
@@ -189,7 +190,7 @@ Equality operators can be used to equate units, colors, strings, and even identi
     "test" == "test"
     // => true
 
-## Logical Operators: && || and or
+### Logical Operators: && || and or
 
 Logical operators `&&` and `||` are aliased `and` / `or` which apply the same precedence.
 
@@ -205,7 +206,44 @@ Logical operators `&&` and `||` are aliased `and` / `or` which apply the same pr
     #fff is a 'color' and 15 is a 'unit'
     // => true
 
-## Conditional Assignment: ?=
+### Existence Operator: in
+
+ Checks for the existence of the _left-hand_ operand within the _right-hand_ expression.
+
+Simple examples:
+
+      nums = 1 2 3
+      1 in nums
+      // => true
+
+      foo 5 in nums
+      // => false
+
+Some undefined identifiers:
+
+      words = foo bar baz
+      bar in words
+      // => true
+
+      HEY in words
+      // => false
+
+Works with tuples too:
+
+      vals = (error 'one') (error 'two')
+      foo error in vals
+      // => false
+      
+      foo (error 'one') in vals
+      // => true
+
+      foo (error 'two') in vals
+      // => true
+
+      foo (error 'something') in vals
+      // => false
+
+### Conditional Assignment: ?=
 
 The conditional assignment operator `?=` lets us define variables without clobbering old values (when present). This operator expands to an `is defined` binary operation within a ternary, for example the following are equivalent:
 
@@ -228,7 +266,7 @@ However when using `?=` our second attempt fails since the variable is already d
     color
     // => white
 
-## Instance Check: is a
+### Instance Check: is a
 
 Stylus provides a binary operator named `is a` used to type check. The technical name for unit constructors should be capitalized, however lowercase works as well.
 
@@ -249,7 +287,7 @@ Alternatively we could use the `type()` BIF:
     type(#fff) == 'color'
     // => true                                                                            
 
-## Variable Definition: is defined
+### Variable Definition: is defined
 
 This pseudo binary operator does not accept a right-hand operator, and does _not_ evaluate the left. This allows us to check if a variable has a value assigned to it.
 

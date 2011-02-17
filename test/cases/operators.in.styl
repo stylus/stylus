@@ -1,0 +1,44 @@
+
+
+body
+  nums = 1 2 3
+  foo 1 in nums
+  foo 3 in nums
+  foo 5 in nums
+
+body
+  nums = 1
+  foo 1 in nums == true
+  foo 1 in nums == false
+
+body
+  words = foo bar baz
+  foo bar in words
+  foo baz in words
+  foo HEY in words
+
+body
+  tuples = (error 'one') (error 'two')
+  foo error in tuples
+  foo (error 'one') in tuples
+  foo (error 'two') in tuples
+  foo (error 'something') in tuples
+
+fn(args...)
+  2 in args
+
+body
+  foo fn()
+  foo fn(1)
+  foo fn(2)
+  foo fn(3 2)
+  foo fn(1,2,3)
+
+fn()
+  test in arguments
+
+body
+  foo fn(test)
+  foo fn(a, b, c)
+  foo fn(a, test, c)
+  foo fn(a test c)
