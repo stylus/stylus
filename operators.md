@@ -216,7 +216,7 @@ Simple examples:
       1 in nums
       // => true
 
-      foo 5 in nums
+      5 in nums
       // => false
 
 Some undefined identifiers:
@@ -231,16 +231,16 @@ Some undefined identifiers:
 Works with tuples too:
 
       vals = (error 'one') (error 'two')
-      foo error in vals
+      error in vals
       // => false
       
-      foo (error 'one') in vals
+      (error 'one') in vals
       // => true
 
-      foo (error 'two') in vals
+      (error 'two') in vals
       // => true
 
-      foo (error 'something') in vals
+      (error 'something') in vals
       // => false
 
 Example usage in mixin:
