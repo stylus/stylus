@@ -228,7 +228,7 @@ wahoo == wahoo
   1 in nums
   // =&gt; true
 
-  foo 5 in nums
+  5 in nums
   // =&gt; false
 </code></pre>
 
@@ -245,16 +245,16 @@ wahoo == wahoo
 <p>Works with tuples too:</p>
 
 <pre><code>  vals = (error 'one') (error 'two')
-  foo error in vals
+  error in vals
   // =&gt; false
 
-  foo (error 'one') in vals
+  (error 'one') in vals
   // =&gt; true
 
-  foo (error 'two') in vals
+  (error 'two') in vals
   // =&gt; true
 
-  foo (error 'something') in vals
+  (error 'something') in vals
   // =&gt; false
 </code></pre>
 
