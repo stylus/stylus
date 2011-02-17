@@ -1,4 +1,12 @@
 
+0.5.3 / 2011-02-17 
+==================
+
+  * Added `in` operator. `3 in nums`, `padding in props` etc
+  * Added `Expression#hash`, hashing all of the nodes in order
+  * Added tests for conditionals with braces. Closes #136
+  * Fixed ids that are also valid colors. Closes #137
+
 0.5.2 / 2011-02-15 
 ==================
 
