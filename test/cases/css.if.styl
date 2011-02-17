@@ -1,0 +1,21 @@
+
+body
+  if true {
+    color: white;
+  }
+  unless (false) {
+    color: white;
+  }
+
+mixin(pad, margin) {
+  if (pad) {
+    padding: 5px;
+  }
+  if (margin) {
+    margin: 5px;
+  }
+}
+
+body
+  mixin(true, true)
+
