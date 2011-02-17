@@ -243,6 +243,36 @@ Works with tuples too:
       foo (error 'something') in vals
       // => false
 
+Example usage in mixin:
+
+      pad(types = padding, n = 5px)
+        if padding in types
+          padding n
+        if margin in types
+          margin n
+
+      body
+        pad()
+
+      body
+        pad(margin)
+
+      body
+        pad(padding margin, 10px)
+
+yielding:
+
+      body {
+        padding: 5px;
+      }
+      body {
+        margin: 5px;
+      }
+      body {
+        padding: 10px;
+        margin: 10px;
+      }
+
 ### Conditional Assignment: ?=
 
 The conditional assignment operator `?=` lets us define variables without clobbering old values (when present). This operator expands to an `is defined` binary operation within a ternary, for example the following are equivalent:
