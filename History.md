@@ -1,4 +1,15 @@
 
+0.6.0 / 2011-02-18 
+==================
+
+  * Added `stylus(1)` direct css to stylus file conversion [Mario]
+    For example instead of `$ stylus --css < foo.css > foo.styl`
+    you may now either `$ stylus --css foo.css` or provide
+    a destination path `$ stylus --css foo.css /tmp/out.styl`.
+
+  * Added postfix conditionals. Closes #74
+    Expressive ruby-ish syntax, ex: `padding 5px if allow-padding`.
+
 0.5.3 / 2011-02-17 
 ==================
 
