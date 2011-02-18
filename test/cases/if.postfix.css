@@ -29,3 +29,27 @@ body {
   foo: bar;
   foo: baz;
 }
+@import "foo.css"
+body {
+  foo: 5;
+}
+body {
+  foo: string;
+  foo: number;
+  foo: unknown;
+}
+body {
+  foo: true;
+  foo: true;
+  foo: false;
+}
+body {
+  fonts: arial, sans-serif;
+}
+body {
+  foo: yes;
+  foo: yes;
+  foo: yes;
+  foo: ;
+  foo: ;
+}
