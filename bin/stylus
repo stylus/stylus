@@ -163,16 +163,16 @@ if (convertCSS) {
       compileCSSFile(files[0], files[1]);   
       break;
     case 3:
-      compileCSSFile(files[0], basename(files[0], ".css")+".styl");   
+      compileCSSFile(files[0], basename(files[0], '.css') + '.styl');   
       break;
     default:
       var stdin = process.openStdin();
-		  stdin.setEncoding('utf8');
-		  stdin.on('data', function(chunk){ str += chunk; });
-		  stdin.on('end', function(){
-		  	var out = stylus.convertCSS(str);
-		  	console.log(out);      
-			});
+      stdin.setEncoding('utf8');
+      stdin.on('data', function(chunk){ str += chunk; });
+      stdin.on('end', function(){
+        var out = stylus.convertCSS(str);
+        console.log(out);      
+      });
   }
 } else {
   if (files.length) {
@@ -193,10 +193,10 @@ function compileCSSFile(file, fileOut) {
     if (stat.isFile()) {
       fs.readFile(file, 'utf8', function(err, str){
         if (err) throw err;
-				var styl = stylus.convertCSS(str); 
-				fs.writeFile(fileOut, styl, function(err){  
-				 if (err) throw err; 
-				});
+        var styl = stylus.convertCSS(str); 
+        fs.writeFile(fileOut, styl, function(err){  
+         if (err) throw err; 
+        });
       });
     } 
   });
