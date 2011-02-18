@@ -54,6 +54,25 @@
 <pre><code>  $ stylus one.styl two.styl
 </code></pre>
 
+<h3 id="Converting-CSS">Converting CSS</h3>
+
+<p> If we wish to convert css to the terse Stylus syntax, we can utilize the <code>--css</code> flag.</p>
+
+<p> Via stdio:</p>
+
+<pre><code>  $ stylus --css &lt; test.css &gt; test.styl
+</code></pre>
+
+<p> Output a <code>.styl</code> file of the same basename:</p>
+
+<pre><code>  $ stylus --css test.css
+</code></pre>
+
+<p> Output to a specific destination:</p>
+
+<pre><code>  $ stylus --css test.css /tmp/out.styl
+</code></pre>
+
 <h3 id="CSS-Property-Help">CSS Property Help</h3>
 
 <p>  On osx <code>stylus help &lt;prop></code> will open your default browser and display help documentation for the given <code>&lt;prop></code>.</p>
