@@ -55,5 +55,61 @@ body
    padding 5px 10px
 </code></pre>
 
+<h3 id="Postfix-Conditionals">Postfix Conditionals</h3>
+
+<p>  Stylus supports postfix conditionals, meaning the <code>if</code> and <code>unless</code> act as operators, evaluating the left-hand operand, when the right-hand expression is truthy.</p>
+
+<p>  For example let's define <code>negative()</code>, performing some basic type checking. Below we use block-style conditionals:</p>
+
+<pre><code>  negative(n)
+    unless n is a 'unit'
+      error('invalid number')
+    if n &lt; 0
+      yes
+    else
+      no
+</code></pre>
+
+<p>  Next we utilize postfix conditionals to keep our function terse.</p>
+
+<pre><code>  negative(n)
+    error('invalid number') unless n is a 'unit'
+    return yes if n &lt; 0
+    no
+</code></pre>
+
+<p>  Of course we could take this further, and utilize <code>n &lt; 0 ? yes : no</code>, or simply stick with booleans, and use only <code>n &lt; 0</code>.</p>
+
+<p>  Postfix conditionals may be applied to most single-line statements, for example <code>@import</code>, <code>@charset</code>, mixins, and of course properties as shown below:</p>
+
+<pre><code>  pad(types = margin padding, n = 5px)
+    padding unit(n, px) if padding in types
+    margin unit(n, px) if margin in types
+
+  body
+    pad()
+
+  body
+    pad(margin)
+
+  body
+    apply-mixins = true
+    pad(padding, 10) if apply-mixins
+</code></pre>
+
+<p>yielding:</p>
+
+<pre><code>  body {
+    padding: 5px;
+    margin: 5px;
+  }
+  body {
+    margin: 5px;
+  }
+  body {
+    padding: 10px;
+  }
+</code></pre>
+
 </div>
 </div></div></body></html>
