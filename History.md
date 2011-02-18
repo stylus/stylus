@@ -1,4 +1,9 @@
 
+0.6.1 / 2011-02-18 
+==================
+
+  * Fixed evaluation of nodes after a return. Closes #139
+
 0.6.0 / 2011-02-18 
 ==================
 
