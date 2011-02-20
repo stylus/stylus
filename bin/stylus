@@ -131,6 +131,16 @@ while (args.length) {
   }
 }
 
+// if --watch is used, assume we are
+// not working with stdio
+
+if (watchers && !files.length) {
+  files = fs.readdirSync(process.cwd())
+    .filter(function(file){
+    return file.match(/\.styl$/);
+  });
+}
+
 /**
  * Open the default browser to the CSS property `name`.
  *
