@@ -5,7 +5,9 @@
  */
 
 var fs = require('fs')
-  , basename = require('path').basename;
+  , basename = require('path').basename
+  , dirname = require('path').dirname
+  , join = require('path').join;
 
 try {
   var stylus = require('stylus');
@@ -239,8 +241,10 @@ function compileFiles(files) {
  */
 
 function compileFile(file) {
+  // ensure file exists
   fs.lstat(file, function(err, stat){
     if (err) throw err;
+    // file
     if (stat.isFile()) {
       fs.readFile(file, 'utf8', function(err, str){
         if (err) throw err;
@@ -250,6 +254,7 @@ function compileFile(file) {
           writeFile(file, css);
         });
       });
+    // directory
     } else if (stat.isDirectory()) {
       fs.readdir(file, function(err, files){
         if (err) throw err;
@@ -276,15 +281,61 @@ function writeFile(file, css) {
     if (err) throw err;
     console.log('  \033[90mcompiled\033[0m %s', path);
     // --watch support
-    if (watchers) {
-      if (!watchers[file]) {
-        watchers[file] = true;
-        fs.watchFile(file, { interval: 50 }, function(curr, prev){
-          if (curr.mtime > prev.mtime) {
-            compileFile(file);
-          }
-        });
-      }
+    watch(file);
+  });
+}
+
+/**
+ * Watch the given `file` and re-compile when modified.
+ */
+
+function watch(file) {
+  // not watching
+  if (!watchers) return;
+  // already watched
+  if (watchers[file]) return;
+
+  // watch the file itself
+  watchers[file] = true;
+  fs.watchFile(file, { interval: 50 }, function(curr, prev){
+    if (curr.mtime > prev.mtime) {
+      compileFile(file);
     }
   });
+
+  // watch imports, re-compiling
+  // this file when its deps change
+  watchImports(file);
+}
+
+/**
+ * Watch @import nodes in the given `file`.
+ */
+
+function watchImports(file, target) {
+  var str = fs.readFileSync(file, 'utf8')
+    , ast = stylus.parse(str, { filename: file })
+    , target = target || file
+    , dir = dirname(file);
+
+  (function search(nodes){
+    nodes.forEach(function(node){
+      if (node.nodes) {
+        search(node.nodes);
+      } else if ('import' == node.nodeName && !node.literal) {
+        var path = join(dir, node.path + '.styl');
+
+        // watch the file, compiling the target
+        console.log('  \033[90mwatching\033[0m %s', path);
+        fs.watchFile(path, { interval: 50 }, function(curr, prev){
+          if (curr.mtime > prev.mtime) {
+            compileFile(target);
+          }
+        });
+
+        // watch this import's deps
+        watchImports(path, target);
+      }
+    });
+  })(ast.nodes)
 }
