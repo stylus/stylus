@@ -208,8 +208,14 @@ function compileCSSFile(passedFiles) {
 	      });
 	    } else if (stat.isDirectory()) {
 	      fs.readdir(file, function(err, files){
-	        if (err) throw err;
-	        	compileCSSFile(files); 
+	        if (err) throw err;       
+
+	        compileCSSFile(files.filter(function(path){
+	          return path.match(/\.css$/);
+	        }).map(function(path){
+	          return file + '/' + path;
+	        }));
+	    
 	      });
 	    }  
 		 
@@ -238,8 +244,6 @@ function writeCSSFile(file, styl) {
     // --watch support
     watch(path);
   });
-
-
 
 
 }
