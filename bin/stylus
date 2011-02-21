@@ -200,14 +200,14 @@ function compileCSSFiles(passedFiles) {
 	passedFiles.forEach(function(file){  
 	  fs.lstat(file, function(err, stat){    
 	    if (err) throw err;              
-			// file 
+      // file 
 	    if (stat.isFile()) {
 	      fs.readFile(file, 'utf8', function(err, str){
 	        if (err) throw err;
 	        var styl = stylus.convertCSS(str); 
-					writeCSSFile(file, styl); 
+          writeCSSFile(file, styl); 
 	      });    
-			// directory 
+      // directory 
 	    } else if (stat.isDirectory()) {
 	      fs.readdir(file, function(err, files){
 	        if (err) throw err;       
