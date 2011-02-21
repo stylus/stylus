@@ -1,4 +1,13 @@
 
+0.6.2 / 2011-02-21 
+==================
+
+  * Added stylus(1) growl support when using `--watch`
+  * Added __@import__ watching support to stylus(1). Closes #134
+  * Changed; stylus(1) only throws when `--watch` is not used
+  * Fixed `darken-by()` BIF
+  * Fixed __@import__ literal semi-colon. Closes #140
+
 0.6.1 / 2011-02-18 
 ==================
 
