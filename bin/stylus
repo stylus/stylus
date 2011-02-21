@@ -171,7 +171,7 @@ var str = '';
 
 if (convertCSS) {  
 	if (files.length > 0) {
-	  compileCSSFile(files);      
+	  compileCSSFiles(files);      
 	}  
 	else{
 		var stdin = process.openStdin();
@@ -196,7 +196,7 @@ if (convertCSS) {
  * Convert a CSS file to a Styl file 
  */     
 
-function compileCSSFile(passedFiles) {    
+function compileCSSFiles(passedFiles) {    
 	passedFiles.forEach(function(file){
 	  fs.lstat(file, function(err, stat){    
 	    if (err) throw err;
@@ -210,7 +210,7 @@ function compileCSSFile(passedFiles) {
 	      fs.readdir(file, function(err, files){
 	        if (err) throw err;       
 
-	        compileCSSFile(files.filter(function(path){
+	        compileCSSFiles(files.filter(function(path){
 	          return path.match(/\.css$/);
 	        }).map(function(path){
 	          return file + '/' + path;
