@@ -90,7 +90,7 @@ compiles to:
 
   - Language [comparisons](stylus/blob/master/docs/compare.md)
 
-## License 
+## License
 
 (The MIT License)
 
