@@ -170,22 +170,19 @@ var str = '';
 // Convert css to stylus
 
 if (convertCSS) {  
-	switch (files.length) {
-    case 2:
-      compileCSSFile(files[0], files[1]);   
-      break;
-    case 1:
-      compileCSSFile(files[0], files[0].replace('.css', '.styl'));   
-      break;
-    default:
-      var stdin = process.openStdin();
-      stdin.setEncoding('utf8');
-      stdin.on('data', function(chunk){ str += chunk; });
-      stdin.on('end', function(){
-        var out = stylus.convertCSS(str);
-        console.log(out);      
-      });
-  }
+	if (files.length > 0) {
+	  compileCSSFile(files);      
+	}  
+	else{
+		var stdin = process.openStdin();
+    stdin.setEncoding('utf8');
+    stdin.on('data', function(chunk){ str += chunk; });
+    stdin.on('end', function(){
+      var out = stylus.convertCSS(str);
+      console.log(out);      
+    });
+	}
+
 } else {
   if (files.length) {
     compileFiles(files);
@@ -199,21 +196,53 @@ if (convertCSS) {
  * Convert a CSS file to a Styl file 
  */     
 
-function compileCSSFile(file, fileOut) {
-  fs.lstat(file, function(err, stat){
-    if (err) throw err;
-    if (stat.isFile()) {
-      fs.readFile(file, 'utf8', function(err, str){
-        if (err) throw err;
-        var styl = stylus.convertCSS(str); 
-        fs.writeFile(fileOut, styl, function(err){  
-         if (err) throw err; 
-        });
-      });
-    } 
-  });
-}
+function compileCSSFile(passedFiles) {    
+	passedFiles.forEach(function(file){
+	  fs.lstat(file, function(err, stat){    
+	    if (err) throw err;
+	    if (stat.isFile()) {
+	      fs.readFile(file, 'utf8', function(err, str){
+	        if (err) throw err;
+	        var styl = stylus.convertCSS(str); 
+					writeCSSFile(file, styl); 
+	      });
+	    } else if (stat.isDirectory()) {
+	      fs.readdir(file, function(err, files){
+	        if (err) throw err;
+	        	compileCSSFile(files); 
+	      });
+	    }  
+		 
+	  });
+		
+	}); 
+	
+	
 
+}   
+
+/**
+ * Write a Styl file 
+ */     
+
+function writeCSSFile(file, styl) { 
+
+  // --out support
+  var path = dest
+    ? dest + '/' + basename(file, '.css') + '.styl'
+    : file.replace('.styl', '.css'); 
+
+  fs.writeFile(path, styl, function(err){
+    if (err) throw err;
+    console.log('  \033[90mconverted\033[0m %s', path);
+    // --watch support
+    watch(path);
+  });
+
+
+
+
+}
 
 /**
  * Compile with stdio.
