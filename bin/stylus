@@ -260,8 +260,15 @@ function compileFile(file) {
         if (err) throw err;
         options.filename = file;
         stylus(str, options).render(function(err, css){
-          if (err) throw err;
-          writeFile(file, css);
+          if (err) {
+            if (watchers) {
+              console.error(err.stack || err.message);
+            } else {
+              throw err;
+            }
+          } else {
+            writeFile(file, css);
+          }
         });
       });
     // directory
