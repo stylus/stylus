@@ -209,7 +209,6 @@ function compileCSSFiles(passedFiles) {
 	    } else if (stat.isDirectory()) {
 	      fs.readdir(file, function(err, files){
 	        if (err) throw err;       
-
 	        compileCSSFiles(files.filter(function(path){
 	          return path.match(/\.css$/);
 	        }).map(function(path){
