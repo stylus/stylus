@@ -197,15 +197,17 @@ if (convertCSS) {
  */     
 
 function compileCSSFiles(passedFiles) {    
-	passedFiles.forEach(function(file){
+	passedFiles.forEach(function(file){  
 	  fs.lstat(file, function(err, stat){    
-	    if (err) throw err;
+	    if (err) throw err;              
+			// file 
 	    if (stat.isFile()) {
 	      fs.readFile(file, 'utf8', function(err, str){
 	        if (err) throw err;
 	        var styl = stylus.convertCSS(str); 
 					writeCSSFile(file, styl); 
-	      });
+	      });    
+			// directory 
 	    } else if (stat.isDirectory()) {
 	      fs.readdir(file, function(err, files){
 	        if (err) throw err;       
