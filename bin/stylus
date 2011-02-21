@@ -7,7 +7,8 @@
 var fs = require('fs')
   , basename = require('path').basename
   , dirname = require('path').dirname
-  , join = require('path').join;
+  , join = require('path').join
+  , growl = require('growl');
 
 try {
   var stylus = require('stylus');
@@ -284,8 +285,16 @@ function compileFile(file) {
         if (err) throw err;
         options.filename = file;
         stylus(str, options).render(function(err, css){
-          if (err) throw err;
-          writeFile(file, css);
+          if (err) {
+            if (watchers) {
+              console.error(err.stack || err.message);
+              growl.notify(err.message, { title: 'Stylus error' });
+            } else {
+              throw err;
+            }
+          } else {
+            writeFile(file, css);
+          }
         });
       });
     // directory
