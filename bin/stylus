@@ -170,19 +170,17 @@ var str = '';
 // Convert css to stylus
 
 if (convertCSS) {  
-	if (files.length > 0) {
-	  compileCSSFiles(files);      
-	}  
-	else{
-		var stdin = process.openStdin();
+  if (files.length > 0) {
+    compileCSSFiles(files);      
+  } else {
+    var stdin = process.openStdin();
     stdin.setEncoding('utf8');
     stdin.on('data', function(chunk){ str += chunk; });
     stdin.on('end', function(){
-      var out = stylus.convertCSS(str);
-      console.log(out);      
+    var out = stylus.convertCSS(str);
+    console.log(out);      
     });
-	}
-
+  }
 } else {
   if (files.length) {
     compileFiles(files);
@@ -197,35 +195,29 @@ if (convertCSS) {
  */     
 
 function compileCSSFiles(passedFiles) {    
-	passedFiles.forEach(function(file){  
-	  fs.lstat(file, function(err, stat){    
-	    if (err) throw err;              
-      // file 
-	    if (stat.isFile()) {
-	      fs.readFile(file, 'utf8', function(err, str){
-	        if (err) throw err;
-	        var styl = stylus.convertCSS(str); 
-          writeCSSFile(file, styl); 
-	      });    
-      // directory 
-	    } else if (stat.isDirectory()) {
-	      fs.readdir(file, function(err, files){
-	        if (err) throw err;       
-	        compileCSSFiles(files.filter(function(path){
-	          return path.match(/\.css$/);
-	        }).map(function(path){
-	          return file + '/' + path;
-	        }));
-	    
-	      });
-	    }  
-		 
-	  });
-		
-	}); 
-	
-	
-
+  passedFiles.forEach(function(file){  
+    fs.lstat(file, function(err, stat){    
+    if (err) throw err;              
+    // file 
+    if (stat.isFile()) {
+      fs.readFile(file, 'utf8', function(err, str){
+        if (err) throw err;
+        var styl = stylus.convertCSS(str); 
+        writeCSSFile(file, styl); 
+      });    
+    // directory 
+    } else if (stat.isDirectory()) {
+      fs.readdir(file, function(err, files){
+         if (err) throw err;       
+         compileCSSFiles(files.filter(function(path){
+           return path.match(/\.css$/);
+         }).map(function(path){
+           return file + '/' + path;
+         })); 
+      });
+    }      
+   });
+  }); 
 }   
 
 /**
@@ -233,12 +225,10 @@ function compileCSSFiles(passedFiles) {
  */     
 
 function writeCSSFile(file, styl) { 
-
   // --out support
   var path = dest
     ? dest + '/' + basename(file, '.css') + '.styl'
     : file.replace('.styl', '.css'); 
-
   fs.writeFile(path, styl, function(err){
     if (err) throw err;
     console.log('  \033[90mconverted\033[0m %s', path);
