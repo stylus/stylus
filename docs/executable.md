@@ -48,6 +48,22 @@ Try stylus some in the terminal, type below and press CTRL-D for __EOF__:
   
       $ stylus one.styl two.styl
 
+### Converting CSS
+
+ If we wish to convert css to the terse Stylus syntax, we can utilize the `--css` flag.
+
+ Via stdio:
+ 
+      $ stylus --css < test.css > test.styl
+
+ Output a `.styl` file of the same basename:
+ 
+      $ stylus --css test.css
+
+ Output to a specific destination:
+ 
+      $ stylus --css test.css /tmp/out.styl
+
 ### CSS Property Help
 
   On osx `stylus help <prop>` will open your default browser and display help documentation for the given `<prop>`.

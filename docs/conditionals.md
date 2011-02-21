@@ -50,3 +50,58 @@ In the example below, if `disable-padding-override` is undefined or `false` padd
 
      body
        padding 5px 10px
+
+### Postfix Conditionals
+
+  Stylus supports postfix conditionals, meaning the `if` and `unless` act as operators, evaluating the left-hand operand, when the right-hand expression is truthy.
+  
+  
+  For example let's define `negative()`, performing some basic type checking. Below we use block-style conditionals:
+  
+      negative(n)
+        unless n is a 'unit'
+          error('invalid number')
+        if n < 0
+          yes
+        else
+          no
+
+  Next we utilize postfix conditionals to keep our function terse.
+
+      negative(n)
+        error('invalid number') unless n is a 'unit'
+        return yes if n < 0
+        no
+
+  Of course we could take this further, and utilize `n < 0 ? yes : no`, or simply stick with booleans, and use only `n < 0`.
+
+  Postfix conditionals may be applied to most single-line statements, for example `@import`, `@charset`, mixins, and of course properties as shown below:
+  
+  
+      pad(types = margin padding, n = 5px)
+        padding unit(n, px) if padding in types
+        margin unit(n, px) if margin in types
+
+      body
+        pad()
+
+      body
+        pad(margin)
+
+      body
+        apply-mixins = true
+        pad(padding, 10) if apply-mixins
+
+yielding:
+
+      body {
+        padding: 5px;
+        margin: 5px;
+      }
+      body {
+        margin: 5px;
+      }
+      body {
+        padding: 10px;
+      }
+

@@ -80,6 +80,7 @@ compiles to:
 ### Screencasts
 
   - [Stylus Intro](http://screenr.com/bNY)
+  - [CSS Syntax & Postfix Conditionals](http://screenr.com/A8v)
 
 ### Authors
 

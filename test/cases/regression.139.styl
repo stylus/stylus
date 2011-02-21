@@ -1,0 +1,21 @@
+
+opposite-position(pos) {
+  return bottom if pos == top;
+  return top if pos == bottom;
+  return right if pos == left;
+  return left if pos == right;
+  error('Invalid position ' + pos)
+}
+ 
+opposite(positions) {
+  for pos in positions {
+    pos = opposite-position(pos);
+    ret = ret is defined ? ret pos : pos;
+  }
+}
+ 
+body {
+  foo: opposite(top);
+  foo: opposite(left);
+  foo: opposite(top left);
+}
