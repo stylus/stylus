@@ -5,8 +5,8 @@
 }
 .button {
   position: fixed;
-  a: 0;
-  b: 0;
+  bottom: 0;
+  left: 0;
 }
 .button {
   position: fixed;
