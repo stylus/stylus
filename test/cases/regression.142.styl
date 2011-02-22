@@ -1,0 +1,54 @@
+
+foo, bar, baz
+  display none
+
+foo
+bar
+baz
+  display none
+
+body
+  :nth-child(2)
+  foo bar
+  bar
+  baz
+    display none
+
+body
+  foo bar
+  bar
+  baz
+    display none
+
+body
+  foo
+  bar
+  baz
+    display none
+
+body
+  foo
+  :nth-child(2)
+  bar
+    display none
+
+fn()
+  bar if true;
+
+something()
+  one
+  two
+  fn()
+
+body
+  foo something()
+
+something()
+  nums = 1 2 3
+  one
+  two
+  for n in nums
+    n
+
+body
+  foo something()

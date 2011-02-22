@@ -1,0 +1,39 @@
+foo,
+bar,
+baz {
+  display: none;
+}
+foo,
+bar,
+baz {
+  display: none;
+}
+body :nth-child(2),
+body foo bar,
+body bar,
+body baz {
+  display: none;
+}
+body {
+  foo: bar;
+}
+body bar,
+body baz {
+  display: none;
+}
+body foo,
+body bar,
+body baz {
+  display: none;
+}
+body foo,
+body :nth-child(2),
+body bar {
+  display: none;
+}
+body {
+  foo: bar;
+}
+body {
+  foo: 3;
+}
