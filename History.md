@@ -1,4 +1,10 @@
 
+0.6.3 / 2011-02-22 
+==================
+
+  * Fixed single-ident selectors. Closes #142
+  * Fixed cyclic __@import__ with file of the same name. Closes #143
+
 0.6.2 / 2011-02-21 
 ==================
 
