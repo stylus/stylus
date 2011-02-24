@@ -1,0 +1,31 @@
+input[for=name]
+  width 200px
+
+nums = 1 2 3
+for n in nums
+  body
+    foo n
+
+body
+  foo
+  for n in nums
+    foo n
+
+something()
+  nums = 1 2 3
+  foo
+  input[for=name]
+    foo bar
+
+#login
+  something()
+
+something()
+  nums = 1 2 3
+  foo
+  for n in nums
+    input[for=name]
+      foo n
+
+#login
+  something()
