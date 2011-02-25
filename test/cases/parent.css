@@ -26,7 +26,7 @@ body #login {
   box-shadow: 1px 1px 3px #eee;
 }
 html.ie8 body #login,
-html.ie7 body #login,
+html.ie7 body #login foo,
 html.ie6 body #login {
   border: solid 1px #eee;
 }
