@@ -18,3 +18,16 @@ input
   &:hover
   &.show
     opacity 1
+
+box-shadow()
+  -webkit-box-shadow arguments
+  -moz-box-shadow arguments
+  box-shadow arguments
+  html.ie8 &,
+  html.ie7 &,
+  html.ie6 &
+    border solid 1px arguments[length(arguments) - 1]
+
+body
+  #login
+    box-shadow 1px 1px 3px #eee

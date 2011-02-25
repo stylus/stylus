@@ -20,3 +20,13 @@ input:hover {
 .dim.show {
   opacity: 1;
 }
+body #login {
+  -webkit-box-shadow: 1px 1px 3px #eee;
+  -moz-box-shadow: 1px 1px 3px #eee;
+  box-shadow: 1px 1px 3px #eee;
+}
+html.ie8 body #login,
+html.ie7 body #login,
+html.ie6 body #login {
+  border: solid 1px #eee;
+}
