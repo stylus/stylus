@@ -62,7 +62,7 @@ form input,
 
 <h3 id="Parent-Reference">Parent Reference</h3>
 
-<p>The <code>&amp;</code> character may precede a selector to reference the parent selector(s). In the example below our two selectors <code>textarea</code>, and <code>input</code> both alter the <code>color</code> on the <code>:hover</code> pseudo selector.</p>
+<p>The <code>&amp;</code> character references the parent selector(s). In the example below our two selectors <code>textarea</code>, and <code>input</code> both alter the <code>color</code> on the <code>:hover</code> pseudo selector.</p>
 
 <pre><code>textarea
 input
@@ -81,6 +81,36 @@ textarea:hover,
 input:hover {
   color: #000;
 }
+</code></pre>
+
+<p>below is an example providing a simple <code>2px</code> border for internet exploder utilizing the parent reference within a mixin:</p>
+
+<pre><code>  box-shadow()
+    -webkit-box-shadow arguments
+    -moz-box-shadow arguments
+    box-shadow arguments
+    html.ie8 &amp;,
+    html.ie7 &amp;,
+    html.ie6 &amp;
+      border 2px solid arguments[length(arguments) - 1]
+
+  body
+    #login
+      box-shadow 1px 1px 3px #eee
+</code></pre>
+
+<p>yielding:</p>
+
+<pre><code>  body #login {
+    -webkit-box-shadow: 1px 1px 3px #eee;
+    -moz-box-shadow: 1px 1px 3px #eee;
+    box-shadow: 1px 1px 3px #eee;
+  }
+  html.ie8 body #login,
+  html.ie7 body #login,
+  html.ie6 body #login {
+    border: 1px solid #eee;
+  }
 </code></pre>
 
 <h3 id="Disambiguation">Disambiguation</h3>
