@@ -1,4 +1,9 @@
 
+0.6.5 / 2011-02-24 
+==================
+
+  * Fixed parent ref `&` mid-selector bug. Closes #148 [reported by visnu]
+
 0.6.4 / 2011-02-24 
 ==================
 
