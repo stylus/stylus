@@ -54,7 +54,7 @@ so for this reason, or if simply preferred we may trail with a comma:
 
 ### Parent Reference
 
-The `&` character may precede a selector to reference the parent selector(s). In the example below our two selectors `textarea`, and `input` both alter the `color` on the `:hover` pseudo selector. 
+The `&` character references the parent selector(s). In the example below our two selectors `textarea`, and `input` both alter the `color` on the `:hover` pseudo selector. 
 
     textarea
     input
@@ -72,6 +72,34 @@ compiles to:
     input:hover {
       color: #000;
     }
+
+below is an example providing a simple `2px` border for internet exploder utilizing the parent reference within a mixin:
+
+      box-shadow()
+        -webkit-box-shadow arguments
+        -moz-box-shadow arguments
+        box-shadow arguments
+        html.ie8 &,
+        html.ie7 &,
+        html.ie6 &
+          border 2px solid arguments[length(arguments) - 1]
+
+      body
+        #login
+          box-shadow 1px 1px 3px #eee
+
+yielding:
+
+      body #login {
+        -webkit-box-shadow: 1px 1px 3px #eee;
+        -moz-box-shadow: 1px 1px 3px #eee;
+        box-shadow: 1px 1px 3px #eee;
+      }
+      html.ie8 body #login,
+      html.ie7 body #login,
+      html.ie6 body #login {
+        border: 1px solid #eee;
+      }
 
 ### Disambiguation
 
