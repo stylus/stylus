@@ -1,0 +1,14 @@
+
+light(color)
+  lightness(color) >= 50%
+
+dark(color)
+  lightness(color) < 50%
+
+body
+  foo light(white)
+  foo light(black)
+
+body
+  foo dark(white)
+  foo dark(black)
