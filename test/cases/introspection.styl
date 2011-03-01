@@ -1,0 +1,14 @@
+reset()
+  if mixin == 'root'
+    got
+      root true
+  else if mixin
+    got 'a mixin'
+  else
+    'not a mixin'
+
+reset()
+
+body
+  reset()
+  foo reset()

@@ -1,0 +1,7 @@
+got {
+  root: true;
+}
+body {
+  foo: "not a mixin";
+  got: "a mixin";
+}
