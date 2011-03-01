@@ -1,0 +1,8 @@
+#content {
+  width: 960px;
+}
+@media screen {
+  #content {
+    width: 640px;
+  }
+}
