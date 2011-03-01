@@ -30,3 +30,11 @@ body form input {
 body form input p {
   something: foo;
 }
+body {
+  foo-test-baz: bar;
+  foo-test: bar;
+  test: bar;
+  position: absolute;
+  top: 0;
+  right: 0;
+}

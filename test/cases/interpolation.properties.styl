@@ -23,12 +23,12 @@ body
   -webkit-{border-radius} awesome
   -webkit-{box-shadow} awesome
 
-test(var, one, two)
+testing(var, one, two)
   {var}
 
 body
-  foo test('one', 1, 2)
-  foo test('two', 1, 2)
+  foo testing('one', 1, 2)
+  foo testing('two', 1, 2)
 
 body
   nested(prop)
@@ -40,3 +40,17 @@ body
       p
         {prop} foo
   nested('something')
+
+top-right()
+  position absolute
+  top 0
+  right 0
+
+foo(ret)
+  ret
+
+body
+  foo-{foo('test')}-baz bar
+  foo-{foo('test')} bar
+  {foo('test')} bar
+  {foo('top')}-right bar
