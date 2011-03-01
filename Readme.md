@@ -49,6 +49,7 @@ compiles to:
   - [interpolation](stylus/blob/master/docs/interpolation.md)
   - arithmetic, logical, and equality [operators](stylus/blob/master/docs/operators.md)
   - [importing](stylus/blob/master/docs/import.md) of other stylus sheets
+  - [introspection api](stylus/blob/master/docs/introspection.md)
   - type coercion
   - [conditionals](stylus/blob/master/docs/conditionals.md)
   - [iteration](stylus/blob/master/docs/iteration.md)
