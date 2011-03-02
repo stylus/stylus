@@ -1,4 +1,17 @@
 
+0.6.6 / 2011-03-01 
+==================
+
+  * Added string -> unit type coercion support aka `5px + "10"` will give `15px`
+  * Added `warn` option Closes #152
+    Currently this only reports on re-definition of functions
+  * Added '$' as a valid identifier character
+  * Added `mixin` local variable for function introspection capabilities. Closes #162
+  * Fixed typo, `Unit#toBoolean()` is now correct
+  * Fixed interpolation function calls. Closes #156
+  * Fixed mixins within Media node. Closes #153
+  * Fixed function call in ret val. Closes #154
+
 0.6.5 / 2011-02-24 
 ==================
 
