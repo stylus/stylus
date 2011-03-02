@@ -1,4 +1,12 @@
 
+0.7.0 / 2011-03-02 
+==================
+
+  * Added `is` and `is not` aliases for `==` and `!=`
+  * Added __@keyframes__ dynamic name support
+  * Fixed units in interpolation
+  * Fixed clamping of HSLA degrees / percentages
+
 0.6.7 / 2011-03-01 
 ==================
 
