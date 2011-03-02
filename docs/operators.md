@@ -11,7 +11,7 @@ Below is the operator precedence table, highest to lowest:
      ... ..
      <= >= < >
      in
-     == !=
+     == is != is not
      is a
      && and || or
      ?:
@@ -189,6 +189,17 @@ Equality operators can be used to equate units, colors, strings, and even identi
     
     "test" == "test"
     // => true
+
+    true is true
+    // => true
+
+    'hey' is not 'bye'
+    // => true
+
+Aliases:
+
+    ==    is
+    !=    is not
 
 ### Logical Operators: && || and or
 
