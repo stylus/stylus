@@ -7,7 +7,7 @@ var connect = require('connect')
   , stylus = require('../');
 
 // Setup server
-// $ curl http://localhost:3000/css/main.css
+// $ curl http://localhost:3000/functions.css
 
 function compile(str, path, fn) {
   stylus(str)
@@ -18,11 +18,11 @@ function compile(str, path, fn) {
 
 var server = connect.createServer(
     stylus.middleware({
-        src: __dirname + '/views'
+        src: __dirname
       , dest: __dirname + '/public'
       , compile: compile
     })
-  , connect.staticProvider(__dirname + '/public')
+  , connect.static(__dirname + '/public')
 );
 
 server.listen(3000);
