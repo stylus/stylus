@@ -1,5 +1,15 @@
 body
-  background url("/path/to/my image.png")
-  background url(/path/to/my image.png)
-  background url(foo.png)
-  background url('bar.png')
+  background url("/images/foo.png")
+  background url(/images/foo.png)
+
+  dir = '/images'
+  img = 'foo.png'
+  background url(dir/foo.png)
+  background url(dir/img)
+
+  background url('/images/' + img)
+  background url(dir'/foo.png')
+  background url(dir + '/foo.png')
+  background url(dir + '/' + img)
+
+  background url(http://foo.com/images/bar.png)
