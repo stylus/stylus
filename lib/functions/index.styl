@@ -13,7 +13,8 @@ require-color(color)
 // require a unit
 
 require-unit(n)
-  error('unit expected, got a ' + -string(n))
+  unless n is a 'unit'
+    error('unit expected, got a ' + -string(n))
 
 // check if n is an odd number
 
@@ -48,3 +49,11 @@ saturate(color, amount)
   require-color(color)
   require-unit(amount)
   hsla(hue(color), saturation(color) + amount, lightness(color), alpha(color))
+
+// decrease the current lightness value by the given amount
+
+lighten-by(color, amount)
+  require-color(color)
+  require-unit(amount)
+  l = lightness(color)
+  hsla(hue(color), saturation(color), l + (l || 100) * amount / 100, alpha(color))
