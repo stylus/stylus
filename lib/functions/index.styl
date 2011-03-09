@@ -39,12 +39,19 @@ adjust(color, prop, amount)
 
 // Math functions
 
-abs(n){ math(n, 'abs') }
-ceil(n){ math(n, 'ceil') }
-floor(n){ math(n, 'floor') }
-round(n){ math(n, 'round') }
+abs(n) { math(n, 'abs') }
+ceil(n) { math(n, 'ceil') }
+floor(n) { math(n, 'floor') }
+round(n) { math(n, 'round') }
 min(a, b) { a < b ? a : b }
 max(a, b) { a > b ? a : b }
+
+// color components
+
+alpha(color) { component(hsl(color), 'alpha') }
+hue(color) { component(hsl(color), 'hue') }
+saturation(color) { component(hsl(color), 'saturation') }
+lightness(color) { component(hsl(color), 'lightness') }
 
 // check if n is an odd number
 
