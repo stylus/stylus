@@ -1,4 +1,9 @@
 
+0.7.3 / 2011-03-09 
+==================
+
+  * Fixed; allow semi-colons for non-css syntax for one-liners
+
 0.7.2 / 2011-03-08 
 ==================
 
