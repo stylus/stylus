@@ -16,6 +16,20 @@ require-unit(n)
   unless n is a 'unit'
     error('unit expected, got a ' + -string(n))
 
+// require a string
+
+require-string(str)
+  unless str is a 'string' or str is a 'ident'
+    error('string expected, got a ' + -string(str))
+
+// adjust the given color's property by amount
+
+adjust(color, prop, amount)
+  require-color(color)
+  require-string(prop)
+  require-unit(amount)
+  -adjust(color, prop, amount)
+
 // check if n is an odd number
 
 odd(n)
@@ -39,35 +53,25 @@ dark(color)
 // desaturate color by amount
 
 desaturate(color, amount)
-  require-color(color)
-  require-unit(amount)
-  hsla(hue(color), saturation(color) - amount, lightness(color), alpha(color))
+  adjust(color, 'saturation', - amount)
 
 // saturate color by amount
 
 saturate(color, amount)
-  require-color(color)
-  require-unit(amount)
-  hsla(hue(color), saturation(color) + amount, lightness(color), alpha(color))
+  adjust(color, 'saturation', amount)
 
 // darken by the given amount
 
 darken(color, amount)
-  require-color(color)
-  require-unit(amount)
-  hsla(hue(color), saturation(color), lightness(color) - amount, alpha(color))
+  adjust(color, 'lightness', - amount)
 
 // lighten by the given amount
 
 lighten(color, amount)
-  require-color(color)
-  require-unit(amount)
-  hsla(hue(color), saturation(color), lightness(color) + amount, alpha(color))
+  adjust(color, 'lightness', amount)
 
 // decrease the current lightness value by the given amount
 
 lighten-by(color, amount)
-  require-color(color)
-  require-unit(amount)
-  l = lightness(color)
-  hsla(hue(color), saturation(color), l + (l || 100) * amount / 100, alpha(color))
+  l = lightness(color) or 100
+  adjust(color, 'lightness', l * amount / 100)
