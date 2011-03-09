@@ -50,6 +50,20 @@ saturate(color, amount)
   require-unit(amount)
   hsla(hue(color), saturation(color) + amount, lightness(color), alpha(color))
 
+// darken by the given amount
+
+darken(color, amount)
+  require-color(color)
+  require-unit(amount)
+  hsla(hue(color), saturation(color), lightness(color) - amount, alpha(color))
+
+// lighten by the given amount
+
+lighten(color, amount)
+  require-color(color)
+  require-unit(amount)
+  hsla(hue(color), saturation(color), lightness(color) + amount, alpha(color))
+
 // decrease the current lightness value by the given amount
 
 lighten-by(color, amount)
