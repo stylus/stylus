@@ -1,4 +1,8 @@
 
+require-color(color)
+ unless color is a 'color' or color is a 'hsla' 
+   error('RGB or HSL value expected, got a ' + type(color) + ' ' + color)
+
 odd(n)
   1 == n % 2
 
@@ -10,3 +14,11 @@ light(color)
 
 dark(color)
   lightness(color) < 50%
+
+desaturate(color, amount)
+  require-color(color)
+  hsla(hue(color), saturation(color) - amount, lightness(color), alpha(color))
+
+saturate(color, amount)
+  require-color(color)
+  hsla(hue(color), saturation(color) + amount, lightness(color), alpha(color))
