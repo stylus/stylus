@@ -22,6 +22,13 @@ require-string(str)
   unless str is a 'string' or str is a 'ident'
     error('string expected, got a ' + -string(str))
 
+// apply js Math function
+
+math(n, fn) 
+  require-unit(n)
+  require-string(fn)
+  -math(n, fn)
+
 // adjust the given color's property by amount
 
 adjust(color, prop, amount)
@@ -29,6 +36,13 @@ adjust(color, prop, amount)
   require-string(prop)
   require-unit(amount)
   -adjust(color, prop, amount)
+
+// Math functions
+
+abs(n){ math(n, 'abs') }
+ceil(n){ math(n, 'ceil') }
+floor(n){ math(n, 'floor') }
+round(n){ math(n, 'round') }
 
 // check if n is an odd number
 
