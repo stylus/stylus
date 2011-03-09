@@ -214,7 +214,7 @@ Logical operators `&&` and `||` are aliased `and` / `or` which apply the same pr
     0 && 5
     // => 0
     
-    #fff is a 'color' and 15 is a 'unit'
+    #fff is a 'rgba' and 15 is a 'unit'
     // => true
 
 ### Existence Operator: in
@@ -309,24 +309,24 @@ However when using `?=` our second attempt fails since the variable is already d
 
 ### Instance Check: is a
 
-Stylus provides a binary operator named `is a` used to type check. The technical name for unit constructors should be capitalized, however lowercase works as well.
+Stylus provides a binary operator named `is a` used to type check.
 
-    15 is a unit
+    15 is a 'unit'
     // => true
     
-    15 is a Unit
+    #fff is a 'rgba'
     // => true
     
-    #fff is a color
-    // => true
-    
-    15 is a color
+    15 is a 'rgba'
     // => false
 
 Alternatively we could use the `type()` BIF:
 
-    type(#fff) == 'color'
+    type(#fff) == 'rgba'
     // => true                                                                            
+
+'color' is the one special-case, evaluating to true when the
+left-hand operand is an `RGBA` or `HSLA` node.
 
 ### Variable Definition: is defined
 
