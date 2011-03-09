@@ -70,8 +70,14 @@ darken(color, amount)
 lighten(color, amount)
   adjust(color, 'lightness', amount)
 
-// decrease the current lightness value by the given amount
+// increase the current lightness value by the given amount
 
 lighten-by(color, amount)
   l = lightness(color) or 100
   adjust(color, 'lightness', l * amount / 100)
+
+// decrease the current lightness value by the given amount
+
+darken-by(color, amount)
+  l = lightness(color)
+  adjust(color, 'lightness', - (l * amount / 100))
