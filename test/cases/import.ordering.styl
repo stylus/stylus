@@ -1,10 +1,12 @@
 
+dir = 'import.ordering'
+
 one
   foo bar
 
-@import "import.ordering/two"
+@import dir + "/two"
 
 three
   foo bar
 
-@import "import.ordering/four"
+@import dir + '/four'
