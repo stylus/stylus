@@ -32,6 +32,33 @@ Return the alpha component of the given `color`.
       alpha(rgba(0,0,0,0.3))
       // => 0.3
 
+### dark(color | hsl)
+
+Check if a color is dark:
+
+      dark(black)
+      // => true
+
+      dark(#005716)
+      // => true
+
+      dark(white)
+      // => false
+
+
+### light(color | hsl)
+
+Check if a color is light:
+
+    light(black)
+    // => false
+
+    light(white)
+    // => true
+    
+    light(#00FF40)
+    // => true
+
 ### hue(color | hsl)
 
 Return the hue of the given `color`.
