@@ -1,4 +1,15 @@
 
+0.7.2 / 2011-03-08 
+==================
+
+  * Added `isnt` operator, same as `is not`, and `!=`
+  * Added support for dynamic `@import` expressions
+  * Added `@import` index resolution support
+  * Added `light()` / `dark()` BIFs
+  * Added `compress` option for connect middleware [disfated]
+  * Changed; most built-in functions defined in stylus (`./lib/functions/index.styl`)
+  * Fixed dynamic expressions in `url()`. Closes #105
+
 0.7.1 / 2011-03-07 
 ==================
 
