@@ -25,4 +25,7 @@ install-bundle:
 update-bundle:
 	cp -fr $(TM_BUNDLE_DEST)/Stylus.tmbundle editors
 
-.PHONY: test test-integration install-bundle docs update-bundle
+benchmark:
+	@node bm.js
+
+.PHONY: test test-integration install-bundle docs update-bundle benchmark
