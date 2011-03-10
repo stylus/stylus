@@ -12,7 +12,7 @@ var times = 200
 console.log('compiling %d times', times);
 
 while (n--) {
-  stylus('body\n  color: white;\n  background: url(/images/foo.png);')
+  stylus('body\n  color: white;\n  background: url(/images/foo.png)\n  a\n    &:hover\n      text-decoration: underline;')
     .render(function(err, css){});
 }
 
