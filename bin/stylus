@@ -260,7 +260,9 @@ function compileFile(file) {
       fs.readFile(file, 'utf8', function(err, str){
         if (err) throw err;
         options.filename = file;
+        options._imports = [];
         stylus(str, options).render(function(err, css){
+          watchImports(file, options._imports);
           if (err) {
             if (watchers) {
               console.error(err.stack || err.message);
@@ -321,40 +323,20 @@ function watch(file) {
       compileFile(file);
     }
   });
-
-  // watch imports, re-compiling
-  // this file when its deps change
-  watchImports(file);
 }
 
 /**
- * Watch @import nodes in the given `file`.
+ * Watch `imports`, re-compiling `file` when they change.
  */
 
-function watchImports(file, target) {
-  var str = fs.readFileSync(file, 'utf8')
-    , ast = stylus.parse(str, { filename: file })
-    , target = target || file
-    , dir = dirname(file);
-
-  (function search(nodes){
-    nodes.forEach(function(node){
-      if (node.nodes) {
-        search(node.nodes);
-      } else if ('import' == node.nodeName && !node.literal) {
-        var path = join(dir, node.path + '.styl');
-
-        // watch the file, compiling the target
-        console.log('  \033[90mwatching\033[0m %s', path);
-        fs.watchFile(path, { interval: 50 }, function(curr, prev){
-          if (curr.mtime > prev.mtime) {
-            compileFile(target);
-          }
-        });
-
-        // watch this import's deps
-        watchImports(path, target);
+function watchImports(file, imports) {
+  imports.forEach(function(import){
+    // watch the file, compiling the target
+    console.log('  \033[90mwatching\033[0m %s', import.path);
+    fs.watchFile(import.path, { interval: 50 }, function(curr, prev){
+      if (curr.mtime > prev.mtime) {
+        compileFile(file);
       }
     });
-  })(ast.nodes)
+  });
 }
