@@ -1,12 +1,15 @@
 body
   // 5px
+  foo 0 || 5px
+
+  // 0px
   foo 0px || 5px
   
   // 0px
   foo 0px || 0px
   
   // false
-  foo 0px or false
+  foo 0 or false
   
   // true
   foo 0 || 0 || true
@@ -14,7 +17,7 @@ body
   // 5px
   foo 1px && 5px
   
-  // 0px
+  // 1px
   foo 0px && 1px
   
   // 0

@@ -96,7 +96,8 @@ lighten(color, amount)
 // increase the current lightness value by the given amount
 
 lighten-by(color, amount)
-  l = lightness(color) or 100
+  l = lightness(color)
+  l = 100 if 0 == l
   adjust(color, 'lightness', l * amount / 100)
 
 // decrease the current lightness value by the given amount
