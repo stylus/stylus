@@ -196,10 +196,37 @@ Equality operators can be used to equate units, colors, strings, and even identi
     'hey' is not 'bye'
     // => true
 
+    'hey' isnt 'bye'
+    // => true
+
+Only exact values match, for example `0 == false`, and `null == false` are both `false`.
+
 Aliases:
 
     ==    is
     !=    is not
+    !=    isnt
+
+## Truthfulness
+
+ Nearly everything within Stylus resolves to `true`, including units with a suffix, for example even `0%`, `0px`, etc will resolve to `true`, since commonly in Stylus a mixin or function may accept such units as valid, however `0` itself is `false` in terms of arithmetic.
+
+`true` examples:
+
+      0% 
+      0px
+      1px 
+      -1
+      -1px
+      hey
+      'hey'
+
+`false` examples:
+
+     0 
+     null
+     false
+     ''
 
 ### Logical Operators: && || and or
 
@@ -377,3 +404,5 @@ The ternary operator works as we would expect in most languages, being the only 
     num = 15
     num ? unit(num, 'px') : 20px
     // => 15px
+
+
