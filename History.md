@@ -1,4 +1,14 @@
 
+0.7.4 / 2011-03-10 
+==================
+
+  * Added `RGBA` node
+  * Added `is a "color"` special-case, true for `HSLA` and `RGBA` nodes.
+Closes #180
+  * Performance; 2.5x faster compiles due to removing use of getters in `Parser` and `Lexer` (yes, they are really slow).
+  * Removed `Color` node
+  * Fixed stylus(1) `--watch` support due to dynamic __@import__ support. Closes #176
+
 0.7.3 / 2011-03-09 
 ==================
 
