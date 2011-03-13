@@ -14,3 +14,7 @@ body {
   foo: 1 Arial;
   foo: 2 sans-serif;
 }
+body {
+  foo: 24;
+  foo: 30;
+}
