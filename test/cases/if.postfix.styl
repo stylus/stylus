@@ -96,3 +96,15 @@ body
   foo truthy('y')
   foo truthy(0)
   foo truthy('no')
+
+negative(n)
+  return invalid unless n is a 'unit'
+  return yes if n < 0
+  return no if n > 0
+  zero
+
+body
+  foo negative(-5)
+  foo negative(5)
+  foo negative(0)
+  foo negative('asdf')
