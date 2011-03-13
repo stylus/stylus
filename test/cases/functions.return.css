@@ -10,3 +10,6 @@ body {
   foo: three;
   foo: something;
 }
+body {
+  foo: 3;
+}
