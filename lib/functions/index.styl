@@ -46,6 +46,17 @@ round(n) { math(n, 'round') }
 min(a, b) { a < b ? a : b }
 max(a, b) { a > b ? a : b }
 
+// return the sum of the given numbers
+
+sum(nums)
+  sum = 0
+  sum += n for n in nums
+
+// return the average of the given numbers
+
+avg(nums)
+  sum(nums) / length(nums)
+
 // color components
 
 alpha(color) { component(hsl(color), 'alpha') }
