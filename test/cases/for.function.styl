@@ -2,53 +2,37 @@
 sum(nums...)
   sum = 0
   for n in nums
-    sum = sum + n
-  n
+    sum += n
 
 sum2(nums...)
   sum = 0
   for n in nums
     sum += n
+  sum * 2
+
+sum3(nums...)
+  sum = 0
+  sum += n for n in nums
 
 body
   foo sum(1,2,3,4)
   foo sum2(1,2,3,4)
+  foo sum3(1,2,3,4)
 
-concat(strings...)
+join(delim, args)
   buf = ''
-  for s in strings
-    buf = buf + s
-  buf
+  for arg, i in args
+    buf += i ? delim + arg : arg
 
-concat2(strings...)
+join2(delim, args)
   buf = ''
-  for s in strings
-    buf += s
+  buf += i ? delim + arg : arg for arg, i in args
 
 body
-  foo concat('one', 'two', 'three')
-  foo concat2('one', 'two', 'three')
-
-
-join(delim, strings...)
-  buf = ''
-  for s, i in strings
-    if i
-      buf = buf + delim + s
-    else
-      buf = '' + s
-  buf
-
-join2(delim, strings...)
-  buf = ''
-  for s, i in strings
-    buf += i ? delim + s : '' + s
-
-body
-  foo join(', ', 'one', 'two', 'three')
-  foo join(' ', '1', '2', '3')
-  foo join(', ', 1, 2, 3)
-  foo join2(', ', 1, 2, 3)
+  foo join(' ', foo bar baz)
+  foo join(', ', foo bar baz)
+  foo join2(' ', 1 2 3)
+  foo join2(', ', 1 2 3)
 
 body
   fonts = Impact Arial sans-serif
