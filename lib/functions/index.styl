@@ -121,3 +121,11 @@ darken-by(color, amount)
 
 last(expr)
   expr[length(expr) - 1]
+
+// join values with the given delimiter
+
+join(delim, vals...)
+  buf = ''
+  return buf unless length(vals)
+  for val, i in vals
+    buf += i ? delim + val : val
