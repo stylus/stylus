@@ -1,0 +1,23 @@
+
+join1(delim, vals...)
+  buf = ''
+  for val, i in vals
+    if i
+      buf += delim + val
+    else
+      buf += val
+
+join2(delim, vals...)
+  buf = ''
+  for val, i in vals
+    buf += i ? delim + val : val
+
+body
+  foo join1(' ', 1 2 3)
+  foo join1(', ', 1 2 3)
+  foo join1(',', 1 2 3)
+
+body
+  foo join2(' ', 1 2 3)
+  foo join2(', ', 1 2 3)
+  foo join2(',', 1 2 3)
