@@ -2,30 +2,29 @@ input[for=name] {
   width: 200px;
 }
 body {
-foo
   foo: 1;
+}
+body {
   foo: 2;
+}
+body {
   foo: 3;
+}
+body foo {
+  bar: 1;
+  bar: 2;
+  bar: 3;
 }
 #login foo,
 #login input[for=name] {
   foo: bar;
 }
-#login input[for=name] {
-  foo: 1;
+#login foo input[for=name] {
+  bar: 1;
 }
-#login input[for=name] {
-  foo: 2;
+#login foo input[for=name] {
+  bar: 2;
 }
-#login input[for=name] {
-  foo: 3;
-}
-body {
-  foo: 1;
-}
-body {
-  foo: 2;
-}
-body {
-  foo: 3;
+#login foo input[for=name] {
+  bar: 3;
 }

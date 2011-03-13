@@ -75,3 +75,12 @@ deep-explicit()
 body
   foo deep-implicit()
   foo deep-explicit()
+
+test()
+  return 1 if false
+  return 2 if false
+  return 3 if true
+  return 4
+
+body
+  foo test()

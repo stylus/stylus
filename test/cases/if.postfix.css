@@ -53,3 +53,9 @@ body {
   foo: ;
   foo: ;
 }
+body {
+  foo: yes;
+  foo: no;
+  foo: zero;
+  foo: invalid;
+}

@@ -51,12 +51,13 @@ body
 
 negative(n)
   unless n is a 'unit'
-    invalid
+    return invalid
   if n < 0
     yes
-  if n > 0
+  else if n > 0
     no
-  zero
+  else
+    zero
 
 body
   foo negative(-5)

@@ -27,9 +27,9 @@ body .input {
   no: margin;
 }
 body form input {
+  foo: no;
   foo: bar;
   bar: baz;
-  foo: no;
 }
 body something {
   foo: bar;
