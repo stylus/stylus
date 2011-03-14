@@ -1,6 +1,9 @@
 
 pad(x, y = x)
-  padding y x y x
+  if y == x
+    padding y
+  else
+    padding y x y x
 
 pad-x(n)
   padding-left n
