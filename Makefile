@@ -8,17 +8,6 @@ test: test-integration
 test-integration:
 	@node test/run.js
 
-docs: docs/index.html
-
-docs/index.html: $(SRC)
-	@mkdir -p docs
-	dox \
-	  --title "Stylus" \
-    --desc "Expressive, dynamic, robust CSS for nodejs" \
-		--ribbon http://github.com/learnboost/stylus \
-		--private \
-		$^ > $@
-
 install-bundle:
 	cp -fr $(TM_BUNDLE) $(TM_BUNDLE_DEST)
 
@@ -28,4 +17,4 @@ update-bundle:
 benchmark:
 	@node bm.js
 
-.PHONY: test test-integration install-bundle docs update-bundle benchmark
+.PHONY: test test-integration install-bundle update-bundle benchmark
