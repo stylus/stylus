@@ -170,36 +170,23 @@ yielding:
      sum(1,2,3,4,5)
      // => 15
 
-### Complex Example
+### Hash Example
 
-Below we construct two functions, one named `opposite()` which will give the opposite of each positional identifier passed in, for example `left` will become `right`, and `top right`, will become `bottom left`.
+ Below we define the `get(hash, key)` function, which will return the
+ value of `key`, or `null`. We iterate each `pair` in `hash`, returning the pair's second node when the first (the `key`) matches. 
 
-First our helper function `opposite-position()` performs the this condition, simply returning a new identifier. Secondly `opposite()` iterates the positions given, appending them to our previous or empty expression.
+      get(hash, key)
+        return pair[1] if pair[0] == key for pair in hash
 
-    opposite-position(pos)
-      if pos == top
-        bottom
-      else if pos == bottom
-        top
-      else if pos == left
-        right
-      else if pos == right
-        left
-      else
-        error('Invalid position ' + pos)
+As you can see below, in-language functions paired with robust stylus expressions can provide great flexibility. 
+      
+      hash = (one 1) (two 2) (three 3)
+      
+      get(hash, two)
+      // => 2
 
-    opposite(positions)
-      for pos in positions
-        pos = opposite-position(pos)
-        ret = ret is defined ? ret pos : pos
+      get(hash, three)
+      // => 3
 
-usage:
-
-    opposite(top)
-    // => bottom
-    
-    opposite(left)
-    // => right
-    
-    opposite(top left)
-    // => bottom right
+      get(hash, something)
+      // => null
