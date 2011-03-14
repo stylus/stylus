@@ -158,6 +158,16 @@ We can also operator on colors, and values are clamped appropriately.
     4 % 2
     // => 0
 
+When using `/` within a property value you must wrap with parens. The following for example is taken literally, to support css line-height:
+
+    font: 14px/1.5;
+
+whereas the following is evaluated, dividing `14px` by `1.5`:
+
+    font: (14px/1.5);
+
+this exception is _only_ required for the `/` operator.
+
 ### Exponent: **
 
 The Exponent operator:
