@@ -1,68 +1,56 @@
 
+
+// color manipulation
+
 body
-  a = 0.5
-  color rgba(0,0,255,a)
-  
-  b = 100
-  color rgb(200,100,b)
-  
-  foo red(red)
-  foo red(green)
-  foo green(#0f0)
-  foo blue(#00f)
-  foo blue(hsl(15deg, 100%, 50%))
-  
-  foo alpha(rgba(0,0,0,0.3))
-  foo alpha(hsla(#fff))
-  
-  foo type(red)
-  foo type(hsl(#fff))
-  foo type(12)
-  foo type('test')
-  
-  // 15deg
-  foo hsl(#ff6633)
-  foo hue(hsl(#FF6633))
-  // 100%
-  sat saturation(hsl(#FF6633))
-  // 60%
-  light lightness(hsl(#FF6633))
-  light lightness(hsla(rgba(255,66,33,1)))
-  
-  color hsl(15deg,100%,60%)
-  color hsla(15deg,100%,60%,1)
-  color #FF6633
-  
-  color rgb(rgba(255,100,0,0.5))
-  color rgb(#ff6633)
-  color hsl(#ffcc00)
-  color rgb(#fc0)
-  color rgba(hsl(15deg,100%,60%),0.5)
-  color rgb(hsl(15deg,100%,60%))
-  foo unquote("sans-serif")
-  foo unquote(sans-serif)
-  foo even(1)
-  foo even(2)
-  foo odd(1)
-  foo odd(2)
-  
-  background url("/images/test.png")
-  background url(/images/some image.png)
-  
-  foo min(5,10)
-  foo max(5,10)
-  foo ceil(5.5)
-  foo floor(5.5)
-  foo abs(5)
+  color darken(#eee, 50%)
+  color darken-by(#eee, 50%)
+  color #eee - rgba(100,0,0,0.5)
+  color rgba(#eee,.5)
+
+// expression node access
+
+body
+  list = (one 1) (two 2) (three 3)
+  foo last(list)
+
+// pseudo hashes
+
+get(hash, key)
+  return pair[1] if pair[0] == key for pair in hash
+
+body
+  hash = (one 1) (two 2) (three 3)
+  foo get(hash, two)
+  foo get(hash, one)
+  foo get(hash, none) == null
+  foo length(hash)
+
+// color components
+
+body
+  foo red(#c00)
+  foo lightness(#c00)
+
+// units
+
+body
+  foo unit(15%)
+  foo unit(15%, px)
+  foo unit(15px, '%')
+
+// math
+
+body
   foo abs(-5)
-  foo round(1.46)
-  foo round(1.55)
-  
-  foo unit(5)
-  foo unit(5px)
-  foo unit(5%)
-  
-  foo lighten(#331f00, 20%)
-  foo darken(#fff, 40%)
-  foo #fff - hsl(0,0,40%)
-  foo hsl(0,0,70%) - hsl(0,0,30%)
+  foo sum(1 2 3 4)
+  foo avg(1 2 3 4)
+
+// literals
+
+body
+  foo unquote('X::MessedUp::IE.crap(here)')
+
+// inspection
+
+p(1 + 5 / 10)
