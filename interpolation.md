@@ -27,3 +27,17 @@ yielding:
         border-radius: 1px 2px / 3px 4px;
       }
 
+## Property Hacks
+
+Interpolation can be used for property hacks as well, since all string values
+within the delimiters are transformed to literals. For example:
+
+    body
+      {'*foo-bar'} baz
+
+yields:
+
+    body {
+      *foo-bar: baz;
+    }
+      

@@ -1,28 +1,28 @@
 
 ## Built-in Functions
 
-### red(color | hsl)
+### red(color)
 
 Return the red component of the given `color`.
 
      red(#c00)
      // => 204
 
-### green(color | hsl)
+### green(color)
 
 Return the green component of the given `color`.
 
      green(#0c0)
      // => 204
 
-### blue(color | hsl)
+### blue(color)
 
 Return the blue component of the given `color`.
 
      red(#00c)
      // => 204
 
-### alpha(color | hsl)
+### alpha(color)
 
 Return the alpha component of the given `color`.
 
@@ -32,30 +32,57 @@ Return the alpha component of the given `color`.
       alpha(rgba(0,0,0,0.3))
       // => 0.3
 
-### hue(color | hsl)
+### dark(color)
+
+Check if `color` is dark:
+
+      dark(black)
+      // => true
+
+      dark(#005716)
+      // => true
+
+      dark(white)
+      // => false
+
+
+### light(color)
+
+Check if `color` is light:
+
+    light(black)
+    // => false
+
+    light(white)
+    // => true
+    
+    light(#00FF40)
+    // => true
+
+### hue(color)
 
 Return the hue of the given `color`.
 
-    hue(hsl(50deg, 100%, 80%))
+    hue(hsla(50deg, 100%, 80%))
     // => 50deg
 
-### saturation(color | hsl)
+### saturation(color)
 
 Return the saturation of the given `color`.
 
-    hue(hsl(50deg, 100%, 80%))
+    hue(hsla(50deg, 100%, 80%))
     // => 100%
 
-### lightness(color | hsl)
+### lightness(color)
 
 Return the lightness of the given `color`.
 
-    hue(hsl(50deg, 100%, 80%))
+    hue(hsla(50deg, 100%, 80%))
     // => 80%
 
 ### typeof(node)
 
-Return type of `node.` as a string.
+Return type of `node` as a string.
 
       type(12)
       // => 'unit'
@@ -64,10 +91,10 @@ Return type of `node.` as a string.
       // => 'unit'
       
       typeof(#fff)
-      // => 'color'
+      // => 'rgba'
 
       type-of(#fff)
-      // => 'color'
+      // => 'rgba'
 
 Aliased as `type-of` and `type`.
 
@@ -149,31 +176,54 @@ Test if `string` matches the given `pattern`.
       odd(5mm)
       // => true
 
+### sum(nums)
+
+      sum(1 2 3)
+      // => 6
+
+### avg(nums)
+
+     avg(1 2 3)
+     // => 2
+
+### join(delim, vals)
+
+  Join the given `vals` with `delim`.
+
+      join(' ', 1 2 3)
+      // => "1 2 3"
+      
+      join(',', 1 2 3)
+      // => "1,2,3"
+      
+      join(', ', 1 2 3)
+      // => "1, 2, 3"
+
 ### hsla(color | h[, s, l, a])
 
 Convert the given `color` to an `HSLA` node,
 or h,s,l,a component values.
 
-     hsla(10deg, 50%, 30%, 0.5)
+     hslaa(10deg, 50%, 30%, 0.5)
+     // => HSLA
+
+     hslaa(#ffcc00)
+     // => HSLA
+
+### hsla(color | h[, s, l])
+
+Convert the given `color` to an `HSLA` node,
+or h,s,l component values.
+
+     hsla(10, 50, 30)
      // => HSLA
 
      hsla(#ffcc00)
      // => HSLA
 
-### hsl(color | h[, s, l])
-
-Convert the given `color` to an `HSLA` node,
-or h,s,l component values.
-
-     hsl(10, 50, 30)
-     // => HSLA
-
-     hsl(#ffcc00)
-     // => HSLA
-
 ### rgba(color | r[, g, b, a])
 
-Return a `Color` from the r,g,b,a channels or provide a color to tweak the alpha.
+Return `RGBA` from the r,g,b,a channels or provide a `color` to tweak the alpha.
 
       rgba(255,0,0,0.5)
       // => rgba(255,0,0,0.5)
@@ -186,7 +236,7 @@ Return a `Color` from the r,g,b,a channels or provide a color to tweak the alpha
 
 ### rgb(color | r[, g, b])
 
-Return a `Color` from the r,g,b channels or cast to a color.
+Return a `RGBA` from the r,g,b channels or cast to an `RGBA` node.
     
     rgb(255,204,0)
     // => #ffcc00
@@ -194,21 +244,21 @@ Return a `Color` from the r,g,b channels or cast to a color.
     rgb(#fff)
     // => #fff
 
-### lighten(color | hsl, amount)
+### lighten(color, amount)
 
 Lighten the given `color` by `amount`.
 
     lighten(black, 50%)
     // => #808080
 
-### darken(color | hsl, amount)
+### darken(color, amount)
 
 Darken the given `color` by `amount`.
 
     darken(white, 50%)
     // => #808080
 
-### lighten-by(color | hsl, amount)
+### lighten-by(color, amount)
 
  Lighten by `amount` of the current lightness value.
     
@@ -223,11 +273,11 @@ Darken the given `color` by `amount`.
 
 essentially the same as:
 
-    black + hsl(0,0,50%)
-    black + hsl(0,0,75%)
-    black + hsl(0,0,100%)
+    black + hsla(0,0,50%)
+    black + hsla(0,0,75%)
+    black + hsla(0,0,100%)
 
-### darken-by(color | hsl, amount)
+### darken-by(color, amount)
 
  Darken by `amount` of the current lightness value.
 
@@ -240,14 +290,14 @@ essentially the same as:
     darken-by(darken-by(darken-by(white, 50%), 50%), 50%)
     // => #202020
 
-### desaturate(color | hsl, amount)
+### desaturate(color, amount)
 
 Desaturate the given `color` by `amount`.
 
     desaturate(#f00, 40%)
     // => #c33
 
-### saturate(color | hsl, amount)
+### saturate(color, amount)
 
 Saturate the given `color` by `amount`.
 
@@ -315,6 +365,19 @@ Saturate the given `color` by `amount`.
         error('add() expects units')
       a + b
 
+### last(expr)
+
+ Return the _last_ value in the given `expr`:
+ 
+      nums = 1 2 3
+      last(nums)
+      last(1 2 3)
+      // => 3
+      
+      list = (one 1) (two 2) (three 3)
+      last(list)
+      // => (three 3)
+
 ### p(expr)
 
  Inspect the given `expr`:
@@ -374,14 +437,14 @@ stdout:
 ### Undefined Functions
 
   Undefined functions will output as literals, so for example
-  we may call `color-stop(50%, #fff)` within our css, and it will
+  we may call `rgba-stop(50%, #fff)` within our css, and it will
   output as you would expect. We can use this within helpers as well.
   
   In the example below we simply define the function `stop()` which 
-  returns the literal `color-stop()` call.
+  returns the literal `rgba-stop()` call.
   
-    stop(pos, color)
-      color-stop(pos, color)
+    stop(pos, rgba)
+      rgba-stop(pos, rgba)
 
     stop(50%, orange)
-    // => color-stop(50%, #ffa500)
+    // => rgba-stop(50%, #ffa500)
