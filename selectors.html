@@ -1,151 +1,25 @@
-<!DOCTYPE html><html><head><title>Stylus</title><link rel="stylesheet" href="../main.css"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head><body><div id="container"><h1><a href='http://learnboost.github.com/stylus'>Stylus</a></h1><p class="tagline"><em class="expressive">Expressive, </em><em class="dynamic">dynamic, </em><em class="robust">robust </em><em class="css">CSS</em></p><div id="ribbon"><a href="http://github.com/learnboost/stylus">Fork me on GitHub</a></div><ul id="menu"><li><a href="../docs/selectors.html">Selectors</a></li><li><a href="../docs/variables.html">Variables</a></li><li><a href="../docs/interpolation.html">Interpolation</a></li><li><a href="../docs/operators.html">Operators</a></li><li><a href="../docs/mixins.html">Mixins</a></li><li><a href="../docs/functions.html">Functions</a></li><li><a href="../docs/bifs.html">Built-in Functions</a></li><li><a href="../docs/vargs.html">Rest Params</a></li><li><a href="../docs/comments.html">Comments</a></li><li><a href="../docs/conditionals.html">Conditionals</a></li><li><a href="../docs/iteration.html">Iteration</a></li><li><a href="../docs/import.html">@import</a></li><li><a href="../docs/media.html">@media</a></li><li><a href="../docs/font-face.html">@font-face</a></li><li><a href="../docs/keyframes.html">@keyframes</a></li><li><a href="../docs/functions.url.html">url()</a></li><li><a href="../docs/literal.html">CSS Literal</a></li><li><a href="../docs/css-style.html">CSS Style Syntax</a></li><li><a href="../docs/escape.html">Char Escaping</a></li><li><a href="../docs/executable.html">Executable</a></li><li><a href="../docs/error-reporting.html">Error Reporting</a></li><li><a href="../docs/middleware.html">Connect Middleware</a></li><li><a href="../docs/js.html">JavaScript API</a></li></ul><div id="content"><div class='mp'>
-<h2 id="Selectors">Selectors</h2>
+<!DOCTYPE html><html><head><title>Stylus</title><link rel="stylesheet" href="../main.css"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head><body><div id="container"><h1><a href='http://learnboost.github.com/stylus'>Stylus</a></h1><p class="tagline"><em class="expressive">Expressive, </em><em class="dynamic">dynamic, </em><em class="robust">robust </em><em class="css">CSS</em></p><div id="ribbon"><a href="http://github.com/learnboost/stylus">Fork me on GitHub</a></div><ul id="menu"><li><a href="../docs/selectors.html">Selectors</a></li><li><a href="../docs/variables.html">Variables</a></li><li><a href="../docs/interpolation.html">Interpolation</a></li><li><a href="../docs/operators.html">Operators</a></li><li><a href="../docs/mixins.html">Mixins</a></li><li><a href="../docs/functions.html">Functions</a></li><li><a href="../docs/bifs.html">Built-in Functions</a></li><li><a href="../docs/vargs.html">Rest Params</a></li><li><a href="../docs/comments.html">Comments</a></li><li><a href="../docs/conditionals.html">Conditionals</a></li><li><a href="../docs/iteration.html">Iteration</a></li><li><a href="../docs/import.html">@import</a></li><li><a href="../docs/media.html">@media</a></li><li><a href="../docs/font-face.html">@font-face</a></li><li><a href="../docs/keyframes.html">@keyframes</a></li><li><a href="../docs/functions.url.html">url()</a></li><li><a href="../docs/literal.html">CSS Literal</a></li><li><a href="../docs/css-style.html">CSS Style Syntax</a></li><li><a href="../docs/escape.html">Char Escaping</a></li><li><a href="../docs/executable.html">Executable</a></li><li><a href="../docs/error-reporting.html">Error Reporting</a></li><li><a href="../docs/middleware.html">Connect Middleware</a></li><li><a href="../docs/js.html">JavaScript API</a></li></ul><div id="content">Missing required argument: file
 
-<h3 id="Indentation">Indentation</h3>
+Usage: node /usr/local/bin/ronn [options] file
+Show this help message
+    --help
+Set "date" attribute
+    --date <value>
+Set "version" attribute
+    --version <value>
+Set "manual" attribute
+    --manual <value>
+Convert to html fragment format
+    -f, --fragment
+Convert to html format
+    -5, --html
+Convert to roff format
+    -r, --roff
+Convert to roff and open with man
+    -m, --man
+Output to files with appropriate extension
+    -b, --build
+Show version and exit
+    -V
 
-<p>Stylus is "pythonic" aka indentation-based. Whitespace is significant, so we substitute { and } with an <em>indent</em>, and an <em>outdent</em> as shown below:</p>
-
-<pre><code>body
-  color white
-</code></pre>
-
-<p>which compiles to:</p>
-
-<pre><code>body {
-  color: #fff;
-}
-</code></pre>
-
-<p>Optionally if preferred we may utilize colons to separate properties and their values:</p>
-
-<pre><code>body
-  color: white
-</code></pre>
-
-<h3 id="Rule-Sets">Rule Sets</h3>
-
-<p>Stylus, just like css allows you to define properties for several selectors at once through comma separation.</p>
-
-<pre><code>textarea, input
-  border 1px solid #eee
-</code></pre>
-
-<p>The same can be done with a newline:</p>
-
-<pre><code>textarea
-input
-  border 1px solid #eee
-</code></pre>
-
-<p>both compiling to:</p>
-
-<pre><code>textarea,
-input {
-  border: 1px solid #eee;
-}
-</code></pre>
-
-<p>The one exception to this rule, are selectors that look like properties, for example <code>foo bar baz</code> in the following may be a property, or a selector:</p>
-
-<pre><code>foo bar baz
-&gt; input
-  border 1px solid
-</code></pre>
-
-<p>so for this reason, or if simply preferred we may trail with a comma:</p>
-
-<pre><code>foo bar baz,
-form input,
-&gt; a
-  border 1px solid
-</code></pre>
-
-<h3 id="Parent-Reference">Parent Reference</h3>
-
-<p>The <code>&amp;</code> character references the parent selector(s). In the example below our two selectors <code>textarea</code>, and <code>input</code> both alter the <code>color</code> on the <code>:hover</code> pseudo selector.</p>
-
-<pre><code>textarea
-input
-  color #A7A7A7
-  &amp;:hover
-    color #000
-</code></pre>
-
-<p>compiles to:</p>
-
-<pre><code>textarea,
-input {
-  color: #a7a7a7;
-}
-textarea:hover,
-input:hover {
-  color: #000;
-}
-</code></pre>
-
-<p>below is an example providing a simple <code>2px</code> border for internet exploder utilizing the parent reference within a mixin:</p>
-
-<pre><code>  box-shadow()
-    -webkit-box-shadow arguments
-    -moz-box-shadow arguments
-    box-shadow arguments
-    html.ie8 &amp;,
-    html.ie7 &amp;,
-    html.ie6 &amp;
-      border 2px solid arguments[length(arguments) - 1]
-
-  body
-    #login
-      box-shadow 1px 1px 3px #eee
-</code></pre>
-
-<p>yielding:</p>
-
-<pre><code>  body #login {
-    -webkit-box-shadow: 1px 1px 3px #eee;
-    -moz-box-shadow: 1px 1px 3px #eee;
-    box-shadow: 1px 1px 3px #eee;
-  }
-  html.ie8 body #login,
-  html.ie7 body #login,
-  html.ie6 body #login {
-    border: 1px solid #eee;
-  }
-</code></pre>
-
-<h3 id="Disambiguation">Disambiguation</h3>
-
-<p>Expressions such as <code>padding - n</code> could be interpreted both as a subtraction operation, as well as a property with an unary minus. To disambiguate we can wrap the expression with parens:</p>
-
-<pre><code>pad(n)
-  padding (- n)
-
-body
-  pad(5px)
-</code></pre>
-
-<p>compiles to:</p>
-
-<pre><code>body {
-  padding: -5px;
-}
-</code></pre>
-
-<p>however this is only true in functions, since functions act both as mixins, or calls with return values. For example this is fine, and will yield the same results as above:</p>
-
-<pre><code>body
-  padding -5px
-</code></pre>
-
-<p>Have weird property values that Stylus cannot process? <code>unquote()</code> can help you out:</p>
-
-<pre><code>filter unquote('progid:DXImageTransform.Microsoft.BasicImage(rotation=1)')
-</code></pre>
-
-<p>yields:</p>
-
-<pre><code>filter progid:DXImageTransform.Microsoft.BasicImage(rotation=1)
-</code></pre>
-
-</div>
 </div></div></body></html>
