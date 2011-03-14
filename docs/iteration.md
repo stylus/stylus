@@ -34,29 +34,67 @@ yielding:
           foo: 2 sans-serif;
         }
 
+### Mixins
+
+ We may utilize iteration within mixins to produce powerful functionality, for example we can apply expression pairs as properties using interpolation and iteration. Below we define `apply()`, conditionally utilizing all the `arguments` so that comma-delimited _and_ expression lists are supported:
+ 
+     apply(props)
+       props = arguments if length(arguments) > 1
+       for prop in props
+         {prop[0]} prop[1]
+
+     body
+       apply(one 1, two 2, three 3)
+
+     body
+       list = (one 1) (two 2) (three 3)
+       apply(list)
+
 ### Functions
 
  Stylus functions may also contain for-loops, below are some example use-cases:
 
 sum:
 
-      sum(nums...)
+      sum(nums)
         sum = 0
         for n in nums
           sum += n
 
-      sum(1,2,3,4)
-      // => 10
+      sum(1 2 3)
+      // => 6
 
 join:
 
-      join(delim, strings...)
+      join(delim, args)
         buf = ''
-        for s, i in strings
-          buf += (i ? delim : '') + s
+        for arg, index in args
+          if index
+            buf += delim + arg
+          else
+            buf += arg
 
-      foo join(', ', 'one', 'two', 'three')
-      // => "one, two, three"
+      join(', ', foo bar baz)
+      // => "foo, bar, baz"
 
-      join(' ', 1, 2, 3)
-      // => "1 2 3"
+### Postfix
+
+ Much like `if` / `unless` may be utilized post-statement, the same can be done with `for`. Below are the same examples as above utilizing the postfix syntax:
+ 
+       sum(nums)
+         sum = 0
+         sum += n for n in nums
+
+
+      join(delim, args)
+        buf = ''
+        buf += i ? delim + arg : arg for arg, i in args
+
+ We can also __return__ from within a loop, below is an example returning the
+ number when `n % 2 == 0` evaluates to __true__.
+ 
+     first-even(nums)
+       return n if n % 2 == 0 for n in nums
+
+     first-even(1 3 5 5 6 3 2)
+     // => 6
