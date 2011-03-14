@@ -176,6 +176,16 @@ Test if `string` matches the given `pattern`.
       odd(5mm)
       // => true
 
+### sum(nums)
+
+      sum(1 2 3)
+      // => 6
+
+### avg(nums)
+
+    avg(1 2 3)
+    // => 2
+
 ### hsla(color | h[, s, l, a])
 
 Convert the given `color` to an `HSLA` node,
