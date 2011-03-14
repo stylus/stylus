@@ -86,9 +86,9 @@ join:
          sum += n for n in nums
 
 
-      join(delim, args)
-        buf = ''
-        buf += i ? delim + arg : arg for arg, i in args
+       join(delim, args)
+         buf = ''
+         buf += i ? delim + arg : arg for arg, i in args
 
  We can also __return__ from within a loop, below is an example returning the
  number when `n % 2 == 0` evaluates to __true__.
