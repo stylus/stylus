@@ -11,7 +11,7 @@ Below is the operator precedence table, highest to lowest:
      ... ..
      <= >= < >
      in
-     == !=
+     == is != is not
      is a
      && and || or
      ?:
@@ -158,6 +158,16 @@ We can also operator on colors, and values are clamped appropriately.
     4 % 2
     // => 0
 
+When using `/` within a property value you must wrap with parens. The following for example is taken literally, to support css line-height:
+
+    font: 14px/1.5;
+
+whereas the following is evaluated, dividing `14px` by `1.5`:
+
+    font: (14px/1.5);
+
+this exception is _only_ required for the `/` operator.
+
 ### Exponent: **
 
 The Exponent operator:
@@ -190,6 +200,44 @@ Equality operators can be used to equate units, colors, strings, and even identi
     "test" == "test"
     // => true
 
+    true is true
+    // => true
+
+    'hey' is not 'bye'
+    // => true
+
+    'hey' isnt 'bye'
+    // => true
+
+Only exact values match, for example `0 == false`, and `null == false` are both `false`.
+
+Aliases:
+
+    ==    is
+    !=    is not
+    !=    isnt
+
+## Truthfulness
+
+ Nearly everything within Stylus resolves to `true`, including units with a suffix, for example even `0%`, `0px`, etc will resolve to `true`, since commonly in Stylus a mixin or function may accept such units as valid, however `0` itself is `false` in terms of arithmetic.
+
+`true` examples:
+
+      0% 
+      0px
+      1px 
+      -1
+      -1px
+      hey
+      'hey'
+
+`false` examples:
+
+     0 
+     null
+     false
+     ''
+
 ### Logical Operators: && || and or
 
 Logical operators `&&` and `||` are aliased `and` / `or` which apply the same precedence.
@@ -203,7 +251,7 @@ Logical operators `&&` and `||` are aliased `and` / `or` which apply the same pr
     0 && 5
     // => 0
     
-    #fff is a 'color' and 15 is a 'unit'
+    #fff is a 'rgba' and 15 is a 'unit'
     // => true
 
 ### Existence Operator: in
@@ -298,24 +346,24 @@ However when using `?=` our second attempt fails since the variable is already d
 
 ### Instance Check: is a
 
-Stylus provides a binary operator named `is a` used to type check. The technical name for unit constructors should be capitalized, however lowercase works as well.
+Stylus provides a binary operator named `is a` used to type check.
 
-    15 is a unit
+    15 is a 'unit'
     // => true
     
-    15 is a Unit
+    #fff is a 'rgba'
     // => true
     
-    #fff is a color
-    // => true
-    
-    15 is a color
+    15 is a 'rgba'
     // => false
 
 Alternatively we could use the `type()` BIF:
 
-    type(#fff) == 'color'
+    type(#fff) == 'rgba'
     // => true                                                                            
+
+'color' is the one special-case, evaluating to true when the
+left-hand operand is an `RGBA` or `HSLA` node.
 
 ### Variable Definition: is defined
 
@@ -366,3 +414,5 @@ The ternary operator works as we would expect in most languages, being the only 
     num = 15
     num ? unit(num, 'px') : 20px
     // => 15px
+
+

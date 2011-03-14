@@ -42,6 +42,26 @@ Note that the `border-radius` within our mixin is treated as a property, and not
 
 now allowing us to pass values such as `border-radius 1px 2px / 3px 4px`.
 
+Another great example of this, is adding transparent support for vendor specifics such as `opacity` support for IE:
+
+        support-for-ie ?= true
+
+        opacity(n)
+          opacity n
+          if support-for-ie
+            filter unquote('progid:DXImageTransform.Microsoft.Alpha(Opacity=' + round(n * 100) + ')')
+
+        #logo
+          &:hover
+            opacity 0.5
+
+rendering:
+
+        #logo:hover {
+          opacity: 0.5;
+          filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+        }
+
 ### Parent References
 
  Mixins may utilize the parent reference character `&`, acting on the parent instead of further nesting. For example lets say we wish to create a `stripe(even, odd)` mixin for striping table row, we provide both `even` and `odd` with default color values, and assign the `background-color` property on the row. Nested within the `tr` we use `&` to reference the `tr`, providing the `even` color.
