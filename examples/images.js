@@ -11,7 +11,6 @@ var stylus = require('../')
 // the paths option is merged with the general options
 // so it is completely optional, however this now allows us to use
 // url(sprite.gif) instead of url(images/sprite.gif) 
-
 stylus(str)
   .set('filename', path)
   .define('url', stylus.url({ paths: [__dirname + '/images'] }))
