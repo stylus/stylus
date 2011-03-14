@@ -151,31 +151,12 @@ html
         .example
           h2 Even in-language functions!
           pre  
-            opposite-position(pos)
-              if pos == top
-                bottom
-              else if pos == bottom
-                top
-              else if pos == left
-                right
-              else if pos == right
-                left
-              else
-                error('Invalid position ' + pos)
-            
-            opposite(positions)
-              for pos in positions
-                pos = opposite-position(pos)
-                ret = ret is defined ? ret pos : pos
-            
-            opposite(top)
-            // => bottom
-            
-            opposite(left)
-            // => right
-            
-            opposite(top left)
-            // => bottom right
+            sum(nums...)
+              sum = 0
+              sum += n for n in nums
+
+            sum(1 2 3 4)
+            // => 10
         .example
           h2 What if it were all optional?
           pre
