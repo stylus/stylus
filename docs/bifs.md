@@ -183,8 +183,21 @@ Test if `string` matches the given `pattern`.
 
 ### avg(nums)
 
-    avg(1 2 3)
-    // => 2
+     avg(1 2 3)
+     // => 2
+
+### join(delim, vals)
+
+  Join the given `vals` with `delim`.
+
+      join(' ', 1 2 3)
+      // => "1 2 3"
+      
+      join(',', 1 2 3)
+      // => "1,2,3"
+      
+      join(', ', 1 2 3)
+      // => "1, 2, 3"
 
 ### hsla(color | h[, s, l, a])
 
