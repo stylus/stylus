@@ -342,6 +342,19 @@ Saturate the given `color` by `amount`.
         error('add() expects units')
       a + b
 
+### last(expr)
+
+ Return the _last_ value in the given `expr`:
+ 
+      nums = 1 2 3
+      last(nums)
+      last(1 2 3)
+      // => 3
+      
+      list = (one 1) (two 2) (three 3)
+      last(list)
+      // => (three 3)
+
 ### p(expr)
 
  Inspect the given `expr`:
