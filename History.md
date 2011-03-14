@@ -1,4 +1,22 @@
 
+0.8.0 / 2011-03-14 
+==================
+
+  * Added postfix `for`-loop support.
+    Ex: `return n if n % 2 == 0 for n in nums` 
+  * Added support for several postfix operators
+    Ex: `border-radius: 5px if true unless false;`
+  * Added `last(expr)` built-in function
+  * Added `sum(nums)` built-in function
+  * Added `avg(nums)` built-in function
+  * Added `join(delim, vals)` built-in function
+  * Added `Evaluator#{currentScope,currentBlock}`
+  * Added multi-line function paramter definition support
+  * Changed; `0` is falsey, `0%`, `0em`, `0px` etc truthy. Closes #160
+  * Fixed `for` implicit __return__ value
+  * Fixed `for` explicit __return__ value
+  * Fixed mixin property ordering
+
 0.7.4 / 2011-03-10 
 ==================
 
