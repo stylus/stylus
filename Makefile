@@ -5,7 +5,7 @@ HTML = $(DOCS:.md=.html)
 site: index.html main.css $(HTML)
 
 index.html: assets/index.jade
-	jade --pipe $< > $@
+	jade $< > $@
 
 main.css: assets/main.styl
 	stylus < $< > $@

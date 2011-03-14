@@ -6,7 +6,7 @@ html {
 body {
   padding: 120px 150px;
   font: 14px / 1.4 "helvetica neue", helvetica, arial, sans-serif;
-  color: #484848;
+  color: #959595;
 }
 h1,
 h2,
@@ -88,13 +88,13 @@ ul li {
   padding: 15px 0 10px 5px;
   background: rgba(255,255,255,0.3);
   border: 1px solid #ddd;
-  text-align: left;
   -moz-box-shadow: inset rgba(34,34,34,0.1) 0 4px 4px;
   -webkit-box-shadow: inset rgba(34,34,34,0.1) 0 4px 4px;
   box-shadow: inset rgba(34,34,34,0.1) 0 4px 4px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
+  text-align: left;
 }
 #menu li {
   list-style: none;
@@ -138,7 +138,7 @@ pre.terminal {
 }
 p code {
   padding: 2px 4px;
-  color: #626262;
+  color: #959595;
   font-size: 85%;
   background: #fff;
   -webkit-border-radius: 5px;
@@ -152,11 +152,11 @@ p code {
   position: absolute;
   top: 2.5em;
   left: -3.75em;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
   background-color: #a00;
   padding: 1px 0;
   overflow: hidden;
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
   -moz-box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
   -webkit-box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
   box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
