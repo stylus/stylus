@@ -1,31 +1,30 @@
 
-bg(color = white)
-  background color
 
-pad(x, y, margin = false)
-  padding y x y x
-  if margin
-    margin y x y x
+// ?= would allow us to define the images global before @importing 
+// the file if we were to distribute this
 
-border-radius()
-  -webkit-border-radius arguments
-  -moz-border-radius arguments
-  border-radius arguments
+images ?= '/images'
 
-lighten(color)
-  color - rgba(0,0,0,0.5)
+image(path)
+  url(join('/', images path))
+
+// or
+
+image(path)
+  url(images + '/' + path)
 
 body
-  pad(5px, 10px, true)
+  background image('foo.png')
 
-form input
-  size = 5px
-  background lighten(#fff)
-  border-radius(size)
-  pad(size, size * 2)
+// functions can act as both mixins
+// or have a return value
 
-a
-  bg()
+image(path)
+  if mixin
+    background image(path)
+  else
+    url(images + '/' + path)
 
-a.button
-  bg(red)
+body
+  image('something.png')
+  background image('something.png')
