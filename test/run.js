@@ -3,7 +3,7 @@
  * Module dependencies.
  */
 
-var css = require('../')
+var stylus = require('../')
   , should = require('../support/should')
   , basename = require('path').basename
   , fs = require('fs');
@@ -33,7 +33,9 @@ function test(test) {
   fs.readFile(path, 'utf8', function(err, str){
     if (err) throw err;
     var paths = [__dirname + '/images', __dirname + '/cases/import.basic'];
-    css.render(str, { filename: path, paths: paths }, function(err, actual){
+    var options = { filename: path, paths: paths };
+    if (~test.indexOf('compress')) options.compress = true;
+    stylus.render(str, options, function(err, actual){
       if (err) throw err;
       fs.readFile(csspath, 'utf8', function(err, expected){
         if (err) throw err;
