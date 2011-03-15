@@ -1,25 +1,73 @@
-<!DOCTYPE html><html><head><title>Stylus</title><link rel="stylesheet" href="../main.css"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head><body><div id="container"><h1><a href='http://learnboost.github.com/stylus'>Stylus</a></h1><p class="tagline"><em class="expressive">Expressive, </em><em class="dynamic">dynamic, </em><em class="robust">robust </em><em class="css">CSS</em></p><div id="ribbon"><a href="http://github.com/learnboost/stylus">Fork me on GitHub</a></div><ul id="menu"><li><a href="../docs/selectors.html">Selectors</a></li><li><a href="../docs/variables.html">Variables</a></li><li><a href="../docs/interpolation.html">Interpolation</a></li><li><a href="../docs/operators.html">Operators</a></li><li><a href="../docs/mixins.html">Mixins</a></li><li><a href="../docs/functions.html">Functions</a></li><li><a href="../docs/bifs.html">Built-in Functions</a></li><li><a href="../docs/vargs.html">Rest Params</a></li><li><a href="../docs/comments.html">Comments</a></li><li><a href="../docs/conditionals.html">Conditionals</a></li><li><a href="../docs/iteration.html">Iteration</a></li><li><a href="../docs/import.html">@import</a></li><li><a href="../docs/media.html">@media</a></li><li><a href="../docs/font-face.html">@font-face</a></li><li><a href="../docs/keyframes.html">@keyframes</a></li><li><a href="../docs/functions.url.html">url()</a></li><li><a href="../docs/literal.html">CSS Literal</a></li><li><a href="../docs/css-style.html">CSS Style Syntax</a></li><li><a href="../docs/escape.html">Char Escaping</a></li><li><a href="../docs/executable.html">Executable</a></li><li><a href="../docs/error-reporting.html">Error Reporting</a></li><li><a href="../docs/middleware.html">Connect Middleware</a></li><li><a href="../docs/js.html">JavaScript API</a></li></ul><div id="content">Missing required argument: file
+<!DOCTYPE html><html><head><title>Stylus</title><link rel="stylesheet" href="../main.css"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head><body><div id="container"><h1><a href='http://learnboost.github.com/stylus'>Stylus</a></h1><p class="tagline"><em class="expressive">Expressive, </em><em class="dynamic">dynamic, </em><em class="robust">robust </em><em class="css">CSS</em></p><div id="ribbon"><a href="http://github.com/learnboost/stylus">Fork me on GitHub</a></div><ul id="menu"><li><a href="../docs/selectors.html">Selectors</a></li><li><a href="../docs/variables.html">Variables</a></li><li><a href="../docs/interpolation.html">Interpolation</a></li><li><a href="../docs/operators.html">Operators</a></li><li><a href="../docs/mixins.html">Mixins</a></li><li><a href="../docs/functions.html">Functions</a></li><li><a href="../docs/bifs.html">Built-in Functions</a></li><li><a href="../docs/vargs.html">Rest Params</a></li><li><a href="../docs/comments.html">Comments</a></li><li><a href="../docs/conditionals.html">Conditionals</a></li><li><a href="../docs/iteration.html">Iteration</a></li><li><a href="../docs/import.html">@import</a></li><li><a href="../docs/media.html">@media</a></li><li><a href="../docs/font-face.html">@font-face</a></li><li><a href="../docs/keyframes.html">@keyframes</a></li><li><a href="../docs/functions.url.html">url()</a></li><li><a href="../docs/literal.html">CSS Literal</a></li><li><a href="../docs/css-style.html">CSS Style Syntax</a></li><li><a href="../docs/escape.html">Char Escaping</a></li><li><a href="../docs/executable.html">Executable</a></li><li><a href="../docs/error-reporting.html">Error Reporting</a></li><li><a href="../docs/middleware.html">Connect Middleware</a></li><li><a href="../docs/js.html">JavaScript API</a></li></ul><div id="content"><h2 id="Import">Import</h2>
 
-Usage: node /usr/local/bin/ronn [options] file
-Show this help message
-    --help
-Set "date" attribute
-    --date <value>
-Set "version" attribute
-    --version <value>
-Set "manual" attribute
-    --manual <value>
-Convert to html fragment format
-    -f, --fragment
-Convert to html format
-    -5, --html
-Convert to roff format
-    -r, --roff
-Convert to roff and open with man
-    -m, --man
-Output to files with appropriate extension
-    -b, --build
-Show version and exit
-    -V
+<p> Stylus supports both literal <strong>@import</strong> for CSS, as well as dynamic importing of other Stylus sheets.</p>
 
+<h3 id="Literal-CSS">Literal CSS</h3>
+
+<p>  Any filename with the extension <code>.css</code> will become a literal, for example:</p>
+
+<pre><code> @import "reset.css"</code></pre>
+
+<p>will render to the literal css <strong>@import</strong> shown below:</p>
+
+<pre><code> @import "reset.css"</code></pre>
+
+<h3 id="Stylus-Import">Stylus Import</h3>
+
+<p> When using <strong>@import</strong> without the <code>.css</code> extension, it is assumed to be a Stylus sheet, for example <code>@import "mixins/border-radius"</code>.</p>
+
+<p> <strong>@import</strong> works by iterating an array of directories, and seeing if this file lives in any of them, similar to node's <code>require.paths</code>. This array defaults to a single path which is derived from the <code>filename</code> option's dirname. So if your filename is <code>/tmp/testing/stylus/main.styl</code>, then import will look in <code>/tmp/testing/stylus/</code>.</p>
+
+<p> <strong>@import</strong> also supports index styles, meaning if you <code>@import blueprint</code>, it will resolve either <code>blueprint.styl</code> or <code>blueprint/index.styl</code>, useful for libraries to expose all of their features, but still allow a subset of the library to be imported. For example a common lib structure might be:</p>
+
+<pre><code>./tablet
+  |-- index.styl 
+  |-- vendor.styl 
+  |-- buttons.styl 
+  |-- images.styl </code></pre>
+
+<p> In the example below we set the <code>paths</code> options to provide additional paths to Stylus. Within <code>./test.styl</code> we could then <code>@import "mixins/border-radius"</code> or <code>@import "border-radius"</code> since <code>./mixins</code> is exposed to Stylus.</p>
+
+<pre><code>  /**
+   * Module dependencies.
+   */
+
+  var stylus = require('../')
+    , str = require('fs').readFileSync(__dirname + '/test.styl', 'utf8');
+
+  var paths = [
+      __dirname
+    , __dirname + '/mixins'
+  ];
+
+  stylus(str)
+    .set('filename', __dirname + '/test.styl')
+    .set('paths', paths)
+    .render(function(err, css){
+      if (err) throw err;
+      console.log(css);
+    });</code></pre>
+
+<h3 id="JavaScript-Import-API">JavaScript Import API</h3>
+
+<p> When using the <code>.import(path)</code> method, these imports are deferred until evaluation:</p>
+
+<pre><code>   var stylus = require('../')
+     , str = require('fs').readFileSync(__dirname + '/test.styl', 'utf8');
+
+   stylus(str)
+     .set('filename', __dirname + '/test.styl')
+     .import('mixins/vendor')
+     .render(function(err, css){
+     if (err) throw err;
+     console.log(css);
+   });</code></pre>
+
+<p> The following are essentially equivalent:</p>
+
+<pre><code> @import 'mixins/vendor'</code></pre>
+
+<p>and
+     .import('mixins/vendor') 
+ </p>
 </div></div></body></html>

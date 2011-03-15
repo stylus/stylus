@@ -11,7 +11,7 @@ main.css: assets/main.styl
 	stylus < $< > $@
 
 %.html: %.md
-	ronn --html --fragment < $< \
+	ronn --fragment < $< \
 		| cat assets/head.html - assets/foot.html \
 		> $@
 
