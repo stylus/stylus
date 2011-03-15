@@ -342,7 +342,7 @@ Saturate the given `color` by `amount`.
     // => 0
   
     length(1 2 3)
-    // => 1
+    // => 3
 
     length(1)
     // => 1
