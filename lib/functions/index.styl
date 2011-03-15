@@ -126,6 +126,6 @@ last(expr)
 
 join(delim, vals...)
   buf = ''
-  return buf unless length(vals)
+  vals = vals[0] if length(vals) == 1
   for val, i in vals
     buf += i ? delim + val : val

@@ -1,6 +1,6 @@
 body {
   foo: true;
-  foo: 1 2 3;
+  foo: 3 4 5;
   foo: true;
   foo: true;
   foo: false;
@@ -31,7 +31,6 @@ body {
 body {
   foo: 1 2;
   foo: 3 4;
-  foo: 4;
   foo: 4;
 }
 body {

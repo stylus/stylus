@@ -5,7 +5,6 @@ body {
 }
 body {
   foo: true;
-  foo: false;
 }
 body {
   foo: true;
@@ -22,8 +21,12 @@ body {
   foo: false;
   foo: false;
   foo: true;
+  foo: false;
   foo: true;
+}
+body {
   foo: true;
+  foo: false;
 }
 body {
   foo: true;

@@ -3,5 +3,9 @@ body {
   foo: "1, 2, 3";
   foo: "1,2,3";
   foo: "1";
-  foo: "";
+  foo: true;
+}
+body {
+  foo: "1, 2, 3";
+  foo: "one, two, three";
 }

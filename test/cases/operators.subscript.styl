@@ -1,6 +1,6 @@
 body
   foo ()[0] == null
-  foo (((1 2 3)))[0]
+  foo (1(2(3 4 5)))[1][1]
   foo (1 2 3)['test'] == null
   foo !(1 0)[1]
   foo !(1 0)[0]
@@ -41,7 +41,6 @@ body
   foo size()[0]
   foo size()[1]
   foo size()[1][1]
-  foo ((size()[1]))[0][0][1]
 
 image-size(path)
   w = 100

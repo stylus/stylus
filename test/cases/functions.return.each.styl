@@ -1,5 +1,5 @@
 
-join1(delim, vals...)
+join1(delim, vals)
   buf = ''
   for val, i in vals
     if i
@@ -7,7 +7,7 @@ join1(delim, vals...)
     else
       buf += val
 
-join2(delim, vals...)
+join2(delim, vals)
   buf = ''
   for val, i in vals
     buf += i ? delim + val : val

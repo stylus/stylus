@@ -9,7 +9,6 @@ body
 body
   nums = 1
   foo 1 in nums == true
-  foo 1 in nums == false
 
 body
   words = foo bar baz
@@ -33,6 +32,13 @@ body
   foo fn(2)
   foo fn(3 2)
   foo fn(1,2,3)
+
+fn(args...)
+  (3 2) in args
+
+body
+  foo fn(3 2)
+  foo fn(3,2)
 
 fn()
   test in arguments
