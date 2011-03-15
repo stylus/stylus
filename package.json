@@ -11,6 +11,6 @@
   }
   , "dependencies": {
       "cssom": "0.2.0"
-    , "growl": "1.0.2"
+    , "growl": "1.1.0"
   }
 }
