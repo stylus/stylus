@@ -76,8 +76,8 @@ var usage = [
   , ''
   , '    -w, --watch             Watch file(s) for changes and re-compile'
   , '    -o, --out <dir>         Output to <dir> when passing files'
-  , '    -c, --css <src> [dest]  Convert css input to stylus'
-  , '    -C, --compress          Compress css output'
+  , '    -C, --css <src> [dest]  Convert css input to stylus'
+  , '    -c, --compress          Compress css output'
   , '    -d, --compare           Display input along with output'
   , '    -V, --version           Display the version of stylus'
   , '    -h, --help              Display help information'
@@ -100,11 +100,11 @@ while (args.length) {
     case '--compare':
       compare = true;
       break;
-    case '-C':
+    case '-c':
     case '--compress':
       compress = true;
       break;
-    case '-c':
+    case '-C':
     case '--css':
       convertCSS = true;
       break;
