@@ -222,6 +222,7 @@ function repl() {
     process.stdin.resume();
     process.stdin.setEncoding('utf8');
     process.stdin.once('data', function(str){
+      if (!str.trim().length) return read();
       parser = new stylus.Parser(str, options);
       var expr = parser.parse();
       var ret = evaluator.visit(expr);
