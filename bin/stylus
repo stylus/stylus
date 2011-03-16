@@ -230,7 +230,8 @@ function repl() {
         var expr = parser.parse();
         var ret = evaluator.visit(expr);
         ret = ret.nodes[ret.nodes.length - 1];
-        ret = ret.toString().replace(/^\(|\)$/g, '');
+        ret = ret.toString();
+        if ('(' == ret[0]) ret = ret.replace(/^\(|\)$/g, '');
         console.log('\033[90m=> \033[0m' + highlight(ret));
         read();
       } catch (err) {
@@ -247,6 +248,7 @@ function repl() {
 
 function highlight(str) {
   return str
+    .replace(/(\d+(\.\d+)?)/g, '\033[36m$1\033[0m')
     .replace(/('.*?'|".*?")/g, '\033[32m$1\033[0m');
 }
 
