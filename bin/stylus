@@ -224,6 +224,7 @@ function repl() {
     process.stdin.once('data', function(str){
       if (!str.trim().length) return read();
       parser = new stylus.Parser(str, options);
+      parser.state.push('expression');
       var expr = parser.parse();
       var ret = evaluator.visit(expr);
       ret = ret.nodes[ret.nodes.length - 1];
