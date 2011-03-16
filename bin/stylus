@@ -225,12 +225,17 @@ function repl() {
       if (!str.trim().length) return read();
       parser = new stylus.Parser(str, options);
       parser.state.push('expression');
-      var expr = parser.parse();
-      var ret = evaluator.visit(expr);
-      ret = ret.nodes[ret.nodes.length - 1];
-      ret = ret.toString().replace(/^\(|\)$/g, '');
-      console.log('\033[90m=> \033[0m' + highlight(ret));
-      read();
+      try {
+        var expr = parser.parse();
+        var ret = evaluator.visit(expr);
+        ret = ret.nodes[ret.nodes.length - 1];
+        ret = ret.toString().replace(/^\(|\)$/g, '');
+        console.log('\033[90m=> \033[0m' + highlight(ret));
+        read();
+      } catch (err) {
+        console.error('\033[31merror: %s\033[0m', err.message || err.stack);
+        read();
+      }
     });
   })();
 }
