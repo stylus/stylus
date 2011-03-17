@@ -72,6 +72,7 @@ compiles to:
   - [@media](stylus/blob/master/docs/media.md) support
   - Connect [Middleware](stylus/blob/master/docs/middleware.md)
   - TextMate [bundle](stylus/blob/master/docs/textmates.md)
+  - VIM [Syntax](https://github.com/wavded/vim-stylus)
 
 ### Framework Support
 
