@@ -246,7 +246,10 @@ function repl() {
 
 function highlight(str) {
   return str
-    .replace(/(\d+(\.\d+)?)/g, '\033[36m$1\033[0m')
+    .replace(/(#)?(\d+(\.\d+)?)/g, function($0, $1, $2){
+      return $1 ? $0 : '\033[36m' + $2 + '\033[0m';
+    })
+    .replace(/(#[\da-fA-F]+)/g, '\033[33m$1\033[0m')
     .replace(/('.*?'|".*?")/g, '\033[32m$1\033[0m');
 }
 
@@ -268,7 +271,6 @@ function compileCSSFile(file, fileOut) {
     } 
   });
 }
-
 
 /**
  * Compile with stdio.
