@@ -5,16 +5,11 @@
  */
 
 var fs = require('fs')
+  , stylus = require('../')
   , basename = require('path').basename
   , dirname = require('path').dirname
   , join = require('path').join
   , growl = require('growl');
-
-try {
-  var stylus = require('stylus');
-} catch (err) {
-  var stylus = require('../lib/stylus');
-}
 
 /**
  * Arguments.
