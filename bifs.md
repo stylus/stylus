@@ -186,7 +186,7 @@ Test if `string` matches the given `pattern`.
      avg(1 2 3)
      // => 2
 
-### join(delim, vals)
+### join(delim, vals...)
 
   Join the given `vals` with `delim`.
 
@@ -196,8 +196,11 @@ Test if `string` matches the given `pattern`.
       join(',', 1 2 3)
       // => "1,2,3"
       
-      join(', ', 1 2 3)
-      // => "1, 2, 3"
+      join(', ', foo bar baz)
+      // => "foo, bar, baz"
+
+      join(', ', foo, bar, baz)
+      // => "foo, bar, baz"
 
 ### hsla(color | h[, s, l, a])
 
@@ -342,7 +345,7 @@ Saturate the given `color` by `amount`.
     // => 0
   
     length(1 2 3)
-    // => 1
+    // => 3
 
     length(1)
     // => 1

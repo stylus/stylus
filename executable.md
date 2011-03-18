@@ -13,13 +13,14 @@ Stylus ships with the `stylus` executable for converting stylus to css.
 
       Options:
 
-        -w, --watch      Watch file(s) and re-compile when changed
-        -o, --out <dir>  Output to <dir> when passing files
-        -c, --css        Convert css input to stylus
-        -C, --compress   Compress css output
-        -d, --compare    Display input along with output
-        -V, --version    Display the version of stylus
-        -h, --help       Display help information
+        -i, --interactive       Start interactive REPL
+        -w, --watch             Watch file(s) for changes and re-compile
+        -o, --out <dir>         Output to <dir> when passing files
+        -C, --css <src> [dest]  Convert css input to stylus
+        -c, --compress          Compress css output
+        -d, --compare           Display input along with output
+        -V, --version           Display the version of stylus
+        -h, --help              Display help information
 
 ### STDIO Compilation Example
 
@@ -70,4 +71,22 @@ Try stylus some in the terminal, type below and press CTRL-D for __EOF__:
 
     $ stylus help box-shadow
 
+### Interactive Shell
 
+ The Stylus REPL (Read-Eval-Print-Loop) or "interactive shell" allows you to
+ play around with Stylus expressions directly from your terminal. Note that this works only for expressions, not selectors etc. To use simple add the `-i`, or `--interactive` flag:
+ 
+     $ stylus -i
+     > color = white
+     => #fff
+     > color - rgb(200,50,0)
+     => #37cdff
+     > color
+     => #fff
+     > color -= rgb(200,50,0)
+     => #37cdff
+     > color
+     => #37cdff
+     > rgba(color, 0.5)
+     => rgba(55,205,255,0.5)
+ 
