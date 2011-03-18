@@ -201,7 +201,13 @@ if (convertCSS) {
   } else {
     compileStdio();
   }
-}   
+}
+
+function complete(line) {
+  //    -> [['util.print', 'util.debug', 'util.log', 'util.inspect', 'util.pump'],
+  //        'util.' ]
+  // [completions, completeOn]
+}
 
 /**
  * Start stylus REPL.
@@ -210,34 +216,40 @@ if (convertCSS) {
 function repl() {
   var options = { filename: 'stdin', imports: [__dirname + '/../lib/functions'] }
     , parser = new stylus.Parser('', options)
-    , evaluator = new stylus.Evaluator(parser.parse(), options);
+    , evaluator = new stylus.Evaluator(parser.parse(), options)
+    , rl = require('readline')
+    , repl = rl.createInterface(process.stdin, process.stdout, complete);
 
   // expose BIFs
   evaluator.evaluate();
 
-  (function read() {
-    process.stdout.write('> ');
-    process.stdin.resume();
-    process.stdin.setEncoding('utf8');
-    process.stdin.once('data', function(str){
-      if (!str.trim().length) return read();
-      parser = new stylus.Parser(str, options);
-      parser.state.push('expression');
-      evaluator.return = true;
-      try {
-        var expr = parser.parse();
-        var ret = evaluator.visit(expr);
-        ret = ret.nodes[ret.nodes.length - 1];
-        ret = ret.toString();
-        if ('(' == ret[0]) ret = ret.replace(/^\(|\)$/g, '');
-        console.log('\033[90m=> \033[0m' + highlight(ret));
-        read();
-      } catch (err) {
-        console.error('\033[31merror: %s\033[0m', err.message || err.stack);
-        read();
-      }
-    });
-  })();
+  // readline
+  repl.setPrompt('> ');
+  repl.prompt();
+  
+  repl.on('line', function(line){
+    if (!line.trim().length) return repl.prompt();
+    parser = new stylus.Parser(line, options);
+    parser.state.push('expression');
+    evaluator.return = true;
+    try {
+      var expr = parser.parse();
+      var ret = evaluator.visit(expr);
+      ret = ret.nodes[ret.nodes.length - 1];
+      ret = ret.toString();
+      if ('(' == ret[0]) ret = ret.replace(/^\(|\)$/g, '');
+      console.log('\033[90m=> \033[0m' + highlight(ret));
+      repl.prompt();
+    } catch (err) {
+      console.error('\033[31merror: %s\033[0m', err.message || err.stack);
+      repl.prompt();
+    }
+  });
+
+  repl.on('SIGINT', function(){
+    console.log();
+    process.exit(0);
+  });
 }
 
 /**
