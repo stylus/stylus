@@ -212,6 +212,9 @@ function repl() {
     , parser = new stylus.Parser('', options)
     , evaluator = new stylus.Evaluator(parser.parse(), options);
 
+  // expose BIFs
+  evaluator.evaluate();
+
   (function read() {
     process.stdout.write('> ');
     process.stdin.resume();
