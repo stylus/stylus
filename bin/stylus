@@ -208,7 +208,7 @@ if (convertCSS) {
  */
 
 function repl() {
-  var options = { filename: 'stdin' }
+  var options = { filename: 'stdin', imports: [__dirname + '/../lib/functions'] }
     , parser = new stylus.Parser('', options)
     , evaluator = new stylus.Evaluator(parser.parse(), options);
 
