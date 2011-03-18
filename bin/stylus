@@ -212,7 +212,8 @@ function repl() {
     , parser = new stylus.Parser('', options)
     , evaluator = new stylus.Evaluator(parser.parse(), options)
     , rl = require('readline')
-    , repl = rl.createInterface(process.stdin, process.stdout);
+    , repl = rl.createInterface(process.stdin, process.stdout, true)
+    , global = evaluator.global.scope;
 
   // expose BIFs
   evaluator.evaluate();
@@ -220,6 +221,43 @@ function repl() {
   // readline
   repl.setPrompt('> ');
   repl.prompt();
+
+  // HACK: flat-list auto-complete
+  repl._tabComplete = function(){
+    var out = this.output
+      , line = this.line
+      , keys = Object.keys(global.locals)
+      , len = keys.length
+      , words = line.split(/\s+/)
+      , word = words.pop()
+      , names = []
+      , key;
+
+    for (var i = 0; i < len; ++i) {
+      key = keys[i];
+      if (0 == key.indexOf(word)) {
+        names.push(key);
+      }
+    }
+
+    if (names.length > 1) {
+      out.write('\r\n');
+      names.forEach(function(name){
+        var node = global.lookup(name);
+        switch (node.nodeName) {
+          case 'function':
+            out.write('  - ' + node + '\r\n');
+            break;
+          default:
+            out.write('  - ' + name + '\r\n');
+        }
+      });
+    } else if (names.length) {
+      key = names.pop();
+      this._insertString(key.replace(word, ''));
+      this._refreshLine();
+    }
+  };
   
   repl.on('line', function(line){
     if (!line.trim().length) return repl.prompt();
