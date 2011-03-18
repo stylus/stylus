@@ -9,20 +9,13 @@ var connect = require('connect')
 // Setup server
 // $ curl http://localhost:3000/functions.css
 
-function compile(str, path, fn) {
-  stylus(str)
-    .set('filename', path)
-    .set('compress', true)
-    .render(fn);
-}
-
 var server = connect.createServer(
-    stylus.middleware({
-        src: __dirname
-      , dest: __dirname + '/public'
-      , compile: compile
-    })
-  , connect.static(__dirname + '/public')
+  stylus.middleware({
+      src: __dirname
+    , dest: __dirname + '/public'
+    , compress: true
+  }),
+  connect.static(__dirname + '/public')
 );
 
 server.listen(3000);

@@ -9,25 +9,29 @@
 
 #### Options
 
-      `src`      Source directory used to find .styl files
-      `dest`     Destination directory used to output .css files
-                 when undefined defaults to `src`.
-      `compile`  Custom compile function, accepting the arguments
-                 `(str, path, callback)`.
+      `force`     When __true__ styles will always re-compile
+      `src`       Source directory used to find .styl files
+      `dest`      Destination directory used to output .css files
+                  when undefined defaults to `src`.
+      `compress`  Whether the output .css files should be compressed
+      `compile`   Custom compile function, accepting the arguments
+                  `(str, path)` returning the renderer.
 
 #### Examples
  
  Here we set up the custom compile function so that we may
- set the `compress` option, or define additional functions.
+ alter the renderer by providing additional settings.
  
  By default the compile function simply sets the `filename`
  and renders the CSS.
  
-        function compile(str, path, fn) {
-          stylus(str)
+        function compile(str, path) {
+          return stylus(str)
+            .import(__dirname + '/css/mixins/blueprint')
+            .import(__dirname + '/css/mixins/css3')
             .set('filename', path)
-            .set('compress', true)
-            .render(fn);
+            .set('warn', true)
+            .set('compress', true);
         }
  
  Pass the middleware to Connect, grabbing .styl files from this directory
