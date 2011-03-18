@@ -50,3 +50,6 @@
             })
           , connect.staticProvider(__dirname + '/public')
         );
+
+ When `force` is used, the styles will be unconditionally re-compiled, however
+ even without this option the Stylus middleware is smart enough to detect changes in `@import`ed files.
