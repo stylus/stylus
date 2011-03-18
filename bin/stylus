@@ -235,6 +235,7 @@ function repl() {
       , obj
       , key;
 
+    // find words that match
     for (var i = 0; i < len; ++i) {
       key = keys[i];
       if (0 == key.indexOf(word)) {
@@ -242,6 +243,7 @@ function repl() {
       }
     }
 
+    // several candidates
     if (names.length > 1) {
       out.write('\r\n\r\n\033[90m');
       names.forEach(function(name){
@@ -256,6 +258,7 @@ function repl() {
       });
       out.write('\r\n\033[0m');
       this._refreshLine();
+    // single candidate
     } else if (names.length) {
       name = names.pop();
       obj = global.lookup(name);
