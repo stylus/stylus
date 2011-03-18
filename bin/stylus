@@ -231,6 +231,8 @@ function repl() {
       , words = line.split(/\s+/)
       , word = words.pop()
       , names = []
+      , name
+      , obj
       , key;
 
     for (var i = 0; i < len; ++i) {
@@ -255,8 +257,17 @@ function repl() {
       out.write('\r\n\033[0m');
       this._refreshLine();
     } else if (names.length) {
-      key = names.pop();
-      this._insertString(key.replace(word, ''));
+      name = names.pop();
+      obj = global.lookup(key);
+      name = name.replace(word, '');
+      switch (obj.nodeName) {
+        case 'function':
+          this._insertString(name + '()');
+          this.cursor--;
+          break;
+        default:
+          this._insertString(name);
+      }
       this._refreshLine();
     }
   };
