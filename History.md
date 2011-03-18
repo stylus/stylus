@@ -1,4 +1,13 @@
 
+0.9.1 / 2011-03-18 
+==================
+
+  * Fixed connect middleware `@import` support. Closes #168
+    The middleware is now smart enough to know when imports
+    change, and will re-compile the target file.
+
+  * Changed middleware `compile` function to return the `Renderer` (API change)
+
 0.9.0 / 2011-03-18 
 ==================
 
