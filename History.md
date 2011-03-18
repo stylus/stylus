@@ -1,4 +1,16 @@
 
+0.9.0 / 2011-03-18 
+==================
+
+  * Added `-i, --interactive` for the Stylus REPL (eval stylus expressions, tab-completion etc)
+  * Added link to vim syntax
+  * Changed `p()` built-in to display parens
+  * Changed `--compress -C` to `-c`, and `-css -c` is now `-C`
+  * Fixed; preserve rest-arg expressions. Closes #194
+  * Fixed `*=` in selector, ex `[class*="foo"]`
+  * Fixed `--watch` issue with growl, updated to 1.1.0. Closes #188
+  * Fixed negative floats when compressed. Closes #193 [reported by ludicco]
+
 0.8.0 / 2011-03-14 
 ==================
 
