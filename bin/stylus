@@ -75,6 +75,7 @@ var usage = [
   , ''
   , '  Options:'
   , ''
+  , '    -i, --interactive       Start interactive REPL'
   , '    -w, --watch             Watch file(s) for changes and re-compile'
   , '    -o, --out <dir>         Output to <dir> when passing files'
   , '    -C, --css <src> [dest]  Convert css input to stylus'

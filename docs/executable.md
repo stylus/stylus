@@ -13,13 +13,14 @@ Stylus ships with the `stylus` executable for converting stylus to css.
 
       Options:
 
-        -w, --watch      Watch file(s) and re-compile when changed
-        -o, --out <dir>  Output to <dir> when passing files
-        -C, --css        Convert css input to stylus
-        -c, --compress   Compress css output
-        -d, --compare    Display input along with output
-        -V, --version    Display the version of stylus
-        -h, --help       Display help information
+        -i, --interactive       Start interactive REPL
+        -w, --watch             Watch file(s) and re-compile when changed
+        -o, --out <dir>         Output to <dir> when passing files
+        -C, --css               Convert css input to stylus
+        -c, --compress          Compress css output
+        -d, --compare           Display input along with output
+        -V, --version           Display the version of stylus
+        -h, --help              Display help information
 
 ### STDIO Compilation Example
 
