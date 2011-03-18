@@ -203,12 +203,6 @@ if (convertCSS) {
   }
 }
 
-function complete(line) {
-  //    -> [['util.print', 'util.debug', 'util.log', 'util.inspect', 'util.pump'],
-  //        'util.' ]
-  // [completions, completeOn]
-}
-
 /**
  * Start stylus REPL.
  */
@@ -218,7 +212,7 @@ function repl() {
     , parser = new stylus.Parser('', options)
     , evaluator = new stylus.Evaluator(parser.parse(), options)
     , rl = require('readline')
-    , repl = rl.createInterface(process.stdin, process.stdout, complete);
+    , repl = rl.createInterface(process.stdin, process.stdout);
 
   // expose BIFs
   evaluator.evaluate();
