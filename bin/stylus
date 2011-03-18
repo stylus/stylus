@@ -59,6 +59,12 @@ var dest;
 var watchers;
 
 /**
+ * Enable REPL.
+ */
+
+var interactive;
+
+/**
  * Usage docs.
  */
 
@@ -122,6 +128,11 @@ while (args.length) {
       var name = args.shift();
       if (!name) throw new Error('help <property> required');
       help(name);
+      break;
+    case '-i':
+    case '--repl':
+    case '--interactive':
+      interactive = true;
       break;
     case '-w':
     case '--watch':
@@ -187,6 +198,8 @@ if (convertCSS) {
         console.log(out);      
       });
   }
+} else if (interactive) {
+  repl();
 } else {
   if (files.length) {
     compileFiles(files);
@@ -195,6 +208,49 @@ if (convertCSS) {
   }
 }   
 
+/**
+ * Start stylus REPL.
+ */
+
+function repl() {
+  var options = { filename: 'stdin' }
+    , parser = new stylus.Parser('', options)
+    , evaluator = new stylus.Evaluator(parser.parse(), options);
+
+  (function read() {
+    process.stdout.write('> ');
+    process.stdin.resume();
+    process.stdin.setEncoding('utf8');
+    process.stdin.once('data', function(str){
+      if (!str.trim().length) return read();
+      parser = new stylus.Parser(str, options);
+      parser.state.push('expression');
+      evaluator.return = true;
+      try {
+        var expr = parser.parse();
+        var ret = evaluator.visit(expr);
+        ret = ret.nodes[ret.nodes.length - 1];
+        ret = ret.toString();
+        if ('(' == ret[0]) ret = ret.replace(/^\(|\)$/g, '');
+        console.log('\033[90m=> \033[0m' + highlight(ret));
+        read();
+      } catch (err) {
+        console.error('\033[31merror: %s\033[0m', err.message || err.stack);
+        read();
+      }
+    });
+  })();
+}
+
+/**
+ * Highlight the given string of stylus.
+ */
+
+function highlight(str) {
+  return str
+    .replace(/(\d+(\.\d+)?)/g, '\033[36m$1\033[0m')
+    .replace(/('.*?'|".*?")/g, '\033[32m$1\033[0m');
+}
 
 /**
  * Convert a CSS file to a Styl file 
