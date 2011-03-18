@@ -3,27 +3,10 @@
 
  Stylus has fantastic error reporting built in for syntax, parse, and evaluation errors, complete with stack traces, line numbers, and filenames.
 
-### Syntax Error
-
- Stylus lets us know the following syntax error, as we have indented to far, providing `6` spaces instead of `4`.
-
-      body
-        form input
-            padding 5px
-
-yielding:
-
-    Error: /Users/tj/Projects/stylus/testing/test.styl:2
-      1: 'body'
-      2: '  form input'
-      3: '      padding 5px'
-
-    Invalid indentation, got 6 spaces and expected 4
-
 ### Parse Error
 
- Like-wise parse errors are reported in context as well:
- 
+Parse error example:
+
      body
        form input
          == padding 5px
