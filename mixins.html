@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><title>Stylus</title><link rel="stylesheet" href="../main.css"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head><body><div id="container"><h1><a href='http://learnboost.github.com/stylus'>Stylus</a></h1><p class="tagline"><em class="expressive">Expressive, </em><em class="dynamic">dynamic, </em><em class="robust">robust </em><em class="css">CSS</em></p><div id="ribbon"><a href="http://github.com/learnboost/stylus">Fork me on GitHub</a></div><ul id="menu"><li><a href="../docs/selectors.html">Selectors</a></li><li><a href="../docs/variables.html">Variables</a></li><li><a href="../docs/interpolation.html">Interpolation</a></li><li><a href="../docs/operators.html">Operators</a></li><li><a href="../docs/mixins.html">Mixins</a></li><li><a href="../docs/functions.html">Functions</a></li><li><a href="../docs/bifs.html">Built-in Functions</a></li><li><a href="../docs/vargs.html">Rest Params</a></li><li><a href="../docs/comments.html">Comments</a></li><li><a href="../docs/conditionals.html">Conditionals</a></li><li><a href="../docs/iteration.html">Iteration</a></li><li><a href="../docs/import.html">@import</a></li><li><a href="../docs/media.html">@media</a></li><li><a href="../docs/font-face.html">@font-face</a></li><li><a href="../docs/keyframes.html">@keyframes</a></li><li><a href="../docs/functions.url.html">url()</a></li><li><a href="../docs/literal.html">CSS Literal</a></li><li><a href="../docs/css-style.html">CSS Style Syntax</a></li><li><a href="../docs/escape.html">Char Escaping</a></li><li><a href="../docs/executable.html">Executable</a></li><li><a href="../docs/error-reporting.html">Error Reporting</a></li><li><a href="../docs/middleware.html">Connect Middleware</a></li><li><a href="../docs/js.html">JavaScript API</a></li></ul><div id="content"><h2 id="Mixins">Mixins</h2>
+<!DOCTYPE html><html><head><title>Stylus</title><link rel="stylesheet" href="../main.css"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head><body><div id="container"><h1><a href='http://learnboost.github.com/stylus'>Stylus</a></h1><p class="tagline"><em class="expressive">Expressive, </em><em class="dynamic">dynamic, </em><em class="robust">robust </em><em class="css">CSS</em></p><div id="ribbon"><a href="http://github.com/learnboost/stylus">Fork me on GitHub</a></div><ul id="menu"><li><a href="../docs/selectors.html">Selectors</a></li><li><a href="../docs/variables.html">Variables</a></li><li><a href="../docs/interpolation.html">Interpolation</a></li><li><a href="../docs/operators.html">Operators</a></li><li><a href="../docs/mixins.html">Mixins</a></li><li><a href="../docs/functions.html">Functions</a></li><li><a href="../docs/bifs.html">Built-in Functions</a></li><li><a href="../docs/vargs.html">Rest Params</a></li><li><a href="../docs/comments.html">Comments</a></li><li><a href="../docs/conditionals.html">Conditionals</a></li><li><a href="../docs/iteration.html">Iteration</a></li><li><a href="../docs/import.html">@import</a></li><li><a href="../docs/media.html">@media</a></li><li><a href="../docs/font-face.html">@font-face</a></li><li><a href="../docs/keyframes.html">@keyframes</a></li><li><a href="../docs/functions.url.html">url()</a></li><li><a href="../docs/literal.html">CSS Literal</a></li><li><a href="../docs/css-style.html">CSS Style Syntax</a></li><li><a href="../docs/escape.html">Char Escaping</a></li><li><a href="../docs/executable.html">Executable</a></li><li><a href="../docs/error-reporting.html">Error Reporting</a></li><li><a href="../docs/middleware.html">Connect Middleware</a></li><li><a href="../docs/js.html">JavaScript API</a></li></ul><div id="content"><h2>Mixins</h2>
 
 <p>Both mixins and functions are defined in the same manor, however they are applied in different ways. For example we have a <code>border-radius(n)</code> function defined below, which is invoked as a <em>mixin</em>, aka a statement rather than part of an expression.</p>
 
@@ -10,7 +10,8 @@
   border-radius n
 
 form input[type=button]
-  border-radius(5px)</code></pre>
+  border-radius(5px)
+</code></pre>
 
 <p>compiles to:</p>
 
@@ -20,7 +21,8 @@ form input[type=button]
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-}</code></pre>
+}
+</code></pre>
 
 <p>When utilizing mixins, we can omit the parens all together, providing is with fantastic transparent vendor property support:</p>
 
@@ -30,14 +32,16 @@ form input[type=button]
   border-radius n
 
 form input[type=button]
-  border-radius 5px</code></pre>
+  border-radius 5px
+</code></pre>
 
 <p>Note that the <code>border-radius</code> within our mixin is treated as a property, and not a recursive function invocation. To take this further we we may utilize the automatic <code>arguments</code> local variable, containing the expression passed, allowing more than one value to be passed:</p>
 
 <pre><code>border-radius()
   -webkit-border-radius arguments
   -moz-border-radius arguments
-  border-radius arguments</code></pre>
+  border-radius arguments
+</code></pre>
 
 <p>now allowing us to pass values such as <code>border-radius 1px 2px / 3px 4px</code>.</p>
 
@@ -52,16 +56,18 @@ form input[type=button]
 
     #logo
       &amp;:hover
-        opacity 0.5</code></pre>
+        opacity 0.5
+</code></pre>
 
 <p>rendering:</p>
 
 <pre><code>    #logo:hover {
       opacity: 0.5;
       filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
-    }</code></pre>
+    }
+</code></pre>
 
-<h3 id="Parent-References">Parent References</h3>
+<h3>Parent References</h3>
 
 <p> Mixins may utilize the parent reference character <code>&amp;</code>, acting on the parent instead of further nesting. For example lets say we wish to create a <code>stripe(even, odd)</code> mixin for striping table row, we provide both <code>even</code> and <code>odd</code> with default color values, and assign the <code>background-color</code> property on the row. Nested within the <code>tr</code> we use <code>&amp;</code> to reference the <code>tr</code>, providing the <code>even</code> color.</p>
 
@@ -70,7 +76,8 @@ form input[type=button]
      background-color odd
      &amp;.even
      &amp;:nth-child(even)
-       background-color even</code></pre>
+       background-color even
+</code></pre>
 
 <p>We may then utilize the mixin as shown below:</p>
 
@@ -82,7 +89,8 @@ form input[type=button]
  table#users
    stripe(#303030, #494848)
    td
-     color white</code></pre>
+     color white
+</code></pre>
 
 <p>Another way to define the <code>stripe()</code> mixin without parent reference:</p>
 
@@ -91,15 +99,17 @@ form input[type=button]
     background-color odd
   tr.even
   tr:nth-child(even)
-    background-color even</code></pre>
+    background-color even
+</code></pre>
 
 <p>If we wished, we could invoke <code>stripe()</code> as if it were a property:</p>
 
-<pre><code>stripe #fff #000</code></pre>
+<pre><code>stripe #fff #000
+</code></pre>
 
-<h3 id="Mixing-Mixins-in-Mixins">Mixing Mixins in Mixins</h3>
+<h3>Mixing Mixins in Mixins</h3>
 
-<p> Mixins can of course utilize other mixins, to build up their own selector's and properties. For example, below we create <code>comma-list()</code> to inline (via <code>inline-list()</code>) and comma-separate an un-ordered list.</p>
+<p> Mixins can of course utilize other mixins, to build up their own selector&rsquo;s and properties. For example, below we create <code>comma-list()</code> to inline (via <code>inline-list()</code>) and comma-separate an un-ordered list.</p>
 
 <pre><code> inline-list()
    li
@@ -114,7 +124,8 @@ form input[type=button]
        content ''
 
  ul
-   comma-list()</code></pre>
+   comma-list()
+</code></pre>
 
 <p>rendering:</p>
 
@@ -126,5 +137,6 @@ ul li:last-child:after {
 }
 ul li {
   display: inline;
-}</code></pre>
+}
+</code></pre>
 </div></div></body></html>

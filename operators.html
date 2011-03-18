@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><title>Stylus</title><link rel="stylesheet" href="../main.css"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head><body><div id="container"><h1><a href='http://learnboost.github.com/stylus'>Stylus</a></h1><p class="tagline"><em class="expressive">Expressive, </em><em class="dynamic">dynamic, </em><em class="robust">robust </em><em class="css">CSS</em></p><div id="ribbon"><a href="http://github.com/learnboost/stylus">Fork me on GitHub</a></div><ul id="menu"><li><a href="../docs/selectors.html">Selectors</a></li><li><a href="../docs/variables.html">Variables</a></li><li><a href="../docs/interpolation.html">Interpolation</a></li><li><a href="../docs/operators.html">Operators</a></li><li><a href="../docs/mixins.html">Mixins</a></li><li><a href="../docs/functions.html">Functions</a></li><li><a href="../docs/bifs.html">Built-in Functions</a></li><li><a href="../docs/vargs.html">Rest Params</a></li><li><a href="../docs/comments.html">Comments</a></li><li><a href="../docs/conditionals.html">Conditionals</a></li><li><a href="../docs/iteration.html">Iteration</a></li><li><a href="../docs/import.html">@import</a></li><li><a href="../docs/media.html">@media</a></li><li><a href="../docs/font-face.html">@font-face</a></li><li><a href="../docs/keyframes.html">@keyframes</a></li><li><a href="../docs/functions.url.html">url()</a></li><li><a href="../docs/literal.html">CSS Literal</a></li><li><a href="../docs/css-style.html">CSS Style Syntax</a></li><li><a href="../docs/escape.html">Char Escaping</a></li><li><a href="../docs/executable.html">Executable</a></li><li><a href="../docs/error-reporting.html">Error Reporting</a></li><li><a href="../docs/middleware.html">Connect Middleware</a></li><li><a href="../docs/js.html">JavaScript API</a></li></ul><div id="content"><h2 id="Operator-Precedence">Operator Precedence</h2>
+<!DOCTYPE html><html><head><title>Stylus</title><link rel="stylesheet" href="../main.css"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head><body><div id="container"><h1><a href='http://learnboost.github.com/stylus'>Stylus</a></h1><p class="tagline"><em class="expressive">Expressive, </em><em class="dynamic">dynamic, </em><em class="robust">robust </em><em class="css">CSS</em></p><div id="ribbon"><a href="http://github.com/learnboost/stylus">Fork me on GitHub</a></div><ul id="menu"><li><a href="../docs/selectors.html">Selectors</a></li><li><a href="../docs/variables.html">Variables</a></li><li><a href="../docs/interpolation.html">Interpolation</a></li><li><a href="../docs/operators.html">Operators</a></li><li><a href="../docs/mixins.html">Mixins</a></li><li><a href="../docs/functions.html">Functions</a></li><li><a href="../docs/bifs.html">Built-in Functions</a></li><li><a href="../docs/vargs.html">Rest Params</a></li><li><a href="../docs/comments.html">Comments</a></li><li><a href="../docs/conditionals.html">Conditionals</a></li><li><a href="../docs/iteration.html">Iteration</a></li><li><a href="../docs/import.html">@import</a></li><li><a href="../docs/media.html">@media</a></li><li><a href="../docs/font-face.html">@font-face</a></li><li><a href="../docs/keyframes.html">@keyframes</a></li><li><a href="../docs/functions.url.html">url()</a></li><li><a href="../docs/literal.html">CSS Literal</a></li><li><a href="../docs/css-style.html">CSS Style Syntax</a></li><li><a href="../docs/escape.html">Char Escaping</a></li><li><a href="../docs/executable.html">Executable</a></li><li><a href="../docs/error-reporting.html">Error Reporting</a></li><li><a href="../docs/middleware.html">Connect Middleware</a></li><li><a href="../docs/js.html">JavaScript API</a></li></ul><div id="content"><h2>Operator Precedence</h2>
 
 <p>Below is the operator precedence table, highest to lowest:</p>
 
@@ -16,9 +16,10 @@
  ?:
  = ?= += -= *= /= %=
  not
- if unless</code></pre>
+ if unless
+</code></pre>
 
-<h2 id="Unary-Operators">Unary Operators</h2>
+<h2>Unary Operators</h2>
 
 <p>The following unary operators are available, <code>!</code>, <code>not</code>, <code>-</code>, <code>+</code>, and <code>~</code>.</p>
 
@@ -44,7 +45,8 @@ not true
 // =&gt; false
 
 not not true
-// =&gt; true</code></pre>
+// =&gt; true
+</code></pre>
 
 <p>The logical <code>not</code> operator has low precedence, therefore the following example could be replaced with</p>
 
@@ -53,21 +55,23 @@ b = 1
 
 !a and !b
 // =&gt; false
-// pased as: (!a) and (!b)</code></pre>
+// pased as: (!a) and (!b)
+</code></pre>
 
 <p>with:</p>
 
 <pre><code>not a or b
 // =&gt; false
-// parsed as: not (a or b)</code></pre>
+// parsed as: not (a or b)
+</code></pre>
 
-<h2 id="Binary-Operators">Binary Operators</h2>
+<h2>Binary Operators</h2>
 
-<h3 id="Subscript">Subscript []</h3>
+<h3>Subscript []</h3>
 
 <p> The subscript operator allows us to grab a value in an expression via index. Parenthesized expressions may act as tuples, so for example <code>(15px 5px)</code>, <code>(1 2 3)</code>.</p>
 
-<p> Below is an example where we utilize tuples for error handling, showing the versatility of such a construct. As </p>
+<p> Below is an example where we utilize tuples for error handling, showing the versatility of such a construct. As</p>
 
 <pre><code> add(a, b)
    if a is a 'unit' and b is a 'unit'
@@ -86,14 +90,16 @@ b = 1
    // =&gt; padding: true;
 
    padding add(1,'5')[1]
-   // =&gt; padding: "a and b must be units";</code></pre>
+   // =&gt; padding: "a and b must be units";
+</code></pre>
 
 <p> A more complex example, invoking the <code>error()</code> built-in function with the error message returned, when the ident (the first value) equals <code>error</code>.</p>
 
 <pre><code> if (val = add(1,'5'))[0] == error
-   error(val[1])</code></pre>
+   error(val[1])
+</code></pre>
 
-<h2 id="Range">Range .. ...</h2>
+<h2>Range .. &hellip;</h2>
 
 <p> Both the inclusive (<code>..</code>) and exclusive (<code>...</code>) range operators are provided, expanding to expressions:</p>
 
@@ -101,9 +107,10 @@ b = 1
  // =&gt; 1 2 3 4 5
 
  1...5
- // =&gt; 1 2 3 4</code></pre>
+ // =&gt; 1 2 3 4
+</code></pre>
 
-<h3 id="Additive">Additive: + -</h3>
+<h3>Additive: + &ndash;</h3>
 
 <p>multiplicative and additive binary operators work as expected, and type conversion is applied within unit type classes, or default to the literal value. For example if we perform <code>5s - 2px</code> we will get <code>3s</code>.</p>
 
@@ -126,7 +133,8 @@ b = 1
 // =&gt; "foo bar"
 
 "num " + 15
-// =&gt; "num 15"</code></pre>
+// =&gt; "num 15"
+</code></pre>
 
 <p>We can also operator on colors, and values are clamped appropriately.</p>
 
@@ -143,9 +151,10 @@ b = 1
 // =&gt; #808080
 
 #fff / rgb(2,0,4)
-// #80ff40</code></pre>
+// #80ff40
+</code></pre>
 
-<h3 id="Multiplicative">Multiplicative: / * %</h3>
+<h3>Multiplicative: / * %</h3>
 
 <pre><code>2000ms + (1s * 2)
 // =&gt; 4ms
@@ -154,28 +163,32 @@ b = 1
 // =&gt; 2.5s
 
 4 % 2
-// =&gt; 0</code></pre>
+// =&gt; 0
+</code></pre>
 
 <p>When using <code>/</code> within a property value you must wrap with parens. The following for example is taken literally, to support css line-height:</p>
 
-<pre><code>font: 14px/1.5;</code></pre>
+<pre><code>font: 14px/1.5;
+</code></pre>
 
 <p>whereas the following is evaluated, dividing <code>14px</code> by <code>1.5</code>:</p>
 
-<pre><code>font: (14px/1.5);</code></pre>
+<pre><code>font: (14px/1.5);
+</code></pre>
 
 <p>this exception is <em>only</em> required for the <code>/</code> operator.</p>
 
-<h3 id="Exponent">Exponent: **</h3>
+<h3>Exponent: **</h3>
 
 <p>The Exponent operator:</p>
 
 <pre><code>2 ** 8
-// =&gt; 256</code></pre>
+// =&gt; 256
+</code></pre>
 
-<h3 id="Equality">Equality: == != &gt;= &lt;= &gt; &lt;</h3>
+<h3>Equality: == != >= &lt;= > &lt;</h3>
 
-<p>Equality operators can be used to equate units, colors, strings, and even identifiers. This is a powerful concept, as even arbitrary identifiers such as as <code>wahoo</code> can be utilized as atoms, a function could return <code>yes</code> or <code>no</code> instead of <code>true</code> or <code>false</code> (although not advised). </p>
+<p>Equality operators can be used to equate units, colors, strings, and even identifiers. This is a powerful concept, as even arbitrary identifiers such as as <code>wahoo</code> can be utilized as atoms, a function could return <code>yes</code> or <code>no</code> instead of <code>true</code> or <code>false</code> (although not advised).</p>
 
 <pre><code>5 == 5
 // =&gt; true
@@ -205,7 +218,8 @@ true is true
 // =&gt; true
 
 'hey' isnt 'bye'
-// =&gt; true</code></pre>
+// =&gt; true
+</code></pre>
 
 <p>Only exact values match, for example <code>0 == false</code>, and <code>null == false</code> are both <code>false</code>.</p>
 
@@ -213,9 +227,10 @@ true is true
 
 <pre><code>==    is
 !=    is not
-!=    isnt</code></pre>
+!=    isnt
+</code></pre>
 
-<h2 id="Truthfulness">Truthfulness</h2>
+<h2>Truthfulness</h2>
 
 <p> Nearly everything within Stylus resolves to <code>true</code>, including units with a suffix, for example even <code>0%</code>, <code>0px</code>, etc will resolve to <code>true</code>, since commonly in Stylus a mixin or function may accept such units as valid, however <code>0</code> itself is <code>false</code> in terms of arithmetic.</p>
 
@@ -227,16 +242,18 @@ true is true
   -1
   -1px
   hey
-  'hey'</code></pre>
+  'hey'
+</code></pre>
 
 <p><code>false</code> examples:</p>
 
 <pre><code> 0 
  null
  false
- ''</code></pre>
+ ''
+</code></pre>
 
-<h3 id="Logical-Operators-and-or">Logical Operators: &amp;&amp; || and or</h3>
+<h3>Logical Operators: &amp;&amp; || and or</h3>
 
 <p>Logical operators <code>&amp;&amp;</code> and <code>||</code> are aliased <code>and</code> / <code>or</code> which apply the same precedence.</p>
 
@@ -250,9 +267,10 @@ true is true
 // =&gt; 0
 
 #fff is a 'rgba' and 15 is a 'unit'
-// =&gt; true</code></pre>
+// =&gt; true
+</code></pre>
 
-<h3 id="Existence-Operator-in">Existence Operator: in</h3>
+<h3>Existence Operator: in</h3>
 
 <p> Checks for the existence of the <em>left-hand</em> operand within the <em>right-hand</em> expression.</p>
 
@@ -263,7 +281,8 @@ true is true
   // =&gt; true
 
   5 in nums
-  // =&gt; false</code></pre>
+  // =&gt; false
+</code></pre>
 
 <p>Some undefined identifiers:</p>
 
@@ -272,7 +291,8 @@ true is true
   // =&gt; true
 
   HEY in words
-  // =&gt; false</code></pre>
+  // =&gt; false
+</code></pre>
 
 <p>Works with tuples too:</p>
 
@@ -287,7 +307,8 @@ true is true
   // =&gt; true
 
   (error 'something') in vals
-  // =&gt; false</code></pre>
+  // =&gt; false
+</code></pre>
 
 <p>Example usage in mixin:</p>
 
@@ -304,7 +325,8 @@ true is true
     pad(margin)
 
   body
-    pad(padding margin, 10px)</code></pre>
+    pad(padding margin, 10px)
+</code></pre>
 
 <p>yielding:</p>
 
@@ -317,14 +339,16 @@ true is true
   body {
     padding: 10px;
     margin: 10px;
-  }</code></pre>
+  }
+</code></pre>
 
-<h3 id="Conditional-Assignment">Conditional Assignment: ?=</h3>
+<h3>Conditional Assignment: ?=</h3>
 
 <p>The conditional assignment operator <code>?=</code> lets us define variables without clobbering old values (when present). This operator expands to an <code>is defined</code> binary operation within a ternary, for example the following are equivalent:</p>
 
 <pre><code>color ?= white
-color = color is defined ? color : white</code></pre>
+color = color is defined ? color : white
+</code></pre>
 
 <p>For example when using <code>=</code> we simply re-assign:</p>
 
@@ -332,7 +356,8 @@ color = color is defined ? color : white</code></pre>
 color = black
 
 color
-// =&gt; black</code></pre>
+// =&gt; black
+</code></pre>
 
 <p>However when using <code>?=</code> our second attempt fails since the variable is already defined:</p>
 
@@ -340,9 +365,10 @@ color
 color ?= black
 
 color
-// =&gt; white</code></pre>
+// =&gt; white
+</code></pre>
 
-<h3 id="Instance-Check-is-a">Instance Check: is a</h3>
+<h3>Instance Check: is a</h3>
 
 <p>Stylus provides a binary operator named <code>is a</code> used to type check.</p>
 
@@ -353,17 +379,19 @@ color
 // =&gt; true
 
 15 is a 'rgba'
-// =&gt; false</code></pre>
+// =&gt; false
+</code></pre>
 
 <p>Alternatively we could use the <code>type()</code> BIF:</p>
 
 <pre><code>type(#fff) == 'rgba'
-// =&gt; true                                                                            </code></pre>
+// =&gt; true                                                                            
+</code></pre>
 
-<p>'color' is the one special-case, evaluating to true when the
+<p>&lsquo;color&rsquo; is the one special-case, evaluating to true when the
 left-hand operand is an <code>RGBA</code> or <code>HSLA</code> node.</p>
 
-<h3 id="Variable-Definition-is-defined">Variable Definition: is defined</h3>
+<h3>Variable Definition: is defined</h3>
 
 <p>This pseudo binary operator does not accept a right-hand operator, and does <em>not</em> evaluate the left. This allows us to check if a variable has a value assigned to it.</p>
 
@@ -375,7 +403,8 @@ foo is defined
 // =&gt; true
 
 #fff is defined
-// =&gt; 'invalid "is defined" check on non-variable #fff'</code></pre>
+// =&gt; 'invalid "is defined" check on non-variable #fff'
+</code></pre>
 
 <p>Alternatively one can use the <code>lookup(name)</code> built-in function to do this, or to perform dynamic lookups:</p>
 
@@ -385,31 +414,36 @@ lookup('light-' + name)
 
 light-blue = #80e2e9
 lookup('light-' + name)
-// =&gt; #80e2e9</code></pre>
+// =&gt; #80e2e9
+</code></pre>
 
 <p>This operator is essential, as an undefined identifier is still a truthy value. For example:</p>
 
 <pre><code>body
   if ohnoes
-    padding 5px</code></pre>
+    padding 5px
+</code></pre>
 
 <p><em>will</em> yield the following css when undefined:</p>
 
 <pre><code>body {
   padding: 5px;
-}</code></pre>
+}
+</code></pre>
 
 <p>however this will be safe:</p>
 
 <pre><code>body
   if ohnoes is defined
-    padding 5px</code></pre>
+    padding 5px
+</code></pre>
 
-<h2 id="Ternary">Ternary</h2>
+<h2>Ternary</h2>
 
 <p>The ternary operator works as we would expect in most languages, being the only operator with three operands, the <em>condition</em> expression, the <em>truth</em> expression and the <em>false</em> expression.</p>
 
 <pre><code>num = 15
 num ? unit(num, 'px') : 20px
-// =&gt; 15px</code></pre>
+// =&gt; 15px
+</code></pre>
 </div></div></body></html>
