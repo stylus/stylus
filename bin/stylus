@@ -258,7 +258,7 @@ function repl() {
       this._refreshLine();
     } else if (names.length) {
       name = names.pop();
-      obj = global.lookup(key);
+      obj = global.lookup(name);
       name = name.replace(word, '');
       switch (obj.nodeName) {
         case 'function':
