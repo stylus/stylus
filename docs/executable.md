@@ -71,4 +71,22 @@ Try stylus some in the terminal, type below and press CTRL-D for __EOF__:
 
     $ stylus help box-shadow
 
+### Interactive Shell
 
+ The Stylus REPL (Read-Eval-Print-Loop) or "interactive shell" allows you to
+ play around with Stylus expressions directly from your terminal. Note that this works only for expressions, not selectors etc. To use simple add the `-i`, or `--interactive` flag:
+ 
+     $ stylus -i
+     > color = white
+     => #fff
+     > color - rgb(200,50,0)
+     => #37cdff
+     > color
+     => #fff
+     > color -= rgb(200,50,0)
+     => #37cdff
+     > color
+     => #37cdff
+     > rgba(color, 0.5)
+     => rgba(55,205,255,0.5)
+ 
