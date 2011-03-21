@@ -8,26 +8,30 @@
 
 <h4>Options</h4>
 
-<pre><code>  `src`      Source directory used to find .styl files
-  `dest`     Destination directory used to output .css files
-             when undefined defaults to `src`.
-  `compile`  Custom compile function, accepting the arguments
-             `(str, path, callback)`.
+<pre><code>  `force`     When __true__ styles will always re-compile
+  `src`       Source directory used to find .styl files
+  `dest`      Destination directory used to output .css files
+              when undefined defaults to `src`.
+  `compress`  Whether the output .css files should be compressed
+  `compile`   Custom compile function, accepting the arguments
+              `(str, path)` returning the renderer.
 </code></pre>
 
 <h4>Examples</h4>
 
 <p> Here we set up the custom compile function so that we may
- set the <code>compress</code> option, or define additional functions.</p>
+ alter the renderer by providing additional settings.</p>
 
 <p> By default the compile function simply sets the <code>filename</code>
  and renders the CSS.</p>
 
-<pre><code>    function compile(str, path, fn) {
-      stylus(str)
+<pre><code>    function compile(str, path) {
+      return stylus(str)
+        .import(__dirname + '/css/mixins/blueprint')
+        .import(__dirname + '/css/mixins/css3')
         .set('filename', path)
-        .set('compress', true)
-        .render(fn);
+        .set('warn', true)
+        .set('compress', true);
     }
 </code></pre>
 
@@ -48,4 +52,7 @@
       , connect.staticProvider(__dirname + '/public')
     );
 </code></pre>
+
+<p> When <code>force</code> is used, the styles will be unconditionally re-compiled, however
+ even without this option the Stylus middleware is smart enough to detect changes in <code>@import</code>ed files.</p>
 </div></div></body></html>
