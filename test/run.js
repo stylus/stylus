@@ -21,6 +21,12 @@ var count = 0;
 var pending = 0;
 
 /**
+ * Failure count.
+ */
+
+var failures = 0;
+
+/**
  * Test the given `test`.
  *
  * @param {String} test
@@ -43,10 +49,11 @@ function test(test) {
         if (actual == expected) {
           --pending || done();
         } else {
-          var msg = '"' + basename(path, '.in') + '" failed\n\n'
+          var msg = '\n' + (failures++) + ') "' + basename(path, '.in') + '" failed\n\n'
             + '\033[33mexpected:\033[0m \n' + expected + '\n\n'
             + '\033[33mactual:\033[0m \n' + actual + '\n';
           console.error(msg + '\n\n\n');
+          --pending;
         }
       });
     });
@@ -78,4 +85,5 @@ function done() {
       '\n  \033[90mcompleted\033[0m'
     + ' \033[32m%d\033[0m'
     + ' \033[90mtests\033[0m\n', count);
+  if (failures) process.exit(failures);
 }

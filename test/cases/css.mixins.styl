@@ -15,7 +15,7 @@
 minimal-button(bg = #e3e3e3, intensity = 1)
   -reset()
   background: bg;
-  border: 1px solid darken(bg, 15% * intensity);
+  border: 1px solid darken(bg, 15 * intensity);
   border-radius: 3px;
   box-shadow: inset 0 0 1px 1px rgba(white, 0.8 * intensity);
   color: #333;
@@ -29,14 +29,14 @@ minimal-button(bg = #e3e3e3, intensity = 1)
   width: 150px;
 
   &:hover {
-    background: darken(bg, 3%);
+    background: darken(bg, 3);
     box-shadow: inset 0 0 1px 1px rgba(white, 0.5 * intensity);
     color: #222;
     cursor: pointer;
   }
 
   &:active {
-    background: darken(bg, 5%);
+    background: darken(bg, 5);
     box-shadow: inset 0 0 1px 1px rgba(white, 0.2 * intensity);
     color: #000;
   }
