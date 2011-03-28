@@ -81,9 +81,18 @@ fs.readdir(__dirname + '/cases', function(err, files){
  */
 
 function done() {
+  console.log();
   console.log(
-      '\n  \033[90mcompleted\033[0m'
+      '  \033[90mcompleted\033[0m'
     + ' \033[32m%d\033[0m'
-    + ' \033[90mtests\033[0m\n', count);
-  if (failures) process.exit(failures);
+    + ' \033[90mtests\033[0m', count);
+
+  if (failures) {
+    console.error('  \033[90mfailed\033[0m'
+      + ' \033[31m%d\033[0m'
+      + ' \033[90mtests\033[0m', failures);
+    process.exit(failures);
+  }
+
+  console.log();
 }
