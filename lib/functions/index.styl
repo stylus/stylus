@@ -104,19 +104,6 @@ darken(color, amount)
 lighten(color, amount)
   adjust(color, 'lightness', amount)
 
-// increase the current lightness value by the given amount
-
-lighten-by(color, amount)
-  l = lightness(color)
-  l = 100 if 0 == l
-  adjust(color, 'lightness', l * amount / 100)
-
-// decrease the current lightness value by the given amount
-
-darken-by(color, amount)
-  l = lightness(color)
-  adjust(color, 'lightness', - (l * amount / 100))
-
 // return the last value in the given expr
 
 last(expr)

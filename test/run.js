@@ -46,7 +46,7 @@ function test(test) {
           var msg = '"' + basename(path, '.in') + '" failed\n\n'
             + '\033[33mexpected:\033[0m \n' + expected + '\n\n'
             + '\033[33mactual:\033[0m \n' + actual + '\n';
-          throw new Error(msg);
+          console.error(msg + '\n\n\n');
         }
       });
     });
