@@ -1,0 +1,14 @@
+
+body
+  foo: lighten(#000, 50)
+  foo: lighten(lighten(#000, 50), 50)
+
+body
+  foo: lighten(#000, 50%)
+  foo: lighten(lighten(#000, 50%), 50%)
+
+body
+  foo: lighten(#2c2c2c, 50)
+  foo: lighten(lighten(#2c2c2c, 20), 50)
+  foo: lighten(lighten(#2c2c2c, 20%), 50%)
+  foo: lighten(#2c2c2c, 80%)
