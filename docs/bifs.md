@@ -249,17 +249,27 @@ Return a `RGBA` from the r,g,b channels or cast to an `RGBA` node.
 
 ### lighten(color, amount)
 
-Lighten the given `color` by `amount`.
+Lighten the given `color` by `amount`. This function is
+unit-sensitive, for example supporting percentages as shown
+below.
 
-    lighten(black, 50%)
-    // => #808080
+    lighten(#2c2c2c, 30)
+    // => #787878
+
+    lighten(#2c2c2c, 30%)
+    // => #393939
 
 ### darken(color, amount)
 
-Darken the given `color` by `amount`.
+Darken the given `color` by `amount`.This function is
+unit-sensitive, for example supporting percentages as shown
+below.
 
-    darken(white, 50%)
-    // => #808080
+    darken(#D62828, 30)
+    // => #551010
+
+    darken(#D62828, 30%)
+    // => #961c1c
 
 ### desaturate(color, amount)
 
