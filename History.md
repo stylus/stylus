@@ -1,4 +1,22 @@
 
+0.10.0 / 2011-03-29 
+==================
+
+  * Added keyword argument support
+  * Added `Arguments` node, acts like `Expression`
+  * Added `utils.params()`
+  * Added `debug` option to stylus middleware
+  * Added support for `hsl + 15deg` etc to adjust hue
+  * Added special-case for percentage based `RGBA` operations (`#eee - 20%`)
+  * Changed; right-hand colors in operations are not clamped (`#eee * 0.2`)
+  * Added support for `unit * color` (swaps operands)
+  * Fixed color component requests on the opposite node type (ex red on hsla node)
+  * Fixed `Expression#clone()` to support `Arguments`
+  * Fixed issue with middleware where imports are improperly mapped
+  * Fixed mutation of color when adjusting values
+  * Fixed; coerce string to literal
+  * Removed {darken,lighten}-by() BIFs
+
 0.9.2 / 2011-03-21 
 ==================
 
