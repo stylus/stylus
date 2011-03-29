@@ -14,6 +14,7 @@ var server = connect.createServer(
       src: __dirname
     , dest: __dirname + '/public'
     , compress: true
+    , debug: true
   }),
   connect.static(__dirname + '/public')
 );
