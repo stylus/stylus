@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><title>Stylus</title><link rel="stylesheet" href="../main.css"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head><body><div id="container"><h1><a href='http://learnboost.github.com/stylus'>Stylus</a></h1><p class="tagline"><em class="expressive">Expressive, </em><em class="dynamic">dynamic, </em><em class="robust">robust </em><em class="css">CSS</em></p><div id="ribbon"><a href="http://github.com/learnboost/stylus">Fork me on GitHub</a></div><ul id="menu"><li><a href="../docs/selectors.html">Selectors</a></li><li><a href="../docs/variables.html">Variables</a></li><li><a href="../docs/interpolation.html">Interpolation</a></li><li><a href="../docs/operators.html">Operators</a></li><li><a href="../docs/mixins.html">Mixins</a></li><li><a href="../docs/functions.html">Functions</a></li><li><a href="../docs/bifs.html">Built-in Functions</a></li><li><a href="../docs/vargs.html">Rest Params</a></li><li><a href="../docs/comments.html">Comments</a></li><li><a href="../docs/conditionals.html">Conditionals</a></li><li><a href="../docs/iteration.html">Iteration</a></li><li><a href="../docs/import.html">@import</a></li><li><a href="../docs/media.html">@media</a></li><li><a href="../docs/font-face.html">@font-face</a></li><li><a href="../docs/keyframes.html">@keyframes</a></li><li><a href="../docs/functions.url.html">url()</a></li><li><a href="../docs/literal.html">CSS Literal</a></li><li><a href="../docs/css-style.html">CSS Style Syntax</a></li><li><a href="../docs/escape.html">Char Escaping</a></li><li><a href="../docs/executable.html">Executable</a></li><li><a href="../docs/error-reporting.html">Error Reporting</a></li><li><a href="../docs/middleware.html">Connect Middleware</a></li><li><a href="../docs/js.html">JavaScript API</a></li></ul><div id="content"><h2>Built-in Functions</h2>
+<!DOCTYPE html><html><head><title>Stylus</title><link rel="stylesheet" href="../main.css"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head><body><div id="container"><h1><a href='http://learnboost.github.com/stylus'>Stylus</a></h1><p class="tagline"><em class="expressive">Expressive, </em><em class="dynamic">dynamic, </em><em class="robust">robust </em><em class="css">CSS</em></p><div id="ribbon"><a href="http://github.com/learnboost/stylus">Fork me on GitHub</a></div><ul id="menu"><li><a href="../docs/selectors.html">Selectors</a></li><li><a href="../docs/variables.html">Variables</a></li><li><a href="../docs/interpolation.html">Interpolation</a></li><li><a href="../docs/operators.html">Operators</a></li><li><a href="../docs/mixins.html">Mixins</a></li><li><a href="../docs/functions.html">Functions</a></li><li><a href="../docs/kwargs.html">Keyword Arguments</a></li><li><a href="../docs/bifs.html">Built-in Functions</a></li><li><a href="../docs/vargs.html">Rest Params</a></li><li><a href="../docs/comments.html">Comments</a></li><li><a href="../docs/conditionals.html">Conditionals</a></li><li><a href="../docs/iteration.html">Iteration</a></li><li><a href="../docs/import.html">@import</a></li><li><a href="../docs/media.html">@media</a></li><li><a href="../docs/font-face.html">@font-face</a></li><li><a href="../docs/keyframes.html">@keyframes</a></li><li><a href="../docs/functions.url.html">url()</a></li><li><a href="../docs/literal.html">CSS Literal</a></li><li><a href="../docs/css-style.html">CSS Style Syntax</a></li><li><a href="../docs/escape.html">Char Escaping</a></li><li><a href="../docs/executable.html">Executable</a></li><li><a href="../docs/error-reporting.html">Error Reporting</a></li><li><a href="../docs/middleware.html">Connect Middleware</a></li><li><a href="../docs/introspection.html">Introspection API</a></li><li><a href="../docs/js.html">JavaScript API</a></li></ul><div id="content"><h2>Built-in Functions</h2>
 
 <h3>red(color)</h3>
 
@@ -274,53 +274,28 @@ rgb(#fff)
 
 <h3>lighten(color, amount)</h3>
 
-<p>Lighten the given <code>color</code> by <code>amount</code>.</p>
+<p>Lighten the given <code>color</code> by <code>amount</code>. This function is
+unit-sensitive, for example supporting percentages as shown
+below.</p>
 
-<pre><code>lighten(black, 50%)
-// =&gt; #808080
+<pre><code>lighten(#2c2c2c, 30)
+// =&gt; #787878
+
+lighten(#2c2c2c, 30%)
+// =&gt; #393939
 </code></pre>
 
 <h3>darken(color, amount)</h3>
 
-<p>Darken the given <code>color</code> by <code>amount</code>.</p>
+<p>Darken the given <code>color</code> by <code>amount</code>.This function is
+unit-sensitive, for example supporting percentages as shown
+below.</p>
 
-<pre><code>darken(white, 50%)
-// =&gt; #808080
-</code></pre>
+<pre><code>darken(#D62828, 30)
+// =&gt; #551010
 
-<h3>lighten-by(color, amount)</h3>
-
-<p> Lighten by <code>amount</code> of the current lightness value.</p>
-
-<pre><code>lighten-by(black, 50%)
-// =&gt; #808080
-
-lighten-by(lighten-by(black, 50%), 50%)
-// =&gt; #bfbfbf
-
-lighten-by(lighten-by(lighten-by(black, 50%), 50%), 50%)
-// =&gt; #fff
-</code></pre>
-
-<p>essentially the same as:</p>
-
-<pre><code>black + hsla(0,0,50%)
-black + hsla(0,0,75%)
-black + hsla(0,0,100%)
-</code></pre>
-
-<h3>darken-by(color, amount)</h3>
-
-<p> Darken by <code>amount</code> of the current lightness value.</p>
-
-<pre><code>darken-by(white, 50%)
-// =&gt; #808080
-
-darken-by(darken-by(white, 50%), 50%)
-// =&gt; #404040
-
-darken-by(darken-by(darken-by(white, 50%), 50%), 50%)
-// =&gt; #202020
+darken(#D62828, 30%)
+// =&gt; #961c1c
 </code></pre>
 
 <h3>desaturate(color, amount)</h3>
