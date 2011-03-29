@@ -1,0 +1,74 @@
+pad-y(top, bottom) {
+  padding-top: top;
+  padding-bottom: bottom;
+}
+
+#login {
+  pad-y(15px, 100px);
+}
+
+#login {
+  pad-y(bottom: 100px, top: 15px);
+}
+
+#login {
+  pad-y(top: 15px, bottom: 100px);
+}
+
+#login {
+  pad-y(bottom: 100px, 15px);
+}
+
+#login {
+  pad-y(15px, bottom: 100px);
+}
+
+#login {
+  pad-y(100px, top: 15px);
+}
+
+#login {
+  pad-y(top: 15px, 100px);
+}
+
+#login {
+  pad-y(15px, bottom: 100px);
+}
+
+#login {
+  foo: operate('/', 2, 10);
+  foo: operate('/', 10, 2);
+
+  foo: operate(op: '/', 10, 2);
+  foo: operate(10, op: '/', 2);
+  foo: operate(10, 2, op: '/');
+  
+  foo: operate('/', left: 10, right: 2);
+  foo: operate('/', right: 2, left: 10);
+  foo: operate(right: 2, left: 10, op: '/');
+
+  foo: operate(right: 10, left: 2, op: '/');
+  foo: operate('/', left: 2, right: 10);
+}
+
+body {
+  foo: join(', ', 1, 2, 3);
+  foo: join(', ', 1 2 3);
+  foo: join(delim: ', ', 1, 2, 3);
+  foo: join(1, 2, 3, delim: '|');
+  foo: join(1, delim: '|', 2, 3);
+}
+
+body {
+  foo: join('|', 1, 2, 3);
+  foo: join(1 2 3, delim: '|');
+  foo: join(delim: '|', 1 2 3);
+}
+
+body {
+  foo: rgba(100,50,10,0.5);
+  foo: rgba(100,alpha: 0.5, 50,10);
+  foo: rgba(alpha: 0.5, 100, 50,10);
+  foo: rgba(alpha: 0.5, green: 50, red: 100, 10);
+  foo: rgba(alpha: 0.5, green: 50, red: 100, blue: 10);
+}
