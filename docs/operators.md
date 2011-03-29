@@ -138,6 +138,10 @@ Some operations on colors also take special meaning:
     #eee - 20
     // => #dadada
 
+    $color = hsl(120deg, 90%, 60%)
+    hue($color + 20deg)
+    // => 140deg
+
 We can also operator on colors, and values are clamped appropriately.
 
     #fff - #111
