@@ -45,6 +45,7 @@ compiles to:
 
   - [css syntax](stylus/blob/master/docs/css-style.md) support
   - [mixins](stylus/blob/master/docs/mixins.md)
+  - [keyword arguments](stylus/blob/master/docs/kwargs.md)
   - [variables](stylus/blob/master/docs/variables.md)
   - [interpolation](stylus/blob/master/docs/interpolation.md)
   - arithmetic, logical, and equality [operators](stylus/blob/master/docs/operators.md)
