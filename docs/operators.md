@@ -130,6 +130,14 @@ multiplicative and additive binary operators work as expected, and type conversi
     "num " + 15
     // => "num 15"
 
+Some operations on colors also take special meaning:
+
+    #eee - 20%
+    // => #bebebe
+
+    #eee - 20
+    // => #dadada
+
 We can also operator on colors, and values are clamped appropriately.
 
     #fff - #111
