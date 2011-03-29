@@ -6,10 +6,7 @@
   , "repository": "git://github.com/learnboost/stylus"
   , "main": "./index.js"
   , "engines": { "node": ">= 0.2.4" }
-  , "bin": {
-      "stylus": "./bin/stylus"
-    , "stylus-tutorial": "./bin/stylus-tutorial"
-  }
+  , "bin": { "stylus": "./bin/stylus" }
   , "dependencies": {
       "cssom": "0.2.0"
     , "growl": "1.1.0"
