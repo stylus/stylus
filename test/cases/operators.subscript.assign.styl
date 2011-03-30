@@ -1,0 +1,45 @@
+list = 1 2
+list[0] = foo
+list[4] = 'test'
+
+body {
+  foo: list;
+  foo: list[0];
+  foo: list[1];
+  foo: list[2] == null;
+  foo: list[3] == null;
+  foo: list[4] == 'test';
+  foo: length(list);
+}
+
+
+body {
+  list = 1 2
+  list[0] = foo
+  list[1..3] = 'one'
+  foo: list;
+}
+
+body {
+  list = 1
+  list[4..5] = 'two';
+  foo: list;
+}
+
+fn(list)
+  list[2] = asdf
+  list[3] = 'three'
+  list
+
+body {
+  foo: fn(1 2 3);
+}
+
+fn()
+  arguments[2] = asdf
+  arguments[3] = 'three'
+  arguments
+
+body {
+  foo: fn(1 2 3);
+}
