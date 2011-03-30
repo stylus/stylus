@@ -1,0 +1,21 @@
+body {
+  foo: foo 2   "test";
+  foo: foo;
+  foo: 2;
+  foo: true;
+  foo: true;
+  foo: true;
+  foo: 5;
+}
+body {
+  foo: foo "one" "one" "one";
+}
+body {
+  foo: 1    "two" "two";
+}
+body {
+  foo: 1 2 asdf "three";
+}
+body {
+  foo: 1 2 asdf "three";
+}
