@@ -42,6 +42,12 @@ var convertCSS = false;
 var files = [];
 
 /**
+ * Import paths.
+ */
+
+var paths = [];
+
+/**
  * Destination directory.
  */
 
@@ -79,6 +85,7 @@ var usage = [
   , '    -w, --watch             Watch file(s) for changes and re-compile'
   , '    -o, --out <dir>         Output to <dir> when passing files'
   , '    -C, --css <src> [dest]  Convert css input to stylus'
+  , '    -I, --include <path>    Add <path> to lookup paths'
   , '    -c, --compress          Compress css output'
   , '    -d, --compare           Display input along with output'
   , '    -V, --version           Display the version of stylus'
@@ -130,6 +137,12 @@ while (args.length) {
     case '--interactive':
       interactive = true;
       break;
+    case '-I':
+    case '--include':
+      var path = args.shift();
+      if (!path) throw new Error('--include <path> required');
+      paths.push(path);
+      break;
     case '-w':
     case '--watch':
       watchers = {};
@@ -168,7 +181,7 @@ function help(name) {
 var options = {
     filename: 'stdin'
   , compress: compress
-  , paths: [process.cwd()]
+  , paths: [process.cwd()].concat(paths)
 };
 
 // Buffer stdin

@@ -17,6 +17,7 @@ Stylus ships with the `stylus` executable for converting stylus to css.
         -w, --watch             Watch file(s) for changes and re-compile
         -o, --out <dir>         Output to <dir> when passing files
         -C, --css <src> [dest]  Convert css input to stylus
+        -I, --include <path>    Add <path> to lookup paths
         -c, --compress          Compress css output
         -d, --compare           Display input along with output
         -V, --version           Display the version of stylus
