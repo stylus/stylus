@@ -32,3 +32,17 @@ mixin()
 
 body
   mixin()
+
+// multiple calls
+
+something(val)
+  if current-property
+    add-property(current-property[0], s('-webkit-something(%s)', val))
+    add-property(current-property[0], s('-moz-something(%s)', val))
+    s('something(%s)', val)
+  else
+    error('something() must be used within a property')
+
+body {
+  foo: something(15px);
+}
