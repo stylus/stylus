@@ -298,6 +298,33 @@ Saturate the given `color` by `amount`.
        unquote('1px / 2px')
        // => 1px / 2px
 
+### s(fmt, ...)
+
+ The `s()` function is similar to `unquote()`, in that it returns
+ a `Literal` node, however it accepts a format string much like C's `sprintf()`. Currently the only specifier is `%s`.
+
+        s('bar()');
+        // => bar()
+
+        s('bar(%s)', 'baz');
+        // => bar("baz")
+
+        s('bar(%s)', baz);
+        // => bar(baz)
+        
+        s('bar(%s)', 15px);
+        // => bar(15px)
+        
+        s('rgba(%s, %s, %s, 0.5)', 255, 100, 50);
+        // => rgba(255, 100, 50, 0.5)
+        
+        s('bar(%Z)', 15px);
+        // => bar(%Z)
+        
+        s('bar(%s, %s)', 15px);
+        // => bar(15px, null)
+        
+
 ### operate(op, left, right)
 
   Perform the given `op` on the `left` and `right` operands:
