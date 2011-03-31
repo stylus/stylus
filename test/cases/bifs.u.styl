@@ -1,0 +1,10 @@
+
+body {
+  foo: s('bar()');
+  foo: s('bar(%s)', 'baz');
+  foo: s('bar(%s)', baz);
+  foo: s('bar(%s)', 15px);
+  foo: s('rgba(%s, %s, %s, 0.5)', 255, 100, 50);
+  foo: s('bar(%Z)', 15px);
+  foo: s('bar(%s, %s)', 15px);
+}
