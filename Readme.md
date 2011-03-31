@@ -74,6 +74,7 @@ compiles to:
   - Connect [Middleware](stylus/blob/master/docs/middleware.md)
   - TextMate [bundle](stylus/blob/master/docs/textmates.md)
   - VIM [Syntax](https://github.com/wavded/vim-stylus)
+  - transparent vendor-specific function expansion
 
 ### Framework Support
 
