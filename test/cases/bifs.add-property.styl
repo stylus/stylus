@@ -1,0 +1,34 @@
+
+string(val)
+  '' + val
+
+replace(expr, str, val)
+  expr[i] = val if string(e) == str for e, i in expr
+
+linear-gradient(from, to) {
+  if current-property {
+    webkit = s('-webkit-gradient(linear, 0% 0%, 0% 100%, from(%s), to(%s))', from, to);
+    moz = s('-moz-linear-gradient(%s, %s)', from, to);
+    prop = current-property;
+    replace(current-property[1], '__CALL__', moz);
+    add-property(prop[0], prop[1]);
+    webkit;
+  } else {
+    error('linear-gradient() must be used within a property');
+  }
+}
+
+body
+  background foo linear-gradient(#2a2a2a, #454545) bar
+
+body
+  background-image linear-gradient(#2a2a2a, #454545)
+
+body
+  foo linear-gradient(#333, #999)
+
+mixin()
+  foo linear-gradient(#eee, #999)
+
+body
+  mixin()
