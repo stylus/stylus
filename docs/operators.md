@@ -130,35 +130,6 @@ multiplicative and additive binary operators work as expected, and type conversi
     "num " + 15
     // => "num 15"
 
-Some operations on colors also take special meaning:
-
-    #eee - 20%
-    // => #bebebe
-
-    #eee - 20
-    // => #dadada
-
-    $color = hsl(120deg, 90%, 60%)
-    hue($color + 20deg)
-    // => 140deg
-
-We can also operator on colors, and values are clamped appropriately.
-
-    #fff - #111
-    => #eee
-    
-    #111 + #fco
-    // => #fd1
-    
-    #fff - rgba(255,0,0,0.3)
-    // => rgba(0,255,255,0.7)
-    
-    #fff / 2
-    // => #808080
-    
-    #fff / rgb(2,0,4)
-    // #80ff40
-
 ### Multiplicative: / * %
 
     2000ms + (1s * 2)
@@ -427,4 +398,31 @@ The ternary operator works as we would expect in most languages, being the only 
     num ? unit(num, 'px') : 20px
     // => 15px
 
+## Color Operations
 
+ Operations on colors provide a terse, expressive way to alter components. For example we can operate on each RGB:
+ 
+    #0e0 + #0e0
+    // => #0f0
+
+ Another example is adjust the lightness value by adding or subtracting a percentage. To lighten a color we add, to darken we subtract.
+ 
+    #888 + 50%
+    // => #ccc
+
+    #888 - 50%
+    // => #444
+
+  Adjust the hue is also possible by adding or subtracting with degrees, for example adding `50deg` to this red value, resulting in a yellow:
+  
+     #f00 + 50deg
+     // => #ffd500
+
+  Values clamp appropriately, for example we can "spin" the hue 180 degrees, and if the current value is `320deg`, it will resolve to `140deg`.
+
+  We may also tweak several values at once, including the alpha by using `rgb()`, `rgba()`, `hsl()`, or `hsla()`:
+  
+      #f00 - rgba(100,0,0,0.5)
+      // => rgba(155,0,0,0.5)
+
+    
