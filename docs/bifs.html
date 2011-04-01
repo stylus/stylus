@@ -328,6 +328,35 @@ darken(#D62828, 30%)
    // =&gt; 1px / 2px
 </code></pre>
 
+<h3>s(fmt, &hellip;)</h3>
+
+<p> The <code>s()</code> function is similar to <code>unquote()</code>, in that it returns
+ a <code>Literal</code> node, however it accepts a format string much like C&rsquo;s <code>sprintf()</code>. Currently the only specifier is <code>%s</code>.</p>
+
+<pre><code>    s('bar()');
+    // =&gt; bar()
+
+    s('bar(%s)', 'baz');
+    // =&gt; bar("baz")
+
+    s('bar(%s)', baz);
+    // =&gt; bar(baz)
+
+    s('bar(%s)', 15px);
+    // =&gt; bar(15px)
+
+    s('rgba(%s, %s, %s, 0.5)', 255, 100, 50);
+    // =&gt; rgba(255, 100, 50, 0.5)
+
+    s('bar(%Z)', 15px);
+    // =&gt; bar(%Z)
+
+    s('bar(%s, %s)', 15px);
+    // =&gt; bar(15px, null)
+</code></pre>
+
+<p>Check out the <code>%</code> string operator for equivalent behaviour.</p>
+
 <h3>operate(op, left, right)</h3>
 
 <p>  Perform the given <code>op</code> on the <code>left</code> and <code>right</code> operands:</p>
@@ -453,6 +482,101 @@ length()
   image-size('tux.png')[0] == width('tux.png')
   // =&gt; true
 </code></pre>
+
+<h3>add-property(name, expr)</h3>
+
+<p>  Adds property <code>name</code>, with the given <code>expr</code> to the closest block.</p>
+
+<p>  For example:</p>
+
+<pre><code>  something()
+    add-property('bar', 1 2 3)
+    s('bar')
+
+  body
+    foo: something()
+</code></pre>
+
+<p>yields:</p>
+
+<pre><code>  body {
+    bar: 1 2 3;
+    foo: bar;
+  }
+</code></pre>
+
+<p>  Next the &ldquo;magic&rdquo; <code>current-property</code> local variable comes into play. This variable is automatically available to function bodies, and contains an expression with the current property&rsquo;s name, and value.</p>
+
+<p>  For example if we were to inspect this local variable using <code>p()</code>, we
+  get the following:</p>
+
+<pre><code>    p(current-property)
+    // =&gt; "foo" (foo __CALL__ bar baz)
+
+    p(current-property[0])
+    // =&gt; "foo"
+
+    p(current-property[1])
+    // =&gt; foo __CALL__ bar baz
+</code></pre>
+
+<p>  Using <code>current-property</code> we can take our example a bit further, and duplicate the property with new values, and a conditional to ensure the function is only used within a property value.</p>
+
+<pre><code>    something(n)
+      if current-property
+        add-property(current-property[0], s('-webkit-something(%s)', n))
+        add-property(current-property[0], s('-moz-something(%s)', n))
+        s('something(%s)', n)
+      else
+        error('something() must be used within a property')
+
+    body {
+      foo: something(15px) bar;
+    }
+</code></pre>
+
+<p>yields:</p>
+
+<pre><code>    body {
+      foo: -webkit-something(15px);
+      foo: -moz-something(15px);
+      foo: something(15px) bar;
+    }
+</code></pre>
+
+<p>  If you noticed in the example above, <code>bar</code> is only present for the initial call, since we returned <code>something(15px)</code>, it remained in-place within the expression, however the others do not take the rest of the expression into account.</p>
+
+<p>  Our more robust solution below, defines a function named <code>replace()</code> which clones the expression to prevent mutation, replaces the string value of an expression with another, and returns the cloned expression. We then move on to replace <code>__CALL__</code> within the expressions, which represents the cyclic call to <code>something()</code>.</p>
+
+<pre><code>    replace(expr, str, val)
+      expr = clone(expr)
+      for e, i in expr
+        if str == e
+          expr[i] = val
+      expr
+
+    something(n)
+      if current-property
+        val = current-property[1]
+        webkit = replace(val, '__CALL__', s('-webkit-something(%s)', n))
+        moz = replace(val, '__CALL__', s('-moz-something(%s)', n))
+        add-property(current-property[0], webkit)
+        add-property(current-property[0], moz)
+        s('something(%s)', n)
+      else
+        error('something() must be used within a property')
+</code></pre>
+
+<p>yields:</p>
+
+<pre><code>      body {
+        foo: foo -webkit-something(5px) bar baz;
+        foo: foo -moz-something(5px) bar baz;
+        foo: foo something(5px) bar baz;
+      }
+</code></pre>
+
+<p>Our implementation is now fully transparent both in regards to the property it is called within, and the position of the call. This powerful concept aids in transparent vendor support for function calls, such as gradients.</p>
 
 <h3>Undefined Functions</h3>
 

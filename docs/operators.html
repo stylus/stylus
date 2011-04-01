@@ -136,24 +136,6 @@ b = 1
 // =&gt; "num 15"
 </code></pre>
 
-<p>We can also operator on colors, and values are clamped appropriately.</p>
-
-<pre><code>#fff - #111
-=&gt; #eee
-
-#111 + #fco
-// =&gt; #fd1
-
-#fff - rgba(255,0,0,0.3)
-// =&gt; rgba(0,255,255,0.7)
-
-#fff / 2
-// =&gt; #808080
-
-#fff / rgb(2,0,4)
-// #80ff40
-</code></pre>
-
 <h3>Multiplicative: / * %</h3>
 
 <pre><code>2000ms + (1s * 2)
@@ -445,5 +427,50 @@ lookup('light-' + name)
 <pre><code>num = 15
 num ? unit(num, 'px') : 20px
 // =&gt; 15px
+</code></pre>
+
+<h2>Color Operations</h2>
+
+<p> Operations on colors provide a terse, expressive way to alter components. For example we can operate on each RGB:</p>
+
+<pre><code>#0e0 + #0e0
+// =&gt; #0f0
+</code></pre>
+
+<p> Another example is adjust the lightness value by adding or subtracting a percentage. To lighten a color we add, to darken we subtract.</p>
+
+<pre><code>#888 + 50%
+// =&gt; #ccc
+
+#888 - 50%
+// =&gt; #444
+</code></pre>
+
+<p>  Adjust the hue is also possible by adding or subtracting with degrees, for example adding <code>50deg</code> to this red value, resulting in a yellow:</p>
+
+<pre><code> #f00 + 50deg
+ // =&gt; #ffd500
+</code></pre>
+
+<p>  Values clamp appropriately, for example we can &ldquo;spin&rdquo; the hue 180 degrees, and if the current value is <code>320deg</code>, it will resolve to <code>140deg</code>.</p>
+
+<p>  We may also tweak several values at once, including the alpha by using <code>rgb()</code>, <code>rgba()</code>, <code>hsl()</code>, or <code>hsla()</code>:</p>
+
+<pre><code>  #f00 - rgba(100,0,0,0.5)
+  // =&gt; rgba(155,0,0,0.5)
+</code></pre>
+
+<h2>Sprintf</h2>
+
+<p> The string sprintf-like operator <code>%</code> can be used to generate a literal value, internally passing arguments through the <code>s()</code> built-in:</p>
+
+<pre><code>   'X::Microsoft::Crap(%s)' % #fc0
+   // =&gt; X::Microsoft::Crap(#fc0)
+</code></pre>
+
+<p>  Multiple values should be parenthesized:</p>
+
+<pre><code>  '-webkit-gradient(%s, %s, %s)' % (linear (0 0) (0 100%))
+  // =&gt; -webkit-gradient(linear, 0 0, 0 100%)
 </code></pre>
 </div></div></body></html>
