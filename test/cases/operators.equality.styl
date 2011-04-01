@@ -1,22 +1,28 @@
 body
-  
-  foo 1 != 5
-  
-  foo wahoo == wahoo
-  
-  foo wahoo == something == false
-  
-  foo wahoo != something
-  foo wahoo is not something
+  foo 1 == 1
+  foo '1' == 1
+  foo 1 == '1'
+  foo 1 == '5' == false
+  foo 5 == 1 == false
+  foo 5 != 1
+  foo 5 != asdf
+  foo 5 == asdf == false
 
-  foo = yay
-  foo yes == (foo is defined ? yes : nope)
-  
-  rawr = 'asdfasdf'
-  foo yes == (rawr is defined ? yes : nope)
-  
+body
   foo 1000ms == 1s
-  
-  foo 1ms == 1s == false
+  foo 1s == 1000ms
+  foo 1s == 500ms == false
 
-  foo 5 < 10 and 10 > 5
+body
+  foo wahoo == wahoo
+  foo wahoo == 'wahoo'
+  foo wahoo == unquote('wahoo')
+
+body
+  foo unquote('wahoo') == wahoo
+  foo 'wahoo' == wahoo
+
+body
+  something = 'yay'
+  foo yes == (something is defined ? yes : nope)
+  foo nope == (whatever is defined ? yes : nope)
