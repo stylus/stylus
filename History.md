@@ -1,4 +1,22 @@
 
+0.11.0 / 2011-04-01 
+==================
+
+  * Added `linear-gradient()` example
+  * Added `s(fmt, ...)` built-in; sprintf-like
+  * Added `current-property` local variable
+  * Added `add-property(name, val)` 
+  * Added the ability for functions to duplicate the property they are invoked within
+  * Added `[]=` operator support. Ex: `fonts[1] = arial`, `nums[1..3] = 2`
+  * Added `-I, --include <path>` to stylus(1). Closes #206
+  * Changed; null now outputs "null" instead of "[Null]"
+
+within
+  * Added support for `50 + 25% == 75`
+  * Added support for `rgba + 25%` to lighten
+  * Added support for `rgba - 25%` to darken
+  * Added support for `rgba - 25` to adjust rgb values
+
 0.10.0 / 2011-03-29 
 ==================
 
