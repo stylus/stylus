@@ -298,6 +298,34 @@ Saturate the given `color` by `amount`.
        unquote('1px / 2px')
        // => 1px / 2px
 
+### s(fmt, ...)
+
+ The `s()` function is similar to `unquote()`, in that it returns
+ a `Literal` node, however it accepts a format string much like C's `sprintf()`. Currently the only specifier is `%s`.
+
+        s('bar()');
+        // => bar()
+
+        s('bar(%s)', 'baz');
+        // => bar("baz")
+
+        s('bar(%s)', baz);
+        // => bar(baz)
+        
+        s('bar(%s)', 15px);
+        // => bar(15px)
+        
+        s('rgba(%s, %s, %s, 0.5)', 255, 100, 50);
+        // => rgba(255, 100, 50, 0.5)
+        
+        s('bar(%Z)', 15px);
+        // => bar(%Z)
+        
+        s('bar(%s, %s)', 15px);
+        // => bar(15px, null)
+        
+Check out the `%` string operator for equivalent behaviour.
+
 ### operate(op, left, right)
 
   Perform the given `op` on the `left` and `right` operands:
@@ -414,6 +442,94 @@ stdout:
 
       image-size('tux.png')[0] == width('tux.png')
       // => true
+
+### add-property(name, expr)
+
+  Adds property `name`, with the given `expr` to the closest block.
+
+  For example:
+
+      something()
+        add-property('bar', 1 2 3)
+        s('bar')
+
+      body
+        foo: something()
+
+yields:
+
+      body {
+        bar: 1 2 3;
+        foo: bar;
+      }
+
+  Next the "magic" `current-property` local variable comes into play. This variable is automatically available to function bodies, and contains an expression with the current property's name, and value.
+
+  For example if we were to inspect this local variable using `p()`, we
+  get the following:
+  
+        p(current-property)
+        // => "foo" (foo __CALL__ bar baz)
+
+        p(current-property[0])
+        // => "foo"
+
+        p(current-property[1])
+        // => foo __CALL__ bar baz
+
+  Using `current-property` we can take our example a bit further, and duplicate the property with new values, and a conditional to ensure the function is only used within a property value.
+
+        something(n)
+          if current-property
+            add-property(current-property[0], s('-webkit-something(%s)', n))
+            add-property(current-property[0], s('-moz-something(%s)', n))
+            s('something(%s)', n)
+          else
+            error('something() must be used within a property')
+
+        body {
+          foo: something(15px) bar;
+        }
+
+yields:
+
+        body {
+          foo: -webkit-something(15px);
+          foo: -moz-something(15px);
+          foo: something(15px) bar;
+        }
+
+  If you noticed in the example above, `bar` is only present for the initial call, since we returned `something(15px)`, it remained in-place within the expression, however the others do not take the rest of the expression into account.
+  
+  Our more robust solution below, defines a function named `replace()` which clones the expression to prevent mutation, replaces the string value of an expression with another, and returns the cloned expression. We then move on to replace `__CALL__` within the expressions, which represents the cyclic call to `something()`.
+
+        replace(expr, str, val)
+          expr = clone(expr)
+          for e, i in expr
+            if str == e
+              expr[i] = val
+          expr
+
+        something(n)
+          if current-property
+            val = current-property[1]
+            webkit = replace(val, '__CALL__', s('-webkit-something(%s)', n))
+            moz = replace(val, '__CALL__', s('-moz-something(%s)', n))
+            add-property(current-property[0], webkit)
+            add-property(current-property[0], moz)
+            s('something(%s)', n)
+          else
+            error('something() must be used within a property')
+
+yields:
+
+          body {
+            foo: foo -webkit-something(5px) bar baz;
+            foo: foo -moz-something(5px) bar baz;
+            foo: foo something(5px) bar baz;
+          }
+
+Our implementation is now fully transparent both in regards to the property it is called within, and the position of the call. This powerful concept aids in transparent vendor support for function calls, such as gradients.
 
 ### Undefined Functions
 
