@@ -7,4 +7,5 @@ body {
   foo: bar(%Z);
   foo: bar(15px, null);
   foo: bar(foo bar, 1 2 3);
+  foo: bar(#eee);
 }
