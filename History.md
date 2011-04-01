@@ -19,13 +19,11 @@
   * Added the ability for functions to duplicate the property they are invoked within
   * Added `[]=` operator support. Ex: `fonts[1] = arial`, `nums[1..3] = 2`
   * Added `-I, --include <path>` to stylus(1). Closes #206
-  * Changed; null now outputs "null" instead of "[Null]"
-
-within
   * Added support for `50 + 25% == 75`
   * Added support for `rgba + 25%` to lighten
   * Added support for `rgba - 25%` to darken
   * Added support for `rgba - 25` to adjust rgb values
+  * Changed; null now outputs "null" instead of "[Null]"
   * Fixed hsl operation support, all operations are equivalent on rgba/hsla nodes
   * Fixed degree rotation
 
