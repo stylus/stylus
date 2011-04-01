@@ -1,57 +1,44 @@
+$r = #C44444
+$h = hsl(#C44444)
+
+// TODO: hsl() percentages
 
 body
-  background #fff - (rgba(250,0,0,0.5) + rgba(5,0,0,0))
-  color #ffcc00 - #f00
+  foo: $r + 10
+  foo: $h + 10
 
-a
-  color (#fff / 2)
+body
+  foo $r - 10
+  foo $h - 10
 
+body
+  foo $r + 20%
+  foo $h + 20%
 
-body {
-  color: (#919191 * 0.2);
-  color: (#919191 / 2);
-  color: (#919191 * 20%);
-}
+body
+  foo $r - 20%
+  foo $h - 20%
 
-body {
-  color: hsl(#919191) * 0.2;
-  color: 0.2 * hsl(#919191);
-  color: (hsl(#919191) / 2);
-  color: hsl(#919191) * 20%;
-}
+body
+  foo $r + 20deg
+  foo $h + 20deg
 
-body {
-  color: darken(#888, 75%);
-  color: #888 - 75%;
-  color: #888 - 75;
-}
+body
+  foo $r - 20deg
+  foo $h - 20deg
 
-body {
-  color: lighten(#888, 20%);
-  color: #888 + 20%;
-  color: #888 + 20;
-}
+body
+  foo $r + rgb(0,50,100)
+  foo $h + rgb(0,50,100)
 
-body {
-  color: #888 - 20%;
-  color: #888 - 20;
-  color: #E21E1E - 80%;
-}
+body
+  foo $r + rgb(0,50,100)
+  foo $h - rgb(0,50,100)
 
-$color = hsl(120deg, 90%, 60%);
+body
+  foo $r + hsl(20,30,10)
+  foo $h + hsl(20,30,10)
 
-body {
-  color: $color;
-  color: $color + 20deg;
-  color: $color - 20deg;
-}
-
-
-$color = hsl(120deg, 90%, 60%);
-
-body {
-  color: hue($color);
-  color: hue($color - 80deg);
-  color: hue($color - 180deg);
-  color: hue($color - 250deg);
-}
+body
+  foo $r - hsl(20,30,10)
+  foo $h - hsl(20,30,10)

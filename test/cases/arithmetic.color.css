@@ -1,44 +1,40 @@
 body {
-  background: rgba(0,255,255,0.5);
-  color: #0c0;
-}
-a {
-  color: #808080;
+  foo: #ce4e4e;
+  foo: #ce4e4e;
 }
 body {
-  color: #1d1d1d;
-  color: #494949;
-  color: #fff;
+  foo: #ba3a3a;
+  foo: #ba3a3a;
 }
 body {
-  color: #1d1d1d;
-  color: #1d1d1d;
-  color: #494949;
-  color: #fff;
+  foo: #d16c6c;
+  foo: #d16c6c;
 }
 body {
-  color: #222;
-  color: #222;
-  color: #3d3d3d;
+  foo: #a13333;
+  foo: #a13333;
 }
 body {
-  color: #a3a3a3;
-  color: #a3a3a3;
-  color: #9c9c9c;
+  foo: #c46f44;
+  foo: #c46f44;
 }
 body {
-  color: #6d6d6d;
-  color: #747474;
-  color: #2d0606;
+  foo: #c4446f;
+  foo: #c4446f;
 }
 body {
-  color: #3df53d;
-  color: #3df57a;
-  color: #7af53d;
+  foo: #c476a8;
+  foo: #c476a8;
 }
 body {
-  color: 120deg;
-  color: 40deg;
-  color: 60deg;
-  color: 130deg;
+  foo: #c476a8;
+  foo: #c41200;
+}
+body {
+  foo: #ed834e;
+  foo: #ed834e;
+}
+body {
+  foo: #825363;
+  foo: #825363;
 }
