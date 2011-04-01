@@ -27,3 +27,10 @@ compiles to:
     body {
       font: 14px "Lucida Grande", Arial sans-serif;
     }
+
+identifiers (variable names, functions, etc) may also include the `$` character, for example:
+
+    $font-size = 14px
+    body {
+      font: $font sans-serif;
+    }
