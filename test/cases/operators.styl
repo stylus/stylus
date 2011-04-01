@@ -84,3 +84,13 @@ body
   foo 0 == true
   foo true == 0
   foo #fff == undefined
+
+
+body
+  nums = 1 2
+  foo: '<%s:%s>' % 12
+  foo: '<%s:%s>' % nums
+  foo: '<a: %s b: %s>' % 1 2 // not what you might think
+  foo: '<a: %s b: %s>' % (1 2)
+  foo: 'X::Micrsoft::crap(%s)' % rgb(0,255,0)
+  foo: '<%s, %s, %s>' % (foo bar baz)  

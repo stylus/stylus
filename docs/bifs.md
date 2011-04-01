@@ -324,6 +324,7 @@ Saturate the given `color` by `amount`.
         s('bar(%s, %s)', 15px);
         // => bar(15px, null)
         
+Check out the `%` string operator for equivalent behaviour.
 
 ### operate(op, left, right)
 

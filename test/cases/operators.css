@@ -30,3 +30,11 @@ body {
   foo: false;
   foo: false;
 }
+body {
+  foo: <12:>;
+  foo: <1:2>;
+  foo: <a: 1 b: > 2;
+  foo: <a: 1 b: 2>;
+  foo: X::Micrsoft::crap(#0f0);
+  foo: <foo, bar, baz>;
+}

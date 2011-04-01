@@ -425,4 +425,15 @@ The ternary operator works as we would expect in most languages, being the only 
       #f00 - rgba(100,0,0,0.5)
       // => rgba(155,0,0,0.5)
 
-    
+## Sprintf
+
+ The string sprintf-like operator `%` can be used to generate a literal value, internally passing arguments through the `s()` built-in:
+
+       'X::Microsoft::Crap(%s)' % #fc0
+       // => X::Microsoft::Crap(#fc0)
+
+  Multiple values should be parenthesized:
+  
+      '-webkit-gradient(%s, %s, %s)' % (linear (0 0) (0 100%))
+      // => -webkit-gradient(linear, 0 0, 0 100%)
+   
