@@ -2,8 +2,18 @@
 0.11.0 / 2011-04-01 
 ==================
 
+  * Added `HSLA#add(h,s,l,a)`
+  * Added `HSLA#sub(h,s,l,a)`
+  * Added `RGBA#add(r,g,b,a)`
+  * Added `RGBA#sub(r,g,b,a)`
+  * Added `RGBA#multiply(n)`
+  * Added `RGBA#divide(n)`
+  * Added `HSLA#adjustHue(deg)`
+  * Added `HSLA#adjustLightness(percent)`
+  * Added `HSLA#adjustSaturation(percent)`
   * Added `linear-gradient()` example
   * Added `s(fmt, ...)` built-in; sprintf-like
+  * Added `%` sprintf-like string operator, ex: `'%s %s' % (1 2)`
   * Added `current-property` local variable
   * Added `add-property(name, val)` 
   * Added the ability for functions to duplicate the property they are invoked within
@@ -16,6 +26,8 @@ within
   * Added support for `rgba + 25%` to lighten
   * Added support for `rgba - 25%` to darken
   * Added support for `rgba - 25` to adjust rgb values
+  * Fixed hsl operation support, all operations are equivalent on rgba/hsla nodes
+  * Fixed degree rotation
 
 0.10.0 / 2011-03-29 
 ==================
