@@ -5,7 +5,7 @@ body {
   foo: bar(15px);
   foo: rgba(255, 100, 50, 0.5);
   foo: bar(%Z);
-  foo: bar(15px, null);
+  foo: bar(15px, );
   foo: bar(foo bar, 1 2 3);
   foo: bar(#eee);
 }
