@@ -17,11 +17,12 @@ body
   foo HEY in words
 
 body
-  tuples = (error 'one') (error 'two')
-  foo error in tuples
-  foo (error 'one') in tuples
-  foo (error 'two') in tuples
-  foo (error 'something') in tuples
+  tuples = (test 'one') (test 'two') 2
+  foo test in tuples
+  foo 2 in tuples
+  foo (test 'one') in tuples
+  foo (test 'two') in tuples
+  foo (test 'something') in tuples
 
 fn(args...)
   2 in args
