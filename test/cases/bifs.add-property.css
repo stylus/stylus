@@ -1,21 +1,21 @@
 body {
-  background: foo -webkit-gradient(linear, 0% 0%, 0% 100%, from(#2a2a2a), to(#454545)) bar;
   background: foo -moz-linear-gradient(#2a2a2a, #454545) bar;
+  background: foo -webkit-gradient(linear, 0% 0%, 0% 100%, from(#2a2a2a), to(#454545)) bar;
 }
 body {
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#2a2a2a), to(#454545));
   background-image: -moz-linear-gradient(#2a2a2a, #454545);
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#2a2a2a), to(#454545));
 }
 body {
-  foo: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#333), to(#999));
   foo: -moz-linear-gradient(#333, #999);
+  foo: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#333), to(#999));
 }
 body {
-  foo: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#eee), to(#999));
   foo: -moz-linear-gradient(#eee, #999);
+  foo: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#eee), to(#999));
 }
 body {
-  foo: something(15px);
   foo: -webkit-something(15px);
   foo: -moz-something(15px);
+  foo: something(15px);
 }

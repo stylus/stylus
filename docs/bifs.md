@@ -458,8 +458,8 @@ stdout:
 yields:
 
       body {
-        foo: bar;
         bar: 1 2 3;
+        foo: bar;
       }
 
   Next the "magic" `current-property` local variable comes into play. This variable is automatically available to function bodies, and contains an expression with the current property's name, and value.
@@ -493,9 +493,9 @@ yields:
 yields:
 
         body {
-          foo: something(15px) bar;
           foo: -webkit-something(15px);
           foo: -moz-something(15px);
+          foo: something(15px) bar;
         }
 
   If you noticed in the example above, `bar` is only present for the initial call, since we returned `something(15px)`, it remained in-place within the expression, however the others do not take the rest of the expression into account.
@@ -523,9 +523,9 @@ yields:
 yields:
 
           body {
-            foo: foo something(5px) bar baz;
             foo: foo -webkit-something(5px) bar baz;
             foo: foo -moz-something(5px) bar baz;
+            foo: foo something(5px) bar baz;
           }
 
 Our implementation is now fully transparent both in regards to the property it is called within, and the position of the call. This powerful concept aids in transparent vendor support for function calls, such as gradients.
