@@ -1,4 +1,9 @@
 
+0.11.1 / 2011-04-01 
+==================
+
+  * Fixed regression preventing commas from outputting
+
 0.11.0 / 2011-04-01 
 ==================
 
