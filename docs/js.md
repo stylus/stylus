@@ -26,6 +26,15 @@ We can also do the same thing in a more progressive manner:
      .set('filename', __dirname + '/test.styl')
      .set('paths', [__dirname, __dirname + '/mixins'])
 
+### .include(path)
+
+  A progressive alternative to setting `paths` via `.set()`, which is ideal when exposing external stylus libraries which expose a path.
+  
+    stylus(str)
+      .include(require('nib').path)
+      .include(process.env.HOME + '/mixins')
+      .render(...)
+
 ### .import(path)
 
 Defer importing of the given `path` until evaluation is performed. The example below is essentially the same as doing `@import 'mixins/vendor'` within your Stylus sheet.
