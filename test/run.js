@@ -38,10 +38,15 @@ function test(test) {
     , csspath = base + '.css';
   fs.readFile(path, 'utf8', function(err, str){
     if (err) throw err;
-    var paths = [__dirname + '/images', __dirname + '/cases/import.basic'];
-    var options = { filename: path, paths: paths };
-    if (~test.indexOf('compress')) options.compress = true;
-    stylus.render(str, options, function(err, actual){
+
+    var style = stylus(str)
+      .set('filename', path)
+      .include(__dirname + '/images')
+      .include(__dirname + '/cases/import.basic');
+
+    if (~test.indexOf('compress')) style.set('compress', true);
+    
+    style.render(function(err, actual){
       if (err) throw err;
       fs.readFile(csspath, 'utf8', function(err, expected){
         if (err) throw err;
