@@ -1,0 +1,15 @@
+button {
+  intensity: 1;
+  background: #eee;
+  glow: "glow";
+}
+button {
+  intensity: 0.5;
+  background: #333;
+  glow: "glow";
+}
+button {
+  intensity: 0.5;
+  background: #000;
+  glow: "glow";
+}
