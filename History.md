@@ -1,4 +1,11 @@
 
+0.11.2 / 2011-04-06 
+==================
+
+  * Added `Renderer#include(path)`. Closes #214
+  * Fixed __@import__ path resolution bug. Closes #215
+  * Fixed optional keyword arg bug. Closes #212
+
 0.11.1 / 2011-04-01 
 ==================
 
