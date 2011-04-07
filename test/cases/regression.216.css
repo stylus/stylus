@@ -1,0 +1,10 @@
+@media only screen and (width-max: 767px) {
+  article > div {
+    width: 192px;
+  }
+}
+@media print {
+  * .no-print {
+    display: none;
+  }
+}
