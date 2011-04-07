@@ -202,7 +202,7 @@ Test if `string` matches the given `pattern`.
       join(', ', foo, bar, baz)
       // => "foo, bar, baz"
 
-### hsla(color | h[, s, l, a])
+### hsla(color | h,s,l,a)
 
 Convert the given `color` to an `HSLA` node,
 or h,s,l,a component values.
@@ -213,7 +213,7 @@ or h,s,l,a component values.
      hslaa(#ffcc00)
      // => HSLA
 
-### hsla(color | h[, s, l])
+### hsla(color | h,s,l)
 
 Convert the given `color` to an `HSLA` node,
 or h,s,l component values.
@@ -224,7 +224,7 @@ or h,s,l component values.
      hsla(#ffcc00)
      // => HSLA
 
-### rgba(color | r[, g, b, a])
+### rgba(color | r,g,b,a)
 
 Return `RGBA` from the r,g,b,a channels or provide a `color` to tweak the alpha.
 
@@ -237,7 +237,7 @@ Return `RGBA` from the r,g,b,a channels or provide a `color` to tweak the alpha.
       rgba(#ffcc00, 0.5)
       // rgba(255,204,0,0.5)
 
-### rgb(color | r[, g, b])
+### rgb(color | r,g,b)
 
 Return a `RGBA` from the r,g,b channels or cast to an `RGBA` node.
     
