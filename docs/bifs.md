@@ -70,14 +70,14 @@ Return the hue of the given `color`.
 
 Return the saturation of the given `color`.
 
-    hue(hsla(50deg, 100%, 80%))
+    saturation(hsla(50deg, 100%, 80%))
     // => 100%
 
 ### lightness(color)
 
 Return the lightness of the given `color`.
 
-    hue(hsla(50deg, 100%, 80%))
+    lightness(hsla(50deg, 100%, 80%))
     // => 80%
 
 ### typeof(node)
