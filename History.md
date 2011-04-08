@@ -1,4 +1,11 @@
 
+0.11.3 / 2011-04-08 
+==================
+
+  * Fixed; keyword args previously not evaluated
+  * Fixed; subpixel support
+  * Fixed bug preventing combinators (and other ops) in __@media__ blocks. Closes #216 [reported by jsteenkamp]
+
 0.11.2 / 2011-04-06 
 ==================
 
