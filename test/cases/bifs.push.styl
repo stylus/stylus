@@ -1,0 +1,48 @@
+
+nums = 1
+
+append(nums, 2)
+append(nums, 3, 4, 5)
+
+body
+  foo: nums
+  foo: nums[0]
+  foo: nums[4]
+
+nums = 1
+
+push(nums, 2)
+
+body
+  foo: ret = push(nums, 3, 4, 5)
+  foo: nums[0]
+  foo: nums[4]
+
+
+nums = 3
+
+body
+  foo: unshift(nums, 2, 1)
+  foo: nums
+
+list = ()
+
+body
+  foo: push(list, foo, bar, baz)
+  foo: push(list, foo, bar, baz)
+  foo: list
+
+list = (one 1)
+push(list, two 2, three 3)
+
+body
+  foo: list
+
+func(list)
+  push(list, 3,4,5)
+
+nums = 1 2
+func(nums)
+
+body
+  foo: nums
