@@ -80,6 +80,30 @@ Return the lightness of the given `color`.
     lightness(hsla(50deg, 100%, 80%))
     // => 80%
 
+### push(expr, args...)
+
+ Push the given `args` to `expr`.
+
+     nums = 1 2
+     push(nums, 3, 4, 5)
+
+     nums
+     // => 1 2 3 4 5
+ 
+ Aliased as `append()`
+
+### unshift(expr, args...)
+
+ Unshift the given `args` to `expr`.
+
+     nums = 4 5
+     unshift(nums, 3, 2, 1)
+
+     nums
+     // => 1 2 3 4 5
+ 
+ Aliased as `prepend()`
+
 ### typeof(node)
 
 Return type of `node` as a string.
