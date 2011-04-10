@@ -1,4 +1,11 @@
 
+0.11.4 / 2011-04-10 
+==================
+
+  * Added `Arguments#clone()`
+  * Added `push()` / `append()`
+  * Added `unshift()` / `prepend()` BIFs
+
 0.11.3 / 2011-04-08 
 ==================
 
