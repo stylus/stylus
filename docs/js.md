@@ -72,7 +72,7 @@ In our example we define four functions `add()`, `sub()`, `image-width()`, and `
       function imageDimensions(img) {
         // assert that the node (img) is a String node, passing
         // the param name for error reporting
-        utils.assertType(img, nodes.String, 'img');
+        utils.assertType(img, 'string', 'img');
         var path = img.val;
 
         // Grab bytes necessary to retrieve dimensions.
