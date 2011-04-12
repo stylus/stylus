@@ -1,4 +1,9 @@
 
+0.11.6 / 2011-04-12 
+==================
+
+  * Fixed; node.source and node.filename are writable
+
 0.11.5 / 2011-04-12 
 ==================
 
