@@ -19,7 +19,7 @@ function sub(a, b) {
 function imageSize(img) {
   // assert that the node (img) is a String node, passing
   // the param name for error reporting
-  css.utils.assertType(img, nodes.String, 'img');
+  css.utils.assertType(img, 'string', 'img');
   var path = img.val;
 
   // Grab bytes necessary to retrieve dimensions.
