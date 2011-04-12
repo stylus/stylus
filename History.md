@@ -1,4 +1,10 @@
 
+0.11.7 / 2011-04-12 
+==================
+
+  * Added `Renderer#use(fn)`. Closes #224
+  * Improved `utils.assertType()` error message; include param name
+
 0.11.6 / 2011-04-12 
 ==================
 
