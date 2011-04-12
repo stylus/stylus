@@ -115,3 +115,16 @@ In our example we define four functions `add()`, `sub()`, `image-width()`, and `
  
    - lib/nodes/*
    - lib/utils.js
+
+### .use(fn)
+
+  When called, the given `fn` is invoked with the renderer, allowing all of the methods above to be used. This allows for plugins to easily expose themselves, defining functions, paths etc.
+
+    var mylib = function(style){
+      style.define('add', add);
+      style.define('sub', sub);
+    };
+
+    stylus(str)
+      .use(mylib)
+      .render(...)
