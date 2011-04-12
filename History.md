@@ -1,4 +1,12 @@
 
+0.11.5 / 2011-04-12 
+==================
+
+  * Added / employed `Null#isNull`
+  * Added / employed `Boolean#is{True,False}`
+  * Removed all uses of `instanceof`
+  * Removed all equality checks between singleton nodes
+
 0.11.4 / 2011-04-10 
 ==================
 
