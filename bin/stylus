@@ -66,6 +66,11 @@ var watchers;
 var interactive;
 
 /**
+ * Recursive mode
+ */
+var recursive;
+
+/**
  * Usage docs.
  */
 
@@ -83,6 +88,7 @@ var usage = [
   , ''
   , '    -i, --interactive       Start interactive REPL'
   , '    -w, --watch             Watch file(s) for changes and re-compile'
+  , '    -r, --recursive         Watch directories recursively'
   , '    -o, --out <dir>         Output to <dir> when passing files'
   , '    -C, --css <src> [dest]  Convert css input to stylus'
   , '    -I, --include <path>    Add <path> to lookup paths'
@@ -146,6 +152,10 @@ while (args.length) {
     case '-w':
     case '--watch':
       watchers = {};
+      break;
+    case '-r':
+    case '--recursive':
+      recursive = true;
       break;
     default:
       files.push(arg);
@@ -381,7 +391,7 @@ function compileFiles(files) {
  * Compile the given file.
  */
 
-function compileFile(file) {
+function compileFile(file, prefix) {
   // ensure file exists
   fs.lstat(file, function(err, stat){
     if (err) throw err;
@@ -401,7 +411,7 @@ function compileFile(file) {
               throw err;
             }
           } else {
-            writeFile(file, css);
+            writeFile(file, css, prefix);
           }
         });
       });
@@ -409,11 +419,14 @@ function compileFile(file) {
     } else if (stat.isDirectory()) {
       fs.readdir(file, function(err, files){
         if (err) throw err;
-        files.filter(function(path){
-          return path.match(/\.styl$/);
-        }).map(function(path){
-          return file + '/' + path;
-        }).forEach(compileFile);
+        files.forEach(function(path){
+          if (recursive && fs.statSync(file + '/' + path).isDirectory()) {
+            compileFile(file + '/' + path, (prefix ? prefix + '/' : '') + path);
+          }
+          else if (path.match(/^[^_\.].+\.styl$/)) {
+            compileFile(file + '/' + path, prefix);
+          }
+        });
       });
     }
   });
@@ -423,16 +436,26 @@ function compileFile(file) {
  * Write the given css output.
  */
 
-function writeFile(file, css) {
+function writeFile(file, css, prefix) {
   // --out support
-  var path = dest
-    ? dest + '/' + basename(file, '.styl') + '.css'
-    : file.replace('.styl', '.css');
+  var destDir = dest
+    ? dest + (prefix ? '/' + prefix : '')
+    : dirname(file);
+  var path = destDir + '/' + basename(file, '.styl') + '.css';
+  try {
+    fs.statSync(destDir);
+  }
+  catch (e) {
+    if (e.code === 'ENOENT') fs.mkdirSync(destDir, 0755);
+    else throw e;
+  }
   fs.writeFile(path, css, function(err){
     if (err) throw err;
     console.log('  \033[90mcompiled\033[0m %s', path);
     // --watch support
-    watch(file, compileFile);
+    watch(file, function(file){
+      compileFile(file, prefix);
+    });
   });
 }
 
