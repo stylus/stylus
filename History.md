@@ -1,4 +1,9 @@
 
+0.11.8 / 2011-04-15 
+==================
+
+  * Added support for `Renderer#define(name, node)` to define a global
+
 0.11.7 / 2011-04-12 
 ==================
 
