@@ -50,6 +50,12 @@ Defer importing of the given `path` until evaluation is performed. The example b
         console.log(css);
       });
 
+### .define(name, node)
+
+ By passing a `Node`, we may define a global variable. This is useful when exposing conditional features within your library depending on the availability of another. For example the "Nib" extensions library conditionally supports node-canvas, providing image generation, however this is not always available, so Nib may define:
+ 
+     .define('has-canvas', stylus.nodes.false);
+
 ### .define(name, fn)
 
  This method allows you to provide a JavaScript-defined function to Stylus, think of these as you would JavaScript to C++ bindings. When you have something you cannot do within Stylus, you define it in JavaScript.
