@@ -1,4 +1,9 @@
 
+0.11.9 / 2011-04-15 
+==================
+
+  * Fixed issue with large selectors spanning several lines
+
 0.11.8 / 2011-04-15 
 ==================
 
