@@ -402,7 +402,7 @@ function compileFile(file, prefix) {
         options.filename = file;
         options._imports = [];
         stylus(str, options).render(function(err, css){
-          watchImports(file, options._imports);
+          watchImports(file, options._imports, prefix);
           if (err) {
             if (watchers) {
               console.error(err.stack || err.message);
@@ -463,30 +463,41 @@ function writeFile(file, css, prefix) {
  * Watch the given `file` and invoke `fn` when modified.
  */
 
-function watch(file, fn) {
+function watch(file, multi, fn) {
   // not watching
   if (!watchers) return;
+  
+  if (arguments.length < 3) {
+    fn = multi;
+    multi = false;
+  }
 
-  // already watched
-  if (watchers[file]) return;
-
+  // not watched yet
+  if (!watchers[file]) {
+    watchers[file] = [];
+    fs.watchFile(file, { interval: 50 }, function(curr, prev){
+      if (curr.mtime > prev.mtime)
+        for (var i = 0; i < watchers[file].length; i++) watchers[file][i](file);
+    });
+    console.log('  \033[90mwatching\033[0m %s', file);
+  }
+  
+  // if not multi and file already watched
+  if (!multi && watchers.length > 0) return;
+  
   // watch the file itself
-  watchers[file] = true;
-  console.log('  \033[90mwatching\033[0m %s', file);
-  fs.watchFile(file, { interval: 50 }, function(curr, prev){
-    if (curr.mtime > prev.mtime) fn(file);
-  });
+  watchers[file].push(fn);
 }
 
 /**
  * Watch `imports`, re-compiling `file` when they change.
  */
 
-function watchImports(file, imports) {
+function watchImports(file, imports, prefix) {
   imports.forEach(function(import){
     if (!import.path) return;
-    watch(import.path, function(){
-      compileFile(file);
+    watch(import.path, true, function(){
+      compileFile(file, prefix);
     });
   });
 }
