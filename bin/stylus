@@ -9,6 +9,7 @@ var fs = require('fs')
   , basename = require('path').basename
   , dirname = require('path').dirname
   , join = require('path').join
+  , exec = require('child_process').exec
   , growl = require('growl');
 
 /**
@@ -442,21 +443,31 @@ function writeFile(file, css, prefix) {
     ? dest + (prefix ? '/' + prefix : '')
     : dirname(file);
   var path = destDir + '/' + basename(file, '.styl') + '.css';
+  
+  function doWriteFile() {
+    fs.writeFile(path, css, function(err){
+      if (err) throw err;
+      console.log('  \033[90mcompiled\033[0m %s', path);
+      // --watch support
+      watch(file, function(file){
+        compileFile(file, prefix);
+      });
+    });
+  }
+  
   try {
     fs.statSync(destDir);
+    doWriteFile();
   }
   catch (e) {
-    if (e.code === 'ENOENT') fs.mkdirSync(destDir, 0755);
+    if (e.code === 'ENOENT') {
+      exec('mkdir -pm 755 ' + destDir, function(err){
+        if (err) throw err;
+        doWriteFile();
+      });
+    }
     else throw e;
   }
-  fs.writeFile(path, css, function(err){
-    if (err) throw err;
-    console.log('  \033[90mcompiled\033[0m %s', path);
-    // --watch support
-    watch(file, function(file){
-      compileFile(file, prefix);
-    });
-  });
 }
 
 /**
