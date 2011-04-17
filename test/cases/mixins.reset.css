@@ -68,3 +68,8 @@ td {
   vertical-align: baseline;
   background: transparent;
 }
+ul li:nth-child(2),
+ul foo > bar,
+ul :last-child {
+  display: none;
+}
