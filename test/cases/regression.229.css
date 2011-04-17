@@ -1,0 +1,12 @@
+body {
+  font: 14px helvetica, arial, sans-serif;
+  background: #cdcdcd;
+  padding: 20px;
+}
+body h1 {
+  color: #2e66f5;
+  font-size: 50px;
+}
+body p {
+  margin: 15px 0;
+}
