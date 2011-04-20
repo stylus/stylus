@@ -43,42 +43,42 @@ compiles to:
 
  Stylus has _many_ features, click the links below for detailed documentation.
 
-  - [css syntax](stylus/blob/master/docs/css-style.md) support
-  - [mixins](stylus/blob/master/docs/mixins.md)
-  - [keyword arguments](stylus/blob/master/docs/kwargs.md)
-  - [variables](stylus/blob/master/docs/variables.md)
-  - [interpolation](stylus/blob/master/docs/interpolation.md)
-  - arithmetic, logical, and equality [operators](stylus/blob/master/docs/operators.md)
-  - [importing](stylus/blob/master/docs/import.md) of other stylus sheets
-  - [introspection api](stylus/blob/master/docs/introspection.md)
+  - [css syntax](/LearnBoost/stylus/blob/master/docs/css-style.md) support
+  - [mixins](/LearnBoost/stylus/blob/master/docs/mixins.md)
+  - [keyword arguments](/LearnBoost/stylus/blob/master/docs/kwargs.md)
+  - [variables](/LearnBoost/stylus/blob/master/docs/variables.md)
+  - [interpolation](/LearnBoost/stylus/blob/master/docs/interpolation.md)
+  - arithmetic, logical, and equality [operators](/LearnBoost/stylus/blob/master/docs/operators.md)
+  - [importing](/LearnBoost/stylus/blob/master/docs/import.md) of other stylus sheets
+  - [introspection api](/LearnBoost/stylus/blob/master/docs/introspection.md)
   - type coercion
-  - [conditionals](stylus/blob/master/docs/conditionals.md)
-  - [iteration](stylus/blob/master/docs/iteration.md)
-  - nested [selectors](stylus/blob/master/docs/selectors.md)
+  - [conditionals](/LearnBoost/stylus/blob/master/docs/conditionals.md)
+  - [iteration](/LearnBoost/stylus/blob/master/docs/iteration.md)
+  - nested [selectors](/LearnBoost/stylus/blob/master/docs/selectors.md)
   - parent reference
-  - in-language [functions](stylus/blob/master/docs/functions.md)
-  - [variable arguments](stylus/blob/master/docs/vargs.md)
-  - built-in [functions](stylus/blob/master/docs/bifs.md) (over 25)
-  - optional [image inlining](stylus/blob/master/docs/functions.url.md)
+  - in-language [functions](/LearnBoost/stylus/blob/master/docs/functions.md)
+  - [variable arguments](/LearnBoost/stylus/blob/master/docs/vargs.md)
+  - built-in [functions](/LearnBoost/stylus/blob/master/docs/bifs.md) (over 25)
+  - optional [image inlining](/LearnBoost/stylus/blob/master/docs/functions.url.md)
   - optional compression
-  - JavaScript [API](stylus/blob/master/docs/js.md)
+  - JavaScript [API](/LearnBoost/stylus/blob/master/docs/js.md)
   - extremely terse syntax
-  - stylus [executable](stylus/blob/master/docs/executable.md)
-  - [error reporting](stylus/blob/master/docs/error-reporting.md)
-  - single-line and multi-line [comments](stylus/blob/master/docs/comments.md)
-  - css [literal](stylus/blob/master/docs/literal.md)
-  - character [escaping](stylus/blob/master/docs/escape.md)
-  - [@keyframes](stylus/blob/master/docs/keyframes.md) support
-  - [@font-face](stylus/blob/master/docs/font-face.md) support
-  - [@media](stylus/blob/master/docs/media.md) support
-  - Connect [Middleware](stylus/blob/master/docs/middleware.md)
-  - TextMate [bundle](stylus/blob/master/docs/textmate.md)
+  - stylus [executable](/LearnBoost/stylus/blob/master/docs/executable.md)
+  - [error reporting](/LearnBoost/stylus/blob/master/docs/error-reporting.md)
+  - single-line and multi-line [comments](/LearnBoost/stylus/blob/master/docs/comments.md)
+  - css [literal](/LearnBoost/stylus/blob/master/docs/literal.md)
+  - character [escaping](/LearnBoost/stylus/blob/master/docs/escape.md)
+  - [@keyframes](/LearnBoost/stylus/blob/master/docs/keyframes.md) support
+  - [@font-face](/LearnBoost/stylus/blob/master/docs/font-face.md) support
+  - [@media](/LearnBoost/stylus/blob/master/docs/media.md) support
+  - Connect [Middleware](/LearnBoost/stylus/blob/master/docs/middleware.md)
+  - TextMate [bundle](/LearnBoost/stylus/blob/master/docs/textmate.md)
   - VIM [Syntax](https://github.com/wavded/vim-stylus)
   - transparent vendor-specific function expansion
 
 ### Framework Support
 
-   - [Connect](stylus/blob/master/docs/middleware.md)
+   - [Connect](/LearnBoost/stylus/blob/master/docs/middleware.md)
    - [Ruby On Rails](https://github.com/lucasmazza/stylus_rails)
 
 ### Screencasts
@@ -92,7 +92,7 @@ compiles to:
 
 ### More Information
 
-  - Language [comparisons](stylus/blob/master/docs/compare.md)
+  - Language [comparisons](/LearnBoost/stylus/blob/master/docs/compare.md)
 
 ## License 
 
