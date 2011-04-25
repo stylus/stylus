@@ -1,4 +1,9 @@
 
+0.11.11 / 2011-04-24 
+==================
+
+  * Fixed mutation of units when using unary ops. Closes #233
+
 0.11.10 / 2011-04-17 
 ==================
 
