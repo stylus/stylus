@@ -55,3 +55,23 @@ three * {
   two: 2;
   three: 3;
 }
+li a:active {
+  color: #000;
+  background: #fff;
+}
+li a:active {
+  color: #000;
+  background: #fff;
+}
+.col-1-0 :nth-child(1) {
+  foo: "bar";
+}
+.col-1 {
+  foo: "bar";
+}
+.col-2 {
+  foo: "bar";
+}
+.col-3 {
+  foo: "bar";
+}

@@ -62,3 +62,17 @@ for selector in selectors {
     }
   }
 }
+
+
+li a:active { color: black; background: white; }
+
+state = 'active'
+li a:{state} { color: black; background: white; }
+
+.col-{1}-{0} :nth-child(1) { foo: 'bar'; }
+
+cols = 1 2 3
+
+for col in cols
+  .col-{col} { foo: 'bar'; }
+
