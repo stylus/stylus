@@ -15,12 +15,6 @@ var stylus = require('../')
 var count = 0;
 
 /**
- * Tests pending.
- */
-
-var pending = 0;
-
-/**
  * Failure count.
  */
 
@@ -30,12 +24,14 @@ var failures = 0;
  * Test the given `test`.
  *
  * @param {String} test
+ * @param {Function} fn
  */
 
-function test(test) {
+function test(test, fn) {
   var base = __dirname + '/cases/' + test
     , path =  base + '.styl'
     , csspath = base + '.css';
+
   fs.readFile(path, 'utf8', function(err, str){
     if (err) throw err;
 
@@ -45,20 +41,19 @@ function test(test) {
       .include(__dirname + '/cases/import.basic');
 
     if (~test.indexOf('compress')) style.set('compress', true);
-    
+
     style.render(function(err, actual){
       if (err) throw err;
       fs.readFile(csspath, 'utf8', function(err, expected){
         if (err) throw err;
         expected += '\n';
         if (actual == expected) {
-          --pending || done();
+          fn();
         } else {
-          var msg = '\n' + (failures++) + ') "' + basename(path, '.in') + '" failed\n\n'
-            + '\033[33mexpected:\033[0m \n' + expected + '\n\n'
-            + '\033[33mactual:\033[0m \n' + actual + '\n';
-          console.error(msg + '\n\n\n');
-          --pending;
+          var msg = '\n'
+            + '\033[33mexpected:\033[0m \n>>>' + expected + '<<<\n\n'
+            + '\033[33mactual:\033[0m \n>>>' + actual + '<<<\n';
+          fn(msg + '\n');
         }
       });
     });
@@ -72,13 +67,31 @@ function test(test) {
 
 fs.readdir(__dirname + '/cases', function(err, files){
   if (err) throw err;
+  var tests = []
+    , curr;
+
   files.forEach(function(file){
     if (/\.styl$/.test(file)) {
-      ++pending;
       ++count;
-      test(basename(file, '.styl'));
+      tests.push(basename(file, '.styl'));
     }
   });
+
+  (function next(err) {
+    curr = tests.shift();
+    if (!curr) return done();
+    process.stderr.write('    \033[90m' + curr + '\033[0m');
+    test(curr, function(err){
+      if (err) {
+        ++failures;
+        console.error('\r  \033[31m✖\033[0m \033[90m' + curr + '\033[0m');
+        console.error(err);
+      } else {
+        console.error('\r  \033[36m✔\033[0m \033[90m' + curr + '\033[0m');
+      }
+      next();
+    });
+  })();
 });
 
 /**
