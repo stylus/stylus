@@ -1,4 +1,11 @@
 
+0.11.12 / 2011-04-27 
+==================
+
+  * Added `SyntaxError` and `ParseError`
+  * Removed `stylus.parse()`
+  * Fixed error reporting. Closes #44
+
 0.11.11 / 2011-04-24 
 ==================
 
