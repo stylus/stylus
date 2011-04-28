@@ -50,10 +50,7 @@ function test(test, fn) {
         if (actual == expected) {
           fn();
         } else {
-          var msg = '\n'
-            + '\033[33mexpected:\033[0m \n>>>' + expected + '<<<\n\n'
-            + '\033[33mactual:\033[0m \n>>>' + actual + '<<<\n';
-          fn(msg + '\n');
+          fn(actual, expected);
         }
       });
     });
@@ -77,15 +74,15 @@ fs.readdir(__dirname + '/cases', function(err, files){
     }
   });
 
-  (function next(err) {
+  (function next() {
     curr = tests.shift();
     if (!curr) return done();
     process.stderr.write('    \033[90m' + curr + '\033[0m');
-    test(curr, function(err){
-      if (err) {
+    test(curr, function(actual, expected){
+      if (actual) {
         ++failures;
         console.error('\r  \033[31m✖\033[0m \033[90m' + curr + '\033[0m');
-        console.error(err);
+        diff(actual, expected);
       } else {
         console.error('\r  \033[36m✔\033[0m \033[90m' + curr + '\033[0m');
       }
@@ -93,6 +90,43 @@ fs.readdir(__dirname + '/cases', function(err, files){
     });
   })();
 });
+
+/**
+ * Diff `actual` / `expected`.
+ *
+ * @param {String} actual
+ * @param {String} expected
+ */
+
+function diff(actual, expected) {
+  var a = actual.split('\n')
+    , b = expected.split('\n')
+    , len = largestLineIn(a);
+  a.forEach(function(line, i){
+    var other = b[i]
+      , pad = len - line.length
+      , pad = Array(++pad).join(' ')
+      , same = line == other;
+    if (same) {
+      console.error('  %d| %j%s | %j', i+1, line, pad, other);
+    } else {
+      console.error('  \033[31m%d| %j%s | %j\033[0m', i+1, line, pad, other);
+    }
+  });
+}
+
+/**
+ * Return the length of the largest line in `lines`.
+ *
+ * @param {Array} lines
+ * @return {Number}
+ */
+
+function largestLineIn(lines) {
+  return lines.reduce(function(n, line){
+    return Math.max(n, line.length);
+  }, 0);
+}
 
 /**
  * Done!!!
