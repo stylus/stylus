@@ -81,8 +81,9 @@ fs.readdir(__dirname + '/cases', function(err, files){
     test(curr, function(actual, expected){
       if (actual) {
         ++failures;
-        console.error('\r  \033[31m✖\033[0m \033[90m' + curr + '\033[0m');
+        console.error('\r  \033[31m✖\033[0m \033[90m' + curr + '\033[0m\n');
         diff(actual, expected);
+        console.error();
       } else {
         console.error('\r  \033[36m✔\033[0m \033[90m' + curr + '\033[0m');
       }
