@@ -1,7 +1,7 @@
-:last-child {
+form input:last-child {
   display: none;
 }
-:nth-child(15) {
+form input:nth-child(15) {
   display: none;
 }
 .grid-1 {
