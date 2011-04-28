@@ -100,11 +100,13 @@ fs.readdir(__dirname + '/cases', function(err, files){
  */
 
 function diff(actual, expected) {
-  var a = actual.split('\n')
-    , b = expected.split('\n')
-    , len = largestLineIn(a);
-  a.forEach(function(line, i){
-    var other = b[i]
+  var actual = actual.split('\n')
+    , expected = expected.split('\n')
+    , len = largestLineIn(expected);
+
+  console.error('  expected');
+  expected.forEach(function(line, i){
+    var other = actual[i]
       , pad = len - line.length
       , pad = Array(++pad).join(' ')
       , same = line == other;
