@@ -75,3 +75,17 @@ li a:active {
 .col-3 {
   foo: "bar";
 }
+@media print {
+  blockquote {
+    border: 1px solid #999;
+  }
+  blockquote {
+    border: 1px solid #999;
+  }
+  blockquote {
+    border: 1px solid #999;
+  }
+  blockquote {
+    border: 1px solid #999;
+  }
+}
