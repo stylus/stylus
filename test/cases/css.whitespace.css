@@ -29,9 +29,9 @@ ul li {
 body {
   padding: 5px;
 }
-body {
-  padding: 5px;
+foo bar {
+  color: "asdf";
 }
-input {
-  foo: "bar";
+foo bar {
+  color: "asdf";
 }
