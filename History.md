@@ -1,4 +1,10 @@
 
+0.12.1 / 2011-04-29 
+==================
+
+  * Fixed spaces around line-height shorthand. Closes #228
+  * Fixed `-{foo}` interpolation support. Closes #235
+
 0.12.0 / 2011-04-29 
 ==================
 
