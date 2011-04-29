@@ -1,4 +1,11 @@
 
+0.12.0 / 2011-04-29 
+==================
+
+  * Added `*prop: val` hack support (blueprint / html boilerplate etc parse fine now)
+  * Added selector interpolation support
+  * Fixed "-" within interpolation. Closes #220
+
 0.11.12 / 2011-04-27 
 ==================
 
