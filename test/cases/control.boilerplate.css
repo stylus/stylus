@@ -134,7 +134,7 @@ select {
   vertical-align: middle;
 }
 body {
-  font: 13px / 1.231 sans-serif;
+  font: 13px/1.231 sans-serif;
   *font-size: small;
 }
 select,
