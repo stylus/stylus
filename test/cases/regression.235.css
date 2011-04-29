@@ -1,0 +1,11 @@
+foo {
+  -bar: baz;
+}
+foo {
+  -bar: baz;
+}
+body {
+  -webkit: foo;
+  -moz: foo;
+  -o: foo;
+}
