@@ -4,7 +4,6 @@
  */
 
 var stylus = require('../')
-  , should = require('../support/should')
   , basename = require('path').basename
   , fs = require('fs');
 
