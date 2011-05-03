@@ -1,0 +1,3 @@
+div.flash.success + div.flash.error {
+  color: #f00;
+}
