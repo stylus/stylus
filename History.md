@@ -1,4 +1,10 @@
 
+0.12.2 / 2011-05-03 
+==================
+
+  * Fixed issue with `^=` attr selector causing infinite loop. Closes #244
+  * Fixed multiple occurrences of `&` in selectors. Closes #243
+
 0.12.1 / 2011-04-29 
 ==================
 
