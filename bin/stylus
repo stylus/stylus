@@ -61,6 +61,11 @@ var dest;
 var watchers;
 
 /**
+ * The list of registered files watched imports
+ */
+var watchedImports = {};
+
+/**
  * Enable REPL.
  */
 
@@ -494,7 +499,7 @@ function watch(file, multi, fn) {
   }
   
   // if not multi and file already watched
-  if (!multi && watchers.length > 0) return;
+  if (!multi && watchers[file].length > 0) return;
   
   // watch the file itself
   watchers[file].push(fn);
@@ -504,9 +509,12 @@ function watch(file, multi, fn) {
  * Watch `imports`, re-compiling `file` when they change.
  */
 
-function watchImports(file, imports, prefix) {
+function watchImports(file, imports, prefix) { 
+  if (!watchedImports[file]) watchedImports[file] = [];
   imports.forEach(function(import){
     if (!import.path) return;
+    if (~watchedImports[file].indexOf(import.path)) return;
+    watchedImports[file].push(import.path);
     watch(import.path, true, function(){
       compileFile(file, prefix);
     });
