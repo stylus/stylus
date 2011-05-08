@@ -1,4 +1,9 @@
 
+0.12.3 / 2011-05-08 
+==================
+
+  * Fixed `0%` in __@keyframes__ from becoming "0" when compressed. Closes #248
+
 0.12.2 / 2011-05-03 
 ==================
 
