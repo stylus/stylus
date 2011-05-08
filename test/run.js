@@ -45,8 +45,7 @@ function test(test, fn) {
       if (err) throw err;
       fs.readFile(csspath, 'utf8', function(err, expected){
         if (err) throw err;
-        expected += '\n';
-        if (actual == expected) {
+        if (actual.trim() == expected.trim()) {
           fn();
         } else {
           fn(actual, expected);
