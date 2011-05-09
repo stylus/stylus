@@ -1,4 +1,3 @@
-
 ## Import
 
  Stylus supports both literal __@import__ for CSS, as well as dynamic importing of other Stylus sheets.
@@ -69,5 +68,6 @@ will render to the literal css __@import__ shown below:
      @import 'mixins/vendor'
 
 and
+
      .import('mixins/vendor') 
  
