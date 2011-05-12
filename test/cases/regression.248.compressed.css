@@ -1,4 +1,4 @@
-@-webkit-keyframes colors{0%{background-color:red}
-15%{background-color:blue}
-100%{background-color:black}
+@-webkit-keyframes colors{0%{background-color:#f00}
+15%{background-color:#00f}
+100%{background-color:#000}
 }

@@ -39,10 +39,10 @@
 }
 @-webkit-keyframes something {
   0% {
-    color: red;
+    color: #f00;
   }
 
   100% {
-    color: blue;
+    color: #00f;
   }
 }
