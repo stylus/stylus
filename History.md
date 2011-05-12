@@ -1,4 +1,10 @@
 
+0.12.4 / 2011-05-12 
+==================
+
+  * Added support for underscore in identifiers. Closes #247
+  * Fixed __@keyframe__ block evaluation. Closes #252
+
 0.12.3 / 2011-05-08 
 ==================
 
