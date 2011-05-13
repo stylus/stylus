@@ -28,19 +28,32 @@
   }
 </code></pre>
 
-<h2>Property Hacks</h2>
+<h2>Selector Interpolation</h2>
 
-<p>Interpolation can be used for property hacks as well, since all string values
-within the delimiters are transformed to literals. For example:</p>
+<p> Interpolation works with selectors as well, for example we may iterate while assigning the <code>height</code> property for the first 5 rows in a table as shown below.</p>
 
-<pre><code>body
-  {'*foo-bar'} baz
+<pre><code>table
+  for row in 1 2 3 4 5
+    tr:nth-child({row})
+      height: 10px * row
 </code></pre>
 
-<p>yields:</p>
+<p>yielding:</p>
 
-<pre><code>body {
-  *foo-bar: baz;
+<pre><code>table tr:nth-child(1) {
+  height: 10px;
+}
+table tr:nth-child(2) {
+  height: 20px;
+}
+table tr:nth-child(3) {
+  height: 30px;
+}
+table tr:nth-child(4) {
+  height: 40px;
+}
+table tr:nth-child(5) {
+  height: 50px;
 }
 </code></pre>
 </div></div></body></html>
