@@ -29,6 +29,16 @@ stylus(str)
  .set('paths', [__dirname, __dirname + '/mixins'])
 </code></pre>
 
+<h3>.include(path)</h3>
+
+<p>  A progressive alternative to setting <code>paths</code> via <code>.set()</code>, which is ideal when exposing external stylus libraries which expose a path.</p>
+
+<pre><code>stylus(str)
+  .include(require('nib').path)
+  .include(process.env.HOME + '/mixins')
+  .render(...)
+</code></pre>
+
 <h3>.import(path)</h3>
 
 <p>Defer importing of the given <code>path</code> until evaluation is performed. The example below is essentially the same as doing <code>@import 'mixins/vendor'</code> within your Stylus sheet.</p>
@@ -43,6 +53,13 @@ stylus(str)
     if (err) throw err;
     console.log(css);
   });
+</code></pre>
+
+<h3>.define(name, node)</h3>
+
+<p> By passing a <code>Node</code>, we may define a global variable. This is useful when exposing conditional features within your library depending on the availability of another. For example the &ldquo;Nib&rdquo; extensions library conditionally supports node-canvas, providing image generation, however this is not always available, so Nib may define:</p>
+
+<pre><code> .define('has-canvas', stylus.nodes.false);
 </code></pre>
 
 <h3>.define(name, fn)</h3>
@@ -67,7 +84,7 @@ stylus(str)
   function imageDimensions(img) {
     // assert that the node (img) is a String node, passing
     // the param name for error reporting
-    utils.assertType(img, nodes.String, 'img');
+    utils.assertType(img, 'string', 'img');
     var path = img.val;
 
     // Grab bytes necessary to retrieve dimensions.
@@ -114,4 +131,18 @@ stylus(str)
 <li> lib/utils.js</li>
 </ul>
 
+
+<h3>.use(fn)</h3>
+
+<p>  When called, the given <code>fn</code> is invoked with the renderer, allowing all of the methods above to be used. This allows for plugins to easily expose themselves, defining functions, paths etc.</p>
+
+<pre><code>var mylib = function(style){
+  style.define('add', add);
+  style.define('sub', sub);
+};
+
+stylus(str)
+  .use(mylib)
+  .render(...)
+</code></pre>
 </div></div></body></html>

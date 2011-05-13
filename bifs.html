@@ -75,7 +75,7 @@ light(#00FF40)
 
 <p>Return the saturation of the given <code>color</code>.</p>
 
-<pre><code>hue(hsla(50deg, 100%, 80%))
+<pre><code>saturation(hsla(50deg, 100%, 80%))
 // =&gt; 100%
 </code></pre>
 
@@ -83,9 +83,35 @@ light(#00FF40)
 
 <p>Return the lightness of the given <code>color</code>.</p>
 
-<pre><code>hue(hsla(50deg, 100%, 80%))
+<pre><code>lightness(hsla(50deg, 100%, 80%))
 // =&gt; 80%
 </code></pre>
+
+<h3>push(expr, args&hellip;)</h3>
+
+<p> Push the given <code>args</code> to <code>expr</code>.</p>
+
+<pre><code> nums = 1 2
+ push(nums, 3, 4, 5)
+
+ nums
+ // =&gt; 1 2 3 4 5
+</code></pre>
+
+<p> Aliased as <code>append()</code></p>
+
+<h3>unshift(expr, args&hellip;)</h3>
+
+<p> Unshift the given <code>args</code> to <code>expr</code>.</p>
+
+<pre><code> nums = 4 5
+ unshift(nums, 3, 2, 1)
+
+ nums
+ // =&gt; 1 2 3 4 5
+</code></pre>
+
+<p> Aliased as <code>prepend()</code></p>
 
 <h3>typeof(node)</h3>
 
@@ -223,7 +249,7 @@ match('^foo(bar)?', 'bar')
   // =&gt; "foo, bar, baz"
 </code></pre>
 
-<h3>hsla(color | h[, s, l, a])</h3>
+<h3>hsla(color | h,s,l,a)</h3>
 
 <p>Convert the given <code>color</code> to an <code>HSLA</code> node,
 or h,s,l,a component values.</p>
@@ -235,7 +261,7 @@ or h,s,l,a component values.</p>
  // =&gt; HSLA
 </code></pre>
 
-<h3>hsla(color | h[, s, l])</h3>
+<h3>hsla(color | h,s,l)</h3>
 
 <p>Convert the given <code>color</code> to an <code>HSLA</code> node,
 or h,s,l component values.</p>
@@ -247,7 +273,7 @@ or h,s,l component values.</p>
  // =&gt; HSLA
 </code></pre>
 
-<h3>rgba(color | r[, g, b, a])</h3>
+<h3>rgba(color | r,g,b,a)</h3>
 
 <p>Return <code>RGBA</code> from the r,g,b,a channels or provide a <code>color</code> to tweak the alpha.</p>
 
@@ -261,7 +287,7 @@ or h,s,l component values.</p>
   // rgba(255,204,0,0.5)
 </code></pre>
 
-<h3>rgb(color | r[, g, b])</h3>
+<h3>rgb(color | r,g,b)</h3>
 
 <p>Return a <code>RGBA</code> from the r,g,b channels or cast to an <code>RGBA</code> node.</p>
 
