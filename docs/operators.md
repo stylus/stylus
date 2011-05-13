@@ -11,7 +11,7 @@ Below is the operator precedence table, highest to lowest:
      ... ..
      <= >= < >
      in
-     == is != is not
+     == is != is not isnt
      is a
      && and || or
      ?:

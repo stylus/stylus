@@ -26,6 +26,15 @@ We can also do the same thing in a more progressive manner:
      .set('filename', __dirname + '/test.styl')
      .set('paths', [__dirname, __dirname + '/mixins'])
 
+### .include(path)
+
+  A progressive alternative to setting `paths` via `.set()`, which is ideal when exposing external stylus libraries which expose a path.
+  
+    stylus(str)
+      .include(require('nib').path)
+      .include(process.env.HOME + '/mixins')
+      .render(...)
+
 ### .import(path)
 
 Defer importing of the given `path` until evaluation is performed. The example below is essentially the same as doing `@import 'mixins/vendor'` within your Stylus sheet.
@@ -40,6 +49,12 @@ Defer importing of the given `path` until evaluation is performed. The example b
         if (err) throw err;
         console.log(css);
       });
+
+### .define(name, node)
+
+ By passing a `Node`, we may define a global variable. This is useful when exposing conditional features within your library depending on the availability of another. For example the "Nib" extensions library conditionally supports node-canvas, providing image generation, however this is not always available, so Nib may define:
+ 
+     .define('has-canvas', stylus.nodes.false);
 
 ### .define(name, fn)
 
@@ -63,7 +78,7 @@ In our example we define four functions `add()`, `sub()`, `image-width()`, and `
       function imageDimensions(img) {
         // assert that the node (img) is a String node, passing
         // the param name for error reporting
-        utils.assertType(img, nodes.String, 'img');
+        utils.assertType(img, 'string', 'img');
         var path = img.val;
 
         // Grab bytes necessary to retrieve dimensions.
@@ -106,3 +121,16 @@ In our example we define four functions `add()`, `sub()`, `image-width()`, and `
  
    - lib/nodes/*
    - lib/utils.js
+
+### .use(fn)
+
+  When called, the given `fn` is invoked with the renderer, allowing all of the methods above to be used. This allows for plugins to easily expose themselves, defining functions, paths etc.
+
+    var mylib = function(style){
+      style.define('add', add);
+      style.define('sub', sub);
+    };
+
+    stylus(str)
+      .use(mylib)
+      .render(...)
