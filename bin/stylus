@@ -365,10 +365,9 @@ function compileCSSFile(file, fileOut) {
  */
 
 function compileStdio() {
-  var stdin = process.openStdin();
-  stdin.setEncoding('utf8');
-  stdin.on('data', function(chunk){ str += chunk; });
-  stdin.on('end', function(){
+  process.stdin.setEncoding('utf8');
+  process.stdin.on('data', function(chunk){ str += chunk; });
+  process.stdin.on('end', function(){
     // Compile to css
     stylus(str, options).render(function(err, css){
       if (err) throw err;
@@ -380,7 +379,7 @@ function compileStdio() {
       console.log(css);
       if (compare) console.log();
     });
-  });
+  }).resume();
 }
 
 /**
