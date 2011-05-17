@@ -158,6 +158,7 @@ while (args.length) {
     case '--use':
       var path = args.shift();
       if (!path) throw new Error('--use <path> required');
+      paths.push(dirname(path));
       plugins.push(path);
       break;
     default:
