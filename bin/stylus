@@ -369,7 +369,9 @@ function compileStdio() {
   process.stdin.on('data', function(chunk){ str += chunk; });
   process.stdin.on('end', function(){
     // Compile to css
-    stylus(str, options).render(function(err, css){
+    var style = stylus(str, options);
+    usePlugins(style);
+    style.render(function(err, css){
       if (err) throw err;
       if (compare) {
         console.log('\n\x1b[1mInput:\x1b[0m');
@@ -478,5 +480,21 @@ function watchImports(file, imports) {
     watch(import.path, function(){
       compileFile(file);
     });
+  });
+}
+
+/**
+ * Utilize plugins.
+ */
+
+function usePlugins(style) {
+  var cwd = process.cwd();
+  plugins.forEach(function(path){
+    path = join(cwd, path);
+    fn = require(path);
+    if ('function' != typeof fn) {
+      throw new Error('plugin ' + path + ' does not export a function');
+    }
+    style.use(fn());
   });
 }
