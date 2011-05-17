@@ -66,6 +66,12 @@ var watchers;
 var interactive;
 
 /**
+ * Plugins.
+ */
+
+var plugins = [];
+
+/**
  * Usage docs.
  */
 
@@ -82,6 +88,7 @@ var usage = [
   , '  Options:'
   , ''
   , '    -i, --interactive       Start interactive REPL'
+  , '    -u, --use <path>        Utilize the stylus plugin at <path>'
   , '    -w, --watch             Watch file(s) for changes and re-compile'
   , '    -o, --out <dir>         Output to <dir> when passing files'
   , '    -C, --css <src> [dest]  Convert css input to stylus'
@@ -146,6 +153,12 @@ while (args.length) {
     case '-w':
     case '--watch':
       watchers = {};
+      break;
+    case '-u':
+    case '--use':
+      var path = args.shift();
+      if (!path) throw new Error('--use <path> required');
+      plugins.push(path);
       break;
     default:
       files.push(arg);
