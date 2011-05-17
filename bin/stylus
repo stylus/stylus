@@ -406,7 +406,9 @@ function compileFile(file) {
         if (err) throw err;
         options.filename = file;
         options._imports = [];
-        stylus(str, options).render(function(err, css){
+        var style = stylus(str, options);
+        usePlugins(style);
+        style.render(function(err, css){
           watchImports(file, options._imports);
           if (err) {
             if (watchers) {
