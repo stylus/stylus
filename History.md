@@ -1,4 +1,10 @@
 
+0.13.0 / 2011-05-17 
+==================
+
+  * Added `-u, --use PATH` flag for utilizing plugins
+  * Fixed `hsla.clampDegrees()` with negative values [Bruno Héridet]
+
 0.12.4 / 2011-05-12 
 ==================
 
