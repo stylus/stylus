@@ -1,11 +1,28 @@
-
 # Stylus
 
  Stylus is a revolutionary new language, providing an efficient, dynamic, and expressive way to generate CSS.
 
-## Installation
-
+# Install from npm
+    
     $ npm install stylus
+
+# Install from github
+
+    # clone the repository
+    $ cd /path/to/myproject
+    $ mkdir node_modules
+    $ cd node_modules
+    $ git clone git://github.com/LearnBoost/stylus.git
+
+    # add stylus symlink to node's lib folder
+    $ cd ~/local/node/lib/node
+    $ ln -s /path/to/myproject/node_modules/stylus
+
+    # add stylus cli to node's bin folder
+    $ cd ~/local/node/bin
+    $ ln -s /path/to/myproject/node_modules/stylus/bin/stylus
+
+    # add ~/local/node/bin to your $PATH if it's not there atm
 
 ### Example
 
