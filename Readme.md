@@ -4,7 +4,7 @@
 
 # Install from npm
     
-    $ npm install stylus</code></pre>
+    $ npm install stylus
 
 # Install from github
 
