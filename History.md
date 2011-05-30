@@ -1,4 +1,10 @@
 
+0.13.1 / 2011-05-30 
+==================
+
+  * Fixed colors in url(). Closes #267
+  * Fixed selector without trailing comma containing selector token. closes #260
+
 0.13.0 / 2011-05-17 
 ==================
 
