@@ -1,4 +1,13 @@
 
+0.13.3 / 2011-06-01 
+==================
+
+  * Added padding for error linenos so they line up
+  * Improved unary op error messages
+  * Improved invalid __@keyframes__ ident error msg
+  * Fixed HSLA regression for operations resulting in a bool. Closes #274
+  * Fixed `arguments` issue with excluding defaults. Closes #272
+
 0.13.2 / 2011-05-31 
 ==================
 
