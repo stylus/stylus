@@ -1,47 +1,52 @@
-
 # Stylus
 
  Stylus is a revolutionary new language, providing an efficient, dynamic, and expressive way to generate CSS.
 
 ## Installation
 
-    $ npm install stylus
+```bash
+$ npm install stylus
+```
 
 ### Example
 
-    border-radius()
-      -webkit-border-radius arguments
-      -moz-border-radius arguments
-      border-radius arguments
+```
+border-radius()
+  -webkit-border-radius arguments
+  -moz-border-radius arguments
+  border-radius arguments
 
-    body a
-      font 12px/1.4 "Lucida Grande", Arial, sans-serif
-      background black
-      color #ccc
+body a
+  font 12px/1.4 "Lucida Grande", Arial, sans-serif
+  background black
+  color #ccc
 
-    form input
-      padding 5px
-      border 1px solid
-      border-radius 5px
+form input
+  padding 5px
+  border 1px solid
+  border-radius 5px
+```
 
 compiles to:
 
-    body a {
-      font: 12px/1.4 "Lucida Grande", Arial, sans-serif;
-      background: #000;
-      color: #ccc;
-    }
-    form input {
-      padding: 5px;
-      border: 1px solid;
-      -webkit-border-radius: 5px;
-      -moz-border-radius: 5px;
-      border-radius: 5px;
-    }
+```css
+body a {
+  font: 12px/1.4 "Lucida Grande", Arial, sans-serif;
+  background: #000;
+  color: #ccc;
+}
+form input {
+  padding: 5px;
+  border: 1px solid;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+```
 
 ### Features
 
- Stylus has _many_ features, click the links below for detailed documentation.
+ Stylus has _many_ features.  Detailed documentation links follow:
 
   - [css syntax](/LearnBoost/stylus/blob/master/docs/css-style.md) support
   - [mixins](/LearnBoost/stylus/blob/master/docs/mixins.md)
