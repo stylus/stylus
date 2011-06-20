@@ -426,7 +426,7 @@ function compileFile(file, prefix) {
       fs.readdir(file, function(err, files){
         if (err) throw err;
         files.forEach(function(path){
-          if (recursive && fs.statSync(file + '/' + path).isDirectory()) {
+          if (recursive && fs.statSync(file + '/' + path).isDirectory() && path.match(/^[^_\.]/)) {
             compileFile(file + '/' + path, (prefix ? prefix + '/' : '') + path);
           }
           else if (path.match(/^[^_\.].+\.styl$/)) {
