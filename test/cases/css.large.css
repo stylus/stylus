@@ -5,7 +5,7 @@ html {
 }
 body {
   padding: 120px 150px;
-  font: 14px / 1.4 "helvetica neue", helvetica, arial, sans-serif;
+  font: 14px/1.4 "helvetica neue", helvetica, arial, sans-serif;
   color: #484848;
 }
 h1,
@@ -117,7 +117,7 @@ pre {
   width: 300px;
   padding: 30px;
   color: #8d8d8d;
-  font: 12px / 1.4 monaco, "helvetica neue", helvetica;
+  font: 12px/1.4 monaco, "helvetica neue", helvetica;
   overflow-x: auto;
   background: #fff;
   -webkit-border-radius: 5px;

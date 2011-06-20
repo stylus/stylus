@@ -1,0 +1,13 @@
+
+foo
+  -{bar}: baz
+
+mixin()
+  -{bar}: baz
+
+foo
+  mixin()
+
+body
+  for vendor in webkit moz o
+    -{vendor}: foo

@@ -1,0 +1,45 @@
+form {'input'}:last-child
+  display: none
+
+form {'input'}:nth-child({10 + 5})
+  display: none
+
+for n in 1 2 3 4 5
+  .grid-{n}
+    width: unit(n * 100, 'px')
+
+pos = last
+
+body {form}
+  input:{  pos  }-child
+    display: none
+
+mixin(n)
+  &:nth-child({ n })
+    display: none
+
+ul li
+  mixin(2)
+
+{foo} {bar}
+  foo: bar
+
+{foo}
+  {bar}
+    {baz}
+      foo: bar
+
+{foo}
+  {bar}
+    {baz}
+      {foo}: bar
+    {one} 1
+  {two} 2
+
+selectors = one two three
+props = (one 1) (two 2) (three 3)
+
+for selector in selectors
+  {selector} *
+    for prop in props
+      {prop[0]}: prop[1]

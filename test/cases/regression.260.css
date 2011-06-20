@@ -1,0 +1,6 @@
+tr td.currency_no_total,
+tr td.number_no_total,
+tr td.number,
+tr td.currency {
+  text-align: right;
+}

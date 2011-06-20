@@ -18,8 +18,6 @@ compiles to:
     form input[type=button] {
       -webkit-border-radius: 5px;
       -moz-border-radius: 5px;
-      -webkit-border-radius: 5px;
-      -moz-border-radius: 5px;
       border-radius: 5px;
     }
 

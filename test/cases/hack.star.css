@@ -1,0 +1,27 @@
+html>body p code {
+  *white-space: normal;
+}
+body {
+  *white-space: normal;
+}
+body {
+  *white-space: normal;
+}
+body {
+  *white-space: normal;
+}
+* foo {
+  display: none;
+}
+body * {
+  display: none;
+}
+body {
+  *white-space: normal;
+}
+body * foo {
+  bar: baz;
+}
+body * foo {
+  display: none;
+}

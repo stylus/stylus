@@ -1,4 +1,87 @@
 
+0.13.3 / 2011-06-01 
+==================
+
+  * Added padding for error linenos so they line up
+  * Improved unary op error messages
+  * Improved invalid __@keyframes__ ident error msg
+  * Fixed HSLA regression for operations resulting in a bool. Closes #274
+  * Fixed `arguments` issue with excluding defaults. Closes #272
+
+0.13.2 / 2011-05-31 
+==================
+
+  * Fixed colors after `url()` call regression. Closes #270
+
+0.13.1 / 2011-05-30 
+==================
+
+  * Fixed colors in url(). Closes #267
+  * Fixed selector without trailing comma containing selector token. closes #260
+
+0.13.0 / 2011-05-17 
+==================
+
+  * Added `-u, --use PATH` flag for utilizing plugins
+  * Fixed `hsla.clampDegrees()` with negative values [Bruno Héridet]
+
+0.12.4 / 2011-05-12 
+==================
+
+  * Added support for underscore in identifiers. Closes #247
+  * Fixed __@keyframe__ block evaluation. Closes #252
+
+0.12.3 / 2011-05-08 
+==================
+
+  * Fixed `0%` in __@keyframes__ from becoming "0" when compressed. Closes #248
+
+0.12.2 / 2011-05-03 
+==================
+
+  * Fixed issue with `^=` attr selector causing infinite loop. Closes #244
+  * Fixed multiple occurrences of `&` in selectors. Closes #243
+
+0.12.1 / 2011-04-29 
+==================
+
+  * Fixed spaces around line-height shorthand. Closes #228
+  * Fixed `-{foo}` interpolation support. Closes #235
+
+0.12.0 / 2011-04-29 
+==================
+
+  * Added `*prop: val` hack support (blueprint / html boilerplate etc parse fine now)
+  * Added selector interpolation support
+  * Fixed "-" within interpolation. Closes #220
+
+0.11.12 / 2011-04-27 
+==================
+
+  * Added `SyntaxError` and `ParseError`
+  * Removed `stylus.parse()`
+  * Fixed error reporting. Closes #44
+
+0.11.11 / 2011-04-24 
+==================
+
+  * Fixed mutation of units when using unary ops. Closes #233
+
+0.11.10 / 2011-04-17 
+==================
+
+  * Fixed regression. Closes #229
+
+0.11.9 / 2011-04-15 
+==================
+
+  * Fixed issue with large selectors spanning several lines
+
+0.11.8 / 2011-04-15 
+==================
+
+  * Added support for `Renderer#define(name, node)` to define a global
+
 0.11.7 / 2011-04-12 
 ==================
 

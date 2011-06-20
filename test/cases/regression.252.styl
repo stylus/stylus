@@ -1,0 +1,11 @@
+
+$border-radius = 25px
+
+@keyframes movingBorder
+  from
+    $local-border-radius = 35px
+    border-radius: 0 0 0 $local-border-radius
+  50%
+    border-radius: 0 0 $border-radius 0
+  to
+    border-radius: 0 $border-radius 0 0

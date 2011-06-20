@@ -77,6 +77,12 @@ var interactive;
 var recursive;
 
 /**
+ * Plugins.
+ */
+
+var plugins = [];
+
+/**
  * Usage docs.
  */
 
@@ -93,6 +99,7 @@ var usage = [
   , '  Options:'
   , ''
   , '    -i, --interactive       Start interactive REPL'
+  , '    -u, --use <path>        Utilize the stylus plugin at <path>'
   , '    -w, --watch             Watch file(s) for changes and re-compile'
   , '    -r, --recursive         Watch directories recursively'
   , '    -o, --out <dir>         Output to <dir> when passing files'
@@ -162,6 +169,13 @@ while (args.length) {
     case '-r':
     case '--recursive':
       recursive = true;
+      break;
+    case '-u':
+    case '--use':
+      var path = args.shift();
+      if (!path) throw new Error('--use <path> required');
+      paths.push(dirname(path));
+      plugins.push(path);
       break;
     default:
       files.push(arg);
@@ -367,12 +381,13 @@ function compileCSSFile(file, fileOut) {
  */
 
 function compileStdio() {
-  var stdin = process.openStdin();
-  stdin.setEncoding('utf8');
-  stdin.on('data', function(chunk){ str += chunk; });
-  stdin.on('end', function(){
+  process.stdin.setEncoding('utf8');
+  process.stdin.on('data', function(chunk){ str += chunk; });
+  process.stdin.on('end', function(){
     // Compile to css
-    stylus(str, options).render(function(err, css){
+    var style = stylus(str, options);
+    usePlugins(style);
+    style.render(function(err, css){
       if (err) throw err;
       if (compare) {
         console.log('\n\x1b[1mInput:\x1b[0m');
@@ -382,7 +397,7 @@ function compileStdio() {
       console.log(css);
       if (compare) console.log();
     });
-  });
+  }).resume();
 }
 
 /**
@@ -407,7 +422,9 @@ function compileFile(file, prefix) {
         if (err) throw err;
         options.filename = file;
         options._imports = [];
-        stylus(str, options).render(function(err, css){
+        var style = stylus(str, options);
+        usePlugins(style);
+        style.render(function(err, css){
           watchImports(file, options._imports, prefix);
           if (err) {
             if (watchers) {
@@ -518,5 +535,21 @@ function watchImports(file, imports, prefix) {
     watch(import.path, true, function(){
       compileFile(file, prefix);
     });
+  });
+}
+
+/**
+ * Utilize plugins.
+ */
+
+function usePlugins(style) {
+  var cwd = process.cwd();
+  plugins.forEach(function(path){
+    path = join(cwd, path);
+    fn = require(path);
+    if ('function' != typeof fn) {
+      throw new Error('plugin ' + path + ' does not export a function');
+    }
+    style.use(fn());
   });
 }
