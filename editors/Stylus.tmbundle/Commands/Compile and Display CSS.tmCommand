@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/bin/bash
+
+function highlight {
+  test `which pygmentize`
+  if [[ $? -eq 0 ]]; then
+    pygmentize -Onoclasses,nobackground=True -l css -f html
+  else
+    pre
+  fi
+}
+
+${TM_STYLUS:=stylus} | highlight</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>keyEquivalent</key>
+	<string>@b</string>
+	<key>name</key>
+	<string>Compile and Display CSS</string>
+	<key>output</key>
+	<string>showAsHTML</string>
+	<key>scope</key>
+	<string>source.stylus</string>
+	<key>uuid</key>
+	<string>DD8F8C2B-2B83-4734-82EE-8508EE344638</string>
+</dict>
+</plist>
