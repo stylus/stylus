@@ -1,4 +1,10 @@
 
+0.13.4 / 2011-06-22 
+==================
+
+  * Added ‘Compile and Display CSS’ TextMate command (cmd+B) [Brandon Bloom]
+  * Fixed caching behavior for recompilation of files with changed imports [Daniel Gasienica]
+
 0.13.3 / 2011-06-01 
 ==================
 
