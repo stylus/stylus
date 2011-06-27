@@ -1,4 +1,9 @@
 
+0.13.5 / 2011-06-27 
+==================
+
+  * Fixed middleware handling of new and removed imports [brandonbloom]
+
 0.13.4 / 2011-06-22 
 ==================
 
