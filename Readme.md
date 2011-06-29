@@ -78,6 +78,7 @@ form input {
   - [@media](/LearnBoost/stylus/blob/master/docs/media.md) support
   - Connect [Middleware](/LearnBoost/stylus/blob/master/docs/middleware.md)
   - TextMate [bundle](/LearnBoost/stylus/blob/master/docs/textmate.md)
+  - gedit [language-spec](/LearnBoost/stylus/blob/master/docs/gedit.md)
   - VIM [Syntax](https://github.com/wavded/vim-stylus)
   - transparent vendor-specific function expansion
 
