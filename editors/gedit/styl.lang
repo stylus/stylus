@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Author: Jan Krolikowski <yanekk@github>
+ STYL version based on SASS by Ivan Kerin
+ String support from yml.lang by Alexandre da Silva
+ Comments support from c.lang by Marco Barisione and Emanuele Aina
+ Strings, at-rules & other definitions from css.lang by Scott Martin
+ Some reg. exp. patterns based on http://github.com/charlesr/ruby-sass-tmbundle
+ + Modified by @niftylettuce to temporarily support Stylus
+-->
+<language id="styl" _name="Stylus" version="2.0" _section="Others">
+
+  <metadata>
+    <property name="mimetypes">text/x-styl</property>
+    <property name="globs">*.styl</property>
+    <property name="line-comment-start">//</property>
+    <property name="block-comment-start">/*</property>
+    <property name="block-comment-end">*/</property>
+  </metadata>
+
+  <styles>
+    <style id="string"       _name="String"            map-to="def:string"/>
+    <style id="comment"     _name="Comment"              map-to="def:comment"/>
+    <style id="tag"         _name="Tag"                  map-to="def:constant"/>
+    <style id="class-tag"   _name="Class Tag"            map-to="def:identifier"/>
+    <style id="id-tag"      _name="Id Tag"               map-to="def:identifier"/>
+    <style id="variable"    _name="Variable"             map-to="def:type"/>
+    <style id="error"       _name="Error"                map-to="def:error"/>
+    <style id="keyword"     _name="Keyword"              map-to="def:keyword"/>
+    <style id="at-rules"    _name="At-Rules"             map-to="def:keyword"/>
+    <style id="function"    _name="Function"             map-to="def:function"/>
+    <style id="known-value" _name="Known Property Value" map-to="def:type"/>
+    <style id="decimal"     _name="Decimal"              map-to="def:decimal"/>
+    <style id="dimension"   _name="Dimension"            map-to="def:floating-point"/>
+    <style id="color"       _name="Color"                map-to="def:base-n-integer"/>
+    <style id='parent-reference' _name="Parent Reference" map-to='def:constant' />
+    <style id='interpolation' _name="Interpolation" map-to="def:constant" />
+  </styles>
+
+  <definitions>
+    <context id="styl">
+    <include>
+
+    <context id="string" style-ref="string">
+      <start>"</start>
+      <end>"</end>
+      <include>
+        <context ref="def:escape"/>
+        <context ref="def:line-continue"/>
+      </include>
+    </context>
+
+    <context id="string-2" style-ref="string">
+      <start>'</start>
+      <end>'</end>
+    </context>
+
+    <context id="comment" style-ref="comment" end-at-line-end="true">
+        <start>//</start>
+
+        <include>
+          <context ref="def:in-line-comment"/>
+        </include>
+    </context>
+
+    <context id="comment-multiline" style-ref="comment">
+        <start>/\*</start>
+        <end>\*/</end>
+        <include>
+            <context ref="def:in-comment"/>
+        </include>
+    </context>
+
+    <context id="close-comment-outside-comment" style-ref="error">
+        <match>\*/(?!\*)</match>
+    </context>
+
+    <context id='parent-reference' style-ref='parent-reference'>
+      <match><![CDATA[&]]></match>
+    </context>
+
+    <context id="class-tag" style-ref="class-tag">
+      <match>(\.)[a-zA-Z][a-zA-Z0-9_-]*</match>
+    </context>
+
+    <context id="id-tag" style-ref="id-tag">
+      <match>(#)[a-zA-Z][a-zA-Z0-9_-]*</match>
+    </context>
+
+    <context id='mixin-no-args'>
+      <match>(@mixin) ([a-z]+)</match>
+      <include>
+        <context sub-pattern='1' style-ref='keyword' />
+        <context sub-pattern='2' style-ref='function' />
+      </include>
+    </context>
+
+    <context id='at-keywords' style-ref='at-rules'>
+     <prefix>^[ \t]*@</prefix>
+      <keyword>charset</keyword>
+      <keyword>font-face</keyword>
+      <keyword>media</keyword>
+      <keyword>page</keyword>
+      <keyword>import</keyword>
+      <keyword>extend</keyword>
+      <keyword>debug</keyword>
+      <keyword>warn</keyword>
+      <keyword>mixin</keyword>
+      <keyword>if</keyword>
+      <keyword>else</keyword>
+      <keyword>else if</keyword>
+      <keyword>for</keyword>
+      <keyword>while</keyword>
+      <keyword>include</keyword>
+    </context>
+
+    <context id="selector-pseudo-elements" style-ref="function">
+      <keyword>first-line</keyword>
+      <keyword>first-letter</keyword>
+      <keyword>before</keyword>
+      <keyword>after</keyword>
+    </context>
+
+    <context id="selector-pseudo-classes" style-ref="function">
+      <keyword>first-child</keyword>
+      <keyword>link</keyword>
+      <keyword>visited</keyword>
+      <keyword>hover</keyword>
+      <keyword>active</keyword>
+      <keyword>focus</keyword>
+      <keyword>lang</keyword>
+    </context>
+
+    <context id="property-names" style-ref="keyword">
+      <match>(?!(\$|#))(:[^\s\.]+|[^\s^\.]+(:)(?!first-child|link|visited|hover|active|focus|lang|first-line|first-letter|before|after))</match>
+    </context>
+
+    <context id='else-if' style-ref='keyword'>
+      <match>(@else if)</match>
+    </context>
+
+    <context id='for-loop' style-ref='keyword'>
+      <start>from</start>
+      <end>through</end>
+      <include>
+        <context ref='variable' />
+        <context ref='def:decimal' />
+      </include>
+    </context>
+
+    <context id="known-value" style-ref="known-value">
+      <keyword>above</keyword>
+      <keyword>absolute</keyword>
+      <keyword>always</keyword>
+      <keyword>aqua</keyword>
+      <keyword>armenian</keyword>
+      <keyword>auto</keyword>
+      <keyword>avoid</keyword>
+      <keyword>baseline</keyword>
+      <keyword>behind</keyword>
+      <keyword>below</keyword>
+      <keyword>bidi-override</keyword>
+      <keyword>black</keyword>
+      <keyword>blink</keyword>
+      <keyword>block</keyword>
+      <keyword>blue</keyword>
+      <keyword>bolder</keyword>
+      <keyword>bold</keyword>
+      <keyword>both</keyword>
+      <keyword>bottom</keyword>
+      <keyword>capitalize</keyword>
+      <keyword>center-left</keyword>
+      <keyword>center-right</keyword>
+      <keyword>center</keyword>
+      <keyword>circle</keyword>
+      <keyword>cjk-ideographic</keyword>
+      <keyword>close-quote</keyword>
+      <keyword>code</keyword>
+      <keyword>collapse</keyword>
+      <keyword>compact</keyword>
+      <keyword>condensed</keyword>
+      <keyword>continuous</keyword>
+      <keyword>crop</keyword>
+      <keyword>crosshair</keyword>
+      <keyword>cross</keyword>
+      <keyword>cue-after</keyword>
+      <keyword>cue-before</keyword>
+      <keyword>cursive</keyword>
+      <keyword>dashed</keyword>
+      <keyword>decimal</keyword>
+      <keyword>decimal-leading-zero</keyword>
+      <keyword>default</keyword>
+      <keyword>digits</keyword>
+      <keyword>disc</keyword>
+      <keyword>dotted</keyword>
+      <keyword>double</keyword>
+      <keyword>embed</keyword>
+      <keyword>e-resize</keyword>
+      <keyword>expanded</keyword>
+      <keyword>extra-condensed</keyword>
+      <keyword>extra-expanded</keyword>
+      <keyword>fantasy</keyword>
+      <keyword>far-left</keyword>
+      <keyword>far-right</keyword>
+      <keyword>faster</keyword>
+      <keyword>fast</keyword>
+      <keyword>fixed</keyword>
+      <keyword>fixed</keyword>
+      <keyword>fuchsia</keyword>
+      <keyword>georgian</keyword>
+      <keyword>gray</keyword>
+      <keyword>green</keyword>
+      <keyword>groove</keyword>
+      <keyword>hebrew</keyword>
+      <keyword>help</keyword>
+      <keyword>hidden</keyword>
+      <keyword>hide</keyword>
+      <keyword>higher</keyword>
+      <keyword>high</keyword>
+      <keyword>hiragana-iroha</keyword>
+      <keyword>hiragana</keyword>
+      <keyword>inherit</keyword>
+      <keyword>inline</keyword>
+      <keyword>inline-table</keyword>
+      <keyword>inset</keyword>
+      <keyword>inside</keyword>
+      <keyword>invert</keyword>
+      <keyword>italic</keyword>
+      <keyword>justify</keyword>
+      <keyword>katakana-iroha</keyword>
+      <keyword>katakana</keyword>
+      <keyword>landscape</keyword>
+      <keyword>large</keyword>
+      <keyword>larger</keyword>
+      <keyword>left</keyword>
+      <keyword>left-side</keyword>
+      <keyword>leftwards</keyword>
+      <keyword>level</keyword>
+      <keyword>lighter</keyword>
+      <keyword>lime</keyword>
+      <keyword>line-through</keyword>
+      <keyword>list-item</keyword>
+      <keyword>loud</keyword>
+      <keyword>lower-alpha</keyword>
+      <keyword>lowercase</keyword>
+      <keyword>lower-greek</keyword>
+      <keyword>lower-latin</keyword>
+      <keyword>lower-roman</keyword>
+      <keyword>lower</keyword>
+      <keyword>low</keyword>
+      <keyword>ltr</keyword>
+      <keyword>marker</keyword>
+      <keyword>maroon</keyword>
+      <keyword>medium</keyword>
+      <keyword>medium</keyword>
+      <keyword>middle</keyword>
+      <keyword>mix</keyword>
+      <keyword>monospace</keyword>
+      <keyword>move</keyword>
+      <keyword>narrower</keyword>
+      <keyword>navy</keyword>
+      <keyword>ne-resize</keyword>
+      <keyword>no-close-quote</keyword>
+      <keyword>none</keyword>
+      <keyword>no-open-quote</keyword>
+      <keyword>no-repeat</keyword>
+      <keyword>normal</keyword>
+      <keyword>nowrap</keyword>
+      <keyword>n-resize</keyword>
+      <keyword>nw-resize</keyword>
+      <keyword>oblique</keyword>
+      <keyword>olive</keyword>
+      <keyword>once</keyword>
+      <keyword>open-quote</keyword>
+      <keyword>outset</keyword>
+      <keyword>outside</keyword>
+      <keyword>overline</keyword>
+      <keyword>pointer</keyword>
+      <keyword>portait</keyword>
+      <keyword>pre</keyword>
+      <keyword>purple</keyword>
+      <keyword>red</keyword>
+      <keyword>relative</keyword>
+      <keyword>repeat-x</keyword>
+      <keyword>repeat-y</keyword>
+      <keyword>repeat</keyword>
+      <keyword>ridge</keyword>
+      <keyword>right-side</keyword>
+      <keyword>right</keyword>
+      <keyword>rightwards</keyword>
+      <keyword>rlt</keyword>
+      <keyword>run-in</keyword>
+      <keyword>sans-serif</keyword>
+      <keyword>scroll</keyword>
+      <keyword>scroll</keyword>
+      <keyword>semi-condensed</keyword>
+      <keyword>semi-expanded</keyword>
+      <keyword>separate</keyword>
+      <keyword>se-resize</keyword>
+      <keyword>serif</keyword>
+      <keyword>show</keyword>
+      <keyword>silent</keyword>
+      <keyword>silver</keyword>
+      <keyword>slower</keyword>
+      <keyword>slow</keyword>
+      <keyword>small-caps</keyword>
+      <keyword>smaller</keyword>
+      <keyword>small</keyword>
+      <keyword>soft</keyword>
+      <keyword>solid</keyword>
+      <keyword>spell-out</keyword>
+      <keyword>square</keyword>
+      <keyword>s-resize</keyword>
+      <keyword>static</keyword>
+      <keyword>sub</keyword>
+      <keyword>super</keyword>
+      <keyword>sw-resize</keyword>
+      <keyword>table-caption</keyword>
+      <keyword>table-cell</keyword>
+      <keyword>table-column-group</keyword>
+      <keyword>table-column</keyword>
+      <keyword>table-footer-group</keyword>
+      <keyword>table-header-group</keyword>
+      <keyword>table-row-group</keyword>
+      <keyword>table-row</keyword>
+      <keyword>table</keyword>
+      <keyword>teal</keyword>
+      <keyword>text-bottom</keyword>
+      <keyword>text</keyword>
+      <keyword>text-top</keyword>
+      <keyword>thick</keyword>
+      <keyword>thin</keyword>
+      <keyword>top</keyword>
+      <keyword>top</keyword>
+      <keyword>transparent</keyword>
+      <keyword>ultra-condensed</keyword>
+      <keyword>ultra-expanded</keyword>
+      <keyword>underline</keyword>
+      <keyword>upper-alpha</keyword>
+      <keyword>uppercase</keyword>
+      <keyword>upper-latin</keyword>
+      <keyword>upper-roman</keyword>
+      <keyword>visible</keyword>
+      <keyword>wait</keyword>
+      <keyword>white</keyword>
+      <keyword>wider</keyword>
+      <keyword>w-resize</keyword>
+      <keyword>x-fast</keyword>
+      <keyword>x-high</keyword>
+      <keyword>x-large</keyword>
+      <keyword>x-loud</keyword>
+      <keyword>x-low</keyword>
+      <keyword>x-slow</keyword>
+      <keyword>x-small</keyword>
+      <keyword>x-soft</keyword>
+      <keyword>xx-large</keyword>
+      <keyword>xx-small</keyword>
+      <keyword>yellow</keyword>
+    </context>
+
+    <context id="tags" style-ref="tag">
+      <keyword>table</keyword>
+      <keyword>td</keyword>
+      <keyword>th</keyword>
+      <keyword>tr</keyword>
+      <keyword>div</keyword>
+      <keyword>span</keyword>
+      <keyword>a</keyword>
+      <keyword>h1</keyword>
+      <keyword>h2</keyword>
+      <keyword>h3</keyword>
+      <keyword>h4</keyword>
+      <keyword>h5</keyword>
+      <keyword>h6</keyword>
+      <keyword>strong</keyword>
+      <keyword>em</keyword>
+      <keyword>quote</keyword>
+      <keyword>form</keyword>
+      <keyword>fieldset</keyword>
+      <keyword>label</keyword>
+      <keyword>input</keyword>
+      <keyword>textarea</keyword>
+      <keyword>button</keyword>
+      <keyword>body</keyword>
+      <keyword>img</keyword>
+      <keyword>ul</keyword>
+      <keyword>li</keyword>
+
+      <keyword>html</keyword>
+
+      <keyword>object</keyword>
+      <keyword>iframe</keyword>
+      <keyword>p</keyword>
+      <keyword>blockquote</keyword>
+      <keyword>abbr</keyword>
+      <keyword>address</keyword>
+      <keyword>cite</keyword>
+      <keyword>del</keyword>
+      <keyword>dfn</keyword>
+      <keyword>ins</keyword>
+      <keyword>kbd</keyword>
+      <keyword>q</keyword>
+      <keyword>samp</keyword>
+      <keyword>sup</keyword>
+      <keyword>var</keyword>
+      <keyword>b</keyword>
+      <keyword>i</keyword>
+      <keyword>dl</keyword>
+      <keyword>dt</keyword>
+      <keyword>dd</keyword>
+      <keyword>ol</keyword>
+      <keyword>legend</keyword>
+      <keyword>caption</keyword>
+      <keyword>tbody</keyword>
+      <keyword>tfoot</keyword>
+      <keyword>thead</keyword>
+      <keyword>article</keyword>
+      <keyword>aside</keyword>
+      <keyword>canvas</keyword>
+      <keyword>details</keyword>
+      <keyword>figcaption</keyword>
+      <keyword>figure</keyword>
+      <keyword>footer</keyword>
+      <keyword>header</keyword>
+      <keyword>hgroup</keyword>
+      <keyword>menu</keyword>
+      <keyword>nav</keyword>
+      <keyword>section</keyword>
+      <keyword>summary</keyword>
+      <keyword>time</keyword>
+      <keyword>mark</keyword>
+      <keyword>audio</keyword>
+      <keyword>video</keyword>
+    </context>
+
+    <context id="variable" style-ref="variable">
+      <match>(\!|\$)[a-zA-Z][a-zA-Z0-9-_]*</match>
+    </context>
+
+    <context id="dimension" style-ref="dimension">
+      <match>[\+-]?([0-9]+|[0-9]*\.[0-9]+)(%|e(m|x)|p(x|t|c)|in|ft|(m|c)m|k?Hz|deg|g?rad|m?s)</match>
+    </context>
+
+    <context id="hexadecimal-color" style-ref="color">
+      <match>#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})</match>
+    </context>
+
+
+    <context id="function">
+      <match>([a-zA-Z][a-zA-Z0-9-_]*)\(</match>
+      <include>
+        <context sub-pattern='1' style-ref='function' />
+      </include>
+    </context>
+
+    <context id="number" style-ref="decimal">
+      <match>\b(0|[\+-]?[1-9][0-9]*)</match>
+    </context>
+
+    <context id="importance-modifier" style-ref="keyword">
+      <match>\![ \t]*(important|default)</match>
+    </context>
+
+    <context id='interpolation' style-ref='interpolation'>
+      <start>#{</start>
+      <end>}</end>
+      <include>
+        <context ref='variable' />
+      </include>
+    </context>
+  </include>
+  </context>
+  </definitions>
+</language>
+
