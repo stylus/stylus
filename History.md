@@ -1,13 +1,12 @@
-
 0.13.5 / 2011-06-27 
 ==================
 
-  * Fixed middleware handling of new and removed imports [brandonbloom]
+  * Fixed middleware handling of new and removed `@import` s [brandonbloom]
 
 0.13.4 / 2011-06-22 
 ==================
 
-  * Added ‘Compile and Display CSS’ TextMate command (cmd+B) [Daniel Gasienica]
+  * Added __Compile and Display CSS__ TextMate command (⌘B) [Daniel Gasienica]
   * Fixed caching behavior for recompilation of files with changed imports [Brandon Bloom]
 
 0.13.3 / 2011-06-01 
@@ -15,7 +14,7 @@
 
   * Added padding for error linenos so they line up
   * Improved unary op error messages
-  * Improved invalid __@keyframes__ ident error msg
+  * Improved invalid `@keyframes` ident error msg
   * Fixed HSLA regression for operations resulting in a bool. Closes #274
   * Fixed `arguments` issue with excluding defaults. Closes #272
 
@@ -27,8 +26,8 @@
 0.13.1 / 2011-05-30 
 ==================
 
-  * Fixed colors in url(). Closes #267
-  * Fixed selector without trailing comma containing selector token. closes #260
+  * Fixed colors in `url()`. Closes #267
+  * Fixed selector without trailing comma containing selector token. Closes #260
 
 0.13.0 / 2011-05-17 
 ==================
@@ -40,12 +39,12 @@
 ==================
 
   * Added support for underscore in identifiers. Closes #247
-  * Fixed __@keyframe__ block evaluation. Closes #252
+  * Fixed `@keyframe` block evaluation. Closes #252
 
 0.12.3 / 2011-05-08 
 ==================
 
-  * Fixed `0%` in __@keyframes__ from becoming "0" when compressed. Closes #248
+  * Fixed `0%` in `@keyframes` from becoming `0` when compressed. Closes #248
 
 0.12.2 / 2011-05-03 
 ==================
@@ -102,7 +101,7 @@
 0.11.6 / 2011-04-12 
 ==================
 
-  * Fixed; node.source and node.filename are writable
+  * Fixed: node.source and node.filename are writable
 
 0.11.5 / 2011-04-12 
 ==================
@@ -122,15 +121,15 @@
 0.11.3 / 2011-04-08 
 ==================
 
-  * Fixed; keyword args previously not evaluated
-  * Fixed; subpixel support
-  * Fixed bug preventing combinators (and other ops) in __@media__ blocks. Closes #216 [reported by jsteenkamp]
+  * Fixed: keyword args previously not evaluated
+  * Fixed: subpixel support
+  * Fixed bug preventing combinators (and other ops) in `@media` blocks. Closes #216 [reported by jsteenkamp]
 
 0.11.2 / 2011-04-06 
 ==================
 
   * Added `Renderer#include(path)`. Closes #214
-  * Fixed __@import__ path resolution bug. Closes #215
+  * Fixed `@import` path resolution bug. Closes #215
   * Fixed optional keyword arg bug. Closes #212
 
 0.11.1 / 2011-04-01 
@@ -162,7 +161,7 @@
   * Added support for `rgba + 25%` to lighten
   * Added support for `rgba - 25%` to darken
   * Added support for `rgba - 25` to adjust rgb values
-  * Changed; null now outputs "null" instead of "[Null]"
+  * Changed: null now outputs "null" instead of "[Null]"
   * Fixed hsl operation support, all operations are equivalent on rgba/hsla nodes
   * Fixed degree rotation
 
@@ -175,14 +174,14 @@
   * Added `debug` option to stylus middleware
   * Added support for `hsl + 15deg` etc to adjust hue
   * Added special-case for percentage based `RGBA` operations (`#eee - 20%`)
-  * Changed; right-hand colors in operations are not clamped (`#eee * 0.2`)
+  * Changed: right-hand colors in operations are not clamped (`#eee * 0.2`)
   * Added support for `unit * color` (swaps operands)
   * Fixed color component requests on the opposite node type (ex red on hsla node)
   * Fixed `Expression#clone()` to support `Arguments`
   * Fixed issue with middleware where imports are improperly mapped
   * Fixed mutation of color when adjusting values
-  * Fixed; coerce string to literal
-  * Removed {darken,lighten}-by() BIFs
+  * Fixed: coerce string to literal
+  * Removed {`darken`,`lighten`}`-by()` BIFs
 
 0.9.2 / 2011-03-21 
 ==================
@@ -205,7 +204,7 @@
   * Added link to vim syntax
   * Changed `p()` built-in to display parens
   * Changed `--compress -C` to `-c`, and `-css -c` is now `-C`
-  * Fixed; preserve rest-arg expressions. Closes #194
+  * Fixed: preserve rest-arg expressions. Closes #194
   * Fixed `*=` in selector, ex `[class*="foo"]`
   * Fixed `--watch` issue with growl, updated to 1.1.0. Closes #188
   * Fixed negative floats when compressed. Closes #193 [reported by ludicco]
@@ -223,7 +222,7 @@
   * Added `join(delim, vals)` built-in function
   * Added `Evaluator#{currentScope,currentBlock}`
   * Added multi-line function paramter definition support
-  * Changed; `0` is falsey, `0%`, `0em`, `0px` etc truthy. Closes #160
+  * Changed: `0` is falsey, `0%`, `0em`, `0px` etc truthy. Closes #160
   * Fixed `for` implicit __return__ value
   * Fixed `for` explicit __return__ value
   * Fixed mixin property ordering
@@ -234,24 +233,24 @@
   * Added `RGBA` node
   * Added `is a "color"` special-case, true for `HSLA` and `RGBA` nodes.
 Closes #180
-  * Performance; 2.5x faster compiles due to removing use of getters in `Parser` and `Lexer` (yes, they are really slow).
+  * Performance; 2.5× faster compiles due to removing use of getters in `Parser` and `Lexer` (yes, they are really slow).
   * Removed `Color` node
-  * Fixed stylus(1) `--watch` support due to dynamic __@import__ support. Closes #176
+  * Fixed stylus(1) `--watch` support due to dynamic `@import` support. Closes #176
 
 0.7.3 / 2011-03-09 
 ==================
 
-  * Fixed; allow semi-colons for non-css syntax for one-liners
+  * Fixed: allow semi-colons for non-css syntax for one-liners
 
 0.7.2 / 2011-03-08 
 ==================
 
-  * Added `isnt` operator, same as `is not`, and `!=`
+  * Added `isnt` operator (same as `is not` and `!=`)
   * Added support for dynamic `@import` expressions
   * Added `@import` index resolution support
   * Added `light()` / `dark()` BIFs
-  * Added `compress` option for connect middleware [disfated]
-  * Changed; most built-in functions defined in stylus (`./lib/functions/index.styl`)
+  * Added `compress` option for Connect middleware [disfated]
+  * Changed: most built-in functions defined in stylus (`./lib/functions/index.styl`)
   * Fixed dynamic expressions in `url()`. Closes #105
 
 0.7.1 / 2011-03-07 
@@ -263,7 +262,7 @@ Closes #180
 ==================
 
   * Added `is` and `is not` aliases for `==` and `!=`
-  * Added __@keyframes__ dynamic name support
+  * Added `@keyframes` dynamic name support
   * Fixed units in interpolation
   * Fixed clamping of HSLA degrees / percentages
 
@@ -275,12 +274,12 @@ Closes #180
 0.6.6 / 2011-03-01 
 ==================
 
-  * Added string -> unit type coercion support aka `5px + "10"` will give `15px`
+  * Added string -> unit type coercion support aka `5px + "10"` will give `15px`
   * Added `warn` option Closes #152
     Currently this only reports on re-definition of functions
-  * Added '$' as a valid identifier character
+  * Added `$` as a valid identifier character
   * Added `mixin` local variable for function introspection capabilities. Closes #162
-  * Fixed typo, `Unit#toBoolean()` is now correct
+  * Fixed typo: `Unit#toBoolean()` is now correct
   * Fixed interpolation function calls. Closes #156
   * Fixed mixins within Media node. Closes #153
   * Fixed function call in ret val. Closes #154
@@ -293,22 +292,22 @@ Closes #180
 0.6.4 / 2011-02-24 
 ==================
 
-  * Fixed for within brackets. Closes #146
+  * Fixed `for` within brackets. Closes #146
 
 0.6.3 / 2011-02-22 
 ==================
 
   * Fixed single-ident selectors. Closes #142
-  * Fixed cyclic __@import__ with file of the same name. Closes #143
+  * Fixed cyclic `@import` with file of the same name. Closes #143
 
 0.6.2 / 2011-02-21 
 ==================
 
   * Added stylus(1) growl support when using `--watch`
-  * Added __@import__ watching support to stylus(1). Closes #134
-  * Changed; stylus(1) only throws when `--watch` is not used
+  * Added `@import` watching support to stylus(1). Closes #134
+  * Changed: stylus(1) only throws when `--watch` is not used
   * Fixed `darken-by()` BIF
-  * Fixed __@import__ literal semi-colon. Closes #140
+  * Fixed `@import` literal semi-colon. Closes #140
 
 0.6.1 / 2011-02-18 
 ==================
@@ -337,7 +336,7 @@ Closes #180
 0.5.2 / 2011-02-15 
 ==================
 
-  * Fixed spaces after "}" with css-style. Closes #131
+  * Fixed spaces after `}` with css-style. Closes #131
   * Fixed single-line css-style support. Closes #130
 
 0.5.1 / 2011-02-11 
@@ -361,20 +360,20 @@ Closes #180
 ==================
 
   * Added css-style syntax support
-  * Fixed support for `*` selector within __@media__ blocks
+  * Fixed support for `*` selector within `@media` blocks
 
 0.3.1 / 2011-02-04 
 ==================
 
   * Fixed property disambiguation logic. Closes #117
     You no longer need to add a trailing comma when
-    chaining selectors such as 'td:nth-child(2)\ntd:nth-child(3)'
+    chaining selectors such as `td:nth-child(2)\ntd:nth-child(3)`
 
 0.3.0 / 2011-02-04 
 ==================
 
   * Added more assignment operators. Closes #77
-    +=, -=, *=, /=, and %=
+    `+=`, `-=`, `*=`, `/=`, and `%=`
 
 0.2.1 / 2011-02-02 
 ==================
@@ -387,7 +386,7 @@ Closes #180
 0.2.0 / 2011-02-01 
 ==================
 
-  * Added; `url()` utilizing general lookup paths.
+  * Added: `url()` utilizing general lookup paths.
     This means that `{ paths: [] }` is optional now, as lookups
     will be relative to the file being rendered by default.
 
@@ -400,9 +399,9 @@ Closes #180
   * Added `image-lookup(path)` built-in function
   * Added `-o, --out <dir>` support to stylus(1)
   * Added `stylus [file|dir ...]` support
-  * Added; defaulting paths to `[CWD]` for stylus(1)
-  * Changed; `unquote()` using `Literal` node
-  * Changed; utilizing `Literal` in place of some `Ident`s
+  * Added: defaulting paths to `[CWD]` for stylus(1)
+  * Changed: `unquote()` using `Literal` node
+  * Changed: utilizing `Literal` in place of some `Ident`s
 
 0.0.2 / 2011-01-31 
 ==================
