@@ -1,4 +1,3 @@
-
 ## Connect Middleware
 
  Stylus ships with Connect middleware for auto-compiling Stylus sheets when modified.
@@ -9,12 +8,12 @@
 
 #### Options
 
-      `force`     When __true__ styles will always re-compile
-      `src`       Source directory used to find .styl files
-      `dest`      Destination directory used to output .css files
-                  when undefined defaults to `src`.
-      `compress`  Whether the output .css files should be compressed
-      `compile`   Custom compile function, accepting the arguments
+ - `force`     When _true_ styles will always re-compile  
+ - `src`       Source directory used to find .styl files  
+ - `dest`      Destination directory used to output .css files  
+               when undefined defaults to `src`.  
+ - `compress`  Whether the output .css files should be compressed  
+ - `compile`   Custom compile function, accepting the arguments  
                   `(str, path)` returning the renderer.
 
 #### Examples
