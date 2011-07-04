@@ -46,3 +46,12 @@
     color: #00f;
   }
 }
+@-webkit-keyframes fade {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
