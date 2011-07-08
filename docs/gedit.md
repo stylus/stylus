@@ -1,4 +1,3 @@
-
 ## gedit language-spec
 
  Stylus ships with a temporary version of `styl.lang` for [GtkSourceView](http://live.gnome.org/GtkSourceView), based off [Yanekk](https://github.com/yanekk)'s [work](https://github.com/gmate/gmate/blob/master/lang-specs/scss.lang) on `scss.lang`.
@@ -11,7 +10,7 @@
  
  Download `styl.lang` to your local `language-specs` folder:
  
-    wget https://raw.github.com/LearnBoost/stylus/master/editors/gedit/styl.lang ~/.local/share/gtksourceview-2.0/language-specs/styl.lang
+    mkdir -p ~/.local/share/gtksourceview-2.0/language-specs/ && wget https://raw.github.com/LearnBoost/stylus/master/editors/gedit/styl.lang -O ~/.local/share/gtksourceview-2.0/language-specs/styl.lang
 
  Update the mime database and enjoy Stylus syntax in gedit!
  
