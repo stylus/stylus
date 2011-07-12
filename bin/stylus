@@ -8,8 +8,7 @@ var fs = require('fs')
   , stylus = require('stylus')
   , basename = require('path').basename
   , dirname = require('path').dirname
-  , join = require('path').join
-  , growl = require('growl');
+  , join = require('path').join;
 
 /**
  * Arguments.
@@ -164,6 +163,14 @@ while (args.length) {
     default:
       files.push(arg);
   }
+}
+
+// optional growl support
+
+try {
+  var growl = require('growl');
+} catch (err) {
+  // ignore
 }
 
 // if --watch is used, assume we are
@@ -413,7 +420,7 @@ function compileFile(file) {
           if (err) {
             if (watchers) {
               console.error(err.stack || err.message);
-              growl.notify(err.message, { title: 'Stylus error' });
+              growl && growl.notify(err.message, { title: 'Stylus error' });
             } else {
               throw err;
             }
