@@ -1,3 +1,12 @@
+
+0.13.6 / 2011-07-12 
+==================
+
+  * Added `@-webkit-keyframes` support. Closes #307
+  * Added gedit language-spec
+  * Changed: optional `growl` dep for stylus(1)
+  * Changed: `require("stylus")` instead of `../` for the mac app integration
+
 0.13.5 / 2011-06-27 
 ==================
 
