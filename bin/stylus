@@ -5,7 +5,7 @@
  */
 
 var fs = require('fs')
-  , stylus = require('../')
+  , stylus = require('stylus')
   , basename = require('path').basename
   , dirname = require('path').dirname
   , join = require('path').join
