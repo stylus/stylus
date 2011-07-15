@@ -484,9 +484,9 @@ function watch(file, fn) {
  */
 
 function watchImports(file, imports) {
-  imports.forEach(function(import){
-    if (!import.path) return;
-    watch(import.path, function(){
+  imports.forEach(function(importObj){
+    if (!importObj.path) return;
+    watch(importObj.path, function(){
       compileFile(file);
     });
   });
