@@ -1,4 +1,10 @@
 
+0.13.7 / 2011-07-15 
+==================
+
+  * Added `js(str)` BIF
+  * Fixed reserved keyword `import` with `imported`
+
 0.13.6 / 2011-07-12 
 ==================
 
