@@ -497,9 +497,7 @@ function watchImports(file, imports) {
  */
 
 function usePlugins(style) {
-  var cwd = process.cwd();
   plugins.forEach(function(path){
-    path = join(cwd, path);
     fn = require(path);
     if ('function' != typeof fn) {
       throw new Error('plugin ' + path + ' does not export a function');
