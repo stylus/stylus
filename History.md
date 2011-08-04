@@ -1,4 +1,18 @@
 
+0.13.8 / 2011-08-01 
+==================
+
+  * Added `PI` and `-math-prop(name)`
+  * Added `cos()` and `sin()`
+  * Added support for __SVG__ data URIs [mhemesath]
+  * Rename variable "import" to "imported" [eegg]
+
+0.13.7 / 2011-07-15 
+==================
+
+  * Added `js(str)` BIF
+  * Fixed reserved keyword `import` with `imported`
+
 0.13.6 / 2011-07-12 
 ==================
 
