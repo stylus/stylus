@@ -84,8 +84,7 @@ var usage = [
   , '    help [<type>:]<prop> Opens help info at MDC for <prop> in'
   , '                         your default browser. Optionally'
   , '                         searches other resources of <type>:'
-  , '                           safari opera w3c ms caniuse quirksmode'
-  , '                         (osx & linux only)'
+  , '                         safari opera w3c ms caniuse quirksmode'
   , ''
   , '  Options:'
   , ''
@@ -137,10 +136,10 @@ while (args.length) {
       if (!dest) throw new Error('--out <dir> required');
       break;
     case 'help':
-      var   name = args.shift()
-          , browser = name.split(':');
+      var name = args.shift()
+        , browser = name.split(':');
       if (browser.length > 1) {
-        name = Array.prototype.slice.call(browser, 1).join(':');
+        name = [].slice.call(browser, 1).join(':');
         browser = browser[0];
       } else {
         name = browser[0];
