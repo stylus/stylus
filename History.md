@@ -1,4 +1,11 @@
 
+0.13.9 / 2011-08-04 
+==================
+
+  * Fixed `lighten()` BIF 'lighten by %' function push color closer to white [cwolves]
+  * Fixed cli plugin usage absolute paths, don't prepend the CWD [cpojer]
+  * Renaming 'import' to '_import' because import is a reserved word in node v0.5
+
 0.13.8 / 2011-08-01 
 ==================
 
