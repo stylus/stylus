@@ -81,8 +81,11 @@ var usage = [
   , ''
   , '  Commands:'
   , ''
-  , '    help <prop>     Opens help info for <prop> in'
-  , '                    your default browser. (osx only)'
+  , '    help [<type>:]<prop> Opens help info at MDC for <prop> in'
+  , '                         your default browser. Optionally'
+  , '                         searches other resources of <type>:'
+  , '                           safari opera w3c ms caniuse quirksmode'
+  , '                         (osx & linux only)'
   , ''
   , '  Options:'
   , ''
@@ -134,7 +137,15 @@ while (args.length) {
       if (!dest) throw new Error('--out <dir> required');
       break;
     case 'help':
-      var name = args.shift();
+      var   name = args.shift()
+          , browser = name.split(':');
+      if (browser.length > 1) {
+        name = Array.prototype.slice.call(browser, 1).join(':');
+        browser = browser[0];
+      } else {
+        name = browser[0];
+        browser = '';
+      }
       if (!name) throw new Error('help <property> required');
       help(name);
       break;
@@ -190,9 +201,45 @@ if (watchers && !files.length) {
  */
 
 function help(name) {
-  var url = 'https://developer.mozilla.org/en/CSS/' + name
-    , exec = require('child_process').exec;
-  exec('open "' + url + '"', function(){
+  var url
+    , exec = require('child_process').exec
+    , command;
+
+  name = encodeURIComponent(name);
+
+  switch (browser) {
+    case 'safari':
+    case 'webkit':
+      url = 'https://developer.apple.com/library/safari/search/?q=' + name;
+      break;
+    case 'opera':
+      url = 'http://dev.opera.com/search/?term=' + name;
+      break;
+    case 'w3c':
+      url = 'http://www.google.com/search?q=site%3Awww.w3.org%2FTR+' + name;
+      break;
+    case 'ms':
+      url = 'http://social.msdn.microsoft.com/search/en-US/ie?query=' + name + '&refinement=59%2c61';
+      break;
+    case 'caniuse':
+      url = 'http://caniuse.com/#search=' + name;
+      break;
+    case 'quirksmode':
+      url = 'http://www.google.com/search?q=site%3Awww.quirksmode.org+' + name;
+      break;
+    default:
+      url = 'https://developer.mozilla.org/en/CSS/' + name;
+  }
+
+  switch (process.platform) {
+    case 'linux':
+      command = 'x-www-browser';
+      break;
+    default:
+      command = 'open';
+  }
+
+  exec(command + ' "' + url + '"', function(){
     process.exit(0);
   });
 }
@@ -211,13 +258,13 @@ var str = '';
 
 // Convert css to stylus
 
-if (convertCSS) {  
+if (convertCSS) {
 	switch (files.length) {
     case 2:
-      compileCSSFile(files[0], files[1]);   
+      compileCSSFile(files[0], files[1]);
       break;
     case 1:
-      compileCSSFile(files[0], files[0].replace('.css', '.styl'));   
+      compileCSSFile(files[0], files[0].replace('.css', '.styl'));
       break;
     default:
       var stdin = process.openStdin();
@@ -225,7 +272,7 @@ if (convertCSS) {
       stdin.on('data', function(chunk){ str += chunk; });
       stdin.on('end', function(){
         var out = stylus.convertCSS(str);
-        console.log(out);      
+        console.log(out);
       });
   }
 } else if (interactive) {
@@ -309,7 +356,7 @@ function repl() {
       this._refreshLine();
     }
   };
-  
+
   repl.on('line', function(line){
     if (!line.trim().length) return repl.prompt();
     parser = new stylus.Parser(line, options);
@@ -349,8 +396,8 @@ function highlight(str) {
 }
 
 /**
- * Convert a CSS file to a Styl file 
- */     
+ * Convert a CSS file to a Styl file
+ */
 
 function compileCSSFile(file, fileOut) {
   fs.lstat(file, function(err, stat){
@@ -358,12 +405,12 @@ function compileCSSFile(file, fileOut) {
     if (stat.isFile()) {
       fs.readFile(file, 'utf8', function(err, str){
         if (err) throw err;
-        var styl = stylus.convertCSS(str); 
-        fs.writeFile(fileOut, styl, function(err){  
-         if (err) throw err; 
+        var styl = stylus.convertCSS(str);
+        fs.writeFile(fileOut, styl, function(err){
+         if (err) throw err;
         });
       });
-    } 
+    }
   });
 }
 
