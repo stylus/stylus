@@ -5,7 +5,7 @@
  */
 
 var fs = require('fs')
-  , stylus = require('stylus')
+  , stylus = require('../lib/stylus')
   , basename = require('path').basename
   , dirname = require('path').dirname
   , join = require('path').join;
@@ -33,6 +33,18 @@ var compress = false;
  */
 
 var convertCSS = false;
+
+/**
+ * Line numbers flag.
+ */
+
+var linenos = false;
+
+/**
+ * Firebug flag
+ */
+
+var firebug = false;
 
 /**
  * Files to processes.
@@ -96,6 +108,10 @@ var usage = [
   , '    -I, --include <path>    Add <path> to lookup paths'
   , '    -c, --compress          Compress css output'
   , '    -d, --compare           Display input along with output'
+  , '    -f, --firebug           Emits debug infos in the generated css that'
+  , '                            can be used by the FireStylus Firebug plugin'
+  , '    -l, --line-numbers      Emits comments in the generated css'
+  , '                            indicating the corresponding stylus line'
   , '    -V, --version           Display the version of stylus'
   , '    -h, --help              Display help information'
   , ''
@@ -124,6 +140,14 @@ while (args.length) {
     case '-C':
     case '--css':
       convertCSS = true;
+      break;
+    case '-f':
+    case '--firebug':
+      firebug = true;
+      break;
+    case '-l':
+    case '--line-numbers':
+      linenos = true;
       break;
     case '-V':
     case '--version':
@@ -248,6 +272,8 @@ function help(name) {
 var options = {
     filename: 'stdin'
   , compress: compress
+  , firebug: firebug
+  , linenos: linenos
   , paths: [process.cwd()].concat(paths)
 };
 
