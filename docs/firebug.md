@@ -7,7 +7,7 @@ the Stylus-generated CSS styles rather than those of the generated CSS.
 
 ![Screenshot](//raw.github.com/parallel/firestylus/master/src/chrome/skin/screenshot.png)
 
-#### Usage
+### Usage
 
 First, you need to install [Firebug](https://addons.mozilla.org/firefox/downloads/latest/1843/addon-1843-latest.xpi?src=addondetail)
 and the [FireStylus extension](//github.com/parallel/firestylus)
@@ -42,7 +42,7 @@ Connect / Express
       , connect.static(__dirname + '/public')
     );
 
-#### Compatibility
+### Compatibility
 
  FireStylus should work with all versions of Firefox after 
  and including 3.0, and all Firebug versions after and including 1.4
@@ -50,7 +50,7 @@ Connect / Express
  - Firefox 3+ (also works with version 5)
  - Firebug 1.4+
 
-#### Limitations
+### Limitations
 
 FireStylus and FireSass are incompatible. You cannot enable them
 simultaneously.
