@@ -21,6 +21,10 @@ Stylus ships with the `stylus` executable for converting stylus to css.
         -I, --include <path>    Add <path> to lookup paths
         -c, --compress          Compress css output
         -d, --compare           Display input along with output
+        -f, --firebug           Emits debug infos in the generated css that
+                                can be used by the FireStylus Firebug plugin
+        -l, --line-numbers      Emits comments in the generated css
+                                indicating the corresponding stylus line
         -V, --version           Display the version of stylus
         -h, --help              Display help information
 
@@ -44,12 +48,22 @@ Try stylus some in the terminal, type below and press CTRL-D for __EOF__:
       $ stylus css
 
   The following will output to `./public/stylesheets`:
-  
+
       $ stylus css --out public/stylesheets
 
   Or a few files:
-  
+
       $ stylus one.styl two.styl
+
+  For development purpose, you can enable the `linenos` option to emit comments indicating 
+  the Stylus filename and line number in the generated css:
+
+      $ stylus --line-numbers <path>
+
+  Or the `firebug` option if you want to use
+  the [FireStylus extension for Firebug](//github.com/LearnBoost/stylus/blob/master/docs/firebug.md):
+
+      $ stylus --firebug <path>
 
 ### Converting CSS
 
