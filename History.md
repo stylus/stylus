@@ -1,4 +1,12 @@
 
+0.14.0 / 2011-08-10 
+==================
+
+  * Added firebug original file / line number mapping [parallel]
+  * Added support for `#rgba` and `#rrggbbaa` color formats
+  * Changed: fix alpha to a scale of 2
+  * Fixing function param check to allow for empty function arguments
+
 0.13.9 / 2011-08-04 
 ==================
 

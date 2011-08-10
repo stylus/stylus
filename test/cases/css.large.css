@@ -86,12 +86,12 @@ ul li {
   right: 60px;
   margin: 0;
   padding: 15px 0 10px 5px;
-  background: rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.30);
   border: 1px solid #ddd;
   text-align: left;
-  -moz-box-shadow: inset rgba(34,34,34,0.1) 0 4px 4px;
-  -webkit-box-shadow: inset rgba(34,34,34,0.1) 0 4px 4px;
-  box-shadow: inset rgba(34,34,34,0.1) 0 4px 4px;
+  -moz-box-shadow: inset rgba(34,34,34,0.10) 0 4px 4px;
+  -webkit-box-shadow: inset rgba(34,34,34,0.10) 0 4px 4px;
+  box-shadow: inset rgba(34,34,34,0.10) 0 4px 4px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
@@ -123,9 +123,9 @@ pre {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  -moz-box-shadow: rgba(34,34,34,0.1) -1px -1px;
-  -webkit-box-shadow: rgba(34,34,34,0.1) -1px -1px;
-  box-shadow: rgba(34,34,34,0.1) -1px -1px;
+  -moz-box-shadow: rgba(34,34,34,0.10) -1px -1px;
+  -webkit-box-shadow: rgba(34,34,34,0.10) -1px -1px;
+  box-shadow: rgba(34,34,34,0.10) -1px -1px;
 }
 pre.terminal {
   width: 340px;
@@ -144,9 +144,9 @@ p code {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  -moz-box-shadow: rgba(34,34,34,0.1) -1px -1px;
-  -webkit-box-shadow: rgba(34,34,34,0.1) -1px -1px;
-  box-shadow: rgba(34,34,34,0.1) -1px -1px;
+  -moz-box-shadow: rgba(34,34,34,0.10) -1px -1px;
+  -webkit-box-shadow: rgba(34,34,34,0.10) -1px -1px;
+  box-shadow: rgba(34,34,34,0.10) -1px -1px;
 }
 #ribbon {
   position: absolute;
@@ -157,9 +157,9 @@ p code {
   overflow: hidden;
   -webkit-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
-  -moz-box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-  -webkit-box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-  box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  -moz-box-shadow: 1px 1px 3px rgba(0,0,0,0.30);
+  -webkit-box-shadow: 1px 1px 3px rgba(0,0,0,0.30);
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.30);
 }
 #ribbon a {
   color: #fff;
