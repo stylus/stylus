@@ -15,6 +15,10 @@
   `compress`  Whether the output .css files should be compressed
   `compile`   Custom compile function, accepting the arguments
               `(str, path)` returning the renderer.
+  `firebug`   Emits debug infos in the generated css that can
+              be used by the FireStylus Firebug plugin
+  `linenos`   Emits comments in the generated css indicating
+              the corresponding stylus line
 </code></pre>
 
 <h4>Examples</h4>
@@ -55,4 +59,19 @@
 
 <p> When <code>force</code> is used, the styles will be unconditionally re-compiled, however
  even without this option the Stylus middleware is smart enough to detect changes in <code>@import</code>ed files.</p>
+
+<p> For development purpose, you can enable the <code>firebug</code> option if you want to
+ use the <a href="//github.com/LearnBoost/stylus/blob/master/docs/firebug.md">FireStylus extension for Firebug</a>
+ and/or the <code>linenos</code> option to emit debug infos in the generated css.</p>
+
+<pre><code>    function compile(str, path) {
+      return stylus(str)
+        .import(__dirname + '/css/mixins/blueprint')
+        .import(__dirname + '/css/mixins/css3')
+        .set('filename', path)
+        .set('warn', true)
+        .set('firebug', true)
+        .set('linenos', true);
+    }
+</code></pre>
 </div></div></body></html>
