@@ -16,6 +16,10 @@
       `compress`  Whether the output .css files should be compressed
       `compile`   Custom compile function, accepting the arguments
                   `(str, path)` returning the renderer.
+      `firebug`   Emits debug infos in the generated css that can
+                  be used by the FireStylus Firebug plugin
+      `linenos`   Emits comments in the generated css indicating
+                  the corresponding stylus line
 
 #### Examples
  
@@ -53,3 +57,17 @@
 
  When `force` is used, the styles will be unconditionally re-compiled, however
  even without this option the Stylus middleware is smart enough to detect changes in `@import`ed files.
+
+ For development purpose, you can enable the `firebug` option if you want to
+ use the [FireStylus extension for Firebug](firebug.html) 
+ and/or the `linenos` option to emit debug infos in the generated css.
+
+        function compile(str, path) {
+          return stylus(str)
+            .import(__dirname + '/css/mixins/blueprint')
+            .import(__dirname + '/css/mixins/css3')
+            .set('filename', path)
+            .set('warn', true)
+            .set('firebug', true)
+            .set('linenos', true);
+        }

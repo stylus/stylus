@@ -23,7 +23,7 @@ stylus(str)
 
 <h3>.set(setting, value)</h3>
 
-<p> Apply a setting such as a <code>filename</code>, or import <code>paths</code>:</p>
+<p>Apply a setting such as a <code>filename</code>, or import <code>paths</code>:</p>
 
 <pre><code> .set('filename', __dirname + '/test.styl')
  .set('paths', [__dirname, __dirname + '/mixins'])
@@ -31,7 +31,7 @@ stylus(str)
 
 <h3>.include(path)</h3>
 
-<p>  A progressive alternative to setting <code>paths</code> via <code>.set()</code>, which is ideal when exposing external stylus libraries which expose a path.</p>
+<p>A progressive alternative to setting <code>paths</code> via <code>.set()</code>, which is ideal when exposing external stylus libraries which expose a path.</p>
 
 <pre><code>stylus(str)
   .include(require('nib').path)
@@ -57,14 +57,14 @@ stylus(str)
 
 <h3>.define(name, node)</h3>
 
-<p> By passing a <code>Node</code>, we may define a global variable. This is useful when exposing conditional features within your library depending on the availability of another. For example the &ldquo;Nib&rdquo; extensions library conditionally supports node-canvas, providing image generation, however this is not always available, so Nib may define:</p>
+<p>By passing a <code>Node</code>, we may define a global variable. This is useful when exposing conditional features within your library depending on the availability of another. For example the "Nib" extensions library conditionally supports node-canvas, providing image generation, however this is not always available, so Nib may define:</p>
 
 <pre><code> .define('has-canvas', stylus.nodes.false);
 </code></pre>
 
 <h3>.define(name, fn)</h3>
 
-<p> This method allows you to provide a JavaScript-defined function to Stylus, think of these as you would JavaScript to C++ bindings. When you have something you cannot do within Stylus, you define it in JavaScript.</p>
+<p>This method allows you to provide a JavaScript-defined function to Stylus, think of these as you would JavaScript to C++ bindings. When you have something you cannot do within Stylus, you define it in JavaScript.</p>
 
 <p>In our example we define four functions <code>add()</code>, <code>sub()</code>, <code>image-width()</code>, and <code>image-height()</code>. These functions must return a <code>Node</code>, this constructor and the other nodes are available via <code>stylus.nodes</code>.</p>
 
@@ -124,17 +124,16 @@ stylus(str)
     });
 </code></pre>
 
-<p> For further reference until documentation is complete please reference the following files:</p>
+<p>For further reference until documentation is complete please reference the following files:</p>
 
 <ul>
-<li> lib/nodes/*</li>
-<li> lib/utils.js</li>
+<li>lib/nodes/*</li>
+<li>lib/utils.js</li>
 </ul>
-
 
 <h3>.use(fn)</h3>
 
-<p>  When called, the given <code>fn</code> is invoked with the renderer, allowing all of the methods above to be used. This allows for plugins to easily expose themselves, defining functions, paths etc.</p>
+<p>When called, the given <code>fn</code> is invoked with the renderer, allowing all of the methods above to be used. This allows for plugins to easily expose themselves, defining functions, paths etc.</p>
 
 <pre><code>var mylib = function(style){
   style.define('add', add);

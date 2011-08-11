@@ -67,7 +67,7 @@ form input[type=button]
 
 <h3>Parent References</h3>
 
-<p> Mixins may utilize the parent reference character <code>&amp;</code>, acting on the parent instead of further nesting. For example lets say we wish to create a <code>stripe(even, odd)</code> mixin for striping table row, we provide both <code>even</code> and <code>odd</code> with default color values, and assign the <code>background-color</code> property on the row. Nested within the <code>tr</code> we use <code>&amp;</code> to reference the <code>tr</code>, providing the <code>even</code> color.</p>
+<p>Mixins may utilize the parent reference character <code>&amp;</code>, acting on the parent instead of further nesting. For example lets say we wish to create a <code>stripe(even, odd)</code> mixin for striping table row, we provide both <code>even</code> and <code>odd</code> with default color values, and assign the <code>background-color</code> property on the row. Nested within the <code>tr</code> we use <code>&amp;</code> to reference the <code>tr</code>, providing the <code>even</code> color.</p>
 
 <pre><code> stripe(even = #fff, odd = #eee)
    tr
@@ -107,7 +107,7 @@ form input[type=button]
 
 <h3>Mixing Mixins in Mixins</h3>
 
-<p> Mixins can of course utilize other mixins, to build up their own selector&rsquo;s and properties. For example, below we create <code>comma-list()</code> to inline (via <code>inline-list()</code>) and comma-separate an un-ordered list.</p>
+<p>Mixins can of course utilize other mixins, to build up their own selector's and properties. For example, below we create <code>comma-list()</code> to inline (via <code>inline-list()</code>) and comma-separate an un-ordered list.</p>
 
 <pre><code> inline-list()
    li

@@ -1,4 +1,3 @@
-
 ## Implementation Comparisons
 
 Below we go head to head with other implementations.
@@ -68,6 +67,7 @@ Less:
     }
 
 Stylus:
+
     box-shadow()
       -webkit-box-shadow arguments
       -moz-box-shadow arguments

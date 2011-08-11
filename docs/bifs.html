@@ -87,9 +87,9 @@ light(#00FF40)
 // =&gt; 80%
 </code></pre>
 
-<h3>push(expr, args&hellip;)</h3>
+<h3>push(expr, args...)</h3>
 
-<p> Push the given <code>args</code> to <code>expr</code>.</p>
+<p>Push the given <code>args</code> to <code>expr</code>.</p>
 
 <pre><code> nums = 1 2
  push(nums, 3, 4, 5)
@@ -98,11 +98,11 @@ light(#00FF40)
  // =&gt; 1 2 3 4 5
 </code></pre>
 
-<p> Aliased as <code>append()</code></p>
+<p>Aliased as <code>append()</code></p>
 
-<h3>unshift(expr, args&hellip;)</h3>
+<h3>unshift(expr, args...)</h3>
 
-<p> Unshift the given <code>args</code> to <code>expr</code>.</p>
+<p>Unshift the given <code>args</code> to <code>expr</code>.</p>
 
 <pre><code> nums = 4 5
  unshift(nums, 3, 2, 1)
@@ -111,7 +111,7 @@ light(#00FF40)
  // =&gt; 1 2 3 4 5
 </code></pre>
 
-<p> Aliased as <code>prepend()</code></p>
+<p>Aliased as <code>prepend()</code></p>
 
 <h3>typeof(node)</h3>
 
@@ -232,9 +232,9 @@ match('^foo(bar)?', 'bar')
  // =&gt; 2
 </code></pre>
 
-<h3>join(delim, vals&hellip;)</h3>
+<h3>join(delim, vals...)</h3>
 
-<p>  Join the given <code>vals</code> with <code>delim</code>.</p>
+<p>Join the given <code>vals</code> with <code>delim</code>.</p>
 
 <pre><code>  join(' ', 1 2 3)
   // =&gt; "1 2 3"
@@ -285,6 +285,15 @@ or h,s,l component values.</p>
 
   rgba(#ffcc00, 0.5)
   // rgba(255,204,0,0.5)
+</code></pre>
+
+<p>Alternatively stylus supports the <code>#rgba</code> and <code>#rrggbbaa</code> notations as well:</p>
+
+<pre><code>#fc08
+// =&gt; rgba(255,204,0,0.5)
+
+#ffcc00ee
+// =&gt; rgba(255,204,0,0.9)
 </code></pre>
 
 <h3>rgb(color | r,g,b)</h3>
@@ -342,7 +351,7 @@ darken(#D62828, 30%)
 
 <h3>unquote(str | ident)</h3>
 
-<p>  Unquote the given <code>str</code> and returned as a <code>Literal</code> node.</p>
+<p>Unquote the given <code>str</code> and returned as a <code>Literal</code> node.</p>
 
 <pre><code>   unquote("sans-serif")
    // =&gt; sans-serif
@@ -354,10 +363,10 @@ darken(#D62828, 30%)
    // =&gt; 1px / 2px
 </code></pre>
 
-<h3>s(fmt, &hellip;)</h3>
+<h3>s(fmt, ...)</h3>
 
-<p> The <code>s()</code> function is similar to <code>unquote()</code>, in that it returns
- a <code>Literal</code> node, however it accepts a format string much like C&rsquo;s <code>sprintf()</code>. Currently the only specifier is <code>%s</code>.</p>
+<p>The <code>s()</code> function is similar to <code>unquote()</code>, in that it returns
+ a <code>Literal</code> node, however it accepts a format string much like C's <code>sprintf()</code>. Currently the only specifier is <code>%s</code>.</p>
 
 <pre><code>    s('bar()');
     // =&gt; bar()
@@ -385,7 +394,7 @@ darken(#D62828, 30%)
 
 <h3>operate(op, left, right)</h3>
 
-<p>  Perform the given <code>op</code> on the <code>left</code> and <code>right</code> operands:</p>
+<p>Perform the given <code>op</code> on the <code>left</code> and <code>right</code> operands:</p>
 
 <pre><code>  op = '+'
   operate(op, 15, 5)
@@ -394,7 +403,7 @@ darken(#D62828, 30%)
 
 <h3>length([expr])</h3>
 
-<p>  Parenthesized expressions may act as tuples, the <code>length()</code> function returns the length of such expressions.</p>
+<p>Parenthesized expressions may act as tuples, the <code>length()</code> function returns the length of such expressions.</p>
 
 <pre><code>length((1 2 3 4))
 // =&gt; 4
@@ -420,14 +429,14 @@ length()
 
 <h3>warn(msg)</h3>
 
-<p>  Warn with the given error <code>msg</code>, does not exit.</p>
+<p>Warn with the given error <code>msg</code>, does not exit.</p>
 
 <pre><code>  warn("oh noes!")
 </code></pre>
 
 <h3>error(msg)</h3>
 
-<p>  Exits with the given error <code>msg</code>.</p>
+<p>Exits with the given error <code>msg</code>.</p>
 
 <pre><code>add(a, b)
   unless a is a 'unit' and b is a 'unit'
@@ -437,7 +446,7 @@ length()
 
 <h3>last(expr)</h3>
 
-<p> Return the <em>last</em> value in the given <code>expr</code>:</p>
+<p>Return the <em>last</em> value in the given <code>expr</code>:</p>
 
 <pre><code>  nums = 1 2 3
   last(nums)
@@ -451,7 +460,7 @@ length()
 
 <h3>p(expr)</h3>
 
-<p> Inspect the given <code>expr</code>:</p>
+<p>Inspect the given <code>expr</code>:</p>
 
 <pre><code> fonts = Arial, sans-serif
  p('test')
@@ -480,7 +489,7 @@ length()
 
 <h3>opposite-position(positions)</h3>
 
-<p> Return the opposites of the given <code>positions</code>.</p>
+<p>Return the opposites of the given <code>positions</code>.</p>
 
 <pre><code> opposite-position(right)
  // =&gt; left
@@ -494,7 +503,7 @@ length()
 
 <h3>image-size(path)</h3>
 
-<p>  Returns the <code>width</code> and <code>height</code> of the image found at <code>path</code>. Lookups are performed in the same manner as <code>@import</code>, altered by the <code>paths</code> setting.</p>
+<p>Returns the <code>width</code> and <code>height</code> of the image found at <code>path</code>. Lookups are performed in the same manner as <code>@import</code>, altered by the <code>paths</code> setting.</p>
 
 <pre><code>  width(img)
     return image-size(img)[0]
@@ -511,9 +520,9 @@ length()
 
 <h3>add-property(name, expr)</h3>
 
-<p>  Adds property <code>name</code>, with the given <code>expr</code> to the closest block.</p>
+<p>Adds property <code>name</code>, with the given <code>expr</code> to the closest block.</p>
 
-<p>  For example:</p>
+<p>For example:</p>
 
 <pre><code>  something()
     add-property('bar', 1 2 3)
@@ -531,9 +540,9 @@ length()
   }
 </code></pre>
 
-<p>  Next the &ldquo;magic&rdquo; <code>current-property</code> local variable comes into play. This variable is automatically available to function bodies, and contains an expression with the current property&rsquo;s name, and value.</p>
+<p>Next the "magic" <code>current-property</code> local variable comes into play. This variable is automatically available to function bodies, and contains an expression with the current property's name, and value.</p>
 
-<p>  For example if we were to inspect this local variable using <code>p()</code>, we
+<p>For example if we were to inspect this local variable using <code>p()</code>, we
   get the following:</p>
 
 <pre><code>    p(current-property)
@@ -546,7 +555,7 @@ length()
     // =&gt; foo __CALL__ bar baz
 </code></pre>
 
-<p>  Using <code>current-property</code> we can take our example a bit further, and duplicate the property with new values, and a conditional to ensure the function is only used within a property value.</p>
+<p>Using <code>current-property</code> we can take our example a bit further, and duplicate the property with new values, and a conditional to ensure the function is only used within a property value.</p>
 
 <pre><code>    something(n)
       if current-property
@@ -570,9 +579,9 @@ length()
     }
 </code></pre>
 
-<p>  If you noticed in the example above, <code>bar</code> is only present for the initial call, since we returned <code>something(15px)</code>, it remained in-place within the expression, however the others do not take the rest of the expression into account.</p>
+<p>If you noticed in the example above, <code>bar</code> is only present for the initial call, since we returned <code>something(15px)</code>, it remained in-place within the expression, however the others do not take the rest of the expression into account.</p>
 
-<p>  Our more robust solution below, defines a function named <code>replace()</code> which clones the expression to prevent mutation, replaces the string value of an expression with another, and returns the cloned expression. We then move on to replace <code>__CALL__</code> within the expressions, which represents the cyclic call to <code>something()</code>.</p>
+<p>Our more robust solution below, defines a function named <code>replace()</code> which clones the expression to prevent mutation, replaces the string value of an expression with another, and returns the cloned expression. We then move on to replace <code>__CALL__</code> within the expressions, which represents the cyclic call to <code>something()</code>.</p>
 
 <pre><code>    replace(expr, str, val)
       expr = clone(expr)
@@ -606,11 +615,11 @@ length()
 
 <h3>Undefined Functions</h3>
 
-<p>  Undefined functions will output as literals, so for example
+<p>Undefined functions will output as literals, so for example
   we may call <code>rgba-stop(50%, #fff)</code> within our css, and it will
   output as you would expect. We can use this within helpers as well.</p>
 
-<p>  In the example below we simply define the function <code>stop()</code> which
+<p>In the example below we simply define the function <code>stop()</code> which 
   returns the literal <code>rgba-stop()</code> call.</p>
 
 <pre><code>stop(pos, rgba)
