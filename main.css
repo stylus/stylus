@@ -5,8 +5,8 @@ html {
 }
 body {
   padding: 120px 150px;
-  font: 14px / 1.4 "helvetica neue", helvetica, arial, sans-serif;
-  color: #959595;
+  font: 14px/1.4 "helvetica neue", helvetica, arial, sans-serif;
+  color: #434343;
 }
 h1,
 h2,
@@ -63,13 +63,13 @@ ul li {
   color: #222;
 }
 .tagline em.dynamic {
-  color: #555;
+  color: #4e4e4e;
 }
 .tagline em.robust {
-  color: #888;
+  color: #7a7a7a;
 }
 .tagline em.css {
-  color: #bbb;
+  color: #a7a7a7;
 }
 #container {
   text-align: center;
@@ -77,7 +77,7 @@ ul li {
 #container #content {
   margin: 0 auto;
   padding-top: 40px;
-  width: 320px;
+  width: 450px;
   text-align: left;
 }
 #menu {
@@ -103,7 +103,7 @@ ul li {
   display: block;
   width: 150px;
   padding: 1px 10px;
-  color: #7b7b7b;
+  color: #696969;
   font-size: 13px;
 }
 #menu li a:hover {
@@ -114,10 +114,10 @@ ul li {
   margin-top: 25px;
 }
 pre {
-  width: 320px;
+  width: 450px;
   padding: 30px;
   color: #8d8d8d;
-  font: 12px / 1.4 monaco, "helvetica neue", helvetica;
+  font: 12px/1.4 monaco, "helvetica neue", helvetica;
   overflow-x: auto;
   background: #fff;
   -webkit-border-radius: 5px;
@@ -128,17 +128,17 @@ pre {
   box-shadow: rgba(34,34,34,0.1) -1px -1px;
 }
 pre.terminal {
-  width: 360px;
+  width: 490px;
   padding: 10px;
   background: #2b2b2b;
-  color: #dadada;
+  color: #afafaf;
   -moz-box-shadow: #fff -1px -1px;
   -webkit-box-shadow: #fff -1px -1px;
   box-shadow: #fff -1px -1px;
 }
 p code {
   padding: 2px 4px;
-  color: #959595;
+  color: #565656;
   font-size: 85%;
   background: #fff;
   -webkit-border-radius: 5px;
@@ -163,7 +163,7 @@ p code {
 }
 #ribbon a {
   color: #fff;
-  border: 1px solid #f18585;
+  border: 1px solid #eb4747;
   display: block;
   margin: 0.05em 0;
   padding: 0.5em 3.5em;

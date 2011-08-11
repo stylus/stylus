@@ -69,9 +69,9 @@ b = 1
 
 <h3>Subscript []</h3>
 
-<p> The subscript operator allows us to grab a value in an expression via index. Parenthesized expressions may act as tuples, so for example <code>(15px 5px)</code>, <code>(1 2 3)</code>.</p>
+<p>The subscript operator allows us to grab a value in an expression via index. Parenthesized expressions may act as tuples, so for example <code>(15px 5px)</code>, <code>(1 2 3)</code>.</p>
 
-<p> Below is an example where we utilize tuples for error handling, showing the versatility of such a construct. As</p>
+<p>Below is an example where we utilize tuples for error handling, showing the versatility of such a construct. As </p>
 
 <pre><code> add(a, b)
    if a is a 'unit' and b is a 'unit'
@@ -93,15 +93,15 @@ b = 1
    // =&gt; padding: "a and b must be units";
 </code></pre>
 
-<p> A more complex example, invoking the <code>error()</code> built-in function with the error message returned, when the ident (the first value) equals <code>error</code>.</p>
+<p>A more complex example, invoking the <code>error()</code> built-in function with the error message returned, when the ident (the first value) equals <code>error</code>.</p>
 
 <pre><code> if (val = add(1,'5'))[0] == error
    error(val[1])
 </code></pre>
 
-<h2>Range .. &hellip;</h2>
+<h2>Range .. ...</h2>
 
-<p> Both the inclusive (<code>..</code>) and exclusive (<code>...</code>) range operators are provided, expanding to expressions:</p>
+<p>Both the inclusive (<code>..</code>) and exclusive (<code>...</code>) range operators are provided, expanding to expressions:</p>
 
 <pre><code> 1..5
  // =&gt; 1 2 3 4 5
@@ -110,7 +110,7 @@ b = 1
  // =&gt; 1 2 3 4
 </code></pre>
 
-<h3>Additive: + &ndash;</h3>
+<h3>Additive: + -</h3>
 
 <p>multiplicative and additive binary operators work as expected, and type conversion is applied within unit type classes, or default to the literal value. For example if we perform <code>5s - 2px</code> we will get <code>3s</code>.</p>
 
@@ -168,9 +168,9 @@ b = 1
 // =&gt; 256
 </code></pre>
 
-<h3>Equality: == != >= &lt;= > &lt;</h3>
+<h3>Equality &amp; Relational: == != >= &lt;= > &lt;</h3>
 
-<p>Equality operators can be used to equate units, colors, strings, and even identifiers. This is a powerful concept, as even arbitrary identifiers such as as <code>wahoo</code> can be utilized as atoms, a function could return <code>yes</code> or <code>no</code> instead of <code>true</code> or <code>false</code> (although not advised).</p>
+<p>Equality operators can be used to equate units, colors, strings, and even identifiers. This is a powerful concept, as even arbitrary identifiers such as as <code>wahoo</code> can be utilized as atoms, a function could return <code>yes</code> or <code>no</code> instead of <code>true</code> or <code>false</code> (although not advised). </p>
 
 <pre><code>5 == 5
 // =&gt; true
@@ -214,7 +214,7 @@ true is true
 
 <h2>Truthfulness</h2>
 
-<p> Nearly everything within Stylus resolves to <code>true</code>, including units with a suffix, for example even <code>0%</code>, <code>0px</code>, etc will resolve to <code>true</code>, since commonly in Stylus a mixin or function may accept such units as valid, however <code>0</code> itself is <code>false</code> in terms of arithmetic.</p>
+<p>Nearly everything within Stylus resolves to <code>true</code>, including units with a suffix, for example even <code>0%</code>, <code>0px</code>, etc will resolve to <code>true</code>, since commonly in Stylus a mixin or function may accept such units as valid, however <code>0</code> itself is <code>false</code> in terms of arithmetic.</p>
 
 <p><code>true</code> examples:</p>
 
@@ -254,7 +254,7 @@ true is true
 
 <h3>Existence Operator: in</h3>
 
-<p> Checks for the existence of the <em>left-hand</em> operand within the <em>right-hand</em> expression.</p>
+<p>Checks for the existence of the <em>left-hand</em> operand within the <em>right-hand</em> expression.</p>
 
 <p>Simple examples:</p>
 
@@ -367,10 +367,10 @@ color
 <p>Alternatively we could use the <code>type()</code> BIF:</p>
 
 <pre><code>type(#fff) == 'rgba'
-// =&gt; true                                                                            
+// =&gt; true
 </code></pre>
 
-<p>&lsquo;color&rsquo; is the one special-case, evaluating to true when the
+<p>'color' is the one special-case, evaluating to true when the
 left-hand operand is an <code>RGBA</code> or <code>HSLA</code> node.</p>
 
 <h3>Variable Definition: is defined</h3>
@@ -431,13 +431,13 @@ num ? unit(num, 'px') : 20px
 
 <h2>Color Operations</h2>
 
-<p> Operations on colors provide a terse, expressive way to alter components. For example we can operate on each RGB:</p>
+<p>Operations on colors provide a terse, expressive way to alter components. For example we can operate on each RGB:</p>
 
 <pre><code>#0e0 + #0e0
 // =&gt; #0f0
 </code></pre>
 
-<p> Another example is adjust the lightness value by adding or subtracting a percentage. To lighten a color we add, to darken we subtract.</p>
+<p>Another example is adjust the lightness value by adding or subtracting a percentage. To lighten a color we add, to darken we subtract.</p>
 
 <pre><code>#888 + 50%
 // =&gt; #ccc
@@ -446,15 +446,15 @@ num ? unit(num, 'px') : 20px
 // =&gt; #444
 </code></pre>
 
-<p>  Adjust the hue is also possible by adding or subtracting with degrees, for example adding <code>50deg</code> to this red value, resulting in a yellow:</p>
+<p>Adjust the hue is also possible by adding or subtracting with degrees, for example adding <code>50deg</code> to this red value, resulting in a yellow:</p>
 
 <pre><code> #f00 + 50deg
  // =&gt; #ffd500
 </code></pre>
 
-<p>  Values clamp appropriately, for example we can &ldquo;spin&rdquo; the hue 180 degrees, and if the current value is <code>320deg</code>, it will resolve to <code>140deg</code>.</p>
+<p>Values clamp appropriately, for example we can "spin" the hue 180 degrees, and if the current value is <code>320deg</code>, it will resolve to <code>140deg</code>.</p>
 
-<p>  We may also tweak several values at once, including the alpha by using <code>rgb()</code>, <code>rgba()</code>, <code>hsl()</code>, or <code>hsla()</code>:</p>
+<p>We may also tweak several values at once, including the alpha by using <code>rgb()</code>, <code>rgba()</code>, <code>hsl()</code>, or <code>hsla()</code>:</p>
 
 <pre><code>  #f00 - rgba(100,0,0,0.5)
   // =&gt; rgba(155,0,0,0.5)
@@ -462,13 +462,13 @@ num ? unit(num, 'px') : 20px
 
 <h2>Sprintf</h2>
 
-<p> The string sprintf-like operator <code>%</code> can be used to generate a literal value, internally passing arguments through the <code>s()</code> built-in:</p>
+<p>The string sprintf-like operator <code>%</code> can be used to generate a literal value, internally passing arguments through the <code>s()</code> built-in:</p>
 
 <pre><code>   'X::Microsoft::Crap(%s)' % #fc0
    // =&gt; X::Microsoft::Crap(#fc0)
 </code></pre>
 
-<p>  Multiple values should be parenthesized:</p>
+<p>Multiple values should be parenthesized:</p>
 
 <pre><code>  '-webkit-gradient(%s, %s, %s)' % (linear (0 0) (0 100%))
   // =&gt; -webkit-gradient(linear, 0 0, 0 100%)
