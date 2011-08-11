@@ -44,102 +44,112 @@ html
       #content
         .example
           h2 CSS needs a hero
-          pre.
-            body {
-              font: 12px Helvetica, Arial, sans-serif;
-            }
-            a.button {
-              -webkit-border-radius: 5px;
-              -moz-border-radius: 5px;
-              border-radius: 5px;
-            }
+          pre
+            code.
+              body {
+                font: 12px Helvetica, Arial, sans-serif;
+              }
+              a.button {
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                border-radius: 5px;
+              }
         .example
           h2 What if we could omit braces?
-          pre.
-            body
-              font: 12px Helvetica, Arial, sans-serif;
-            
-            a.button
-              -webkit-border-radius: 5px;
-              -moz-border-radius: 5px;
-              border-radius: 5px;
-        .example
+          pre
+            code.
+              body
+                font: 12px Helvetica, Arial, sans-serif;
+             
+              a.button
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                border-radius: 5px;
+          .example
           h2 How about semi-colons?
-          pre.
-            body
-              font: 12px Helvetica, Arial, sans-serif
+          pre
+            code.
+              body
+                font: 12px Helvetica, Arial, sans-serif
             
-            a.button
-              -webkit-border-radius: 5px
-              -moz-border-radius: 5px
-              border-radius: 5px
+              a.button
+                -webkit-border-radius: 5px
+                -moz-border-radius: 5px
+                border-radius: 5px
         .example
           h2 Why stop there, drop the colons
-          pre.
-            body
-              font 12px Helvetica, Arial, sans-serif
+          pre
+            code.
+              body
+                font 12px Helvetica, Arial, sans-serif
             
-            a.button
-              -webkit-border-radius 5px
-              -moz-border-radius 5px
-              border-radius 5px
+              a.button
+                -webkit-border-radius 5px
+                -moz-border-radius 5px
+                border-radius 5px
         .example
           h2 Keep things DRY
-          pre.
-            border-radius()
-              -webkit-border-radius arguments
-              -moz-border-radius arguments
-              border-radius arguments
+          pre
+            code.
+              border-radius()
+                -webkit-border-radius arguments
+                -moz-border-radius arguments
+                border-radius arguments
             
-            body
-              font 12px Helvetica, Arial, sans-serif
+              body
+                font 12px Helvetica, Arial, sans-serif
             
-            a.button
-              border-radius(5px)
+              a.button
+                border-radius(5px)
         .example
           h2 How about transparent mixins?
-          pre.
-            border-radius()
-              -webkit-border-radius arguments
-              -moz-border-radius arguments
-              border-radius arguments
+          pre
+            code.
+              border-radius()
+                -webkit-border-radius arguments
+                -moz-border-radius arguments
+                border-radius arguments
             
-            body
-              font 12px Helvetica, Arial, sans-serif
+              body
+                font 12px Helvetica, Arial, sans-serif
             
-            a.button
-              border-radius 5px
+              a.button
+                border-radius 5px
         .example
           h2 Create &amp; Share
-          pre.
-            @import 'vendor'
+          pre
+            code.
+              @import 'vendor'
+              
+              body
+                font 12px Helvetica, Arial, sans-serif
             
-            body
-              font 12px Helvetica, Arial, sans-serif
-            
-            a.button
-              border-radius 5px
+              a.button
+                border-radius 5px
         .example
           h2 Even in-language functions!
-          pre.
-            sum(nums...)
-              sum = 0
-              sum += n for n in nums
+          pre
+            code.
+              sum(nums...)
+                sum = 0
+                sum += n for n in nums
 
-            sum(1 2 3 4)
-            // => 10
+              sum(1 2 3 4)
+              // => 10
         .example
           h2 What if it were all optional?
-          pre.
-            fonts = helvetica, arial, sans-serif
+          pre
+            code.
+              fonts = helvetica, arial, sans-serif
             
-            body {
-              padding: 50px;
-              font: 14px/1.4 fonts;
-            }
+              body {
+                padding: 50px;
+                font: 14px/1.4 fonts;
+              }
         .example.closing
           h2 Get styling with Stylus
-          pre.terminal $ npm install stylus
+          pre.terminal
+            code $ npm install stylus
           p
             | If you want an expressive css language for nodejs with these
             | features or the features listed below, head over to
@@ -173,5 +183,6 @@ html
               li Single-line and multi-line comments
               li CSS literal for those tricky times
               li Character escaping
+              li Firebug extension
               li TextMate bundle
               li and more!

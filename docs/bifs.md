@@ -261,6 +261,14 @@ Return `RGBA` from the r,g,b,a channels or provide a `color` to tweak the alpha.
       rgba(#ffcc00, 0.5)
       // rgba(255,204,0,0.5)
 
+ Alternatively stylus supports the `#rgba` and `#rrggbbaa` notations as well:
+ 
+    #fc08
+    // => rgba(255,204,0,0.5)
+
+    #ffcc00ee
+    // => rgba(255,204,0,0.9)
+
 ### rgb(color | r,g,b)
 
 Return a `RGBA` from the r,g,b channels or cast to an `RGBA` node.
