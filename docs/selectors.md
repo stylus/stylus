@@ -1,4 +1,3 @@
-
 ## Selectors
 
 ### Indentation
@@ -98,7 +97,7 @@ yielding:
       html.ie8 body #login,
       html.ie7 body #login,
       html.ie6 body #login {
-        border: 1px solid #eee;
+        border: 2px solid #eee;
       }
 
 ### Disambiguation
