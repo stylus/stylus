@@ -9,3 +9,9 @@ x:-moz-any-link,
 x:default select {
   font-weight: bold !important;
 }
+/*! preserved comment */
+/*!
+ * preserved 
+ * multiline 
+ * comment
+ */
