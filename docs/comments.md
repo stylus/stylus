@@ -2,7 +2,7 @@
 ## Comments
 
   Stylus supports two kinds of comments, single-line, and multi-line comments, using the same syntax found in JavaScript.
-  These comments they are 'silent', they don’t show up in the compiled CSS output.
+  These comments are 'silent', they don’t show up in the compiled CSS output.
 
 
     // I'm a silent comment!
@@ -18,15 +18,15 @@
       a + b
 
 
-  Stylus has also the ability to preserve comments
+  Stylus has also the ability to preserve comments:
 
 
-      /*! preserved comment */
-      body
-        padding 5px
+    /*! preserved comment */
+    body
+      padding 5px
 
-      /*!
-       * preserved 
-       * comment
-       */
+    /*!
+     * preserved 
+     * comment
+     */
 
