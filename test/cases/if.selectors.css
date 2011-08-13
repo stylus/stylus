@@ -1,6 +1,16 @@
 form input {
   border: 1px solid #eee;
 }
+[type="text"] {
+  margin: 0;
+}
+input[type="text"] {
+  display: none;
+}
+input[type="password"],
+select {
+  background: #eee;
+}
 body {
   font: 12px;
 }
