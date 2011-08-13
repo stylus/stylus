@@ -1,0 +1,17 @@
+#logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150px;
+  height: 80px;
+  margin-left: -75px;
+  margin-top: -40px;
+  unknown: true;
+}
+multiple {
+  foo: bar baz raz;
+  bar: bar;
+}
+no-props {
+  foo: ;
+}

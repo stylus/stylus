@@ -34,3 +34,34 @@ identifiers (variable names, functions, etc) may also include the `$` character,
     body {
       font: $font sans-serif;
     }
+
+## Property Access
+
+ Another cool feature unique to Stylus is the ability to reference
+ properties defined in the current block _without_ assigning their
+ values to variables. A great example of this is the logic required
+ for vertically and horizontally center an element, which is typically
+ done by using percentages and negative margins as shown:
+
+     #logo
+       position: absolute
+       top: 50%
+       left: 50%
+       width: w = 150px
+       height: h = 80px
+       margin-left: -(w / 2)
+       margin-top: -(h / 2)
+
+  Instead of assigning the variables `w` and `h` we can simply prepend the `@`
+  character to the property name to access the value:
+
+     #logo
+       position: absolute
+       top: 50%
+       left: 50%
+       width: 150px
+       height: 80px
+       margin-left: -(@width / 2)
+       margin-top: -(@height / 2)
+
+  Note that currently this exposes only the _first_ value in the property's expression.
