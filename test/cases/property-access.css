@@ -10,7 +10,7 @@
 }
 multiple {
   foo: bar baz raz;
-  bar: bar;
+  bar: bar baz raz;
 }
 no-props {
   foo: ;

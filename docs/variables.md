@@ -63,5 +63,3 @@ identifiers (variable names, functions, etc) may also include the `$` character,
        height: 80px
        margin-left: -(@width / 2)
        margin-top: -(@height / 2)
-
-  Note that currently this exposes only the _first_ value in the property's expression.
