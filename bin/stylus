@@ -528,7 +528,7 @@ function writeFile(file, css) {
     if (err) throw err;
     console.log('  \033[90mcompiled\033[0m %s', path);
     // --watch support
-    watch(file, compileFile);
+    watch(file, file);
   });
 }
 
@@ -536,18 +536,26 @@ function writeFile(file, css) {
  * Watch the given `file` and invoke `fn` when modified.
  */
 
-function watch(file, fn) {
+function watch(file, rootFile) {
   // not watching
   if (!watchers) return;
 
   // already watched
-  if (watchers[file]) return;
+  if (watchers[file]) {
+    watchers[file][rootFile] = true;
+    return;
+  }
 
   // watch the file itself
-  watchers[file] = true;
+  watchers[file] = {};
+  watchers[file][rootFile] = true;
   console.log('  \033[90mwatching\033[0m %s', file);
   fs.watchFile(file, { interval: 50 }, function(curr, prev){
-    if (curr.mtime > prev.mtime) fn(file);
+    if (curr.mtime > prev.mtime) {
+      for (var rootFile in watchers[file]) {
+        compileFile(rootFile);
+      }
+    }
   });
 }
 
@@ -558,9 +566,7 @@ function watch(file, fn) {
 function watchImports(file, imports) {
   imports.forEach(function(imported){
     if (!imported.path) return;
-    watch(imported.path, function(){
-      compileFile(file);
-    });
+    watch(imported.path, file);
   });
 }
 
