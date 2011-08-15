@@ -1,3 +1,10 @@
+/*
+ * Reset button related properties so that
+ * a, button, and input's are supported.
+ */
+/*
+ * Minimalistic flat button with white inset.
+ */
 button,
 a.button {
   display: block;

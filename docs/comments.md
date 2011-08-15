@@ -15,3 +15,5 @@
     
     add(a, b)
       a + b
+
+ Only CSS-style multi-line comments output in the generated CSS, and currently only when not compressed. 
