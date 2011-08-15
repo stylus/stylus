@@ -4,6 +4,13 @@ body {
 form {
   background: #fff;
 }
+/*
+
+body
+  a
+    color blue
+
+*/
 html>/**/body select,
 x:-moz-any-link,
 x:default select {
