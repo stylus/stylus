@@ -1,4 +1,12 @@
 
+0.15.0 / 2011-08-15 
+==================
+
+  * Adding `Renderer#get(option)`
+  * Added the ability to reference property values with `@<name>`. Closes #344
+  * Changed comment output. css-style multi-line comments are preserved
+  * Fixed issue with bools in selectors. Closes #280
+
 0.14.0 / 2011-08-10 
 ==================
 
