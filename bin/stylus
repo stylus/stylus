@@ -95,24 +95,24 @@ var usage = [
   , ''
   , '    help [<type>:]<prop> Opens help info at MDC for <prop> in'
   , '                         your default browser. Optionally'
-  , '                         searches other resources of <type>:'
+  , '                         searches other resources using <type>:'
   , '                         safari opera w3c ms caniuse quirksmode'
   , ''
   , '  Options:'
   , ''
   , '    -i, --interactive       Start interactive REPL'
-  , '    -u, --use <path>        Utilize the stylus plugin at <path>'
+  , '    -u, --use <path>        Utilize the Stylus plugin at <path>'
   , '    -w, --watch             Watch file(s) for changes and re-compile'
   , '    -o, --out <dir>         Output to <dir> when passing files'
-  , '    -C, --css <src> [dest]  Convert css input to stylus'
+  , '    -C, --css <src> [dest]  Convert CSS input to Stylus'
   , '    -I, --include <path>    Add <path> to lookup paths'
-  , '    -c, --compress          Compress css output'
+  , '    -c, --compress          Compress CSS output'
   , '    -d, --compare           Display input along with output'
-  , '    -f, --firebug           Emits debug infos in the generated css that'
+  , '    -f, --firebug           Emits debug infos in the generated CSS that'
   , '                            can be used by the FireStylus Firebug plugin'
-  , '    -l, --line-numbers      Emits comments in the generated css'
-  , '                            indicating the corresponding stylus line'
-  , '    -V, --version           Display the version of stylus'
+  , '    -l, --line-numbers      Emits comments in the generated CSS'
+  , '                            indicating the corresponding Stylus line'
+  , '    -V, --version           Display the version of Stylus'
   , '    -h, --help              Display help information'
   , ''
 ].join('\n');
@@ -207,7 +207,7 @@ try {
   // ignore
 }
 
-// if --watch is used, assume we are
+// if --watch is used, assume we're
 // not working with stdio
 
 if (watchers && !files.length) {
@@ -281,7 +281,7 @@ var options = {
 
 var str = '';
 
-// Convert css to stylus
+// Convert CSS to Stylus
 
 if (convertCSS) {
 	switch (files.length) {
@@ -311,7 +311,7 @@ if (convertCSS) {
 }
 
 /**
- * Start stylus REPL.
+ * Start Stylus REPL.
  */
 
 function repl() {
@@ -408,7 +408,7 @@ function repl() {
 }
 
 /**
- * Highlight the given string of stylus.
+ * Highlight the given string of Stylus.
  */
 
 function highlight(str) {
@@ -421,7 +421,7 @@ function highlight(str) {
 }
 
 /**
- * Convert a CSS file to a Styl file
+ * Convert CSS to Stylus.
  */
 
 function compileCSSFile(file, fileOut) {
@@ -516,7 +516,7 @@ function compileFile(file) {
 }
 
 /**
- * Write the given css output.
+ * Write the given CSS output.
  */
 
 function writeFile(file, css) {
