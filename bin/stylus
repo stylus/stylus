@@ -255,11 +255,8 @@ function help(name) {
   }
 
   switch (process.platform) {
-    case 'linux':
-      command = 'x-www-browser';
-      break;
-    default:
-      command = 'open';
+    case 'linux': command = 'x-www-browser'; break;
+    default: command = 'open';
   }
 
   exec(command + ' "' + url + '"', function(){
@@ -315,7 +312,7 @@ if (convertCSS) {
  */
 
 function repl() {
-  var options = { filename: 'stdin', imports: [__dirname + '/../lib/functions'] }
+  var options = { filename: 'stdin', imports: [join(__dirname, '..', 'lib', 'functions')] }
     , parser = new stylus.Parser('', options)
     , evaluator = new stylus.Evaluator(parser.parse(), options)
     , rl = require('readline')
@@ -508,7 +505,7 @@ function compileFile(file) {
         files.filter(function(path){
           return path.match(/\.styl$/);
         }).map(function(path){
-          return file + '/' + path;
+          return join(file, path);
         }).forEach(compileFile);
       });
     }
@@ -522,7 +519,7 @@ function compileFile(file) {
 function writeFile(file, css) {
   // --out support
   var path = dest
-    ? dest + '/' + basename(file, '.styl') + '.css'
+    ? join(dest, basename(file, '.styl') + '.css')
     : file.replace('.styl', '.css');
   fs.writeFile(path, css, function(err){
     if (err) throw err;
