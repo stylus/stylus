@@ -19,3 +19,17 @@ foo {
   border-color: 1px solid #ff0505;
   border: 1px solid #ff0505;
 }
+#logo {
+  z-index: 20;
+  position: absolute;
+}
+#logo2 {
+  position: absolute;
+  z-index: 1;
+}
+#foo {
+  width: 200px;
+  height: 100px;
+  min-width: 200px;
+  min-height: 100px;
+}

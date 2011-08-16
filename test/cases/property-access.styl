@@ -18,3 +18,23 @@ no-props
 foo
   border-color: @border
   border: 1px solid red + 5
+
+position()
+  position: arguments
+  z-index: 1 unless @z-index
+
+#logo
+  z-index: 20
+  position: absolute
+
+#logo2
+  position: absolute
+
+min-dimensions()
+  min-width: @width
+  min-height: @height
+
+#foo
+  width: 200px
+  height: 100px
+  min-dimensions()

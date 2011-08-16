@@ -38,7 +38,7 @@ identifiers (variable names, functions, etc) may also include the `$` character,
 ## Property Access
 
  Another cool feature unique to Stylus is the ability to reference
- properties defined in the current block _without_ assigning their
+ properties defined in the current block (or target mixin) _without_ assigning their
  values to variables. A great example of this is the logic required
  for vertically and horizontally center an element, which is typically
  done by using percentages and negative margins as shown:
@@ -63,3 +63,16 @@ identifiers (variable names, functions, etc) may also include the `$` character,
        height: 80px
        margin-left: -(@width / 2)
        margin-top: -(@height / 2)
+
+  Another extremely useful use-case is conditionally defining properties based on the existence of others within mixins. In the following example we apply a default `z-index` of `1`, but _only_ if `z-index` was not previously specified.
+
+      position()
+        position: arguments
+        z-index: 1 unless @z-index
+
+      #logo
+        z-index: 20
+        position: absolute
+
+      #logo2
+        position: absolute
