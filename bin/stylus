@@ -533,7 +533,7 @@ function writeFile(file, css) {
 }
 
 /**
- * Watch the given `file` and invoke `fn` when modified.
+ * Watch the given `file` and recompiling `rootFile` when modified.
  */
 
 function watch(file, rootFile) {
