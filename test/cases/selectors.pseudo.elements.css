@@ -1,0 +1,41 @@
+input::selection,
+input::focus-inner,
+input::-moz-selection,
+input::-webkit-selection,
+input::-moz-focus-inner,
+input::-webkit-focus-inner {
+  border: 0;
+  padding: 0;
+}
+input::-moz-selection {
+  border: 0;
+}
+p,
+::selection,
+::-moz-selection,
+::-webkit-selection {
+  background: #000;
+}
+::selection,
+::-moz-selection,
+::-webkit-selection {
+  background: #000;
+}
+p::selection,
+a::selection,
+p::-moz-selection,
+p::-webkit-selection,
+a::-moz-selection,
+a::-webkit-selection {
+  background: #000;
+}
+p::selection,
+p::-moz-selection,
+p::-webkit-selection {
+  color: #fff;
+  background: #000;
+}
+body ::selection,
+body ::-webkit-selection {
+  color: #fff;
+}
