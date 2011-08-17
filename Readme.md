@@ -73,7 +73,7 @@ form input {
   - single-line and multi-line [comments](/LearnBoost/stylus/blob/master/docs/comments.md)
   - css [literal](/LearnBoost/stylus/blob/master/docs/literal.md)
   - character [escaping](/LearnBoost/stylus/blob/master/docs/escape.md)
-  - [@keyframes](/LearnBoost/stylus/blob/master/docs/keyframes.md) support
+  - [@keyframes](/LearnBoost/stylus/blob/master/docs/keyframes.md) support & expansion
   - [@font-face](/LearnBoost/stylus/blob/master/docs/font-face.md) support
   - [@media](/LearnBoost/stylus/blob/master/docs/media.md) support
   - Connect [Middleware](/LearnBoost/stylus/blob/master/docs/middleware.md)

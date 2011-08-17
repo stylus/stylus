@@ -1,0 +1,18 @@
+@-moz-keyframes foo {
+  0% {
+    color: #000;
+  }
+
+  100% {
+    color: #fff;
+  }
+}
+@keyframes foo {
+  0% {
+    color: #000;
+  }
+
+  100% {
+    color: #fff;
+  }
+}
