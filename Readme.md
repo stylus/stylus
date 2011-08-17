@@ -75,6 +75,7 @@ form input {
   - character [escaping](/LearnBoost/stylus/blob/master/docs/escape.md)
   - [@keyframes](/LearnBoost/stylus/blob/master/docs/keyframes.md) support & expansion
   - [@font-face](/LearnBoost/stylus/blob/master/docs/font-face.md) support
+  - [pseudo-element expansion](/LearnBoost/stylus/blob/master/docs/pseudo-elements.md)
   - [@media](/LearnBoost/stylus/blob/master/docs/media.md) support
   - Connect [Middleware](/LearnBoost/stylus/blob/master/docs/middleware.md)
   - TextMate [bundle](/LearnBoost/stylus/blob/master/docs/textmate.md)
