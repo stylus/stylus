@@ -1,42 +1,3 @@
-@-webkit-keyframes bouce {
-  0% {
-    foo: bar;
-  }
-
-  50% {
-    foo: bar;
-  }
-
-  100% {
-    foo: bar;
-  }
-}
-@-webkit-keyframes bouce {
-  0% {
-    foo: bar;
-  }
-
-  50% {
-    foo: bar;
-  }
-
-  100% {
-    foo: bar;
-  }
-}
-@-webkit-keyframes bouce {
-  0% {
-    foo: bar;
-  }
-
-  50% {
-    foo: bar;
-  }
-
-  100% {
-    foo: bar;
-  }
-}
 @-webkit-keyframes something {
   0% {
     color: #f00;
@@ -53,5 +14,44 @@
 
   100% {
     opacity: 1;
+  }
+}
+@-webkit-keyframes bouce {
+  0% {
+    foo: bar;
+  }
+
+  50% {
+    foo: bar;
+  }
+
+  100% {
+    foo: bar;
+  }
+}
+@-webkit-keyframes bouce {
+  0% {
+    foo: bar;
+  }
+
+  50% {
+    foo: bar;
+  }
+
+  100% {
+    foo: bar;
+  }
+}
+@-webkit-keyframes bouce {
+  0% {
+    foo: bar;
+  }
+
+  50% {
+    foo: bar;
+  }
+
+  100% {
+    foo: bar;
   }
 }

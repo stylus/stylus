@@ -1,6 +1,22 @@
 
 vendors = webkit
 
+animate(name) {
+  @keyframes name {
+    from { color: red; }
+    to { color: blue; }
+  }
+}
+
+animate(something)
+
+@-webkit-keyframes fade
+  from
+    opacity 0
+  to
+    opacity 1
+
+
 @keyframes bouce {
   from {
     foo: bar;
@@ -30,18 +46,3 @@ vendors = webkit
   
   to { foo: bar; }
 }
-
-animate(name) {
-  @keyframes name {
-    from { color: red; }
-    to { color: blue; }
-  }
-}
-
-animate(something)
-
-@-webkit-keyframes fade
-  from
-    opacity 0
-  to
-    opacity 1
