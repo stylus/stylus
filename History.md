@@ -1,4 +1,20 @@
 
+0.15.1 / 2011-08-18 
+==================
+
+  * Added pseudo-element vendor expansion support
+  * Added `@keyframe` expansion support. Closes #293
+  * Added support for arbitrary `@-VENDOR-keyframes` support
+  * Added support for `@property` mixin property access Closes #363
+  * Added `/*!` support to comments to disable suppression
+  * Changed: allow uses to append `.styl` when importing. Closes #366
+  * Fixed paren matching issue. Closes #368
+  * Fixed windows absolute path checking Added `utils.absolute(path)`
+  * Fixed `Ident#clone()` with `.property` flag
+  * Fixed evaluation of expression when using @name. Closes #361
+  * Fixed `path.join()` usage in `utils.lookup()`. Closes #356
+  * Fixed space after comment regression. Closes #360
+
 0.15.0 / 2011-08-15 
 ==================
 
