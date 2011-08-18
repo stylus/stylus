@@ -12,8 +12,12 @@ h2 {
 }
 body {
   foo: 100%;
-  foo: 100;
-  foo: 75;
-  foo: 25;
+  foo: 100%;
+  foo: 75%;
   foo: 25%;
+  foo: 25%;
+}
+body {
+  foo: 10em;
+  foo: 10em;
 }
