@@ -33,3 +33,16 @@ foo {
   min-width: 200px;
   min-height: 100px;
 }
+body {
+  foo: "bar";
+  bar: "bar";
+}
+body {
+  foo: "bar";
+  bar: "bar";
+}
+body {
+  foo: "bar";
+  bar: "bar";
+}
+

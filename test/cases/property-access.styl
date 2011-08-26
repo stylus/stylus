@@ -38,3 +38,25 @@ min-dimensions()
   width: 200px
   height: 100px
   min-dimensions()
+
+
+body
+  foo: 'bar'
+  if true
+    bar: @foo
+
+mixin()
+  foo: 'bar'
+  if true
+    bar: @foo
+
+body
+  mixin()
+
+mixin2()
+  if true
+    bar: @foo
+
+body
+  foo: 'bar'
+  mixin2()
