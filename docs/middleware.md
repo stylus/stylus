@@ -21,6 +21,29 @@
       `linenos`   Emits comments in the generated css indicating
                   the corresponding stylus line
 
+
+#### Common Errors/gotchas
+ One common error or gotcha encountered with stylus middleware is when properly
+ defining the `src` and `dest` directories. A simple solution is to remember that both
+ should be hierarchically equivalent. A curl request on `/public/css/my-style.css` 
+ would trigger a compile of `/public-scripts/css/my-style.styl` only if src were set
+ to `public-scripts/` and dest were set to `public/`.
+ 
+ For instance:
+ 
+     if src is '/public-scripts'
+       and '/css' resides in the src directory '/public-scripts'
+         like so '/public-scripts/css'
+       with '*.styl' files residing in '/css'
+         such that '/public-scripts/css/my.styl' could be a stylus file
+     then dest should be set to '/public'
+       and '/css' should also reside in '/public'
+       with '/public-scripts/css/my.css' being compiled upon request
+         from '{src}/css/my.styl'
+           given that src is '/public-scripts' //see above
+           and 'my.styl' is a stylus file //see above
+
+
 #### Examples
  
  Here we set up the custom compile function so that we may
