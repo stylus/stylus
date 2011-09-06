@@ -17,3 +17,9 @@ body {
 body {
   foo: 1;
 }
+body {
+  foo: "bar";
+}
+body {
+  foo: "bar";
+}

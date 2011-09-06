@@ -15,7 +15,7 @@ Below is the operator precedence table, highest to lowest:
      is a
      && and || or
      ?:
-     = ?= += -= *= /= %=
+     = := ?= += -= *= /= %=
      not
      if unless
 
@@ -304,10 +304,11 @@ yielding:
         margin: 10px;
       }
 
-### Conditional Assignment: ?=
+### Conditional Assignment: ?= :=
 
-The conditional assignment operator `?=` lets us define variables without clobbering old values (when present). This operator expands to an `is defined` binary operation within a ternary, for example the following are equivalent:
+The conditional assignment operator `?=` (aliased as `:=`) lets us define variables without clobbering old values (when present). This operator expands to an `is defined` binary operation within a ternary, for example the following are equivalent:
 
+    color := white
     color ?= white
     color = color is defined ? color : white
 

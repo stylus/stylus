@@ -41,3 +41,15 @@ n %= 2
 
 body
   foo n
+
+foo ?= 'bar'
+foo ?= 'baz'
+
+body
+  foo: foo
+
+bar := 'bar'
+bar := 'baz'
+
+body
+  foo: bar
