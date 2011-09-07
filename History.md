@@ -1,4 +1,16 @@
 
+0.15.2 / 2011-09-06 
+==================
+
+  * Added alias `:=` of `?=`. Closes #389
+  * Removed auto-prefixing of pseudo element selectors. Closes #385
+  * Changed: when left-hand operand has no unit assign the right
+  * Fixed __@keyframes__ with __@import__ regression. Closes #372
+  * Fixed css __@import__ within blocks regression. Closes #388
+  * Fixed unwrapping of property args expression. Closes #379
+  * Fixed __@prop__ access scope issue, use closet block, not current
+  * Fixed __@font-face__. Closes #375
+
 0.15.1 / 2011-08-18 
 ==================
 
