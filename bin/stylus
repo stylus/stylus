@@ -108,7 +108,7 @@ var usage = [
   , ''
   , '    -i, --interactive       Start interactive REPL'
   , '    -u, --use <path>        Utilize the stylus plugin at <path>'
-  , '    -U, --use-url           Utilize the optional url to base64 plugin'
+  , '    -U, --use-url           Utilize image inlining via data uri support'
   , '    -w, --watch             Watch file(s) for changes and re-compile'
   , '    -o, --out <dir>         Output to <dir> when passing files'
   , '    -C, --css <src> [dest]  Convert css input to stylus'
@@ -196,7 +196,7 @@ while (args.length) {
       break;
     case '-U':
     case '--use-url':
-      args.unshift('--use','--url');
+      args.unshift('--use', '--url');
       break;
     case '-u':
     case '--use':
@@ -214,11 +214,12 @@ while (args.length) {
             'did you used the quotes everywhere?')
         }
       }
-      if ('--url' != path) {
-		paths.push(dirname(path));
-		plugins.push({ path: path, options: options });
-      } else {
+
+      if ('--url' == path) {
         urlFunction = options || {};
+      } else {
+        paths.push(dirname(path));
+        plugins.push({ path: path, options: options });
       }
       break;
     default:
@@ -602,7 +603,6 @@ function usePlugins(style) {
     }
     style.use(fn(options));
   });
-  if (urlFunction) {
-    style.define('url', stylus.url(urlFunction));
-  }
+
+  if (urlFunction) style.define('url', stylus.url(urlFunction));
 }
