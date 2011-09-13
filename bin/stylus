@@ -207,12 +207,7 @@ while (args.length) {
         args.shift();
         options = args.shift();
         if (!options) throw new Error('--with <options> required');
-        try {
-          options = JSON.parse(options);
-        } catch (e) {
-          throw new Error('--with <options> accepts only valid JSON, '+
-            'did you used the quotes everywhere?')
-        }
+        options = eval('(' + options + ')');
       }
 
       if ('--url' == path) {
