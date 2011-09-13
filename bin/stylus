@@ -83,6 +83,12 @@ var interactive;
 var plugins = [];
 
 /**
+ * Optional url() function.
+ */
+
+var urlFunction = false;
+
+/**
  * Usage docs.
  */
 
@@ -102,6 +108,7 @@ var usage = [
   , ''
   , '    -i, --interactive       Start interactive REPL'
   , '    -u, --use <path>        Utilize the stylus plugin at <path>'
+  , '    -U, --use-url           Utilize the optional url to base64 plugin'
   , '    -w, --watch             Watch file(s) for changes and re-compile'
   , '    -o, --out <dir>         Output to <dir> when passing files'
   , '    -C, --css <src> [dest]  Convert css input to stylus'
@@ -187,12 +194,15 @@ while (args.length) {
     case '--watch':
       watchers = {};
       break;
+    case '-U':
+    case '--use-url':
+      args.unshift('--use','--url');
+      break;
     case '-u':
     case '--use':
       var options;
       var path = args.shift();
       if (!path) throw new Error('--use <path> required');
-      paths.push(dirname(path));
       if ('--with' == args[0]) {
         args.shift();
         options = args.shift();
@@ -204,7 +214,12 @@ while (args.length) {
             'did you used the quotes everywhere?')
         }
       }
-      plugins.push({ path: path, options: options });
+      if ('--url' != path) {
+		paths.push(dirname(path));
+		plugins.push({ path: path, options: options });
+      } else {
+        urlFunction = options || {};
+      }
       break;
     default:
       files.push(arg);
@@ -587,4 +602,7 @@ function usePlugins(style) {
     }
     style.use(fn(options));
   });
+  if (urlFunction) {
+    style.define('url', stylus.url(urlFunction));
+  }
 }
