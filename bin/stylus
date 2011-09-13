@@ -189,10 +189,22 @@ while (args.length) {
       break;
     case '-u':
     case '--use':
+      var options;
       var path = args.shift();
       if (!path) throw new Error('--use <path> required');
       paths.push(dirname(path));
-      plugins.push(path);
+      if ('--with' == args[0]) {
+        args.shift();
+        options = args.shift();
+        if (!options) throw new Error('--with <options> required');
+        try {
+          options = JSON.parse(options);
+        } catch (e) {
+          throw new Error('--with <options> accepts only valid JSON, '+
+            'did you used the quotes everywhere?')
+        }
+      }
+      plugins.push({ path: path, options: options });
       break;
     default:
       files.push(arg);
@@ -281,7 +293,7 @@ var str = '';
 // Convert css to stylus
 
 if (convertCSS) {
-	switch (files.length) {
+    switch (files.length) {
     case 2:
       compileCSSFile(files[0], files[1]);
       break;
@@ -566,11 +578,13 @@ function watchImports(file, imports) {
  */
 
 function usePlugins(style) {
-  plugins.forEach(function(path){
+  plugins.forEach(function(plugin){
+    var path = plugin.path;
+    var options = plugin.options;
     fn = require(path);
     if ('function' != typeof fn) {
       throw new Error('plugin ' + path + ' does not export a function');
     }
-    style.use(fn());
+    style.use(fn(options));
   });
 }
