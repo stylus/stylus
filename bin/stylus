@@ -203,6 +203,8 @@ while (args.length) {
       var options;
       var path = args.shift();
       if (!path) throw new Error('--use <path> required');
+
+      // options
       if ('--with' == args[0]) {
         args.shift();
         options = args.shift();
@@ -210,7 +212,8 @@ while (args.length) {
         options = eval('(' + options + ')');
       }
 
-      if ('--url' == path) {
+      // url support
+      if ('url' == path) {
         urlFunction = options || {};
       } else {
         paths.push(dirname(path));
