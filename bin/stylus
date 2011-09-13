@@ -108,7 +108,7 @@ var usage = [
   , ''
   , '    -i, --interactive       Start interactive REPL'
   , '    -u, --use <path>        Utilize the stylus plugin at <path>'
-  , '    -U, --use-url           Utilize image inlining via data uri support'
+  , '    -U, --inline            Utilize image inlining via data uri support'
   , '    -w, --watch             Watch file(s) for changes and re-compile'
   , '    -o, --out <dir>         Output to <dir> when passing files'
   , '    -C, --css <src> [dest]  Convert css input to stylus'
@@ -195,8 +195,8 @@ while (args.length) {
       watchers = {};
       break;
     case '-U':
-    case '--use-url':
-      args.unshift('--use', '--url');
+    case '--inline':
+      args.unshift('--use', 'url');
       break;
     case '-u':
     case '--use':
