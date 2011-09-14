@@ -9,3 +9,13 @@ body
 body
   foo join(', ', 1, 2, 3)
   foo join(', ', one 1, two 2, three 3)
+
+body
+  a = 1 2
+  b = 3 4
+  c = 5 6
+  foo: join(', ', 1 2, #fff #000, 5px 6px)
+  foo: join(', ', a, b, c)
+  foo: join(', ', a b c)
+  foo: join(', ', 1, 2, 3, 4, 5, 6)
+  foo: join(', ', 1 2 3 4 5 6)
