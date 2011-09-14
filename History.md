@@ -1,4 +1,12 @@
 
+0.15.3 / 2011-09-14 
+==================
+
+  * Added `-U, --inline` to stylus(1)
+  * Added `rem` support. Closes #395
+  * Fixed __@charset__ semi-colon. Closes #400
+  * Fixed infinite loop in `Parser#function()`. Closes #393
+
 0.15.2 / 2011-09-06 
 ==================
 
