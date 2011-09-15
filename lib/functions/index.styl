@@ -121,3 +121,9 @@ join(delim, vals...)
   vals = vals[0] if length(vals) == 1
   for val, i in vals
     buf += i ? delim + val : val
+
+// make color as transparent as possible
+
+transparentify(color)
+  require-color(color)
+  -transparentify(color)
