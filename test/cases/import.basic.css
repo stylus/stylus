@@ -7,3 +7,5 @@
 .c {
   color: #00f;
 }
+@import url("foo.css");
+@import url("foo.css");
