@@ -134,7 +134,7 @@ while (args.length) {
   switch (arg) {
     case '-h':
     case '--help':
-      console.log(usage);
+      console.error(usage);
       process.exit(1);
     case '-d':
     case '--compare':
