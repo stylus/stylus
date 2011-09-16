@@ -7,8 +7,8 @@ body {
   foo: #ba3a3a;
 }
 body {
-  foo: #d16c6c;
-  foo: #d16c6c;
+  foo: #d06969;
+  foo: #d06969;
 }
 body {
   foo: #a13333;
@@ -37,4 +37,8 @@ body {
 body {
   foo: #825363;
   foo: #825363;
+}
+body {
+  color: true;
+  color: true;
 }

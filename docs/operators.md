@@ -409,7 +409,7 @@ The ternary operator works as we would expect in most languages, being the only 
  Another example is adjust the lightness value by adding or subtracting a percentage. To lighten a color we add, to darken we subtract.
  
     #888 + 50%
-    // => #ccc
+    // => #c3c3c3
 
     #888 - 50%
     // => #444
