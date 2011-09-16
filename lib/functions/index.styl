@@ -108,6 +108,16 @@ darken(color, amount)
 lighten(color, amount)
   adjust(color, 'lightness', amount)
 
+// decerase opacity by amount
+
+fade-out(color, amount)
+  color - rgba(black, amount)
+
+// increase opacity by amount
+
+fade-in(color, amount)
+  color + rgba(black, amount)
+
 // return the last value in the given expr
 
 last(expr)
