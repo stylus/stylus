@@ -1,4 +1,16 @@
 
+0.16.0 / 2011-09-26 
+==================
+
+  * Added `mkdir -p` support to the middleware
+  * Added `@import url(string)` support. Closes #352
+  * Added `fade-in()` and `fade-out()` BIFs
+  * Adding prefixes for Opera and IE
+  * Fixed comments trailing __@media__. Closes #415 [guillermo]
+  * Fixed: Output from --help in stylus executable cut-off half way through
+  * Changed: treat -/+ operations with percentages as lighten()/darken(). 
+Closes #401
+
 0.15.4 / 2011-09-14 
 ==================
 
