@@ -1,0 +1,21 @@
+body {
+  foo: "baz";
+  foo: "baz";
+  foo: "bar";
+  foo: "bar";
+}
+body {
+  foo: false;
+  foo: false;
+  foo: true;
+  foo: true;
+  foo: true;
+}
+body {
+  foo: false;
+  foo: false;
+  foo: true;
+  foo: true;
+  foo: true;
+  foo: -5;
+}

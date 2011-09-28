@@ -1,0 +1,29 @@
+foo = ''
+bar = 'baz'
+
+body
+  foo: !!foo ? 'bar' : 'baz'
+  foo: foo ? 'bar' : 'baz'
+  foo: !! bar ? 'bar' : 'baz'
+  foo: bar ? 'bar' : 'baz'
+
+body
+  foo: !! ('' '' '')
+  foo: !! (0 0 0)
+  foo: !! (0 1 0)
+  foo: !! (0 0 1)
+  foo: !! (1 0 0)
+
+one = '' '' ''
+two = 0 0 0
+three = 0 1 0
+four = 0 0 1
+five = 1 0 0
+
+body
+  foo: !! one
+  foo: !! two
+  foo: !! three
+  foo: !! four
+  foo: !! five
+  foo: - 5
