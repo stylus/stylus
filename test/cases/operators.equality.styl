@@ -26,3 +26,18 @@ body
   something = 'yay'
   foo yes == (something is defined ? yes : nope)
   foo nope == (whatever is defined ? yes : nope)
+
+body
+  foo: (1 2 3) == (1 2 3)
+  foo: (foo bar baz) == (foo bar baz)
+  foo: () == ()
+
+body
+  foo: (foo bar baz) == (foo hey baz)
+  foo: (1 2 3) == (1 2 0)
+  foo: (1) == (1 2 3)
+  foo: (2 2) == (2)
+  foo: (2 2) == ()
+  foo: () == true
+  foo: true == ()
+  foo: !!()
