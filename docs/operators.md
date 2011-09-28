@@ -192,6 +192,15 @@ Equality operators can be used to equate units, colors, strings, and even identi
     'hey' isnt 'bye'
     // => true
 
+    (foo bar) == (foo bar)
+    // => true
+
+    (1 2 3) == (1 2 3)
+    // => true
+
+    (1 2 3) == (1 1 3)
+    // => false
+
 Only exact values match, for example `0 == false`, and `null == false` are both `false`.
 
 Aliases:
@@ -213,6 +222,7 @@ Aliases:
       -1px
       hey
       'hey'
+      (0px 0px 0px)
 
 `false` examples:
 
@@ -220,6 +230,7 @@ Aliases:
      null
      false
      ''
+     (0 0 0)
 
 ### Logical Operators: && || and or
 
