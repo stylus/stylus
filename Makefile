@@ -3,6 +3,9 @@ SRC = $(shell find lib -name "*.js")
 TM_BUNDLE = editors/Stylus.tmbundle
 TM_BUNDLE_DEST = ~/Library/Application\ Support/TextMate/Bundles
 
+stylus.js:
+	@node support/compile > $@
+
 test: test-integration
 
 test-integration:
@@ -17,4 +20,4 @@ update-bundle:
 benchmark:
 	@node bm.js
 
-.PHONY: test test-integration install-bundle update-bundle benchmark
+.PHONY: stylus.js test test-integration install-bundle update-bundle benchmark

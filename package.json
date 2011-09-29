@@ -43,7 +43,7 @@
     , "lib/stack/index.js"
     , "lib/stack/frame.js"
     , "lib/stack/scope.js"
-    , "lib/stylua.js"
+    , "lib/stylus.js"
     , "lib/token.js"
     , "lib/utils.js"
     , "lib/visitor/index.js"
