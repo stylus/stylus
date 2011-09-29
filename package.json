@@ -1,6 +1,7 @@
 {   "name": "stylus"
   , "scripts": [
-      "lib/colors.js"
+      "lib/path.js"
+    , "lib/colors.js"
     , "lib/errors.js"
     , "lib/functions/index.js"
     , "lib/lexer.js"
