@@ -1,0 +1,21 @@
+#sidebar h2 {
+  text-transform: uppercase;
+  color: #888;
+}
+#sidebar a {
+  font-size: 12px;
+  color: #2b2b2b;
+}
+#sidebar a:hover {
+  color: #ffc0cb;
+}
+#sidebar .block {
+  margin-bottom: 20px;
+}
+#sidebar ul li a {
+  display: block;
+  margin: 5px 0;
+}
+#sidebar ul li a:hover {
+  margin: 10px 0;
+}
