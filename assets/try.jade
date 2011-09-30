@@ -4,140 +4,27 @@ html
     title Stylus
     link(rel='stylesheet', href='main.css')
     meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
+    link(rel='stylesheet', href='codemirror.css')
+    script(src='jquery.js')
+    script(src='stylus.js')
+    script(src='codemirror.js')
+    script(src='css-mode.js')
+    script(src='try.js')
   body
     #container
       include head
       #content
         .example
-          h2 CSS needs a hero
-          pre.
-            body {
-              font: 12px Helvetica, Arial, sans-serif;
-            }
-            a.button {
-              -webkit-border-radius: 5px;
-              -moz-border-radius: 5px;
-              border-radius: 5px;
-            }
-        .example
-          h2 What if we could omit braces?
-          pre.
-            body
-              font: 12px Helvetica, Arial, sans-serif;
-            
-            a.button
-              -webkit-border-radius: 5px;
-              -moz-border-radius: 5px;
-              border-radius: 5px;
-        .example
-          h2 How about semi-colons?
-          pre.
-            body
-              font: 12px Helvetica, Arial, sans-serif
-            
-            a.button
-              -webkit-border-radius: 5px
-              -moz-border-radius: 5px
-              border-radius: 5px
-        .example
-          h2 Why stop there, drop the colons
-          pre.
-            body
-              font 12px Helvetica, Arial, sans-serif
-            
-            a.button
-              -webkit-border-radius 5px
-              -moz-border-radius 5px
-              border-radius 5px
-        .example
-          h2 Keep things DRY
-          pre.
+          textarea.stylus
             border-radius()
-              -webkit-border-radius arguments
-              -moz-border-radius arguments
-              border-radius arguments
-            
-            body
-              font 12px Helvetica, Arial, sans-serif
-            
-            a.button
-              border-radius(5px)
-        .example
-          h2 How about transparent mixins?
-          pre.
-            border-radius()
-              -webkit-border-radius arguments
-              -moz-border-radius arguments
-              border-radius arguments
-            
-            body
-              font 12px Helvetica, Arial, sans-serif
-            
-            a.button
-              border-radius 5px
-        .example
-          h2 Create &amp; Share
-          pre.
-            @import 'vendor'
-            
-            body
-              font 12px Helvetica, Arial, sans-serif
-            
-            a.button
-              border-radius 5px
-        .example
-          h2 Even in-language functions!
-          pre.
-            sum(nums...)
-              sum = 0
-              sum += n for n in nums
+              -webkit-border-radius: arguments
+              -moz-border-radius: arguments
+              border-radius: arguments
 
-            sum(1 2 3 4)
-            // => 10
-        .example
-          h2 What if it were all optional?
-          pre.
-            fonts = helvetica, arial, sans-serif
-            
             body {
-              padding: 50px;
-              font: 14px/1.4 fonts;
+              font: 14px/1.5 Helvetica, arial, sans-serif;
+              #logo {
+                border-radius: 5px;
+              }
             }
-        .example.closing
-          h2 Get styling with Stylus
-          pre.terminal $ npm install stylus
-          p
-            | If you want an expressive css language for nodejs with these
-            | features or the features listed below, head over to
-            a(href='http://github.com/learnboost/stylus') GitHub 
-            | for more information.
-          .features
-            h3 Features
-            ul
-              li Optional colons         
-              li Optional semi-colons         
-              li Optional commas         
-              li Optional braces         
-              li Variables          
-              li Interpolation
-              li Mixins
-              li Arithmetic
-              li Type coercion
-              li Dynamic importing
-              li Conditionals
-              li Iteration
-              li Nested selectors
-              li Parent referencing
-              li Variable function calls
-              li Lexical scoping
-              li Built-in functions (over 25)
-              li In-language functions
-              li Optional compression
-              li Optional image inlining
-              li Stylus executable
-              li Robust error reporting
-              li Single-line and multi-line comments
-              li CSS literal for those tricky times
-              li Character escaping
-              li TextMate bundle
-              li and more!
+          textarea.css
