@@ -162,10 +162,20 @@ html
 
         .example
           h2 Interpolation
-          p Interpolation
+          p.
+            Interpolation combined with other powerful features
+            allow you to mold properties and selectors all within
+            the language itself.
+
           textarea.stylus
-            table
-              for row in 1 2 3 4 5
-                tr:nth-child({row})
-                  height: 10px * row
+            vendors = webkit moz o ms official
+
+            border-radius()
+              for vendor in vendors
+                if vendor == official
+                  border-radius: arguments
+                else
+                  -{vendor}-border-radius: arguments
+            #content
+              border-radius: 5px
           textarea.css
