@@ -63,6 +63,9 @@
   visibility: visible;
 }
 
+.cm-number { color: #00A3D4; }
+.cm-string { color: #B80015; }
+
 span.CodeMirror-selected {
   background: #ccc !important;
   color: HighlightText !important;
