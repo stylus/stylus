@@ -2,12 +2,12 @@
 DOCS = $(shell find docs/*.md)
 HTML = $(DOCS:.md=.html)
 
-site: index.html try.html main.css $(HTML)
+site: index.html try.html main.css try.css $(HTML)
 
 %.html: assets/%.jade
 	jade < $< --path $< > $@
 
-main.css: assets/main.styl
+%.css: assets/%.styl
 	stylus < $< > $@
 
 %.html: %.md
