@@ -226,6 +226,9 @@ Test if `string` matches the given `pattern`.
       join(', ', foo, bar, baz)
       // => "foo, bar, baz"
 
+      join(', ', 1 2, 3 4, 5 6)
+      // => "1 2, 3 4, 5 6"
+
 ### hsla(color | h,s,l,a)
 
 Convert the given `color` to an `HSLA` node,
