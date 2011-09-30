@@ -5,6 +5,15 @@ dark-gray = #222
 light-gray = lighten(dark-gray, 15%)
 red = #a00
 
+clearfix()
+  &:before
+  &:after
+    content: ""
+    display: table
+  &:after
+    clear: both
+  zoom: 1 if support-for-ie
+
 border-radius(args...)
   -webkit-border-radius args
   -moz-border-radius args
@@ -140,7 +149,7 @@ ul
 
 .example
   margin-top 25px
-  clear: both
+  clearfix()
 
 .CodeMirror
   float: left

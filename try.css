@@ -112,6 +112,14 @@ ul li {
 }
 .example {
   margin-top: 25px;
+  zoom: 1;
+}
+.example:before,
+.example:after {
+  content: "";
+  display: table;
+}
+.example:after {
   clear: both;
 }
 .CodeMirror {
