@@ -4,7 +4,7 @@ html {
   background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#dadada)) fixed;
 }
 body {
-  padding: 120px 150px;
+  padding: 120px 50px;
   font: 14px/1.4 "helvetica neue", helvetica, arial, sans-serif;
   color: #272727;
 }
@@ -77,7 +77,7 @@ ul li {
 #container #content {
   margin: 0 auto;
   padding-top: 40px;
-  width: 800px;
+  width: 90%;
   text-align: left;
 }
 #menu {
@@ -115,6 +115,10 @@ ul li {
 }
 .CodeMirror {
   float: left;
+  margin: 0 30px;
+}
+.CodeMirror .CodeMirror-gutter {
+  display: none;
 }
 p code {
   padding: 2px 4px;

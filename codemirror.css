@@ -1,6 +1,7 @@
 .CodeMirror {
-  line-height: 1em;
-  font-family: monospace;
+  line-height: 1.2;
+  font-size: 12px;
+  font-family: monaco, monospace;
 }
 
 .CodeMirror-scroll {
@@ -25,7 +26,11 @@
   padding: .4em .2em .4em .4em;
 }
 .CodeMirror-lines {
-  padding: .4em;
+  background: white;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  padding: 20px;
 }
 
 .CodeMirror pre {
