@@ -118,9 +118,6 @@ ul li {
   float: left;
   margin: 0 10px;
 }
-.CodeMirror .CodeMirror-gutter {
-  display: none;
-}
 p code {
   padding: 2px 4px;
   color: #2b2b2b;

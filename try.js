@@ -4,6 +4,8 @@ $(function(){
     var css = $(this).next('.css').get(0)
       , styl = this;
 
+    $(styl).text($(styl).text().trim());
+
     styl = CodeMirror.fromTextArea(styl, {
         lineNumbers: true
       , onKeyEvent: render
@@ -14,11 +16,11 @@ $(function(){
     });
 
     function render() {
-      var str = styl.getValue();
+      var str = styl.getValue().trim();
       stylus(str)
         .render(function(err, str){
           if (err) return;
-          css.setValue(str);
+          css.setValue(str.trim());
         });
     }
 
