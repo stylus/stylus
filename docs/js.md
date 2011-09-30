@@ -54,7 +54,7 @@ Defer importing of the given `path` until evaluation is performed. The example b
 
  By passing a `Node`, we may define a global variable. This is useful when exposing conditional features within your library depending on the availability of another. For example the "Nib" extensions library conditionally supports node-canvas, providing image generation, however this is not always available, so Nib may define:
  
-     .define('has-canvas', stylus.nodes.false);
+     .define('has-canvas', stylus.nodes.no);
 
 ### .define(name, fn)
 
