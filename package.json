@@ -5,6 +5,7 @@
     , "lib/errors.js"
     , "lib/functions/index.js"
     , "lib/functions/image.js"
+    , "lib/functions/url.js"
     , "lib/lexer.js"
     , "lib/nodes/arguments.js"
     , "lib/nodes/binop.js"
