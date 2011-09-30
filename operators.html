@@ -14,7 +14,7 @@
  is a
  &amp;&amp; and || or
  ?:
- = ?= += -= *= /= %=
+ = := ?= += -= *= /= %=
  not
  if unless
 </code></pre>
@@ -201,6 +201,15 @@ true is true
 
 'hey' isnt 'bye'
 // =&gt; true
+
+(foo bar) == (foo bar)
+// =&gt; true
+
+(1 2 3) == (1 2 3)
+// =&gt; true
+
+(1 2 3) == (1 1 3)
+// =&gt; false
 </code></pre>
 
 <p>Only exact values match, for example <code>0 == false</code>, and <code>null == false</code> are both <code>false</code>.</p>
@@ -225,6 +234,7 @@ true is true
   -1px
   hey
   'hey'
+  (0px 0px 0px)
 </code></pre>
 
 <p><code>false</code> examples:</p>
@@ -233,6 +243,7 @@ true is true
  null
  false
  ''
+ (0 0 0)
 </code></pre>
 
 <h3>Logical Operators: &amp;&amp; || and or</h3>
@@ -324,11 +335,12 @@ true is true
   }
 </code></pre>
 
-<h3>Conditional Assignment: ?=</h3>
+<h3>Conditional Assignment: ?= :=</h3>
 
-<p>The conditional assignment operator <code>?=</code> lets us define variables without clobbering old values (when present). This operator expands to an <code>is defined</code> binary operation within a ternary, for example the following are equivalent:</p>
+<p>The conditional assignment operator <code>?=</code> (aliased as <code>:=</code>) lets us define variables without clobbering old values (when present). This operator expands to an <code>is defined</code> binary operation within a ternary, for example the following are equivalent:</p>
 
-<pre><code>color ?= white
+<pre><code>color := white
+color ?= white
 color = color is defined ? color : white
 </code></pre>
 
@@ -440,7 +452,7 @@ num ? unit(num, 'px') : 20px
 <p> Another example is adjust the lightness value by adding or subtracting a percentage. To lighten a color we add, to darken we subtract.</p>
 
 <pre><code>#888 + 50%
-// =&gt; #ccc
+// =&gt; #c3c3c3
 
 #888 - 50%
 // =&gt; #444
