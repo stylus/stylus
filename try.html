@@ -170,14 +170,12 @@ you could define a sum function as shown below:
   n = 0
   n += num for num in nums
 
-sum-function = sum
-
 body
   foo: sum(1, 2, 3)
-  foo: sum-function(1, 2, 3, 4, 5, 6)
 
-</textarea><textarea class="css"></textarea><p>Keyword arguments are also supported to make
-function invocation more expressive:
+</textarea><textarea class="css"></textarea></div><div class="example"><h2>Keyword arguments</h2><p>Keyword arguments are also supported to make
+function invocation more expressive, also allowing
+you to disregard argument ordering.
 
 </p><textarea class="stylus">fade-out(color, amount = 50%)
   amount /= 100
