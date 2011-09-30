@@ -77,7 +77,7 @@ ul li {
 #container #content {
   margin: 0 auto;
   padding-top: 40px;
-  width: 320px;
+  width: 800px;
   text-align: left;
 }
 #menu {
@@ -112,6 +112,9 @@ ul li {
 }
 .example {
   margin-top: 25px;
+}
+.CodeMirror {
+  float: left;
 }
 p code {
   padding: 2px 4px;
