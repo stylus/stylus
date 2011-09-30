@@ -7076,7 +7076,7 @@ var Renderer = module.exports = function Renderer(str, options) {
 
 Renderer.prototype.render = function(fn){
   var parser = this.parser = new Parser(this.str, this.options);
-  // try {
+  try {
     nodes.filename = this.options.filename;
     var ast = parser.parse();
     this.evaluator = new Evaluator(ast, this.options);
@@ -7085,13 +7085,14 @@ Renderer.prototype.render = function(fn){
       , css = compiler.compile()
       , js = compiler.js;
     fn(null, css, js);
-  // } catch (err) {
+  } catch (err) {
   //   var options = {};
   //   options.input = err.input || this.str;
   //   options.filename = err.filename || this.options.filename;
   //   options.lineno = err.lineno || parser.lexer.lineno;
   //   fn(utils.formatException(err, options));
-  // }
+    fn(err);
+  }
 };
 
 /**
