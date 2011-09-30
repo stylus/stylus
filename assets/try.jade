@@ -41,7 +41,7 @@ html
 
         .example
           h2 Parent reference
-          p. The parent reference operator inspired by SASS is also available:
+          p The parent reference operator inspired by SASS is also available:
           textarea.stylus
             ul
               li a
@@ -148,4 +148,24 @@ html
 
             #logo
               fixed: top left
+          textarea.css
+
+        .example
+          h2 Iteration
+          p List iteration with Stylus is simple:
+          textarea.stylus
+            table
+              for row in 1 2 3 4 5
+                tr:nth-child({row})
+                  height: 10px * row
+          textarea.css
+
+        .example
+          h2 Interpolation
+          p Interpolation
+          textarea.stylus
+            table
+              for row in 1 2 3 4 5
+                tr:nth-child({row})
+                  height: 10px * row
           textarea.css

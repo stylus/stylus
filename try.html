@@ -13,7 +13,7 @@
     border-radius 5px
 
 
-</textarea><textarea class="css"></textarea></div><div class="example"><h2>Parent reference</h2><p>. The parent reference operator inspired by SASS is also available:</p><textarea class="stylus">ul
+</textarea><textarea class="css"></textarea></div><div class="example"><h2>Parent reference</h2><p>The parent reference operator inspired by SASS is also available:</p><textarea class="stylus">ul
   li a
     display: block
     color: blue
@@ -93,5 +93,12 @@ fixed()
 
 #logo
   fixed: top left
+
+</textarea><textarea class="css"></textarea></div><div class="example"><h2>Interpolation</h2><p>Interpolation</p><textarea class="stylus">table
+  for row in 1 2 3 4 5
+    tr:nth-child({row})
+      height: 10px * row
+
+
 
 </textarea><textarea class="css"></textarea></div></div></div></body></html>
