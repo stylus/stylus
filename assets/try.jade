@@ -77,7 +77,24 @@ html
           textarea.css
 
         .example
-          p Stylus property access provides easy access to values defined within the current block.
+          h2 Variables
+          p.
+            Stylus variables behave as you would expect in any other language,
+            and may optionally be prefixed by the "$" character:
+          textarea.stylus
+            #prompt
+              position: absolute
+              top: 150px
+              left: 50%
+              width: w = 200px
+              margin-left: -(w / 2)
+          textarea.css
+
+        .example
+          h2 Block property access
+          p.
+            Stylus property access provides easy access to values
+            defined within the current block.
           textarea.stylus
             #prompt
               position: absolute
@@ -88,6 +105,7 @@ html
           textarea.css
 
         .example
+          h2 Robust full-featured language
           p.
             Stylus is not just a pre-processor,
             it's is a flexible and powerful language. Combined with
