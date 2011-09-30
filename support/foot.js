@@ -1,4 +1,2 @@
-
-  return exports;
-
-})({});
+  return require('stylus');
+})();

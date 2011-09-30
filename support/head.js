@@ -1,2 +1,2 @@
 
-var stylus = (function(exports){
+var stylus = (function(){

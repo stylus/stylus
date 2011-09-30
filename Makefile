@@ -4,7 +4,7 @@ TM_BUNDLE = editors/Stylus.tmbundle
 TM_BUNDLE_DEST = ~/Library/Application\ Support/TextMate/Bundles
 
 stylus.js:
-	@node support/compile > $@
+	@node support/compile | cat support/head.js - support/foot.js > $@
 
 stylus.min.js: stylus.js
 	@uglifyjs --no-mangle $< > $@
