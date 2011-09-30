@@ -118,8 +118,8 @@ border-radius()
 #content
   border-radius: 5px
 
-</textarea><textarea class="css"></textarea></div><div class="example"><h2>Operators</h2><p>Stylus supports all the <a href="docs/operators.html">operators</a> you've come to
-expect from a language, as well as some specific to Stylus.
+</textarea><textarea class="css"></textarea></div><div class="example"><h2>Operators</h2><p>Stylus supports all the <a href="docs/operators.html">operators</a>
+you've come to expect from a language, as well as some specific to Stylus.
 
 </p><textarea class="stylus">body
   foo: 5px + 10
@@ -130,6 +130,7 @@ expect from a language, as well as some specific to Stylus.
   foo: foo or bar or baz
   foo: 1..5
   foo: 1...5
+  foo: 'foo' is a 'string'
   foo: (1 2 3) == (1 2 3)
   foo: (1 2 3) == (1 2)
   foo: ((one 1) (two 2)) == ((one 1) (two 2)) 
@@ -146,6 +147,19 @@ expect from a language, as well as some specific to Stylus.
   foo: 'foo ' + 'bar'
   foo: 'foo ' + 5px
   foo: 2s - 500ms
+
+
+</textarea><textarea class="css"></textarea><p>Operations against colors are especially useful.
+When adding or subtracting by a percentage the
+color lightness may be adjusted, or adjust the
+hue with <em>deg</em>:
+
+</p><textarea class="stylus">body
+  foo: white - 50%
+  foo: black + 50%
+  foo: #eee - #f00
+  foo: #eee - rgba(black,.5)
+  foo: #cc0000 + 30deg
 
 
 </textarea><textarea class="css"></textarea></div></div></div></body></html>
