@@ -1,0 +1,2 @@
+body{background:url("/images/foo.png")}
+body{background:url("/images/something.png");background:url("/images/something.png")}
