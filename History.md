@@ -1,4 +1,15 @@
 
+0.17.0 / 2011-09-30 
+==================
+
+  * Added `@scope <selector>` feature to scope all subsequent selectors
+  * Added list equality to the `!=` operator
+  * Added list equality to the `==` operator
+  * Added mkdir -p support to the middleware
+  * Changed: `!` coerces expression not the first value
+  * Fixed Ternary boolean coercion. Closes #420
+  * Fixed __@font-face__ __@import__ regression. Closes #418
+
 0.16.0 / 2011-09-26 
 ==================
 
