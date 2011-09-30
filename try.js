@@ -17,7 +17,7 @@ $(function(){
       var str = styl.getValue();
       stylus(str)
         .render(function(err, str){
-          // if (err) throw err;
+          if (err) return;
           css.setValue(str);
         });
     }

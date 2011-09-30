@@ -1,4 +1,28 @@
-<!DOCTYPE html><html><head><title>Stylus</title><link rel="stylesheet" href="try.css"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><link rel="stylesheet" href="codemirror.css"><script src="jquery.js"></script><script src="stylus.js"></script><script src="codemirror.js"></script><script src="css-mode.js"></script><script src="try.js"></script></head><body><div id="container"><h1><a href="http://learnboost.github.com/stylus">Stylus</a></h1><p class="tagline"><em class="expressive">Expressive, </em><em class="dynamic">dynamic, </em><em class="robust">robust </em><em class="css">CSS</em></p><div id="ribbon"><a href="http://github.com/learnboost/stylus">Fork me on GitHub</a></div><div id="content"><div class="example"><textarea class="stylus">border-radius()
+<!DOCTYPE html><html><head><title>Stylus</title><link rel="stylesheet" href="try.css"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><link rel="stylesheet" href="codemirror.css"><script src="jquery.js"></script><script src="stylus.js"></script><script src="codemirror.js"></script><script src="css-mode.js"></script><script src="try.js"></script></head><body><div id="container"><h1><a href="http://learnboost.github.com/stylus">Stylus</a></h1><p class="tagline"><em class="expressive">Expressive, </em><em class="dynamic">dynamic, </em><em class="robust">robust </em><em class="css">CSS</em></p><div id="ribbon"><a href="http://github.com/learnboost/stylus">Fork me on GitHub</a></div><div id="content"><div class="example"><textarea class="stylus">body {
+  font: 14px/1.5 Helvetica, arial, sans-serif;
+}
+#logo {
+  border-radius: 5px;
+}
+</textarea><textarea class="css"></textarea></div><div class="example"><textarea class="stylus">body {
+  font: 14px/1.5 Helvetica, arial, sans-serif;
+  #logo {
+    border-radius: 5px;
+  }
+}
+</textarea><textarea class="css"></textarea></div><div class="example"><textarea class="stylus">body {
+  font: 14px/1.5 Helvetica, arial, sans-serif
+  #logo {
+    border-radius: 5px
+  }
+}
+</textarea><textarea class="css"></textarea></div><div class="example"><textarea class="stylus">body
+  font 14px/1.5 Helvetica, arial, sans-serif
+  #logo
+    border-radius 5px
+
+
+</textarea><textarea class="css"></textarea></div><div class="example"><textarea class="stylus">border-radius()
   -webkit-border-radius: arguments
   -moz-border-radius: arguments
   border-radius: arguments
@@ -9,4 +33,11 @@ body {
     border-radius: 5px;
   }
 }
+</textarea><textarea class="css"></textarea></div><div class="example"><textarea class="stylus">#prompt
+  position: absolute
+  top: 150px
+  left: 50%
+  width: 200px
+  margin-left: -(@width / 2)
+
 </textarea><textarea class="css"></textarea></div></div></div></body></html>

@@ -16,6 +16,44 @@ html
       #content
         .example
           textarea.stylus
+            body {
+              font: 14px/1.5 Helvetica, arial, sans-serif;
+            }
+            #logo {
+              border-radius: 5px;
+            }
+          textarea.css
+
+        .example
+          textarea.stylus
+            body {
+              font: 14px/1.5 Helvetica, arial, sans-serif;
+              #logo {
+                border-radius: 5px;
+              }
+            }
+          textarea.css
+
+        .example
+          textarea.stylus
+            body {
+              font: 14px/1.5 Helvetica, arial, sans-serif
+              #logo {
+                border-radius: 5px
+              }
+            }
+          textarea.css
+
+        .example
+          textarea.stylus
+            body
+              font 14px/1.5 Helvetica, arial, sans-serif
+              #logo
+                border-radius 5px
+          textarea.css
+
+        .example
+          textarea.stylus
             border-radius()
               -webkit-border-radius: arguments
               -moz-border-radius: arguments
@@ -27,4 +65,14 @@ html
                 border-radius: 5px;
               }
             }
+          textarea.css
+
+        .example
+          textarea.stylus
+            #prompt
+              position: absolute
+              top: 150px
+              left: 50%
+              width: 200px
+              margin-left: -(@width / 2)
           textarea.css

@@ -112,10 +112,11 @@ ul li {
 }
 .example {
   margin-top: 25px;
+  clear: both;
 }
 .CodeMirror {
   float: left;
-  margin: 0 30px;
+  margin: 0 10px;
 }
 .CodeMirror .CodeMirror-gutter {
   display: none;
