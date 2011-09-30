@@ -234,3 +234,22 @@ html
               foo: #cc0000 + 30deg
 
           textarea.css
+
+        .example
+          h2 Functions
+          p.
+            Stylus functions may be defined in the same manner as mixins,
+            however their usage differs as they return values. For example
+            you could define a sum function as shown below:
+
+          textarea.stylus
+            sum(nums...)
+              n = 0
+              n += num for num in nums
+
+            sum-function = sum
+ 
+            body
+              foo: sum(1, 2, 3)
+              foo: sum-function(1, 2, 3, 4, 5, 6)
+          textarea.css
