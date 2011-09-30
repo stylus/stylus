@@ -10,19 +10,17 @@
     border-radius: 5px;
   }
 }
-</textarea><textarea class="css"></textarea></div><div class="example"><textarea class="stylus">body {
-  font: 14px/1.5 Helvetica, arial, sans-serif
-  #logo {
-    border-radius: 5px
-  }
-}
-</textarea><textarea class="css"></textarea></div><div class="example"><textarea class="stylus">body
+</textarea><textarea class="css"></textarea></div><div class="example"><p>Semi-colons, colons, and braces are optional:</p><textarea class="stylus">body
   font 14px/1.5 Helvetica, arial, sans-serif
   #logo
     border-radius 5px
 
 
-</textarea><textarea class="css"></textarea></div><div class="example"><textarea class="stylus">border-radius()
+</textarea><textarea class="css"></textarea></div><div class="example"><p>Transparent mixins are a feature unique to Stylus,
+and are a incredibly powerful enhance your stylesheets. Here all the arguments
+passed are simply assigned to three properties. Stylus knows not to recursively
+invoke the border-radius() mixin.
+</p><textarea class="stylus">border-radius()
   -webkit-border-radius: arguments
   -moz-border-radius: arguments
   border-radius: arguments
@@ -33,7 +31,7 @@ body {
     border-radius: 5px;
   }
 }
-</textarea><textarea class="css"></textarea></div><div class="example"><textarea class="stylus">#prompt
+</textarea><textarea class="css"></textarea></div><div class="example"><p>Stylus property access provides easy access to values defined within the current block.</p><textarea class="stylus">#prompt
   position: absolute
   top: 150px
   left: 50%

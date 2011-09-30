@@ -37,16 +37,7 @@ html
           textarea.css
 
         .example
-          textarea.stylus
-            body {
-              font: 14px/1.5 Helvetica, arial, sans-serif
-              #logo {
-                border-radius: 5px
-              }
-            }
-          textarea.css
-
-        .example
+          p Semi-colons, colons, and braces are optional:
           textarea.stylus
             body
               font 14px/1.5 Helvetica, arial, sans-serif
@@ -55,6 +46,11 @@ html
           textarea.css
 
         .example
+          p.
+            Transparent mixins are a feature unique to Stylus,
+            and are a incredibly powerful enhance your stylesheets. Here all the arguments
+            passed are simply assigned to three properties. Stylus knows not to recursively
+            invoke the border-radius() mixin.
           textarea.stylus
             border-radius()
               -webkit-border-radius: arguments
@@ -70,6 +66,7 @@ html
           textarea.css
 
         .example
+          p Stylus property access provides easy access to values defined within the current block.
           textarea.stylus
             #prompt
               position: absolute
