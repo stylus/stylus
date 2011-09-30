@@ -32,8 +32,24 @@ html
           textarea.stylus
             body
               font 14px/1.5 Helvetica, arial, sans-serif
-              #logo
+              button
+              button.button
+              input[type='button']
+              input[type='submit']
                 border-radius 5px
+          textarea.css
+
+        .example
+          h2 Parent reference
+          p. The parent reference operator inspired by SASS is also available:
+          textarea.stylus
+            ul
+              li a
+                display: block
+                color: blue
+                padding: 5px
+                &:hover
+                  color: red
           textarea.css
 
         .example

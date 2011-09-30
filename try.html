@@ -6,8 +6,21 @@
 }
 </textarea><textarea class="css"></textarea></div><div class="example"><h2>Flexible syntax</h2><p>Semi-colons, colons, and braces are optional:</p><textarea class="stylus">body
   font 14px/1.5 Helvetica, arial, sans-serif
-  #logo
+  button
+  button.button
+  input[type='button']
+  input[type='submit']
     border-radius 5px
+
+
+</textarea><textarea class="css"></textarea></div><div class="example"><h2>Parent reference</h2><p>. The parent reference operator inspired by SASS is also available:</p><textarea class="stylus">ul
+  li a
+    display: block
+    color: blue
+    padding: 5px
+    &:hover
+      color: red
+
 
 
 </textarea><textarea class="css"></textarea></div><div class="example"><h2>Mixins</h2><p>Stylus mixins allow you to define reusable
