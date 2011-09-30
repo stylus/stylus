@@ -50,4 +50,76 @@
 
   }
 </code></pre>
+
+<h2>Expansion</h2>
+
+<p> By utilizing <code>@keyframes</code> your rules are automatically expanded to the vendor prefixes defined by the <code>vendors</code> variable, defaulting to <code>webkit moz official</code>. This means we can alter it at any time for the expansion to take effect immediately. For example consider the following</p>
+
+<pre><code>@keyframes foo {
+  from {
+    color: black
+  }
+  to {
+    color: white
+  }
+}
+</code></pre>
+
+<p>expands to our two default vendors and the official syntax:</p>
+
+<pre><code>@-moz-keyframes foo {
+  0% {
+    color: #000;
+  }
+
+  100% {
+    color: #fff;
+  }
+}
+@-webkit-keyframes foo {
+  0% {
+    color: #000;
+  }
+
+  100% {
+    color: #fff;
+  }
+}
+@keyframes foo {
+  0% {
+    color: #000;
+  }
+
+  100% {
+    color: #fff;
+  }
+}
+</code></pre>
+
+<p>if we wanted to limit to the official syntax only, simply alter <code>vendors</code>:</p>
+
+<pre><code>vendors = official
+
+@keyframes foo {
+  from {
+    color: black
+  }
+  to {
+    color: white
+  }
+}
+</code></pre>
+
+<p>yielding:</p>
+
+<pre><code>@keyframes foo {
+  0% {
+    color: #000;
+  }
+
+  100% {
+    color: #fff;
+  }
+}
+</code></pre>
 </div></div></body></html>

@@ -38,4 +38,49 @@ body {
   font: $font sans-serif;
 }
 </code></pre>
+
+<h2>Property Access</h2>
+
+<p> Another cool feature unique to Stylus is the ability to reference
+ properties defined in the current block (or target mixin) <em>without</em> assigning their
+ values to variables. A great example of this is the logic required
+ for vertically and horizontally center an element, which is typically
+ done by using percentages and negative margins as shown:</p>
+
+<pre><code> #logo
+   position: absolute
+   top: 50%
+   left: 50%
+   width: w = 150px
+   height: h = 80px
+   margin-left: -(w / 2)
+   margin-top: -(h / 2)
+</code></pre>
+
+<p>  Instead of assigning the variables <code>w</code> and <code>h</code> we can simply prepend the <code>@</code>
+  character to the property name to access the value:</p>
+
+<pre><code> #logo
+   position: absolute
+   top: 50%
+   left: 50%
+   width: 150px
+   height: 80px
+   margin-left: -(@width / 2)
+   margin-top: -(@height / 2)
+</code></pre>
+
+<p>  Another extremely useful use-case is conditionally defining properties based on the existence of others within mixins. In the following example we apply a default <code>z-index</code> of <code>1</code>, but <em>only</em> if <code>z-index</code> was not previously specified.</p>
+
+<pre><code>  position()
+    position: arguments
+    z-index: 1 unless @z-index
+
+  #logo
+    z-index: 20
+    position: absolute
+
+  #logo2
+    position: absolute
+</code></pre>
 </div></div></body></html>
