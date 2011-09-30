@@ -1,23 +1,31 @@
-<!DOCTYPE html><html><head><title>Stylus</title><link rel="stylesheet" href="try.css"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><link rel="stylesheet" href="codemirror.css"><script src="jquery.js"></script><script src="stylus.js"></script><script src="codemirror.js"></script><script src="css-mode.js"></script><script src="try.js"></script></head><body><div id="container"><h1><a href="http://learnboost.github.com/stylus">Stylus</a></h1><p class="tagline"><em class="expressive">Expressive, </em><em class="dynamic">dynamic, </em><em class="robust">robust </em><em class="css">CSS</em></p><div id="ribbon"><a href="http://github.com/learnboost/stylus">Fork me on GitHub</a></div><div id="content"><div class="example"><p>Stylus supports regular CSS syntax:</p><textarea class="stylus">body {
-  font: 14px/1.5 Helvetica, arial, sans-serif;
-}
-#logo {
-  border-radius: 5px;
-}
-</textarea><textarea class="css"></textarea></div><div class="example"><p>Selector nesting enables you to keep your styles DRY:</p><textarea class="stylus">body {
+<!DOCTYPE html><html><head><title>Stylus</title><link rel="stylesheet" href="try.css"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><link rel="stylesheet" href="codemirror.css"><script src="jquery.js"></script><script src="stylus.js"></script><script src="codemirror.js"></script><script src="css-mode.js"></script><script src="try.js"></script></head><body><div id="container"><h1><a href="http://learnboost.github.com/stylus">Stylus</a></h1><p class="tagline"><em class="expressive">Expressive, </em><em class="dynamic">dynamic, </em><em class="robust">robust </em><em class="css">CSS</em></p><div id="ribbon"><a href="http://github.com/learnboost/stylus">Fork me on GitHub</a></div><div id="content"><div class="example"><h2>Nesting</h2><p>Selector nesting enables you to keep your styles DRY:</p><textarea class="stylus">body {
   font: 14px/1.5 Helvetica, arial, sans-serif;
   #logo {
     border-radius: 5px;
   }
 }
-</textarea><textarea class="css"></textarea></div><div class="example"><p>Semi-colons, colons, and braces are optional:</p><textarea class="stylus">body
+</textarea><textarea class="css"></textarea></div><div class="example"><h2>Flexible syntax</h2><p>Semi-colons, colons, and braces are optional:</p><textarea class="stylus">body
   font 14px/1.5 Helvetica, arial, sans-serif
   #logo
     border-radius 5px
 
 
-</textarea><textarea class="css"></textarea></div><div class="example"><p>Transparent mixins are a feature unique to Stylus,
-and are a incredibly powerful enhance your stylesheets. Here all the arguments
+</textarea><textarea class="css"></textarea></div><div class="example"><h2>Mixins</h2><p>Stylus mixins allow you to define reusable
+functionality by defining in-language functions
+which can be called from within blocks:
+</p><textarea class="stylus">border-radius(val)
+  -webkit-border-radius: val
+  -moz-border-radius: val
+  border-radius: val
+
+body {
+  font: 14px/1.5 Helvetica, arial, sans-serif;
+  #logo {
+    border-radius(5px);
+  }
+}
+</textarea><textarea class="css"></textarea></div><div class="example"><h2>Transparent mixins</h2><p>Transparent mixins are unique to Stylus,
+and are a incredibly powerful way enhance your stylesheets. Here all the arguments
 passed are simply assigned to three properties. Stylus knows not to recursively
 invoke the border-radius() mixin.
 </p><textarea class="stylus">border-radius()
@@ -28,7 +36,7 @@ invoke the border-radius() mixin.
 body {
   font: 14px/1.5 Helvetica, arial, sans-serif;
   #logo {
-    border-radius: 5px;
+    border-radius: 5px 10px;
   }
 }
 </textarea><textarea class="css"></textarea></div><div class="example"><p>Stylus property access provides easy access to values defined within the current block.</p><textarea class="stylus">#prompt
