@@ -1,6 +1,6 @@
 # Stylus
 
- Stylus is a revolutionary new language, providing an efficient, dynamic, and expressive way to generate CSS.
+ Stylus is a revolutionary new language, providing an efficient, dynamic, and expressive way to generate CSS. Supporting both an indented syntax and regular CSS style.
 
 ## Installation
 
@@ -12,19 +12,19 @@ $ npm install stylus
 
 ```
 border-radius()
-  -webkit-border-radius arguments
-  -moz-border-radius arguments
-  border-radius arguments
+  -webkit-border-radius: arguments
+  -moz-border-radius: arguments
+  border-radius: arguments
 
 body a
-  font 12px/1.4 "Lucida Grande", Arial, sans-serif
-  background black
-  color #ccc
+  font: 12px/1.4 "Lucida Grande", Arial, sans-serif
+  background: black
+  color: #ccc
 
 form input
-  padding 5px
-  border 1px solid
-  border-radius 5px
+  padding: 5px
+  border: 1px solid
+  border-radius: 5px
 ```
 
 compiles to:
@@ -40,6 +40,28 @@ form input {
   border: 1px solid;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+```
+
+the following is equivalent to the indented version of Stylus source, using the CSS syntax instead:
+
+```
+border-radius() {
+  -webkit-border-radius: arguments
+  -moz-border-radius: arguments
+  border-radius: arguments
+}
+
+body a {
+  font: 12px/1.4 "Lucida Grande", Arial, sans-serif;
+  background: black;
+  color: #ccc;
+}
+
+form input {
+  padding: 5px;
+  border: 1px solid;
   border-radius: 5px;
 }
 ```
