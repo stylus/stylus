@@ -54,12 +54,6 @@ inset()
   border-radius 5px
   box-shadow rgba(dark-gray, 0.1) -1px -1px
 
-html
-  dark = #dadada
-  background dark
-  background -moz-linear-gradient(-90deg, #fff, dark) fixed
-  background -webkit-gradient(linear, left top, left bottom, from(#fff), to(dark)) fixed
-
 body
   padding 120px 50px
   font small/1.4 'helvetica neue', helvetica, arial, sans-serif
@@ -75,6 +69,7 @@ h3
       text-decoration none
 
 h1
+  display none
   margin 10px 0 15px 0
   font-weight bold
   font-size large
@@ -102,6 +97,7 @@ ul
     list-style square
 
 .tagline
+  display none
   margin 0
   padding 0
   em
@@ -119,8 +115,9 @@ ul
   text-align center
   #content
     margin 0 auto
-    padding-top 40px
-    width 90%
+    padding-top 30px
+    padding-left 30px
+    width 70%
     text-align left
 
 #menu

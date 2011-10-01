@@ -1,0 +1,15 @@
+.step
+  h2 Mixins
+  p.
+    Stylus <a href="docs/mixins.html">mixins</a> allow you to define reusable
+    functionality by defining in-language functions
+    which can be called from within blocks:
+  textarea.stylus
+    border-radius(val)
+      -webkit-border-radius: val
+      -moz-border-radius: val
+      border-radius: val
+
+    button {
+      border-radius(5px);
+    }

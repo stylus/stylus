@@ -1,10 +1,21 @@
-<!DOCTYPE html><html><head><title>Stylus</title><link rel="stylesheet" href="try.css"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><link rel="stylesheet" href="codemirror.css"><script src="jquery.js"></script><script src="stylus.js"></script><script src="codemirror.js"></script><script src="css-mode.js"></script><script src="try.js"></script></head><body><div id="container"><h1><a href="http://learnboost.github.com/stylus">Stylus</a></h1><p class="tagline"><em class="expressive">Expressive, </em><em class="dynamic">dynamic, </em><em class="robust">robust </em><em class="css">CSS</em></p><div id="ribbon"><a href="http://github.com/learnboost/stylus">Fork me on GitHub</a></div><div id="content"><div class="example"><h2>Nesting</h2><p>Selector nesting enables you to keep your styles DRY:</p><textarea class="stylus">body {
+<!DOCTYPE html><html><head><title>Stylus</title><link rel="stylesheet" href="try.css"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><link rel="stylesheet" href="codemirror.css"><script src="jquery.js"></script><script src="stylus.js"></script><script src="codemirror.js"></script><script src="css-mode.js"></script><script src="try.js"></script></head><body><div id="container"><h1><a href="http://learnboost.github.com/stylus">Stylus</a></h1><p class="tagline"><em class="expressive">Expressive, </em><em class="dynamic">dynamic, </em><em class="robust">robust </em><em class="css">CSS</em></p><div id="ribbon"><a href="http://learnboost.github.com/stylus">View Documentation</a></div><div id="content"><div id="try"><h2>Title</h2><p>Description</p><textarea class="stylus"></textarea><textarea class="css"></textarea><p class="clearfix buttons"><a id="prev" href="#" class="minimal">prev</a><a id="next" href="#" class="minimal">next</a></p></div><div class="step"><h2>Try Stylus!</h2><p>Stylus is an innovative stylesheet language that compiles
+down to CSS. Inspired by SASS, Stylus is built with node.js and capable
+of running in the browser as this interactive tutorial illustrates.
+Edit the Stylus source on the left to see the resulting changes
+appear to the CSS on the right.
+</p><textarea class="stylus">body {
   font: 14px/1.5 Helvetica, arial, sans-serif;
   #logo {
     border-radius: 5px;
   }
 }
-</textarea><textarea class="css"></textarea></div><div class="example"><h2>Flexible syntax</h2><p>Semi-colons, colons, and braces are optional:</p><textarea class="stylus">body
+</textarea><textarea class="css"></textarea></div><div class="step"><h2>Nesting</h2><p>Selector nesting enables you to keep your styles DRY:</p><textarea class="stylus">body {
+  font: 14px/1.5 Helvetica, arial, sans-serif;
+  #logo {
+    border-radius: 5px;
+  }
+}
+</textarea><textarea class="css"></textarea></div><div class="step"><h2>Flexible syntax</h2><p>Semi-colons, colons, and braces are optional:</p><textarea class="stylus">body
   font 14px/1.5 Helvetica, arial, sans-serif
   button
   button.button
@@ -13,17 +24,19 @@
     border-radius 5px
 
 
-</textarea><textarea class="css"></textarea></div><div class="example"><h2>Parent reference</h2><p>The parent reference operator inspired by SASS is also available:</p><textarea class="stylus">ul
+</textarea><textarea class="css"></textarea></div><div class="step"><h2>Parent reference</h2><p>The parent reference operator inspired by SASS is also available:</p><textarea class="stylus">ul
   li a
     display: block
     color: blue
     padding: 5px
+    html.ie &
+      padding: 6px
     &:hover
       color: red
 
 
 
-</textarea><textarea class="css"></textarea></div><div class="example"><h2>Mixins</h2><p>Stylus mixins allow you to define reusable
+</textarea><textarea class="css"></textarea></div><div class="step"><h2>Mixins</h2><p>Stylus <a href="docs/mixins.html">mixins</a> allow you to define reusable
 functionality by defining in-language functions
 which can be called from within blocks:
 </p><textarea class="stylus">border-radius(val)
@@ -31,27 +44,23 @@ which can be called from within blocks:
   -moz-border-radius: val
   border-radius: val
 
-body {
-  font: 14px/1.5 Helvetica, arial, sans-serif;
-  #logo {
-    border-radius(5px);
-  }
+button {
+  border-radius(5px);
 }
-</textarea><textarea class="css"></textarea></div><div class="example"><h2>Transparent mixins</h2><p>Transparent mixins are unique to Stylus,
+</textarea></div><div class="step"><h2>Transparent mixins</h2><p>Transparent mixins are unique to Stylus,
 and are a incredibly powerful way enhance your stylesheets. Here all the arguments
-passed are simply assigned to three properties.
+passed are simply assigned to three properties. Note that parenthesis
+are not required, making it easy to provide cross-browser support
+to properties like opacity, border-radius, and even gradients.
 </p><textarea class="stylus">border-radius()
   -webkit-border-radius: arguments
   -moz-border-radius: arguments
   border-radius: arguments
 
-body {
-  font: 14px/1.5 Helvetica, arial, sans-serif;
-  #logo {
-    border-radius: 5px 10px;
-  }
+button {
+  border-radius: 5px 10px;
 }
-</textarea><textarea class="css"></textarea></div><div class="example"><h2>Variables</h2><p>Stylus variables behave as you would expect in any other language,
+</textarea></div><div class="step"><h2>Variables</h2><p>Stylus variables behave as you would expect in any other language,
 and may optionally be prefixed by the "$" character:
 </p><textarea class="stylus">#prompt
   position: absolute
@@ -60,8 +69,9 @@ and may optionally be prefixed by the "$" character:
   width: w = 200px
   margin-left: -(w / 2)
 
-</textarea><textarea class="css"></textarea></div><div class="example"><h2>Block property access</h2><p>Stylus property access provides easy access to values
-defined within the current block.
+</textarea></div><div class="step"><h2>Block property access</h2><p>Stylus property access provides easy access to values
+defined within the current block. Simply prefix the name
+of the property with "@" to reference the value.
 </p><textarea class="stylus">#prompt
   position: absolute
   top: 150px
@@ -69,7 +79,7 @@ defined within the current block.
   width: 200px
   margin-left: -(@width / 2)
 
-</textarea><textarea class="css"></textarea></div><div class="example"><h2>Robust full-featured language</h2><p>Stylus is not just a pre-processor,
+</textarea></div><div class="step"><h2>Robust feature-rich language</h2><p>Stylus is not just a pre-processor,
 it's is a flexible and powerful language. Combined with
 the concept of transparent mixins you can create robust
 cross-browser support, or simply making your life easier
@@ -94,14 +104,14 @@ fixed()
 #logo
   fixed: top left
 
-</textarea><textarea class="css"></textarea></div><div class="example"><h2>Iteration</h2><p>List iteration with Stylus is simple:</p><textarea class="stylus">table
+</textarea></div><div class="step"><h2>Iteration</h2><p>List <a href="docs/iteration.html">iteration</a> with Stylus is simple:</p><textarea class="stylus">table
   for row in 1 2 3 4 5
     tr:nth-child({row})
       height: 10px * row
 
 
 
-</textarea><textarea class="css"></textarea></div><div class="example"><h2>Interpolation</h2><p>Interpolation combined with other powerful features
+</textarea><textarea class="css"></textarea></div><div class="step"><h2>Interpolation</h2><p>Interpolation combined with other powerful features
 allow you to mold properties and selectors all within
 the language itself.
 
@@ -118,7 +128,7 @@ border-radius()
 #content
   border-radius: 5px
 
-</textarea><textarea class="css"></textarea></div><div class="example"><h2>Operators</h2><p>Stylus supports all the <a href="docs/operators.html">operators</a>
+</textarea></div><div class="step"><h2>Operators</h2><p>Stylus supports all the <a href="docs/operators.html">operators</a>
 you've come to expect from a language, as well as some specific to Stylus.
 
 </p><textarea class="stylus">body
@@ -138,18 +148,26 @@ you've come to expect from a language, as well as some specific to Stylus.
   foo: ((one 1) (two 2))[0]
   foo: 3 in (1 2 3 4)
 
-
-</textarea><textarea class="css"></textarea><p>Type coercion is performed when appropriate:
-
+</textarea></div><div class="step"><h2>Type coercion</h2><p>Stylus performs type coercion when appropriate, and
+supports all of the unit types you've come to know and love.
 </p><textarea class="stylus">body
   foo: foo + bar
   foo: 'foo ' + bar
   foo: 'foo ' + 'bar'
   foo: 'foo ' + 5px
   foo: 2s - 500ms
+  foo: 5000ms == 5s
+  foo: 50deg
 
+</textarea></div><div class="step"><h2>The sprintf operator</h2><p>The powerful "%" operator when used with strings
+behaves like sprintf, which each argument compiled
+through the stylus compiler, producing a literal value.
+</p><textarea class="stylus">body
+  foo: '%s / %s' % (5px 10px)
+  foo: 'MS:WeirdStuff(opacity=%s)' % 1
+  foo: unquote('MS:WeirdStuff(opacity=1)')
 
-</textarea><textarea class="css"></textarea><p>Operations against colors are especially useful.
+</textarea></div><div class="step"><h2>Color operations</h2><p>Operations against colors are especially useful.
 When adding or subtracting by a percentage the
 color lightness may be adjusted, or adjust the
 hue with <em>deg</em>:
@@ -161,8 +179,7 @@ hue with <em>deg</em>:
   foo: #eee - rgba(black,.5)
   foo: #cc0000 + 30deg
 
-
-</textarea><textarea class="css"></textarea></div><div class="example"><h2>Functions</h2><p>Stylus functions may be defined in the same manner as mixins,
+</textarea></div><div class="step"><h2>Functions</h2><p>Stylus functions may be defined in the same manner as mixins,
 however their usage differs as they return values. For example
 you could define a sum function as shown below:
 
@@ -173,7 +190,7 @@ you could define a sum function as shown below:
 body
   foo: sum(1, 2, 3)
 
-</textarea><textarea class="css"></textarea></div><div class="example"><h2>Keyword arguments</h2><p>Keyword arguments are also supported to make
+</textarea></div><div class="step"><h2>Keyword arguments</h2><p>Keyword arguments are also supported to make
 function invocation more expressive, also allowing
 you to disregard argument ordering.
 
@@ -189,4 +206,30 @@ body
   foo: fade-out(amount: 50%, #eee)
   foo: fade-out(amount: 50%, color: #eee)
 
-</textarea><textarea class="css"></textarea></div></div></div></body></html>
+</textarea></div><div class="step"><h2>Built-in functions</h2><p>Stylus is packed with over 40 built-in functions for manipulating colors,
+checking variable types, math, list operations, and more, many of which
+are defined in the Stylus language itself.
+</p><textarea class="stylus">body
+  foo: red(#fc0)
+  foo: green(#fc0)
+  foo: blue(#fc0)
+  foo: alpha(#fff)
+  foo: alpha(rgba(#fff, .5))
+
+</textarea></div><div class="step"><h2>Color BIFs</h2><p>The Color built-in functions allow you adjust lightness, hue, and saturation,
+check if colors are light or dark and more.
+</p><textarea class="stylus">body
+  foo: light(#eee)
+  foo: dark(#eee)
+  foo: dark(#333)
+  foo: darken(#eee, 50%)
+  foo: lighten(black, 50%)
+  foo: #eee - 50%
+  foo: black + 50%
+
+</textarea></div><div class="step"><h2>End</h2><p>That's it for now! to view the rest of the powerful features
+Stylus provides click "View Documentation" in the corner.
+</p><textarea class="stylus">come-back later
+  to-see: more unquote(':)')
+
+</textarea></div></div></div></body></html>

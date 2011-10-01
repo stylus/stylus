@@ -1,0 +1,11 @@
+.step
+  h2 The sprintf operator
+  p.
+    The powerful "%" operator when used with strings
+    behaves like sprintf, which each argument compiled
+    through the stylus compiler, producing a literal value.
+  textarea.stylus
+    body
+      foo: '%s / %s' % (5px 10px)
+      foo: 'MS:WeirdStuff(opacity=%s)' % 1
+      foo: unquote('MS:WeirdStuff(opacity=1)')

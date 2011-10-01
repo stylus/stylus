@@ -1,0 +1,9 @@
+.step
+  h2 Iteration
+  p List <a href="docs/iteration.html">iteration</a> with Stylus is simple:
+  textarea.stylus
+    table
+      for row in 1 2 3 4 5
+        tr:nth-child({row})
+          height: 10px * row
+  textarea.css

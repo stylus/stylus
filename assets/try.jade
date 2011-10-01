@@ -13,263 +13,37 @@ html
   body
     #container
       include top
+      #ribbon
+        a(href='http://learnboost.github.com/stylus') View Documentation
       #content
-        .example
-          h2 Nesting
-          p Selector nesting enables you to keep your styles DRY:
+        #try
+          h2 Title
+          p Description
           textarea.stylus
-            body {
-              font: 14px/1.5 Helvetica, arial, sans-serif;
-              #logo {
-                border-radius: 5px;
-              }
-            }
           textarea.css
+          p.clearfix.buttons
+            a#prev(href='#').minimal prev
+            a#next(href='#').minimal next
 
-        .example
-          h2 Flexible syntax
-          p Semi-colons, colons, and braces are optional:
-          textarea.stylus
-            body
-              font 14px/1.5 Helvetica, arial, sans-serif
-              button
-              button.button
-              input[type='button']
-              input[type='submit']
-                border-radius 5px
-          textarea.css
+        include steps/intro
+        include steps/nesting
+        include steps/syntax
+        include steps/parent-reference
+        include steps/mixins
+        include steps/transparent-mixins
+        include steps/variables
+        include steps/block-properties
+        include steps/language
+        include steps/iteration
+        include steps/interpolation
+        include steps/operators
+        include steps/operators-type-coercion
+        include steps/operators-mod
+        include steps/color-operations
+        include steps/functions
+        include steps/kwargs
+        include steps/bifs-colors
+        include steps/bifs-colors-2
+        //- list, math, opposite-position, add-property
+        include steps/end
 
-        .example
-          h2 Parent reference
-          p The parent reference operator inspired by SASS is also available:
-          textarea.stylus
-            ul
-              li a
-                display: block
-                color: blue
-                padding: 5px
-                &:hover
-                  color: red
-          textarea.css
-
-        .example
-          h2 Mixins
-          p.
-            Stylus mixins allow you to define reusable
-            functionality by defining in-language functions
-            which can be called from within blocks:
-          textarea.stylus
-            border-radius(val)
-              -webkit-border-radius: val
-              -moz-border-radius: val
-              border-radius: val
-
-            body {
-              font: 14px/1.5 Helvetica, arial, sans-serif;
-              #logo {
-                border-radius(5px);
-              }
-            }
-          textarea.css
-
-        .example
-          h2 Transparent mixins
-          p.
-            Transparent mixins are unique to Stylus,
-            and are a incredibly powerful way enhance your stylesheets. Here all the arguments
-            passed are simply assigned to three properties. Note that parenthesis
-            are not required, making it easy to provide cross-browser support
-            to properties like opacity, border-radius, and even gradients.
-          textarea.stylus
-            border-radius()
-              -webkit-border-radius: arguments
-              -moz-border-radius: arguments
-              border-radius: arguments
-
-            body {
-              font: 14px/1.5 Helvetica, arial, sans-serif;
-              #logo {
-                border-radius: 5px 10px;
-              }
-            }
-          textarea.css
-
-        .example
-          h2 Variables
-          p.
-            Stylus variables behave as you would expect in any other language,
-            and may optionally be prefixed by the "$" character:
-          textarea.stylus
-            #prompt
-              position: absolute
-              top: 150px
-              left: 50%
-              width: w = 200px
-              margin-left: -(w / 2)
-          textarea.css
-
-        .example
-          h2 Block property access
-          p.
-            Stylus property access provides easy access to values
-            defined within the current block.
-          textarea.stylus
-            #prompt
-              position: absolute
-              top: 150px
-              left: 50%
-              width: 200px
-              margin-left: -(@width / 2)
-          textarea.css
-
-        .example
-          h2 Robust full-featured language
-          p.
-            Stylus is not just a pre-processor,
-            it's is a flexible and powerful language. Combined with
-            the concept of transparent mixins you can create robust
-            cross-browser support, or simply making your life easier
-            with customized CSS properties as shown below:
-          textarea.stylus
-            -pos(type, args)
-              i = 0
-              position: unquote(type)
-              {args[i]}: args[i + 1] is a 'unit' ? args[i += 1] : 0
-              {args[i += 1]}: args[i + 1] is a 'unit' ? args[i += 1] : 0
-
-            absolute()
-              -pos('absolute', arguments)
-
-            fixed()
-              -pos('fixed', arguments)
-
-            #prompt
-              absolute: top 150px left 5px
-              width: 200px
-              margin-left: -(@width / 2)
-
-            #logo
-              fixed: top left
-          textarea.css
-
-        .example
-          h2 Iteration
-          p List iteration with Stylus is simple:
-          textarea.stylus
-            table
-              for row in 1 2 3 4 5
-                tr:nth-child({row})
-                  height: 10px * row
-          textarea.css
-
-        .example
-          h2 Interpolation
-          p.
-            Interpolation combined with other powerful features
-            allow you to mold properties and selectors all within
-            the language itself.
-
-          textarea.stylus
-            vendors = webkit moz o ms official
-
-            border-radius()
-              for vendor in vendors
-                if vendor == official
-                  border-radius: arguments
-                else
-                  -{vendor}-border-radius: arguments
-            #content
-              border-radius: 5px
-          textarea.css
-
-        .example
-          h2 Operators
-          p.
-            Stylus supports all the <a href="docs/operators.html">operators</a>
-            you've come to expect from a language, as well as some specific to Stylus.
-
-          textarea.stylus
-            body
-              foo: 5px + 10
-              foo: 2 ** 8
-              foo: 5px * 2
-              foo: !!''
-              foo: foo and bar and baz
-              foo: foo or bar or baz
-              foo: 1..5
-              foo: 1...5
-              foo: 'foo' is a 'string'
-              foo: (1 2 3) == (1 2 3)
-              foo: (1 2 3) == (1 2)
-              foo: ((one 1) (two 2)) == ((one 1) (two 2)) 
-              foo: ((one 1) (two 2)) == ((one 1) (two)) 
-              foo: ((one 1) (two 2))[0]
-              foo: 3 in (1 2 3 4)
-
-          textarea.css
-        
-          p.
-            Type coercion is performed when appropriate:
-          
-          textarea.stylus
-            body
-              foo: foo + bar
-              foo: 'foo ' + bar
-              foo: 'foo ' + 'bar'
-              foo: 'foo ' + 5px
-              foo: 2s - 500ms
-
-          textarea.css
-
-          p.
-            Operations against colors are especially useful.
-            When adding or subtracting by a percentage the
-            color lightness may be adjusted, or adjust the
-            hue with <em>deg</em>:
-          
-          textarea.stylus
-            body
-              foo: white - 50%
-              foo: black + 50%
-              foo: #eee - #f00
-              foo: #eee - rgba(black,.5)
-              foo: #cc0000 + 30deg
-
-          textarea.css
-
-        .example
-          h2 Functions
-          p.
-            Stylus functions may be defined in the same manner as mixins,
-            however their usage differs as they return values. For example
-            you could define a sum function as shown below:
-
-          textarea.stylus
-            sum(nums...)
-              n = 0
-              n += num for num in nums
-
-            body
-              foo: sum(1, 2, 3)
-          textarea.css
-
-        .example
-          h2 Keyword arguments
-          p.
-            Keyword arguments are also supported to make
-            function invocation more expressive, also allowing
-            you to disregard argument ordering.
-
-          textarea.stylus
-            fade-out(color, amount = 50%)
-              amount /= 100
-              color - rgba(0,0,0,amount)
-
-            body
-              foo: fade-out(#eee)
-              foo: fade-out(#eee, 20%)
-              foo: fade-out(#eee, amount: 50%)
-              foo: fade-out(color: #eee, amount: 50%)
-              foo: fade-out(amount: 50%, #eee)
-              foo: fade-out(amount: 50%, color: #eee)
-          textarea.css

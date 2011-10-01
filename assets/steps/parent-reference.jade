@@ -1,0 +1,14 @@
+.step
+  h2 Parent reference
+  p The parent reference operator inspired by SASS is also available:
+  textarea.stylus
+    ul
+      li a
+        display: block
+        color: blue
+        padding: 5px
+        html.ie &
+          padding: 6px
+        &:hover
+          color: red
+  textarea.css

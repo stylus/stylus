@@ -1,0 +1,15 @@
+.step
+  h2 Color operations
+  p.
+    Operations against colors are especially useful.
+    When adding or subtracting by a percentage the
+    color lightness may be adjusted, or adjust the
+    hue with <em>deg</em>:
+
+  textarea.stylus
+    body
+      foo: white - 50%
+      foo: black + 50%
+      foo: #eee - #f00
+      foo: #eee - rgba(black,.5)
+      foo: #cc0000 + 30deg

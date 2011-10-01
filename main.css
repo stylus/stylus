@@ -1,12 +1,12 @@
 html {
-  background: #dadada;
-  background: -moz-linear-gradient(-90deg, #fff, #dadada) fixed;
-  background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#dadada)) fixed;
+  background: #ececec;
+  background: -moz-linear-gradient(-90deg, #fff, #ececec) fixed;
+  background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ececec)) fixed;
 }
 body {
   padding: 120px 150px;
-  font: 14px / 1.4 "helvetica neue", helvetica, arial, sans-serif;
-  color: #959595;
+  font: 14px/1.4 "helvetica neue", helvetica, arial, sans-serif;
+  color: #272727;
 }
 h1,
 h2,
@@ -63,13 +63,13 @@ ul li {
   color: #222;
 }
 .tagline em.dynamic {
-  color: #555;
+  color: #292929;
 }
 .tagline em.robust {
-  color: #888;
+  color: #303030;
 }
 .tagline em.css {
-  color: #bbb;
+  color: #363636;
 }
 #container {
   text-align: center;
@@ -103,21 +103,18 @@ ul li {
   display: block;
   width: 150px;
   padding: 1px 10px;
-  color: #7b7b7b;
+  color: #2f2f2f;
   font-size: 13px;
 }
 #menu li a:hover {
   color: #000;
   text-decoration: none;
 }
-.example {
-  margin-top: 25px;
-}
 pre {
   width: 320px;
   padding: 30px;
   color: #8d8d8d;
-  font: 12px / 1.4 monaco, "helvetica neue", helvetica;
+  font: 12px/1.4 monaco, "helvetica neue", helvetica;
   overflow-x: auto;
   background: #fff;
   -webkit-border-radius: 5px;
@@ -131,14 +128,14 @@ pre.terminal {
   width: 360px;
   padding: 10px;
   background: #2b2b2b;
-  color: #dadada;
+  color: #b7b7b7;
   -moz-box-shadow: #fff -1px -1px;
   -webkit-box-shadow: #fff -1px -1px;
   box-shadow: #fff -1px -1px;
 }
 p code {
   padding: 2px 4px;
-  color: #959595;
+  color: #2b2b2b;
   font-size: 85%;
   background: #fff;
   -webkit-border-radius: 5px;
@@ -163,7 +160,7 @@ p code {
 }
 #ribbon a {
   color: #fff;
-  border: 1px solid #f18585;
+  border: 1px solid #d61818;
   display: block;
   margin: 0.05em 0;
   padding: 0.5em 3.5em;
