@@ -23,7 +23,18 @@ function next() {
 
   ++i;
 
-  function render() {
+  function render(_, e) {
+    if (e) {
+      if (e.type != 'keyup') return;
+      switch (e.keyCode) {
+        case 37:
+        case 38:
+        case 39:
+        case 40:
+          return;
+      }
+    }
+
     var str = stylusEditor.getValue().trim();
     stylus(str)
       .render(function(err, str){
