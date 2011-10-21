@@ -1,4 +1,12 @@
 
+0.18.0 / 2011-10-21 
+==================
+
+  * Added #n support (#e -> #eeeeee). Closes #430
+  * Added #nn support (#ef -> #efefef)
+  * Added support for rgb percentages.
+  * Fixed property rendering in blocks. Closes #440
+
 0.17.0 / 2011-09-30 
 ==================
 
