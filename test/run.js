@@ -37,7 +37,8 @@ function test(test, fn) {
     var style = stylus(str)
       .set('filename', path)
       .include(__dirname + '/images')
-      .include(__dirname + '/cases/import.basic');
+      .include(__dirname + '/cases/import.basic')
+      .define('url', stylus.url());
 
     if (~test.indexOf('compress')) style.set('compress', true);
 
