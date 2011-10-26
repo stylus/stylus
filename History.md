@@ -1,4 +1,11 @@
 
+0.18.1 / 2011-10-26 
+==================
+
+  * Added "indent spaces" compiler setting. Closes #445
+  * Allow node > 0.4.x < 0.7.0
+  * Fixed: allow function execution within @imports
+
 0.18.0 / 2011-10-21 
 ==================
 
