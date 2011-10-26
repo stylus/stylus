@@ -35,13 +35,10 @@ identifiers (variable names, functions, etc) may also include the `$` character,
       font: $font sans-serif;
     }
 
-## Property Access
+## Property Lookup
 
  Another cool feature unique to Stylus is the ability to reference
- properties defined in the current block (or target mixin) _without_ assigning their
- values to variables. A great example of this is the logic required
- for vertically and horizontally center an element, which is typically
- done by using percentages and negative margins as shown:
+ properties defined _without_ assigning their values to variables. A great example of this is the logic required for vertically and horizontally center an element, which is typically done by using percentages and negative margins as shown:
 
      #logo
        position: absolute
@@ -64,7 +61,7 @@ identifiers (variable names, functions, etc) may also include the `$` character,
        margin-left: -(@width / 2)
        margin-top: -(@height / 2)
 
-  Another extremely useful use-case is conditionally defining properties based on the existence of others within mixins. In the following example we apply a default `z-index` of `1`, but _only_ if `z-index` was not previously specified.
+  Another useful use-case is conditionally defining properties based on the existence of others within mixins. In the following example we apply a default `z-index` of `1`, but _only_ if `z-index` was not previously specified.
 
       position()
         position: arguments
@@ -76,3 +73,13 @@ identifiers (variable names, functions, etc) may also include the `$` character,
 
       #logo2
         position: absolute
+
+  Property lookup will "bubble" up the stack until found, or return `null` if the property cannot be resolved. In the following example `@color` will resolve to `blue`.
+  
+      body
+        color: red
+        ul
+          li
+            color: blue
+            a
+              background-color: @color
