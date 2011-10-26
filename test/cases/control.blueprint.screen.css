@@ -111,7 +111,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: "";
+  content: '';
 }
 blockquote,
 q {
@@ -238,7 +238,7 @@ pre {
 pre,
 code,
 tt {
-  font: 1em "andale mono", "lucida console", monospace;
+  font: 1em 'andale mono', 'lucida console', monospace;
   line-height: 1.5;
 }
 li ul,

@@ -2,11 +2,11 @@ body {
   color: 204;
 }
 body {
-  font: 14px "Lucida Grande", Arial, sans-serif;
+  font: 14px 'Lucida Grande', Arial, sans-serif;
   padding: 5px;
   margin: 5px;
 }
 a {
-  font: 11px Impact, "Lucida Grande", Arial, sans-serif, serif;
+  font: 11px Impact, 'Lucida Grande', Arial, sans-serif, serif;
   border: 1px solid #fff;
 }

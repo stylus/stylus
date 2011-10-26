@@ -1,8 +1,8 @@
 body {
-  foo: "baz";
-  foo: "baz";
-  foo: "bar";
-  foo: "bar";
+  foo: 'baz';
+  foo: 'baz';
+  foo: 'bar';
+  foo: 'bar';
 }
 body {
   foo: false;

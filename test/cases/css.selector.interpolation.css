@@ -64,16 +64,16 @@ li a:active {
   background: #fff;
 }
 .col-1-0 :nth-child(1) {
-  foo: "bar";
+  foo: 'bar';
 }
 .col-1 {
-  foo: "bar";
+  foo: 'bar';
 }
 .col-2 {
-  foo: "bar";
+  foo: 'bar';
 }
 .col-3 {
-  foo: "bar";
+  foo: 'bar';
 }
 @media print {
   blockquote {

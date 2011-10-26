@@ -16,8 +16,8 @@ body {
   foo: 2 : d;
 }
 body {
-  foo: error test "test";
-  foo: error test "foo";
+  foo: error test 'test';
+  foo: error test 'foo';
 }
 body {
   foo: 0 a;

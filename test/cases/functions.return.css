@@ -3,7 +3,7 @@ body {
   foo: yes;
   foo: false;
   foo: yes;
-  foo: "a is not a unit";
+  foo: 'a is not a unit';
   foo: 2;
 }
 body {

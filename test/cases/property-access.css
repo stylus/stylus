@@ -34,15 +34,15 @@ foo {
   min-height: 100px;
 }
 body {
-  foo: "bar";
-  bar: "bar";
+  foo: 'bar';
+  bar: 'bar';
 }
 body {
-  foo: "bar";
-  bar: "bar";
+  foo: 'bar';
+  bar: 'bar';
 }
 body {
-  foo: "bar";
-  bar: "bar";
+  foo: 'bar';
+  bar: 'bar';
 }
 

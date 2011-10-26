@@ -18,7 +18,7 @@ body {
 }
 body {
   foo: error;
-  foo: "message";
+  foo: 'message';
 }
 body {
   foo: 5;
