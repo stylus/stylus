@@ -42,13 +42,10 @@ body {
 }
 </code></pre>
 
-<h2>Property Access</h2>
+<h2>Property Lookup</h2>
 
 <p> Another cool feature unique to Stylus is the ability to reference
- properties defined in the current block (or target mixin) <em>without</em> assigning their
- values to variables. A great example of this is the logic required
- for vertically and horizontally center an element, which is typically
- done by using percentages and negative margins as shown:</p>
+ properties defined <em>without</em> assigning their values to variables. A great example of this is the logic required for vertically and horizontally center an element, which is typically done by using percentages and negative margins as shown:</p>
 
 <pre><code> #logo
    position: absolute
@@ -73,7 +70,7 @@ body {
    margin-top: -(@height / 2)
 </code></pre>
 
-<p>  Another extremely useful use-case is conditionally defining properties based on the existence of others within mixins. In the following example we apply a default <code>z-index</code> of <code>1</code>, but <em>only</em> if <code>z-index</code> was not previously specified.</p>
+<p>  Another useful use-case is conditionally defining properties based on the existence of others within mixins. In the following example we apply a default <code>z-index</code> of <code>1</code>, but <em>only</em> if <code>z-index</code> was not previously specified.</p>
 
 <pre><code>  position()
     position: arguments
@@ -85,5 +82,16 @@ body {
 
   #logo2
     position: absolute
+</code></pre>
+
+<p>  Property lookup will &ldquo;bubble&rdquo; up the stack until found, or return <code>null</code> if the property cannot be resolved. In the following example <code>@color</code> will resolve to <code>blue</code>.</p>
+
+<pre><code>  body
+    color: red
+    ul
+      li
+        color: blue
+        a
+          background-color: @color
 </code></pre>
 </div></div></body></html>
