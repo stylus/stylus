@@ -165,7 +165,7 @@ Equality operators can be used to equate units, colors, strings, and even identi
     5 == 5
     // => true
     
-    10 < 5
+    10 > 5
     // => true
     
     #fff == #fff
