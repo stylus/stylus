@@ -1,23 +1,22 @@
-
 0.19.0 / 2011-10-26 
 ==================
 
-  * Added property lookup bubbling support. Closes #446
+  * Added property lookup bubbling support. Closes \#446
 
 0.18.1 / 2011-10-26 
 ==================
 
-  * Added "indent spaces" compiler setting. Closes #445
+  * Added "indent spaces" compiler setting. Closes \#445
   * Allow node > 0.4.x < 0.7.0
   * Fixed: allow function execution within @imports
 
 0.18.0 / 2011-10-21 
 ==================
 
-  * Added #n support (#e -> #eeeeee). Closes #430
+  * Added #n support (#e -> #eeeeee). Closes \#430
   * Added #nn support (#ef -> #efefef)
   * Added support for rgb percentages.
-  * Fixed property rendering in blocks. Closes #440
+  * Fixed property rendering in blocks. Closes \#440
 
 0.17.0 / 2011-09-30 
 ==================
@@ -27,20 +26,20 @@
   * Added list equality to the `==` operator
   * Added mkdir -p support to the middleware
   * Changed: `!` coerces expression not the first value
-  * Fixed Ternary boolean coercion. Closes #420
-  * Fixed __@font-face__ __@import__ regression. Closes #418
+  * Fixed Ternary boolean coercion. Closes \#420
+  * Fixed __@font-face__ __@import__ regression. Closes \#418
 
 0.16.0 / 2011-09-26 
 ==================
 
   * Added `mkdir -p` support to the middleware
-  * Added `@import url(string)` support. Closes #352
+  * Added `@import url(string)` support. Closes \#352
   * Added `fade-in()` and `fade-out()` BIFs
   * Adding prefixes for Opera and IE
-  * Fixed comments trailing __@media__. Closes #415 [guillermo]
+  * Fixed comments trailing __@media__. Closes \#415 [guillermo]
   * Fixed: Output from --help in stylus executable cut-off half way through
   * Changed: treat -/+ operations with percentages as lighten()/darken(). 
-Closes #401
+Closes \#401
 
 0.15.4 / 2011-09-14 
 ==================
@@ -51,45 +50,45 @@ Closes #401
 ==================
 
   * Added `-U, --inline` to stylus(1)
-  * Added `rem` support. Closes #395
-  * Fixed __@charset__ semi-colon. Closes #400
-  * Fixed infinite loop in `Parser#function()`. Closes #393
+  * Added `rem` support. Closes \#395
+  * Fixed __@charset__ semi-colon. Closes \#400
+  * Fixed infinite loop in `Parser#function()`. Closes \#393
 
 0.15.2 / 2011-09-06 
 ==================
 
-  * Added alias `:=` of `?=`. Closes #389
-  * Removed auto-prefixing of pseudo element selectors. Closes #385
+  * Added alias `:=` of `?=`. Closes \#389
+  * Removed auto-prefixing of pseudo element selectors. Closes \#385
   * Changed: when left-hand operand has no unit assign the right
-  * Fixed __@keyframes__ with __@import__ regression. Closes #372
-  * Fixed css __@import__ within blocks regression. Closes #388
-  * Fixed unwrapping of property args expression. Closes #379
+  * Fixed __@keyframes__ with __@import__ regression. Closes \#372
+  * Fixed css __@import__ within blocks regression. Closes \#388
+  * Fixed unwrapping of property args expression. Closes \#379
   * Fixed __@prop__ access scope issue, use closet block, not current
-  * Fixed __@font-face__. Closes #375
+  * Fixed __@font-face__. Closes \#375
 
 0.15.1 / 2011-08-18 
 ==================
 
   * Added pseudo-element vendor expansion support
-  * Added `@keyframe` expansion support. Closes #293
+  * Added `@keyframe` expansion support. Closes \#293
   * Added support for arbitrary `@-VENDOR-keyframes` support
-  * Added support for `@property` mixin property access Closes #363
+  * Added support for `@property` mixin property access Closes \#363
   * Added `/*!` support to comments to disable suppression
-  * Changed: allow uses to append `.styl` when importing. Closes #366
-  * Fixed paren matching issue. Closes #368
+  * Changed: allow uses to append `.styl` when importing. Closes \#366
+  * Fixed paren matching issue. Closes \#368
   * Fixed windows absolute path checking Added `utils.absolute(path)`
   * Fixed `Ident#clone()` with `.property` flag
-  * Fixed evaluation of expression when using @name. Closes #361
-  * Fixed `path.join()` usage in `utils.lookup()`. Closes #356
-  * Fixed space after comment regression. Closes #360
+  * Fixed evaluation of expression when using @name. Closes \#361
+  * Fixed `path.join()` usage in `utils.lookup()`. Closes \#356
+  * Fixed space after comment regression. Closes \#360
 
 0.15.0 / 2011-08-15 
 ==================
 
   * Adding `Renderer#get(option)`
-  * Added the ability to reference property values with `@<name>`. Closes #344
+  * Added the ability to reference property values with `@<name>`. Closes \#344
   * Changed comment output. css-style multi-line comments are preserved
-  * Fixed issue with bools in selectors. Closes #280
+  * Fixed issue with bools in selectors. Closes \#280
 
 0.14.0 / 2011-08-10 
 ==================
@@ -123,7 +122,7 @@ Closes #401
 0.13.6 / 2011-07-12 
 ==================
 
-  * Added `@-webkit-keyframes` support. Closes #307
+  * Added `@-webkit-keyframes` support. Closes \#307
   * Added gedit language-spec
   * Changed: optional `growl` dep for stylus(1)
   * Changed: `require("stylus")` instead of `../` for the mac app integration
@@ -145,19 +144,19 @@ Closes #401
   * Added padding for error linenos so they line up
   * Improved unary op error messages
   * Improved invalid `@keyframes` ident error msg
-  * Fixed HSLA regression for operations resulting in a bool. Closes #274
-  * Fixed `arguments` issue with excluding defaults. Closes #272
+  * Fixed HSLA regression for operations resulting in a bool. Closes \#274
+  * Fixed `arguments` issue with excluding defaults. Closes \#272
 
 0.13.2 / 2011-05-31 
 ==================
 
-  * Fixed colors after `url()` call regression. Closes #270
+  * Fixed colors after `url()` call regression. Closes \#270
 
 0.13.1 / 2011-05-30 
 ==================
 
-  * Fixed colors in `url()`. Closes #267
-  * Fixed selector without trailing comma containing selector token. Closes #260
+  * Fixed colors in `url()`. Closes \#267
+  * Fixed selector without trailing comma containing selector token. Closes \#260
 
 0.13.0 / 2011-05-17 
 ==================
@@ -168,49 +167,49 @@ Closes #401
 0.12.4 / 2011-05-12 
 ==================
 
-  * Added support for underscore in identifiers. Closes #247
-  * Fixed `@keyframe` block evaluation. Closes #252
+  * Added support for underscore in identifiers. Closes \#247
+  * Fixed `@keyframe` block evaluation. Closes \#252
 
 0.12.3 / 2011-05-08 
 ==================
 
-  * Fixed `0%` in `@keyframes` from becoming `0` when compressed. Closes #248
+  * Fixed `0%` in `@keyframes` from becoming `0` when compressed. Closes \#248
 
 0.12.2 / 2011-05-03 
 ==================
 
-  * Fixed issue with `^=` attr selector causing infinite loop. Closes #244
-  * Fixed multiple occurrences of `&` in selectors. Closes #243
+  * Fixed issue with `^=` attr selector causing infinite loop. Closes \#244
+  * Fixed multiple occurrences of `&` in selectors. Closes \#243
 
 0.12.1 / 2011-04-29 
 ==================
 
-  * Fixed spaces around line-height shorthand. Closes #228
-  * Fixed `-{foo}` interpolation support. Closes #235
+  * Fixed spaces around line-height shorthand. Closes \#228
+  * Fixed `-{foo}` interpolation support. Closes \#235
 
 0.12.0 / 2011-04-29 
 ==================
 
   * Added `*prop: val` hack support (blueprint / html boilerplate etc parse fine now)
   * Added selector interpolation support
-  * Fixed "-" within interpolation. Closes #220
+  * Fixed "-" within interpolation. Closes \#220
 
 0.11.12 / 2011-04-27 
 ==================
 
   * Added `SyntaxError` and `ParseError`
   * Removed `stylus.parse()`
-  * Fixed error reporting. Closes #44
+  * Fixed error reporting. Closes \#44
 
 0.11.11 / 2011-04-24 
 ==================
 
-  * Fixed mutation of units when using unary ops. Closes #233
+  * Fixed mutation of units when using unary ops. Closes \#233
 
 0.11.10 / 2011-04-17 
 ==================
 
-  * Fixed regression. Closes #229
+  * Fixed regression. Closes \#229
 
 0.11.9 / 2011-04-15 
 ==================
@@ -225,7 +224,7 @@ Closes #401
 0.11.7 / 2011-04-12 
 ==================
 
-  * Added `Renderer#use(fn)`. Closes #224
+  * Added `Renderer#use(fn)`. Closes \#224
   * Improved `utils.assertType()` error message; include param name
 
 0.11.6 / 2011-04-12 
@@ -253,14 +252,14 @@ Closes #401
 
   * Fixed: keyword args previously not evaluated
   * Fixed: subpixel support
-  * Fixed bug preventing combinators (and other ops) in `@media` blocks. Closes #216 [reported by jsteenkamp]
+  * Fixed bug preventing combinators (and other ops) in `@media` blocks. Closes \#216 [reported by jsteenkamp]
 
 0.11.2 / 2011-04-06 
 ==================
 
-  * Added `Renderer#include(path)`. Closes #214
-  * Fixed `@import` path resolution bug. Closes #215
-  * Fixed optional keyword arg bug. Closes #212
+  * Added `Renderer#include(path)`. Closes \#214
+  * Fixed `@import` path resolution bug. Closes \#215
+  * Fixed optional keyword arg bug. Closes \#212
 
 0.11.1 / 2011-04-01 
 ==================
@@ -286,7 +285,7 @@ Closes #401
   * Added `add-property(name, val)` 
   * Added the ability for functions to duplicate the property they are invoked within
   * Added `[]=` operator support. Ex: `fonts[1] = arial`, `nums[1..3] = 2`
-  * Added `-I, --include <path>` to stylus(1). Closes #206
+  * Added `-I, --include <path>` to stylus(1). Closes \#206
   * Added support for `50 + 25% == 75`
   * Added support for `rgba + 25%` to lighten
   * Added support for `rgba - 25%` to darken
@@ -321,7 +320,7 @@ Closes #401
 0.9.1 / 2011-03-18 
 ==================
 
-  * Fixed connect middleware `@import` support. Closes #168
+  * Fixed connect middleware `@import` support. Closes \#168
     The middleware is now smart enough to know when imports
     change, and will re-compile the target file.
 
@@ -334,10 +333,10 @@ Closes #401
   * Added link to vim syntax
   * Changed `p()` built-in to display parens
   * Changed `--compress -C` to `-c`, and `-css -c` is now `-C`
-  * Fixed: preserve rest-arg expressions. Closes #194
+  * Fixed: preserve rest-arg expressions. Closes \#194
   * Fixed `*=` in selector, ex `[class*="foo"]`
-  * Fixed `--watch` issue with growl, updated to 1.1.0. Closes #188
-  * Fixed negative floats when compressed. Closes #193 [reported by ludicco]
+  * Fixed `--watch` issue with growl, updated to 1.1.0. Closes \#188
+  * Fixed negative floats when compressed. Closes \#193 [reported by ludicco]
 
 0.8.0 / 2011-03-14 
 ==================
@@ -352,7 +351,7 @@ Closes #401
   * Added `join(delim, vals)` built-in function
   * Added `Evaluator#{currentScope,currentBlock}`
   * Added multi-line function paramter definition support
-  * Changed: `0` is falsey, `0%`, `0em`, `0px` etc truthy. Closes #160
+  * Changed: `0` is falsey, `0%`, `0em`, `0px` etc truthy. Closes \#160
   * Fixed `for` implicit __return__ value
   * Fixed `for` explicit __return__ value
   * Fixed mixin property ordering
@@ -362,10 +361,10 @@ Closes #401
 
   * Added `RGBA` node
   * Added `is a "color"` special-case, true for `HSLA` and `RGBA` nodes.
-Closes #180
+Closes \#180
   * Performance; 2.5× faster compiles due to removing use of getters in `Parser` and `Lexer` (yes, they are really slow).
   * Removed `Color` node
-  * Fixed stylus(1) `--watch` support due to dynamic `@import` support. Closes #176
+  * Fixed stylus(1) `--watch` support due to dynamic `@import` support. Closes \#176
 
 0.7.3 / 2011-03-09 
 ==================
@@ -381,7 +380,7 @@ Closes #180
   * Added `light()` / `dark()` BIFs
   * Added `compress` option for Connect middleware [disfated]
   * Changed: most built-in functions defined in stylus (`./lib/functions/index.styl`)
-  * Fixed dynamic expressions in `url()`. Closes #105
+  * Fixed dynamic expressions in `url()`. Closes \#105
 
 0.7.1 / 2011-03-07 
 ==================
@@ -405,44 +404,44 @@ Closes #180
 ==================
 
   * Added string -> unit type coercion support aka `5px + "10"` will give `15px`
-  * Added `warn` option Closes #152
+  * Added `warn` option Closes \#152
     Currently this only reports on re-definition of functions
   * Added `$` as a valid identifier character
-  * Added `mixin` local variable for function introspection capabilities. Closes #162
+  * Added `mixin` local variable for function introspection capabilities. Closes \#162
   * Fixed typo: `Unit#toBoolean()` is now correct
-  * Fixed interpolation function calls. Closes #156
-  * Fixed mixins within Media node. Closes #153
-  * Fixed function call in ret val. Closes #154
+  * Fixed interpolation function calls. Closes \#156
+  * Fixed mixins within Media node. Closes \#153
+  * Fixed function call in ret val. Closes \#154
 
 0.6.5 / 2011-02-24 
 ==================
 
-  * Fixed parent ref `&` mid-selector bug. Closes #148 [reported by visnu]
+  * Fixed parent ref `&` mid-selector bug. Closes \#148 [reported by visnu]
 
 0.6.4 / 2011-02-24 
 ==================
 
-  * Fixed `for` within brackets. Closes #146
+  * Fixed `for` within brackets. Closes \#146
 
 0.6.3 / 2011-02-22 
 ==================
 
-  * Fixed single-ident selectors. Closes #142
-  * Fixed cyclic `@import` with file of the same name. Closes #143
+  * Fixed single-ident selectors. Closes \#142
+  * Fixed cyclic `@import` with file of the same name. Closes \#143
 
 0.6.2 / 2011-02-21 
 ==================
 
   * Added stylus(1) growl support when using `--watch`
-  * Added `@import` watching support to stylus(1). Closes #134
+  * Added `@import` watching support to stylus(1). Closes \#134
   * Changed: stylus(1) only throws when `--watch` is not used
   * Fixed `darken-by()` BIF
-  * Fixed `@import` literal semi-colon. Closes #140
+  * Fixed `@import` literal semi-colon. Closes \#140
 
 0.6.1 / 2011-02-18 
 ==================
 
-  * Fixed evaluation of nodes after a return. Closes #139
+  * Fixed evaluation of nodes after a return. Closes \#139
 
 0.6.0 / 2011-02-18 
 ==================
@@ -452,7 +451,7 @@ Closes #180
     you may now either `$ stylus --css foo.css` or provide
     a destination path `$ stylus --css foo.css /tmp/out.styl`.
 
-  * Added postfix conditionals. Closes #74
+  * Added postfix conditionals. Closes \#74
     Expressive ruby-ish syntax, ex: `padding 5px if allow-padding`.
 
 0.5.3 / 2011-02-17 
@@ -460,19 +459,19 @@ Closes #180
 
   * Added `in` operator. `3 in nums`, `padding in props` etc
   * Added `Expression#hash`, hashing all of the nodes in order
-  * Added tests for conditionals with braces. Closes #136
-  * Fixed ids that are also valid colors. Closes #137
+  * Added tests for conditionals with braces. Closes \#136
+  * Fixed ids that are also valid colors. Closes \#137
 
 0.5.2 / 2011-02-15 
 ==================
 
-  * Fixed spaces after `}` with css-style. Closes #131
-  * Fixed single-line css-style support. Closes #130
+  * Fixed spaces after `}` with css-style. Closes \#131
+  * Fixed single-line css-style support. Closes \#130
 
 0.5.1 / 2011-02-11 
 ==================
 
-  * Fixed mixin property ordering. Closes #125
+  * Fixed mixin property ordering. Closes \#125
 
 0.5.0 / 2011-02-09 
 ==================
@@ -484,7 +483,7 @@ Closes #180
 ==================
 
   * Added support for function definition braces
-  * Fixed issue with invalid color output. Closes #127
+  * Fixed issue with invalid color output. Closes \#127
 
 0.4.0 / 2011-02-07 
 ==================
@@ -495,20 +494,20 @@ Closes #180
 0.3.1 / 2011-02-04 
 ==================
 
-  * Fixed property disambiguation logic. Closes #117
+  * Fixed property disambiguation logic. Closes \#117
     You no longer need to add a trailing comma when
     chaining selectors such as `td:nth-child(2)\ntd:nth-child(3)`
 
 0.3.0 / 2011-02-04 
 ==================
 
-  * Added more assignment operators. Closes #77
+  * Added more assignment operators. Closes \#77
     `+=`, `-=`, `*=`, `/=`, and `%=`
 
 0.2.1 / 2011-02-02 
 ==================
 
-  * Fixed `--compress` when passing files for stylus(1). Closes #115
+  * Fixed `--compress` when passing files for stylus(1). Closes \#115
   * Fixed bug preventing absolute paths from being passed to `@import`
   * Fixed `opposite-position()` with nested expressions, unwrapping
   * Fixed a couple global var leaks [aheckmann]
@@ -520,7 +519,7 @@ Closes #180
     This means that `{ paths: [] }` is optional now, as lookups
     will be relative to the file being rendered by default.
 
-  * Added `-w, --watch` support to stylus(1). Closes #113
+  * Added `-w, --watch` support to stylus(1). Closes \#113
 
 0.1.0 / 2011-02-01 
 ==================
@@ -536,7 +535,7 @@ Closes #180
 0.0.2 / 2011-01-31 
 ==================
 
-  * Added optional property colon support. Closes #110
+  * Added optional property colon support. Closes \#110
   * Added `--version` to stylus(1) 
 
 0.0.1 / 2011-01-31 
