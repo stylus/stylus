@@ -1,0 +1,19 @@
+body {
+  foo: 'null';
+  foo: 'null';
+  foo: '-null';
+  foo: '--null';
+  foo: '---null';
+}
+body ul li {
+  color: #00f;
+  color: #f00;
+}
+body ul li a {
+  color: #00f;
+}
+body {
+  foo: true;
+  bar: 'test';
+  baz: 'test';
+}

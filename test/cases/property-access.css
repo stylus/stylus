@@ -16,8 +16,8 @@ no-props {
   foo: ;
 }
 foo {
-  border-color: 1px solid #ff0505;
   border: 1px solid #ff0505;
+  border-color: 1px solid #ff0505;
 }
 #logo {
   z-index: 20;
