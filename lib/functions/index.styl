@@ -118,6 +118,17 @@ fade-out(color, amount)
 fade-in(color, amount)
   color + rgba(black, amount)
 
+// spin hue by a given amount
+
+spin(color, amount)
+  h = hue(color)
+  s = saturation(color)
+  l = lightness(color)
+  a = alpha(color)
+  hue = (h + amount) % 360
+  h = hue < 0 ? 360 + hue : hue
+  hsla(h,s,l,a)
+
 // return the last value in the given expr
 
 last(expr)
