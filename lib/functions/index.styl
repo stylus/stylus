@@ -104,6 +104,16 @@ darken(color, amount)
 lighten(color, amount)
   adjust(color, 'lightness', amount)
 
+// spin hue by a given amount (taken from LESS)
+spin(color, amount)
+  h = hue(color)
+  s = saturation(color)
+  l = lightness(color)
+  a = alpha(color)
+  hue = (h + amount) % 360
+  h = hue < 0 ? 360 + hue : hue
+  return hsla(h,s,l,a)
+
 // return the last value in the given expr
 
 last(expr)
