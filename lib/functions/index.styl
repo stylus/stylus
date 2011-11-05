@@ -121,13 +121,7 @@ fade-in(color, amount)
 // spin hue by a given amount
 
 spin(color, amount)
-  h = hue(color)
-  s = saturation(color)
-  l = lightness(color)
-  a = alpha(color)
-  hue = (h + amount) % 360
-  h = hue < 0 ? 360 + hue : hue
-  hsla(h,s,l,a)
+  color + unit(amount, deg)
 
 // return the last value in the given expr
 
