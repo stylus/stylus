@@ -1,4 +1,12 @@
 
+0.19.1 / 2011-11-08 
+==================
+
+  * Added `spin()` BIF (same as `color + 50deg` etc)
+  * Removed "sys" require()s for 0.6.x
+  * Fixed sibling property lookup bug. Closes #452
+  * Fixed: retain original quote for strings
+
 0.19.0 / 2011-10-26 
 ==================
 
