@@ -1,0 +1,27 @@
+
+list = foo \
+       bar \
+       baz
+
+map = (one 1) \
+      (two 2) \
+      (three 3)
+
+body
+  foo: list
+  for val, key in map
+    {val}: key
+
+foo( \
+  a, \
+  b)
+  padding: unit(a, px) \
+           unit(b, px)
+
+button
+  foo: 1 2
+  box-shadow: \
+    0 -2px 2px red, \  
+    0 0 2px red, \
+    0 0 5px red
+  color: red
