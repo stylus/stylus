@@ -1,4 +1,11 @@
 
+0.19.3 / 2011-11-17 
+==================
+
+  * Added "include css" setting (need docs) to literally include imported css. Closes #448
+  * Added EOL escape. Related to #195
+  * Fixed tab support in lexical analysis (trailing colors etc). Closes #460
+
 0.19.2 / 2011-11-09 
 ==================
 
