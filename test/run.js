@@ -7,6 +7,10 @@ var stylus = require('../')
   , basename = require('path').basename
   , fs = require('fs');
 
+// whitespace
+
+console.log();
+
 /**
  * Test count.
  */
