@@ -11,3 +11,6 @@
   margin-top: 8cm;
   background: #fff;
 }
+@page :left {
+  margin-left: 5cm;
+}
