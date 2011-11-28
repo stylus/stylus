@@ -1,4 +1,11 @@
 
+0.19.4 / 2011-11-28 
+==================
+
+  * Fixed css-style __@page__ support
+  * Fixed __@page__ block evaluation
+  * Fixed __@font-face__ block evaluation [Suor]
+
 0.19.3 / 2011-11-17 
 ==================
 
