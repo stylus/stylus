@@ -1,4 +1,9 @@
 
+0.19.5 / 2011-11-28 
+==================
+
+  * revert noop visitor methods, this breaks extensions
+
 0.19.4 / 2011-11-28 
 ==================
 
