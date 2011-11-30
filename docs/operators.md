@@ -211,7 +211,7 @@ Aliases:
 
 ## Truthfulness
 
- Nearly everything within Stylus resolves to `true`, including units with a suffix, for example even `0%`, `0px`, etc will resolve to `true`, since commonly in Stylus a mixin or function may accept such units as valid, however `0` itself is `false` in terms of arithmetic.
+ Nearly everything within Stylus resolves to `true`, including units with a suffix, for example even `0%`, `0px`, etc will resolve to `true`, since commonly in Stylus a mixin or function may accept such units as valid, however `0` itself is `false` in terms of arithmetic. Expressions or "lists" with a length greater than 1 are considered truthy.
 
 `true` examples:
 
@@ -222,7 +222,8 @@ Aliases:
       -1px
       hey
       'hey'
-      (0px 0px 0px)
+      (0 0 0)
+      ('' '')
 
 `false` examples:
 
@@ -230,7 +231,6 @@ Aliases:
      null
      false
      ''
-     (0 0 0)
 
 ### Logical Operators: && || and or
 
