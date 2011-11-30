@@ -5,15 +5,15 @@ body {
   foo: 'bar';
 }
 body {
-  foo: false;
-  foo: false;
+  foo: true;
+  foo: true;
   foo: true;
   foo: true;
   foo: true;
 }
 body {
-  foo: false;
-  foo: false;
+  foo: true;
+  foo: true;
   foo: true;
   foo: true;
   foo: true;
