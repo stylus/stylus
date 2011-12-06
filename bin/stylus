@@ -89,6 +89,12 @@ var plugins = [];
 var urlFunction = false;
 
 /**
+ * Include css on import.
+ */
+
+var includeCSS = false;
+
+/**
  * Usage docs.
  */
 
@@ -119,6 +125,7 @@ var usage = [
   , '                            can be used by the FireStylus Firebug plugin'
   , '    -l, --line-numbers      Emits comments in the generated css'
   , '                            indicating the corresponding stylus line'
+  , '    --include-css           Include regular css on @import'
   , '    -V, --version           Display the version of stylus'
   , '    -h, --help              Display help information'
   , ''
@@ -178,6 +185,9 @@ while (args.length) {
       }
       if (!name) throw new Error('help <property> required');
       help(name);
+      break;
+    case '--include-css':
+      includeCSS = true;
       break;
     case '-i':
     case '--repl':
@@ -472,6 +482,7 @@ function compileStdio() {
   process.stdin.on('end', function(){
     // Compile to css
     var style = stylus(str, options);
+    if (includeCSS) style.set('include css', true);
     usePlugins(style);
     style.render(function(err, css){
       if (err) throw err;
@@ -509,6 +520,7 @@ function compileFile(file) {
         options.filename = file;
         options._imports = [];
         var style = stylus(str, options);
+        if (includeCSS) style.set('include css', true);
         usePlugins(style);
         style.render(function(err, css){
           watchImports(file, options._imports);
