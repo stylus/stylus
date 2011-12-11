@@ -32,7 +32,7 @@ identifiers (variable names, functions, etc) may also include the `$` character,
 
     $font-size = 14px
     body {
-      font: $font sans-serif;
+      font: $font-size sans-serif;
     }
 
 ## Property Lookup
