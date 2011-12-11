@@ -1,4 +1,10 @@
 
+0.20.0 / 2011-12-11 
+==================
+
+  * Added `--include-css` to literally include imported CSS. Closes #448
+  * Fixed coercion bug with expression. Closes #480
+
 0.19.8 / 2011-12-01 
 ==================
 
