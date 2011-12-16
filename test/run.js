@@ -24,6 +24,12 @@ var count = 0;
 var failures = 0;
 
 /**
+ * Globals.
+ */
+
+var globals = Object.keys(global);
+
+/**
  * Test the given `test`.
  *
  * @param {String} test
@@ -139,6 +145,13 @@ function largestLineIn(lines) {
  */
 
 function done() {
+  Object.keys(global).forEach(function(name){
+    if (!~globals.indexOf(name)) {
+      console.error('  \033[31mglobal leak:\033[0m %s', name);
+      ++failures;
+    }
+  });
+
   console.log();
   console.log(
       '  \033[90mcompleted\033[0m'
