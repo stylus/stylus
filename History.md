@@ -1,4 +1,11 @@
 
+0.20.1 / 2011-12-16 
+==================
+
+  * Added global leak detection to the test suite
+  * Fixed two globals
+  * Fixed operator ident regression. Closes #292
+
 0.20.0 / 2011-12-11 
 ==================
 
