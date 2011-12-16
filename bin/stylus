@@ -8,6 +8,7 @@ var fs = require('fs')
   , stylus = require('../lib/stylus')
   , basename = require('path').basename
   , dirname = require('path').dirname
+  , resolve = require('path').resolve
   , join = require('path').join;
 
 /**
@@ -607,7 +608,7 @@ function usePlugins(style) {
   plugins.forEach(function(plugin){
     var path = plugin.path;
     var options = plugin.options;
-    fn = require(path);
+    fn = require(resolve(path));
     if ('function' != typeof fn) {
       throw new Error('plugin ' + path + ' does not export a function');
     }
