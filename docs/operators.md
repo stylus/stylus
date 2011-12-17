@@ -410,6 +410,19 @@ The ternary operator works as we would expect in most languages, being the only 
     num ? unit(num, 'px') : 20px
     // => 15px
 
+## Casting
+
+ As an terse alternative to the `unit()` built-in function, the syntax `(expr) unit` may be used to force the suffix. 
+
+    body
+      n = 5
+      foo: (n)em
+      foo: (n)%
+      foo: (n + 5)%
+      foo: (n * 5)px
+      foo: unit(n + 5, '%')
+      foo: unit(5 + 180 / 2, deg)
+
 ## Color Operations
 
  Operations on colors provide a terse, expressive way to alter components. For example we can operate on each RGB:
