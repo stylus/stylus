@@ -1,0 +1,5 @@
+body {
+  foo: 4px;
+  foo: foo(4);
+  foo: 4px;
+}
