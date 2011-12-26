@@ -128,6 +128,22 @@ spin(color, amount)
 last(expr)
   expr[length(expr) - 1]
 
+// return keys in the given pairs
+
+keys(pairs)
+  ret = ()
+  for pair in pairs
+    push(ret, pair[0]);
+  ret
+
+// return values in the given pairs
+
+values(pairs)
+  ret = ()
+  for pair in pairs
+    push(ret, pair[1]);
+  ret
+
 // join values with the given delimiter
 
 join(delim, vals...)
