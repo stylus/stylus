@@ -104,6 +104,22 @@ Return the lightness of the given `color`.
  
  Aliased as `prepend()`
 
+### keys(pairs)
+
+  Return keys in the given `pairs`:
+  
+     pairs = (one 1) (two 2) (three 3)
+     keys(pairs)
+     // => one two three
+
+### values(pairs)
+
+  Return values in the given `pairs`:
+  
+     pairs = (one 1) (two 2) (three 3)
+     values(pairs)
+     // => 1 2 3
+
 ### typeof(node)
 
 Return type of `node` as a string.
