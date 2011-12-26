@@ -353,7 +353,7 @@ function repl() {
     , parser = new stylus.Parser('', options)
     , evaluator = new stylus.Evaluator(parser.parse(), options)
     , rl = require('readline')
-    , repl = rl.createInterface(process.stdin, process.stdout, true)
+    , repl = rl.createInterface(process.stdin, process.stdout, autocomplete)
     , global = evaluator.global.scope;
 
   // expose BIFs
@@ -364,9 +364,8 @@ function repl() {
   repl.prompt();
 
   // HACK: flat-list auto-complete
-  repl._tabComplete = function(){
-    var out = this.output
-      , line = this.line
+  function autocomplete(line){
+    var out = process.stdout
       , keys = Object.keys(global.locals)
       , len = keys.length
       , words = line.split(/\s+/)
@@ -384,36 +383,7 @@ function repl() {
       }
     }
 
-    // several candidates
-    if (names.length > 1) {
-      out.write('\r\n\r\n\033[90m');
-      names.forEach(function(name){
-        var node = global.lookup(name);
-        switch (node.nodeName) {
-          case 'function':
-            out.write('  - ' + node + '\r\n');
-            break;
-          default:
-            out.write('  - ' + name + '\r\n');
-        }
-      });
-      out.write('\r\n\033[0m');
-      this._refreshLine();
-    // single candidate
-    } else if (names.length) {
-      name = names.pop();
-      obj = global.lookup(name);
-      name = name.replace(word, '');
-      switch (obj.nodeName) {
-        case 'function':
-          this._insertString(name + '()');
-          this.cursor--;
-          break;
-        default:
-          this._insertString(name);
-      }
-      this._refreshLine();
-    }
+    return [names, line];
   };
 
   repl.on('line', function(line){
