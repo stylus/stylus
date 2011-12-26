@@ -372,14 +372,21 @@ function repl() {
       , word = words.pop()
       , names = []
       , name
-      , obj
+      , node
       , key;
 
     // find words that match
     for (var i = 0; i < len; ++i) {
       key = keys[i];
       if (0 == key.indexOf(word)) {
-        names.push(key);
+        node = global.lookup(key);
+        switch (node.nodeName) {
+          case 'function':
+            names.push(node.toString());
+            break;
+          default:
+            names.push(key);
+        }
       }
     }
 
