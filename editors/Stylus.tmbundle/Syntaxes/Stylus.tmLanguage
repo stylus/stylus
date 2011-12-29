@@ -113,7 +113,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>((?:!|~|\+|-|(?:\*)?\*|\/|%|(?:\.)\.\.|&lt;|&gt;|in|(?:=|:|\?|\+|-|\*|\/|%|&lt;|&gt;)?=|!=|)|(?:is(?:nt)?|not)\b)</string>
+			<string>((?:!|~|\+|-|(?:\*)?\*|\/|%|(?:\.)\.\.|&lt;|&gt;|(?:=|:|\?|\+|-|\*|\/|%|&lt;|&gt;)?=|!=)|(?:in|is(?:nt)?|not)\b)</string>
 			<key>name</key>
 			<string>keyword.operator.stylus</string>
 		</dict>
