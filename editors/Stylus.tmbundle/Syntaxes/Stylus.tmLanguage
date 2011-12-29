@@ -174,7 +174,8 @@
     <dict>
       <key>comment</key>
       <string>http://www.w3.org/TR/CSS21/syndata.html#value-def-color</string>
-      <key>match</key> <string>\b(aqua|black|blue|fuchsia|gray|green|lime|maroon|navy|olive|orange|purple|red|silver|teal|white|yellow)\b</string>
+      <key>match</key>
+      <string>\b(aqua|black|blue|fuchsia|gray|green|lime|maroon|navy|olive|orange|purple|red|silver|teal|white|yellow)\b</string>
       <key>name</key>
       <string>support.constant.color.w3c-standard-color-name.stylus</string>
     </dict>
