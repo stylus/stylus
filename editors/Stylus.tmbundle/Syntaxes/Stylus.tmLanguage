@@ -173,6 +173,11 @@
       <string>support.constant.color.w3c-standard-color-name.stylus</string>
     </dict>
     <dict>
+      <key>match</key> <string>(\b(?i:arial|century|comic|courier|garamond|georgia|helvetica|impact|lucida|symbol|system|tahoma|times|trebuchet|utopia|verdana|webdings|sans-serif|serif|monospace)\b)</string>
+      <key>name</key>
+      <string>support.constant.font-name.css</string>
+    </dict>
+    <dict>
       <key>captures</key>
       <dict>
           <key>1</key>
