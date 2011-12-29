@@ -124,12 +124,6 @@
 			<string>comment.block.js</string>
 		</dict>
 		<dict>
-			<key>match</key>
-			<string>(?:\b(\d+))|(#[a-fA-F0-9]+)</string>
-			<key>name</key>
-			<string>constant.numeric.stylus</string>
-		</dict>
-		<dict>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
@@ -172,12 +166,19 @@
       <string>constant.other.color.rgb-value.stylus</string>
     </dict>
     <dict>
+      <key>comment</key>
+      <string>http://www.w3.org/TR/CSS21/syndata.html#value-def-color</string>
+      <key>match</key> <string>\b(aqua|black|blue|fuchsia|gray|green|lime|maroon|navy|olive|orange|purple|red|silver|teal|white|yellow)\b</string>
+      <key>name</key>
+      <string>support.constant.color.w3c-standard-color-name.stylus</string>
+    </dict>
+    <dict>
       <key>captures</key>
       <dict>
           <key>1</key>
           <dict>
               <key>name</key>
-              <string>keyword.other.unit.stylus</string>
+              <string>keyword.other.unit.css</string>
           </dict>
       </dict>
       <key>match</key>
