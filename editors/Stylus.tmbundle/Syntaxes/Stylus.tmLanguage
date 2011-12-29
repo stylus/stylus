@@ -178,7 +178,7 @@
           <key>1</key>
           <dict>
               <key>name</key>
-              <string>keyword.other.unit.css</string>
+              <string>keyword.other.unit.stylus</string>
           </dict>
       </dict>
       <key>match</key>
