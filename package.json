@@ -9,7 +9,7 @@
   , "bin": { "stylus": "./bin/stylus" }
   , "scripts" : { "prepublish" : "npm prune" }
   , "dependencies": {
-      "cssom": "0.2.0"
+      "cssom": "0.2.1"
     , "growl": "1.1.0"
     , "mkdirp": "0.0.7"
   }
