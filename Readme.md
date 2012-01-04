@@ -110,6 +110,10 @@ form input {
    - [Connect](/LearnBoost/stylus/blob/master/docs/middleware.md)
    - [Ruby On Rails](https://github.com/lucasmazza/stylus_rails)
 
+### CMS Support
+
+   - [DocPad](https://github.com/bevry/docpad)
+
 ### Screencasts
 
   - [Stylus Intro](http://screenr.com/bNY)

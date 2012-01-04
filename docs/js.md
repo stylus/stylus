@@ -63,6 +63,8 @@ Defer importing of the given `path` until evaluation is performed. The example b
      .define('number', 15.5)
      .define('some-bool', true)
      .define('list', [1,2,3])
+     .define('list', [1,2,[3,4,[5,6]]])
+     .define('list', { foo: 'bar', bar: 'baz' })
      .define('families', ['Helvetica Neue', 'Helvetica', 'sans-serif'])
 
 ### .define(name, fn)

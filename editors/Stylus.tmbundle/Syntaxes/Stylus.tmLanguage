@@ -72,12 +72,32 @@
 			<string>entity.other.attribute-name.pseudo-class.stylus</string>
 		</dict>
 		<dict>
+			<key>match</key>
+			<string>\b(a|abbr|acronym|address|area|article|aside|audio|b|base|big|blockquote|body|br|button|canvas|caption|cite|code|col|colgroup|datalist|dd|del|details|dfn|dialog|div|dl|dt|em|eventsource|fieldset|figure|figcaption|footer|form|frame|frameset|(h[1-6])|head|header|hgroup|hr|html|i|iframe|img|input|ins|kbd|label|legend|li|link|map|mark|menu|meta|meter|nav|noframes|noscript|object|ol|optgroup|option|output|p|param|pre|progress|q|samp|script|section|select|small|span|strike|strong|style|sub|summary|sup|table|tbody|td|textarea|tfoot|th|thead|time|title|tr|tt|ul|var|video)\b</string>
+			<key>name</key>
+			<string>entity.name.tag.stylus</string>
+		</dict>
+    <dict>
+      <key>captures</key>
+      <dict>
+          <key>1</key>
+          <dict>
+              <key>name</key>
+              <string>punctuation.definition.constant.stylus</string>
+          </dict>
+      </dict>
+      <key>match</key>
+      <string>(#)([0-9a-fA-F]{3}|[0-9a-fA-F]{6})\b</string>
+      <key>name</key>
+      <string>constant.other.color.rgb-value.stylus</string>
+    </dict>
+		<dict>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.entity.css</string>
+					<string>punctuation.definition.entity.stylus</string>
 				</dict>
 			</dict>
 			<key>match</key>
@@ -90,6 +110,12 @@
 			<string>\b(!important|for|in|return|true|false|null|if|else|unless|return)\b</string>
 			<key>name</key>
 			<string>keyword.control.stylus</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>((?:!|~|\+|-|(?:\*)?\*|\/|%|(?:\.)\.\.|&lt;|&gt;|(?:=|:|\?|\+|-|\*|\/|%|&lt;|&gt;)?=|!=)|(?:in|is(?:nt)?|not)\b)</string>
+			<key>name</key>
+			<string>keyword.operator.stylus</string>
 		</dict>
 		<dict>
 			<key>begin</key>
@@ -124,12 +150,6 @@
 			<string>comment.block.js</string>
 		</dict>
 		<dict>
-			<key>match</key>
-			<string>(?:\b(\d+))|(#[a-fA-F0-9]+)</string>
-			<key>name</key>
-			<string>constant.numeric.stylus</string>
-		</dict>
-		<dict>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
@@ -157,6 +177,46 @@
 			<key>name</key>
 			<string>meta.function.stylus</string>
 		</dict>
+    <dict>
+      <key>comment</key>
+      <string>http://www.w3.org/TR/CSS21/syndata.html#value-def-color</string>
+      <key>match</key>
+      <string>\b(aqua|black|blue|fuchsia|gray|green|lime|maroon|navy|olive|orange|purple|red|silver|teal|white|yellow)\b</string>
+      <key>name</key>
+      <string>support.constant.color.w3c-standard-color-name.stylus</string>
+    </dict>
+    <dict>
+      <key>match</key>
+      <string>(\b(?i:arial|century|comic|courier|garamond|georgia|helvetica|impact|lucida|symbol|system|tahoma|times|trebuchet|utopia|verdana|webdings|sans-serif|serif|monospace)\b)</string>
+      <key>name</key>
+      <string>support.constant.font-name.stylus</string>
+    </dict>
+    <dict>
+      <key>captures</key>
+      <dict>
+          <key>1</key>
+          <dict>
+              <key>name</key>
+              <string>keyword.other.unit.stylus</string>
+          </dict>
+      </dict>
+      <key>match</key>
+      <string>(?x)
+          (?:-|\+)?(?:(?:[0-9]+(?:\.[0-9]+)?)|(?:\.[0-9]+))
+          ((?:px|pt|ch|cm|mm|in|r?em|ex|pc|deg|g?rad|dpi|dpcm|s)\b|%)?</string>
+      <key>name</key>
+      <string>constant.numeric.stylus</string>
+    </dict>
+    <dict>
+      <key>match</key> <string>\b(azimuth|background-attachment|background-color|background-image|background-position|background-repeat|background|box-shadow|border-radius|border-bottom-color|border-bottom-style|border-bottom-width|border-bottom|border-collapse|border-color|border-left-color|border-left-style|border-left-width|border-left|border-right-color|border-right-style|border-right-width|border-right|border-spacing|border-style|border-top-color|border-top-style|border-top-width|border-top|border-width|border|bottom|caption-side|clear|clip|color|content|counter-increment|counter-reset|cue-after|cue-before|cue|cursor|direction|display|elevation|empty-cells|float|font-family|font-size-adjust|font-size|font-stretch|font-style|font-variant|font-weight|font|height|image-rendering|left|letter-spacing|line-height|list-style-image|list-style-position|list-style-type|list-style|margin-bottom|margin-left|margin-right|margin-top|marker-offset|margin|marks|max-height|max-width|min-height|min-width|-moz-border-radius|opacity|orphans|outline-color|outline-style|outline-width|outline|overflow(-[xy])?|padding-bottom|padding-left|padding-right|padding-top|padding|page-break-after|page-break-before|page-break-inside|page|pause-after|pause-before|pause|pitch-range|pitch|play-during|pointer-events|position|quotes|resize|richness|right|size|speak-header|speak-numeral|speak-punctuation|speech-rate|speak|src|stress|table-layout|text-(align|decoration|indent|rendering|shadow|transform)|top|transition|transform|unicode-bidi|vertical-align|visibility|voice-family|volume|white-space|widows|width|word-(spacing|wrap)|zoom|z-index)\b</string>
+      <key>name</key>
+      <string>support.type.property-name.stylus</string>
+    </dict>
+    <dict>
+      <key>match</key> <string>\b(absolute|all(-scroll)?|always|armenian|auto|avoid|baseline|below|bidi-override|block|bold|bolder|both|bottom|break-all|break-word|capitalize|center|char|circle|cjk-ideographic|col-resize|collapse|crosshair|dashed|decimal-leading-zero|decimal|default|disabled|disc|distribute-all-lines|distribute-letter|distribute-space|distribute|dotted|double|e-resize|ellipsis|fixed|geometricPrecision|georgian|groove|hand|hebrew|help|hidden|hiragana-iroha|hiragana|horizontal|ideograph-alpha|ideograph-numeric|ideograph-parenthesis|ideograph-space|inactive|inherit|inline-block|inline|inset|inside|inter-ideograph|inter-word|italic|justify|katakana-iroha|katakana|keep-all|left|lighter|line-edge|line-through|line|list-item|loose|lower-alpha|lower-greek|lower-latin|lower-roman|lowercase|lr-tb|ltr|medium|middle|move|n-resize|ne-resize|newspaper|no-drop|no-repeat|nw-resize|none|normal|not-allowed|nowrap|oblique|optimize(Legibility|Quality|Speed)|outset|outside|overline|pointer|pre(-(wrap|line))?|progress|relative|repeat-x|repeat-y|repeat|right|ridge|row-resize|rtl|s-resize|scroll|se-resize|separate|small-caps|solid|square|static|strict|sub|super|sw-resize|table-footer-group|table-header-group|tb-rl|text-bottom|text-top|text|thick|thin|top|transparent|underline|upper-alpha|upper-latin|upper-roman|uppercase|vertical(-(ideographic|text))?|visible(Painted|Fill|Stroke)?|w-resize|wait|whitespace|zero|smaller|larger|((xx?-)?(small|large))|painted|fill|stroke)\b</string>
+      <key>name</key>
+      <string>support.constant.property-value.stylus</string>
+    </dict>
 	</array>
 	<key>scopeName</key>
 	<string>source.stylus</string>
