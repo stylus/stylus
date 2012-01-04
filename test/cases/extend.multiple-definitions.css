@@ -1,0 +1,11 @@
+.error,
+.serious-error {
+  font-size: bold;
+}
+.error,
+.serious-error {
+  color: #f00;
+}
+.serious-error {
+  font-size: 18px;
+}

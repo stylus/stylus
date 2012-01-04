@@ -1,0 +1,13 @@
+.message,
+.warning,
+.error {
+  margin: 5px;
+  padding: 20px;
+  font-weight: bold;
+}
+.warning {
+  color: #ff0;
+}
+.error {
+  color: #f00;
+}

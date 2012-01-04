@@ -1,0 +1,22 @@
+
+.message
+  margin: 5px
+  padding: 20px
+
+.large-message
+  font-size: 18px
+  font-weight: bold
+
+.warning
+  @extend .message
+  color: yellow
+
+.error
+  @extend .message
+  color: red
+
+.fatal-error
+  @extend .error
+  @extend .large-message
+  color: dark-red
+
