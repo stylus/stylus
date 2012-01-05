@@ -559,7 +559,7 @@ function watch(file, fn) {
   // watch the file itself
   watchers[file] = true;
   console.log('  \033[90mwatching\033[0m %s', file);
-  fs.watchFile(file, { interval: 50 }, function(curr, prev){
+  fs.watch(file, { interval: 50 }, function(curr, prev){
     if (curr.mtime > prev.mtime) fn(file);
   });
 }
