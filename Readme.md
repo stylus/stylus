@@ -79,6 +79,7 @@ form input {
   - [importing](/LearnBoost/stylus/blob/master/docs/import.md) of other stylus sheets
   - [introspection api](/LearnBoost/stylus/blob/master/docs/introspection.md)
   - type coercion
+  - [@extend](/LearnBoost/stylus/blob/master/docs/extend.md)
   - [conditionals](/LearnBoost/stylus/blob/master/docs/conditionals.md)
   - [iteration](/LearnBoost/stylus/blob/master/docs/iteration.md)
   - nested [selectors](/LearnBoost/stylus/blob/master/docs/selectors.md)
