@@ -5,8 +5,8 @@ html {
 }
 body {
   padding: 120px 150px;
-  font: 14px/1.4 "helvetica neue", helvetica, arial, sans-serif;
-  color: #272727;
+  font: 14px/1.4 'helvetica neue', helvetica, arial, sans-serif;
+  color: #434343;
 }
 h1,
 h2,
@@ -63,13 +63,13 @@ ul li {
   color: #222;
 }
 .tagline em.dynamic {
-  color: #292929;
+  color: #4e4e4e;
 }
 .tagline em.robust {
-  color: #303030;
+  color: #7a7a7a;
 }
 .tagline em.css {
-  color: #363636;
+  color: #a7a7a7;
 }
 #container {
   text-align: center;
@@ -86,11 +86,11 @@ ul li {
   right: 60px;
   margin: 0;
   padding: 15px 0 10px 5px;
-  background: rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.30);
   border: 1px solid #ddd;
-  -moz-box-shadow: inset rgba(34,34,34,0.1) 0 4px 4px;
-  -webkit-box-shadow: inset rgba(34,34,34,0.1) 0 4px 4px;
-  box-shadow: inset rgba(34,34,34,0.1) 0 4px 4px;
+  -moz-box-shadow: inset rgba(34,34,34,0.10) 0 4px 4px;
+  -webkit-box-shadow: inset rgba(34,34,34,0.10) 0 4px 4px;
+  box-shadow: inset rgba(34,34,34,0.10) 0 4px 4px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
@@ -103,7 +103,7 @@ ul li {
   display: block;
   width: 150px;
   padding: 1px 10px;
-  color: #2f2f2f;
+  color: #696969;
   font-size: 13px;
 }
 #menu li a:hover {
@@ -114,36 +114,36 @@ pre {
   width: 320px;
   padding: 30px;
   color: #8d8d8d;
-  font: 12px/1.4 monaco, "helvetica neue", helvetica;
+  font: 12px/1.4 monaco, 'helvetica neue', helvetica;
   overflow-x: auto;
   background: #fff;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  -moz-box-shadow: rgba(34,34,34,0.1) -1px -1px;
-  -webkit-box-shadow: rgba(34,34,34,0.1) -1px -1px;
-  box-shadow: rgba(34,34,34,0.1) -1px -1px;
+  -moz-box-shadow: rgba(34,34,34,0.10) -1px -1px;
+  -webkit-box-shadow: rgba(34,34,34,0.10) -1px -1px;
+  box-shadow: rgba(34,34,34,0.10) -1px -1px;
 }
 pre.terminal {
   width: 360px;
   padding: 10px;
   background: #2b2b2b;
-  color: #b7b7b7;
+  color: #afafaf;
   -moz-box-shadow: #fff -1px -1px;
   -webkit-box-shadow: #fff -1px -1px;
   box-shadow: #fff -1px -1px;
 }
 p code {
   padding: 2px 4px;
-  color: #2b2b2b;
+  color: #565656;
   font-size: 85%;
   background: #fff;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  -moz-box-shadow: rgba(34,34,34,0.1) -1px -1px;
-  -webkit-box-shadow: rgba(34,34,34,0.1) -1px -1px;
-  box-shadow: rgba(34,34,34,0.1) -1px -1px;
+  -moz-box-shadow: rgba(34,34,34,0.10) -1px -1px;
+  -webkit-box-shadow: rgba(34,34,34,0.10) -1px -1px;
+  box-shadow: rgba(34,34,34,0.10) -1px -1px;
 }
 #ribbon {
   position: absolute;
@@ -154,13 +154,13 @@ p code {
   background-color: #a00;
   padding: 1px 0;
   overflow: hidden;
-  -moz-box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-  -webkit-box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-  box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  -moz-box-shadow: 1px 1px 3px rgba(0,0,0,0.30);
+  -webkit-box-shadow: 1px 1px 3px rgba(0,0,0,0.30);
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.30);
 }
 #ribbon a {
   color: #fff;
-  border: 1px solid #d61818;
+  border: 1px solid #eb4747;
   display: block;
   margin: 0.05em 0;
   padding: 0.5em 3.5em;
