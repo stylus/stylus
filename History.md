@@ -1,4 +1,15 @@
 
+0.22.0 / 2012-01-04 
+==================
+
+  * Added `@extend`. Closes #149
+  * Added more syntax highlighting to TextMate bundle [paulmillr]
+  * Added `keys(pairs)` and `values(pairs)` BIFs
+  * Added JavaScript object coercion support
+  * Added JavaScript -> Stylus node coercion utilities
+  * Fixed `.define()`ing of functions
+  * Fixed `stylus(1)` repl for 0.6.x
+
 0.21.2 / 2011-12-22 
 ==================
 
