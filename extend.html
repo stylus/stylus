@@ -1,30 +1,84 @@
 <!DOCTYPE html><html><head><title>Stylus</title><link rel="stylesheet" href="../main.css"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head><body><div id="container"><h1><a href='http://learnboost.github.com/stylus'>Stylus</a></h1><p class="tagline"><em class="expressive">Expressive, </em><em class="dynamic">dynamic, </em><em class="robust">robust </em><em class="css">CSS</em></p><div id="ribbon"><a href="http://github.com/learnboost/stylus">Fork me on GitHub</a></div><ul id="menu"><li><a href="../docs/selectors.html">Selectors</a></li><li><a href="../docs/variables.html">Variables</a></li><li><a href="../docs/interpolation.html">Interpolation</a></li><li><a href="../docs/operators.html">Operators</a></li><li><a href="../docs/mixins.html">Mixins</a></li><li><a href="../docs/functions.html">Functions</a></li><li><a href="../docs/kwargs.html">Keyword Arguments</a></li><li><a href="../docs/bifs.html">Built-in Functions</a></li><li><a href="../docs/vargs.html">Rest Params</a></li><li><a href="../docs/comments.html">Comments</a></li><li><a href="../docs/conditionals.html">Conditionals</a></li><li><a href="../docs/iteration.html">Iteration</a></li><li><a href="../docs/import.html">@import</a></li><li><a href="../docs/media.html">@media</a></li><li><a href="../docs/font-face.html">@font-face</a></li><li><a href="../docs/keyframes.html">@keyframes</a><li><a href="../docs/extend.html">@extend</a></li><li><a href="../docs/functions.url.html">url()</a></li><li><a href="../docs/literal.html">CSS Literal</a></li><li><a href="../docs/css-style.html">CSS Style Syntax</a></li><li><a href="../docs/escape.html">Char Escaping</a></li><li><a href="../docs/executable.html">Executable</a></li><li><a href="../docs/error-reporting.html">Error Reporting</a></li><li><a href="../docs/middleware.html">Connect Middleware</a></li><li><a href="../docs/introspection.html">Introspection API</a></li><li><a href="../docs/js.html">JavaScript API</a></li>
   <li><a href="http://github.com/visionmedia/nib">CSS3 Extensions with Nib</a></li>
   <li><a href="../try.html">Try Stylus Online!</a></li>
-  </ul><div id="content"><h2>gedit language-spec</h2>
+  </ul><div id="content"><h2>Extend</h2>
 
-<p> Stylus ships with a temporary version of <code>styl.lang</code> for <a href="http://live.gnome.org/GtkSourceView">GtkSourceView</a>, based off <a href="https://github.com/yanekk">Yanekk</a>&rsquo;s <a href="https://github.com/gmate/gmate/blob/master/lang-specs/scss.lang">work</a> on <code>scss.lang</code>.</p>
+<p>  The Stylus <strong>@extend</strong> directive is inspired by, and is essentially the same as the <a href="http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#extend">SASS Implementation</a>, with few subtle differences. This feature makes maintaining semantic rulesets which inherit from others extremely simple.</p>
 
-<p> <img src="http://i.imgur.com/uBppL.png" alt="Stylus Language Specification for GtkSourceView" />)</p>
+<p>  While the use of mixins can achieve a similar effect it can to duplicate CSS. A typical pattern is to define several classes as shown below, then combine them on the element such as &ldquo;warning message&rdquo;. While this technique works just fine, it&rsquo;s difficult to maintain.</p>
 
-<p> This is a start and provides a basic <a href="http://live.gnome.org/Gedit/NewLanguage">language spec</a> for GtkSourceView editors such as <a href="http://projects.gnome.org/gedit/">gedit</a>.</p>
+<pre><code>  .message,
+  .warning {
+    padding: 10px;
+    border: 1px solid #eee;
+  }
 
-<p> <strong>Installation Steps</strong></p>
-
-<p> Download <code>styl.lang</code> to your local <code>language-specs</code> folder:</p>
-
-<pre><code>mkdir -p ~/.local/share/gtksourceview-2.0/language-specs/ &amp;&amp; wget https://raw.github.com/LearnBoost/stylus/master/editors/gedit/styl.lang -O ~/.local/share/gtksourceview-2.0/language-specs/styl.lang
+  .warning {
+    color: #E2E21E;
+  }
 </code></pre>
 
-<p> Update the mime database and enjoy Stylus syntax in gedit!</p>
+<p>  To produce this same output with <strong>@extend</strong> simply pass it the desired selector, Stylus will then append the &ldquo;.warning&rdquo; selector to the existing &ldquo;.message&rdquo; ruleset so that it inherits its properties as well.</p>
 
-<pre><code>cd ~/.local/share
-update-mime-database mime
+<pre><code>  .message {
+    padding: 10px;
+    border: 1px solid #eee;
+  }
+
+  .warning {
+    @extend .message;
+    color: #E2E21E;
+  }
 </code></pre>
 
-<p> This is much more enjoyable than having gedit recognize your <code>.styl</code> files as Apache Confs!</p>
+<p>  The following is a more complex example, showing how <strong>@extend</strong> cascades:</p>
 
-<hr />
+<pre><code>  red = #E33E1E
+  yellow = #E2E21E
 
-<p> <strong>Have a sweet tooth?</strong>  Add more icing to gedit with gedit-icing: <a href="https://github.com/niftylettuce/gedit-icing">https://github.com/niftylettuce/gedit-icing</a></p>
+  .message
+    padding: 10px
+    font: 14px Helvetica
+    border: 1px solid #eee
+
+  .warning
+    @extends .message
+    border-color: yellow
+    background: yellow + 70%
+
+  .error
+    @extends .message
+    border-color: red
+    background: red + 70%
+
+  .fatal
+    @extends .error
+    font-weight: bold
+    color: red
+</code></pre>
+
+<p>  Yielding the following CSS:</p>
+
+<pre><code>  .message,
+  .warning,
+  .error,
+  .fatal {
+    padding: 10px;
+    font: 14px Helvetica;
+    border: 1px solid #eee;
+  }
+  .warning {
+    border-color: #e2e21e;
+    background: #f6f6bc;
+  }
+  .error,
+  .fatal {
+    border-color: #e33e1e;
+    background: #f7c5bc;
+  }
+  .fatal {
+    font-weight: bold;
+    color: #e33e1e;
+  }
+</code></pre>
 </div></div></body></html>
