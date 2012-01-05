@@ -1,6 +1,7 @@
 .message,
 .warning,
-.error {
+.error,
+.fatal-error {
   margin: 5px;
   padding: 20px;
 }
