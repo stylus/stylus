@@ -81,4 +81,43 @@
     color: #e33e1e;
   }
 </code></pre>
+
+<p>  Where Stylus currently differs from SASS is that SASS will not allow you <strong>@extend</strong> nested selectors:</p>
+
+<pre><code> form
+   button
+     padding: 10px
+
+ a.button
+   @extend form button 
+ Syntax error: Can't extend form button: can't extend nested selectors
+         on line 6 of standard input
+   Use --trace for backtrace.
+</code></pre>
+
+<p>   With Stylus as long as the selectors match it&rsquo;ll work:</p>
+
+<pre><code>   form
+     input[type=text]
+       padding: 5px
+       border: 1px solid #eee
+       color: #ddd
+
+   textarea
+     @extends form input[type=text]
+     padding: 10px
+</code></pre>
+
+<p>   Would yield:</p>
+
+<pre><code>    form input[type=text],
+    form textarea {
+      padding: 5px;
+      border: 1px solid #eee;
+      color: #ddd;
+    }
+    textarea {
+      padding: 10px;
+    }
+</code></pre>
 </div></div></body></html>
