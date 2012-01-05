@@ -211,7 +211,7 @@ Aliases:
 
 ## Truthfulness
 
- Nearly everything within Stylus resolves to `true`, including units with a suffix, for example even `0%`, `0px`, etc will resolve to `true`, since commonly in Stylus a mixin or function may accept such units as valid, however `0` itself is `false` in terms of arithmetic.
+ Nearly everything within Stylus resolves to `true`, including units with a suffix, for example even `0%`, `0px`, etc will resolve to `true`, since commonly in Stylus a mixin or function may accept such units as valid, however `0` itself is `false` in terms of arithmetic. Expressions or "lists" with a length greater than 1 are considered truthy.
 
 `true` examples:
 
@@ -222,7 +222,8 @@ Aliases:
       -1px
       hey
       'hey'
-      (0px 0px 0px)
+      (0 0 0)
+      ('' '')
 
 `false` examples:
 
@@ -230,7 +231,6 @@ Aliases:
      null
      false
      ''
-     (0 0 0)
 
 ### Logical Operators: && || and or
 
@@ -409,6 +409,19 @@ The ternary operator works as we would expect in most languages, being the only 
     num = 15
     num ? unit(num, 'px') : 20px
     // => 15px
+
+## Casting
+
+ As an terse alternative to the `unit()` built-in function, the syntax `(expr) unit` may be used to force the suffix. 
+
+    body
+      n = 5
+      foo: (n)em
+      foo: (n)%
+      foo: (n + 5)%
+      foo: (n * 5)px
+      foo: unit(n + 5, '%')
+      foo: unit(5 + 180 / 2, deg)
 
 ## Color Operations
 
