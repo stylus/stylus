@@ -1,4 +1,10 @@
 
+0.22.2 / 2012-01-08 
+==================
+
+  * Added: allow newlines in place of commas for keyframes
+  * Fixed: skip comment newlines between keyframe positions. Closes #504
+
 0.22.1 / 2012-01-08 
 ==================
 
