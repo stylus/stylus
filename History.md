@@ -1,4 +1,9 @@
 
+0.22.1 / 2012-01-08 
+==================
+
+  * Fixed __@keyframes__ support for multiple values. Closes #503
+
 0.22.0 / 2012-01-04 
 ==================
 
