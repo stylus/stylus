@@ -1,6 +1,6 @@
 {   "name": "stylus"
   , "description": "Robust, expressive, and feature-rich CSS superset"
-  , "version": "0.21.2"
+  , "version": "0.22.0"
   , "author": "TJ Holowaychuk <tj@vision-media.ca>"
   , "keywords": ["css", "parser", "style", "stylesheets", "jade", "language"]
   , "repository": "git://github.com/learnboost/stylus"
@@ -9,7 +9,7 @@
   , "bin": { "stylus": "./bin/stylus" }
   , "scripts" : { "prepublish" : "npm prune" }
   , "dependencies": {
-      "cssom": "0.2.0"
+      "cssom": "0.2.1"
     , "growl": "1.1.0"
     , "mkdirp": "0.0.7"
   }
