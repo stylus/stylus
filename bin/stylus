@@ -9,7 +9,8 @@ var fs = require('fs')
   , basename = require('path').basename
   , dirname = require('path').dirname
   , resolve = require('path').resolve
-  , join = require('path').join;
+  , join = require('path').join
+  , isWindows = process.platform === 'win32';
 
 /**
  * Arguments.
@@ -559,9 +560,17 @@ function watch(file, fn) {
   // watch the file itself
   watchers[file] = true;
   console.log('  \033[90mwatching\033[0m %s', file);
-  fs.watchFile(file, { interval: 50 }, function(curr, prev){
-    if (curr.mtime > prev.mtime) fn(file);
-  });
+  // if is windows use fs.watch api instead
+  if(isWindows) {
+    fs.watch(file, function(event) {
+      if (event === 'change') fn(file);
+    });
+  }  
+  else {
+    fs.watchFile(file, { interval: 50 }, function(curr, prev) {
+      if (curr.mtime > prev.mtime) fn(file);
+    });
+  }
 }
 
 /**
