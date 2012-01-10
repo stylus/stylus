@@ -561,12 +561,12 @@ function watch(file, fn) {
   watchers[file] = true;
   console.log('  \033[90mwatching\033[0m %s', file);
   // if is windows use fs.watch api instead
-  if(isWindows) {
+  // TODO: remove watchFile when fs.watch() works on osx etc
+  if (isWindows) {
     fs.watch(file, function(event) {
       if (event === 'change') fn(file);
     });
-  }  
-  else {
+  }  else {
     fs.watchFile(file, { interval: 50 }, function(curr, prev) {
       if (curr.mtime > prev.mtime) fn(file);
     });
