@@ -566,7 +566,7 @@ function watch(file, fn) {
     fs.watch(file, function(event) {
       if (event === 'change') fn(file);
     });
-  }  else {
+  } else {
     fs.watchFile(file, { interval: 50 }, function(curr, prev) {
       if (curr.mtime > prev.mtime) fn(file);
     });
