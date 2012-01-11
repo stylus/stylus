@@ -1,6 +1,7 @@
 button,
 a.button,
-input[type=submit] {
+input[type=submit],
+.button {
   padding: 10px;
   border: 1px solid #eee;
   font-size: 12px;
