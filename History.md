@@ -1,4 +1,10 @@
 
+0.22.4 / 2012-01-11 
+==================
+
+  * Fixed __@extends__ inheritance bug. Closes #499
+  * Fixed 'lineno' global leak due to missing `new` [teppeis]
+
 0.22.3 / 2012-01-11 
 ==================
 
