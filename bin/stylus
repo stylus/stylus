@@ -550,6 +550,24 @@ function writeFile(file, css) {
  */
 
 function watch(file, fn) {
+  var watcher
+    , mtime
+    , watchCallback = function(event, filename){
+      // If the event is a rename we have to create a new watcher according to the node API
+      if (event == "rename") {
+        watcher.close();
+        watcher = fs.watch(file, { interval: 50 }, watchCallback);
+      }
+
+      // check that the file have been changed since last time
+      fs.stat(file, function(err, stat){
+        if (stat.mtime.getTime() > mtime) {
+          fn(file);
+          mtime = stat.mtime.getTime();
+        }
+      });
+    };
+
   // not watching
   if (!watchers) return;
 
@@ -558,9 +576,10 @@ function watch(file, fn) {
 
   // watch the file itself
   watchers[file] = true;
-  console.log('  \033[90mwatching\033[0m %s', file);
-  fs.watch(file, { interval: 50 }, function(curr, prev){
-    if (curr.mtime > prev.mtime) fn(file);
+  fs.stat(file, function(err, stat){
+    console.log('  \033[90mwatching\033[0m %s', file);
+    mtime = stat.mtime.getTime();
+    watcher = fs.watch(file, { interval: 50 }, watchCallback);
   });
 }
 
