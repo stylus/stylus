@@ -1,0 +1,20 @@
+
+ul
+  li
+    a
+      color: blue
+
+a.button
+input[type=submit]
+  @extends ul li a
+
+html
+  body
+    h1
+      font-size: 22px
+      color: black
+    .title
+      @extends html body h1
+    .huge-title
+      font-size: 33px
+      @extends html body .title
