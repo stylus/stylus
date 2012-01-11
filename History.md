@@ -1,4 +1,10 @@
 
+0.22.3 / 2012-01-11 
+==================
+
+  * Fixed `--watch` working on windows with a temporary hack [dciccale]
+  * Fixed __@extend__ with no properties. Closes #498
+
 0.22.2 / 2012-01-08 
 ==================
 
