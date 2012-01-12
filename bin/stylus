@@ -579,7 +579,7 @@ function watch(file, fn) {
   fs.stat(file, function(err, stat){
     console.log('  \033[90mwatching\033[0m %s', file);
     mtime = stat.mtime.getTime();
-    watcher = fs.watch(file, { interval: 50 }, watchCallback);
+    watcher = fs.watch(file, watchCallback);
   });
 }
 
