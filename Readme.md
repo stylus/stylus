@@ -104,6 +104,7 @@ form input {
   - gedit [language-spec](/LearnBoost/stylus/blob/master/docs/gedit.md)
   - VIM [Syntax](https://github.com/wavded/vim-stylus)
   - [Firebug extension](/LearnBoost/stylus/blob/master/docs/firebug.md)
+  - heroku [web service](http://styl.heroku.com) for compiling stylus
   - transparent vendor-specific function expansion
 
 ### Framework Support
