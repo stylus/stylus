@@ -556,7 +556,7 @@ function watch(file, fn) {
       // If the event is a rename we have to create a new watcher according to the node API
       if (event == "rename") {
         watcher.close();
-        watcher = fs.watch(file, { interval: 50 }, watchCallback);
+        watcher = fs.watch(file, watchCallback);
       }
 
       // check that the file have been changed since last time
