@@ -1,0 +1,25 @@
+body {
+  foo: 'bar';
+  foo: 'baz';
+  foo: 'bar' 'raz' 'raz';
+  foo: 'bar' 'baz';
+}
+body {
+  foo: 0.25em 0.35;
+  foo: 0.25em 0.35 0.5em 0.7em;
+  foo: 0.25em 0.35;
+  foo: 0.6em;
+}
+body {
+  foo: true;
+  foo: Wahoo;
+}
+body {
+  foo: Jane;
+  foo: Tobi;
+  foo: Tobi;
+  foo: Tobi;
+}
+body {
+  foo: Tobi, a 2 year old ferret;
+}

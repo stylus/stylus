@@ -1,0 +1,59 @@
+
+obj = {
+  foo: 'bar',
+  bar: 'baz',
+  baz: 'raz'
+}
+
+body
+  // foo: obj.foo.bar
+  foo: obj.foo
+  foo: obj.bar
+  foo: obj.foo obj.baz obj.baz
+  list = obj.foo obj.bar
+  foo: list
+
+sizes = {
+  small: .25em .35
+  medium: .5em .7em
+  large: 1em 1.4em
+}
+
+body
+  foo: sizes.small
+  foo: sizes.small sizes.medium
+  foo: sizes.small[0] sizes.small[1]
+  foo: sizes.small[0] + sizes.small[1]
+
+foo = {
+  bar: {
+    baz: {
+      raz: Wahoo
+    }
+  }
+}
+
+body
+  foo: foo.something == null
+  foo: foo.bar.baz.raz
+
+tobi = { name: Tobi }
+jane = { name: Jane, friend: tobi }
+user = tobi
+another = user
+
+body
+  foo: jane.name
+  foo: user.name
+  foo: another.name
+  foo: jane.friend.name
+  // foo: jane.friend.name.something
+
+body
+  tobi = { name: Tobi, age: 2 }
+  foo: tobi.name, a tobi.age year old ferret
+
+// tobi.species = Ferret
+// 
+// body
+//   foo: tobi.species
