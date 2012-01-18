@@ -53,7 +53,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(:+)\b(after|before|first-child|first-letter|first-line|selection)\b</string>
+			<string>(:+)\b(after|before|first-letter|first-line|selection)\b</string>
 			<key>name</key>
 			<string>entity.other.attribute-name.pseudo-element.stylus</string>
 		</dict>
@@ -67,7 +67,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(:)\b(active|hover|link|visited|focus)\b</string>
+			<string>(:)\b(active|hover|link|visited|focus|lang|first-child|last-child|only-child|nth-child|first-of-type|last-of-type|nth-of-type|nth-last-of-type|only-of-type|empty|target|enabled|disabled|checked|root|not)\b</string>
 			<key>name</key>
 			<string>entity.other.attribute-name.pseudo-class.stylus</string>
 		</dict>
