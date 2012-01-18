@@ -12,6 +12,34 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.comment.stylus</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(?:^[ \t]+)?(\/\/).*$\n?</string>
+			<key>name</key>
+			<string>comment.line.stylus</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.function.stylus</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>([-a-zA-Z_][-\w]*)?(\()</string>
+			<key>name</key>
+			<string>meta.function.stylus</string>
+		</dict>
+		<dict>
 			<key>match</key>
 			<string>^ *(&amp;|)</string>
 			<key>name</key>
@@ -111,9 +139,10 @@
 			<key>name</key>
 			<string>keyword.control.stylus</string>
 		</dict>
+
 		<dict>
 			<key>match</key>
-			<string>((?:!|~|\+|-|(?:\*)?\*|\/|%|(?:\.)\.\.|&lt;|&gt;|(?:=|:|\?|\+|-|\*|\/|%|&lt;|&gt;)?=|!=)|(?:in|is(?:nt)?|not)\b)</string>
+			<string>((?:!|~|\+|-|(?:\*)?\*|\/|%|(?:\.)\.\.|&lt;|&gt;|(?:=|:|\?|\+|-|\*|\/|%|&lt;|&gt;)?=|!=)|\b(?:in|is(?:nt)?|not)\b)</string>
 			<key>name</key>
 			<string>keyword.operator.stylus</string>
 		</dict>
@@ -149,34 +178,7 @@
 			<key>name</key>
 			<string>comment.block.js</string>
 		</dict>
-		<dict>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.comment.stylus</string>
-				</dict>
-			</dict>
-			<key>match</key>
-			<string>(?:^[ \t]+)?(\/\/).*$\n?</string>
-			<key>name</key>
-			<string>comment.line.stylus</string>
-		</dict>
-		<dict>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.function.stylus</string>
-				</dict>
-			</dict>
-			<key>match</key>
-			<string>([-a-zA-Z_][-\w]*)?(\()</string>
-			<key>name</key>
-			<string>meta.function.stylus</string>
-		</dict>
+		
     <dict>
       <key>comment</key>
       <string>http://www.w3.org/TR/CSS21/syndata.html#value-def-color</string>
