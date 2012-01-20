@@ -1,4 +1,9 @@
 
+0.22.5 / 2012-01-16 
+==================
+
+  * Fixed underscore in function identifier. Closes #524
+
 0.22.4 / 2012-01-11 
 ==================
 
