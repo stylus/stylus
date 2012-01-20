@@ -1,4 +1,11 @@
 
+0.22.6 / 2012-01-20 
+==================
+
+  * Fixed postfix conditional cloning. Closes #535
+  * Fixed idents prefixed with several hyphens. Closes #536
+  * Fixed up the TextMate bundle syntax [ianstormtaylor]
+
 0.22.5 / 2012-01-16 
 ==================
 
