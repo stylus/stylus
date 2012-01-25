@@ -56,7 +56,7 @@ The logical `not` operator has low precedence, therefore the following example c
     // => false
     // pased as: (!a) and (!b)
 
-with:
+With:
 
     not a or b
     // => false
@@ -66,9 +66,9 @@ with:
 
 ### Subscript []
 
- The subscript operator allows us to grab a value in an expression via index. Parenthesized expressions may act as tuples, so for example `(15px 5px)`, `(1 2 3)`.
+ The subscript operator allows us to grab a value inside an expression via index. Parenthesized expressions may act as tuples (e.g. `(15px 5px)`, `(1 2 3)`).
  
- Below is an example where we utilize tuples for error handling, showing the versatility of such a construct. As 
+ Below is an example that uses tuples for error handling (and showcasing the versatility of this construct):
  
      add(a, b)
        if a is a 'unit' and b is a 'unit'
@@ -89,7 +89,7 @@ with:
        padding add(1,'5')[1]
        // => padding: "a and b must be units";
 
- A more complex example, invoking the `error()` built-in function with the error message returned, when the ident (the first value) equals `error`.
+ Here's a more complex example. Now we're invoking the built-in `error()` function with the return error message, whenever the ident (the first value) equals `error`.
  
  
      if (val = add(1,'5'))[0] == error
@@ -107,7 +107,7 @@ with:
 
 ### Additive: + -
 
-multiplicative and additive binary operators work as expected, and type conversion is applied within unit type classes, or default to the literal value. For example if we perform `5s - 2px` we will get `3s`.
+Multiplicative and additive binary operators work as expected. Type conversion is applied within unit type classes, or default to the literal value. For example `5s - 2px` results in `3s`.
 
     15px - 5px
     // => 10px
@@ -141,15 +141,15 @@ multiplicative and additive binary operators work as expected, and type conversi
     4 % 2
     // => 0
 
-When using `/` within a property value you must wrap with parens. The following for example is taken literally, to support css line-height:
+When using `/` within a property value, you **must** wrap with parens. Otherwise the `/` is taken literally (to support CSS `line-height`):
 
     font: 14px/1.5;
 
-whereas the following is evaluated, dividing `14px` by `1.5`:
+But the following is evaluated as `14px` ÷ `1.5`:
 
     font: (14px/1.5);
 
-this exception is _only_ required for the `/` operator.
+This is _only_ required for the `/` operator.
 
 ### Exponent: **
 
@@ -160,7 +160,7 @@ The Exponent operator:
 
 ### Equality & Relational: == != >= <= > <
 
-Equality operators can be used to equate units, colors, strings, and even identifiers. This is a powerful concept, as even arbitrary identifiers such as as `wahoo` can be utilized as atoms, a function could return `yes` or `no` instead of `true` or `false` (although not advised). 
+Equality operators can be used to equate units, colors, strings, and even identifiers. This is a powerful concept, as even arbitrary identifiers (such as as `wahoo`) can be utilized as atoms. A function could return `yes` or `no` instead of `true` or `false` (although not advised). 
 
     5 == 5
     // => true
@@ -201,7 +201,7 @@ Equality operators can be used to equate units, colors, strings, and even identi
     (1 2 3) == (1 1 3)
     // => false
 
-Only exact values match, for example `0 == false`, and `null == false` are both `false`.
+Only exact values match. For example, `0 == false` and `null == false` are both `false`.
 
 Aliases:
 
@@ -211,7 +211,11 @@ Aliases:
 
 ## Truthfulness
 
- Nearly everything within Stylus resolves to `true`, including units with a suffix, for example even `0%`, `0px`, etc will resolve to `true`, since commonly in Stylus a mixin or function may accept such units as valid, however `0` itself is `false` in terms of arithmetic. Expressions or "lists" with a length greater than 1 are considered truthy.
+ Nearly everything within Stylus resolves to `true`, including units with a suffix. Even `0%`, `0px`, etc. will resolve to `true` (because it's common in Stylus for mixins or functions to accept units as valid). 
+ 
+ However, `0` itself is `false` in terms of arithmetic. 
+ 
+ Expressions (or "lists") with a length greater than 1 are considered truthy.
 
 `true` examples:
 
@@ -302,7 +306,7 @@ Example usage in mixin:
       body
         pad(padding margin, 10px)
 
-yielding:
+Yielding:
 
       body {
         padding: 5px;
@@ -317,13 +321,15 @@ yielding:
 
 ### Conditional Assignment: ?= :=
 
-The conditional assignment operator `?=` (aliased as `:=`) lets us define variables without clobbering old values (when present). This operator expands to an `is defined` binary operation within a ternary, for example the following are equivalent:
+The conditional assignment operator `?=` (aliased as `:=`) lets us define variables without clobbering old values (if present). This operator expands to an `is defined` binary operation within a ternary. 
+
+For example, the following are equivalent:
 
     color := white
     color ?= white
     color = color is defined ? color : white
 
-For example when using `=` we simply re-assign:
+When using plain `=`, we simply reassign:
 
     color = white
     color = black
@@ -331,7 +337,7 @@ For example when using `=` we simply re-assign:
     color
     // => black
 
-However when using `?=` our second attempt fails since the variable is already defined:
+But when using `?=`, our second attempt fails (since the variable is already defined):
 
     color = white
     color ?= black
@@ -352,12 +358,12 @@ Stylus provides a binary operator named `is a` used to type check.
     15 is a 'rgba'
     // => false
 
-Alternatively we could use the `type()` BIF:
+Alternatively, we could use the `type()` BIF:
 
     type(#fff) == 'rgba'
     // => true                                                                            
 
-'color' is the one special-case, evaluating to true when the
+**Note:** `color` is the only special-case, evaluating to `true` when the
 left-hand operand is an `RGBA` or `HSLA` node.
 
 ### Variable Definition: is defined
@@ -374,7 +380,7 @@ This pseudo binary operator does not accept a right-hand operator, and does _not
     #fff is defined
     // => 'invalid "is defined" check on non-variable #fff'
 
-Alternatively one can use the `lookup(name)` built-in function to do this, or to perform dynamic lookups:
+Alternatively, one can use the `lookup(name)` built-in function to do this—or to perform dynamic lookups:
 
     name = 'blue'
     lookup('light-' + name)
@@ -390,13 +396,13 @@ This operator is essential, as an undefined identifier is still a truthy value. 
       if ohnoes
         padding 5px
 
-_will_ yield the following css when undefined:
+_Will_ yield the following CSS when undefined:
 
     body {
       padding: 5px;
     }
 
-however this will be safe:
+However this will be safe:
 
     body
       if ohnoes is defined
@@ -404,7 +410,7 @@ however this will be safe:
 
 ## Ternary
 
-The ternary operator works as we would expect in most languages, being the only operator with three operands, the _condition_ expression, the _truth_ expression and the _false_ expression.
+The ternary operator works as we would expect in most languages. It's the only operator with three operands (the _condition_ expression, the _truth_ expression, and the _false_ expression).
 
     num = 15
     num ? unit(num, 'px') : 20px
@@ -425,12 +431,12 @@ The ternary operator works as we would expect in most languages, being the only 
 
 ## Color Operations
 
- Operations on colors provide a terse, expressive way to alter components. For example we can operate on each RGB:
+ Operations on colors provide a terse, expressive way to alter components. For example, we can operate on each RGB:
  
     #0e0 + #0e0
     // => #0f0
 
- Another example is adjust the lightness value by adding or subtracting a percentage. To lighten a color we add, to darken we subtract.
+ Another example is adjust the lightness value by adding or subtracting a percentage. To lighten a color, add; to darken, subtract.
  
     #888 + 50%
     // => #c3c3c3
@@ -438,14 +444,14 @@ The ternary operator works as we would expect in most languages, being the only 
     #888 - 50%
     // => #444
 
-  Adjust the hue is also possible by adding or subtracting with degrees, for example adding `50deg` to this red value, resulting in a yellow:
+  Adjust the hue is also possible by adding or subtracting with degrees. For example, adding `50deg` to this red value results in a yellow:
   
      #f00 + 50deg
      // => #ffd500
 
-  Values clamp appropriately, for example we can "spin" the hue 180 degrees, and if the current value is `320deg`, it will resolve to `140deg`.
+  Values clamp appropriately. For example, we can "spin" the hue 180 degrees, and if the current value is `320deg`, it will resolve to `140deg`.
 
-  We may also tweak several values at once, including the alpha by using `rgb()`, `rgba()`, `hsl()`, or `hsla()`:
+  We may also tweak several values at once (including the alpha) by using `rgb()`, `rgba()`, `hsl()`, or `hsla()`:
   
       #f00 - rgba(100,0,0,0.5)
       // => rgba(155,0,0,0.5)

@@ -1,7 +1,7 @@
 
 ## Comments
 
-  Stylus supports three kinds of comments, single-line, and multi-line comments, and multi-line buffered comments.
+  Stylus supports three kinds of comments: single-line, and multi-line comments, and multi-line buffered comments.
 
 ## Single-line
 
@@ -13,7 +13,7 @@
 
 ## Multi-line
 
-   Multi-line comments look identical to regular CSS comments, however they only output when the `compress` option is not enabled.
+   Multi-line comments look identical to regular CSS comments. However, they only output when the `compress` option is not enabled.
 
     /*
      * Adds the given numbers together.
@@ -24,7 +24,7 @@
 
 ## Multi-line buffered
 
-   Multi-line comments which are not suppressed start with `/*!`, signalling Stylus to output the comment regardless of compression.
+   Multi-line comments which are not suppressed start with `/*!`. This tells Stylus to output the comment regardless of compression.
 
     /*!
      * Adds the given numbers together.
