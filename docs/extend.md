@@ -1,9 +1,14 @@
 
 ## Extend
 
-  The Stylus __@extend__ directive is inspired by, and is essentially the same as the [SASS Implementation](http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#extend), with few subtle differences. This feature makes maintaining semantic rulesets which inherit from others extremely simple.
+  The Stylus __@extend__ directive is inspired by (and essentially the same as) the [SASS Implementation](http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#extend), with few subtle differences. This feature significantly simplifies maintenance of semantic rulesets that inherit from other semantic rulesets.
 
-  While the use of mixins can achieve a similar effect it can to duplicate CSS. A typical pattern is to define several classes as shown below, then combine them on the element such as "warning message". While this technique works just fine, it's difficult to maintain.
+
+### “Extending” with mixins
+
+  Although you can use mixins to achieve a similar effect, this can lead to duplicate CSS. A typical pattern is to define several classes as shown below, then combine them on the element such as "warning message". 
+  
+  While this technique works just fine, it's difficult to maintain.
 
       .message,
       .warning {
@@ -16,7 +21,9 @@
       }
 
 
-  To produce this same output with __@extend__ simply pass it the desired selector, Stylus will then append the ".warning" selector to the existing ".message" ruleset so that it inherits its properties as well.
+### Using `__@extend__`
+
+  To produce this same output with `__@extend__`, simply pass it the desired selector.  Stylus will then append the `.warning` selector to the existing `.message` ruleset.  The `.warning` class then inherits properties from `.message`.
 
       .message {
         padding: 10px;
@@ -29,7 +36,7 @@
       }
 
 
-  The following is a more complex example, showing how __@extend__ cascades:
+  Here's a more complex example, demonstrating how `__@extend__` cascades:
   
       red = #E33E1E
       yellow = #E2E21E
@@ -78,7 +85,7 @@
         color: #e33e1e;
       }
 
-  Where Stylus currently differs from SASS is that SASS will not allow you __@extend__ nested selectors:
+  Where Stylus currently differs from SASS is, SASS won't allow  `__@extend__` nested selectors:
   
      form
        button
@@ -90,7 +97,7 @@
              on line 6 of standard input
        Use --trace for backtrace.
 
-   With Stylus as long as the selectors match it'll work:
+   With Stylus, as long as the selectors match, it works!
    
        form
          input[type=text]
@@ -102,7 +109,7 @@
          @extends form input[type=text]
          padding: 10px
 
-   Would yield:
+   Yielding:
    
         form input[type=text],
         form textarea {
