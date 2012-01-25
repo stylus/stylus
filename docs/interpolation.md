@@ -1,7 +1,7 @@
 
 ## Interpolation
 
-  Stylus supports interpolation by using the `{}` characters to surround an expression, which then becomes part of the identifier. For example `-webkit-{'border' + '-radius'}` would evaluate to `-webkit-border-radius`.
+  Stylus supports interpolation by using the `{}` characters to surround an expression, which then becomes part of the identifier. For example, `-webkit-{'border' + '-radius'}` evaluates to `-webkit-border-radius`.
 
  A great example use-case for this is expanding properties with vendor prefixes.
 
@@ -19,7 +19,7 @@
       button
         border-radius 1px 2px / 3px 4px
 
-yielding:
+Yields:
 
       button {
         -webkit-border-radius: 1px 2px / 3px 4px;
@@ -29,14 +29,14 @@ yielding:
 
 ## Selector Interpolation
 
- Interpolation works with selectors as well, for example we may iterate while assigning the `height` property for the first 5 rows in a table as shown below.
+ Interpolation works with selectors as well. For example, we may iterate to assign the `height` property for the first 5 rows in a table, as shown below:
 
     table
       for row in 1 2 3 4 5
         tr:nth-child({row})
           height: 10px * row
 
-yielding:
+Yields:
 
     table tr:nth-child(1) {
       height: 10px;

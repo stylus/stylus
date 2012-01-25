@@ -1,7 +1,7 @@
 
 ## Stylus Executable
 
-Stylus ships with the `stylus` executable for converting stylus to css.
+Stylus ships with the `stylus` executable for converting Stylus to CSS.
 
       Usage: stylus [options] [command] [< in [> out]]
                     [file|dir ...]
@@ -9,7 +9,7 @@ Stylus ships with the `stylus` executable for converting stylus to css.
       Commands:
 
         help <prop>     Opens help info for <prop> in
-                        your default browser. (osx only)
+                        your default browser. (OS X only)
 
       Options:
 
@@ -17,15 +17,15 @@ Stylus ships with the `stylus` executable for converting stylus to css.
         -i, --interactive       Start interactive REPL
         -w, --watch             Watch file(s) for changes and re-compile
         -o, --out <dir>         Output to <dir> when passing files
-        -C, --css <src> [dest]  Convert css input to stylus
+        -C, --css <src> [dest]  Convert CSS input to Stylus
         -I, --include <path>    Add <path> to lookup paths
-        -c, --compress          Compress css output
+        -c, --compress          Compress CSS output
         -d, --compare           Display input along with output
         -f, --firebug           Emits debug infos in the generated css that
                                 can be used by the FireStylus Firebug plugin
-        -l, --line-numbers      Emits comments in the generated css
-                                indicating the corresponding stylus line
-        -V, --version           Display the version of stylus
+        -l, --line-numbers      Emits comments in the generated CSS
+                                indicating the corresponding Stylus line
+        -V, --version           Display the version of Stylus
         -h, --help              Display help information
 
 ### STDIO Compilation Example
@@ -34,7 +34,7 @@ Stylus ships with the `stylus` executable for converting stylus to css.
 
       $ stylus --compress < some.styl > some.css
 
-Try stylus some in the terminal, type below and press CTRL-D for __EOF__:
+Try Stylus some in the terminal!  Type below and press `CTRL-D` for `__EOF__`:
 
       $ stylus
       body
@@ -43,7 +43,7 @@ Try stylus some in the terminal, type below and press CTRL-D for __EOF__:
 
 ### Compiling Files Example
 
- `stylus` also accepts files and directories, for example a directory named `css` will compile and output the `.css` files in the same directory.
+ `stylus` also accepts files and directories. For example, a directory named `css` will compile and output `.css` files in the same directory.
  
       $ stylus css
 
@@ -55,8 +55,8 @@ Try stylus some in the terminal, type below and press CTRL-D for __EOF__:
 
       $ stylus one.styl two.styl
 
-  For development purpose, you can enable the `linenos` option to emit comments indicating 
-  the Stylus filename and line number in the generated css:
+  For development purposes, you can use the `linenos` option to emit comments indicating 
+  the Stylus filename and line number in the generated CSS:
 
       $ stylus --line-numbers <path>
 
@@ -67,7 +67,7 @@ Try stylus some in the terminal, type below and press CTRL-D for __EOF__:
 
 ### Converting CSS
 
- If we wish to convert css to the terse Stylus syntax, we can utilize the `--css` flag.
+ If you wish to convert CSS to the terse Stylus syntax, use the `--css` flag.
 
  Via stdio:
  
@@ -83,14 +83,16 @@ Try stylus some in the terminal, type below and press CTRL-D for __EOF__:
 
 ### CSS Property Help
 
-  On osx `stylus help <prop>` will open your default browser and display help documentation for the given `<prop>`.
+  On OS X, `stylus help <prop>` will open your default browser and display help documentation for the given `<prop>`.
 
     $ stylus help box-shadow
 
 ### Interactive Shell
 
  The Stylus REPL (Read-Eval-Print-Loop) or "interactive shell" allows you to
- play around with Stylus expressions directly from your terminal. Note that this works only for expressions, not selectors etc. To use simple add the `-i`, or `--interactive` flag:
+ play around with Stylus expressions directly from your terminal. 
+ 
+ **Note that this works only for expressions**—not selectors, etc. To use simple add the `-i`, or `--interactive` flag:
  
      $ stylus -i
      > color = white
@@ -108,7 +110,9 @@ Try stylus some in the terminal, type below and press CTRL-D for __EOF__:
 
 ### Utilizing Plugins
 
- For our examples we will utilize the [nib](https://github.com/visionmedia/nib) Stylus plugin to illustrate it's CLI usage. Suppose we have the following stylus, importing nib and utilize it's `linear-gradient()` function.
+ For this example we'l use the [nib](https://github.com/visionmedia/nib) Stylus plugin to illustrate its CLI usage. 
+ 
+ Suppose we have the following Stylus, which imports nib to use its `linear-gradient()` function.
  
      @import 'nib'
 
@@ -119,7 +123,7 @@ Try stylus some in the terminal, type below and press CTRL-D for __EOF__:
  
      $ stylus < test.styl
 
- Which would yield the following error because stylus does not know where to find nib in our machine.
+ Which would yield the following error (because Stylus doesn't know where to find nib).
 
        Error: stdin:3
           1| 
@@ -129,11 +133,11 @@ Try stylus some in the terminal, type below and press CTRL-D for __EOF__:
           5| body
           6|   background: linear-gradient(20px top, white, black)
 
-  For plugins that simply supply stylus APIs we could add the path to the stylus lookup paths by using the `--include` or `-I` flag:
+  For plugins that simply supply Stylus APIs, we could add the path to the Stylus lookup paths.  We do so by using the `--include` or `-I` flag:
 
      $ stylus < test.styl --include ../nib/lib
 
-  Now yielding the following output. As you might notice the calls to `gradient-data-uri()` and `create-gradient-image()` output as literals, this is because exposing the library path is not enough when the plugin provides a JavaScript API, though if we wished to only utilize the pure-stylus nib functions we would be fine. 
+  Now yielding the output below. (As you might notice, calls to `gradient-data-uri()` and `create-gradient-image()` output as literals. This is because exposing the library path isn't enough when a plugin provides a JavaScript API.  However, if we only wanted to use pure-Stylus nib functions, we'd be fine.)
 
       body {
         background: url(gradient-data-uri(create-gradient-image(20px, top)));
@@ -143,7 +147,7 @@ Try stylus some in the terminal, type below and press CTRL-D for __EOF__:
         background: linear-gradient(top, #fff 0%, #000 100%);
       }
 
-  So, what we need to do is utilize the `--use`, or `-u` flag which expects a path to a node module, with or without the ".js" extension. This `require()`s the module, expecting a function to be exported as `module.exports`, which then calls `style.use(fn())` to allow the plugin to expose itself, defining js functions etc.
+  So, what we need to do is use the `--use`, or `-u` flag.  It expects a path to a node module (with or without the `.js` extension). This `require()`s the module, expecting a function to be exported as `module.exports`, which then calls `style.use(fn())` to expose the plugin (defining its js functions, etc.).
   
     $ stylus < test.styl --use ../nib/lib/nib
 
