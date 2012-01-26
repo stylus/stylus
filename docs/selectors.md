@@ -2,25 +2,25 @@
 
 ### Indentation
 
-Stylus is "pythonic" aka indentation-based. Whitespace is significant, so we substitute { and } with an _indent_, and an _outdent_ as shown below:
+Stylus is "pythonic" (i.e. indentation-based). Whitespace is significant, so we substitute `{` and `}` with an _indent_, and an _outdent_ as shown below:
 
     body
       color white
 
-which compiles to:
+Which compiles to:
 
     body {
       color: #fff;
     }
 
-Optionally if preferred we may utilize colons to separate properties and their values:
+If preferred, you can use colons to separate properties and values:
 
     body
       color: white
 
 ### Rule Sets
 
-Stylus, just like css allows you to define properties for several selectors at once through comma separation.
+Stylus, just like CSS, allows you to define properties for several selectors at once through comma separation.
 
     textarea, input
       border 1px solid #eee
@@ -31,20 +31,20 @@ The same can be done with a newline:
     input
       border 1px solid #eee
 
-both compiling to:
+Both compile to:
 
     textarea,
     input {
       border: 1px solid #eee;
     }
 
-The one exception to this rule, are selectors that look like properties, for example `foo bar baz` in the following may be a property, or a selector:
+**The only exception to this rule** are selectors that look like properties. For example, the following `foo bar baz` might be a property **or** a selector:
 
     foo bar baz
     > input
       border 1px solid
 
-so for this reason, or if simply preferred we may trail with a comma:
+So for this reason (or simply if preferred), we may trail with a comma:
 
     foo bar baz,
     form input,
@@ -53,7 +53,7 @@ so for this reason, or if simply preferred we may trail with a comma:
 
 ### Parent Reference
 
-The `&` character references the parent selector(s). In the example below our two selectors `textarea`, and `input` both alter the `color` on the `:hover` pseudo selector. 
+The `&` character references the parent selector(s). In the example below our two selectors (`textarea` and `input`) both alter the `color` on the `:hover` pseudo selector. 
 
     textarea
     input
@@ -61,7 +61,7 @@ The `&` character references the parent selector(s). In the example below our tw
       &:hover
         color #000
 
-compiles to:
+Compiles to:
 
     textarea,
     input {
@@ -72,7 +72,7 @@ compiles to:
       color: #000;
     }
 
-below is an example providing a simple `2px` border for internet exploder utilizing the parent reference within a mixin:
+Below is an example providing a simple `2px` border for Internet Exploder utilizing the parent reference within a mixin:
 
       box-shadow()
         -webkit-box-shadow arguments
@@ -87,7 +87,7 @@ below is an example providing a simple `2px` border for internet exploder utiliz
         #login
           box-shadow 1px 1px 3px #eee
 
-yielding:
+Yielding:
 
       body #login {
         -webkit-box-shadow: 1px 1px 3px #eee;
@@ -102,7 +102,7 @@ yielding:
 
 ### Disambiguation
 
-Expressions such as `padding - n` could be interpreted both as a subtraction operation, as well as a property with an unary minus. To disambiguate we can wrap the expression with parens:
+Expressions such as `padding - n` could be interpreted both as a subtraction operation, as well as a property with an unary minus. To disambiguate, wrap the expression with parens:
 
     pad(n)
       padding (- n)
@@ -110,22 +110,24 @@ Expressions such as `padding - n` could be interpreted both as a subtraction ope
     body
       pad(5px)
 
-compiles to:
+Compiles to:
 
     body {
       padding: -5px;
     }
 
-however this is only true in functions, since functions act both as mixins, or calls with return values. For example this is fine, and will yield the same results as above:
+However, this is only true in functions (since functions act both as mixins, or calls with return values). 
+
+For example, the following is fine (and yields the same results as above):
 
     body
       padding -5px
 
-Have weird property values that Stylus cannot process? `unquote()` can help you out:
+Have weird property values that Stylus can't process? `unquote()` can help you out:
 
     filter unquote('progid:DXImageTransform.Microsoft.BasicImage(rotation=1)')
 
-yields:
+Yields:
 
     filter progid:DXImageTransform.Microsoft.BasicImage(rotation=1)
     

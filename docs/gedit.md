@@ -12,7 +12,7 @@
  
     mkdir -p ~/.local/share/gtksourceview-2.0/language-specs/ && wget https://raw.github.com/LearnBoost/stylus/master/editors/gedit/styl.lang -O ~/.local/share/gtksourceview-2.0/language-specs/styl.lang
 
- Update the mime database and enjoy Stylus syntax in gedit!
+ Update the MIME database and enjoy Stylus syntax in gedit!
  
     cd ~/.local/share
     update-mime-database mime

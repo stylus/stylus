@@ -1,11 +1,13 @@
 ## Escaping
 
- Stylus allows you to escape characters, effectively turning them into identifiers, so that they can be rendered as literals. For example:
+ Stylus lets you escape characters. This effectively turns them into identifiers, allowing them to be rendered as literals. 
+ 
+ For example:
 
      body
        padding 1 \+ 2
 
-will compile to:
+Compiles to:
 
      body {
        padding: 1 + 2;
