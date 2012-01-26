@@ -7,7 +7,7 @@
 
  The `if` conditional works as you would expect, simply accepting an expression, evaluating the following block when `true`. Along with `if` are the typical `else if` and `else` tokens, acting as fallbacks.
  
- The example below would conditionally overload the `padding` property, swapping it for margin.
+ The example below would conditionally overload the `padding` property, swapping it for `margin`.
 
     overload-padding = true
 
@@ -38,9 +38,9 @@ Another `box()` helper:
 
 ### unless
 
- For users familiar with the ruby programming language, we have the `unless` conditional, which is essentially the opposite of `if`, essentially `if (!(expr))`.
+ For users familiar with the Ruby programming language, we have the `unless` conditional. It’s basically the opposite of `if`—essentially `if (!(expr))`.
 
-In the example below, if `disable-padding-override` is undefined or `false` padding will be overridden, displaying `margin` instead. However when `true` padding will remain outputting `padding 5px 10px` as expected.
+In the example below, if `disable-padding-override` is `undefined` or `false`, `padding` will be overridden, displaying `margin` instead. But if it’s `true`, `padding` will continue outputting `padding 5px 10px` as expected.
 
      disable-padding-override = true
 
@@ -53,10 +53,10 @@ In the example below, if `disable-padding-override` is undefined or `false` padd
 
 ### Postfix Conditionals
 
-  Stylus supports postfix conditionals, meaning the `if` and `unless` act as operators, evaluating the left-hand operand, when the right-hand expression is truthy.
+  Stylus supports postfix conditionals. This means that `if` and `unless` act as operators; they evaluate the left-hand operand when the right-hand expression is truthy.
   
   
-  For example let's define `negative()`, performing some basic type checking. Below we use block-style conditionals:
+  For example let's define `negative()` to perform some basic type checking. Below we use block-style conditionals:
   
       negative(n)
         unless n is a 'unit'
@@ -66,16 +66,16 @@ In the example below, if `disable-padding-override` is undefined or `false` padd
         else
           no
 
-  Next we utilize postfix conditionals to keep our function terse.
+  Next, we utilize postfix conditionals to keep our function terse.
 
       negative(n)
         error('invalid number') unless n is a 'unit'
         return yes if n < 0
         no
 
-  Of course we could take this further, and utilize `n < 0 ? yes : no`, or simply stick with booleans, and use only `n < 0`.
+  Of course, we could take this further.  For example, we could write `n < 0 ? yes : no`, or simply stick with booleans: `n < 0`.
 
-  Postfix conditionals may be applied to most single-line statements, for example `@import`, `@charset`, mixins, and of course properties as shown below:
+  Postfix conditionals may be applied to most single-line statements. For example, `@import`, `@charset`, mixins—and of course, properties as shown below:
   
   
       pad(types = margin padding, n = 5px)

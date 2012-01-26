@@ -53,7 +53,9 @@ yielding:
 
 ## Expansion
 
- By utilizing `@keyframes` your rules are automatically expanded to the vendor prefixes defined by the `vendors` variable, defaulting to `webkit moz official`. This means we can alter it at any time for the expansion to take effect immediately. For example consider the following
+ By using `@keyframes`, your rules are automatically expanded to the vendor prefixes defined by the `vendors` variable (default: `webkit moz official`). This means we can alter it at any time for the expansion to take effect immediately. 
+ 
+ For example, consider the following:
 
     @keyframes foo {
       from {
@@ -64,7 +66,7 @@ yielding:
       }
     }
 
-expands to our two default vendors and the official syntax:
+This expands to our two default vendors, and the official syntax:
 
     @-moz-keyframes foo {
       0% {
@@ -94,7 +96,7 @@ expands to our two default vendors and the official syntax:
       }
     }
 
-if we wanted to limit to the official syntax only, simply alter `vendors`:
+If we wanted to limit to the official syntax only, simply alter `vendors`:
 
     vendors = official
 
@@ -107,7 +109,7 @@ if we wanted to limit to the official syntax only, simply alter `vendors`:
       }
     }
 
-yielding:
+Yielding:
 
     @keyframes foo {
       0% {

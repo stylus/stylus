@@ -4,21 +4,23 @@
 
 ### Literal CSS
 
-  Any filename with the extension `.css` will become a literal, for example:
+  Any filename with the extension `.css` will become a literal. For example:
   
      @import "reset.css"
 
-will render to the literal css __@import__ shown below:
+Render the literal CSS __@import__ shown below:
 
      @import "reset.css"
 
 ### Stylus Import
 
- When using __@import__ without the `.css` extension, it is assumed to be a Stylus sheet, for example `@import "mixins/border-radius"`.
+ When using __@import__ without the `.css` extension, it's assumed to be a Stylus sheet (e.g., `@import "mixins/border-radius"`).
 
- __@import__ works by iterating an array of directories, and seeing if this file lives in any of them, similar to node's `require.paths`. This array defaults to a single path which is derived from the `filename` option's dirname. So if your filename is `/tmp/testing/stylus/main.styl`, then import will look in `/tmp/testing/stylus/`.
+ __@import__ works by iterating an array of directories, and checking if this file lives in any of them (similar to node's `require.paths`). This array defaults to a single path, which is derived from the `filename` option's `dirname`. So, if your filename is `/tmp/testing/stylus/main.styl`, then import will look in `/tmp/testing/stylus/`.
  
- __@import__ also supports index styles, meaning if you `@import blueprint`, it will resolve either `blueprint.styl` or `blueprint/index.styl`, useful for libraries to expose all of their features, but still allow a subset of the library to be imported. For example a common lib structure might be:
+ __@import__ also supports index styles. This means when you `@import blueprint`, it will resolve **either** `blueprint.styl` **or** `blueprint/index.styl`.  This is really useful for libraries that want to expose all their features, while still allowing feature subsets to be imported. 
+ 
+ For example, a common lib structure might be:
 
     ./tablet
       |-- index.styl 
@@ -26,7 +28,7 @@ will render to the literal css __@import__ shown below:
       |-- buttons.styl 
       |-- images.styl 
 
- In the example below we set the `paths` options to provide additional paths to Stylus. Within `./test.styl` we could then `@import "mixins/border-radius"` or `@import "border-radius"` since `./mixins` is exposed to Stylus.
+ In the example below, we set the `paths` options to provide additional paths to Stylus. Within `./test.styl`, we could then `@import "mixins/border-radius"`, or `@import "border-radius"` (since `./mixins` is exposed to Stylus).
 
       /**
        * Module dependencies.
@@ -63,11 +65,11 @@ will render to the literal css __@import__ shown below:
          console.log(css);
        });
 
- The following are essentially equivalent:
+ The following statement...
  
      @import 'mixins/vendor'
 
-and
+...is equivalent to...
 
      .import('mixins/vendor') 
  

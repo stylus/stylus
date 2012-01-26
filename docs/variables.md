@@ -8,7 +8,7 @@ We may assign expressions to variables and use them throughout our stylesheet:
      body
        font font-size Arial, sans-serif
 
-compiles to:
+Compiles to:
 
      body {
        font: 14px Arial, sans-serif;
@@ -22,13 +22,13 @@ Variables can even consist of an expression list:
     body
       font font sans-serif
 
-compiles to:
+Compiles to:
 
     body {
       font: 14px "Lucida Grande", Arial sans-serif;
     }
 
-identifiers (variable names, functions, etc) may also include the `$` character, for example:
+Identifiers (variable names, functions, etc.) may also include the `$` character. For example:
 
     $font-size = 14px
     body {
@@ -38,7 +38,7 @@ identifiers (variable names, functions, etc) may also include the `$` character,
 ## Property Lookup
 
  Another cool feature unique to Stylus is the ability to reference
- properties defined _without_ assigning their values to variables. A great example of this is the logic required for vertically and horizontally center an element, which is typically done by using percentages and negative margins as shown:
+ properties defined _without_ assigning their values to variables. A great example of this is the logic required for vertically and horizontally center an element (typically done using percentages and negative margins, as follows):
 
      #logo
        position: absolute
@@ -49,7 +49,7 @@ identifiers (variable names, functions, etc) may also include the `$` character,
        margin-left: -(w / 2)
        margin-top: -(h / 2)
 
-  Instead of assigning the variables `w` and `h` we can simply prepend the `@`
+  Instead of assigning the variables `w` and `h`, we can simply prepend the `@`
   character to the property name to access the value:
 
      #logo
@@ -61,7 +61,7 @@ identifiers (variable names, functions, etc) may also include the `$` character,
        margin-left: -(@width / 2)
        margin-top: -(@height / 2)
 
-  Another useful use-case is conditionally defining properties based on the existence of others within mixins. In the following example we apply a default `z-index` of `1`, but _only_ if `z-index` was not previously specified.
+  Another use-case is conditionally defining properties within mixins based on the existence of others . In the following example, we apply a default `z-index` of `1`—but _only_ if `z-index` was not previously specified:
 
       position()
         position: arguments
@@ -74,7 +74,7 @@ identifiers (variable names, functions, etc) may also include the `$` character,
       #logo2
         position: absolute
 
-  Property lookup will "bubble" up the stack until found, or return `null` if the property cannot be resolved. In the following example `@color` will resolve to `blue`.
+  Property lookup will "bubble up" the stack until found, or return `null` if the property cannot be resolved. In the following example, `@color` will resolve to `blue`:
   
       body
         color: red
