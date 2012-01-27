@@ -25,6 +25,22 @@
 			<key>name</key>
 			<string>comment.line.stylus</string>
 		</dict>
+        <dict>
+            <key>begin</key>
+            <string>/\*</string>
+            <key>captures</key>
+            <dict>
+                <key>0</key>
+                <dict>
+                    <key>name</key>
+                    <string>punctuation.definition.comment.js</string>
+                </dict>
+            </dict>
+            <key>end</key>
+            <string>\*/</string>
+            <key>name</key>
+            <string>comment.block.js</string>
+        </dict>
 		<dict>
 			<key>captures</key>
 			<dict>
@@ -162,23 +178,8 @@
 			<key>name</key>
 			<string>string.quoted.single.stylus</string>
 		</dict>
-		<dict>
-			<key>begin</key>
-			<string>/\*</string>
-			<key>captures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.comment.js</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>\*/</string>
-			<key>name</key>
-			<string>comment.block.js</string>
-		</dict>
-		
+
+
     <dict>
       <key>comment</key>
       <string>http://www.w3.org/TR/CSS21/syndata.html#value-def-color</string>
