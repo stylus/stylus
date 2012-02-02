@@ -9,8 +9,8 @@
   , "bin": { "stylus": "./bin/stylus" }
   , "scripts" : { "prepublish" : "npm prune" }
   , "dependencies": {
-      "cssom": "0.2.1"
-    , "growl": "1.1.0"
+      "cssom": "0.2.2"
+    , "growl": "1.4.x"
     , "mkdirp": "0.3.x"
   }
 }
