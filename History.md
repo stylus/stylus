@@ -3,6 +3,7 @@
 ==================
 
   * Added `Renderer` "end" event
+  * Added: cast return value from js-functions
   * Cleaned up documentation grammar etc [Zearin]
 
 0.22.6 / 2012-01-20 
