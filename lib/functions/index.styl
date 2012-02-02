@@ -123,6 +123,19 @@ fade-in(color, amount)
 spin(color, amount)
   color + unit(amount, deg)
 
+// mix two colors by a given amount
+
+mix(colorA, colorB, amount)
+  if colorB is a 'unit' and amount is a 'color'
+    return mix(colorA, amount, colorB)
+  require-color(colorA)
+  require-color(colorB)
+  require-unit(amount)
+  if unit(amount) is '%'
+    amount = (amount / 100)
+  reverse = 1 - amount
+  return colorA * reverse + colorB * amount
+
 // return the last value in the given expr
 
 last(expr)
