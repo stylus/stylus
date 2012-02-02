@@ -11,7 +11,7 @@ For example:
       for num in 1 2 3
         foo num
 
-yields:
+Yields:
 
       body {
         foo: 1;
@@ -26,7 +26,7 @@ The example below shows how to use the `<key-name>`:
         for font, i in fonts
           foo i font
 
-yielding:
+Yielding:
 
         body {
           foo: 0 Impact;
@@ -36,7 +36,9 @@ yielding:
 
 ### Mixins
 
- We may utilize iteration within mixins to produce powerful functionality, for example we can apply expression pairs as properties using interpolation and iteration. Below we define `apply()`, conditionally utilizing all the `arguments` so that comma-delimited _and_ expression lists are supported:
+ We can use iteration within mixins to produce powerful functionality. For example, we can apply expression pairs as properties using interpolation and iteration. 
+ 
+ Below we define `apply()`, conditionally utilizing all the `arguments` so that comma-delimited _and_ expression lists are supported:
  
      apply(props)
        props = arguments if length(arguments) > 1
@@ -52,9 +54,9 @@ yielding:
 
 ### Functions
 
- Stylus functions may also contain for-loops, below are some example use-cases:
+ Stylus functions may also contain for-loops. Below are some example use-cases:
 
-sum:
+Sum:
 
       sum(nums)
         sum = 0

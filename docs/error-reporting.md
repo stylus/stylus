@@ -1,7 +1,7 @@
 
 ## Error Reporting
 
- Stylus has fantastic error reporting built in for syntax, parse, and evaluation errors, complete with stack traces, line numbers, and filenames.
+ Stylus has fantastic error reporting built-in for syntax, parse, and evaluation errors—complete with stack traces, line numbers, and filenames.
 
 ### Parse Error
 
@@ -11,7 +11,7 @@ Parse error example:
        form input
          == padding 5px
 
-yielding:
+Yielding:
 
      Error: /Users/tj/Projects/stylus/testing/test.styl:4
        3: '  form input'
@@ -21,7 +21,7 @@ yielding:
 
 ### Evaluation Error
 
- This "runtime" or evaluation error is caused due to passing a string to `border-radius()` instead of the expected `Unit` by using our helper `ensure(n, 'unit')`.
+ This "runtime" or evaluation error is caused by passing a string to `border-radius()`, instead of the expected `Unit` (by using our helper `ensure(n, 'unit')`).
 
       ensure(val, type)
         unless val is a type
@@ -36,7 +36,7 @@ yielding:
       body
         border-radius '5px'
 
-yielding:
+Yielding:
 
       Error: /Users/tj/Projects/stylus/examples/error.styl:12
         11: ''
