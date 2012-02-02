@@ -71,6 +71,12 @@ Defer importing of the given `path` until evaluation is performed. The example b
      .define('list', { foo: 'bar', bar: 'baz' })
      .define('families', ['Helvetica Neue', 'Helvetica', 'sans-serif'])
 
+  These same rules apply to return values in js functions as well:
+
+     .define('get-list', function(){
+       return ['foo', 'bar', 'baz'];
+     })
+
 ### .define(name, fn)
 
  This method allows you to provide a JavaScript-defined function to Stylus. Think of these as you would JavaScript-to-C++ bindings. When there's something you cannot do in Stylus, define it in JavaScript!
