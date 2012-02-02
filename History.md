@@ -1,4 +1,10 @@
 
+0.23.0 / 2012-02-02 
+==================
+
+  * Added `Renderer` "end" event
+  * Cleaned up documentation grammar etc [Zearin]
+
 0.22.6 / 2012-01-20 
 ==================
 
