@@ -7,7 +7,7 @@
   , "main": "./index.js"
   , "engines": { "node": "> 0.4.x < 0.7.0" }
   , "bin": { "stylus": "./bin/stylus" }
-  , "scripts" : { "prepublish" : "npm prune" }
+  , "scripts" : { "prepublish" : "npm prune", "test": "make test" }
   , "dependencies": {
       "cssom": "0.2.2"
     , "growl": "1.4.x"
