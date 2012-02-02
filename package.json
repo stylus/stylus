@@ -11,6 +11,6 @@
   , "dependencies": {
       "cssom": "0.2.1"
     , "growl": "1.1.0"
-    , "mkdirp": "0.0.7"
+    , "mkdirp": "0.3.x"
   }
 }
