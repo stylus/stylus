@@ -405,7 +405,7 @@ function repl() {
       ret = ret.nodes[ret.nodes.length - 1];
       ret = ret.toString();
       if ('(' == ret[0]) ret = ret.replace(/^\(|\)$/g, '');
-      console.log('\033[90m=> \033[0m' + highlight(ret));
+      console.log('\033[34m=> \033[0m' + highlight(ret));
       repl.prompt();
     } catch (err) {
       console.error('\033[31merror: %s\033[0m', err.message || err.stack);
@@ -540,7 +540,7 @@ function writeFile(file, css) {
     : file.replace('.styl', '.css');
   fs.writeFile(path, css, function(err){
     if (err) throw err;
-    console.log('  \033[90mcompiled\033[0m %s', path);
+    console.log('\033[30m%s - \033[34mcompiled\033[0m %s', (new Date).toLocaleTimeString(), path);
     // --watch support
     watch(file, compileFile);
   });
@@ -559,7 +559,7 @@ function watch(file, fn) {
 
   // watch the file itself
   watchers[file] = true;
-  console.log('  \033[90mwatching\033[0m %s', file);
+  console.log('\033[30m%s - \033[34mwatching\033[0m %s', (new Date).toLocaleTimeString(), file);
   // if is windows use fs.watch api instead
   // TODO: remove watchFile when fs.watch() works on osx etc
   if (isWindows) {
