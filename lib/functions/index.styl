@@ -125,7 +125,7 @@ spin(color, amount)
 
 // mix two colors by a given weight
 
-mix(colorA, colorB, weight=50%)
+mix(colorA, colorB, weight=50%, opacity=true)
   if colorB is a 'unit' and weight is a 'color'
     return mix(colorA, weight, colorB)
   require-color(colorA)
@@ -134,7 +134,11 @@ mix(colorA, colorB, weight=50%)
   if unit(weight) is '%'
     weight = (weight / 100)
   reverse = 1 - weight
-  return colorA * reverse + colorB * weight
+  result = colorA * reverse + colorB * weight
+  if opacity
+    result-alpha = (alpha(colorA) * reverse) + (alpha(colorB) * weight)
+    result = rgba(result, result-alpha)
+  return result
 
 // return the last value in the given expr
 
