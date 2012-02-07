@@ -123,6 +123,23 @@ fade-in(color, amount)
 spin(color, amount)
   color + unit(amount, deg)
 
+// mix two colors by a given weight
+
+mix(colorA, colorB, weight=50%, opacity=true)
+  if colorB is a 'unit' and weight is a 'color'
+    return mix(colorA, weight, colorB)
+  require-color(colorA)
+  require-color(colorB)
+  require-unit(weight)
+  if unit(weight) is '%'
+    weight = (weight / 100)
+  reverse = 1 - weight
+  result = colorA * reverse + colorB * weight
+  if opacity
+    result-alpha = (alpha(colorA) * reverse) + (alpha(colorB) * weight)
+    result = rgba(result, result-alpha)
+  return result
+
 // return the last value in the given expr
 
 last(expr)
