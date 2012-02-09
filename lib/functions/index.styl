@@ -123,6 +123,14 @@ fade-in(color, amount)
 spin(color, amount)
   color + unit(amount, deg)
 
+// invert colors, leave alpha intact
+
+invert(color)
+  r = 255 - red(color)
+  g = 255 - green(color)
+  b = 255 - blue(color)
+  rgba(r,g,b,alpha(color))
+
 // return the last value in the given expr
 
 last(expr)
