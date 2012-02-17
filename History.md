@@ -1,4 +1,12 @@
 
+0.24.0 / 2012-02-16 
+==================
+
+  * Added `mix()` BIF (docs needed)
+  * Added: cast return values from js functions
+  * Fixed binops in mixin selectors. Closes #566
+  * Fixed `opposite-position()` pass through "center"`
+
 0.23.0 / 2012-02-02 
 ==================
 
