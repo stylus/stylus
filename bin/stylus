@@ -555,16 +555,25 @@ function watch(file, fn) {
   if (!watchers) return;
 
   // already watched
-  if (watchers[file]) return;
+  if (watchers[file] !== undefined) return;
 
   // watch the file itself
-  watchers[file] = true;
+  watchers[file] = 0;
   console.log('  \033[90mwatching\033[0m %s', file);
   // if is windows use fs.watch api instead
   // TODO: remove watchFile when fs.watch() works on osx etc
   if (isWindows) {
     fs.watch(file, function(event) {
-      if (event === 'change') fn(file);
+      if (event === 'change') {
+        fs.lstat(file, function(err, stats) {
+          // Windows notifies files as changed twice. 
+          // This makes sure we do not trigger duplicate compilations.
+          if (watchers[file] < stats.mtime) {
+            watchers[file] = stats.mtime;
+            fn(file);
+          }
+        });
+      }
     });
   } else {
     fs.watchFile(file, { interval: 50 }, function(curr, prev) {
