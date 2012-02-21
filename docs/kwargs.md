@@ -1,10 +1,9 @@
 
 ## Keyword Arguments
 
- Stylus supports keyword arguments, or "kwargs", allowing you to key
- arguments by their associated parameter name.
+ Stylus supports keyword arguments, or "kwargs". These allow you to reference arguents by their associated parameter name.
 
- The examples shown below are functionally equivalent, however we can
+ The examples shown below are functionally equivalent. However, we can
  place keyword arguments anywhere within the list. The remaining arguments
  that are _not_ keyed will be applied to the parameters that have not
  been satisfied.
@@ -16,7 +15,7 @@
         color: rgba(alpha: 0.5, blue: 100, 255, 200);
       }
 
- yielding:
+ Yielding:
  
        body {
          color: rgba(255,200,100,0.5);
@@ -30,6 +29,6 @@
  
     p(rgba)
 
- yielding:
+ Yielding:
 
     inspect: rgba(red, green, blue, alpha)

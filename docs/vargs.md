@@ -1,10 +1,10 @@
 
 ## Rest Parameters
 
- Stylus supports rest parameters in the form of `name...`. These params consume the remaining arguments passed to a mixin or function. This is useful for example when utilizing the implicit function call support to apply vendor prefixes like `-webkit` or `-moz`.
+ Stylus supports rest parameters in the form of `name...`. These params consume the remaining arguments passed to a mixin or function. This is useful when utilizing (for example) the implicit function call support to apply vendor prefixes like `-webkit` or `-moz`.
  
 
-In the example below we consume all the arguments passed and simply apply them to multiple properties.
+In the example below, we consume all the arguments passed, and simply apply them to multiple properties.
 
      box-shadow(args...)
        -webkit-box-shadow args
@@ -14,7 +14,7 @@ In the example below we consume all the arguments passed and simply apply them t
      #login
        box-shadow 1px 2px 5px #eee
 
-yielding:
+Yielding:
 
       #login {
         -webkit-box-shadow: 1px 2px 5px #eee;
@@ -22,7 +22,7 @@ yielding:
         box-shadow: 1px 2px 5px #eee;
       }
 
-If we wanted to peek at a specific argument, for example the x-offset we could simply use `args[0]`, or for example we may wish to re-define the mixin:
+If we wanted to peek at a specific argument—say, `x-offset`—we could simply use `args[0]`. Or, we may wish to redefine the mixin:
 
         box-shadow(offset-x, args...)
           got-offset-x offset-x
@@ -33,7 +33,7 @@ If we wanted to peek at a specific argument, for example the x-offset we could s
         #login
           box-shadow 1px 2px 5px #eee
 
-yielding:
+Yielding:
 
         #login {
           got-offset-x: 1px;
@@ -44,9 +44,9 @@ yielding:
 
 ### arguments
 
-  The `arguments` variable is injected into mixin and function bodies, containing the exact expression passed. This is useful for several reasons, primarily for vendor support, as you get the _exact_ expression, commas and all.
+  The `arguments` variable is injected into mixin and function bodies, containing the exact expression passed. This is useful for several reasons (especially vendor support) as you get the _exact_ expression, commas and all.
 
-  For example, if we use a rest param, the comma is simply consumed since it is an expression delimiter:
+  For example, if we use a rest param, the comma is consumed (since it is an expression delimiter):
   
       box-shadow(args...)
         -webkit-box-shadow args
@@ -56,7 +56,7 @@ yielding:
       #login
         box-shadow #ddd 1px 1px, #eee 2px 2px 
 
-yielding slightly unexpected results:
+Yielding undesired results:
 
       #login {
         -webkit-box-shadow: #ddd 1px 1px #eee 2px 2px;
@@ -74,7 +74,7 @@ Let's redefine the mixin using `arguments`:
       body
         box-shadow #ddd 1px 1px, #eee 2px 2px
 
-now yielding the desired result:
+Now, yielding the desired result:
 
       body {
         -webkit-box-shadow: #ddd 1px 1px, #eee 2px 2px;

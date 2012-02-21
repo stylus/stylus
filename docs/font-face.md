@@ -1,7 +1,7 @@
 
 ## @font-face
 
- The `@font-face` at-rule expects as you would expect, simply followed by a block of properties:
+ The `@font-face` at-rule expects as you would expect. Simply add a block of properties after it, like so:
  
  
      @font-face
@@ -12,7 +12,7 @@
      .ingeo
        font-family Geo
 
-yielding:
+Yielding:
 
 
       @font-face {

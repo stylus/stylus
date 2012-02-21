@@ -1,21 +1,21 @@
 
 ## Functions
 
- Stylus features powerful in-language function definition. Function definition appears identical to mixins, however functions may return a value.
+ Stylus features powerful in-language function definitions. Function definitions appear identical to mixins; however, functions may return a value.
 
 ### Return Values
 
- Let's try a trivial example, creating a function that adds two numbers.
+ Let's try a trivial example: creating a function that adds two numbers.
 
     add(a, b)
       a + b
 
- We may then utilize this function in conditions, as property values, etc.
+ We can then use this function in conditions, in property values, etc.
  
      body 
        padding add(10px, 5)
 
- Rendering
+ Rendering:
      
      body {
        padding: 15px;
@@ -23,7 +23,9 @@
 
 ### Argument Defaults
 
- Optional arguments may default to a given expression. With Stylus we may even default arguments to leading arguments! For example:
+ Optional arguments may default to a given expression. With Stylus we may even default arguments to earlier arguments! 
+ 
+ For example:
  
  
      add(a, b = a)
@@ -35,14 +37,14 @@
      add(10)
      // => 20
 
-note that since argument defaults are assignments, we can also utilize function calls for defaults:
+**Note:** Since argument defaults are assignments, we can also use function calls for defaults:
 
      add(a, b = unit(a, px))
        a + b
 
 ### Function Bodies
 
- We can take our simple `add()` function further, by casting all units passed as `px` via the `unit()` built-in. Re-assigning each argument and providing a unit type string (or identifier), which disregards unit conversion.
+ We can take our simple `add()` function further. Let's casting all units passed as `px` via the `unit()` built-in. It reassigns each argument, and provides a unit-type string (or identifier), which ignores unit conversion.
  
      add(a, b = a)
        a = unit(a, px)
@@ -54,14 +56,16 @@ note that since argument defaults are assignments, we can also utilize function 
 
 ### Multiple Return Values
 
- Stylus functions can return several values, just as you can assign several values to a variable. For example the following is a valid assignment:
+ Stylus functions can return several values—just as you can assign several values to a variable. 
+ 
+ For example, the following is a valid assignment:
  
        sizes = 15px 10px
      
        sizes[0]
        // => 15px 
 
-Similarly we may return several values:
+Similarly, we may return several values:
 
        sizes()
          15px 10px
@@ -69,12 +73,12 @@ Similarly we may return several values:
        sizes()[0]
        // => 15px
 
-One slight exception is when return values are identifiers, for example the following looks like a property assignment to Stylus since no operators are present.
+One slight exception is when return values are identifiers. For example, the following looks like a property assignment to Stylus (since no operators are present):
 
      swap(a, b)
        b a
 
-To disambiguate we may either wrap in parens, or utilize the `return` keyword.
+To disambiguate, we can either wrap with parentheses, or use the `return` keyword:
 
       swap(a, b)
         (b a)
@@ -84,7 +88,7 @@ To disambiguate we may either wrap in parens, or utilize the `return` keyword.
 
 ### Conditionals
 
- Let's say we want to create a function named `stringish()` to see if the value given can be transformed to a string. We check if `val` is a string, or an ident which is string-like. Because undefined identifiers yield themselves as the value, we may compare them to them-selves as shown below, where `yes` and `no` are used in place of `true` and `false`.
+ Let's say we want to create a function named `stringish()` to determine whether the argument can be transformed to a string. We check if `val` is a string, or an ident (which is string-like). Because undefined identifiers yield themselves as the value, we may compare them to themselves as shown below (where `yes` and `no` are used in place of `true` and `false`):
  
  
      stringish(val)
@@ -93,7 +97,7 @@ To disambiguate we may either wrap in parens, or utilize the `return` keyword.
        else
          no
 
-usage:
+Usage:
 
      stringish('yay') == yes
      // => true
@@ -104,10 +108,9 @@ usage:
      stringish(0) == no
      // => true
 
-__note__: `yes` and `no` are not boolean literals, they are simply undefined identifiers in this case.
+__note__: `yes` and `no` are not boolean literals. They are simply undefined identifiers in this case.
 
 Another example:
-
 
     compare(a, b)
       if a > b
@@ -117,7 +120,7 @@ Another example:
       else
         equal
 
-usage:
+Usage:
 
     compare(5, 2)
     // => higher
@@ -130,7 +133,7 @@ usage:
 
 ### Aliasing
 
-  To alias a function we can simply assign a function's name to a new identifier. For example our previous `add()` function could be exposed as `plus()` as well, simply by:
+  To alias a function, simply assign a function's name to a new identifier. For example, our `add()` function could be aliased as `plus()`, like so:
   
       plus = add
       
@@ -139,7 +142,7 @@ usage:
 
 ### Variable Functions
 
-  In the same way that we can "alias" a function, we can pass a function as well, here our `invoke()` function accepts a function, so we can pass it `add()` or `sub()`.
+  In the same way that we can "alias" a function, we can pass a function as well. Here, our `invoke()` function accepts a function, so we can pass it `add()` or `sub()`.
 
     invoke(a, b, fn)
       fn(a, b)
@@ -151,7 +154,7 @@ usage:
       padding invoke(5, 10, add)
       padding invoke(5, 10, sub)
 
-yielding:
+Yielding:
 
     body {
       padding: 15;
@@ -160,7 +163,9 @@ yielding:
 
 ### arguments
 
- The `arguments` local is available to all function bodies, and contains all the arguments passed. For example:
+ The `arguments` local is available to all function bodies, and contains all the arguments passed. 
+ 
+ For example:
  
      sum()
        n = 0
@@ -172,13 +177,13 @@ yielding:
 
 ### Hash Example
 
- Below we define the `get(hash, key)` function, which will return the
- value of `key`, or `null`. We iterate each `pair` in `hash`, returning the pair's second node when the first (the `key`) matches. 
+ Below we define the `get(hash, key)` function, which returns the
+ value of `key` (or `null`). We iterate each `pair` in `hash`, returning the pair's second node when the first (the `key`) matches. 
 
       get(hash, key)
         return pair[1] if pair[0] == key for pair in hash
 
-As you can see below, in-language functions paired with robust stylus expressions can provide great flexibility. 
+As demonstrated below, in-language functions—paired with robust Stylus expressions—can provide great flexibility:
       
       hash = (one 1) (two 2) (three 3)
       

@@ -123,6 +123,51 @@ fade-in(color, amount)
 spin(color, amount)
   color + unit(amount, deg)
 
+// mix two colors by a given amount
+
+mix(color1, color2, weight = 50%)
+  unless weight in 0..100
+    error("Weight must be between 0% and 100%")
+
+  if length(color1) == 2
+    weight = color1[0]
+    color1 = color1[1]
+
+  else if length(color2) == 2
+    weight = 100 - color2[0]
+    color2 = color2[1]
+
+  require-color(color1)
+  require-color(color2)
+
+  p = unit(weight / 100, '')
+  w = p * 2 - 1
+
+  a = alpha(color1) - alpha(color2)
+
+  w1 = (((w * a == -1) ? w : (w + a) / (1 + w * a)) + 1) / 2
+  w2 = 1 - w1
+
+  channels = (red(color1) red(color2)) (green(color1) green(color2)) (blue(color1) blue(color2))
+  rgb = ()
+
+  for pair in channels
+    push(rgb, floor(pair[0] * w1 + pair[1] * w2))
+
+  a1 = alpha(color1) * p
+  a2 = alpha(color1) * (1 - p)
+  alpha = a1 + a2
+
+  rgba(rgb[0], rgb[1], rgb[2], alpha)
+
+// invert colors, leave alpha intact
+
+invert(color)
+  r = 255 - red(color)
+  g = 255 - green(color)
+  b = 255 - blue(color)
+  rgba(r,g,b,alpha(color))
+
 // return the last value in the given expr
 
 last(expr)

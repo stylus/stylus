@@ -1,4 +1,26 @@
 
+0.24.0 / 2012-02-16 
+==================
+
+  * Added `mix()` BIF (docs needed)
+  * Added: cast return values from js functions
+  * Fixed binops in mixin selectors. Closes #566
+  * Fixed `opposite-position()` pass through "center"`
+
+0.23.0 / 2012-02-02 
+==================
+
+  * Added `Renderer` "end" event
+  * Added: cast return value from js-functions
+  * Cleaned up documentation grammar etc [Zearin]
+
+0.22.6 / 2012-01-20 
+==================
+
+  * Fixed postfix conditional cloning. Closes #535
+  * Fixed idents prefixed with several hyphens. Closes #536
+  * Fixed up the TextMate bundle syntax [ianstormtaylor]
+
 0.22.5 / 2012-01-16 
 ==================
 
