@@ -506,7 +506,7 @@ function compileFile(file) {
           if (err) {
             if (watchers) {
               console.error(err.stack || err.message);
-              growl && growl.notify(err.message, { title: 'Stylus error' });
+              growl && growl(err.message, { title: 'Stylus error' });
             } else {
               throw err;
             }
