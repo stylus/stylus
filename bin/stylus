@@ -237,14 +237,6 @@ while (args.length) {
   }
 }
 
-// optional growl support
-
-try {
-  var growl = require('growl');
-} catch (err) {
-  // ignore
-}
-
 // if --watch is used, assume we are
 // not working with stdio
 
@@ -506,7 +498,6 @@ function compileFile(file) {
           if (err) {
             if (watchers) {
               console.error(err.stack || err.message);
-              growl && growl.notify(err.message, { title: 'Stylus error' });
             } else {
               throw err;
             }

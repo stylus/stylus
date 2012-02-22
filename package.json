@@ -10,7 +10,6 @@
   , "scripts" : { "prepublish" : "npm prune", "test": "make test" }
   , "dependencies": {
       "cssom": "0.2.x"
-    , "growl": "1.4.x"
     , "mkdirp": "0.3.x"
     , "debug": "*"
   }
