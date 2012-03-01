@@ -7,6 +7,7 @@ REPORTER = dot
 test:
 	@./node_modules/.bin/mocha \
 		--require should \
+		--bail \
 		--reporter $(REPORTER)
 
 install-bundle:
