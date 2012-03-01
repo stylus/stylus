@@ -2,10 +2,12 @@
 SRC = $(shell find lib -name "*.js")
 TM_BUNDLE = editors/Stylus.tmbundle
 TM_BUNDLE_DEST = ~/Library/Application\ Support/TextMate/Bundles
+REPORTER = dot
 
 test:
 	@./node_modules/.bin/mocha \
-		--require should
+		--require should \
+		--reporter $(REPORTER)
 
 install-bundle:
 	cp -fr $(TM_BUNDLE) $(TM_BUNDLE_DEST)
