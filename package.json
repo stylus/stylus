@@ -13,4 +13,8 @@
     , "mkdirp": "0.3.x"
     , "debug": "*"
   }
+  , "devDependencies": {
+      "should": "*"
+    , "mocha": "*"
+  }
 }
