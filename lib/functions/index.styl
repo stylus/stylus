@@ -196,3 +196,13 @@ join(delim, vals...)
   vals = vals[0] if length(vals) == 1
   for val, i in vals
     buf += i ? delim + val : val
+
+
+
+add-property-function = add-property
+add-property(name,expr)
+  if mixin
+    {name} expr
+  else
+    add-property-function(name,expr)
+    
