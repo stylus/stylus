@@ -1,4 +1,3 @@
-
 ## Stylus Executable
 
 Stylus ships with the `stylus` executable for converting Stylus to CSS.
@@ -12,20 +11,22 @@ Stylus ships with the `stylus` executable for converting Stylus to CSS.
                         your default browser. (OS X only)
 
       Options:
-
-        -u, --use <path>        Utilize the stylus plugin at <path>
+        
         -i, --interactive       Start interactive REPL
+        -u, --use <path>        Utilize the stylus plugin at <path>
+        -U, --inline            Utilize image inlining via data uri support
         -w, --watch             Watch file(s) for changes and re-compile
         -o, --out <dir>         Output to <dir> when passing files
-        -C, --css <src> [dest]  Convert CSS input to Stylus
+        -C, --css <src> [dest]  Convert css input to stylus
         -I, --include <path>    Add <path> to lookup paths
-        -c, --compress          Compress CSS output
+        -c, --compress          Compress css output
         -d, --compare           Display input along with output
         -f, --firebug           Emits debug infos in the generated css that
                                 can be used by the FireStylus Firebug plugin
-        -l, --line-numbers      Emits comments in the generated CSS
-                                indicating the corresponding Stylus line
-        -V, --version           Display the version of Stylus
+        -l, --line-numbers      Emits comments in the generated css
+                                indicating the corresponding stylus line
+        --include-css           Include regular css on @import
+        -V, --version           Display the version of stylus
         -h, --help              Display help information
 
 ### STDIO Compilation Example
