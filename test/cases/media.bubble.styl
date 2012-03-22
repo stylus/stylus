@@ -51,3 +51,13 @@ nested(w) {
 
 .nested 
   nested 20px
+
+
+foo()
+  @media only screen and (max-width: 900px)
+    &
+      foo: bar
+      bar: baz
+
+.something
+  foo()

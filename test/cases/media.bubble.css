@@ -35,3 +35,9 @@ body {
     margin-left: 20px;
   }
 }
+@media only screen and (max-width: 900px) {
+  .something {
+    foo: bar;
+    bar: baz;
+  }
+}
