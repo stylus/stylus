@@ -1,0 +1,53 @@
+@media print {
+  body {
+    foo: 'bar';
+  }
+}
+
+body
+  @media print {
+    something {
+      foo: 'bar';
+    }
+  }
+
+foo()
+  @media print {
+    something {
+      foo: 'bar';
+    }
+  }
+
+body
+  foo()
+
+body
+  ul
+    li
+      foo()
+
+foo()
+  ul
+    li
+      @media print {
+        body {
+          foo: 'bar';
+        }
+      }
+
+body
+  one: 1
+  two: 2
+  foo()
+
+nested(w) {
+  margin-left: (w / 2)
+  @media screen {
+    & {
+      margin-left: w
+    }
+  }
+}
+
+.nested 
+  nested 20px

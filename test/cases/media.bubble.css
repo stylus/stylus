@@ -1,0 +1,37 @@
+@media print {
+  body {
+    foo: 'bar';
+  }
+}
+@media print {
+  body something {
+    foo: 'bar';
+  }
+}
+@media print {
+  body something {
+    foo: 'bar';
+  }
+}
+@media print {
+  body ul li something {
+    foo: 'bar';
+  }
+}
+body {
+  one: 1;
+  two: 2;
+}
+@media print {
+  body ul li body {
+    foo: 'bar';
+  }
+}
+.nested {
+  margin-left: 10px;
+}
+@media screen {
+  .nested {
+    margin-left: 20px;
+  }
+}
