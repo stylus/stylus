@@ -19,6 +19,7 @@ Stylus ships with the `stylus` executable for converting Stylus to CSS.
         -o, --out <dir>         Output to <dir> when passing files
         -C, --css <src> [dest]  Convert CSS input to Stylus
         -I, --include <path>    Add <path> to lookup paths
+        -n, --indent <number>   Indent is <number> of spaces
         -c, --compress          Compress CSS output
         -d, --compare           Display input along with output
         -f, --firebug           Emits debug infos in the generated css that
