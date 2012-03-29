@@ -9,7 +9,7 @@
 	<key>settings</key>
 	<dict>
 		<key>disableIndentCorrections</key>
-		<string>1</string>
+		<true/>
 	</dict>
 	<key>uuid</key>
 	<string>491D0D08-AA57-45F3-A8D2-4991CD88418A</string>
