@@ -202,8 +202,8 @@
 			</dict>
 			<key>match</key>
 			<string>(?x)
-          (?:-|\+)?(?:(?:[0-9]+(?:\.[0-9]+)?)|(?:\.[0-9]+))
-          ((?:px|pt|ch|cm|mm|in|r?em|ex|pc|deg|g?rad|dpi|dpcm|s)\b|%)?</string>
+				(?:-|\+)?(?:(?:[0-9]+(?:\.[0-9]+)?)|(?:\.[0-9]+))
+				((?:px|pt|ch|cm|mm|in|r?em|ex|pc|deg|g?rad|dpi|dpcm|s)\b|%)?</string>
 			<key>name</key>
 			<string>constant.numeric.stylus</string>
 		</dict>
