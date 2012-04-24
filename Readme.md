@@ -111,6 +111,7 @@ form input {
 ### Framework Support
 
    - [Connect](/LearnBoost/stylus/blob/master/docs/middleware.md)
+   - [Play! 2.0](https://github.com/knuton/play-stylus)
    - [Ruby On Rails](https://github.com/lucasmazza/ruby-stylus)
 
 ### CMS Support
