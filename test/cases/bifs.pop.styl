@@ -1,0 +1,49 @@
+nums = (1 2 3)
+
+body
+  foo: pop(nums)
+  foo: nums
+
+nums = (1 2 3)
+
+body
+  foo: pop(nums)
+  foo: pop(nums)
+  foo: nums
+
+nums = (1)
+
+body
+  foo: pop(nums)
+  foo: length(nums)
+
+nums = ()
+
+body
+  foo: pop(nums)
+  foo: length(nums)
+
+nums = (4 5 6)
+
+body
+  foo: shift(nums)
+  foo: nums
+
+nums = (4 5 6)
+
+body
+  foo: shift(nums)
+  foo: shift(nums)
+  foo: nums
+
+nums = (4)
+
+body
+  foo: shift(nums)
+  foo: length(nums)
+
+nums = ()
+
+body
+  foo: shift(nums)
+  foo: length(nums)
