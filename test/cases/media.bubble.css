@@ -41,3 +41,8 @@ body {
     bar: baz;
   }
 }
+@media only screen {
+  body {
+    background: #123456;
+  }
+}
