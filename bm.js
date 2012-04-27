@@ -55,7 +55,7 @@ cases.forEach(function(test){
   }) / avgs.length;
 
   if (avg > avgavg) {
-    console.log('  \033[31m%s \033[31m%dms\033[0m', name, avg | 0);
+    console.log('  \033[31m%s \033[31m%dms \033[90m+%dms\033[0m', name, avg | 0, avg - avgavg | 0);
   } else {
     console.log('  \033[36m%s \033[90m%dms\033[0m', name, avg | 0);
   }
