@@ -6,7 +6,7 @@
 var stylus = require('./')
   , fs = require('fs');
 
-var times = 3;
+var times = ~~process.env.TIMES || 1;
 
 // test cases
 
@@ -22,6 +22,10 @@ function lines(str) {
 
 console.log();
 cases.forEach(function(test){
+  // ignore ones that break 
+  // when we fatten them up
+  if ('eol-escape' == test) return;
+
   var name = test.replace(/[-.]/g, ' ');
   var path = 'test/cases/' + test + '.styl';
   var styl = fs.readFileSync(path, 'utf8').replace(/\r/g, '');
