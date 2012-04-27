@@ -61,3 +61,24 @@ foo()
 
 .something
   foo()
+
+body
+  .thing
+    @media only screen
+      background: #123456
+      .child
+        more: stuff
+
+stuff()
+  @media and stuff
+    stuff: 1234
+
+complex
+  stuff()
+  @media only awesome
+    fizz: buzz
+  @media not so awesome
+    &
+      one: 1
+    .child
+      two: 2

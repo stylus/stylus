@@ -41,3 +41,29 @@ body {
     bar: baz;
   }
 }
+@media only screen {
+  body .thing {
+    background: #123456;
+  }
+  body .thing .child {
+    more: stuff;
+  }
+}
+@media and stuff {
+  complex {
+    stuff: 1234;
+  }
+}
+@media only awesome {
+  complex {
+    fizz: buzz;
+  }
+}
+@media not so awesome {
+  complex {
+    one: 1;
+  }
+  complex .child {
+    two: 2;
+  }
+}
