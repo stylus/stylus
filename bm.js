@@ -21,7 +21,6 @@ cases.forEach(function(test){
   var name = test.replace(/[-.]/g, ' ');
   var path = 'test/cases/' + test + '.styl';
   var styl = fs.readFileSync(path, 'utf8').replace(/\r/g, '');
-  var css = fs.readFileSync('test/cases/' + test + '.css', 'utf8').replace(/\r/g, '').trim();
 
   var style = stylus(styl)
     .set('filename', path)
