@@ -6,7 +6,7 @@
 var stylus = require('./')
   , fs = require('fs');
 
-var times = 10;
+var times = 5;
 
 // test cases
 
