@@ -63,5 +63,17 @@ foo()
   foo()
 
 body
-  @media only screen
-    background: #123456
+  .thing
+    @media only screen
+      background: #123456
+      .child
+        more: stuff
+
+complex
+  @media only awesome
+    fizz: buzz
+  @media not so awesome
+    &
+      one: 1
+    .child
+      two: 2
