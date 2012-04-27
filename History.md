@@ -1,4 +1,12 @@
 
+0.26.0 / 2012-04-27 
+==================
+
+  * Added BIF shift [gravof]
+  * Added BIF pop [gravof]
+  * Added support for __@media__ bubbling properties [Ian MacLeod]
+  * Changed: strip trailing zeros [gravof]
+
 0.25.0 / 2012-04-03 
 ==================
 
