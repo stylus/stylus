@@ -16,20 +16,11 @@ var cases = fs.readdirSync('test/cases').filter(function(file){
   return file.replace('.styl', '');
 });
 
-function lines(str) {
-  return str.split('\n').length;
-}
-
 console.log();
 cases.forEach(function(test){
-  // ignore ones that break 
-  // when we fatten them up
-  if ('eol-escape' == test) return;
-
   var name = test.replace(/[-.]/g, ' ');
   var path = 'test/cases/' + test + '.styl';
   var styl = fs.readFileSync(path, 'utf8').replace(/\r/g, '');
-  while (lines(styl) < 1000) styl += styl;
 
   var style = stylus(styl)
     .set('filename', path)
