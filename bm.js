@@ -6,7 +6,7 @@
 var stylus = require('./')
   , fs = require('fs');
 
-var times = 5;
+var times = 3;
 
 // test cases
 
@@ -16,11 +16,16 @@ var cases = fs.readdirSync('test/cases').filter(function(file){
   return file.replace('.styl', '');
 });
 
+function lines(str) {
+  return str.split('\n').length;
+}
+
 console.log();
 cases.forEach(function(test){
   var name = test.replace(/[-.]/g, ' ');
   var path = 'test/cases/' + test + '.styl';
   var styl = fs.readFileSync(path, 'utf8').replace(/\r/g, '');
+  while (lines(styl) < 1000) styl += styl;
 
   var style = stylus(styl)
     .set('filename', path)
@@ -46,6 +51,6 @@ cases.forEach(function(test){
     return sum + n;
   }) / times;
 
-  console.log('  \033[36m%s \033[90m%dms\033[0m', name, avg);
+  console.log('  \033[36m%s \033[90m%dms\033[0m', name, avg | 0);
 });
 console.log();
