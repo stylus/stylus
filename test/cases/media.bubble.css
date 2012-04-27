@@ -49,6 +49,11 @@ body {
     more: stuff;
   }
 }
+@media and stuff {
+  complex {
+    stuff: 1234;
+  }
+}
 @media only awesome {
   complex {
     fizz: buzz;
