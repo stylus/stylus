@@ -42,7 +42,23 @@ body {
   }
 }
 @media only screen {
-  body {
+  body .thing {
     background: #123456;
+  }
+  body .thing .child {
+    more: stuff;
+  }
+}
+@media only awesome {
+  complex {
+    fizz: buzz;
+  }
+}
+@media not so awesome {
+  complex {
+    one: 1;
+  }
+  complex .child {
+    two: 2;
   }
 }
