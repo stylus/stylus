@@ -6,7 +6,8 @@
 var stylus = require('./')
   , fs = require('fs');
 
-var times = ~~process.env.TIMES || 1;
+var times = ~~process.env.TIMES || 1
+  , avgs = [];
 
 // test cases
 
@@ -46,6 +47,17 @@ cases.forEach(function(test){
     return sum + n;
   }) / times;
 
-  console.log('  \033[36m%s \033[90m%dms\033[0m', name, avg | 0);
+  avgs.push(avg);
+
+  // im cool like that
+  var avgavg = avgs.reduce(function(sum, n){
+    return sum + n;
+  }) / avgs.length;
+
+  if (avg > avgavg) {
+    console.log('  \033[31m%s \033[31m%dms\033[0m', name, avg | 0);
+  } else {
+    console.log('  \033[36m%s \033[90m%dms\033[0m', name, avg | 0);
+  }
 });
 console.log();
