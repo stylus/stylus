@@ -336,6 +336,13 @@ Saturate the given `color` by `amount`.
     saturate(#c33, 40%)
     // => #f00
 
+### invert(color)
+
+Inverts the color. The red, green, and blue values are inverted, while the opacity is left alone.
+
+    invert(#d62828)
+    // => #29d7d7
+
 ### unquote(str | ident)
 
   Unquote the given `str` and returned as a `Literal` node.

@@ -1,4 +1,3 @@
-
 ## Escaping
 
  Stylus lets you escape characters. This effectively turns them into identifiers, allowing them to be rendered as literals. 
