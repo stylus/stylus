@@ -3,7 +3,7 @@
   <li><a href="../try.html">Try Stylus Online!</a></li>
   </ul><div id="content"><h2>CSS Style</h2>
 
-<p> Stylus transparently supports a regular css-style syntax, meaning you do not need to use an alternative parser, or specify that a certain file is using a specific style.</p>
+<p> Stylus transparently supports a regular CSS-style syntax. This means you don&rsquo;t need an alternative parser, or specify that a certain file uses a specific style.</p>
 
 <h3>Example</h3>
 
@@ -25,7 +25,7 @@
    border-radius 5px
 </code></pre>
 
-<p> Since braces, colons, and semi-colons are optional, we could write this example just as we would with normal css:</p>
+<p> Since braces, colons, and semi-colons are optional, we could write this example just as we would with normal CSS:</p>
 
 <pre><code> border-radius() {
    -webkit-border-radius: arguments;
@@ -65,7 +65,7 @@
    border-radius: 5px;
 </code></pre>
 
-<p> Variables, functions, mixins, and all of the other features that Stylus provides still work as expected:</p>
+<p> Variables, functions, mixins, and all the other features provided by Stylus still work as expected:</p>
 
 <pre><code> main-color = white
  main-hover-color = black
@@ -78,5 +78,5 @@
  body a { color: main-color; &amp;:hover { color: main-hover-color; }}
 </code></pre>
 
-<p> There are currently a few exceptions to this rule, since the two styles may be mixed and matched some indentation rules still apply. So although not <em>every</em> plain-css stylesheet will work without modification this feature still allows those who prefer css syntax may still utilize the other powerful features provided by Stylus.</p>
+<p> There are a few caveats to this rule: since the two styles may be mixed and matched, some indentation rules still apply. So although not <em>every</em> plain-CSS stylesheet will work with zero modification, this feature allows those who prefer CSS syntax to continue doing so while leveraging Stylus' other powerful features.</p>
 </div></div></body></html>

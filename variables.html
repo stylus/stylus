@@ -11,7 +11,7 @@
    font font-size Arial, sans-serif
 </code></pre>
 
-<p>compiles to:</p>
+<p>Compiles to:</p>
 
 <pre><code> body {
    font: 14px Arial, sans-serif;
@@ -27,14 +27,14 @@ body
   font font sans-serif
 </code></pre>
 
-<p>compiles to:</p>
+<p>Compiles to:</p>
 
 <pre><code>body {
   font: 14px "Lucida Grande", Arial sans-serif;
 }
 </code></pre>
 
-<p>identifiers (variable names, functions, etc) may also include the <code>$</code> character, for example:</p>
+<p>Identifiers (variable names, functions, etc.) may also include the <code>$</code> character. For example:</p>
 
 <pre><code>$font-size = 14px
 body {
@@ -45,7 +45,7 @@ body {
 <h2>Property Lookup</h2>
 
 <p> Another cool feature unique to Stylus is the ability to reference
- properties defined <em>without</em> assigning their values to variables. A great example of this is the logic required for vertically and horizontally center an element, which is typically done by using percentages and negative margins as shown:</p>
+ properties defined <em>without</em> assigning their values to variables. A great example of this is the logic required for vertically and horizontally center an element (typically done using percentages and negative margins, as follows):</p>
 
 <pre><code> #logo
    position: absolute
@@ -57,7 +57,7 @@ body {
    margin-top: -(h / 2)
 </code></pre>
 
-<p>  Instead of assigning the variables <code>w</code> and <code>h</code> we can simply prepend the <code>@</code>
+<p>  Instead of assigning the variables <code>w</code> and <code>h</code>, we can simply prepend the <code>@</code>
   character to the property name to access the value:</p>
 
 <pre><code> #logo
@@ -70,7 +70,7 @@ body {
    margin-top: -(@height / 2)
 </code></pre>
 
-<p>  Another useful use-case is conditionally defining properties based on the existence of others within mixins. In the following example we apply a default <code>z-index</code> of <code>1</code>, but <em>only</em> if <code>z-index</code> was not previously specified.</p>
+<p>  Another use-case is conditionally defining properties within mixins based on the existence of others . In the following example, we apply a default <code>z-index</code> of <code>1</code>—but <em>only</em> if <code>z-index</code> was not previously specified:</p>
 
 <pre><code>  position()
     position: arguments
@@ -84,7 +84,7 @@ body {
     position: absolute
 </code></pre>
 
-<p>  Property lookup will &ldquo;bubble&rdquo; up the stack until found, or return <code>null</code> if the property cannot be resolved. In the following example <code>@color</code> will resolve to <code>blue</code>.</p>
+<p>  Property lookup will &ldquo;bubble up&rdquo; the stack until found, or return <code>null</code> if the property cannot be resolved. In the following example, <code>@color</code> will resolve to <code>blue</code>:</p>
 
 <pre><code>  body
     color: red

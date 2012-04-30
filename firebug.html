@@ -14,15 +14,15 @@ the Stylus-generated CSS styles rather than those of the generated CSS.</p>
 <p>First, you need to install <a href="https://addons.mozilla.org/firefox/downloads/latest/1843/addon-1843-latest.xpi?src=addondetail">Firebug</a>
 and the <a href="//github.com/parallel/firestylus">FireStylus extension</a></p>
 
-<p>Then, you need to enable the Stylus&rsquo;s <code>firebug</code> option when generating your CSS.</p>
+<p>Then simply enable the Stylus&rsquo;s <code>firebug</code> option when generating CSS.</p>
 
-<p>Command line</p>
+<p>Command line usage:</p>
 
 <pre><code>$ stylus -f &lt;path&gt;
 $ stylus --firebug &lt;path&gt;
 </code></pre>
 
-<p>Javascript API</p>
+<p>Javascript usage:</p>
 
 <pre><code>var stylus = require('stylus');
 
@@ -33,7 +33,7 @@ stylus(str)
   });
 </code></pre>
 
-<p>Connect / Express</p>
+<p>Connect / Express:</p>
 
 <pre><code>var stylus = require('stylus');
 
@@ -49,8 +49,7 @@ var server = connect.createServer(
 
 <h3>Compatibility</h3>
 
-<p> FireStylus should work with all versions of Firefox after
- and including 3.0, and all Firebug versions after and including 1.4</p>
+<p> FireStylus should work with Firefox versions 3.0 and up, and with Firebug versions 1.4 and up.</p>
 
 <ul>
 <li>Firefox 3+ (also works with version 5)</li>
@@ -63,6 +62,6 @@ var server = connect.createServer(
 <p>FireStylus and FireSass are incompatible. You cannot enable them
 simultaneously.</p>
 
-<p>FireStylus (like FireSass) only works in the html pane of firebug, the others,
-such as the css pane won&rsquo;t work due to firebug limitations.</p>
+<p>FireStylus (like FireSass) only works in the HTML pane of Firebug. The others
+(such as the CSS pane) won&rsquo;t work due to Firebug limitations.</p>
 </div></div></body></html>

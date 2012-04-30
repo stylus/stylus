@@ -5,20 +5,20 @@
 
 <h3>Indentation</h3>
 
-<p>Stylus is &ldquo;pythonic&rdquo; aka indentation-based. Whitespace is significant, so we substitute { and } with an <em>indent</em>, and an <em>outdent</em> as shown below:</p>
+<p>Stylus is &ldquo;pythonic&rdquo; (i.e. indentation-based). Whitespace is significant, so we substitute <code>{</code> and <code>}</code> with an <em>indent</em>, and an <em>outdent</em> as shown below:</p>
 
 <pre><code>body
   color white
 </code></pre>
 
-<p>which compiles to:</p>
+<p>Which compiles to:</p>
 
 <pre><code>body {
   color: #fff;
 }
 </code></pre>
 
-<p>Optionally if preferred we may utilize colons to separate properties and their values:</p>
+<p>If preferred, you can use colons to separate properties and values:</p>
 
 <pre><code>body
   color: white
@@ -26,7 +26,7 @@
 
 <h3>Rule Sets</h3>
 
-<p>Stylus, just like css allows you to define properties for several selectors at once through comma separation.</p>
+<p>Stylus, just like CSS, allows you to define properties for several selectors at once through comma separation.</p>
 
 <pre><code>textarea, input
   border 1px solid #eee
@@ -39,7 +39,7 @@ input
   border 1px solid #eee
 </code></pre>
 
-<p>both compiling to:</p>
+<p>Both compile to:</p>
 
 <pre><code>textarea,
 input {
@@ -47,14 +47,14 @@ input {
 }
 </code></pre>
 
-<p>The one exception to this rule, are selectors that look like properties, for example <code>foo bar baz</code> in the following may be a property, or a selector:</p>
+<p><strong>The only exception to this rule</strong> are selectors that look like properties. For example, the following <code>foo bar baz</code> might be a property <strong>or</strong> a selector:</p>
 
 <pre><code>foo bar baz
 &gt; input
   border 1px solid
 </code></pre>
 
-<p>so for this reason, or if simply preferred we may trail with a comma:</p>
+<p>So for this reason (or simply if preferred), we may trail with a comma:</p>
 
 <pre><code>foo bar baz,
 form input,
@@ -64,7 +64,7 @@ form input,
 
 <h3>Parent Reference</h3>
 
-<p>The <code>&amp;</code> character references the parent selector(s). In the example below our two selectors <code>textarea</code>, and <code>input</code> both alter the <code>color</code> on the <code>:hover</code> pseudo selector.</p>
+<p>The <code>&amp;</code> character references the parent selector(s). In the example below our two selectors (<code>textarea</code> and <code>input</code>) both alter the <code>color</code> on the <code>:hover</code> pseudo selector.</p>
 
 <pre><code>textarea
 input
@@ -73,7 +73,7 @@ input
     color #000
 </code></pre>
 
-<p>compiles to:</p>
+<p>Compiles to:</p>
 
 <pre><code>textarea,
 input {
@@ -85,7 +85,7 @@ input:hover {
 }
 </code></pre>
 
-<p>below is an example providing a simple <code>2px</code> border for internet exploder utilizing the parent reference within a mixin:</p>
+<p>Below is an example providing a simple <code>2px</code> border for Internet Exploder utilizing the parent reference within a mixin:</p>
 
 <pre><code>  box-shadow()
     -webkit-box-shadow arguments
@@ -101,7 +101,7 @@ input:hover {
       box-shadow 1px 1px 3px #eee
 </code></pre>
 
-<p>yielding:</p>
+<p>Yielding:</p>
 
 <pre><code>  body #login {
     -webkit-box-shadow: 1px 1px 3px #eee;
@@ -117,7 +117,7 @@ input:hover {
 
 <h3>Disambiguation</h3>
 
-<p>Expressions such as <code>padding - n</code> could be interpreted both as a subtraction operation, as well as a property with an unary minus. To disambiguate we can wrap the expression with parens:</p>
+<p>Expressions such as <code>padding - n</code> could be interpreted both as a subtraction operation, as well as a property with an unary minus. To disambiguate, wrap the expression with parens:</p>
 
 <pre><code>pad(n)
   padding (- n)
@@ -126,25 +126,27 @@ body
   pad(5px)
 </code></pre>
 
-<p>compiles to:</p>
+<p>Compiles to:</p>
 
 <pre><code>body {
   padding: -5px;
 }
 </code></pre>
 
-<p>however this is only true in functions, since functions act both as mixins, or calls with return values. For example this is fine, and will yield the same results as above:</p>
+<p>However, this is only true in functions (since functions act both as mixins, or calls with return values).</p>
+
+<p>For example, the following is fine (and yields the same results as above):</p>
 
 <pre><code>body
   padding -5px
 </code></pre>
 
-<p>Have weird property values that Stylus cannot process? <code>unquote()</code> can help you out:</p>
+<p>Have weird property values that Stylus can&rsquo;t process? <code>unquote()</code> can help you out:</p>
 
 <pre><code>filter unquote('progid:DXImageTransform.Microsoft.BasicImage(rotation=1)')
 </code></pre>
 
-<p>yields:</p>
+<p>Yields:</p>
 
 <pre><code>filter progid:DXImageTransform.Microsoft.BasicImage(rotation=1)
 </code></pre>
