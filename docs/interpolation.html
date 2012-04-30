@@ -3,7 +3,7 @@
   <li><a href="../try.html">Try Stylus Online!</a></li>
   </ul><div id="content"><h2>Interpolation</h2>
 
-<p>  Stylus supports interpolation by using the <code>{}</code> characters to surround an expression, which then becomes part of the identifier. For example <code>-webkit-{'border' + '-radius'}</code> would evaluate to <code>-webkit-border-radius</code>.</p>
+<p>  Stylus supports interpolation by using the <code>{}</code> characters to surround an expression, which then becomes part of the identifier. For example, <code>-webkit-{'border' + '-radius'}</code> evaluates to <code>-webkit-border-radius</code>.</p>
 
 <p> A great example use-case for this is expanding properties with vendor prefixes.</p>
 
@@ -22,7 +22,7 @@
     border-radius 1px 2px / 3px 4px
 </code></pre>
 
-<p>yielding:</p>
+<p>Yields:</p>
 
 <pre><code>  button {
     -webkit-border-radius: 1px 2px / 3px 4px;
@@ -33,7 +33,7 @@
 
 <h2>Selector Interpolation</h2>
 
-<p> Interpolation works with selectors as well, for example we may iterate while assigning the <code>height</code> property for the first 5 rows in a table as shown below.</p>
+<p> Interpolation works with selectors as well. For example, we may iterate to assign the <code>height</code> property for the first 5 rows in a table, as shown below:</p>
 
 <pre><code>table
   for row in 1 2 3 4 5
@@ -41,7 +41,7 @@
       height: 10px * row
 </code></pre>
 
-<p>yielding:</p>
+<p>Yields:</p>
 
 <pre><code>table tr:nth-child(1) {
   height: 10px;

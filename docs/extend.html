@@ -3,9 +3,13 @@
   <li><a href="../try.html">Try Stylus Online!</a></li>
   </ul><div id="content"><h2>Extend</h2>
 
-<p>  The Stylus <strong>@extend</strong> directive is inspired by, and is essentially the same as the <a href="http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#extend">SASS Implementation</a>, with few subtle differences. This feature makes maintaining semantic rulesets which inherit from others extremely simple.</p>
+<p>  The Stylus <strong>@extend</strong> directive is inspired by (and essentially the same as) the <a href="http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#extend">SASS Implementation</a>, with few subtle differences. This feature significantly simplifies maintenance of semantic rulesets that inherit from other semantic rulesets.</p>
 
-<p>  While the use of mixins can achieve a similar effect it can to duplicate CSS. A typical pattern is to define several classes as shown below, then combine them on the element such as &ldquo;warning message&rdquo;. While this technique works just fine, it&rsquo;s difficult to maintain.</p>
+<h3>“Extending” with mixins</h3>
+
+<p>  Although you can use mixins to achieve a similar effect, this can lead to duplicate CSS. A typical pattern is to define several classes as shown below, then combine them on the element such as &ldquo;warning message&rdquo;.</p>
+
+<p>  While this technique works just fine, it&rsquo;s difficult to maintain.</p>
 
 <pre><code>  .message,
   .warning {
@@ -18,7 +22,9 @@
   }
 </code></pre>
 
-<p>  To produce this same output with <strong>@extend</strong> simply pass it the desired selector, Stylus will then append the &ldquo;.warning&rdquo; selector to the existing &ldquo;.message&rdquo; ruleset so that it inherits its properties as well.</p>
+<h3>Using <code>__@extend__</code></h3>
+
+<p>  To produce this same output with <code>__@extend__</code>, simply pass it the desired selector.  Stylus will then append the <code>.warning</code> selector to the existing <code>.message</code> ruleset.  The <code>.warning</code> class then inherits properties from <code>.message</code>.</p>
 
 <pre><code>  .message {
     padding: 10px;
@@ -31,7 +37,7 @@
   }
 </code></pre>
 
-<p>  The following is a more complex example, showing how <strong>@extend</strong> cascades:</p>
+<p>  Here&rsquo;s a more complex example, demonstrating how <code>__@extend__</code> cascades:</p>
 
 <pre><code>  red = #E33E1E
   yellow = #E2E21E
@@ -82,7 +88,7 @@
   }
 </code></pre>
 
-<p>  Where Stylus currently differs from SASS is that SASS will not allow you <strong>@extend</strong> nested selectors:</p>
+<p>  Where Stylus currently differs from SASS is, SASS won&rsquo;t allow  <code>__@extend__</code> nested selectors:</p>
 
 <pre><code> form
    button
@@ -95,7 +101,7 @@
    Use --trace for backtrace.
 </code></pre>
 
-<p>   With Stylus as long as the selectors match it&rsquo;ll work:</p>
+<p>   With Stylus, as long as the selectors match, it works!</p>
 
 <pre><code>   form
      input[type=text]
@@ -108,7 +114,7 @@
      padding: 10px
 </code></pre>
 
-<p>   Would yield:</p>
+<p>   Yielding:</p>
 
 <pre><code>    form input[type=text],
     form textarea {

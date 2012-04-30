@@ -3,16 +3,15 @@
   <li><a href="../try.html">Try Stylus Online!</a></li>
   </ul><div id="content"><h2>Introspection API</h2>
 
-<p> Stylus supports an introspection API, allowing mixins and functions to reflect relative to the caller etc.</p>
+<p> Stylus supports an introspection API. This allows mixins and functions to reflect relative to the caller, etc.</p>
 
 <h2>mixin</h2>
 
-<p>  The <code>mixin</code> local variable is automatically assigned within function bodies,
-  containing the string &ldquo;root&rdquo; indicating the function is called at the root
-  level, or &ldquo;block&rdquo; indicating otherwise, and finally <code>false</code> if the function
-  is invoked expecting a return value.</p>
+<p>  The <code>mixin</code> local variable is automatically assigned within function bodies.
+  It contains the string <code>root</code> if the function was called at the root
+  level, or <code>block</code> indicating otherwise, and finally <code>false</code> if the invoked function expects a return value.</p>
 
-<p>  In the following example we define <code>reset()</code> altering its behaviour when mixed in to root, another block, or a return value as used in the <code>foo</code> property below.</p>
+<p>  In the following example, we define <code>reset()</code> to alter its behaviour depending on whether it&rsquo;s mixed into root, into another block, or into a return value, as used in the <code>foo</code> property below:</p>
 
 <pre><code>  reset()
     if mixin == 'root'
@@ -30,7 +29,7 @@
     foo reset()
 </code></pre>
 
-<p>compiles to:</p>
+<p>Compiles to:</p>
 
 <pre><code>    got {
       root: true;

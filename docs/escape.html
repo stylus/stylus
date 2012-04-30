@@ -3,20 +3,22 @@
   <li><a href="../try.html">Try Stylus Online!</a></li>
   </ul><div id="content"><h2>Escaping</h2>
 
-<p> Stylus allows you to escape characters, effectively turning them into identifiers, so that they can be rendered as literals. For example:</p>
+<p> Stylus lets you escape characters. This effectively turns them into identifiers, allowing them to be rendered as literals.</p>
+
+<p> For example:</p>
 
 <pre><code> body
    padding 1 \+ 2
 </code></pre>
 
-<p>will compile to:</p>
+<p>Compiles to:</p>
 
 <pre><code> body {
    padding: 1 + 2;
  }
 </code></pre>
 
-<p>Not that Stylus requires that <code>/</code> is parenthesized when used in a property:</p>
+<p>Note that Stylus requires that <code>/</code> is parenthesized when used in a property:</p>
 
 <pre><code>body
   font 14px/1.4

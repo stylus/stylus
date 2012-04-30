@@ -3,13 +3,13 @@
   <li><a href="../try.html">Try Stylus Online!</a></li>
   </ul><div id="content"><h2>Data URI Image Inlining</h2>
 
-<p>Stylus is bundled with an optional function named <code>url()</code>, which replaces the literal <code>url()</code> calls, and conditionally inlines them using base64 <a href="http://en.wikipedia.org/wiki/Data_URI_scheme">Data URIs</a>.</p>
+<p>Stylus is bundled with an optional function named <code>url()</code>, which replaces the literal <code>url()</code> calls (and conditionally inlines them using base64 <a href="http://en.wikipedia.org/wiki/Data_URI_scheme">Data URIs</a>).</p>
 
 <h3>Example</h3>
 
-<p>The function itself is available via <code>require('stylus').url</code>, and accepts an options object, returning a function that Stylus calls internally when it sees <code>url()</code>.</p>
+<p>The function itself is available via <code>require('stylus').url</code>. It accepts an <code>options</code> object, returning a function that Stylus calls internally when it sees <code>url()</code>.</p>
 
-<p>The <code>.define(name, callback)</code> method assigned a JavaScript function that can be called from stylus source. In this case we have our images in <code>./css/images</code> then we can ignore the <code>paths</code> option, since image lookups are performed relative to the file being rendered (by default), we may alter this with the option.</p>
+<p>The <code>.define(name, callback)</code> method assigned a JavaScript function that can be called from Stylus source. In this case, since our images are in <code>./css/images</code>,  we can ignore the <code>paths</code> option (by default image lookups are performed relative to the file being rendered).  But if desired, this behavior can be altered:</p>
 
 <pre><code>  stylus(str)
     .set('filename', __dirname + '/css/test.styl')
@@ -19,7 +19,9 @@
     });
 </code></pre>
 
-<p>For example if our images live in <code>./public/images</code> and we wish to use <code>url(images/tobi.png)</code>, we can pass <code>paths</code> with our public directory, which will become part of the lookup process. Like-wise if we wanted <code>url(tobi.png)</code> instead, we would pass <code>paths: [__dirname + '/public/images']</code>.</p>
+<p>For example, imagine our images live in <code>./public/images</code>.  We want to use <code>url(images/tobi.png)</code>.  We could pass <code>paths</code> our public directory, so that it becomes part of the lookup process.</p>
+
+<p>Likewise, if instead we wanted <code>url(tobi.png)</code>, we could pass <code>paths: [__dirname + '/public/images']</code>.</p>
 
 <pre><code>  stylus(str)
     .set('filename', __dirname + '/css/test.styl')

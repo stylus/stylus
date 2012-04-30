@@ -15,7 +15,7 @@
     foo num
 </code></pre>
 
-<p>yields:</p>
+<p>Yields:</p>
 
 <pre><code>  body {
     foo: 1;
@@ -32,7 +32,7 @@
       foo i font
 </code></pre>
 
-<p>yielding:</p>
+<p>Yielding:</p>
 
 <pre><code>    body {
       foo: 0 Impact;
@@ -43,7 +43,9 @@
 
 <h3>Mixins</h3>
 
-<p> We may utilize iteration within mixins to produce powerful functionality, for example we can apply expression pairs as properties using interpolation and iteration. Below we define <code>apply()</code>, conditionally utilizing all the <code>arguments</code> so that comma-delimited <em>and</em> expression lists are supported:</p>
+<p> We can use iteration within mixins to produce powerful functionality. For example, we can apply expression pairs as properties using interpolation and iteration.</p>
+
+<p> Below we define <code>apply()</code>, conditionally utilizing all the <code>arguments</code> so that comma-delimited <em>and</em> expression lists are supported:</p>
 
 <pre><code> apply(props)
    props = arguments if length(arguments) &gt; 1
@@ -60,9 +62,9 @@
 
 <h3>Functions</h3>
 
-<p> Stylus functions may also contain for-loops, below are some example use-cases:</p>
+<p> Stylus functions may also contain for-loops. Below are some example use-cases:</p>
 
-<p>sum:</p>
+<p>Sum:</p>
 
 <pre><code>  sum(nums)
     sum = 0

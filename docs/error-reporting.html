@@ -3,7 +3,7 @@
   <li><a href="../try.html">Try Stylus Online!</a></li>
   </ul><div id="content"><h2>Error Reporting</h2>
 
-<p> Stylus has fantastic error reporting built in for syntax, parse, and evaluation errors, complete with stack traces, line numbers, and filenames.</p>
+<p> Stylus has fantastic error reporting built-in for syntax, parse, and evaluation errors—complete with stack traces, line numbers, and filenames.</p>
 
 <h3>Parse Error</h3>
 
@@ -14,7 +14,7 @@
      == padding 5px
 </code></pre>
 
-<p>yielding:</p>
+<p>Yielding:</p>
 
 <pre><code> Error: /Users/tj/Projects/stylus/testing/test.styl:4
    3: '  form input'
@@ -25,7 +25,7 @@
 
 <h3>Evaluation Error</h3>
 
-<p> This &ldquo;runtime&rdquo; or evaluation error is caused due to passing a string to <code>border-radius()</code> instead of the expected <code>Unit</code> by using our helper <code>ensure(n, 'unit')</code>.</p>
+<p> This &ldquo;runtime&rdquo; or evaluation error is caused by passing a string to <code>border-radius()</code>, instead of the expected <code>Unit</code> (by using our helper <code>ensure(n, 'unit')</code>).</p>
 
 <pre><code>  ensure(val, type)
     unless val is a type
@@ -41,7 +41,7 @@
     border-radius '5px'
 </code></pre>
 
-<p>yielding:</p>
+<p>Yielding:</p>
 
 <pre><code>  Error: /Users/tj/Projects/stylus/examples/error.styl:12
     11: ''

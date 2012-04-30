@@ -61,7 +61,7 @@ b = 1
 // pased as: (!a) and (!b)
 </code></pre>
 
-<p>with:</p>
+<p>With:</p>
 
 <pre><code>not a or b
 // =&gt; false
@@ -72,9 +72,9 @@ b = 1
 
 <h3>Subscript []</h3>
 
-<p> The subscript operator allows us to grab a value in an expression via index. Parenthesized expressions may act as tuples, so for example <code>(15px 5px)</code>, <code>(1 2 3)</code>.</p>
+<p> The subscript operator allows us to grab a value inside an expression via index. Parenthesized expressions may act as tuples (e.g. <code>(15px 5px)</code>, <code>(1 2 3)</code>).</p>
 
-<p> Below is an example where we utilize tuples for error handling, showing the versatility of such a construct. As</p>
+<p> Below is an example that uses tuples for error handling (and showcasing the versatility of this construct):</p>
 
 <pre><code> add(a, b)
    if a is a 'unit' and b is a 'unit'
@@ -96,7 +96,7 @@ b = 1
    // =&gt; padding: "a and b must be units";
 </code></pre>
 
-<p> A more complex example, invoking the <code>error()</code> built-in function with the error message returned, when the ident (the first value) equals <code>error</code>.</p>
+<p> Here&rsquo;s a more complex example. Now we&rsquo;re invoking the built-in <code>error()</code> function with the return error message, whenever the ident (the first value) equals <code>error</code>.</p>
 
 <pre><code> if (val = add(1,'5'))[0] == error
    error(val[1])
@@ -113,9 +113,9 @@ b = 1
  // =&gt; 1 2 3 4
 </code></pre>
 
-<h3>Additive: + &ndash;</h3>
+<h3>Additive: + -</h3>
 
-<p>multiplicative and additive binary operators work as expected, and type conversion is applied within unit type classes, or default to the literal value. For example if we perform <code>5s - 2px</code> we will get <code>3s</code>.</p>
+<p>Multiplicative and additive binary operators work as expected. Type conversion is applied within unit type classes, or default to the literal value. For example <code>5s - 2px</code> results in <code>3s</code>.</p>
 
 <pre><code>15px - 5px
 // =&gt; 10px
@@ -151,17 +151,17 @@ b = 1
 // =&gt; 0
 </code></pre>
 
-<p>When using <code>/</code> within a property value you must wrap with parens. The following for example is taken literally, to support css line-height:</p>
+<p>When using <code>/</code> within a property value, you <strong>must</strong> wrap with parens. Otherwise the <code>/</code> is taken literally (to support CSS <code>line-height</code>):</p>
 
 <pre><code>font: 14px/1.5;
 </code></pre>
 
-<p>whereas the following is evaluated, dividing <code>14px</code> by <code>1.5</code>:</p>
+<p>But the following is evaluated as <code>14px</code> ÷ <code>1.5</code>:</p>
 
 <pre><code>font: (14px/1.5);
 </code></pre>
 
-<p>this exception is <em>only</em> required for the <code>/</code> operator.</p>
+<p>This is <em>only</em> required for the <code>/</code> operator.</p>
 
 <h3>Exponent: **</h3>
 
@@ -173,7 +173,7 @@ b = 1
 
 <h3>Equality &amp; Relational: == != >= &lt;= > &lt;</h3>
 
-<p>Equality operators can be used to equate units, colors, strings, and even identifiers. This is a powerful concept, as even arbitrary identifiers such as as <code>wahoo</code> can be utilized as atoms, a function could return <code>yes</code> or <code>no</code> instead of <code>true</code> or <code>false</code> (although not advised).</p>
+<p>Equality operators can be used to equate units, colors, strings, and even identifiers. This is a powerful concept, as even arbitrary identifiers (such as as <code>wahoo</code>) can be utilized as atoms. A function could return <code>yes</code> or <code>no</code> instead of <code>true</code> or <code>false</code> (although not advised).</p>
 
 <pre><code>5 == 5
 // =&gt; true
@@ -215,7 +215,7 @@ true is true
 // =&gt; false
 </code></pre>
 
-<p>Only exact values match, for example <code>0 == false</code>, and <code>null == false</code> are both <code>false</code>.</p>
+<p>Only exact values match. For example, <code>0 == false</code> and <code>null == false</code> are both <code>false</code>.</p>
 
 <p>Aliases:</p>
 
@@ -226,7 +226,11 @@ true is true
 
 <h2>Truthfulness</h2>
 
-<p> Nearly everything within Stylus resolves to <code>true</code>, including units with a suffix, for example even <code>0%</code>, <code>0px</code>, etc will resolve to <code>true</code>, since commonly in Stylus a mixin or function may accept such units as valid, however <code>0</code> itself is <code>false</code> in terms of arithmetic. Expressions or &ldquo;lists&rdquo; with a length greater than 1 are considered truthy.</p>
+<p> Nearly everything within Stylus resolves to <code>true</code>, including units with a suffix. Even <code>0%</code>, <code>0px</code>, etc. will resolve to <code>true</code> (because it&rsquo;s common in Stylus for mixins or functions to accept units as valid).</p>
+
+<p> However, <code>0</code> itself is <code>false</code> in terms of arithmetic.</p>
+
+<p> Expressions (or &ldquo;lists&rdquo;) with a length greater than 1 are considered truthy.</p>
 
 <p><code>true</code> examples:</p>
 
@@ -324,7 +328,7 @@ true is true
     pad(padding margin, 10px)
 </code></pre>
 
-<p>yielding:</p>
+<p>Yielding:</p>
 
 <pre><code>  body {
     padding: 5px;
@@ -340,14 +344,16 @@ true is true
 
 <h3>Conditional Assignment: ?= :=</h3>
 
-<p>The conditional assignment operator <code>?=</code> (aliased as <code>:=</code>) lets us define variables without clobbering old values (when present). This operator expands to an <code>is defined</code> binary operation within a ternary, for example the following are equivalent:</p>
+<p>The conditional assignment operator <code>?=</code> (aliased as <code>:=</code>) lets us define variables without clobbering old values (if present). This operator expands to an <code>is defined</code> binary operation within a ternary.</p>
+
+<p>For example, the following are equivalent:</p>
 
 <pre><code>color := white
 color ?= white
 color = color is defined ? color : white
 </code></pre>
 
-<p>For example when using <code>=</code> we simply re-assign:</p>
+<p>When using plain <code>=</code>, we simply reassign:</p>
 
 <pre><code>color = white
 color = black
@@ -356,7 +362,7 @@ color
 // =&gt; black
 </code></pre>
 
-<p>However when using <code>?=</code> our second attempt fails since the variable is already defined:</p>
+<p>But when using <code>?=</code>, our second attempt fails (since the variable is already defined):</p>
 
 <pre><code>color = white
 color ?= black
@@ -379,13 +385,13 @@ color
 // =&gt; false
 </code></pre>
 
-<p>Alternatively we could use the <code>type()</code> BIF:</p>
+<p>Alternatively, we could use the <code>type()</code> BIF:</p>
 
 <pre><code>type(#fff) == 'rgba'
 // =&gt; true                                                                            
 </code></pre>
 
-<p>&lsquo;color&rsquo; is the one special-case, evaluating to true when the
+<p><strong>Note:</strong> <code>color</code> is the only special-case, evaluating to <code>true</code> when the
 left-hand operand is an <code>RGBA</code> or <code>HSLA</code> node.</p>
 
 <h3>Variable Definition: is defined</h3>
@@ -403,7 +409,7 @@ foo is defined
 // =&gt; 'invalid "is defined" check on non-variable #fff'
 </code></pre>
 
-<p>Alternatively one can use the <code>lookup(name)</code> built-in function to do this, or to perform dynamic lookups:</p>
+<p>Alternatively, one can use the <code>lookup(name)</code> built-in function to do this—or to perform dynamic lookups:</p>
 
 <pre><code>name = 'blue'
 lookup('light-' + name)
@@ -421,14 +427,14 @@ lookup('light-' + name)
     padding 5px
 </code></pre>
 
-<p><em>will</em> yield the following css when undefined:</p>
+<p><em>Will</em> yield the following CSS when undefined:</p>
 
 <pre><code>body {
   padding: 5px;
 }
 </code></pre>
 
-<p>however this will be safe:</p>
+<p>However this will be safe:</p>
 
 <pre><code>body
   if ohnoes is defined
@@ -437,7 +443,7 @@ lookup('light-' + name)
 
 <h2>Ternary</h2>
 
-<p>The ternary operator works as we would expect in most languages, being the only operator with three operands, the <em>condition</em> expression, the <em>truth</em> expression and the <em>false</em> expression.</p>
+<p>The ternary operator works as we would expect in most languages. It&rsquo;s the only operator with three operands (the <em>condition</em> expression, the <em>truth</em> expression, and the <em>false</em> expression).</p>
 
 <pre><code>num = 15
 num ? unit(num, 'px') : 20px
@@ -460,13 +466,13 @@ num ? unit(num, 'px') : 20px
 
 <h2>Color Operations</h2>
 
-<p> Operations on colors provide a terse, expressive way to alter components. For example we can operate on each RGB:</p>
+<p> Operations on colors provide a terse, expressive way to alter components. For example, we can operate on each RGB:</p>
 
 <pre><code>#0e0 + #0e0
 // =&gt; #0f0
 </code></pre>
 
-<p> Another example is adjust the lightness value by adding or subtracting a percentage. To lighten a color we add, to darken we subtract.</p>
+<p> Another example is adjust the lightness value by adding or subtracting a percentage. To lighten a color, add; to darken, subtract.</p>
 
 <pre><code>#888 + 50%
 // =&gt; #c3c3c3
@@ -475,15 +481,15 @@ num ? unit(num, 'px') : 20px
 // =&gt; #444
 </code></pre>
 
-<p>  Adjust the hue is also possible by adding or subtracting with degrees, for example adding <code>50deg</code> to this red value, resulting in a yellow:</p>
+<p>  Adjust the hue is also possible by adding or subtracting with degrees. For example, adding <code>50deg</code> to this red value results in a yellow:</p>
 
 <pre><code> #f00 + 50deg
  // =&gt; #ffd500
 </code></pre>
 
-<p>  Values clamp appropriately, for example we can &ldquo;spin&rdquo; the hue 180 degrees, and if the current value is <code>320deg</code>, it will resolve to <code>140deg</code>.</p>
+<p>  Values clamp appropriately. For example, we can &ldquo;spin&rdquo; the hue 180 degrees, and if the current value is <code>320deg</code>, it will resolve to <code>140deg</code>.</p>
 
-<p>  We may also tweak several values at once, including the alpha by using <code>rgb()</code>, <code>rgba()</code>, <code>hsl()</code>, or <code>hsla()</code>:</p>
+<p>  We may also tweak several values at once (including the alpha) by using <code>rgb()</code>, <code>rgba()</code>, <code>hsl()</code>, or <code>hsla()</code>:</p>
 
 <pre><code>  #f00 - rgba(100,0,0,0.5)
   // =&gt; rgba(155,0,0,0.5)

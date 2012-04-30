@@ -3,23 +3,23 @@
   <li><a href="../try.html">Try Stylus Online!</a></li>
   </ul><div id="content"><h2>Functions</h2>
 
-<p> Stylus features powerful in-language function definition. Function definition appears identical to mixins, however functions may return a value.</p>
+<p> Stylus features powerful in-language function definitions. Function definitions appear identical to mixins; however, functions may return a value.</p>
 
 <h3>Return Values</h3>
 
-<p> Let&rsquo;s try a trivial example, creating a function that adds two numbers.</p>
+<p> Let&rsquo;s try a trivial example: creating a function that adds two numbers.</p>
 
 <pre><code>add(a, b)
   a + b
 </code></pre>
 
-<p> We may then utilize this function in conditions, as property values, etc.</p>
+<p> We can then use this function in conditions, in property values, etc.</p>
 
 <pre><code> body 
    padding add(10px, 5)
 </code></pre>
 
-<p> Rendering</p>
+<p> Rendering:</p>
 
 <pre><code> body {
    padding: 15px;
@@ -28,7 +28,9 @@
 
 <h3>Argument Defaults</h3>
 
-<p> Optional arguments may default to a given expression. With Stylus we may even default arguments to leading arguments! For example:</p>
+<p> Optional arguments may default to a given expression. With Stylus we may even default arguments to earlier arguments!</p>
+
+<p> For example:</p>
 
 <pre><code> add(a, b = a)
    a + b
@@ -40,7 +42,7 @@
  // =&gt; 20
 </code></pre>
 
-<p>note that since argument defaults are assignments, we can also utilize function calls for defaults:</p>
+<p><strong>Note:</strong> Since argument defaults are assignments, we can also use function calls for defaults:</p>
 
 <pre><code> add(a, b = unit(a, px))
    a + b
@@ -48,7 +50,7 @@
 
 <h3>Function Bodies</h3>
 
-<p> We can take our simple <code>add()</code> function further, by casting all units passed as <code>px</code> via the <code>unit()</code> built-in. Re-assigning each argument and providing a unit type string (or identifier), which disregards unit conversion.</p>
+<p> We can take our simple <code>add()</code> function further. Let&rsquo;s casting all units passed as <code>px</code> via the <code>unit()</code> built-in. It reassigns each argument, and provides a unit-type string (or identifier), which ignores unit conversion.</p>
 
 <pre><code> add(a, b = a)
    a = unit(a, px)
@@ -61,7 +63,9 @@
 
 <h3>Multiple Return Values</h3>
 
-<p> Stylus functions can return several values, just as you can assign several values to a variable. For example the following is a valid assignment:</p>
+<p> Stylus functions can return several values—just as you can assign several values to a variable.</p>
+
+<p> For example, the following is a valid assignment:</p>
 
 <pre><code>   sizes = 15px 10px
 
@@ -69,7 +73,7 @@
    // =&gt; 15px 
 </code></pre>
 
-<p>Similarly we may return several values:</p>
+<p>Similarly, we may return several values:</p>
 
 <pre><code>   sizes()
      15px 10px
@@ -78,13 +82,13 @@
    // =&gt; 15px
 </code></pre>
 
-<p>One slight exception is when return values are identifiers, for example the following looks like a property assignment to Stylus since no operators are present.</p>
+<p>One slight exception is when return values are identifiers. For example, the following looks like a property assignment to Stylus (since no operators are present):</p>
 
 <pre><code> swap(a, b)
    b a
 </code></pre>
 
-<p>To disambiguate we may either wrap in parens, or utilize the <code>return</code> keyword.</p>
+<p>To disambiguate, we can either wrap with parentheses, or use the <code>return</code> keyword:</p>
 
 <pre><code>  swap(a, b)
     (b a)
@@ -95,7 +99,7 @@
 
 <h3>Conditionals</h3>
 
-<p> Let&rsquo;s say we want to create a function named <code>stringish()</code> to see if the value given can be transformed to a string. We check if <code>val</code> is a string, or an ident which is string-like. Because undefined identifiers yield themselves as the value, we may compare them to them-selves as shown below, where <code>yes</code> and <code>no</code> are used in place of <code>true</code> and <code>false</code>.</p>
+<p> Let&rsquo;s say we want to create a function named <code>stringish()</code> to determine whether the argument can be transformed to a string. We check if <code>val</code> is a string, or an ident (which is string-like). Because undefined identifiers yield themselves as the value, we may compare them to themselves as shown below (where <code>yes</code> and <code>no</code> are used in place of <code>true</code> and <code>false</code>):</p>
 
 <pre><code> stringish(val)
    if val is a 'string' or val is a 'ident'
@@ -104,7 +108,7 @@
      no
 </code></pre>
 
-<p>usage:</p>
+<p>Usage:</p>
 
 <pre><code> stringish('yay') == yes
  // =&gt; true
@@ -116,7 +120,7 @@
  // =&gt; true
 </code></pre>
 
-<p><strong>note</strong>: <code>yes</code> and <code>no</code> are not boolean literals, they are simply undefined identifiers in this case.</p>
+<p><strong>note</strong>: <code>yes</code> and <code>no</code> are not boolean literals. They are simply undefined identifiers in this case.</p>
 
 <p>Another example:</p>
 
@@ -129,7 +133,7 @@
     equal
 </code></pre>
 
-<p>usage:</p>
+<p>Usage:</p>
 
 <pre><code>compare(5, 2)
 // =&gt; higher
@@ -143,7 +147,7 @@ compare(10, 10)
 
 <h3>Aliasing</h3>
 
-<p>  To alias a function we can simply assign a function&rsquo;s name to a new identifier. For example our previous <code>add()</code> function could be exposed as <code>plus()</code> as well, simply by:</p>
+<p>  To alias a function, simply assign a function&rsquo;s name to a new identifier. For example, our <code>add()</code> function could be aliased as <code>plus()</code>, like so:</p>
 
 <pre><code>  plus = add
 
@@ -153,7 +157,7 @@ compare(10, 10)
 
 <h3>Variable Functions</h3>
 
-<p>  In the same way that we can &ldquo;alias&rdquo; a function, we can pass a function as well, here our <code>invoke()</code> function accepts a function, so we can pass it <code>add()</code> or <code>sub()</code>.</p>
+<p>  In the same way that we can &ldquo;alias&rdquo; a function, we can pass a function as well. Here, our <code>invoke()</code> function accepts a function, so we can pass it <code>add()</code> or <code>sub()</code>.</p>
 
 <pre><code>invoke(a, b, fn)
   fn(a, b)
@@ -166,7 +170,7 @@ body
   padding invoke(5, 10, sub)
 </code></pre>
 
-<p>yielding:</p>
+<p>Yielding:</p>
 
 <pre><code>body {
   padding: 15;
@@ -176,7 +180,9 @@ body
 
 <h3>arguments</h3>
 
-<p> The <code>arguments</code> local is available to all function bodies, and contains all the arguments passed. For example:</p>
+<p> The <code>arguments</code> local is available to all function bodies, and contains all the arguments passed.</p>
+
+<p> For example:</p>
 
 <pre><code> sum()
    n = 0
@@ -189,14 +195,14 @@ body
 
 <h3>Hash Example</h3>
 
-<p> Below we define the <code>get(hash, key)</code> function, which will return the
- value of <code>key</code>, or <code>null</code>. We iterate each <code>pair</code> in <code>hash</code>, returning the pair&rsquo;s second node when the first (the <code>key</code>) matches.</p>
+<p> Below we define the <code>get(hash, key)</code> function, which returns the
+ value of <code>key</code> (or <code>null</code>). We iterate each <code>pair</code> in <code>hash</code>, returning the pair&rsquo;s second node when the first (the <code>key</code>) matches.</p>
 
 <pre><code>  get(hash, key)
     return pair[1] if pair[0] == key for pair in hash
 </code></pre>
 
-<p>As you can see below, in-language functions paired with robust stylus expressions can provide great flexibility.</p>
+<p>As demonstrated below, in-language functions—paired with robust Stylus expressions—can provide great flexibility:</p>
 
 <pre><code>  hash = (one 1) (two 2) (three 3)
 

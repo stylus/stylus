@@ -7,23 +7,25 @@
 
 <h3>Literal CSS</h3>
 
-<p>  Any filename with the extension <code>.css</code> will become a literal, for example:</p>
+<p>  Any filename with the extension <code>.css</code> will become a literal. For example:</p>
 
 <pre><code> @import "reset.css"
 </code></pre>
 
-<p>will render to the literal css <strong>@import</strong> shown below:</p>
+<p>Render the literal CSS <strong>@import</strong> shown below:</p>
 
 <pre><code> @import "reset.css"
 </code></pre>
 
 <h3>Stylus Import</h3>
 
-<p> When using <strong>@import</strong> without the <code>.css</code> extension, it is assumed to be a Stylus sheet, for example <code>@import "mixins/border-radius"</code>.</p>
+<p> When using <strong>@import</strong> without the <code>.css</code> extension, it&rsquo;s assumed to be a Stylus sheet (e.g., <code>@import "mixins/border-radius"</code>).</p>
 
-<p> <strong>@import</strong> works by iterating an array of directories, and seeing if this file lives in any of them, similar to node&rsquo;s <code>require.paths</code>. This array defaults to a single path which is derived from the <code>filename</code> option&rsquo;s dirname. So if your filename is <code>/tmp/testing/stylus/main.styl</code>, then import will look in <code>/tmp/testing/stylus/</code>.</p>
+<p> <strong>@import</strong> works by iterating an array of directories, and checking if this file lives in any of them (similar to node&rsquo;s <code>require.paths</code>). This array defaults to a single path, which is derived from the <code>filename</code> option&rsquo;s <code>dirname</code>. So, if your filename is <code>/tmp/testing/stylus/main.styl</code>, then import will look in <code>/tmp/testing/stylus/</code>.</p>
 
-<p> <strong>@import</strong> also supports index styles, meaning if you <code>@import blueprint</code>, it will resolve either <code>blueprint.styl</code> or <code>blueprint/index.styl</code>, useful for libraries to expose all of their features, but still allow a subset of the library to be imported. For example a common lib structure might be:</p>
+<p> <strong>@import</strong> also supports index styles. This means when you <code>@import blueprint</code>, it will resolve <strong>either</strong> <code>blueprint.styl</code> <strong>or</strong> <code>blueprint/index.styl</code>.  This is really useful for libraries that want to expose all their features, while still allowing feature subsets to be imported.</p>
+
+<p> For example, a common lib structure might be:</p>
 
 <pre><code>./tablet
   |-- index.styl 
@@ -32,7 +34,7 @@
   |-- images.styl 
 </code></pre>
 
-<p> In the example below we set the <code>paths</code> options to provide additional paths to Stylus. Within <code>./test.styl</code> we could then <code>@import "mixins/border-radius"</code> or <code>@import "border-radius"</code> since <code>./mixins</code> is exposed to Stylus.</p>
+<p> In the example below, we set the <code>paths</code> options to provide additional paths to Stylus. Within <code>./test.styl</code>, we could then <code>@import "mixins/border-radius"</code>, or <code>@import "border-radius"</code> (since <code>./mixins</code> is exposed to Stylus).</p>
 
 <pre><code>  /**
    * Module dependencies.
@@ -71,12 +73,12 @@
    });
 </code></pre>
 
-<p> The following are essentially equivalent:</p>
+<p> The following statement&hellip;</p>
 
 <pre><code> @import 'mixins/vendor'
 </code></pre>
 
-<p>and</p>
+<p>&hellip;is equivalent to&hellip;</p>
 
 <pre><code> .import('mixins/vendor') 
 </code></pre>

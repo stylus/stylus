@@ -56,7 +56,9 @@
 
 <h2>Expansion</h2>
 
-<p> By utilizing <code>@keyframes</code> your rules are automatically expanded to the vendor prefixes defined by the <code>vendors</code> variable, defaulting to <code>webkit moz official</code>. This means we can alter it at any time for the expansion to take effect immediately. For example consider the following</p>
+<p> By using <code>@keyframes</code>, your rules are automatically expanded to the vendor prefixes defined by the <code>vendors</code> variable (default: <code>webkit moz official</code>). This means we can alter it at any time for the expansion to take effect immediately.</p>
+
+<p> For example, consider the following:</p>
 
 <pre><code>@keyframes foo {
   from {
@@ -68,7 +70,7 @@
 }
 </code></pre>
 
-<p>expands to our two default vendors and the official syntax:</p>
+<p>This expands to our two default vendors, and the official syntax:</p>
 
 <pre><code>@-moz-keyframes foo {
   0% {
@@ -99,7 +101,7 @@
 }
 </code></pre>
 
-<p>if we wanted to limit to the official syntax only, simply alter <code>vendors</code>:</p>
+<p>If we wanted to limit to the official syntax only, simply alter <code>vendors</code>:</p>
 
 <pre><code>vendors = official
 
@@ -113,7 +115,7 @@
 }
 </code></pre>
 
-<p>yielding:</p>
+<p>Yielding:</p>
 
 <pre><code>@keyframes foo {
   0% {

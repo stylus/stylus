@@ -9,7 +9,7 @@
 
 <p> The <code>if</code> conditional works as you would expect, simply accepting an expression, evaluating the following block when <code>true</code>. Along with <code>if</code> are the typical <code>else if</code> and <code>else</code> tokens, acting as fallbacks.</p>
 
-<p> The example below would conditionally overload the <code>padding</code> property, swapping it for margin.</p>
+<p> The example below would conditionally overload the <code>padding</code> property, swapping it for <code>margin</code>.</p>
 
 <pre><code>overload-padding = true
 
@@ -43,9 +43,9 @@ body
 
 <h3>unless</h3>
 
-<p> For users familiar with the ruby programming language, we have the <code>unless</code> conditional, which is essentially the opposite of <code>if</code>, essentially <code>if (!(expr))</code>.</p>
+<p> For users familiar with the Ruby programming language, we have the <code>unless</code> conditional. It’s basically the opposite of <code>if</code>—essentially <code>if (!(expr))</code>.</p>
 
-<p>In the example below, if <code>disable-padding-override</code> is undefined or <code>false</code> padding will be overridden, displaying <code>margin</code> instead. However when <code>true</code> padding will remain outputting <code>padding 5px 10px</code> as expected.</p>
+<p>In the example below, if <code>disable-padding-override</code> is <code>undefined</code> or <code>false</code>, <code>padding</code> will be overridden, displaying <code>margin</code> instead. But if it’s <code>true</code>, <code>padding</code> will continue outputting <code>padding 5px 10px</code> as expected.</p>
 
 <pre><code> disable-padding-override = true
 
@@ -59,9 +59,9 @@ body
 
 <h3>Postfix Conditionals</h3>
 
-<p>  Stylus supports postfix conditionals, meaning the <code>if</code> and <code>unless</code> act as operators, evaluating the left-hand operand, when the right-hand expression is truthy.</p>
+<p>  Stylus supports postfix conditionals. This means that <code>if</code> and <code>unless</code> act as operators; they evaluate the left-hand operand when the right-hand expression is truthy.</p>
 
-<p>  For example let&rsquo;s define <code>negative()</code>, performing some basic type checking. Below we use block-style conditionals:</p>
+<p>  For example let&rsquo;s define <code>negative()</code> to perform some basic type checking. Below we use block-style conditionals:</p>
 
 <pre><code>  negative(n)
     unless n is a 'unit'
@@ -72,7 +72,7 @@ body
       no
 </code></pre>
 
-<p>  Next we utilize postfix conditionals to keep our function terse.</p>
+<p>  Next, we utilize postfix conditionals to keep our function terse.</p>
 
 <pre><code>  negative(n)
     error('invalid number') unless n is a 'unit'
@@ -80,9 +80,9 @@ body
     no
 </code></pre>
 
-<p>  Of course we could take this further, and utilize <code>n &lt; 0 ? yes : no</code>, or simply stick with booleans, and use only <code>n &lt; 0</code>.</p>
+<p>  Of course, we could take this further.  For example, we could write <code>n &lt; 0 ? yes : no</code>, or simply stick with booleans: <code>n &lt; 0</code>.</p>
 
-<p>  Postfix conditionals may be applied to most single-line statements, for example <code>@import</code>, <code>@charset</code>, mixins, and of course properties as shown below:</p>
+<p>  Postfix conditionals may be applied to most single-line statements. For example, <code>@import</code>, <code>@charset</code>, mixins—and of course, properties as shown below:</p>
 
 <pre><code>  pad(types = margin padding, n = 5px)
     padding unit(n, px) if padding in types
