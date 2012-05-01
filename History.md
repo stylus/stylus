@@ -1,4 +1,10 @@
 
+0.26.1 / 2012-04-30 
+==================
+
+  * Changed `stylus.middleware()`, make it less annoying with self-serving
+  * Changed: replaced debug option with `DEBUG=stylus:middleware`
+
 0.26.0 / 2012-04-27 
 ==================
 
