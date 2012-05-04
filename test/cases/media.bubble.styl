@@ -1,0 +1,84 @@
+@media print {
+  body {
+    foo: 'bar';
+  }
+}
+
+body
+  @media print {
+    something {
+      foo: 'bar';
+    }
+  }
+
+foo()
+  @media print {
+    something {
+      foo: 'bar';
+    }
+  }
+
+body
+  foo()
+
+body
+  ul
+    li
+      foo()
+
+foo()
+  ul
+    li
+      @media print {
+        body {
+          foo: 'bar';
+        }
+      }
+
+body
+  one: 1
+  two: 2
+  foo()
+
+nested(w) {
+  margin-left: (w / 2)
+  @media screen {
+    & {
+      margin-left: w
+    }
+  }
+}
+
+.nested 
+  nested 20px
+
+
+foo()
+  @media only screen and (max-width: 900px)
+    &
+      foo: bar
+      bar: baz
+
+.something
+  foo()
+
+body
+  .thing
+    @media only screen
+      background: #123456
+      .child
+        more: stuff
+
+stuff()
+  @media and stuff
+    stuff: 1234
+
+complex
+  stuff()
+  @media only awesome
+    fizz: buzz
+  @media not so awesome
+    &
+      one: 1
+    .child
+      two: 2

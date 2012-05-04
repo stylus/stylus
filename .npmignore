@@ -11,3 +11,6 @@ docs/
 editors/
 examples/
 test/
+
+coverage.html
+lib-cov

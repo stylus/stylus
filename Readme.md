@@ -101,6 +101,7 @@ form input {
   - [@media](/LearnBoost/stylus/blob/master/docs/media.md) support
   - Connect [Middleware](/LearnBoost/stylus/blob/master/docs/middleware.md)
   - TextMate [bundle](/LearnBoost/stylus/blob/master/docs/textmate.md)
+  - Coda/SubEtha Edit [Syntax mode](https://github.com/atljeremy/Stylus.mode)
   - gedit [language-spec](/LearnBoost/stylus/blob/master/docs/gedit.md)
   - VIM [Syntax](https://github.com/wavded/vim-stylus)
   - [Firebug extension](/LearnBoost/stylus/blob/master/docs/firebug.md)
@@ -110,7 +111,8 @@ form input {
 ### Framework Support
 
    - [Connect](/LearnBoost/stylus/blob/master/docs/middleware.md)
-   - [Ruby On Rails](https://github.com/lucasmazza/stylus_rails)
+   - [Play! 2.0](https://github.com/knuton/play-stylus)
+   - [Ruby On Rails](https://github.com/lucasmazza/ruby-stylus)
 
 ### CMS Support
 

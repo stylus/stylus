@@ -1,4 +1,23 @@
 
+0.26.0 / 2012-04-27 
+==================
+
+  * Added BIF shift [gravof]
+  * Added BIF pop [gravof]
+  * Added support for __@media__ bubbling properties [Ian MacLeod]
+  * Changed: strip trailing zeros [gravof]
+
+0.25.0 / 2012-04-03 
+==================
+
+  * Added `make test-cov`
+  * Added temporary multiline support.
+  * Added: allow for '%' unit type in the 'alpha' of rgba and hsla [jasonkuhrt]
+  * Updated cssom dep
+  * Removed growl dep. Closes #583
+  * Fixed BIF retval coercion
+  * Fixed issue #390, nested @media
+
 0.24.0 / 2012-02-16 
 ==================
 
