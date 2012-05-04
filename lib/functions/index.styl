@@ -61,6 +61,22 @@ sum(nums)
 avg(nums)
   sum(nums) / length(nums)
 
+// return a unitless number, or pass through
+
+remove-unit(n)
+  if typeof(n) is "unit"
+    unit(n,"")
+  else
+    n
+
+// convert a _% to 0._ or pass through
+
+percent-to-decimal(n)
+  if unit(n) is "%"
+    remove-unit(n)/100
+  else
+    n
+
 // color components
 
 alpha(color) { component(hsl(color), 'alpha') }
@@ -111,12 +127,12 @@ lighten(color, amount)
 // decerase opacity by amount
 
 fade-out(color, amount)
-  color - rgba(black, amount)
+  color - rgba(black, percent-to-decimal(amount))
 
 // increase opacity by amount
 
 fade-in(color, amount)
-  color + rgba(black, amount)
+  color + rgba(black, percent-to-decimal(amount))
 
 // spin hue by a given amount
 
