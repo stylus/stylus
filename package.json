@@ -5,7 +5,7 @@
   , "keywords": ["css", "parser", "style", "stylesheets", "jade", "language"]
   , "repository": "git://github.com/learnboost/stylus"
   , "main": "./index.js"
-  , "engines": { "node": "> 0.4.x < 0.9.0" }
+  , "engines": { "node": "*" }
   , "bin": { "stylus": "./bin/stylus" }
   , "scripts" : { "prepublish" : "npm prune", "test": "make test" }
   , "dependencies": {
