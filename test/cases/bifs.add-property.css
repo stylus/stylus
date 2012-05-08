@@ -13,6 +13,7 @@ body {
 body {
   foo: -moz-linear-gradient(#eee, #999);
   foo: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#eee), to(#999));
+  color: #000;
 }
 body {
   foo: -webkit-something(15px);
