@@ -43,7 +43,23 @@ describe('integration', function(){
       }
 
       // Rerun as an import to ensure the same functionality
-      var style = stylus('@import("' + path + '")')
+      var importCache = {};
+      var style = stylus('@import("' + path + '")', {_importCache: importCache})
+        .set('filename', path)
+        .include(__dirname + 'test/cases')
+        .include(__dirname + '/images')
+        .include(__dirname + '/cases/import.basic')
+        .define('url', stylus.url());
+
+      if (~test.indexOf('compress')) style.set('compress', true);
+
+      style.render(function(err, actual){
+        if (err) throw err;
+        actual.trim().should.equal(css);
+      });
+
+      // And once more for cached imports testing
+      var style = stylus('@import("' + path + '")', {_importCache: importCache})
         .set('filename', path)
         .include(__dirname + 'test/cases')
         .include(__dirname + '/images')
