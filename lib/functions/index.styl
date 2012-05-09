@@ -212,3 +212,16 @@ join(delim, vals...)
   vals = vals[0] if length(vals) == 1
   for val, i in vals
     buf += i ? delim + val : val
+
+// add a css rule to the containing block
+
+// - This definition allows add-property to be used as a mixin
+// - It has the same effect as interpolation but allows users 
+//   to opt for a functional style
+
+add-property-function = add-property
+add-property(name, expr)
+  if mixin
+    {name} expr
+  else
+    add-property-function(name, expr)
