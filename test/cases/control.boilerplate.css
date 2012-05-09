@@ -406,12 +406,16 @@ h6 {
  * These follow after primary styles so they will successfully override.
  */
 @media all and (orientation:portrait) {
+  /* Style adjustments for portrait mode goes here */
 }
 @media all and (orientation:landscape) {
+  /* Style adjustments for landscape mode goes here */
 }
 /* Grade-A Mobile Browsers (Opera Mobile, Mobile Safari, Android Chrome)
    consider this: www.cloudfour.com/css-media-query-for-mobile-is-fools-gold/ */
 @media screen and (max-device-width: 480px) {
+  /* Uncomment if you don't want iOS and WinMobile to mobile-optimize the text for you: j.mp/textsizeadjust */
+  /* html { -webkit-text-size-adjust:none; -ms-text-size-adjust:none; } */
 }
 /**
  * Print styles.
@@ -426,6 +430,7 @@ h6 {
     filter: none !important;
     -ms-filter: none !important;
   }
+  /* Black prints faster: sanbeiji.com/archives/953 */
   a,
   a:visited {
     color: #444 !important;
@@ -442,6 +447,7 @@ h6 {
   a[href^="#"]:after {
     content: "";
   }
+  /* Don't show links for images, or javascript/internal links */
   pre,
   blockquote {
     border: 1px solid #999;
@@ -450,6 +456,7 @@ h6 {
   thead {
     display: table-header-group;
   }
+  /* css-discuss.incutio.com/wiki/Printing_Tables */
   tr,
   img {
     page-break-inside: avoid;
