@@ -35,6 +35,27 @@ describe('integration', function(){
         if (err) throw err;
         actual.trim().should.equal(css);
       });
+
+      if (test === 'introspection') {
+        // By design this does not work for the import case,
+        // ignore the operation.
+        return;
+      }
+
+      // Rerun as an import to ensure the same functionality
+      var style = stylus('@import("' + path + '")')
+        .set('filename', path)
+        .include(__dirname + 'test/cases')
+        .include(__dirname + '/images')
+        .include(__dirname + '/cases/import.basic')
+        .define('url', stylus.url());
+
+      if (~test.indexOf('compress')) style.set('compress', true);
+
+      style.render(function(err, actual){
+        if (err) throw err;
+        actual.trim().should.equal(css);
+      });
     })
   });
 })
