@@ -1,4 +1,12 @@
 
+0.27.0 / 2012-05-10 
+==================
+
+  * Added `add-property()` mixin support [jasonkuhrt]
+  * Added % support for `fade-in()` and `fade-out()` [jasonkuhrt]
+  * Added % support to `rgba()` [jasonkuhrt]
+  * Fixed `.import()` - previously failed to mixin
+
 0.26.1 / 2012-05-07 
 ==================
 
