@@ -21,8 +21,15 @@ describe('integration', function(){
       , styl
       , css;
 
-    function load() {
+    function load(imports) {
       styl = styl || fs.readFileSync(path, 'utf8').replace(/\r/g, '');
+      if (imports) {
+        try {
+          css = fs.readFileSync('test/cases/' + test + '.import.css', 'utf8').replace(/\r/g, '').trim();
+        } catch (err) {
+          /* NOP */
+        }
+      }
       css = css || fs.readFileSync('test/cases/' + test + '.css', 'utf8').replace(/\r/g, '').trim();
     }
     function setup(styl, options) {
@@ -60,7 +67,7 @@ describe('integration', function(){
     // Rerun as an import to ensure the same functionality
     it(name + ' import', function(){
       var importCache = {};
-      load();
+      load(true);
 
       var style = setup('@import("' + path + '")', {_importCache: importCache});
       run(style);
