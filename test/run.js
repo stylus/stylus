@@ -14,6 +14,8 @@ var cases = fs.readdirSync('test/cases').filter(function(file){
   return file.replace('.styl', '');
 });
 
+var importCache = {};
+
 describe('integration', function(){
   cases.forEach(function(test){
     var name = test.replace(/[-.]/g, ' ')
@@ -66,7 +68,6 @@ describe('integration', function(){
 
     // Rerun as an import to ensure the same functionality
     it(name + ' import', function(){
-      var importCache = {};
       load(true);
 
       var style = setup('@import("' + path + '")', {_importCache: importCache});
