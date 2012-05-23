@@ -17,7 +17,7 @@ var cases = fs.readdirSync('test/cases').filter(function(file){
 describe('integration', function(){
   cases.forEach(function(test){
     var name = test.replace(/[-.]/g, ' ');
-    it(name, function(){
+    it(name, function(done){
       var path = 'test/cases/' + test + '.styl';
       var styl = fs.readFileSync(path, 'utf8').replace(/\r/g, '');
       var css = fs.readFileSync('test/cases/' + test + '.css', 'utf8').replace(/\r/g, '').trim();
@@ -32,8 +32,9 @@ describe('integration', function(){
       if (~test.indexOf('include')) style.set('include css', true);
 
       style.render(function(err, actual){
-        if (err) throw err;
+        if (err) return done(err);
         actual.trim().should.equal(css);
+        done();
       });
     })
   });
