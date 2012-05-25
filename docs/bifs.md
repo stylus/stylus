@@ -19,7 +19,7 @@ Return the green component of the given `color`.
 
 Return the blue component of the given `color`.
 
-     red(#00c)
+     blue(#00c)
      // => 204
 
 ### alpha(color)
