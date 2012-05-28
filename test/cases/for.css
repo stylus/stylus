@@ -36,6 +36,11 @@ body foo {
 body foo {
   bar: 3;
 }
+body {
+  bar: 1;
+  bar: 2;
+  bar: 3;
+}
 body foo bar {
   baz: 1;
 }
