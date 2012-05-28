@@ -1,4 +1,10 @@
 
+0.27.1 / 2012-05-28 
+==================
+
+  * Fixes #698: incorrect function call within for with named argument [Tõnis Tiigi]
+  * Fixes #676. Stylus incorrectly imports the .css files that are not in the same folder as the processed .styl file
+
 0.27.0 / 2012-05-10 
 ==================
 
