@@ -29,6 +29,13 @@ body
   for n in 1 2 3
     foo
       bar n
+      
+func(num)
+  return num
+  
+body
+  for n in 1 2 3
+    bar func(num: n)
 
 test(args...)
   foo
