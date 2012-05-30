@@ -7,5 +7,6 @@ body {
   background: url("/images/foo.png");
   background: url("/images/foo.png");
   background: url("/images/foo.png");
+  background: url("/images/foo.png");
   background: url("http://foo.com/images/bar.png");
 }
