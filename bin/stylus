@@ -294,6 +294,10 @@ function help(name) {
   });
 }
 
+// Import cache
+
+var importCache = {};
+
 // Compilation options
 
 var options = {
@@ -490,6 +494,7 @@ function compileFile(file) {
         if (err) throw err;
         options.filename = file;
         options._imports = [];
+        options._importCache = importCache;
         var style = stylus(str, options);
         if (includeCSS) style.set('include css', true);
         usePlugins(style);
@@ -555,11 +560,17 @@ function watch(file, fn) {
   // TODO: remove watchFile when fs.watch() works on osx etc
   if (isWindows) {
     fs.watch(file, function(event) {
-      if (event === 'change') fn(file);
+      if (event === 'change') {
+        delete importCache[file];
+        fn(file);
+      }
     });
   } else {
     fs.watchFile(file, { interval: 50 }, function(curr, prev) {
-      if (curr.mtime > prev.mtime) fn(file);
+      if (curr.mtime > prev.mtime) {
+        delete importCache[file];
+        fn(file);
+      }
     });
   }
 }
