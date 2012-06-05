@@ -57,7 +57,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>^ *(&amp;|)</string>
+			<string>^ *(\&|)</string>
 			<key>name</key>
 			<string>variable.language.stylus</string>
 		</dict>
