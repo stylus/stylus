@@ -1,4 +1,13 @@
 
+0.27.2 / 2012-06-19 
+==================
+
+  * Adding list of all css3 units
+  * Fixed CSS to stylus conversion `!important` support
+  * Fix last rule being ignored if empty indents at the end of the file
+  * Fixes #425: Compiler hangs when the last property isn't followed by semicolon at the end of the document
+  * Fixes #435: Can't concat array inside url()
+
 0.27.1 / 2012-05-28 
 ==================
 
