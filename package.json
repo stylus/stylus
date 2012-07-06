@@ -1,6 +1,6 @@
 {   "name": "stylus"
   , "description": "Robust, expressive, and feature-rich CSS superset"
-  , "version": "0.27.2"
+  , "version": "0.28.0"
   , "author": "TJ Holowaychuk <tj@vision-media.ca>"
   , "keywords": ["css", "parser", "style", "stylesheets", "jade", "language"]
   , "repository": "git://github.com/learnboost/stylus"

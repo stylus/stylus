@@ -1,4 +1,14 @@
 
+0.28.0 / 2012-07-06 
+==================
+
+  * add suffix to `basename()` BIF
+  * add `pathjoin()` BIF
+  * add `basename()` BIF
+  * add `dirname()` BIF
+  * add `extname()` BIF
+  * fix `@extend` in mixin. Closes #638
+
 0.27.2 / 2012-06-19 
 ==================
 
