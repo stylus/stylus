@@ -37,9 +37,7 @@ cases.forEach(function(test){
 
   while (n--) {
     start = new Date;
-    style.render(function(err){
-      if (err) throw err;
-    });
+    style.render();
     runs.push(new Date - start);
   }
 
