@@ -121,6 +121,7 @@ var usage = [
   , '    -o, --out <dir>         Output to <dir> when passing files'
   , '    -C, --css <src> [dest]  Convert css input to stylus'
   , '    -I, --include <path>    Add <path> to lookup paths'
+  , '    -n, --indent <number>   Indent is <number> of spaces'
   , '    -c, --compress          Compress css output'
   , '    -d, --compare           Display input along with output'
   , '    -f, --firebug           Emits debug infos in the generated css that'
@@ -201,6 +202,11 @@ while (args.length) {
       var path = args.shift();
       if (!path) throw new Error('--include <path> required');
       paths.push(path);
+      break;
+    case '-n':
+    case '--indent':
+      var indent = args.shift();
+      if (!indent) throw new Error('--indent <number> required');
       break;
     case '-w':
     case '--watch':
@@ -303,6 +309,10 @@ var options = {
   , linenos: linenos
   , paths: [process.cwd()].concat(paths)
 };
+
+if (indent) {
+  options['indent spaces'] = parseInt(indent)
+}
 
 // Buffer stdin
 
