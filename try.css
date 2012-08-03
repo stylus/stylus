@@ -1,7 +1,7 @@
 body {
   padding: 120px 50px;
-  font: 14px/1.4 "helvetica neue", helvetica, arial, sans-serif;
-  color: #272727;
+  font: 14px/1.4 'helvetica neue', helvetica, arial, sans-serif;
+  color: #434343;
 }
 h1,
 h2,
@@ -60,13 +60,13 @@ ul li {
   color: #222;
 }
 .tagline em.dynamic {
-  color: #292929;
+  color: #4e4e4e;
 }
 .tagline em.robust {
-  color: #303030;
+  color: #7a7a7a;
 }
 .tagline em.css {
-  color: #363636;
+  color: #a7a7a7;
 }
 #container {
   text-align: center;
@@ -101,7 +101,7 @@ ul li {
   display: block;
   width: 150px;
   padding: 1px 10px;
-  color: #2f2f2f;
+  color: #696969;
   font-size: 13px;
 }
 #menu li a:hover {
@@ -126,7 +126,7 @@ ul li {
 }
 p code {
   padding: 2px 4px;
-  color: #2b2b2b;
+  color: #565656;
   font-size: 85%;
   background: #fff;
   -webkit-border-radius: 5px;
@@ -142,7 +142,7 @@ p code {
   left: -3.75em;
   -webkit-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
-  background-color: #a00;
+  background-color: #b3d107;
   padding: 1px 0;
   overflow: hidden;
   -moz-box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
@@ -151,11 +151,10 @@ p code {
 }
 #ribbon a {
   color: #fff;
-  border: 1px solid #d61818;
+  border: 1px solid #d5e965;
   display: block;
   margin: 0.05em 0;
   padding: 0.5em 3.5em;
   text-align: center;
   text-decoration: none;
 }
-
