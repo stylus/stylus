@@ -28,6 +28,13 @@ h1 {
   font-weight: bold;
   font-size: 60px;
 }
+h1>a {
+  background: url("assets/stylus.png") no-repeat 39px;
+  width: 299px;
+  height: 206px;
+  display: inline-block;
+  text-indent: -10000px;
+}
 h2 {
   margin: 0;
   font-size: 18px;
@@ -151,7 +158,7 @@ p code {
   left: -3.75em;
   -webkit-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
-  background-color: #a00;
+  background-color: #b3d107;
   padding: 1px 0;
   overflow: hidden;
   -moz-box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
@@ -160,11 +167,10 @@ p code {
 }
 #ribbon a {
   color: #fff;
-  border: 1px solid #eb4747;
+  border: 1px solid #d5e965;
   display: block;
   margin: 0.05em 0;
   padding: 0.5em 3.5em;
   text-align: center;
   text-decoration: none;
 }
-

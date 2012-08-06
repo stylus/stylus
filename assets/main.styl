@@ -4,6 +4,7 @@ small = 14px
 dark-gray = #222
 light-gray = lighten(dark-gray, 15%)
 red = #a00
+green = #b3d107
 
 border-radius(args...)
   -webkit-border-radius args
@@ -69,6 +70,12 @@ h1
   margin 10px 0 15px 0
   font-weight bold
   font-size large
+  &>a
+    background url("assets/stylus.png") no-repeat 39px
+    width 299px
+    height 206px
+    display inline-block
+    text-indent -10000px
 
 h2
   margin 0
@@ -160,4 +167,4 @@ p
     inset()
 
 #ribbon
-  ribbon(red)
+  ribbon(green)
