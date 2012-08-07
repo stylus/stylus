@@ -208,6 +208,8 @@
 			<string>support.type.property-name.stylus</string>
 		</dict>
 		<dict>
+			<key>comment</key>
+			<string>http://dev.w3.org/csswg/css3-transitions/#properties-from-css-</string>
 			<key>match</key>
 			<string>\b(background-color|background-position|border-bottom-color|border-bottom-width|border-left-color|border-left-width|border-right-color|border-right-width|border-spacing|border-top-color|border-top-width|bottom|clip|color|crop css3-content will likely advance slower than this specification, in which case this definition should move there|font-size|font-weight|height|left|letter-spacing|line-height|margin-bottom|margin-left|margin-right|margin-top|max-height|max-width|min-height|min-width|opacity|outline-color|outline-offset|outline-width|padding-bottom|padding-left|padding-right|padding-top|right|text-indent|text-shadow|top|vertical-align|visibility|width|word-spacing|z-index)\b(?!\:)</string>
 			<key>name</key>
