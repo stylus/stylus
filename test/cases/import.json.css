@@ -1,0 +1,11 @@
+@media screen and (min-width:1px) and (max-width:400px) {
+  body {
+    margin: 0;
+    color: #fff;
+  }
+}
+@media screen and (min-width:1501px) {
+  body {
+    -webkit-transition: width 1s ease-in;
+  }
+}

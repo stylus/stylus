@@ -1,0 +1,12 @@
+{
+  "spacing" : 0,
+  "queries": {
+    "small": "screen and (min-width:1px) and (max-width:400px)",
+    "large": "screen and (min-width:1501px)"
+  },
+  "animate": {
+    "special": {
+      "fluid": "width 1s ease-in"
+    }
+  }
+}
