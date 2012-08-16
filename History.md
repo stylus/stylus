@@ -1,4 +1,11 @@
 
+0.29.0 / 2012-08-15 
+==================
+
+  * add more features to the textmate bundle [paulmillr]
+  * add `json()` BIF for loading variables from JSON files [geddesign]
+  * fix for #790 allow trailing colon, comma etc in // comments [geddesign]
+
 0.28.2 / 2012-07-15 
 ==================
 
