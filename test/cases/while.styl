@@ -1,0 +1,60 @@
+test()
+  n = 20
+  ret = ()
+  while n > 2
+    push(ret, n)
+    n = n / 2
+  ret
+
+body
+  foo test()
+
+n = 10
+while n < 15
+  n += 2
+
+body
+  foo n
+
+loop = true
+while loop
+  n += 1
+  if n > 22
+    loop = false
+
+body
+  foo n
+
+search(needle, items)
+  found = false
+  i = 0
+  while not found and i < length(items)
+    if needle == items[i]
+      found = true
+    else
+      i += 1
+  found ? i : -1
+
+body
+  found-at search(4, 1 3 7 23 55 2 4 99 101)
+
+test2()
+  n = 0
+  while n < length(arguments)
+    foo arguments[n]
+    n += 1
+
+body
+  test2 (abc xyz klm)
+
+n = -2
+while n <= 2
+  body
+    & > div
+      foo n
+  n += 1
+
+body
+  i = 1
+  while i <= 27
+    foo (i *= 3)
