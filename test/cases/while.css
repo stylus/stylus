@@ -1,0 +1,38 @@
+body {
+  foo: 20 10 5 2.5;
+}
+body {
+  foo: 16;
+}
+body {
+  foo: 23;
+}
+body {
+  found-at: 6;
+}
+body {
+  foo: abc;
+  foo: xyz;
+  foo: klm;
+}
+body > div {
+  foo: -2;
+}
+body > div {
+  foo: -1;
+}
+body > div {
+  foo: 0;
+}
+body > div {
+  foo: 1;
+}
+body > div {
+  foo: 2;
+}
+body {
+  foo: 3;
+  foo: 9;
+  foo: 27;
+  foo: 81;
+}
