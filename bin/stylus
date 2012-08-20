@@ -133,7 +133,7 @@ var usage = [
   , '                            can be used by the FireStylus Firebug plugin'
   , '    -l, --line-numbers      Emits comments in the generated css'
   , '                            indicating the corresponding stylus line'
-  , '    --import                Import stylus files located at --include <path>'
+  , '    --import <file>         Import stylus <file>'
   , '    --include-css           Include regular css on @import'
   , '    -V, --version           Display the version of stylus'
   , '    -h, --help              Display help information'
