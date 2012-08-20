@@ -89,7 +89,7 @@ ul li {
 }
 #menu {
   position: fixed;
-  top: -5px;
+  top: 5px;
   right: 60px;
   margin: 0;
   padding: 15px 0 10px 5px;
@@ -174,3 +174,4 @@ p code {
   text-align: center;
   text-decoration: none;
 }
+
