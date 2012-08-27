@@ -7,3 +7,6 @@ body {
   foo: 400px 479px;
   foo: 400px 479px;
 }
+body {
+  foo: 0 0;
+}
