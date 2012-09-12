@@ -572,7 +572,7 @@ function watch(file, fn) {
       if (event === 'change') fn(file);
     });
   } else {
-    fs.watchFile(file, { interval: 50 }, function(curr, prev) {
+    fs.watchFile(file, { interval: 300 }, function(curr, prev) {
       if (curr.mtime > prev.mtime) fn(file);
     });
   }
