@@ -17,6 +17,7 @@ lib-cov: lib
 	jscoverage $< $@
 
 install-bundle:
+	mkdir -p $(TM_BUNDLE_DEST)
 	cp -fr $(TM_BUNDLE) $(TM_BUNDLE_DEST)
 
 update-bundle:
