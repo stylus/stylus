@@ -1,4 +1,13 @@
 
+0.30.0 / 2012-10-15 
+==================
+
+  * add @-moz-document to the lexer and parser. Fixes #436
+  * add --import for issue #485
+  * fix @property lookup when a sibling is null
+  * fix 'limit' file size option that was broken in 61a2cf
+  * fix pseudo-selector properties. Closes #808
+
 0.29.0 / 2012-08-15 
 ==================
 
