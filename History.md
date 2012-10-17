@@ -1,4 +1,9 @@
 
+0.30.1 / 2012-10-17 
+==================
+
+  * fix mozdocument nodes not getting visited during imports. Fixes #853
+
 0.30.0 / 2012-10-15 
 ==================
 
