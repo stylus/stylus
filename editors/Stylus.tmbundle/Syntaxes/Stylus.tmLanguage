@@ -145,6 +145,12 @@
 		</dict>
 		<dict>
 			<key>match</key>
+			<string>(-webkit-|-moz\-|-ms-|-o-)</string>
+			<key>name</key>
+			<string>meta.vendor-prefix.stylus</string>
+		</dict>
+		<dict>
+			<key>match</key>
 			<string>(\b|\s)(!important|for|in|return|true|false|null|if|else|unless|return)\b</string>
 			<key>name</key>
 			<string>keyword.control.stylus</string>
