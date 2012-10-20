@@ -145,7 +145,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(!important|for|in|return|true|false|null|if|else|unless|return)\b</string>
+			<string>(\b|\s)(!important|for|in|return|true|false|null|if|else|unless|return)\b</string>
 			<key>name</key>
 			<string>keyword.control.stylus</string>
 		</dict>
