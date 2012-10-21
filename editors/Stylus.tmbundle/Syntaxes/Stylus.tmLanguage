@@ -65,7 +65,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(\.)(?:[a-zA-Z0-9_-]+)?</string>
+			<string>\.-?[_a-zA-Z]+[_a-zA-Z0-9-]*</string>
 			<key>name</key>
 			<string>entity.other.attribute-name.class.stylus</string>
 		</dict>
