@@ -1,0 +1,10 @@
+.bar
+  prop val
+
+.foo
+  @extend .bar
+
+.baz
+  &,
+  > li
+    @extend .foo
