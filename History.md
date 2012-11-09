@@ -1,4 +1,25 @@
 
+0.30.1 / 2012-10-17 
+==================
+
+  * fix mozdocument nodes not getting visited during imports. Fixes #853
+
+0.30.0 / 2012-10-15 
+==================
+
+  * add @-moz-document to the lexer and parser. Fixes #436
+  * add --import for issue #485
+  * fix @property lookup when a sibling is null
+  * fix 'limit' file size option that was broken in 61a2cf
+  * fix pseudo-selector properties. Closes #808
+
+0.29.0 / 2012-08-15 
+==================
+
+  * add more features to the textmate bundle [paulmillr]
+  * add `json()` BIF for loading variables from JSON files [geddesign]
+  * fix for #790 allow trailing colon, comma etc in // comments [geddesign]
+
 0.28.2 / 2012-07-15 
 ==================
 
