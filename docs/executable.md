@@ -23,6 +23,8 @@ Stylus ships with the `stylus` executable for converting Stylus to CSS.
         -d, --compare           Display input along with output
         -f, --firebug           Emits debug infos in the generated css that
                                 can be used by the FireStylus Firebug plugin
+        -s, --sass-debug        Emits Sass-style debug infos that can be read'
+                                by the Chrome Developer Tools'
         -l, --line-numbers      Emits comments in the generated CSS
                                 indicating the corresponding Stylus line
         -V, --version           Display the version of Stylus
@@ -64,6 +66,11 @@ Try Stylus some in the terminal!  Type below and press `CTRL-D` for `__EOF__`:
   the [FireStylus extension for Firebug](//github.com/LearnBoost/stylus/blob/master/docs/firebug.md):
 
       $ stylus --firebug <path>
+
+  Or the `sass-debug` option if you want to use the experimental
+  [Sass support](http://trac.webkit.org/changeset/123768) in Web Inspector:
+
+      $ stylus --sass-debug <path>
 
 ### Converting CSS
 
