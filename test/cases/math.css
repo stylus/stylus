@@ -1,0 +1,25 @@
+.math {
+  test1: 1;
+  test2: 0;
+  test3: 1;
+}
+.math_units {
+  test1: 1px;
+  test2: 0px;
+  test3: 1px;
+}
+.math_precision0 {
+  test1: 1;
+  test2: 0;
+  test3: 0;
+}
+.math_precision1 {
+  test1: 0.5;
+  test2: 0.4;
+  test3: 0.5;
+}
+.math_precision2 {
+  test1: 0.48;
+  test2: 0.47;
+  test3: 0.47;
+}

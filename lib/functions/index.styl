@@ -8,7 +8,7 @@ vendors = moz webkit o ms official
 // require a color
 
 require-color(color)
-  unless color is a 'color' 
+  unless color is a 'color'
     error('RGB or HSL value expected, got a ' + -string(color))
 
 // require a unit
@@ -25,7 +25,7 @@ require-string(str)
 
 // apply js Math function
 
-math(n, fn) 
+math(n, fn)
   require-unit(n)
   require-string(fn)
   -math(n, fn)
@@ -41,14 +41,25 @@ adjust(color, prop, amount)
 // Math functions
 
 abs(n) { math(n, 'abs') }
-ceil(n) { math(n, 'ceil') }
-floor(n) { math(n, 'floor') }
-round(n) { math(n, 'round') }
 sin(n) { math(n, 'sin') }
 cos(n) { math(n, 'cos') }
 min(a, b) { a < b ? a : b }
 max(a, b) { a > b ? a : b }
 PI = -math-prop('PI')
+
+// Rounding Math functions
+
+ceil(n, precision = 0)
+  multiplier = 10 ** precision
+  math(n * multiplier, 'ceil') / multiplier
+
+floor(n, precision = 0)
+  multiplier = 10 ** precision
+  math(n * multiplier, 'floor') / multiplier
+
+round(n, precision = 0)
+  multiplier = 10 ** precision
+  math(n * multiplier, 'round') / multiplier
 
 // return the sum of the given numbers
 
@@ -128,7 +139,7 @@ lighten(color, amount)
 
 fade-out(color, amount)
   color - rgba(black, percent-to-decimal(amount))
-  
+
 // increase opacity by amount
 
 fade-in(color, amount)
@@ -216,7 +227,7 @@ join(delim, vals...)
 // add a css rule to the containing block
 
 // - This definition allows add-property to be used as a mixin
-// - It has the same effect as interpolation but allows users 
+// - It has the same effect as interpolation but allows users
 //   to opt for a functional style
 
 add-property-function = add-property
