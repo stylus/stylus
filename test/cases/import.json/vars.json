@@ -1,0 +1,15 @@
+{
+  "bg" : "purple",
+  "spacing" : 0,
+  "gutter" : "10px",
+  "queries": {
+    "small": "screen and (min-width:1px) and (max-width:400px)",
+    "large": "screen and (min-width:1501px)"
+  },
+  "animate": {
+    "special": {
+      "out": "width 1s ease-out"
+    }
+  },
+  "awesome": true
+}

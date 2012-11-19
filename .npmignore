@@ -5,12 +5,12 @@
 
 History.md
 Makefile
-Readme.md
 
 docs/
 editors/
 examples/
 test/
+logos/
 
 coverage.html
 lib-cov

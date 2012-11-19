@@ -1,0 +1,14 @@
+@media screen and (min-width:1px) and (max-width:400px) {
+  body {
+    background: purple;
+    padding: 0;
+    outline: 0;
+    margin: 20px;
+    border: #f00;
+  }
+}
+@media screen and (min-width:1501px) {
+  body {
+    -webkit-transition: width 1s ease-out;
+  }
+}
