@@ -1,0 +1,5 @@
+@media only screen and (-o-min-device-pixel-ratio: 3/2) {
+  body {
+    font-size: 66%;
+  }
+}
