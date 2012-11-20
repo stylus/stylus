@@ -1,0 +1,12 @@
+#button_a
+  &:hover
+      color #fff
+#button_b
+  @extend #button_a
+
+body
+  #button_c
+    &:hover
+      color #000
+  #button_d
+    @extend body #button_c
