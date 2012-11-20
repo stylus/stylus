@@ -196,6 +196,17 @@ Test if `string` matches the given `pattern`.
       round(5.4px)
       // => 5px
 
+**Note:** All rounding functions can accept optional `precision` argument — you can pass the number of digits you want to save after the period:
+
+      ceil(5.52px,1)
+      // => 5.6px
+
+      floor(5.57px,1)
+      // => 5.5px
+
+      round(5.52px,1)
+      // => 5.5px
+
 ### min(a, b)
 
       min(1, 5)
