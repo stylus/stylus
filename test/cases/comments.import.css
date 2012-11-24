@@ -1,0 +1,11 @@
+body {
+  color: #f00;
+}
+form {
+  background: #fff;
+}
+html>/**/body select,
+x:-moz-any-link,
+x:default select {
+  font-weight: bold !important;
+}
