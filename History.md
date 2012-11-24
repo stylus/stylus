@@ -1,4 +1,17 @@
 
+0.31.0 / 2012-11-24 
+==================
+
+  * add support for rounding precision
+  * fix extends with parent reference. Closes #879
+  * fix importing of files with ".css" in the dirname
+  * fix #619 Support slash in media  
+  * fix #819 Extends generate duplicate selectors
+  * fix #807 directory with `.styl` in the name and local install of stylus
+  * fix #814 Add property function with media query
+  * fix #828 Add 'x' unit for image-set (synonym to dppx).
+  * fix #834 Percentage calculation not used when value is expression
+
 0.30.1 / 2012-10-17 
 ==================
 
