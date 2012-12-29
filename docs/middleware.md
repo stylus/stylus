@@ -10,8 +10,10 @@
 #### Options
 
       `force`     When __true__ styles will always re-compile
-      `src`       Source directory used to find .styl files
-      `dest`      Destination directory used to output .css files
+      `src`       Source directory used to find .styl files,
+                  a string or function accepting `(path)` of request.
+      `dest`      Destination directory used to output .css files,
+                  a string or function accepting `(path)` of request,
                   when undefined defaults to `src`.
       `compress`  Whether the output .css files should be compressed
       `compile`   Custom compile function, accepting the arguments
