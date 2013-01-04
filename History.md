@@ -1,4 +1,11 @@
 
+0.32.0 / 2013-01-04 
+==================
+
+  * add sync api for #230 #691 #151
+  * fix unsuppressed comments in nested imports
+  * fix #911 Percentage calculation value not copied
+
 0.31.0 / 2012-11-24 
 ==================
 
