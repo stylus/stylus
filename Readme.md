@@ -106,7 +106,7 @@ form input {
   - VIM [Syntax](https://github.com/wavded/vim-stylus)
   - [Firebug extension](/LearnBoost/stylus/blob/master/docs/firebug.md)
   - heroku [web service](http://styl.heroku.com) for compiling stylus
-  - [stylus guide](https://github.com/lepture/ganam) parser and generator
+  - [style guide](https://github.com/lepture/ganam) parser and generator
   - transparent vendor-specific function expansion
 
 ### Framework Support
