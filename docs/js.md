@@ -28,6 +28,10 @@ We can also do the same thing in a more progressive manner:
      .set('filename', __dirname + '/test.styl')
      .set('paths', [__dirname, __dirname + '/mixins'])
 
+ You can also pass an object to set:
+
+     .set({'filename': __dirname + '/test.styl', 'paths': [__dirname]})
+
 ### .include(path)
 
   A progressive alternative to `.set('paths',...)` is `.include()`.  This is ideal when exposing external Stylus libraries which expose a path.
