@@ -1,6 +1,6 @@
 ## Data URI Image Inlining
 
-Stylus is bundled with an optional function named `url()`, which replaces the literal `url()` calls (and conditionally inlines them using base64 [Data URIs](http://en.wikipedia.org/wiki/Data_URI_scheme)).
+Stylus is bundled with an optional function named `url()`, which replaces the literal `url()` calls (and conditionally inlines them using base64 [Data URIs](http://en.wikipedia.org/wiki/Data_URI_scheme) or timestamps them).
 
 ### Example
 
@@ -15,7 +15,7 @@ The `.define(name, callback)` method assigned a JavaScript function that can be 
 
         });
 
-For example, imagine our images live in `./public/images`.  We want to use `url(images/tobi.png)`.  We could pass `paths` our public directory, so that it becomes part of the lookup process.
+For example, imagine our images live in `./public/images`. We want to use `url(images/tobi.png)`. We could pass `paths` our public directory, so that it becomes part of the lookup process.
 
 Likewise, if instead we wanted `url(tobi.png)`, we could pass `paths: [__dirname + '/public/images']`.
 
@@ -26,7 +26,10 @@ Likewise, if instead we wanted `url(tobi.png)`, we could pass `paths: [__dirname
 
         });
 
+By setting `timestamp` to `true` (defaults to `false`), images larger than `limit` (defaults to 30Kb) will be timestamped with a query string. Otherwise such files would just be skipped.
+
 ### Options
 
-  - `limit` bytesize limit defaulting to 30Kb (30000), use `false` to disable the limit
-  - `paths` image resolution path(s)
+  - `limit` bytesize limit defaulting to 30Kb
+  - `timestamp` if larger than `limit`, timestamp with a query string, defaulting to false
+  - `paths` image resolution path(s), merged with general lookup paths
