@@ -1,0 +1,10 @@
+.tester1
+  tester: 1
+
+.tester2
+  tester: 2
+
+for i in 1..2
+  .test{i}
+    test{i}: i
+    @extend .tester{i}
