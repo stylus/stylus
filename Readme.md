@@ -70,48 +70,48 @@ form input {
 
  Stylus has _many_ features.  Detailed documentation links follow:
 
-  - [css syntax](/LearnBoost/stylus/blob/master/docs/css-style.md) support
-  - [mixins](/LearnBoost/stylus/blob/master/docs/mixins.md)
-  - [keyword arguments](/LearnBoost/stylus/blob/master/docs/kwargs.md)
-  - [variables](/LearnBoost/stylus/blob/master/docs/variables.md)
-  - [interpolation](/LearnBoost/stylus/blob/master/docs/interpolation.md)
-  - arithmetic, logical, and equality [operators](/LearnBoost/stylus/blob/master/docs/operators.md)
-  - [importing](/LearnBoost/stylus/blob/master/docs/import.md) of other stylus sheets
-  - [introspection api](/LearnBoost/stylus/blob/master/docs/introspection.md)
+  - [css syntax](docs/css-style.md) support
+  - [mixins](docs/mixins.md)
+  - [keyword arguments](docs/kwargs.md)
+  - [variables](docs/variables.md)
+  - [interpolation](docs/interpolation.md)
+  - arithmetic, logical, and equality [operators](docs/operators.md)
+  - [importing](docs/import.md) of other stylus sheets
+  - [introspection api](docs/introspection.md)
   - type coercion
-  - [@extend](/LearnBoost/stylus/blob/master/docs/extend.md)
-  - [conditionals](/LearnBoost/stylus/blob/master/docs/conditionals.md)
-  - [iteration](/LearnBoost/stylus/blob/master/docs/iteration.md)
-  - nested [selectors](/LearnBoost/stylus/blob/master/docs/selectors.md)
+  - [@extend](docs/extend.md)
+  - [conditionals](docs/conditionals.md)
+  - [iteration](docs/iteration.md)
+  - nested [selectors](docs/selectors.md)
   - parent reference
-  - in-language [functions](/LearnBoost/stylus/blob/master/docs/functions.md)
-  - [variable arguments](/LearnBoost/stylus/blob/master/docs/vargs.md)
-  - built-in [functions](/LearnBoost/stylus/blob/master/docs/bifs.md) (over 25)
-  - optional [image inlining](/LearnBoost/stylus/blob/master/docs/functions.url.md)
+  - in-language [functions](docs/functions.md)
+  - [variable arguments](docs/vargs.md)
+  - built-in [functions](docs/bifs.md) (over 25)
+  - optional [image inlining](docs/functions.url.md)
   - optional compression
-  - JavaScript [API](/LearnBoost/stylus/blob/master/docs/js.md)
+  - JavaScript [API](docs/js.md)
   - extremely terse syntax
-  - stylus [executable](/LearnBoost/stylus/blob/master/docs/executable.md)
-  - [error reporting](/LearnBoost/stylus/blob/master/docs/error-reporting.md)
-  - single-line and multi-line [comments](/LearnBoost/stylus/blob/master/docs/comments.md)
-  - css [literal](/LearnBoost/stylus/blob/master/docs/literal.md)
-  - character [escaping](/LearnBoost/stylus/blob/master/docs/escape.md)
-  - [@keyframes](/LearnBoost/stylus/blob/master/docs/keyframes.md) support & expansion
-  - [@font-face](/LearnBoost/stylus/blob/master/docs/font-face.md) support
-  - [@media](/LearnBoost/stylus/blob/master/docs/media.md) support
-  - Connect [Middleware](/LearnBoost/stylus/blob/master/docs/middleware.md)
-  - TextMate [bundle](/LearnBoost/stylus/blob/master/docs/textmate.md)
+  - stylus [executable](docs/executable.md)
+  - [error reporting](docs/error-reporting.md)
+  - single-line and multi-line [comments](docs/comments.md)
+  - css [literal](docs/literal.md)
+  - character [escaping](docs/escape.md)
+  - [@keyframes](docs/keyframes.md) support & expansion
+  - [@font-face](docs/font-face.md) support
+  - [@media](docs/media.md) support
+  - Connect [Middleware](docs/middleware.md)
+  - TextMate [bundle](docs/textmate.md)
   - Coda/SubEtha Edit [Syntax mode](https://github.com/atljeremy/Stylus.mode)
-  - gedit [language-spec](/LearnBoost/stylus/blob/master/docs/gedit.md)
+  - gedit [language-spec](docs/gedit.md)
   - VIM [Syntax](https://github.com/wavded/vim-stylus)
-  - [Firebug extension](/LearnBoost/stylus/blob/master/docs/firebug.md)
+  - [Firebug extension](docs/firebug.md)
   - heroku [web service](http://styl.heroku.com) for compiling stylus
   - [style guide](https://github.com/lepture/ganam) parser and generator
   - transparent vendor-specific function expansion
 
 ### Framework Support
 
-   - [Connect](/LearnBoost/stylus/blob/master/docs/middleware.md)
+   - [Connect](docs/middleware.md)
    - [Play! 2.0](https://github.com/patiencelabs/play-stylus)
    - [Ruby On Rails](https://github.com/lucasmazza/ruby-stylus)
 
@@ -131,7 +131,7 @@ form input {
 
 ### More Information
 
-  - Language [comparisons](/LearnBoost/stylus/blob/master/docs/compare.md)
+  - Language [comparisons](docs/compare.md)
 
 ## License 
 
