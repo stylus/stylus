@@ -1,4 +1,11 @@
 
+0.32.1 / 2013-02-27 
+==================
+
+  * fix issue on Windows where absolute path starts with two backslashes
+  * fix extends within a loop.
+  * fix: don't try to read absolute urls
+
 0.32.0 / 2013-01-04 
 ==================
 
