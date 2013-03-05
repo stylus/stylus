@@ -1,0 +1,8 @@
+.one-half {
+  width: 50%;
+}
+@media test-media {
+  .test-one-half {
+    width: 50%;
+  }
+}
