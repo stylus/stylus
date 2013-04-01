@@ -5,7 +5,7 @@
   , "keywords": ["css", "parser", "style", "stylesheets", "jade", "language"]
   , "repository": "git://github.com/learnboost/stylus"
   , "main": "./index.js"
-  , "browserify": "index-browserify.js"
+  , "browserify": "./lib/browserify.js"
   , "engines": { "node": "*" }
   , "bin": { "stylus": "./bin/stylus" }
   , "scripts" : { "prepublish" : "npm prune", "test": "make test" }
