@@ -133,7 +133,7 @@ Multiplicative and additive binary operators work as expected. Type conversion i
 ### Multiplicative: / * %
 
     2000ms + (1s * 2)
-    // => 4ms
+    // => 4000ms
 
     5s / 2
     // => 2.5s
