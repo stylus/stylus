@@ -13,6 +13,7 @@
       "cssom": "0.2.x"
     , "mkdirp": "0.3.x"
     , "debug": "*"
+    , "glob": "3.2.x"
   }
   , "devDependencies": {
       "should": "*"
