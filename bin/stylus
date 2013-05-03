@@ -49,6 +49,12 @@ var linenos = false;
 var firebug = false;
 
 /**
+ * Sass debug flag
+ */
+
+var sassDebug = false;
+
+/**
  * Files to processes.
  */
 
@@ -131,6 +137,8 @@ var usage = [
   , '    -d, --compare           Display input along with output'
   , '    -f, --firebug           Emits debug infos in the generated css that'
   , '                            can be used by the FireStylus Firebug plugin'
+  , '    -s, --sass-debug        Emits Sass-style debug infos that can be read'
+  , '                            by the Chrome Developer Tools'
   , '    -l, --line-numbers      Emits comments in the generated css'
   , '                            indicating the corresponding stylus line'
   , '    --import <file>         Import stylus <file>'
@@ -167,6 +175,10 @@ while (args.length) {
     case '-f':
     case '--firebug':
       firebug = true;
+      break;
+    case '-s':
+    case '--sass-debug':
+      sassDebug = true;
       break;
     case '-l':
     case '--line-numbers':
@@ -312,6 +324,7 @@ var options = {
     filename: 'stdin'
   , compress: compress
   , firebug: firebug
+  , sassDebug: sassDebug
   , linenos: linenos
   , paths: [process.cwd()].concat(paths)
 };
