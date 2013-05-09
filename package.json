@@ -17,5 +17,6 @@
   , "devDependencies": {
       "should": "*"
     , "mocha": "*"
+    , "jshint": "*"
   }
 }
