@@ -1,0 +1,7 @@
+{
+  "es5": true,
+  "expr": true,
+  "laxcomma": true,
+  "laxbreak": true,
+  "-W058": true
+}
