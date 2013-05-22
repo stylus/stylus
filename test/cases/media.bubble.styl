@@ -82,3 +82,14 @@ complex
       one: 1
     .child
       two: 2
+
+image(path, w = auto, h = auto)
+  background-image: url(path)
+  @media all and (-webkit-min-device-pixel-ratio: 1.5)
+    background-size: w h
+
+#logo
+  image: '/images/logo.png'
+
+#logo
+  image: '/images/logo.png' 50px 100px

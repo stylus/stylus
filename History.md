@@ -1,4 +1,81 @@
 
+0.32.1 / 2013-02-27 
+==================
+
+  * fix issue on Windows where absolute path starts with two backslashes
+  * fix extends within a loop.
+  * fix: don't try to read absolute urls
+
+0.32.0 / 2013-01-04 
+==================
+
+  * add sync api for #230 #691 #151
+  * fix unsuppressed comments in nested imports
+  * fix #911 Percentage calculation value not copied
+
+0.31.0 / 2012-11-24 
+==================
+
+  * add support for rounding precision
+  * fix extends with parent reference. Closes #879
+  * fix importing of files with ".css" in the dirname
+  * fix #619 Support slash in media  
+  * fix #819 Extends generate duplicate selectors
+  * fix #807 directory with `.styl` in the name and local install of stylus
+  * fix #814 Add property function with media query
+  * fix #828 Add 'x' unit for image-set (synonym to dppx).
+  * fix #834 Percentage calculation not used when value is expression
+
+0.30.1 / 2012-10-17 
+==================
+
+  * fix mozdocument nodes not getting visited during imports. Fixes #853
+
+0.30.0 / 2012-10-15 
+==================
+
+  * add @-moz-document to the lexer and parser. Fixes #436
+  * add --import for issue #485
+  * fix @property lookup when a sibling is null
+  * fix 'limit' file size option that was broken in 61a2cf
+  * fix pseudo-selector properties. Closes #808
+
+0.29.0 / 2012-08-15 
+==================
+
+  * add more features to the textmate bundle [paulmillr]
+  * add `json()` BIF for loading variables from JSON files [geddesign]
+  * fix for #790 allow trailing colon, comma etc in // comments [geddesign]
+
+0.28.2 / 2012-07-15 
+==================
+
+  * fix extend in mixin. Closes #747, #748 and #751
+
+0.28.1 / 2012-07-07 
+==================
+
+  * fix __@media__ cloning
+
+0.28.0 / 2012-07-06 
+==================
+
+  * add suffix to `basename()` BIF
+  * add `pathjoin()` BIF
+  * add `basename()` BIF
+  * add `dirname()` BIF
+  * add `extname()` BIF
+  * fix `@extend` in mixin. Closes #638
+
+0.27.2 / 2012-06-19 
+==================
+
+  * Adding list of all css3 units
+  * Fixed CSS to stylus conversion `!important` support
+  * Fix last rule being ignored if empty indents at the end of the file
+  * Fixes #425: Compiler hangs when the last property isn't followed by semicolon at the end of the document
+  * Fixes #435: Can't concat array inside url()
+
 0.27.1 / 2012-05-28 
 ==================
 

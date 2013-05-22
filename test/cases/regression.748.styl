@@ -1,0 +1,14 @@
+btn()
+  border-radius: 3px
+
+btn-color(textColor, bgColor)
+  background-color:bgColor
+  color: textColor
+
+.btn
+  font-size: 15px
+  btn()
+
+.btn-secondary
+  @extend .btn
+  btn-color(#666, #fff)

@@ -97,6 +97,12 @@ var urlFunction = false;
 var includeCSS = false;
 
 /**
+ * Set file imports.
+ */
+
+var imports = [];
+
+/**
  * Usage docs.
  */
 
@@ -127,6 +133,7 @@ var usage = [
   , '                            can be used by the FireStylus Firebug plugin'
   , '    -l, --line-numbers      Emits comments in the generated css'
   , '                            indicating the corresponding stylus line'
+  , '    --import <file>         Import stylus <file>'
   , '    --include-css           Include regular css on @import'
   , '    -V, --version           Display the version of stylus'
   , '    -h, --help              Display help information'
@@ -231,6 +238,11 @@ while (args.length) {
         paths.push(dirname(path));
         plugins.push({ path: path, options: options });
       }
+      break;
+    case '--import':
+      var file = args.shift();
+      if (!file) throw new Error('--import <file> required');
+      imports.push(file);
       break;
     default:
       files.push(arg);
@@ -455,6 +467,7 @@ function compileStdio() {
     var style = stylus(str, options);
     if (includeCSS) style.set('include css', true);
     usePlugins(style);
+    importFiles(style);
     style.render(function(err, css){
       if (err) throw err;
       if (compare) {
@@ -493,6 +506,7 @@ function compileFile(file) {
         var style = stylus(str, options);
         if (includeCSS) style.set('include css', true);
         usePlugins(style);
+        importFiles(style);
         style.render(function(err, css){
           watchImports(file, options._imports);
           if (err) {
@@ -558,7 +572,7 @@ function watch(file, fn) {
       if (event === 'change') fn(file);
     });
   } else {
-    fs.watchFile(file, { interval: 50 }, function(curr, prev) {
+    fs.watchFile(file, { interval: 300 }, function(curr, prev) {
       if (curr.mtime > prev.mtime) fn(file);
     });
   }
@@ -593,4 +607,14 @@ function usePlugins(style) {
   });
 
   if (urlFunction) style.define('url', stylus.url(urlFunction));
+}
+
+/**
+ * Imports the indicated files.
+ */
+
+function importFiles(style) {
+  imports.forEach(function(file) {
+    style.import(file);
+  });
 }

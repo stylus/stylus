@@ -67,3 +67,19 @@ body {
     two: 2;
   }
 }
+#logo {
+  background-image: url("/images/logo.png");
+}
+@media all and (-webkit-min-device-pixel-ratio: 1.5) {
+  #logo {
+    background-size: auto auto;
+  }
+}
+#logo {
+  background-image: url("/images/logo.png");
+}
+@media all and (-webkit-min-device-pixel-ratio: 1.5) {
+  #logo {
+    background-size: 50px 100px;
+  }
+}
