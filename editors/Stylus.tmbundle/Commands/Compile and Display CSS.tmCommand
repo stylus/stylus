@@ -16,6 +16,7 @@ function highlight {
   fi
 }
 
+cd $TM_DIRECTORY
 ${TM_STYLUS:=stylus} | highlight</string>
 	<key>input</key>
 	<string>selection</string>
