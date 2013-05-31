@@ -1,7 +1,20 @@
 
 SRC = $(shell find lib -name "*.js")
 TM_BUNDLE = editors/Stylus.tmbundle
-TM_BUNDLE_DEST = ~/Library/Application\ Support/TextMate/Bundles
+
+define DETERMINE_TEXTMATE_BUNDLE_PATH
+cd /tmp && \
+	cp /Applications/TextMate.app/Contents/Info.plist /tmp/textmate-info.plist && \
+	plutil -convert json -r /tmp/textmate-info.plist && \
+	(test `node -e " \
+		var json = $$(cat /tmp/textmate-info.plist | tr "\n" " "); \
+		console.log(json['CFBundleShortVersionString'][0]); \
+		"` -gt 1) && \
+			echo ~/Library/Application\ Support/TextMate/Managed/Bundles || \
+			echo ~/Library/Application\ Support/TextMate/Bundles
+endef
+
+TM_BUNDLE_DEST = $(shell $(DETERMINE_TEXTMATE_BUNDLE_PATH))
 REPORTER = dot
 
 test:
@@ -15,6 +28,9 @@ test-cov: lib-cov
 
 lib-cov: lib
 	jscoverage $< $@
+
+echo-bundle-path:
+	echo "" && echo $(TM_BUNDLE_DEST) && echo ""
 
 install-bundle:
 	mkdir -p $(TM_BUNDLE_DEST)
