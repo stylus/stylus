@@ -1,0 +1,9 @@
+.foo,
+.bar {
+}
+.bar {
+  float: left;
+}
+body {
+  width: 100%;
+}
