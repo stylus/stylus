@@ -3,7 +3,14 @@ json('import.json/vars.json')
 @media queries-small
   body
     //string variable
-    background bg
+    display nope
+    //color calc
+    color darken(color, 50%)
+    //color calc rgb(a)
+    background-color: darken(background-color, 50%)
+    border-color: fade-color
+    //color calc alias (i.e. "purple")
+    outline-color: darken(bg, 50%)
     //number variable
     padding spacing
     //acts the same as regular variables
