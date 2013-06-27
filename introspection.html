@@ -1,17 +1,18 @@
 <!DOCTYPE html><html><head><title>Stylus</title><link rel="stylesheet" href="../main.css"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head><body><div id="container"><h1><a href='http://learnboost.github.com/stylus'>Stylus</a></h1><p class="tagline"><em class="expressive">Expressive, </em><em class="dynamic">dynamic, </em><em class="robust">robust </em><em class="css">CSS</em></p><div id="ribbon"><a href="http://github.com/learnboost/stylus">Fork me on GitHub</a></div><ul id="menu"><li><a href="../docs/selectors.html">Selectors</a></li><li><a href="../docs/variables.html">Variables</a></li><li><a href="../docs/interpolation.html">Interpolation</a></li><li><a href="../docs/operators.html">Operators</a></li><li><a href="../docs/mixins.html">Mixins</a></li><li><a href="../docs/functions.html">Functions</a></li><li><a href="../docs/kwargs.html">Keyword Arguments</a></li><li><a href="../docs/bifs.html">Built-in Functions</a></li><li><a href="../docs/vargs.html">Rest Params</a></li><li><a href="../docs/comments.html">Comments</a></li><li><a href="../docs/conditionals.html">Conditionals</a></li><li><a href="../docs/iteration.html">Iteration</a></li><li><a href="../docs/import.html">@import</a></li><li><a href="../docs/media.html">@media</a></li><li><a href="../docs/font-face.html">@font-face</a></li><li><a href="../docs/keyframes.html">@keyframes</a><li><a href="../docs/extend.html">@extend</a></li><li><a href="../docs/functions.url.html">url()</a></li><li><a href="../docs/literal.html">CSS Literal</a></li><li><a href="../docs/css-style.html">CSS Style Syntax</a></li><li><a href="../docs/escape.html">Char Escaping</a></li><li><a href="../docs/executable.html">Executable</a></li><li><a href="../docs/error-reporting.html">Error Reporting</a></li><li><a href="../docs/middleware.html">Connect Middleware</a></li><li><a href="../docs/introspection.html">Introspection API</a></li><li><a href="../docs/js.html">JavaScript API</a></li>
   <li><a href="http://github.com/visionmedia/nib">CSS3 Extensions with Nib</a></li>
   <li><a href="../try.html">Try Stylus Online!</a></li>
-  </ul><div id="content"><h2>Introspection API</h2>
+  </ul><div id="content">
+<h2 id="introspection-api">Introspection API</h2>
 
-<p> Stylus supports an introspection API. This allows mixins and functions to reflect relative to the caller, etc.</p>
+<p>Stylus supports an introspection API. This allows mixins and functions to reflect relative to the caller, etc.</p>
 
-<h2>mixin</h2>
+<h2 id="mixin">mixin</h2>
 
-<p>  The <code>mixin</code> local variable is automatically assigned within function bodies.
+<p>The <code>mixin</code> local variable is automatically assigned within function bodies.
   It contains the string <code>root</code> if the function was called at the root
   level, or <code>block</code> indicating otherwise, and finally <code>false</code> if the invoked function expects a return value.</p>
 
-<p>  In the following example, we define <code>reset()</code> to alter its behaviour depending on whether it&rsquo;s mixed into root, into another block, or into a return value, as used in the <code>foo</code> property below:</p>
+<p>In the following example, we define <code>reset()</code> to alter its behaviour depending on whether it&#8217;s mixed into root, into another block, or into a return value, as used in the <code>foo</code> property below:</p>
 
 <pre><code>  reset()
     if mixin == 'root'

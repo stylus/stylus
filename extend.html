@@ -1,15 +1,16 @@
 <!DOCTYPE html><html><head><title>Stylus</title><link rel="stylesheet" href="../main.css"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head><body><div id="container"><h1><a href='http://learnboost.github.com/stylus'>Stylus</a></h1><p class="tagline"><em class="expressive">Expressive, </em><em class="dynamic">dynamic, </em><em class="robust">robust </em><em class="css">CSS</em></p><div id="ribbon"><a href="http://github.com/learnboost/stylus">Fork me on GitHub</a></div><ul id="menu"><li><a href="../docs/selectors.html">Selectors</a></li><li><a href="../docs/variables.html">Variables</a></li><li><a href="../docs/interpolation.html">Interpolation</a></li><li><a href="../docs/operators.html">Operators</a></li><li><a href="../docs/mixins.html">Mixins</a></li><li><a href="../docs/functions.html">Functions</a></li><li><a href="../docs/kwargs.html">Keyword Arguments</a></li><li><a href="../docs/bifs.html">Built-in Functions</a></li><li><a href="../docs/vargs.html">Rest Params</a></li><li><a href="../docs/comments.html">Comments</a></li><li><a href="../docs/conditionals.html">Conditionals</a></li><li><a href="../docs/iteration.html">Iteration</a></li><li><a href="../docs/import.html">@import</a></li><li><a href="../docs/media.html">@media</a></li><li><a href="../docs/font-face.html">@font-face</a></li><li><a href="../docs/keyframes.html">@keyframes</a><li><a href="../docs/extend.html">@extend</a></li><li><a href="../docs/functions.url.html">url()</a></li><li><a href="../docs/literal.html">CSS Literal</a></li><li><a href="../docs/css-style.html">CSS Style Syntax</a></li><li><a href="../docs/escape.html">Char Escaping</a></li><li><a href="../docs/executable.html">Executable</a></li><li><a href="../docs/error-reporting.html">Error Reporting</a></li><li><a href="../docs/middleware.html">Connect Middleware</a></li><li><a href="../docs/introspection.html">Introspection API</a></li><li><a href="../docs/js.html">JavaScript API</a></li>
   <li><a href="http://github.com/visionmedia/nib">CSS3 Extensions with Nib</a></li>
   <li><a href="../try.html">Try Stylus Online!</a></li>
-  </ul><div id="content"><h2>Extend</h2>
+  </ul><div id="content">
+<h2 id="extend">Extend</h2>
 
-<p>  The Stylus <strong>@extend</strong> directive is inspired by (and essentially the same as) the <a href="http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#extend">SASS Implementation</a>, with few subtle differences. This feature significantly simplifies maintenance of semantic rulesets that inherit from other semantic rulesets.</p>
+<p>The Stylus <strong>@extend</strong> directive is inspired by (and essentially the same as) the <a href="http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#extend">SASS Implementation</a>, with few subtle differences. This feature significantly simplifies maintenance of semantic rulesets that inherit from other semantic rulesets.</p>
 
-<h3>“Extending” with mixins</h3>
+<h3 id="extending-with-mixins">“Extending” with mixins</h3>
 
-<p>  Although you can use mixins to achieve a similar effect, this can lead to duplicate CSS. A typical pattern is to define several classes as shown below, then combine them on the element such as &ldquo;warning message&rdquo;.</p>
+<p>Although you can use mixins to achieve a similar effect, this can lead to duplicate CSS. A typical pattern is to define several classes as shown below, then combine them on the element such as &#8220;warning message&#8221;. </p>
 
-<p>  While this technique works just fine, it&rsquo;s difficult to maintain.</p>
+<p>While this technique works just fine, it&#8217;s difficult to maintain.</p>
 
 <pre><code>  .message,
   .warning {
@@ -22,9 +23,9 @@
   }
 </code></pre>
 
-<h3>Using <code>__@extend__</code></h3>
+<h3 id="using-extend">Using <code>__@extend__</code></h3>
 
-<p>  To produce this same output with <code>__@extend__</code>, simply pass it the desired selector.  Stylus will then append the <code>.warning</code> selector to the existing <code>.message</code> ruleset.  The <code>.warning</code> class then inherits properties from <code>.message</code>.</p>
+<p>To produce this same output with <code>__@extend__</code>, simply pass it the desired selector.  Stylus will then append the <code>.warning</code> selector to the existing <code>.message</code> ruleset.  The <code>.warning</code> class then inherits properties from <code>.message</code>.</p>
 
 <pre><code>  .message {
     padding: 10px;
@@ -37,7 +38,7 @@
   }
 </code></pre>
 
-<p>  Here&rsquo;s a more complex example, demonstrating how <code>__@extend__</code> cascades:</p>
+<p>Here&#8217;s a more complex example, demonstrating how <code>__@extend__</code> cascades:</p>
 
 <pre><code>  red = #E33E1E
   yellow = #E2E21E
@@ -63,7 +64,7 @@
     color: red
 </code></pre>
 
-<p>  Yielding the following CSS:</p>
+<p>Yielding the following CSS:</p>
 
 <pre><code>  .message,
   .warning,
@@ -88,7 +89,7 @@
   }
 </code></pre>
 
-<p>  Where Stylus currently differs from SASS is, SASS won&rsquo;t allow  <code>__@extend__</code> nested selectors:</p>
+<p>Where Stylus currently differs from SASS is, SASS won&#8217;t allow  <code>__@extend__</code> nested selectors:</p>
 
 <pre><code> form
    button
@@ -101,7 +102,7 @@
    Use --trace for backtrace.
 </code></pre>
 
-<p>   With Stylus, as long as the selectors match, it works!</p>
+<p>With Stylus, as long as the selectors match, it works!</p>
 
 <pre><code>   form
      input[type=text]
@@ -114,7 +115,7 @@
      padding: 10px
 </code></pre>
 
-<p>   Yielding:</p>
+<p>Yielding:</p>
 
 <pre><code>    form input[type=text],
     form textarea {
@@ -126,4 +127,5 @@
       padding: 10px;
     }
 </code></pre>
+
 </div></div></body></html>

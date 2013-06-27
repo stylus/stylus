@@ -1,13 +1,13 @@
 <!DOCTYPE html><html><head><title>Stylus</title><link rel="stylesheet" href="../main.css"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head><body><div id="container"><h1><a href='http://learnboost.github.com/stylus'>Stylus</a></h1><p class="tagline"><em class="expressive">Expressive, </em><em class="dynamic">dynamic, </em><em class="robust">robust </em><em class="css">CSS</em></p><div id="ribbon"><a href="http://github.com/learnboost/stylus">Fork me on GitHub</a></div><ul id="menu"><li><a href="../docs/selectors.html">Selectors</a></li><li><a href="../docs/variables.html">Variables</a></li><li><a href="../docs/interpolation.html">Interpolation</a></li><li><a href="../docs/operators.html">Operators</a></li><li><a href="../docs/mixins.html">Mixins</a></li><li><a href="../docs/functions.html">Functions</a></li><li><a href="../docs/kwargs.html">Keyword Arguments</a></li><li><a href="../docs/bifs.html">Built-in Functions</a></li><li><a href="../docs/vargs.html">Rest Params</a></li><li><a href="../docs/comments.html">Comments</a></li><li><a href="../docs/conditionals.html">Conditionals</a></li><li><a href="../docs/iteration.html">Iteration</a></li><li><a href="../docs/import.html">@import</a></li><li><a href="../docs/media.html">@media</a></li><li><a href="../docs/font-face.html">@font-face</a></li><li><a href="../docs/keyframes.html">@keyframes</a><li><a href="../docs/extend.html">@extend</a></li><li><a href="../docs/functions.url.html">url()</a></li><li><a href="../docs/literal.html">CSS Literal</a></li><li><a href="../docs/css-style.html">CSS Style Syntax</a></li><li><a href="../docs/escape.html">Char Escaping</a></li><li><a href="../docs/executable.html">Executable</a></li><li><a href="../docs/error-reporting.html">Error Reporting</a></li><li><a href="../docs/middleware.html">Connect Middleware</a></li><li><a href="../docs/introspection.html">Introspection API</a></li><li><a href="../docs/js.html">JavaScript API</a></li>
   <li><a href="http://github.com/visionmedia/nib">CSS3 Extensions with Nib</a></li>
   <li><a href="../try.html">Try Stylus Online!</a></li>
-  </ul><div id="content"><h2>Import</h2>
+  </ul><div id="content"><h2 id="import">Import</h2>
 
-<p> Stylus supports both literal <strong>@import</strong> for CSS, as well as dynamic importing of other Stylus sheets.</p>
+<p>Stylus supports both literal <strong>@import</strong> for CSS, as well as dynamic importing of other Stylus sheets.</p>
 
-<h3>Literal CSS</h3>
+<h3 id="literal-css">Literal CSS</h3>
 
-<p>  Any filename with the extension <code>.css</code> will become a literal. For example:</p>
+<p>Any filename with the extension <code>.css</code> will become a literal. For example:</p>
 
 <pre><code> @import "reset.css"
 </code></pre>
@@ -17,15 +17,15 @@
 <pre><code> @import "reset.css"
 </code></pre>
 
-<h3>Stylus Import</h3>
+<h3 id="stylus-import">Stylus Import</h3>
 
-<p> When using <strong>@import</strong> without the <code>.css</code> extension, it&rsquo;s assumed to be a Stylus sheet (e.g., <code>@import "mixins/border-radius"</code>).</p>
+<p>When using <strong>@import</strong> without the <code>.css</code> extension, it&#8217;s assumed to be a Stylus sheet (e.g., <code>@import "mixins/border-radius"</code>).</p>
 
-<p> <strong>@import</strong> works by iterating an array of directories, and checking if this file lives in any of them (similar to node&rsquo;s <code>require.paths</code>). This array defaults to a single path, which is derived from the <code>filename</code> option&rsquo;s <code>dirname</code>. So, if your filename is <code>/tmp/testing/stylus/main.styl</code>, then import will look in <code>/tmp/testing/stylus/</code>.</p>
+<p><strong>@import</strong> works by iterating an array of directories, and checking if this file lives in any of them (similar to node&#8217;s <code>require.paths</code>). This array defaults to a single path, which is derived from the <code>filename</code> option&#8217;s <code>dirname</code>. So, if your filename is <code>/tmp/testing/stylus/main.styl</code>, then import will look in <code>/tmp/testing/stylus/</code>.</p>
 
-<p> <strong>@import</strong> also supports index styles. This means when you <code>@import blueprint</code>, it will resolve <strong>either</strong> <code>blueprint.styl</code> <strong>or</strong> <code>blueprint/index.styl</code>.  This is really useful for libraries that want to expose all their features, while still allowing feature subsets to be imported.</p>
+<p><strong>@import</strong> also supports index styles. This means when you <code>@import blueprint</code>, it will resolve <strong>either</strong> <code>blueprint.styl</code> <strong>or</strong> <code>blueprint/index.styl</code>.  This is really useful for libraries that want to expose all their features, while still allowing feature subsets to be imported. </p>
 
-<p> For example, a common lib structure might be:</p>
+<p>For example, a common lib structure might be:</p>
 
 <pre><code>./tablet
   |-- index.styl 
@@ -34,7 +34,7 @@
   |-- images.styl 
 </code></pre>
 
-<p> In the example below, we set the <code>paths</code> options to provide additional paths to Stylus. Within <code>./test.styl</code>, we could then <code>@import "mixins/border-radius"</code>, or <code>@import "border-radius"</code> (since <code>./mixins</code> is exposed to Stylus).</p>
+<p>In the example below, we set the <code>paths</code> options to provide additional paths to Stylus. Within <code>./test.styl</code>, we could then <code>@import "mixins/border-radius"</code>, or <code>@import "border-radius"</code> (since <code>./mixins</code> is exposed to Stylus).</p>
 
 <pre><code>  /**
    * Module dependencies.
@@ -57,9 +57,9 @@
     });
 </code></pre>
 
-<h3>JavaScript Import API</h3>
+<h3 id="javascript-import-api">JavaScript Import API</h3>
 
-<p> When using the <code>.import(path)</code> method, these imports are deferred until evaluation:</p>
+<p>When using the <code>.import(path)</code> method, these imports are deferred until evaluation:</p>
 
 <pre><code>   var stylus = require('../')
      , str = require('fs').readFileSync(__dirname + '/test.styl', 'utf8');
@@ -73,13 +73,14 @@
    });
 </code></pre>
 
-<p> The following statement&hellip;</p>
+<p>The following statement&#8230;</p>
 
 <pre><code> @import 'mixins/vendor'
 </code></pre>
 
-<p>&hellip;is equivalent to&hellip;</p>
+<p>&#8230;is equivalent to&#8230;</p>
 
 <pre><code> .import('mixins/vendor') 
 </code></pre>
+
 </div></div></body></html>

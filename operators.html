@@ -1,7 +1,8 @@
 <!DOCTYPE html><html><head><title>Stylus</title><link rel="stylesheet" href="../main.css"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head><body><div id="container"><h1><a href='http://learnboost.github.com/stylus'>Stylus</a></h1><p class="tagline"><em class="expressive">Expressive, </em><em class="dynamic">dynamic, </em><em class="robust">robust </em><em class="css">CSS</em></p><div id="ribbon"><a href="http://github.com/learnboost/stylus">Fork me on GitHub</a></div><ul id="menu"><li><a href="../docs/selectors.html">Selectors</a></li><li><a href="../docs/variables.html">Variables</a></li><li><a href="../docs/interpolation.html">Interpolation</a></li><li><a href="../docs/operators.html">Operators</a></li><li><a href="../docs/mixins.html">Mixins</a></li><li><a href="../docs/functions.html">Functions</a></li><li><a href="../docs/kwargs.html">Keyword Arguments</a></li><li><a href="../docs/bifs.html">Built-in Functions</a></li><li><a href="../docs/vargs.html">Rest Params</a></li><li><a href="../docs/comments.html">Comments</a></li><li><a href="../docs/conditionals.html">Conditionals</a></li><li><a href="../docs/iteration.html">Iteration</a></li><li><a href="../docs/import.html">@import</a></li><li><a href="../docs/media.html">@media</a></li><li><a href="../docs/font-face.html">@font-face</a></li><li><a href="../docs/keyframes.html">@keyframes</a><li><a href="../docs/extend.html">@extend</a></li><li><a href="../docs/functions.url.html">url()</a></li><li><a href="../docs/literal.html">CSS Literal</a></li><li><a href="../docs/css-style.html">CSS Style Syntax</a></li><li><a href="../docs/escape.html">Char Escaping</a></li><li><a href="../docs/executable.html">Executable</a></li><li><a href="../docs/error-reporting.html">Error Reporting</a></li><li><a href="../docs/middleware.html">Connect Middleware</a></li><li><a href="../docs/introspection.html">Introspection API</a></li><li><a href="../docs/js.html">JavaScript API</a></li>
   <li><a href="http://github.com/visionmedia/nib">CSS3 Extensions with Nib</a></li>
   <li><a href="../try.html">Try Stylus Online!</a></li>
-  </ul><div id="content"><h2>Operator Precedence</h2>
+  </ul><div id="content">
+<h2 id="operator-precedence">Operator Precedence</h2>
 
 <p>Below is the operator precedence table, highest to lowest:</p>
 
@@ -22,7 +23,7 @@
  if unless
 </code></pre>
 
-<h2>Unary Operators</h2>
+<h2 id="unary-operators">Unary Operators</h2>
 
 <p>The following unary operators are available, <code>!</code>, <code>not</code>, <code>-</code>, <code>+</code>, and <code>~</code>.</p>
 
@@ -68,13 +69,13 @@ b = 1
 // parsed as: not (a or b)
 </code></pre>
 
-<h2>Binary Operators</h2>
+<h2 id="binary-operators">Binary Operators</h2>
 
-<h3>Subscript []</h3>
+<h3 id="subscript-">Subscript []</h3>
 
-<p> The subscript operator allows us to grab a value inside an expression via index. Parenthesized expressions may act as tuples (e.g. <code>(15px 5px)</code>, <code>(1 2 3)</code>).</p>
+<p>The subscript operator allows us to grab a value inside an expression via index. Parenthesized expressions may act as tuples (e.g. <code>(15px 5px)</code>, <code>(1 2 3)</code>).</p>
 
-<p> Below is an example that uses tuples for error handling (and showcasing the versatility of this construct):</p>
+<p>Below is an example that uses tuples for error handling (and showcasing the versatility of this construct):</p>
 
 <pre><code> add(a, b)
    if a is a 'unit' and b is a 'unit'
@@ -85,10 +86,10 @@ b = 1
  body
    padding add(1,'5')
    // =&gt; padding: error "a and b must be units";
-
+   
    padding add(1,'5')[0]
    // =&gt; padding: error;
-
+   
    padding add(1,'5')[0] == error
    // =&gt; padding: true;
 
@@ -96,15 +97,15 @@ b = 1
    // =&gt; padding: "a and b must be units";
 </code></pre>
 
-<p> Here&rsquo;s a more complex example. Now we&rsquo;re invoking the built-in <code>error()</code> function with the return error message, whenever the ident (the first value) equals <code>error</code>.</p>
+<p>Here&#8217;s a more complex example. Now we&#8217;re invoking the built-in <code>error()</code> function with the return error message, whenever the ident (the first value) equals <code>error</code>.</p>
 
 <pre><code> if (val = add(1,'5'))[0] == error
    error(val[1])
 </code></pre>
 
-<h2>Range .. &hellip;</h2>
+<h2 id="range--">Range .. &#8230;</h2>
 
-<p> Both the inclusive (<code>..</code>) and exclusive (<code>...</code>) range operators are provided, expanding to expressions:</p>
+<p>Both the inclusive (<code>..</code>) and exclusive (<code>...</code>) range operators are provided, expanding to expressions:</p>
 
 <pre><code> 1..5
  // =&gt; 1 2 3 4 5
@@ -113,7 +114,7 @@ b = 1
  // =&gt; 1 2 3 4
 </code></pre>
 
-<h3>Additive: + -</h3>
+<h3 id="additive---">Additive: + -</h3>
 
 <p>Multiplicative and additive binary operators work as expected. Type conversion is applied within unit type classes, or default to the literal value. For example <code>5s - 2px</code> results in <code>3s</code>.</p>
 
@@ -139,10 +140,10 @@ b = 1
 // =&gt; "num 15"
 </code></pre>
 
-<h3>Multiplicative: / * %</h3>
+<h3 id="multiplicative---">Multiplicative: / * %</h3>
 
 <pre><code>2000ms + (1s * 2)
-// =&gt; 4ms
+// =&gt; 4000ms
 
 5s / 2
 // =&gt; 2.5s
@@ -163,7 +164,7 @@ b = 1
 
 <p>This is <em>only</em> required for the <code>/</code> operator.</p>
 
-<h3>Exponent: **</h3>
+<h3 id="exponent-">Exponent: **</h3>
 
 <p>The Exponent operator:</p>
 
@@ -171,9 +172,9 @@ b = 1
 // =&gt; 256
 </code></pre>
 
-<h3>Equality &amp; Relational: == != >= &lt;= > &lt;</h3>
+<h3 id="equality--relational------">Equality &amp; Relational: == != &gt;= &lt;= &gt; &lt;</h3>
 
-<p>Equality operators can be used to equate units, colors, strings, and even identifiers. This is a powerful concept, as even arbitrary identifiers (such as as <code>wahoo</code>) can be utilized as atoms. A function could return <code>yes</code> or <code>no</code> instead of <code>true</code> or <code>false</code> (although not advised).</p>
+<p>Equality operators can be used to equate units, colors, strings, and even identifiers. This is a powerful concept, as even arbitrary identifiers (such as as <code>wahoo</code>) can be utilized as atoms. A function could return <code>yes</code> or <code>no</code> instead of <code>true</code> or <code>false</code> (although not advised). </p>
 
 <pre><code>5 == 5
 // =&gt; true
@@ -224,13 +225,13 @@ true is true
 !=    isnt
 </code></pre>
 
-<h2>Truthfulness</h2>
+<h2 id="truthfulness">Truthfulness</h2>
 
-<p> Nearly everything within Stylus resolves to <code>true</code>, including units with a suffix. Even <code>0%</code>, <code>0px</code>, etc. will resolve to <code>true</code> (because it&rsquo;s common in Stylus for mixins or functions to accept units as valid).</p>
+<p>Nearly everything within Stylus resolves to <code>true</code>, including units with a suffix. Even <code>0%</code>, <code>0px</code>, etc. will resolve to <code>true</code> (because it&#8217;s common in Stylus for mixins or functions to accept units as valid). </p>
 
-<p> However, <code>0</code> itself is <code>false</code> in terms of arithmetic.</p>
+<p>However, <code>0</code> itself is <code>false</code> in terms of arithmetic. </p>
 
-<p> Expressions (or &ldquo;lists&rdquo;) with a length greater than 1 are considered truthy.</p>
+<p>Expressions (or &#8220;lists&#8221;) with a length greater than 1 are considered truthy.</p>
 
 <p><code>true</code> examples:</p>
 
@@ -253,7 +254,7 @@ true is true
  ''
 </code></pre>
 
-<h3>Logical Operators: &amp;&amp; || and or</h3>
+<h3 id="logical-operators---and-or">Logical Operators: &amp;&amp; || and or</h3>
 
 <p>Logical operators <code>&amp;&amp;</code> and <code>||</code> are aliased <code>and</code> / <code>or</code> which apply the same precedence.</p>
 
@@ -270,9 +271,9 @@ true is true
 // =&gt; true
 </code></pre>
 
-<h3>Existence Operator: in</h3>
+<h3 id="existence-operator-in">Existence Operator: in</h3>
 
-<p> Checks for the existence of the <em>left-hand</em> operand within the <em>right-hand</em> expression.</p>
+<p>Checks for the existence of the <em>left-hand</em> operand within the <em>right-hand</em> expression.</p>
 
 <p>Simple examples:</p>
 
@@ -299,7 +300,7 @@ true is true
 <pre><code>  vals = (error 'one') (error 'two')
   error in vals
   // =&gt; false
-
+  
   (error 'one') in vals
   // =&gt; true
 
@@ -342,9 +343,9 @@ true is true
   }
 </code></pre>
 
-<h3>Conditional Assignment: ?= :=</h3>
+<h3 id="conditional-assignment--">Conditional Assignment: ?= :=</h3>
 
-<p>The conditional assignment operator <code>?=</code> (aliased as <code>:=</code>) lets us define variables without clobbering old values (if present). This operator expands to an <code>is defined</code> binary operation within a ternary.</p>
+<p>The conditional assignment operator <code>?=</code> (aliased as <code>:=</code>) lets us define variables without clobbering old values (if present). This operator expands to an <code>is defined</code> binary operation within a ternary. </p>
 
 <p>For example, the following are equivalent:</p>
 
@@ -371,7 +372,7 @@ color
 // =&gt; white
 </code></pre>
 
-<h3>Instance Check: is a</h3>
+<h3 id="instance-check-is-a">Instance Check: is a</h3>
 
 <p>Stylus provides a binary operator named <code>is a</code> used to type check.</p>
 
@@ -394,7 +395,7 @@ color
 <p><strong>Note:</strong> <code>color</code> is the only special-case, evaluating to <code>true</code> when the
 left-hand operand is an <code>RGBA</code> or <code>HSLA</code> node.</p>
 
-<h3>Variable Definition: is defined</h3>
+<h3 id="variable-definition-is-defined">Variable Definition: is defined</h3>
 
 <p>This pseudo binary operator does not accept a right-hand operator, and does <em>not</em> evaluate the left. This allows us to check if a variable has a value assigned to it.</p>
 
@@ -441,18 +442,18 @@ lookup('light-' + name)
     padding 5px
 </code></pre>
 
-<h2>Ternary</h2>
+<h2 id="ternary">Ternary</h2>
 
-<p>The ternary operator works as we would expect in most languages. It&rsquo;s the only operator with three operands (the <em>condition</em> expression, the <em>truth</em> expression, and the <em>false</em> expression).</p>
+<p>The ternary operator works as we would expect in most languages. It&#8217;s the only operator with three operands (the <em>condition</em> expression, the <em>truth</em> expression, and the <em>false</em> expression).</p>
 
 <pre><code>num = 15
 num ? unit(num, 'px') : 20px
 // =&gt; 15px
 </code></pre>
 
-<h2>Casting</h2>
+<h2 id="casting">Casting</h2>
 
-<p> As an terse alternative to the <code>unit()</code> built-in function, the syntax <code>(expr) unit</code> may be used to force the suffix.</p>
+<p>As an terse alternative to the <code>unit()</code> built-in function, the syntax <code>(expr) unit</code> may be used to force the suffix. </p>
 
 <pre><code>body
   n = 5
@@ -464,15 +465,15 @@ num ? unit(num, 'px') : 20px
   foo: unit(5 + 180 / 2, deg)
 </code></pre>
 
-<h2>Color Operations</h2>
+<h2 id="color-operations">Color Operations</h2>
 
-<p> Operations on colors provide a terse, expressive way to alter components. For example, we can operate on each RGB:</p>
+<p>Operations on colors provide a terse, expressive way to alter components. For example, we can operate on each RGB:</p>
 
 <pre><code>#0e0 + #0e0
 // =&gt; #0f0
 </code></pre>
 
-<p> Another example is adjust the lightness value by adding or subtracting a percentage. To lighten a color, add; to darken, subtract.</p>
+<p>Another example is adjust the lightness value by adding or subtracting a percentage. To lighten a color, add; to darken, subtract.</p>
 
 <pre><code>#888 + 50%
 // =&gt; #c3c3c3
@@ -481,31 +482,32 @@ num ? unit(num, 'px') : 20px
 // =&gt; #444
 </code></pre>
 
-<p>  Adjust the hue is also possible by adding or subtracting with degrees. For example, adding <code>50deg</code> to this red value results in a yellow:</p>
+<p>Adjust the hue is also possible by adding or subtracting with degrees. For example, adding <code>50deg</code> to this red value results in a yellow:</p>
 
 <pre><code> #f00 + 50deg
  // =&gt; #ffd500
 </code></pre>
 
-<p>  Values clamp appropriately. For example, we can &ldquo;spin&rdquo; the hue 180 degrees, and if the current value is <code>320deg</code>, it will resolve to <code>140deg</code>.</p>
+<p>Values clamp appropriately. For example, we can &#8220;spin&#8221; the hue 180 degrees, and if the current value is <code>320deg</code>, it will resolve to <code>140deg</code>.</p>
 
-<p>  We may also tweak several values at once (including the alpha) by using <code>rgb()</code>, <code>rgba()</code>, <code>hsl()</code>, or <code>hsla()</code>:</p>
+<p>We may also tweak several values at once (including the alpha) by using <code>rgb()</code>, <code>rgba()</code>, <code>hsl()</code>, or <code>hsla()</code>:</p>
 
 <pre><code>  #f00 - rgba(100,0,0,0.5)
   // =&gt; rgba(155,0,0,0.5)
 </code></pre>
 
-<h2>Sprintf</h2>
+<h2 id="sprintf">Sprintf</h2>
 
-<p> The string sprintf-like operator <code>%</code> can be used to generate a literal value, internally passing arguments through the <code>s()</code> built-in:</p>
+<p>The string sprintf-like operator <code>%</code> can be used to generate a literal value, internally passing arguments through the <code>s()</code> built-in:</p>
 
 <pre><code>   'X::Microsoft::Crap(%s)' % #fc0
    // =&gt; X::Microsoft::Crap(#fc0)
 </code></pre>
 
-<p>  Multiple values should be parenthesized:</p>
+<p>Multiple values should be parenthesized:</p>
 
 <pre><code>  '-webkit-gradient(%s, %s, %s)' % (linear (0 0) (0 100%))
   // =&gt; -webkit-gradient(linear, 0 0, 0 100%)
 </code></pre>
+
 </div></div></body></html>

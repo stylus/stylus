@@ -1,15 +1,16 @@
 <!DOCTYPE html><html><head><title>Stylus</title><link rel="stylesheet" href="../main.css"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head><body><div id="container"><h1><a href='http://learnboost.github.com/stylus'>Stylus</a></h1><p class="tagline"><em class="expressive">Expressive, </em><em class="dynamic">dynamic, </em><em class="robust">robust </em><em class="css">CSS</em></p><div id="ribbon"><a href="http://github.com/learnboost/stylus">Fork me on GitHub</a></div><ul id="menu"><li><a href="../docs/selectors.html">Selectors</a></li><li><a href="../docs/variables.html">Variables</a></li><li><a href="../docs/interpolation.html">Interpolation</a></li><li><a href="../docs/operators.html">Operators</a></li><li><a href="../docs/mixins.html">Mixins</a></li><li><a href="../docs/functions.html">Functions</a></li><li><a href="../docs/kwargs.html">Keyword Arguments</a></li><li><a href="../docs/bifs.html">Built-in Functions</a></li><li><a href="../docs/vargs.html">Rest Params</a></li><li><a href="../docs/comments.html">Comments</a></li><li><a href="../docs/conditionals.html">Conditionals</a></li><li><a href="../docs/iteration.html">Iteration</a></li><li><a href="../docs/import.html">@import</a></li><li><a href="../docs/media.html">@media</a></li><li><a href="../docs/font-face.html">@font-face</a></li><li><a href="../docs/keyframes.html">@keyframes</a><li><a href="../docs/extend.html">@extend</a></li><li><a href="../docs/functions.url.html">url()</a></li><li><a href="../docs/literal.html">CSS Literal</a></li><li><a href="../docs/css-style.html">CSS Style Syntax</a></li><li><a href="../docs/escape.html">Char Escaping</a></li><li><a href="../docs/executable.html">Executable</a></li><li><a href="../docs/error-reporting.html">Error Reporting</a></li><li><a href="../docs/middleware.html">Connect Middleware</a></li><li><a href="../docs/introspection.html">Introspection API</a></li><li><a href="../docs/js.html">JavaScript API</a></li>
   <li><a href="http://github.com/visionmedia/nib">CSS3 Extensions with Nib</a></li>
   <li><a href="../try.html">Try Stylus Online!</a></li>
-  </ul><div id="content"><h2>Conditionals</h2>
+  </ul><div id="content">
+<h2 id="conditionals">Conditionals</h2>
 
-<p> Conditionals provide control flow to a language which is otherwise static, providing conditional imports, mixins, functions, and more. The examples below are simply examples, and not recommended :)</p>
+<p>Conditionals provide control flow to a language which is otherwise static, providing conditional imports, mixins, functions, and more. The examples below are simply examples, and not recommended :)</p>
 
-<h3>if / else if / else</h3>
+<h3 id="if--else-if--else">if / else if / else</h3>
 
-<p> The <code>if</code> conditional works as you would expect, simply accepting an expression, evaluating the following block when <code>true</code>. Along with <code>if</code> are the typical <code>else if</code> and <code>else</code> tokens, acting as fallbacks.</p>
+<p>The <code>if</code> conditional works as you would expect, simply accepting an expression, evaluating the following block when <code>true</code>. Along with <code>if</code> are the typical <code>else if</code> and <code>else</code> tokens, acting as fallbacks.</p>
 
-<p> The example below would conditionally overload the <code>padding</code> property, swapping it for <code>margin</code>.</p>
+<p>The example below would conditionally overload the <code>padding</code> property, swapping it for <code>margin</code>.</p>
 
 <pre><code>overload-padding = true
 
@@ -41,9 +42,9 @@ body
     padding y x
 </code></pre>
 
-<h3>unless</h3>
+<h3 id="unless">unless</h3>
 
-<p> For users familiar with the Ruby programming language, we have the <code>unless</code> conditional. It’s basically the opposite of <code>if</code>—essentially <code>if (!(expr))</code>.</p>
+<p>For users familiar with the Ruby programming language, we have the <code>unless</code> conditional. It’s basically the opposite of <code>if</code>—essentially <code>if (!(expr))</code>.</p>
 
 <p>In the example below, if <code>disable-padding-override</code> is <code>undefined</code> or <code>false</code>, <code>padding</code> will be overridden, displaying <code>margin</code> instead. But if it’s <code>true</code>, <code>padding</code> will continue outputting <code>padding 5px 10px</code> as expected.</p>
 
@@ -57,11 +58,11 @@ body
    padding 5px 10px
 </code></pre>
 
-<h3>Postfix Conditionals</h3>
+<h3 id="postfix-conditionals">Postfix Conditionals</h3>
 
-<p>  Stylus supports postfix conditionals. This means that <code>if</code> and <code>unless</code> act as operators; they evaluate the left-hand operand when the right-hand expression is truthy.</p>
+<p>Stylus supports postfix conditionals. This means that <code>if</code> and <code>unless</code> act as operators; they evaluate the left-hand operand when the right-hand expression is truthy.</p>
 
-<p>  For example let&rsquo;s define <code>negative()</code> to perform some basic type checking. Below we use block-style conditionals:</p>
+<p>For example let&#8217;s define <code>negative()</code> to perform some basic type checking. Below we use block-style conditionals:</p>
 
 <pre><code>  negative(n)
     unless n is a 'unit'
@@ -72,7 +73,7 @@ body
       no
 </code></pre>
 
-<p>  Next, we utilize postfix conditionals to keep our function terse.</p>
+<p>Next, we utilize postfix conditionals to keep our function terse.</p>
 
 <pre><code>  negative(n)
     error('invalid number') unless n is a 'unit'
@@ -80,9 +81,9 @@ body
     no
 </code></pre>
 
-<p>  Of course, we could take this further.  For example, we could write <code>n &lt; 0 ? yes : no</code>, or simply stick with booleans: <code>n &lt; 0</code>.</p>
+<p>Of course, we could take this further.  For example, we could write <code>n &lt; 0 ? yes : no</code>, or simply stick with booleans: <code>n &lt; 0</code>.</p>
 
-<p>  Postfix conditionals may be applied to most single-line statements. For example, <code>@import</code>, <code>@charset</code>, mixins—and of course, properties as shown below:</p>
+<p>Postfix conditionals may be applied to most single-line statements. For example, <code>@import</code>, <code>@charset</code>, mixins—and of course, properties as shown below:</p>
 
 <pre><code>  pad(types = margin padding, n = 5px)
     padding unit(n, px) if padding in types
@@ -112,4 +113,5 @@ body
     padding: 10px;
   }
 </code></pre>
+
 </div></div></body></html>

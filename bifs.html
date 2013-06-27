@@ -1,9 +1,10 @@
 <!DOCTYPE html><html><head><title>Stylus</title><link rel="stylesheet" href="../main.css"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head><body><div id="container"><h1><a href='http://learnboost.github.com/stylus'>Stylus</a></h1><p class="tagline"><em class="expressive">Expressive, </em><em class="dynamic">dynamic, </em><em class="robust">robust </em><em class="css">CSS</em></p><div id="ribbon"><a href="http://github.com/learnboost/stylus">Fork me on GitHub</a></div><ul id="menu"><li><a href="../docs/selectors.html">Selectors</a></li><li><a href="../docs/variables.html">Variables</a></li><li><a href="../docs/interpolation.html">Interpolation</a></li><li><a href="../docs/operators.html">Operators</a></li><li><a href="../docs/mixins.html">Mixins</a></li><li><a href="../docs/functions.html">Functions</a></li><li><a href="../docs/kwargs.html">Keyword Arguments</a></li><li><a href="../docs/bifs.html">Built-in Functions</a></li><li><a href="../docs/vargs.html">Rest Params</a></li><li><a href="../docs/comments.html">Comments</a></li><li><a href="../docs/conditionals.html">Conditionals</a></li><li><a href="../docs/iteration.html">Iteration</a></li><li><a href="../docs/import.html">@import</a></li><li><a href="../docs/media.html">@media</a></li><li><a href="../docs/font-face.html">@font-face</a></li><li><a href="../docs/keyframes.html">@keyframes</a><li><a href="../docs/extend.html">@extend</a></li><li><a href="../docs/functions.url.html">url()</a></li><li><a href="../docs/literal.html">CSS Literal</a></li><li><a href="../docs/css-style.html">CSS Style Syntax</a></li><li><a href="../docs/escape.html">Char Escaping</a></li><li><a href="../docs/executable.html">Executable</a></li><li><a href="../docs/error-reporting.html">Error Reporting</a></li><li><a href="../docs/middleware.html">Connect Middleware</a></li><li><a href="../docs/introspection.html">Introspection API</a></li><li><a href="../docs/js.html">JavaScript API</a></li>
   <li><a href="http://github.com/visionmedia/nib">CSS3 Extensions with Nib</a></li>
   <li><a href="../try.html">Try Stylus Online!</a></li>
-  </ul><div id="content"><h2>Built-in Functions</h2>
+  </ul><div id="content">
+<h2 id="built-in-functions">Built-in Functions</h2>
 
-<h3>red(color)</h3>
+<h3 id="redcolor">red(color)</h3>
 
 <p>Return the red component of the given <code>color</code>.</p>
 
@@ -11,7 +12,7 @@
  // =&gt; 204
 </code></pre>
 
-<h3>green(color)</h3>
+<h3 id="greencolor">green(color)</h3>
 
 <p>Return the green component of the given <code>color</code>.</p>
 
@@ -19,26 +20,26 @@
  // =&gt; 204
 </code></pre>
 
-<h3>blue(color)</h3>
+<h3 id="bluecolor">blue(color)</h3>
 
 <p>Return the blue component of the given <code>color</code>.</p>
 
-<pre><code> red(#00c)
+<pre><code> blue(#00c)
  // =&gt; 204
 </code></pre>
 
-<h3>alpha(color)</h3>
+<h3 id="alphacolor">alpha(color)</h3>
 
 <p>Return the alpha component of the given <code>color</code>.</p>
 
 <pre><code>  alpha(#fff)
   // =&gt; 1
-
+  
   alpha(rgba(0,0,0,0.3))
   // =&gt; 0.3
 </code></pre>
 
-<h3>dark(color)</h3>
+<h3 id="darkcolor">dark(color)</h3>
 
 <p>Check if <code>color</code> is dark:</p>
 
@@ -52,7 +53,7 @@
   // =&gt; false
 </code></pre>
 
-<h3>light(color)</h3>
+<h3 id="lightcolor">light(color)</h3>
 
 <p>Check if <code>color</code> is light:</p>
 
@@ -66,7 +67,7 @@ light(#00FF40)
 // =&gt; true
 </code></pre>
 
-<h3>hue(color)</h3>
+<h3 id="huecolor">hue(color)</h3>
 
 <p>Return the hue of the given <code>color</code>.</p>
 
@@ -74,7 +75,7 @@ light(#00FF40)
 // =&gt; 50deg
 </code></pre>
 
-<h3>saturation(color)</h3>
+<h3 id="saturationcolor">saturation(color)</h3>
 
 <p>Return the saturation of the given <code>color</code>.</p>
 
@@ -82,7 +83,7 @@ light(#00FF40)
 // =&gt; 100%
 </code></pre>
 
-<h3>lightness(color)</h3>
+<h3 id="lightnesscolor">lightness(color)</h3>
 
 <p>Return the lightness of the given <code>color</code>.</p>
 
@@ -90,9 +91,9 @@ light(#00FF40)
 // =&gt; 80%
 </code></pre>
 
-<h3>push(expr, args&hellip;)</h3>
+<h3 id="pushexpr-args">push(expr, args&#8230;)</h3>
 
-<p> Push the given <code>args</code> to <code>expr</code>.</p>
+<p>Push the given <code>args</code> to <code>expr</code>.</p>
 
 <pre><code> nums = 1 2
  push(nums, 3, 4, 5)
@@ -101,11 +102,11 @@ light(#00FF40)
  // =&gt; 1 2 3 4 5
 </code></pre>
 
-<p> Aliased as <code>append()</code></p>
+<p>Aliased as <code>append()</code></p>
 
-<h3>unshift(expr, args&hellip;)</h3>
+<h3 id="unshiftexpr-args">unshift(expr, args&#8230;)</h3>
 
-<p> Unshift the given <code>args</code> to <code>expr</code>.</p>
+<p>Unshift the given <code>args</code> to <code>expr</code>.</p>
 
 <pre><code> nums = 4 5
  unshift(nums, 3, 2, 1)
@@ -114,27 +115,27 @@ light(#00FF40)
  // =&gt; 1 2 3 4 5
 </code></pre>
 
-<p> Aliased as <code>prepend()</code></p>
+<p>Aliased as <code>prepend()</code></p>
 
-<h3>keys(pairs)</h3>
+<h3 id="keyspairs">keys(pairs)</h3>
 
-<p>  Return keys in the given <code>pairs</code>:</p>
+<p>Return keys in the given <code>pairs</code>:</p>
 
 <pre><code> pairs = (one 1) (two 2) (three 3)
  keys(pairs)
  // =&gt; one two three
 </code></pre>
 
-<h3>values(pairs)</h3>
+<h3 id="valuespairs">values(pairs)</h3>
 
-<p>  Return values in the given <code>pairs</code>:</p>
+<p>Return values in the given <code>pairs</code>:</p>
 
 <pre><code> pairs = (one 1) (two 2) (three 3)
  values(pairs)
  // =&gt; 1 2 3
 </code></pre>
 
-<h3>typeof(node)</h3>
+<h3 id="typeofnode">typeof(node)</h3>
 
 <p>Return type of <code>node</code> as a string.</p>
 
@@ -143,7 +144,7 @@ light(#00FF40)
 
   typeof(12)
   // =&gt; 'unit'
-
+  
   typeof(#fff)
   // =&gt; 'rgba'
 
@@ -153,7 +154,7 @@ light(#00FF40)
 
 <p>Aliased as <code>type-of</code> and <code>type</code>.</p>
 
-<h3>unit(unit[, type])</h3>
+<h3 id="unitunit-type">unit(unit[, type])</h3>
 
 <p>Return a string for the type of <code>unit</code> or an empty string,
 or assign the given <code>type</code> without unit conversion.</p>
@@ -171,7 +172,7 @@ unit(15%, px)
 // =&gt; 15px
 </code></pre>
 
-<h3>match(pattern, string)</h3>
+<h3 id="matchpattern-string">match(pattern, string)</h3>
 
 <p>Test if <code>string</code> matches the given <code>pattern</code>.</p>
 
@@ -187,7 +188,7 @@ match('^foo(bar)?', 'bar')
 // =&gt; false
 </code></pre>
 
-<h3>abs(unit)</h3>
+<h3 id="absunit">abs(unit)</h3>
 
 <pre><code>  abs(-5px)
   // =&gt; 5px
@@ -196,19 +197,19 @@ match('^foo(bar)?', 'bar')
   // =&gt; 5px
 </code></pre>
 
-<h3>ceil(unit)</h3>
+<h3 id="ceilunit">ceil(unit)</h3>
 
 <pre><code>  ceil(5.5in)
   // =&gt; 6in
 </code></pre>
 
-<h3>floor(unit)</h3>
+<h3 id="floorunit">floor(unit)</h3>
 
 <pre><code>  floor(5.6px)
   // =&gt; 5px
 </code></pre>
 
-<h3>round(unit)</h3>
+<h3 id="roundunit">round(unit)</h3>
 
 <pre><code>  round(5.5px)
   // =&gt; 6px
@@ -217,52 +218,52 @@ match('^foo(bar)?', 'bar')
   // =&gt; 5px
 </code></pre>
 
-<h3>min(a, b)</h3>
+<h3 id="mina-b">min(a, b)</h3>
 
 <pre><code>  min(1, 5)
   // =&gt; 1
 </code></pre>
 
-<h3>max(a, b)</h3>
+<h3 id="maxa-b">max(a, b)</h3>
 
 <pre><code>  max(1, 5)
   // =&gt; 5
 </code></pre>
 
-<h3>even(unit)</h3>
+<h3 id="evenunit">even(unit)</h3>
 
 <pre><code>  even(6px)
   // =&gt; true
 </code></pre>
 
-<h3>odd(unit)</h3>
+<h3 id="oddunit">odd(unit)</h3>
 
 <pre><code>  odd(5mm)
   // =&gt; true
 </code></pre>
 
-<h3>sum(nums)</h3>
+<h3 id="sumnums">sum(nums)</h3>
 
 <pre><code>  sum(1 2 3)
   // =&gt; 6
 </code></pre>
 
-<h3>avg(nums)</h3>
+<h3 id="avgnums">avg(nums)</h3>
 
 <pre><code> avg(1 2 3)
  // =&gt; 2
 </code></pre>
 
-<h3>join(delim, vals&hellip;)</h3>
+<h3 id="joindelim-vals">join(delim, vals&#8230;)</h3>
 
-<p>  Join the given <code>vals</code> with <code>delim</code>.</p>
+<p>Join the given <code>vals</code> with <code>delim</code>.</p>
 
 <pre><code>  join(' ', 1 2 3)
   // =&gt; "1 2 3"
-
+  
   join(',', 1 2 3)
   // =&gt; "1,2,3"
-
+  
   join(', ', foo bar baz)
   // =&gt; "foo, bar, baz"
 
@@ -273,7 +274,7 @@ match('^foo(bar)?', 'bar')
   // =&gt; "1 2, 3 4, 5 6"
 </code></pre>
 
-<h3>hsla(color | h,s,l,a)</h3>
+<h3 id="hslacolor--hsla">hsla(color | h,s,l,a)</h3>
 
 <p>Convert the given <code>color</code> to an <code>HSLA</code> node,
 or h,s,l,a component values.</p>
@@ -285,7 +286,7 @@ or h,s,l,a component values.</p>
  // =&gt; HSLA
 </code></pre>
 
-<h3>hsla(color | h,s,l)</h3>
+<h3 id="hslacolor--hsl">hsla(color | h,s,l)</h3>
 
 <p>Convert the given <code>color</code> to an <code>HSLA</code> node,
 or h,s,l component values.</p>
@@ -297,21 +298,21 @@ or h,s,l component values.</p>
  // =&gt; HSLA
 </code></pre>
 
-<h3>rgba(color | r,g,b,a)</h3>
+<h3 id="rgbacolor--rgba">rgba(color | r,g,b,a)</h3>
 
 <p>Return <code>RGBA</code> from the r,g,b,a channels or provide a <code>color</code> to tweak the alpha.</p>
 
 <pre><code>  rgba(255,0,0,0.5)
   // =&gt; rgba(255,0,0,0.5)
-
+  
   rgba(255,0,0,1)
   // =&gt; #ff0000
-
+  
   rgba(#ffcc00, 0.5)
   // rgba(255,204,0,0.5)
 </code></pre>
 
-<p> Alternatively stylus supports the <code>#rgba</code> and <code>#rrggbbaa</code> notations as well:</p>
+<p>Alternatively stylus supports the <code>#rgba</code> and <code>#rrggbbaa</code> notations as well:</p>
 
 <pre><code>#fc08
 // =&gt; rgba(255,204,0,0.5)
@@ -320,7 +321,7 @@ or h,s,l component values.</p>
 // =&gt; rgba(255,204,0,0.9)
 </code></pre>
 
-<h3>rgb(color | r,g,b)</h3>
+<h3 id="rgbcolor--rgb">rgb(color | r,g,b)</h3>
 
 <p>Return a <code>RGBA</code> from the r,g,b channels or cast to an <code>RGBA</code> node.</p>
 
@@ -331,7 +332,7 @@ rgb(#fff)
 // =&gt; #fff
 </code></pre>
 
-<h3>lighten(color, amount)</h3>
+<h3 id="lightencolor-amount">lighten(color, amount)</h3>
 
 <p>Lighten the given <code>color</code> by <code>amount</code>. This function is
 unit-sensitive, for example supporting percentages as shown
@@ -344,7 +345,7 @@ lighten(#2c2c2c, 30%)
 // =&gt; #393939
 </code></pre>
 
-<h3>darken(color, amount)</h3>
+<h3 id="darkencolor-amount">darken(color, amount)</h3>
 
 <p>Darken the given <code>color</code> by <code>amount</code>.This function is
 unit-sensitive, for example supporting percentages as shown
@@ -357,7 +358,7 @@ darken(#D62828, 30%)
 // =&gt; #961c1c
 </code></pre>
 
-<h3>desaturate(color, amount)</h3>
+<h3 id="desaturatecolor-amount">desaturate(color, amount)</h3>
 
 <p>Desaturate the given <code>color</code> by <code>amount</code>.</p>
 
@@ -365,7 +366,7 @@ darken(#D62828, 30%)
 // =&gt; #c33
 </code></pre>
 
-<h3>saturate(color, amount)</h3>
+<h3 id="saturatecolor-amount">saturate(color, amount)</h3>
 
 <p>Saturate the given <code>color</code> by <code>amount</code>.</p>
 
@@ -373,7 +374,7 @@ darken(#D62828, 30%)
 // =&gt; #f00
 </code></pre>
 
-<h3>invert(color)</h3>
+<h3 id="invertcolor">invert(color)</h3>
 
 <p>Inverts the color. The red, green, and blue values are inverted, while the opacity is left alone.</p>
 
@@ -381,13 +382,13 @@ darken(#D62828, 30%)
 // =&gt; #29d7d7
 </code></pre>
 
-<h3>unquote(str | ident)</h3>
+<h3 id="unquotestr--ident">unquote(str | ident)</h3>
 
-<p>  Unquote the given <code>str</code> and returned as a <code>Literal</code> node.</p>
+<p>Unquote the given <code>str</code> and returned as a <code>Literal</code> node.</p>
 
 <pre><code>   unquote("sans-serif")
    // =&gt; sans-serif
-
+ 
    unquote(sans-serif)
    // =&gt; sans-serif
 
@@ -395,10 +396,10 @@ darken(#D62828, 30%)
    // =&gt; 1px / 2px
 </code></pre>
 
-<h3>s(fmt, &hellip;)</h3>
+<h3 id="sfmt-">s(fmt, &#8230;)</h3>
 
-<p> The <code>s()</code> function is similar to <code>unquote()</code>, in that it returns
- a <code>Literal</code> node, however it accepts a format string much like C&rsquo;s <code>sprintf()</code>. Currently the only specifier is <code>%s</code>.</p>
+<p>The <code>s()</code> function is similar to <code>unquote()</code>, in that it returns
+ a <code>Literal</code> node, however it accepts a format string much like C&#8217;s <code>sprintf()</code>. Currently the only specifier is <code>%s</code>.</p>
 
 <pre><code>    s('bar()');
     // =&gt; bar()
@@ -408,47 +409,47 @@ darken(#D62828, 30%)
 
     s('bar(%s)', baz);
     // =&gt; bar(baz)
-
+    
     s('bar(%s)', 15px);
     // =&gt; bar(15px)
-
+    
     s('rgba(%s, %s, %s, 0.5)', 255, 100, 50);
     // =&gt; rgba(255, 100, 50, 0.5)
-
+    
     s('bar(%Z)', 15px);
     // =&gt; bar(%Z)
-
+    
     s('bar(%s, %s)', 15px);
     // =&gt; bar(15px, null)
 </code></pre>
 
 <p>Check out the <code>%</code> string operator for equivalent behaviour.</p>
 
-<h3>operate(op, left, right)</h3>
+<h3 id="operateop-left-right">operate(op, left, right)</h3>
 
-<p>  Perform the given <code>op</code> on the <code>left</code> and <code>right</code> operands:</p>
+<p>Perform the given <code>op</code> on the <code>left</code> and <code>right</code> operands:</p>
 
 <pre><code>  op = '+'
   operate(op, 15, 5)
   // =&gt; 20
 </code></pre>
 
-<h3>length([expr])</h3>
+<h3 id="lengthexpr">length([expr])</h3>
 
-<p>  Parenthesized expressions may act as tuples, the <code>length()</code> function returns the length of such expressions.</p>
+<p>Parenthesized expressions may act as tuples, the <code>length()</code> function returns the length of such expressions.</p>
 
 <pre><code>length((1 2 3 4))
 // =&gt; 4
 
 length((1 2))
 // =&gt; 2
-
+  
 length((1))
 // =&gt; 1
-
+  
 length(())
 // =&gt; 0
-
+  
 length(1 2 3)
 // =&gt; 3
 
@@ -459,16 +460,16 @@ length()
 // =&gt; 0
 </code></pre>
 
-<h3>warn(msg)</h3>
+<h3 id="warnmsg">warn(msg)</h3>
 
-<p>  Warn with the given error <code>msg</code>, does not exit.</p>
+<p>Warn with the given error <code>msg</code>, does not exit.</p>
 
 <pre><code>  warn("oh noes!")
 </code></pre>
 
-<h3>error(msg)</h3>
+<h3 id="errormsg">error(msg)</h3>
 
-<p>  Exits with the given error <code>msg</code>.</p>
+<p>Exits with the given error <code>msg</code>.</p>
 
 <pre><code>add(a, b)
   unless a is a 'unit' and b is a 'unit'
@@ -476,23 +477,23 @@ length()
   a + b
 </code></pre>
 
-<h3>last(expr)</h3>
+<h3 id="lastexpr">last(expr)</h3>
 
-<p> Return the <em>last</em> value in the given <code>expr</code>:</p>
+<p>Return the <em>last</em> value in the given <code>expr</code>:</p>
 
 <pre><code>  nums = 1 2 3
   last(nums)
   last(1 2 3)
   // =&gt; 3
-
+  
   list = (one 1) (two 2) (three 3)
   last(list)
   // =&gt; (three 3)
 </code></pre>
 
-<h3>p(expr)</h3>
+<h3 id="pexpr">p(expr)</h3>
 
-<p> Inspect the given <code>expr</code>:</p>
+<p>Inspect the given <code>expr</code>:</p>
 
 <pre><code> fonts = Arial, sans-serif
  p('test')
@@ -501,7 +502,7 @@ length()
  p(fonts)
  p(#fff)
  p(rgba(0,0,0,0.2))
-
+ 
  add(a, b)
    a + b
 
@@ -519,9 +520,9 @@ length()
  inspect: add(a, b)
 </code></pre>
 
-<h3>opposite-position(positions)</h3>
+<h3 id="opposite-positionpositions">opposite-position(positions)</h3>
 
-<p> Return the opposites of the given <code>positions</code>.</p>
+<p>Return the opposites of the given <code>positions</code>.</p>
 
 <pre><code> opposite-position(right)
  // =&gt; left
@@ -533,9 +534,9 @@ length()
  // =&gt; bottom right
 </code></pre>
 
-<h3>image-size(path)</h3>
+<h3 id="image-sizepath">image-size(path)</h3>
 
-<p>  Returns the <code>width</code> and <code>height</code> of the image found at <code>path</code>. Lookups are performed in the same manner as <code>@import</code>, altered by the <code>paths</code> setting.</p>
+<p>Returns the <code>width</code> and <code>height</code> of the image found at <code>path</code>. Lookups are performed in the same manner as <code>@import</code>, altered by the <code>paths</code> setting.</p>
 
 <pre><code>  width(img)
     return image-size(img)[0]
@@ -550,11 +551,11 @@ length()
   // =&gt; true
 </code></pre>
 
-<h3>add-property(name, expr)</h3>
+<h3 id="add-propertyname-expr">add-property(name, expr)</h3>
 
-<p>  Adds property <code>name</code>, with the given <code>expr</code> to the closest block.</p>
+<p>Adds property <code>name</code>, with the given <code>expr</code> to the closest block.</p>
 
-<p>  For example:</p>
+<p>For example:</p>
 
 <pre><code>  something()
     add-property('bar', 1 2 3)
@@ -572,9 +573,9 @@ length()
   }
 </code></pre>
 
-<p>  Next the &ldquo;magic&rdquo; <code>current-property</code> local variable comes into play. This variable is automatically available to function bodies, and contains an expression with the current property&rsquo;s name, and value.</p>
+<p>Next the &#8220;magic&#8221; <code>current-property</code> local variable comes into play. This variable is automatically available to function bodies, and contains an expression with the current property&#8217;s name, and value.</p>
 
-<p>  For example if we were to inspect this local variable using <code>p()</code>, we
+<p>For example if we were to inspect this local variable using <code>p()</code>, we
   get the following:</p>
 
 <pre><code>    p(current-property)
@@ -587,7 +588,7 @@ length()
     // =&gt; foo __CALL__ bar baz
 </code></pre>
 
-<p>  Using <code>current-property</code> we can take our example a bit further, and duplicate the property with new values, and a conditional to ensure the function is only used within a property value.</p>
+<p>Using <code>current-property</code> we can take our example a bit further, and duplicate the property with new values, and a conditional to ensure the function is only used within a property value.</p>
 
 <pre><code>    something(n)
       if current-property
@@ -611,9 +612,9 @@ length()
     }
 </code></pre>
 
-<p>  If you noticed in the example above, <code>bar</code> is only present for the initial call, since we returned <code>something(15px)</code>, it remained in-place within the expression, however the others do not take the rest of the expression into account.</p>
+<p>If you noticed in the example above, <code>bar</code> is only present for the initial call, since we returned <code>something(15px)</code>, it remained in-place within the expression, however the others do not take the rest of the expression into account.</p>
 
-<p>  Our more robust solution below, defines a function named <code>replace()</code> which clones the expression to prevent mutation, replaces the string value of an expression with another, and returns the cloned expression. We then move on to replace <code>__CALL__</code> within the expressions, which represents the cyclic call to <code>something()</code>.</p>
+<p>Our more robust solution below, defines a function named <code>replace()</code> which clones the expression to prevent mutation, replaces the string value of an expression with another, and returns the cloned expression. We then move on to replace <code>__CALL__</code> within the expressions, which represents the cyclic call to <code>something()</code>.</p>
 
 <pre><code>    replace(expr, str, val)
       expr = clone(expr)
@@ -645,13 +646,13 @@ length()
 
 <p>Our implementation is now fully transparent both in regards to the property it is called within, and the position of the call. This powerful concept aids in transparent vendor support for function calls, such as gradients.</p>
 
-<h3>Undefined Functions</h3>
+<h3 id="undefined-functions">Undefined Functions</h3>
 
-<p>  Undefined functions will output as literals, so for example
+<p>Undefined functions will output as literals, so for example
   we may call <code>rgba-stop(50%, #fff)</code> within our css, and it will
   output as you would expect. We can use this within helpers as well.</p>
 
-<p>  In the example below we simply define the function <code>stop()</code> which
+<p>In the example below we simply define the function <code>stop()</code> which 
   returns the literal <code>rgba-stop()</code> call.</p>
 
 <pre><code>stop(pos, rgba)
