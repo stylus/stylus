@@ -11,7 +11,7 @@ site: index.html try.html main.css try.css $(HTML)
 	stylus < $< > $@
 
 %.html: %.md
-	@markdown $< \
+	@kramdown $< \
 		| cat assets/head.html - assets/foot.html \
 		> $@
 

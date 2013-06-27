@@ -1,43 +1,44 @@
 <!DOCTYPE html><html><head><title>Stylus</title><link rel="stylesheet" href="../main.css"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head><body><div id="container"><h1><a href='http://learnboost.github.com/stylus'>Stylus</a></h1><p class="tagline"><em class="expressive">Expressive, </em><em class="dynamic">dynamic, </em><em class="robust">robust </em><em class="css">CSS</em></p><div id="ribbon"><a href="http://github.com/learnboost/stylus">Fork me on GitHub</a></div><ul id="menu"><li><a href="../docs/selectors.html">Selectors</a></li><li><a href="../docs/variables.html">Variables</a></li><li><a href="../docs/interpolation.html">Interpolation</a></li><li><a href="../docs/operators.html">Operators</a></li><li><a href="../docs/mixins.html">Mixins</a></li><li><a href="../docs/functions.html">Functions</a></li><li><a href="../docs/kwargs.html">Keyword Arguments</a></li><li><a href="../docs/bifs.html">Built-in Functions</a></li><li><a href="../docs/vargs.html">Rest Params</a></li><li><a href="../docs/comments.html">Comments</a></li><li><a href="../docs/conditionals.html">Conditionals</a></li><li><a href="../docs/iteration.html">Iteration</a></li><li><a href="../docs/import.html">@import</a></li><li><a href="../docs/media.html">@media</a></li><li><a href="../docs/font-face.html">@font-face</a></li><li><a href="../docs/keyframes.html">@keyframes</a><li><a href="../docs/extend.html">@extend</a></li><li><a href="../docs/functions.url.html">url()</a></li><li><a href="../docs/literal.html">CSS Literal</a></li><li><a href="../docs/css-style.html">CSS Style Syntax</a></li><li><a href="../docs/escape.html">Char Escaping</a></li><li><a href="../docs/executable.html">Executable</a></li><li><a href="../docs/error-reporting.html">Error Reporting</a></li><li><a href="../docs/middleware.html">Connect Middleware</a></li><li><a href="../docs/introspection.html">Introspection API</a></li><li><a href="../docs/js.html">JavaScript API</a></li>
   <li><a href="http://github.com/visionmedia/nib">CSS3 Extensions with Nib</a></li>
   <li><a href="../try.html">Try Stylus Online!</a></li>
-  </ul><div id="content"><h2>Functions</h2>
+  </ul><div id="content">
+<h2 id="functions">Functions</h2>
 
-<p> Stylus features powerful in-language function definitions. Function definitions appear identical to mixins; however, functions may return a value.</p>
+<p>Stylus features powerful in-language function definitions. Function definitions appear identical to mixins; however, functions may return a value.</p>
 
-<h3>Return Values</h3>
+<h3 id="return-values">Return Values</h3>
 
-<p> Let&rsquo;s try a trivial example: creating a function that adds two numbers.</p>
+<p>Let&#8217;s try a trivial example: creating a function that adds two numbers.</p>
 
 <pre><code>add(a, b)
   a + b
 </code></pre>
 
-<p> We can then use this function in conditions, in property values, etc.</p>
+<p>We can then use this function in conditions, in property values, etc.</p>
 
 <pre><code> body 
    padding add(10px, 5)
 </code></pre>
 
-<p> Rendering:</p>
+<p>Rendering:</p>
 
 <pre><code> body {
    padding: 15px;
  }
 </code></pre>
 
-<h3>Argument Defaults</h3>
+<h3 id="argument-defaults">Argument Defaults</h3>
 
-<p> Optional arguments may default to a given expression. With Stylus we may even default arguments to earlier arguments!</p>
+<p>Optional arguments may default to a given expression. With Stylus we may even default arguments to earlier arguments! </p>
 
-<p> For example:</p>
+<p>For example:</p>
 
 <pre><code> add(a, b = a)
    a + b
 
  add(10, 5)
  // =&gt; 15
-
+ 
  add(10)
  // =&gt; 20
 </code></pre>
@@ -48,9 +49,9 @@
    a + b
 </code></pre>
 
-<h3>Function Bodies</h3>
+<h3 id="function-bodies">Function Bodies</h3>
 
-<p> We can take our simple <code>add()</code> function further. Let&rsquo;s casting all units passed as <code>px</code> via the <code>unit()</code> built-in. It reassigns each argument, and provides a unit-type string (or identifier), which ignores unit conversion.</p>
+<p>We can take our simple <code>add()</code> function further. Let&#8217;s casting all units passed as <code>px</code> via the <code>unit()</code> built-in. It reassigns each argument, and provides a unit-type string (or identifier), which ignores unit conversion.</p>
 
 <pre><code> add(a, b = a)
    a = unit(a, px)
@@ -61,14 +62,14 @@
  // =&gt; 25
 </code></pre>
 
-<h3>Multiple Return Values</h3>
+<h3 id="multiple-return-values">Multiple Return Values</h3>
 
-<p> Stylus functions can return several values—just as you can assign several values to a variable.</p>
+<p>Stylus functions can return several values—just as you can assign several values to a variable. </p>
 
-<p> For example, the following is a valid assignment:</p>
+<p>For example, the following is a valid assignment:</p>
 
 <pre><code>   sizes = 15px 10px
-
+ 
    sizes[0]
    // =&gt; 15px 
 </code></pre>
@@ -97,9 +98,9 @@
     return b a
 </code></pre>
 
-<h3>Conditionals</h3>
+<h3 id="conditionals">Conditionals</h3>
 
-<p> Let&rsquo;s say we want to create a function named <code>stringish()</code> to determine whether the argument can be transformed to a string. We check if <code>val</code> is a string, or an ident (which is string-like). Because undefined identifiers yield themselves as the value, we may compare them to themselves as shown below (where <code>yes</code> and <code>no</code> are used in place of <code>true</code> and <code>false</code>):</p>
+<p>Let&#8217;s say we want to create a function named <code>stringish()</code> to determine whether the argument can be transformed to a string. We check if <code>val</code> is a string, or an ident (which is string-like). Because undefined identifiers yield themselves as the value, we may compare them to themselves as shown below (where <code>yes</code> and <code>no</code> are used in place of <code>true</code> and <code>false</code>):</p>
 
 <pre><code> stringish(val)
    if val is a 'string' or val is a 'ident'
@@ -112,10 +113,10 @@
 
 <pre><code> stringish('yay') == yes
  // =&gt; true
-
+   
  stringish(yay) == yes
  // =&gt; true
-
+   
  stringish(0) == no
  // =&gt; true
 </code></pre>
@@ -145,19 +146,19 @@ compare(10, 10)
 // =&gt; equal
 </code></pre>
 
-<h3>Aliasing</h3>
+<h3 id="aliasing">Aliasing</h3>
 
-<p>  To alias a function, simply assign a function&rsquo;s name to a new identifier. For example, our <code>add()</code> function could be aliased as <code>plus()</code>, like so:</p>
+<p>To alias a function, simply assign a function&#8217;s name to a new identifier. For example, our <code>add()</code> function could be aliased as <code>plus()</code>, like so:</p>
 
 <pre><code>  plus = add
-
+  
   plus(1, 2)
   // =&gt; 3
 </code></pre>
 
-<h3>Variable Functions</h3>
+<h3 id="variable-functions">Variable Functions</h3>
 
-<p>  In the same way that we can &ldquo;alias&rdquo; a function, we can pass a function as well. Here, our <code>invoke()</code> function accepts a function, so we can pass it <code>add()</code> or <code>sub()</code>.</p>
+<p>In the same way that we can &#8220;alias&#8221; a function, we can pass a function as well. Here, our <code>invoke()</code> function accepts a function, so we can pass it <code>add()</code> or <code>sub()</code>.</p>
 
 <pre><code>invoke(a, b, fn)
   fn(a, b)
@@ -178,11 +179,11 @@ body
 }
 </code></pre>
 
-<h3>arguments</h3>
+<h3 id="arguments">arguments</h3>
 
-<p> The <code>arguments</code> local is available to all function bodies, and contains all the arguments passed.</p>
+<p>The <code>arguments</code> local is available to all function bodies, and contains all the arguments passed. </p>
 
-<p> For example:</p>
+<p>For example:</p>
 
 <pre><code> sum()
    n = 0
@@ -193,10 +194,10 @@ body
  // =&gt; 15
 </code></pre>
 
-<h3>Hash Example</h3>
+<h3 id="hash-example">Hash Example</h3>
 
-<p> Below we define the <code>get(hash, key)</code> function, which returns the
- value of <code>key</code> (or <code>null</code>). We iterate each <code>pair</code> in <code>hash</code>, returning the pair&rsquo;s second node when the first (the <code>key</code>) matches.</p>
+<p>Below we define the <code>get(hash, key)</code> function, which returns the
+ value of <code>key</code> (or <code>null</code>). We iterate each <code>pair</code> in <code>hash</code>, returning the pair&#8217;s second node when the first (the <code>key</code>) matches. </p>
 
 <pre><code>  get(hash, key)
     return pair[1] if pair[0] == key for pair in hash
@@ -205,7 +206,7 @@ body
 <p>As demonstrated below, in-language functions—paired with robust Stylus expressions—can provide great flexibility:</p>
 
 <pre><code>  hash = (one 1) (two 2) (three 3)
-
+  
   get(hash, two)
   // =&gt; 2
 
