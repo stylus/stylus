@@ -30,6 +30,8 @@ describe('integration', function(){
 
       if (~test.indexOf('compress')) style.set('compress', true);
       if (~test.indexOf('include')) style.set('include css', true);
+      // If duplicates is not found, disable removing of duplicate properties
+      if (!~test.indexOf('duplicates')) style.set('remove duplicates', false);
 
       style.render(function(err, actual){
         if (err) throw err;
