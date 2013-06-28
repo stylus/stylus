@@ -10,3 +10,9 @@ body {
 body {
   foo: 0 0;
 }
+body.tux {
+  background: url("tux.png");
+}
+body.foo {
+  background: #0f0;
+}

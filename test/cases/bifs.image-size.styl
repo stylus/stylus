@@ -16,3 +16,16 @@ body
 
 body
   foo image-size('foo.png', true)
+
+// Checking for the file, so we could do a fallback
+body.tux
+  if image-size('tux.png', true)
+    background: url('tux.png')
+  else
+    background: lime
+
+body.foo
+  if image-size('foo.png', true)
+    background: url('foo.png')
+  else
+    background: lime
