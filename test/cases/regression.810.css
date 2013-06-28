@@ -4,3 +4,21 @@ a {
 a.class {
   atr: def;
 }
+a[href='//'] {
+  atr: def;
+}
+a[href^='//'] {
+  atr: def;
+}
+a[href$='//'] {
+  atr: def;
+}
+a[href|='//'] {
+  atr: def;
+}
+a[href~='//'] {
+  atr: def;
+}
+a[href~='//'] {
+  atr: def;
+}
