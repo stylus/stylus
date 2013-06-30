@@ -121,3 +121,34 @@
           padding: 10px;
         }
       
+### Extending placeholder selectors
+
+Stylus have the feature similar to the one in [Sass](http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#placeholders) — placeholder selectors.
+
+Those selectors should start `$` symbol (for example, `$foo`), and are not yielded in the resulting CSS. But you still can extend them:
+
+    $foo
+      color: #FFF
+
+    $foo2
+      color: red
+
+    .bar
+      background: #000
+      @extends $foo
+
+    .baz
+      @extends $foo
+
+
+Yielding:
+
+    .bar,
+    .baz {
+      color: #fff;
+    }
+    .bar {
+      background: #000;
+    }
+
+Note that if the selector is not extended, it won't be in the resulting CSS, so it's a powerful way to create a library of extendable code. While you can insert code through mixins, they would insert the same code every time you use them, while extending placeholders would give you compact output.
