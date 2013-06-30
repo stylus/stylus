@@ -1,4 +1,11 @@
+0.33.0 / 2013-06-30 
+==================
 
+  * Added extendable placeholder selectors, #1014.
+  * Added optional argument to `image-size` function, #812.
+  * Fixed inline comments after selectors, #862.
+  * Fixed a bug with empty block in CSS syntax, #712.
+ 
 0.32.1 / 2013-02-27 
 ==================
 
