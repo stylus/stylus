@@ -91,7 +91,7 @@ var plugins = [];
 var urlFunction = false;
 
 /**
- * Include css on import.
+ * Include CSS on import.
  */
 
 var includeCSS = false;
@@ -121,21 +121,21 @@ var usage = [
   , '  Options:'
   , ''
   , '    -i, --interactive       Start interactive REPL'
-  , '    -u, --use <path>        Utilize the stylus plugin at <path>'
-  , '    -U, --inline            Utilize image inlining via data uri support'
+  , '    -u, --use <path>        Utilize the Stylus plugin at <path>'
+  , '    -U, --inline            Utilize image inlining via data URI support'
   , '    -w, --watch             Watch file(s) for changes and re-compile'
   , '    -o, --out <dir>         Output to <dir> when passing files'
-  , '    -C, --css <src> [dest]  Convert css input to stylus'
+  , '    -C, --css <src> [dest]  Convert CSS input to Stylus'
   , '    -I, --include <path>    Add <path> to lookup paths'
-  , '    -c, --compress          Compress css output'
+  , '    -c, --compress          Compress CSS output'
   , '    -d, --compare           Display input along with output'
-  , '    -f, --firebug           Emits debug infos in the generated css that'
+  , '    -f, --firebug           Emits debug infos in the generated CSS that'
   , '                            can be used by the FireStylus Firebug plugin'
-  , '    -l, --line-numbers      Emits comments in the generated css'
-  , '                            indicating the corresponding stylus line'
+  , '    -l, --line-numbers      Emits comments in the generated CSS'
+  , '                            indicating the corresponding Stylus line'
   , '    --import <file>         Import stylus <file>'
-  , '    --include-css           Include regular css on @import'
-  , '    -V, --version           Display the version of stylus'
+  , '    --include-css           Include regular CSS on @import'
+  , '    -V, --version           Display the version of Stylus'
   , '    -h, --help              Display help information'
   , ''
 ].join('\n');
@@ -320,7 +320,7 @@ var options = {
 
 var str = '';
 
-// Convert css to stylus
+// Convert CSS to Stylus
 
 if (convertCSS) {
     switch (files.length) {
@@ -350,7 +350,7 @@ if (convertCSS) {
 }
 
 /**
- * Start stylus REPL.
+ * Start Stylus REPL.
  */
 
 function repl() {
@@ -424,7 +424,7 @@ function repl() {
 }
 
 /**
- * Highlight the given string of stylus.
+ * Highlight the given string of Stylus.
  */
 
 function highlight(str) {
@@ -535,7 +535,7 @@ function compileFile(file) {
 }
 
 /**
- * Write the given css output.
+ * Write the given CSS output.
  */
 
 function writeFile(file, css) {
