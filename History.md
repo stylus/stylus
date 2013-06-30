@@ -1,3 +1,8 @@
+0.33.1 / 2013-06-30 
+==================
+
+  * Fixed the `exports.version` to always show an actual one.
+
 0.33.0 / 2013-06-30 
 ==================
 
