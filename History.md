@@ -4,6 +4,7 @@
   * Added optional resolver of relative urls, #1070
   * Fixes incorrect imports lookup inside function call, #1069.
   * Fixes a lot of issues with trailing symbols in comments, #865
+  * Fixes brace on a newline CSS code style.
  
 0.33.1 / 2013-06-30 
 ==================

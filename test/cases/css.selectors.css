@@ -36,3 +36,9 @@ input[type=submit],
 a.button {
   border-radius: 5px;
 }
+.foo {
+  width: 10px;
+}
+.foo .bar {
+  width: 10px;
+}
