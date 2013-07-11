@@ -1,6 +1,7 @@
 0.34.0 / in development
 ==================
 
+  * Added optional resolver of relative urls, #1070
   * Fixes incorrect imports lookup inside function call, #1069.
  
 0.33.1 / 2013-06-30 
