@@ -16,3 +16,6 @@ x:-moz-any-link,
 x:default select {
   font-weight: bold !important;
 }
+.abc {
+  background: url("img.png") 8px 8px no-repeat, rgba(0,0,0,0.41);
+}
