@@ -1,9 +1,10 @@
 0.34.0 / in development
 ==================
 
-  * Added optional resolver of relative urls, #1070
+  * Added built-in `use()` function to extends Stylus from inside `.styl` files, #788.
+  * Added optional resolver of relative urls, #1070.
   * Fixes incorrect imports lookup inside function call, #1069.
-  * Fixes a lot of issues with trailing symbols in comments, #865
+  * Fixes a lot of issues with trailing symbols in comments, #865.
   * Fixes brace on a newline CSS code style.
  
 0.33.1 / 2013-06-30 
