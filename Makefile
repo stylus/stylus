@@ -29,15 +29,12 @@ test-cov: lib-cov
 lib-cov: lib
 	jscoverage $< $@
 
-echo-bundle-path:
-	echo "" && echo $(TM_BUNDLE_DEST) && echo ""
-
 install-bundle:
-	mkdir -p $(TM_BUNDLE_DEST)
-	cp -fr $(TM_BUNDLE) $(TM_BUNDLE_DEST)
+	mkdir -p "$(TM_BUNDLE_DEST)"
+	cp -fr "$(TM_BUNDLE)" "$(TM_BUNDLE_DEST)"
 
 update-bundle:
-	cp -fr $(TM_BUNDLE_DEST)/Stylus.tmbundle editors
+	cp -fr "$(TM_BUNDLE_DEST)"/Stylus.tmbundle editors
 
 benchmark:
 	@node bm.js
