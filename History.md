@@ -1,7 +1,7 @@
 0.34.0 / in development
 ==================
 
-  * Added built-in `use()` function to extends Stylus from inside `.styl` files, #788.
+  * Added built-in `use()` function to extend Stylus from inside  of `.styl` files, #788.
   * Added optional resolver of relative urls, #1070.
   * Fixes incorrect imports lookup inside function call, #1069.
   * Fixes a lot of issues with trailing symbols in comments, #865.
