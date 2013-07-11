@@ -6,7 +6,7 @@
   * Fixes incorrect imports lookup inside function call, #1069.
   * Fixes a lot of issues with trailing symbols in comments, #865.
   * Fixes brace on a newline CSS code style.
-  * Fixes Makefile's tmbundle install/update path, #1033.
+  * Some minor fixes to tmbundle: #975, #1033, #1034.
  
 0.33.1 / 2013-06-30 
 ==================

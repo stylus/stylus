@@ -16,6 +16,12 @@ function highlight {
   fi
 }
 
+function pre {
+  echo -n '<pre style="word-wrap: break-word;">'
+  perl -pe '$| = 1; s/&/&amp;/g; s/</&lt;/g; s/>/&gt;/g; s/$\\n/<br>/'
+  echo '</pre>'
+}
+
 cd $TM_DIRECTORY
 ${TM_STYLUS:=stylus} | highlight</string>
 	<key>input</key>
