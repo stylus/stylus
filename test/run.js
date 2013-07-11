@@ -31,6 +31,11 @@ describe('integration', function(){
       if (~test.indexOf('compress')) style.set('compress', true);
       if (~test.indexOf('include')) style.set('include css', true);
 
+      if (~test.indexOf('resolver')) {
+          style.set('resolve url', true);
+          style.define('url', stylus.resolver());
+      }
+
       style.render(function(err, actual){
         if (err) throw err;
         actual.trim().should.equal(css);
