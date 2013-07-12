@@ -11,23 +11,29 @@
 
   Commands:
 
-    help &lt;prop&gt;     Opens help info for &lt;prop&gt; in
-                    your default browser. (OS X only)
+    help [&lt;type&gt;:]&lt;prop&gt; Opens help info at MDC for &lt;prop&gt; in
+                         your default browser. Optionally
+                         searches other resources of &lt;type&gt;:
+                         safari opera w3c ms caniuse quirksmode
 
   Options:
 
-    -u, --use &lt;path&gt;        Utilize the stylus plugin at &lt;path&gt;
     -i, --interactive       Start interactive REPL
+    -u, --use &lt;path&gt;        Utilize the Stylus plugin at &lt;path&gt;
+    -U, --inline            Utilize image inlining via data URI support
     -w, --watch             Watch file(s) for changes and re-compile
     -o, --out &lt;dir&gt;         Output to &lt;dir&gt; when passing files
     -C, --css &lt;src&gt; [dest]  Convert CSS input to Stylus
     -I, --include &lt;path&gt;    Add &lt;path&gt; to lookup paths
     -c, --compress          Compress CSS output
     -d, --compare           Display input along with output
-    -f, --firebug           Emits debug infos in the generated css that
+    -f, --firebug           Emits debug infos in the generated CSS that
                             can be used by the FireStylus Firebug plugin
     -l, --line-numbers      Emits comments in the generated CSS
                             indicating the corresponding Stylus line
+    --import &lt;file&gt;         Import stylus &lt;file&gt;
+    --include-css           Include regular CSS on @import
+    -r, --resolve-url       Resolve relative urls inside imports
     -V, --version           Display the version of Stylus
     -h, --help              Display help information
 </code></pre>
@@ -64,7 +70,7 @@
 <pre><code>  $ stylus one.styl two.styl
 </code></pre>
 
-<p>For development purposes, you can use the <code>linenos</code> option to emit comments indicating 
+<p>For development purposes, you can use the <code>linenos</code> option to emit comments indicating
   the Stylus filename and line number in the generated CSS:</p>
 
 <pre><code>  $ stylus --line-numbers &lt;path&gt;
@@ -105,7 +111,7 @@
 <h3 id="interactive-shell">Interactive Shell</h3>
 
 <p>The Stylus REPL (Read-Eval-Print-Loop) or &#8220;interactive shell&#8221; allows you to
- play around with Stylus expressions directly from your terminal. </p>
+ play around with Stylus expressions directly from your terminal.</p>
 
 <p><strong>Note that this works only for expressions</strong>—not selectors, etc. To use simple add the <code>-i</code>, or <code>--interactive</code> flag:</p>
 
@@ -124,16 +130,22 @@
  =&gt; rgba(55,205,255,0.5)
 </code></pre>
 
+<h3 id="resolving-relative-urls-inside-imports">Resolving relative urls inside imports</h3>
+
+<p>By default Stylus don&#8217;t resolve the urls in imported <code>.styl</code> files, so if you&#8217;d happen to have a <code>foo.styl</code> with <code>@import "bar/bar.styl"</code> which would have <code>url("baz.png")</code>, it would be <code>url("baz.png")</code> too in a resulting CSS.</p>
+
+<p>But you can alter this behavior by using <code>--resolve-url</code> (or just <code>-r</code>) option to get <code>url("bar/baz.png")</code> in your resulting CSS.</p>
+
 <h3 id="utilizing-plugins">Utilizing Plugins</h3>
 
-<p>For this example we&#8217;l use the <a href="https://github.com/visionmedia/nib">nib</a> Stylus plugin to illustrate its CLI usage. </p>
+<p>For this example we&#8217;l use the <a href="https://github.com/visionmedia/nib">nib</a> Stylus plugin to illustrate its CLI usage.</p>
 
 <p>Suppose we have the following Stylus, which imports nib to use its <code>linear-gradient()</code> function.</p>
 
 <pre><code> @import 'nib'
 
  body
-   background: linear-gradient(20px top, white, black) 
+   background: linear-gradient(20px top, white, black)
 </code></pre>
 
 <p>Our first attempt to render using <code>stylus(1)</code> via stdio might look like this:</p>
@@ -144,10 +156,10 @@
 <p>Which would yield the following error (because Stylus doesn&#8217;t know where to find nib).</p>
 
 <pre><code>   Error: stdin:3
-      1| 
-      2| 
+      1|
+      2|
     &gt; 3| @import 'nib'
-      4| 
+      4|
       5| body
       6|   background: linear-gradient(20px top, white, black)
 </code></pre>

@@ -589,6 +589,38 @@ yields:
 
 Our implementation is now fully transparent both in regards to the property it is called within, and the position of the call. This powerful concept aids in transparent vendor support for function calls, such as gradients.
 
+### use(path)
+
+You can use any given js-plugin at given `path` with `use()` function right inside your '.styl' files, like this:
+
+    use("plugins/add.js")
+
+    width add(10, 100)
+    // => width: 110
+
+And the `add.js` plugin in this case looks this way:
+
+    var plugin = function(){
+      return function(style){
+        style.define('add', function(a, b) {
+          return a.operate('+', b);
+        });
+      };
+    };
+    module.exports = plugin;
+
+If you'd like to return any Stylus objects like `RGBA`, `Ident` or `Unit`, you could use the provided Stylus nodes like this:
+
+    var plugin = function(){
+      return function(style){
+        var nodes = this.nodes;
+        style.define('something', function() {
+          return new nodes.Ident('foobar');
+        });
+      };
+    };
+    module.exports = plugin;
+
 ### Undefined Functions
 
   Undefined functions will output as literals, so for example
