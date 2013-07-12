@@ -1,4 +1,4 @@
-0.34.0 / in development
+0.34.0 / 2013-07-12
 ==================
 
   * Added built-in `use()` function to extend Stylus from inside  of `.styl` files, #788.
