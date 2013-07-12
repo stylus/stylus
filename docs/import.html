@@ -23,15 +23,15 @@
 
 <p><strong>@import</strong> works by iterating an array of directories, and checking if this file lives in any of them (similar to node&#8217;s <code>require.paths</code>). This array defaults to a single path, which is derived from the <code>filename</code> option&#8217;s <code>dirname</code>. So, if your filename is <code>/tmp/testing/stylus/main.styl</code>, then import will look in <code>/tmp/testing/stylus/</code>.</p>
 
-<p><strong>@import</strong> also supports index styles. This means when you <code>@import blueprint</code>, it will resolve <strong>either</strong> <code>blueprint.styl</code> <strong>or</strong> <code>blueprint/index.styl</code>.  This is really useful for libraries that want to expose all their features, while still allowing feature subsets to be imported. </p>
+<p><strong>@import</strong> also supports index styles. This means when you <code>@import blueprint</code>, it will resolve <strong>either</strong> <code>blueprint.styl</code> <strong>or</strong> <code>blueprint/index.styl</code>.  This is really useful for libraries that want to expose all their features, while still allowing feature subsets to be imported.</p>
 
 <p>For example, a common lib structure might be:</p>
 
 <pre><code>./tablet
-  |-- index.styl 
-  |-- vendor.styl 
-  |-- buttons.styl 
-  |-- images.styl 
+  |-- index.styl
+  |-- vendor.styl
+  |-- buttons.styl
+  |-- images.styl
 </code></pre>
 
 <p>In the example below, we set the <code>paths</code> options to provide additional paths to Stylus. Within <code>./test.styl</code>, we could then <code>@import "mixins/border-radius"</code>, or <code>@import "border-radius"</code> (since <code>./mixins</code> is exposed to Stylus).</p>
@@ -57,6 +57,12 @@
     });
 </code></pre>
 
+<h3 id="resolving-relative-urls-inside-imports">Resolving relative urls inside imports</h3>
+
+<p>By default Stylus don&#8217;t resolve the urls in imported <code>.styl</code> files, so if you&#8217;d happen to have a <code>foo.styl</code> with <code>@import "bar/bar.styl"</code> which would have <code>url("baz.png")</code>, it would be <code>url("baz.png")</code> too in a resulting CSS.</p>
+
+<p>But you can alter this behavior by using <code>--resolve-url</code> (or just <code>-r</code>) CLI option to get <code>url("bar/baz.png")</code> in your resulting CSS.</p>
+
 <h3 id="javascript-import-api">JavaScript Import API</h3>
 
 <p>When using the <code>.import(path)</code> method, these imports are deferred until evaluation:</p>
@@ -80,7 +86,7 @@
 
 <p>&#8230;is equivalent to&#8230;</p>
 
-<pre><code> .import('mixins/vendor') 
+<pre><code> .import('mixins/vendor')
 </code></pre>
 
 </div></div></body></html>
