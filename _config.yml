@@ -1,0 +1,27 @@
+markdown: kramdown
+permalink: /:categories/:title
+
+production_url: https://kizu.github.io/textyll/ # Could it be gussed and defaulted?
+relative_permalinks: false
+
+github_repo: "kizu/textyll" # Could it be gussed and defaulted?
+
+link_handles:
+    - prefix: "@"
+      handle: "https://twitter.com/"
+    - prefix: "gh:"
+      handle: "https://github.com/"
+
+langs:
+    - ru
+    - en
+
+default_lang: en
+
+loc:
+    laquo:
+        ru: "«"
+        en: "“"
+    raquo:
+        ru: "»"
+        en: "”"

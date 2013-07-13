@@ -1,0 +1,19 @@
+{
+	"folders":
+	[
+		{
+			"path": ".",
+            "folder_exclude_patterns": ["node_modules", "_site"],
+            "file_exclude_patterns": ["*.sublime-workspace", "style.css", "style.ie.css"]
+		}
+	],
+    "settings":
+    {
+        "hayaku_CSS_syntax_autoguess":
+        [
+            "    selector {            ",
+            "      property: value;    ",
+            "    }                     "
+        ]
+    }
+}

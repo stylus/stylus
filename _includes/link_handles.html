@@ -1,0 +1,81 @@
+{% capture trim_whitespaces %}
+    {% assign link_handles_result = link_handles_input %}
+    {% for link_handle in site.link_handles %}
+        {% capture link_handle_what %}href="{{ link_handle.prefix }}{% endcapture %}
+        {% capture link_handle_with %}href="{{ link_handle.handle }}{% endcapture %}
+        {% capture link_handles_result %}{{ link_handles_result | replace:link_handle_what,link_handle_with }}{% endcapture %}
+    {% endfor %}
+
+    <!-- Replace all quoted links like “[something](href)” -->
+    {% if link_handles_result contains '«<a href="' %}
+        {% assign quoted_link_index = 0 %}
+        {% assign quoted_links = link_handles_result | split:'«<a href="' %}
+        {% for quoted_link in quoted_links %}
+            {% if quoted_link_index > 0 %}
+                {% assign quoted_link_inside = quoted_link | split:'">' | first %}
+                {% capture quoted_link_replace_from %}«<a href="{{ quoted_link_inside }}">{% endcapture %}
+                {% capture quoted_link_replace_to %}<a class="link link_wrapper" href="{{ quoted_link_inside }}">«<span class="link__inner">{% endcapture %}
+
+                {% assign link_handles_result = link_handles_result | replace_first:quoted_link_replace_from,quoted_link_replace_to %}
+            {% endif %}
+            {% assign quoted_link_index = quoted_link_index | plus:1 %}
+        {% endfor %}
+        {% assign link_handles_result = link_handles_result | replace:'</a>»','</span>»</a>' %}
+    {% endif %}
+
+    {% if link_handles_result contains '“<a href="' %}
+        {% assign quoted_link_index = 0 %}
+        {% assign quoted_links = link_handles_result | split:'“<a href="' %}
+        {% for quoted_link in quoted_links %}
+            {% if quoted_link_index > 0 %}
+                {% assign quoted_link_inside = quoted_link | split:'">' | first %}
+                {% capture quoted_link_replace_from %}“<a href="{{ quoted_link_inside }}">{% endcapture %}
+                {% capture quoted_link_replace_to %}<a class="link link_wrapper" href="{{ quoted_link_inside }}">“<span class="link__inner">{% endcapture %}
+
+                {% assign link_handles_result = link_handles_result | replace_first:quoted_link_replace_from,quoted_link_replace_to %}
+            {% endif %}
+            {% assign quoted_link_index = quoted_link_index | plus:1 %}
+        {% endfor %}
+        {% assign link_handles_result = link_handles_result | replace:'</a>”','</span>”</a>' %}
+    {% endif %}
+
+    {% capture link_handles_result %}{{ link_handles_result | replace:'">«','"><span class="hanger">«</span>' }}{% endcapture %}
+    {% capture link_handles_result %}{{ link_handles_result | replace:'">“','"><span class="hanger">“</span>' }}{% endcapture %}
+
+    <!-- Заменяем указатели на посты на ссылки на соответствующие посты -->
+    {% for post in site.posts %}
+        {% assign with = "" %}
+        {% if lang != site.default_lang %}
+            {% if post.categories contains lang %}
+                {% assign with = post.id %}
+            {% endif %}
+        {% else %}
+            {% assign is_ok = true %}
+            {% for l in site.langs %}
+                {% if post.categories contains l %}
+                    {% assign is_ok = false %}
+                {% endif %}
+            {% endfor %}
+            {% if is_ok == true %}
+                {% assign with = post.id %}
+            {% endif %}
+        {% endif %}
+        {% if with != "" %}
+            <!-- Need to add debug mode, so there would be not a production url, but relative one -->
+            {% capture what1 %}href=":{{ post.id | split:"/" | last }}"{% endcapture %}
+            {% capture what2 %}href=":{{ post.id | split:"/" | last }}#{% endcapture %}
+            {% capture with1 %}href="{{ site.production_url }}{{ with }}/"{% endcapture %}
+            {% capture with2 %}href="{{ site.production_url }}{{ with }}/#{% endcapture %}
+            {% assign link_handles_result = link_handles_result | replace:what1,with1 %}
+            {% assign link_handles_result = link_handles_result | replace:what2,with2 %}
+            {% assign with = "" %}
+        {% endif %}
+    {% endfor %}
+
+    <!-- Replace relative hash links with a normal url for feeds -->
+    {% if page.page_type == 'feed' %}
+        {% capture link_hash_replace %}href="{{ site.production_url }}{{ post.url | remove:'index.html' }}/#{% endcapture %}
+        {% assign link_handles_result = link_handles_result | replace:'href="#',link_hash_replace %}
+    {% endif %}
+
+{% endcapture %}

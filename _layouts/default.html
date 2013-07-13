@@ -1,0 +1,23 @@
+<!DOCTYPE html>{% include setup.md %}
+<html class="page page_{{ lang }} page_{{ page.page_type }}{% if category != "" %} page_{{ category }}{% endif %}">
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width"/>
+
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7,IE=edge"/><!--[if gt IE 7]><!-->
+    <link rel="stylesheet" href="style.css" /><!--<![endif]--><!--[if lt IE 8]>
+    <link rel="stylesheet" href="style.ie.css" /><![endif]-->
+
+	{% if page_have_translation %}{% if lang == 'en' %}
+	<link rel="alternate" hreflang="en" href="{{ site.production_url }}{{ page.url | remove:'index.html' }}" />
+	<link rel="alternate" hreflang="ru" href="{{ site.production_url }}{{ page.url | replace:'/en/','/' | remove:'index.html' }}" />{% else %}
+	<link rel="alternate" hreflang="en" href="{{ site.production_url }}/en{{ page.url | remove:'index.html' }}" />
+	<link rel="alternate" hreflang="ru" href="{{ site.production_url }}{{ page.url | remove:'index.html' }}" />{% endif %}{% endif %}
+
+    <title>Textyll</title>
+</head>
+<body class="page-body">
+    {{ content }}
+</body>
+</html>
+
