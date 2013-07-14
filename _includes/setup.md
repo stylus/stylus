@@ -8,15 +8,18 @@ Setting the easier title to processed one
 
     {% assign title = processed_title %}
 
-Getting the language from url
+Getting the language from the categories of url
 
-    {% assign lang = "ru" %}
-    {% assign lang_prefix = "" %}
+    {% assign lang = site.default_lang %}
 
-    {% if page.categories contains 'en' or page.url contains '/en/' %}
-        {% assign lang = "en" %}
-        {% assign lang_prefix = "en/" %}
-    {% endif %}
+    {% for l in site.langs %}
+        {% if l != site.default_lang %}
+            {% capture lang_search_string %}/{{ l }}/{% endcapture %}
+            {% if page.categories contains l or page.url contains lang_search_string %}
+                {% assign lang = l %}
+            {% endif %}
+        {% endif %}
+    {% endfor %}
 
 Handling links
 
