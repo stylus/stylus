@@ -17,7 +17,12 @@
     <title>Textyll</title>
 </head>
 <body class="page-body">
-    {{ content }}
+    <div>
+        {% include toc.md %}
+    </div>
+    <div>
+        {{ content }}
+    </div>
 </body>
 </html>
 

@@ -1,7 +1,7 @@
 markdown: kramdown
 permalink: /:categories/:title
 
-production_url: https://kizu.github.io/textyll/ # Could it be gussed and defaulted?
+production_url: http://kizu.ru/textyll/ # Could it be gussed and defaulted?
 relative_permalinks: false
 
 github_repo: "kizu/textyll" # Could it be gussed and defaulted?
