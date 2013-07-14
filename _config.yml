@@ -1,8 +1,10 @@
 markdown: kramdown
-permalink: /:categories/:title
 
-production_url: http://kizu.ru/textyll/ # Could it be gussed and defaulted?
+permalink: /:categories/:title
 relative_permalinks: false
+
+## Production URL without ending slash
+production_url: http://kizu.ru/textyll
 
 github_repo: "kizu/textyll" # Could it be gussed and defaulted?
 
@@ -16,6 +18,8 @@ link_handles:
 # quoted_link_wrapper_class: link link-wrapper
 # quoted_link_inner_class: link-inner
 
+
+## Localization
 langs:
     - ru
     - en
