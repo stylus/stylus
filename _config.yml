@@ -12,6 +12,10 @@ link_handles:
     - prefix: "gh:"
       handle: "https://github.com/"
 
+## Unquote to set classes to quoted links instead of inline attributes
+# quoted_link_wrapper_class: link link-wrapper
+# quoted_link_inner_class: link-inner
+
 langs:
     - ru
     - en

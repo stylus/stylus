@@ -7,12 +7,23 @@
     {% endfor %}
 
     <!-- Replace all quoted links like “[something](href)” -->
+    {% if site.quoted_link_wrapper_class and page.page_type != 'feed' %}
+        {% capture quoted_link_wrapper_attr %}class="{{ site.quoted_link_wrapper_class }}"{% endcapture %}
+    {% else %}
+        {% capture quoted_link_wrapper_attr %}style="text-decoration:none"{% endcapture %}
+    {% endif %}
+    {% if site.quoted_link_inner_class and page.page_type != 'feed' %}
+        {% capture quoted_link_inner_attr %}class="{{ site.quoted_link_inner_class }}"{% endcapture %}
+    {% else %}
+        {% capture quoted_link_inner_attr %}style="text-decoration:underline"{% endcapture %}
+    {% endif %}
+
     {% if link_handles_result contains '«<a href="' %}
         {% assign quoted_links = link_handles_result | split:'«<a href="' %}
         {% for quoted_link in quoted_links  offset:1 %}
             {% assign quoted_link_inside = quoted_link | split:'">' | first %}
             {% capture quoted_link_replace_from %}«<a href="{{ quoted_link_inside }}">{% endcapture %}
-            {% capture quoted_link_replace_to %}<a class="link link_wrapper" href="{{ quoted_link_inside }}">«<span class="link__inner">{% endcapture %}
+            {% capture quoted_link_replace_to %}<a {{ quoted_link_wrapper_attr }} href="{{ quoted_link_inside }}">«<span {{ quoted_link_inner_attr }}>{% endcapture %}
 
             {% assign link_handles_result = link_handles_result | replace_first:quoted_link_replace_from,quoted_link_replace_to %}
         {% endfor %}
@@ -24,7 +35,7 @@
         {% for quoted_link in quoted_links  offset:1 %}
             {% assign quoted_link_inside = quoted_link | split:'">' | first %}
             {% capture quoted_link_replace_from %}“<a href="{{ quoted_link_inside }}">{% endcapture %}
-            {% capture quoted_link_replace_to %}<a class="link link_wrapper" href="{{ quoted_link_inside }}">“<span class="link__inner">{% endcapture %}
+            {% capture quoted_link_replace_to %}<a {{ quoted_link_wrapper_attr }} href="{{ quoted_link_inside }}">“<span {{ quoted_link_inner_attr }}>{% endcapture %}
 
             {% assign link_handles_result = link_handles_result | replace_first:quoted_link_replace_from,quoted_link_replace_to %}
         {% endfor %}
