@@ -8,41 +8,30 @@
 
     <!-- Replace all quoted links like “[something](href)” -->
     {% if link_handles_result contains '«<a href="' %}
-        {% assign quoted_link_index = 0 %}
         {% assign quoted_links = link_handles_result | split:'«<a href="' %}
-        {% for quoted_link in quoted_links %}
-            {% if quoted_link_index > 0 %}
-                {% assign quoted_link_inside = quoted_link | split:'">' | first %}
-                {% capture quoted_link_replace_from %}«<a href="{{ quoted_link_inside }}">{% endcapture %}
-                {% capture quoted_link_replace_to %}<a class="link link_wrapper" href="{{ quoted_link_inside }}">«<span class="link__inner">{% endcapture %}
+        {% for quoted_link in quoted_links  offset:1 %}
+            {% assign quoted_link_inside = quoted_link | split:'">' | first %}
+            {% capture quoted_link_replace_from %}«<a href="{{ quoted_link_inside }}">{% endcapture %}
+            {% capture quoted_link_replace_to %}<a class="link link_wrapper" href="{{ quoted_link_inside }}">«<span class="link__inner">{% endcapture %}
 
-                {% assign link_handles_result = link_handles_result | replace_first:quoted_link_replace_from,quoted_link_replace_to %}
-            {% endif %}
-            {% assign quoted_link_index = quoted_link_index | plus:1 %}
+            {% assign link_handles_result = link_handles_result | replace_first:quoted_link_replace_from,quoted_link_replace_to %}
         {% endfor %}
         {% assign link_handles_result = link_handles_result | replace:'</a>»','</span>»</a>' %}
     {% endif %}
 
     {% if link_handles_result contains '“<a href="' %}
-        {% assign quoted_link_index = 0 %}
         {% assign quoted_links = link_handles_result | split:'“<a href="' %}
-        {% for quoted_link in quoted_links %}
-            {% if quoted_link_index > 0 %}
-                {% assign quoted_link_inside = quoted_link | split:'">' | first %}
-                {% capture quoted_link_replace_from %}“<a href="{{ quoted_link_inside }}">{% endcapture %}
-                {% capture quoted_link_replace_to %}<a class="link link_wrapper" href="{{ quoted_link_inside }}">“<span class="link__inner">{% endcapture %}
+        {% for quoted_link in quoted_links  offset:1 %}
+            {% assign quoted_link_inside = quoted_link | split:'">' | first %}
+            {% capture quoted_link_replace_from %}“<a href="{{ quoted_link_inside }}">{% endcapture %}
+            {% capture quoted_link_replace_to %}<a class="link link_wrapper" href="{{ quoted_link_inside }}">“<span class="link__inner">{% endcapture %}
 
-                {% assign link_handles_result = link_handles_result | replace_first:quoted_link_replace_from,quoted_link_replace_to %}
-            {% endif %}
-            {% assign quoted_link_index = quoted_link_index | plus:1 %}
+            {% assign link_handles_result = link_handles_result | replace_first:quoted_link_replace_from,quoted_link_replace_to %}
         {% endfor %}
         {% assign link_handles_result = link_handles_result | replace:'</a>”','</span>”</a>' %}
     {% endif %}
 
-    {% capture link_handles_result %}{{ link_handles_result | replace:'">«','"><span class="hanger">«</span>' }}{% endcapture %}
-    {% capture link_handles_result %}{{ link_handles_result | replace:'">“','"><span class="hanger">“</span>' }}{% endcapture %}
-
-    <!-- Заменяем указатели на посты на ссылки на соответствующие посты -->
+    <!-- Smart post links -->
     {% for post in site.posts %}
         {% assign with = "" %}
         {% if lang != site.default_lang %}

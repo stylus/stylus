@@ -4,6 +4,10 @@ Including [Tenkan](https://github.com/kizu/tenkan)
 
     {% include tenkan/setup.md %}
 
+Setting the easier title to processed one
+
+    {% assign title = processed_title %}
+
 Getting the language from url
 
     {% assign lang = "ru" %}
@@ -13,6 +17,13 @@ Getting the language from url
         {% assign lang = "en" %}
         {% assign lang_prefix = "en/" %}
     {% endif %}
+
+Handling links
+
+    {% assign link_handles_input = processed_content %}
+    {% include link_handles.html %}
+    {% assign processed_content = link_handles_result %}
+
 
 Looking if the page have a translation
 

@@ -14,14 +14,15 @@
 	<link rel="alternate" hreflang="en" href="{{ site.production_url }}/en{{ page.url | remove:'index.html' }}" />
 	<link rel="alternate" hreflang="ru" href="{{ site.production_url }}{{ page.url | remove:'index.html' }}" />{% endif %}{% endif %}
 
-    <title>Textyll</title>
+    <title>{{ title }}</title>
 </head>
 <body class="page-body">
+    <h1>{{ title }}</h1>
     <div>
         {% include toc.md %}
     </div>
     <div>
-        {{ content }}
+        {{ processed_content }}
     </div>
 </body>
 </html>
