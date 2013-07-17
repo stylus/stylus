@@ -109,6 +109,10 @@ form input {
   - [style guide](https://github.com/lepture/ganam) parser and generator
   - transparent vendor-specific function expansion
 
+### Community modules
+
+  - https://github.com/LearnBoost/stylus/wiki
+
 ### Framework Support
 
    - [Connect](docs/middleware.md)

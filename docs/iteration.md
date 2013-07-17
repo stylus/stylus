@@ -34,6 +34,22 @@ Yielding:
           foo: 2 sans-serif;
         }
 
+And here's how you do a regular for loop
+
+    body
+      for num in (1..5)
+        foo num
+
+Yields:
+
+    body {
+      foo: 1;
+      foo: 2;
+      foo: 3;
+      foo: 4;
+      foo: 5;
+    }
+              
 ### Mixins
 
  We can use iteration within mixins to produce powerful functionality. For example, we can apply expression pairs as properties using interpolation and iteration. 
