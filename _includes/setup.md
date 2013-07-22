@@ -97,4 +97,8 @@ Setting the root url:
         {% endif %}
     {% endif %}
 
+Setting the default toc:
+
+    {% capture toc %}{% include toc.md %}{% endcapture %}
+
 {% endcapture %}
