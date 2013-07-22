@@ -65,7 +65,7 @@
             {% assign with = with | remove:'START^^^/' %}
 
             <!-- Add check on dev mode with running server to remove `index.html` -->
-            {% if site.relative_urls_when_possible == true %}
+            {% if site.relative_urls_when_possible == true and dev %}
                 {% assign with_postfix = 'index.html' %}
             {% endif %}
 

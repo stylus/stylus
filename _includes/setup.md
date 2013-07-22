@@ -1,5 +1,11 @@
 {% capture setup_cache %}
 
+Setting dev flag (on GitHub or with flag `--safe` it would be false)
+
+    {% unless site.safe %}
+        {% assign dev = true %}
+    {% endunless %}
+
 Including [Tenkan](https://github.com/kizu/tenkan)
 
     {% include tenkan/setup.md %}
