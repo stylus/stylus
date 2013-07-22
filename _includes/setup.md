@@ -14,6 +14,16 @@ Setting the easier title to processed one
 
     {% assign title = processed_title %}
 
+Setting the greeting content if nothing there in `index.md`
+
+    {% assign content_size = page.content | strip_newlines | size %}
+    {% if page.permalink == '/' and content_size == 0 %}
+        {% assign title = 'Greetings to Textyll setup!' %}
+        {% capture processed_content %}{% include greetings.md %}{% endcapture %}
+        {% assign processed_content = processed_content | markdownify %}
+        {% assign toc_input = processed_content %}
+    {% endif %}
+
 Getting the language from the categories of url
 
     {% assign lang = site.default_lang %}

@@ -77,7 +77,17 @@ And you'll get it in a code like this:
 
 Of course, there is a chance you'd like to use proper classes instead of inline styles, for this you could use the corresponding variables from config: `quoted_link_wrapper_class` for the wrapper `<a>` tag and `quoted_link_inner_class` for the inner span.
 
-## Install
+### Easy start
+
+To start using Textyll you can just fork this repo and then edit your `pages/index.md` by adding an actual content, or by editing  the `_config.yml` by inserting your GitHub username as `github_user` variable.
+
+Any commit/push you'll make to your fork would run the build for it on GitHub Pages, so you'll get your site running!
+
+If you added some content to the `pages/index.md`, you'll see it  at `http://%username%.github.io/textyll/` page (if you don't have CNAME congifured). If you just edited the config, you'll see a greeting text on this page, telling how to use and setup your Textyll fork.
+
+- - -
+
+## Local Install
 
 ``` sh
 git clone https://github.com/kizu/textyll.git --recursive
