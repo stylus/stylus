@@ -12,3 +12,9 @@
 ``` sh
 git clone https://github.com/kizu/textyll.git --recursive
 ```
+
+## Local Usage
+
+``` sh
+jekyll serve --watch
+```

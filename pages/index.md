@@ -2,7 +2,7 @@
 
 layout: default
 
-page_type: index
+permalink: /
 
 ---
 

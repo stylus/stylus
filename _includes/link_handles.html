@@ -61,11 +61,13 @@
             {% endif %}
         {% endif %}
         {% if with != "" %}
+            {% capture with %}START^^^{{ with }}{% endcapture %}
+            {% assign with = with | remove:'START^^^/' %}
             <!-- Need to add debug mode, so there would be not a production url, but relative one -->
             {% capture what1 %}href=":{{ post.id | split:"/" | last }}"{% endcapture %}
             {% capture what2 %}href=":{{ post.id | split:"/" | last }}#{% endcapture %}
-            {% capture with1 %}href="{{ site.production_url }}{{ with }}/"{% endcapture %}
-            {% capture with2 %}href="{{ site.production_url }}{{ with }}/#{% endcapture %}
+            {% capture with1 %}href="{{ root_url }}{{ with }}/"{% endcapture %}
+            {% capture with2 %}href="{{ root_url }}{{ with }}/#{% endcapture %}
             {% assign link_handles_result = link_handles_result | replace:what1,with1 %}
             {% assign link_handles_result = link_handles_result | replace:what2,with2 %}
             {% assign with = "" %}
@@ -74,7 +76,7 @@
 
     <!-- Replace relative hash links with a normal url for feeds -->
     {% if page.page_type == 'feed' %}
-        {% capture link_hash_replace %}href="{{ site.production_url }}{{ post.url | remove:'index.html' }}/#{% endcapture %}
+        {% capture link_hash_replace %}href="{{ root_url }}{{ post.url | remove:'index.html' }}/#{% endcapture %}
         {% assign link_handles_result = link_handles_result | replace:'href="#',link_hash_replace %}
     {% endif %}
 

@@ -3,10 +3,14 @@ markdown: kramdown
 permalink: /:categories/:title
 relative_permalinks: false
 
-## Production URL without ending slash
-production_url: http://kizu.ru/textyll
+## Uncomment and set your GitHub username to enable absolute links
+# github_user: kizu
 
-github_repo: "kizu/textyll" # Could it be gussed and defaulted?
+## Production URL (if different from default GitHub Pages one)
+# production_url: http://example.com/textyll
+
+## Comment out if (in absence of above fields) you'd like to use absolute `/` links
+relative_urls_when_possible: true
 
 link_handles:
     - prefix: "@"
@@ -21,8 +25,8 @@ link_handles:
 
 ## Localization
 langs:
-    - ru
     - en
+    # - ru
 
 default_lang: en
 
