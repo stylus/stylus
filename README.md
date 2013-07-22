@@ -85,6 +85,12 @@ Any commit/push you'll make to your fork would run the build for it on GitHub Pa
 
 If you added some content to the `pages/index.md`, you'll see it  at `http://%username%.github.io/textyll/` page (if you don't have CNAME congifured). If you just edited the config, you'll see a greeting text on this page, telling how to use and setup your Textyll fork.
 
+This greetings placeholder is there for two purposes:
+
+1. It shows you all the features of the Textyll working right at your host.
+
+2. When you'll want to edit `pages/index.md` you won't need to remove anything from it, you'll just insert things and commit them — no lines deleted, clean history!
+
 - - -
 
 ## Local Install
