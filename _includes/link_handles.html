@@ -63,11 +63,16 @@
         {% if with != "" %}
             {% capture with %}START^^^{{ with }}{% endcapture %}
             {% assign with = with | remove:'START^^^/' %}
-            <!-- Need to add debug mode, so there would be not a production url, but relative one -->
+
+            <!-- Add check on dev mode with running server to remove `index.html` -->
+            {% if site.relative_urls_when_possible == true %}
+                {% assign with_postfix = 'index.html' %}
+            {% endif %}
+
             {% capture what1 %}href=":{{ post.id | split:"/" | last }}"{% endcapture %}
             {% capture what2 %}href=":{{ post.id | split:"/" | last }}#{% endcapture %}
-            {% capture with1 %}href="{{ root_url }}{{ with }}/"{% endcapture %}
-            {% capture with2 %}href="{{ root_url }}{{ with }}/#{% endcapture %}
+            {% capture with1 %}href="{{ root_url }}{{ with }}/{{ with_postfix }}"{% endcapture %}
+            {% capture with2 %}href="{{ root_url }}{{ with }}/{{ with_postfix }}#{% endcapture %}
             {% assign link_handles_result = link_handles_result | replace:what1,with1 %}
             {% assign link_handles_result = link_handles_result | replace:what2,with2 %}
             {% assign with = "" %}

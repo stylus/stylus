@@ -1,4 +1,5 @@
 markdown: kramdown
+safe: false
 
 permalink: /:categories/:title
 relative_permalinks: false
