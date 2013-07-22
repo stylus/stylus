@@ -22,9 +22,9 @@ Blah blah
 
 Why isn't this in the default Jekyll? :)
 
-### Tables of Content
+### Tables of Contents
 
-Ok, so you like long documents with a lot of sections? Textyll would provide you a nice Table of Content, so you could have a list of links to all the headers on the page!
+Ok, so you like long documents with a lot of sections? Textyll would provide you a nice Table of Contents, so you could have a list of links to all the headers on the page!
 
 Just use the `{{ toc }}` variable in your layouts!
 
@@ -33,7 +33,7 @@ Just use the `{{ toc }}` variable in your layouts!
 Textyll makes writing blog posts really easy with some helpers for links.
 
 - `[Link to twitter user](@username)` would be a link to `https://twitter.com/username`.
-- `[Link to GitHub](gh:username)` would be a link to `https://github.com/username`, and, of course, [Link to GitHub](gh:username/repo) would be a link to `https://github.com/username/repo`.
+- `[Link to GitHub](gh:username)` would be a link to `https://github.com/username`, and, of course, `[Link to GitHub](gh:username/repo)` would be a link to `https://github.com/username/repo`.
 
 Those two are default link handles [defined in config](https://github.com/kizu/textyll/blob/gh-pages/_config.yml#L16), it's easy to add your own, the syntax is obvious:
 
@@ -51,7 +51,7 @@ Right now it's just a simple find-and-replace, but maybe there would be somethin
 
 And while you can have handy links to some services in your markdown, why don't have easy links to your own blog posts?
 
-Imaging you have a post named as `2013-07-23-foobar-baz` in your `_posts` dir, the last part, the `foobar-baz` would be an ID of your post, so you could use it in your posts like this:
+Imagine you have a post named as `2013-07-23-foobar-baz.md` in your `_posts/` dir. The last part, the `foobar-baz` would be an ID of your post, so you could use it in your posts like this:
 
 ``` markdown
 In [one of my previous cool posts](:foobar-baz) I wrote some awesome stuff…
@@ -59,17 +59,17 @@ In [one of my previous cool posts](:foobar-baz) I wrote some awesome stuff…
 
 Yep, that's right, you can write `:ID` instead of a full link to your post, and you'll get what you expect here.
 
-Only blog posts could be linked like this ATM, but there is a chance pages could be linked this way later.
+Only blog posts could be linked like this atm, but there is a chance pages could be linked this way later.
 
 ### Smart quotes
 
-A small aesthetic touch to your links: a lot of designers say that quote symbols inside of links look like shit when underlined, so I added this little feature. Write your quoted links like this:
+A small aesthetic touch to your links: a lot of designers say that quote symbols inside of links look bad when underlined, so I added this little feature. Write your quoted links like this (with quotes outside of link text):
 
 ```
 Hey, “[Quoted link!](…)”
 ``` 
 
-And you'd get it in a code like this:
+And you'll get it in a code like this:
 
 ``` HTML
 <a href="…" style="text-decoration:none">“<span style="text-decoration: underline">Quoted link!</span>”</a>
