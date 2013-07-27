@@ -196,6 +196,33 @@ Test if `string` matches the given `pattern`.
       round(5.4px)
       // => 5px
 
+### sin(angle)
+
+Returns the value of sine for the given `angle`. If the angle is given as a degree unit, like `45deg`, it is treated as a degree, otherwise it is treated as radians.
+
+   sin(30deg)
+   // => 0.5
+
+   sin(3*PI/4)
+   // => 0.707106781
+
+### cos(angle)
+
+Returns the value of cosine for the given `angle`. If the angle is given as a degree unit, like `45deg`, it is treated as a degree, otherwise it is treated as radians.
+
+   cos(180deg)
+   // => -1
+
+### tan(angle)
+
+Returns the value of tangent for the given `angle`. If the angle is given as a degree unit, like `45deg`, it is treated as a degree, otherwise it is treated as radians.
+
+   tan(45deg)
+   // => 1
+
+   tan(90deg)
+   // => Infinity
+
 ### min(a, b)
 
       min(1, 5)
@@ -620,33 +647,6 @@ If you'd like to return any Stylus objects like `RGBA`, `Ident` or `Unit`, you c
       };
     };
     module.exports = plugin;
-
-### sin(angle)
-
-Returns the value of sine for the given `angle`. If the angle is given as a degree unit, like `45deg`, it is treated as a degree, otherwise it is treated as radians.
-
-   sin(30deg)
-   // => 0.5
-
-   sin(3*PI/4)
-   // => 0.707106781
-
-### cos(angle)
-
-Returns the value of cosine for the given `angle`. If the angle is given as a degree unit, like `45deg`, it is treated as a degree, otherwise it is treated as radians.
-
-   cos(180deg)
-   // => -1
-
-### tan(angle)
-
-Returns the value of tangent for the given `angle`. If the angle is given as a degree unit, like `45deg`, it is treated as a degree, otherwise it is treated as radians.
-
-   tan(45deg)
-   // => 1
-
-   tan(90deg)
-   // => Infinity
 
 ### Undefined Functions
 
