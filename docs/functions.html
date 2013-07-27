@@ -49,6 +49,18 @@
    a + b
 </code></pre>
 
+<h3 id="named-parameters">Named Parameters</h3>
+
+<p>Functions accept named parameters. This frees you from remembering the order of parameters, or simply improves the readability of your code.</p>
+
+<p>For example:</p>
+
+<pre><code>subtract(a, b)
+  a - b
+
+subtract(b: 10, a: 25)
+</code></pre>
+
 <h3 id="function-bodies">Function Bodies</h3>
 
 <p>We can take our simple <code>add()</code> function further. Let&#8217;s casting all units passed as <code>px</code> via the <code>unit()</code> built-in. It reassigns each argument, and provides a unit-type string (or identifier), which ignores unit conversion.</p>
