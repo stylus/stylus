@@ -34,7 +34,7 @@
 
 <pre><code>  alpha(#fff)
   // =&gt; 1
-  
+
   alpha(rgba(0,0,0,0.3))
   // =&gt; 0.3
 </code></pre>
@@ -144,7 +144,7 @@ light(#00FF40)
 
   typeof(12)
   // =&gt; 'unit'
-  
+
   typeof(#fff)
   // =&gt; 'rgba'
 
@@ -260,10 +260,10 @@ match('^foo(bar)?', 'bar')
 
 <pre><code>  join(' ', 1 2 3)
   // =&gt; "1 2 3"
-  
+
   join(',', 1 2 3)
   // =&gt; "1,2,3"
-  
+
   join(', ', foo bar baz)
   // =&gt; "foo, bar, baz"
 
@@ -304,10 +304,10 @@ or h,s,l component values.</p>
 
 <pre><code>  rgba(255,0,0,0.5)
   // =&gt; rgba(255,0,0,0.5)
-  
+
   rgba(255,0,0,1)
   // =&gt; #ff0000
-  
+
   rgba(#ffcc00, 0.5)
   // rgba(255,204,0,0.5)
 </code></pre>
@@ -388,7 +388,7 @@ darken(#D62828, 30%)
 
 <pre><code>   unquote("sans-serif")
    // =&gt; sans-serif
- 
+
    unquote(sans-serif)
    // =&gt; sans-serif
 
@@ -409,16 +409,16 @@ darken(#D62828, 30%)
 
     s('bar(%s)', baz);
     // =&gt; bar(baz)
-    
+
     s('bar(%s)', 15px);
     // =&gt; bar(15px)
-    
+
     s('rgba(%s, %s, %s, 0.5)', 255, 100, 50);
     // =&gt; rgba(255, 100, 50, 0.5)
-    
+
     s('bar(%Z)', 15px);
     // =&gt; bar(%Z)
-    
+
     s('bar(%s, %s)', 15px);
     // =&gt; bar(15px, null)
 </code></pre>
@@ -443,13 +443,13 @@ darken(#D62828, 30%)
 
 length((1 2))
 // =&gt; 2
-  
+
 length((1))
 // =&gt; 1
-  
+
 length(())
 // =&gt; 0
-  
+
 length(1 2 3)
 // =&gt; 3
 
@@ -485,7 +485,7 @@ length()
   last(nums)
   last(1 2 3)
   // =&gt; 3
-  
+
   list = (one 1) (two 2) (three 3)
   last(list)
   // =&gt; (three 3)
@@ -502,7 +502,7 @@ length()
  p(fonts)
  p(#fff)
  p(rgba(0,0,0,0.2))
- 
+
  add(a, b)
    a + b
 
@@ -681,13 +681,40 @@ module.exports = plugin;
 module.exports = plugin;
 </code></pre>
 
+<h3 id="sinangle">sin(angle)</h3>
+
+<p>Returns the value of sine for the given <code>angle</code>. If the angle is given as a degree unit, like <code>45deg</code>, it is treated as a degree, otherwise it is treated as radians.</p>
+
+<p>sin(30deg)
+   // =&gt; 0.5</p>
+
+<p>sin(3*PI/4)
+   // =&gt; 0.707106781</p>
+
+<h3 id="cosangle">cos(angle)</h3>
+
+<p>Returns the value of cosine for the given <code>angle</code>. If the angle is given as a degree unit, like <code>45deg</code>, it is treated as a degree, otherwise it is treated as radians.</p>
+
+<p>cos(180deg)
+   // =&gt; -1</p>
+
+<h3 id="tanangle">tan(angle)</h3>
+
+<p>Returns the value of tangent for the given <code>angle</code>. If the angle is given as a degree unit, like <code>45deg</code>, it is treated as a degree, otherwise it is treated as radians.</p>
+
+<p>tan(45deg)
+   // =&gt; 1</p>
+
+<p>tan(90deg)
+   // =&gt; Infinity</p>
+
 <h3 id="undefined-functions">Undefined Functions</h3>
 
 <p>Undefined functions will output as literals, so for example
   we may call <code>rgba-stop(50%, #fff)</code> within our css, and it will
   output as you would expect. We can use this within helpers as well.</p>
 
-<p>In the example below we simply define the function <code>stop()</code> which 
+<p>In the example below we simply define the function <code>stop()</code> which
   returns the literal <code>rgba-stop()</code> call.</p>
 
 <pre><code>stop(pos, rgba)
