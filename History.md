@@ -2,7 +2,7 @@
 ==================
 
   * Added jpeg and svg support to image-size, #1083
-
+  * Fixes coercion error, #1082
 
 0.34.1 / 2013-07-12
 ==================
