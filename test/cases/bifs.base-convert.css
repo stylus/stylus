@@ -1,0 +1,21 @@
+#test {
+  make-rrggbb: #ccaabb;
+}
+#test2 {
+  foo: 10;
+  foo: 11;
+  foo: 12;
+  foo: 13;
+  foo: 14;
+  foo: 15;
+  foo: 16;
+  foo: 17;
+  foo: 20;
+  foo: 22;
+}
+#test3 {
+  bar: 1;
+  bar: 01;
+  bar: 001;
+  bar: 0001;
+}

@@ -1,0 +1,21 @@
+#test
+	make-rrggbb: s('#%s%s%s', base-convert(red(#ccaabb), 16), base-convert(green(#ccaabb), 16), base-convert(blue(#ccaabb), 16))
+
+#test2
+	foo: base-convert(16, 16)
+	foo: base-convert(16, 15)
+	foo: base-convert(16, 14)
+	foo: base-convert(16, 13)
+	foo: base-convert(16, 12)
+	foo: base-convert(16, 11)
+	foo: base-convert(16, 10)
+	foo: base-convert(16, 9)
+	foo: base-convert(16, 8)
+	foo: base-convert(16, 7)
+
+#test3
+	bar: base-convert(1, 10, 1);
+	bar: base-convert(1, 10, 2);
+	bar: base-convert(1, 10, 3);
+	bar: base-convert(1, 10, 4);
+
