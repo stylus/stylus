@@ -1,9 +1,10 @@
 0.35.0 / In development
 ==================
 
-  * Added jpeg and svg support to image-size, #1083
+  * Added jpeg and svg support to image-size, #1083.
   * Added `tan` trigonometric function, also `sin` and `cos` now  understand `deg` units.
-  * Fixes coercion error, #1082
+  * Added fonts to data URI `url()` mimes, also the list of mimes is now configurable, #841, #1046.
+  * Fixes coercion error, #1082.
 
 0.34.1 / 2013-07-12
 ==================
