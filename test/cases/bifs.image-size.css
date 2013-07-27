@@ -6,6 +6,8 @@ body {
 body {
   foo: 400px 479px;
   foo: 400px 479px;
+  bar: 335px 315px;
+  baz: 900px 900px;
 }
 body {
   foo: 0 0;
