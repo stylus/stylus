@@ -253,6 +253,20 @@ Returns the value of tangent for the given `angle`. If the angle is given as a d
      avg(1 2 3)
      // => 2
 
+### base-convert(num, base, width)
+
+Returns a `Literal` `num` converted to the provided `base`, padded to `width` with zeroes (default width is 2)
+
+    base-convert(1, 10, 3)
+    // => 001
+
+    base-convert(14, 16, 1)
+    // => e
+
+    base-convert(42, 1)
+    // => 101010
+
+
 ### join(delim, vals...)
 
   Join the given `vals` with `delim`.

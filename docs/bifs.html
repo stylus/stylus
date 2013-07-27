@@ -281,6 +281,20 @@ match('^foo(bar)?', 'bar')
  // =&gt; 2
 </code></pre>
 
+<h3 id="base-convertnum-base-width">base-convert(num, base, width)</h3>
+
+<p>Returns a <code>Literal</code> <code>num</code> converted to the provided <code>base</code>, padded to <code>width</code> with zeroes (default width is 2)</p>
+
+<pre><code>base-convert(1, 10, 3)
+// =&gt; 001
+
+base-convert(14, 16, 1)
+// =&gt; e
+
+base-convert(42, 1)
+// =&gt; 101010
+</code></pre>
+
 <h3 id="joindelim-vals">join(delim, vals&#8230;)</h3>
 
 <p>Join the given <code>vals</code> with <code>delim</code>.</p>
