@@ -218,6 +218,33 @@ match('^foo(bar)?', 'bar')
   // =&gt; 5px
 </code></pre>
 
+<h3 id="sinangle">sin(angle)</h3>
+
+<p>Returns the value of sine for the given <code>angle</code>. If the angle is given as a degree unit, like <code>45deg</code>, it is treated as a degree, otherwise it is treated as radians.</p>
+
+<p>sin(30deg)
+   // =&gt; 0.5</p>
+
+<p>sin(3*PI/4)
+   // =&gt; 0.707106781</p>
+
+<h3 id="cosangle">cos(angle)</h3>
+
+<p>Returns the value of cosine for the given <code>angle</code>. If the angle is given as a degree unit, like <code>45deg</code>, it is treated as a degree, otherwise it is treated as radians.</p>
+
+<p>cos(180deg)
+   // =&gt; -1</p>
+
+<h3 id="tanangle">tan(angle)</h3>
+
+<p>Returns the value of tangent for the given <code>angle</code>. If the angle is given as a degree unit, like <code>45deg</code>, it is treated as a degree, otherwise it is treated as radians.</p>
+
+<p>tan(45deg)
+   // =&gt; 1</p>
+
+<p>tan(90deg)
+   // =&gt; Infinity</p>
+
 <h3 id="mina-b">min(a, b)</h3>
 
 <pre><code>  min(1, 5)
@@ -680,33 +707,6 @@ module.exports = plugin;
 };
 module.exports = plugin;
 </code></pre>
-
-<h3 id="sinangle">sin(angle)</h3>
-
-<p>Returns the value of sine for the given <code>angle</code>. If the angle is given as a degree unit, like <code>45deg</code>, it is treated as a degree, otherwise it is treated as radians.</p>
-
-<p>sin(30deg)
-   // =&gt; 0.5</p>
-
-<p>sin(3*PI/4)
-   // =&gt; 0.707106781</p>
-
-<h3 id="cosangle">cos(angle)</h3>
-
-<p>Returns the value of cosine for the given <code>angle</code>. If the angle is given as a degree unit, like <code>45deg</code>, it is treated as a degree, otherwise it is treated as radians.</p>
-
-<p>cos(180deg)
-   // =&gt; -1</p>
-
-<h3 id="tanangle">tan(angle)</h3>
-
-<p>Returns the value of tangent for the given <code>angle</code>. If the angle is given as a degree unit, like <code>45deg</code>, it is treated as a degree, otherwise it is treated as radians.</p>
-
-<p>tan(45deg)
-   // =&gt; 1</p>
-
-<p>tan(90deg)
-   // =&gt; Infinity</p>
 
 <h3 id="undefined-functions">Undefined Functions</h3>
 
