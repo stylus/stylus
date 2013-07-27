@@ -41,11 +41,28 @@ adjust(color, prop, amount)
 // Math functions
 
 abs(n) { math(n, 'abs') }
-sin(n) { math(n, 'sin') }
-cos(n) { math(n, 'cos') }
 min(a, b) { a < b ? a : b }
 max(a, b) { a > b ? a : b }
+
+// Trigonometrics
 PI = -math-prop('PI')
+
+radians-to-degrees(angle)
+  angle * (180 / PI)
+
+degrees-to-radians(angle)
+  unit(angle * (PI / 180),'')
+
+sin(n)
+  n = degrees-to-radians(n) if unit(n) == 'deg'
+  round(math(n, 'sin'), 9)
+
+cos(n)
+  n = degrees-to-radians(n) if unit(n) == 'deg'
+  round(math(n, 'cos'), 9)
+
+tan(n)
+  round(sin(n) / cos(n), 9)
 
 // Rounding Math functions
 
