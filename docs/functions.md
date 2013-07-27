@@ -42,6 +42,17 @@
      add(a, b = unit(a, px))
        a + b
 
+### Named Parameters
+
+ Functions accept named parameters. This frees you from remembering the order of parameters, or simply improves the readability of your code.
+
+ For example:
+
+     subtract(a, b)
+       a - b
+
+     subtract(b: 10, a: 25)
+
 ### Function Bodies
 
  We can take our simple `add()` function further. Let's casting all units passed as `px` via the `unit()` built-in. It reassigns each argument, and provides a unit-type string (or identifier), which ignores unit conversion.
