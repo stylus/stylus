@@ -1,3 +1,9 @@
+0.35.0 / In development
+==================
+
+  * Added jpeg and svg support to image-size, #1083
+
+
 0.34.1 / 2013-07-12
 ==================
 
