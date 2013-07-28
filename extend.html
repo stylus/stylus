@@ -23,9 +23,9 @@
   }
 </code></pre>
 
-<h3 id="using-extend">Using <code>__@extend__</code></h3>
+<h3 id="using-extend">Using <strong><code>@extend</code></strong></h3>
 
-<p>To produce this same output with <code>__@extend__</code>, simply pass it the desired selector.  Stylus will then append the <code>.warning</code> selector to the existing <code>.message</code> ruleset.  The <code>.warning</code> class then inherits properties from <code>.message</code>.</p>
+<p>To produce this same output with <strong><code>@extend</code></strong>, simply pass it the desired selector (note that <code>@extend</code> and <code>@extends</code> are equal, one is just an alias of another).  Stylus will then append the <code>.warning</code> selector to the existing <code>.message</code> ruleset.  The <code>.warning</code> class then inherits properties from <code>.message</code>.</p>
 
 <pre><code>  .message {
     padding: 10px;
@@ -38,7 +38,7 @@
   }
 </code></pre>
 
-<p>Here&#8217;s a more complex example, demonstrating how <code>__@extend__</code> cascades:</p>
+<p>Here&#8217;s a more complex example, demonstrating how <strong><code>@extend</code></strong> cascades:</p>
 
 <pre><code>  red = #E33E1E
   yellow = #E2E21E
@@ -89,7 +89,7 @@
   }
 </code></pre>
 
-<p>Where Stylus currently differs from SASS is, SASS won&#8217;t allow  <code>__@extend__</code> nested selectors:</p>
+<p>Where Stylus currently differs from SASS is, SASS won&#8217;t allow  <strong><code>@extend</code></strong> nested selectors:</p>
 
 <pre><code> form
    button
