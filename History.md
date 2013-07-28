@@ -5,7 +5,7 @@
   * Added `tan` trigonometric function, also `sin` and `cos` now  understand `deg` units.
   * Added fonts to data URI `url()` mimes, also the list of mimes is now configurable, #841, #1046.
   * Added base conversion for numbers, #714.
-  * Fixes extends from nested mixins, #1084
+  * Fixes extends from nested mixins, #1084.
   * Fixes coercion error, #1082.
 
 0.34.1 / 2013-07-12
