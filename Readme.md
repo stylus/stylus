@@ -1,4 +1,4 @@
-# Stylus
+# Stylus [![Build Status](https://travis-ci.org/LearnBoost/stylus.png?branch=master)](https://travis-ci.org/LearnBoost/stylus)
 
  Stylus is a revolutionary new language, providing an efficient, dynamic, and expressive way to generate CSS. Supporting both an indented syntax and regular CSS style.
 
