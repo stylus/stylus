@@ -1,3 +1,8 @@
+0.35.1 / 2013-07-29
+==================
+
+  * Fixed the support for progressive JPEGs in `image-size`, #1087.
+
 0.35.0 / 2013-07-29
 ==================
 
