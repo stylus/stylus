@@ -1,3 +1,4 @@
 body {
-  background: green;
+  string: 'green';
+  ident: green;
 }
