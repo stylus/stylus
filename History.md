@@ -1,3 +1,8 @@
+0.36.0 / In development
+==================
+
+  * Fixed unneeded code for imports, #1090.
+
 0.35.1 / 2013-07-29
 ==================
 
