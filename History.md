@@ -1,4 +1,4 @@
-0.36.0 / In development
+0.36.0 / 2013-08-01
 ==================
 
   * Added `substr`, `replace` and `split` bifs, #1088.
