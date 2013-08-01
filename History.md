@@ -2,6 +2,7 @@
 ==================
 
   * Added `substr`, `replace` and `split` bifs, #1088.
+  * Added possibility to provide functions to src and dest, #930.
   * Fixed unneeded code for imports, #1090.
   * Fixed empty string as possible quote value for string node, #956.
 
