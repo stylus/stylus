@@ -1,6 +1,7 @@
 0.36.0 / In development
 ==================
 
+  * Added `substr`, `replace` and `split` bifs, #1088.
   * Fixed unneeded code for imports, #1090.
 
 0.35.1 / 2013-07-29
