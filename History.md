@@ -3,6 +3,7 @@
 
   * Added `substr`, `replace` and `split` bifs, #1088.
   * Fixed unneeded code for imports, #1090.
+  * Fixed empty string as possible quote value for string node, #956.
 
 0.35.1 / 2013-07-29
 ==================
