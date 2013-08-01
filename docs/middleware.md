@@ -10,8 +10,10 @@
 #### Options
 
       `force`     When __true__ styles will always re-compile
-      `src`       Source directory used to find .styl files
-      `dest`      Destination directory used to output .css files
+      `src`       Source directory used to find .styl files,
+                  a string or function accepting `(path)` of request.
+      `dest`      Destination directory used to output .css files,
+                  a string or function accepting `(path)` of request,
                   when undefined defaults to `src`.
       `compress`  Whether the output .css files should be compressed
       `compile`   Custom compile function, accepting the arguments
@@ -37,7 +39,23 @@
             .set('warn', true)
             .set('compress', true);
         }
- 
+
+ Example:
+
+        styleLocation = join(__dirname + "/public")
+        cssLocation = join(__dirname + '/public')
+        console.log(styleLocation)
+        console.log(cssLocation)
+
+        connect.createServer(
+          stylus.middleware({ src: styleLocation, dest: cssLocation}),
+          connect.static(__dirname + '/public'),
+        ).listen 3000
+
+ This example expects the .styl files to be in the css directory. When the browser
+ requests /css/screen.css it will compile and serve a file from /css/screen.styl.
+ This is probably the simpliest configuration.
+
  Pass the middleware to Connect, grabbing `.styl` files from this directory
  and saving `.css` files to _./public_. Also supplying our custom `compile` function.
  
