@@ -8,6 +8,7 @@
   * Fixed unneeded code for imports, #1090.
   * Fixed mtime for literal imports, #983.
   * Fixed empty string as possible quote value for string node, #956.
+  * Fixed non-symmetrical src and dest paths in middleware, #1037.
 
 0.35.1 / 2013-07-29
 ==================
