@@ -111,4 +111,20 @@ Setting the default toc:
 
     {% capture toc %}{% include toc.md %}{% endcapture %}
 
+Transforming sidenotes:
+
+    {% unless sidenotes_input or sidenotes_input == '' %}
+        {% assign sidenotes_input = processed_content %}
+    {% endunless %}
+    {% assign sidenotes_result = '' %}
+    {% capture lolcache %}{% include tenkan/sidenotes.md %}{% endcapture %}
+    {% for sidenote_id in sidenotes_ids %}
+        {% capture sidenote_replace %}<span class="context"><a class="context-item" href="#{{ sidenote_id }}" id="{{ sidenote_id }}">{% endcapture %}
+        {% assign processed_content = processed_content | replace:sidenotes_id_strings[forloop.index0],sidenote_replace %}
+    {% endfor %}
+    {% assign processed_content = processed_content | replace:' (* ','</a><span class="context-content"><span class="context-misc"> (</span>' %}
+    {% assign processed_content = processed_content | replace:')</sidenote>','<span class="context-misc">)</span></span></span>' %}
+
+    {% assign sidenotes_input = '' %}
+
 {% endcapture %}

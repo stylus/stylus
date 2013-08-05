@@ -16,6 +16,12 @@ Smart post links:
 
 - [Ololo](:ololo-lolo_lolo)
 
+## Sidenotes
+
+You can do <sidenote id="hello">sidenotes (* with some content inside)</sidenote>
+
+Also, you don't need to specify <sidenote>ids (* identifiers)</sidenote> for them.
+
 ## Second level header
 
 Hello there
