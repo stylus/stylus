@@ -16,7 +16,7 @@ Smart post links:
 
 - [Ololo](:ololo-lolo_lolo)
 
-## Sidenotes
+## Sidenotes test
 
 You can do <sidenote id="hello">sidenotes (* with some content inside)</sidenote>
 
