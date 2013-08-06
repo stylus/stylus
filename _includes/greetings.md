@@ -18,9 +18,9 @@ Smart post links:
 
 ## Sidenotes test
 
-You can do <sidenote id="hello">sidenotes (* with some content inside)</sidenote>
+You can do <span class="sidenote" id="hello">sidenotes (* _with some_ content inside)</span>
 
-Also, you don't need to specify <sidenote>ids (* identifiers)</sidenote> for them.
+Also, you don't need to specify <span class="sidenote">ids (* identifiers)</span> for them.
 
 ## Second level header
 

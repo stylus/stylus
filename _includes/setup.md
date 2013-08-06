@@ -119,11 +119,9 @@ Transforming sidenotes:
     {% assign sidenotes_result = '' %}
     {% capture lolcache %}{% include tenkan/sidenotes.md %}{% endcapture %}
     {% for sidenote_id in sidenotes_ids %}
-        {% capture sidenote_replace %}<span class="context"><a class="context-item" href="#{{ sidenote_id }}" id="{{ sidenote_id }}">{% endcapture %}
+        {% capture sidenote_replace %}<span class="sidenote-wrapper"><a class="sidenote-context" href="#{{ sidenote_id }}" id="{{ sidenote_id }}">{{ sidenotes_contexts[forloop.index0] }}</a><span class="sidenote"><span class="sidenote-misc"> (</span>{{ sidenotes_contents[forloop.index0] }}<span class="sidenote-misc">)</span></span></span>{% endcapture %}
         {% assign processed_content = processed_content | replace:sidenotes_id_strings[forloop.index0],sidenote_replace %}
     {% endfor %}
-    {% assign processed_content = processed_content | replace:' (* ','</a><span class="context-content"><span class="context-misc"> (</span>' %}
-    {% assign processed_content = processed_content | replace:')</sidenote>','<span class="context-misc">)</span></span></span>' %}
 
     {% assign sidenotes_input = '' %}
 
