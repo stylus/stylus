@@ -12,3 +12,12 @@
     -webkit-transition: width 1s ease-out;
   }
 }
+.a {
+  color: blue;
+  width: 20px;
+  height: 100px;
+  background: red;
+}
+.b {
+  color: $params-color;
+}

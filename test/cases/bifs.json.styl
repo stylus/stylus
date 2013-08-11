@@ -17,3 +17,14 @@ json('import.json/vars.json')
   body
     //deep nested json variable
     -webkit-transition animate-special-out
+
+.a
+  prefix = '$'
+  json('import.json/local-vars.json', prefix)
+  color $params-color
+  width 10px * $a
+  height 10px * $b
+  background $bg
+
+.b
+  color $params-color
