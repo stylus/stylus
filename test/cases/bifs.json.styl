@@ -20,7 +20,7 @@ json('import.json/vars.json')
 
 .a
   prefix = '$'
-  json('import.json/local-vars.json', prefix)
+  json('import.json/local-vars.json', true, prefix)
   color $params-color
   width 10px * $a
   height 10px * $b
