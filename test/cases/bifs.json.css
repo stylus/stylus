@@ -1,6 +1,10 @@
 @media screen and (min-width:1px) and (max-width:400px) {
   body {
-    background: purple;
+    display: none;
+    color: #a27400;
+    background-color: #a27400;
+    border-color: rgba(255,202,69,0.5);
+    outline-color: #400040;
     padding: 0;
     outline: 0;
     margin: 20px;
@@ -13,10 +17,10 @@
   }
 }
 .a {
-  color: blue;
+  color: #00f;
   width: 20px;
   height: 100px;
-  background: red;
+  background: #f00;
 }
 .b {
   color: $params-color;
