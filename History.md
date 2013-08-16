@@ -1,6 +1,7 @@
 0.37.0 / In development
 ==================
 
+  * Added optional params to the json bif, #1102.
   * Fixed include of the css files when --resolve-url is on, #1099.
   * Fixed error in negating variables, #1101.
   * Fixed regression after #983, #1098.
