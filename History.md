@@ -1,6 +1,7 @@
 0.37.0 / In development
 ==================
 
+  * Fixed include of the css files when --resolve-url is on, #1099.
   * Fixed regression after #983, #1098.
 
 0.36.1 / 2013-08-06
