@@ -3,6 +3,7 @@
 
   * Added optional params to the json bif, #1102.
   * Added `--print` option to print CSS to stdout, #1108.
+  * Fixed json bif to return literals for colours, #875.
   * Fixed include of the css files when `--resolve-url` is on, #1099.
   * Fixed error in negating variables, #1101.
   * Fixed tests under windows, #1105.
