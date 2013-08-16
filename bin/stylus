@@ -553,6 +553,12 @@ function compileFile(file) {
  */
 
 function writeFile(file, css) {
+  if(dest === 'stdout') {
+    //  Write to stdout instead of file
+    console.log(css);
+    return;
+  }
+
   // --out support
   var path = dest
     ? join(dest, basename(file, '.styl') + '.css')
