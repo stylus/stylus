@@ -43,6 +43,11 @@ var convertCSS = false;
 var linenos = false;
 
 /**
+ * Print to stdout flag.
+ */
+var print = false;
+
+/**
  * Firebug flag
  */
 
@@ -139,6 +144,7 @@ var usage = [
   , '                            can be used by the FireStylus Firebug plugin'
   , '    -l, --line-numbers      Emits comments in the generated CSS'
   , '                            indicating the corresponding Stylus line'
+  , '    -p, --print             Print out the compiled CSS'
   , '    --import <file>         Import stylus <file>'
   , '    --include-css           Include regular CSS on @import'
   , '    -r, --resolve-url       Resolve relative urls inside imports'
@@ -179,6 +185,10 @@ while (args.length) {
     case '--line-numbers':
       linenos = true;
       break;
+    case '-p':
+    case '--print':
+      print = true;
+    break;
     case '-V':
     case '--version':
       console.log(stylus.version);
@@ -553,6 +563,8 @@ function compileFile(file) {
  */
 
 function writeFile(file, css) {
+  // --print support
+  if (print) return process.stdout.write(css);
   // --out support
   var path = dest
     ? join(dest, basename(file, '.styl') + '.css')
