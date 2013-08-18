@@ -1,4 +1,4 @@
-0.37.0 / In development
+0.37.0 / 2013-08-19
 ==================
 
   * Added optional params to the json bif, #1102.
