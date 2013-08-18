@@ -28,6 +28,7 @@ Stylus ships with the `stylus` executable for converting Stylus to CSS.
                                 can be used by the FireStylus Firebug plugin
         -l, --line-numbers      Emits comments in the generated CSS
                                 indicating the corresponding Stylus line
+        -p, --print             Print out the compiled CSS
         --import <file>         Import stylus <file>
         --include-css           Include regular CSS on @import
         -r, --resolve-url       Resolve relative urls inside imports
