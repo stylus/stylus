@@ -6,6 +6,7 @@
   * Fixed json bif to return literals for colours, #875.
   * Fixed include of the css files when `--resolve-url` is on, #1099.
   * Fixed error in negating variables, #1101.
+  * Fixed bug in `p` function, #1111.
   * Fixed tests under windows, #1105.
   * Fixed regression after #1094, #1113.
   * Fixed regression after #983, #1098.
