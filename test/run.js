@@ -17,6 +17,8 @@ var cases = fs.readdirSync('test/cases').filter(function(file){
 describe('integration', function(){
   cases.forEach(function(test){
     var name = test.replace(/[-.]/g, ' ');
+    if ('index' == name) return;
+
     it(name, function(){
       var path = 'test/cases/' + test + '.styl';
       var styl = fs.readFileSync(path, 'utf8').replace(/\r/g, '');
