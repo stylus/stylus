@@ -1,0 +1,8 @@
+a {
+  a: foo bar(baz, buz, 1);
+  b: 'foo bar(baz, buz, 1)';
+  c: 'foo bar(baz, buz, 1)';
+  d: foo();
+  e: 'foo()';
+  f: 'foo()';
+}
