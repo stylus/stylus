@@ -5,6 +5,6 @@
   background: url("import.include.resolver.images/b/a.png");
   background: url("import.include.resolver.images/b/a.png");
   background: url("import.include.resolver.images/b/a");
-  background: url("import.include.resolver.images/b/a.png");
+  background: url("import.include.resolver.images/b/a.png?ver=2.3");
   background: url("/a.png");
 }
