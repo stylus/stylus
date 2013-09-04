@@ -1,5 +1,15 @@
+.sidebar {
+  background: #000;
+}
 @media screen and (min-width: 20em) {
   .sidebar {
+    font-family: 'Mobile Font';
+    width: 5em;
+  }
+}
+@media screen and (min-width: 40em) {
+  .sidebar {
+    font-family: 'Desktop Font';
     width: 10em;
   }
 }
