@@ -23,7 +23,7 @@ describe('middleware', function() {
 			src: __dirname,
 			dest: __dirname
 		})(req, res, function() {
-			fs.readFileSync(__dirname + '/test.css', { encoding: 'utf8' }).should.include('color: #000')
+			fs.readFileSync(__dirname + '/test.css').toString().should.include('color: #000')
 			fs.unlinkSync(__dirname + '/test.css');
 			done()
 		});
