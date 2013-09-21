@@ -48,4 +48,4 @@ describe('integration', function(){
       });
     })
   });
-})
+});
