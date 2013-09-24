@@ -18,7 +18,7 @@ TM_BUNDLE_DEST = $(shell $(DETERMINE_TEXTMATE_BUNDLE_PATH))
 REPORTER = dot
 
 test:
-	@./node_modules/.bin/mocha \
+	@./node_modules/.bin/mocha test/ test/middleware/ \
 		--require should \
 		--bail \
 		--reporter $(REPORTER)
