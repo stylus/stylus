@@ -1,4 +1,4 @@
-0.38.0 / in development
+0.38.0 / 2013-09-24
 ==================
 
   * Fixed `push` not to modify the first element of another array, #1118.
@@ -9,6 +9,7 @@
   * Fixed `.toString` for undefined functions, #1119.
   * Fixed path overlap for non-string dest, #1115.
   * Fixed `path.resolve` for non-true resolveURL, #1116.
+  * Fixed sync return in `stylus.render()`, #1138.
   * Fixed duplicate calls from `this.calling`, #1122.
 
 0.37.0 / 2013-08-19
