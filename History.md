@@ -3,6 +3,7 @@
 
   * Fixed `push` not to modify the first element of another array, #1118.
   * Fixed property lookup from mixins, #1127.
+  * Fixed support for `src` and `dest` in middleware, started tests for middleware #1143.
   * Fixed `--resolve-url` that removed tails from urls, #1126.
   * Fixed mime type for `.woff`, #1128.
   * Fixed `.toString` for undefined functions, #1119.
