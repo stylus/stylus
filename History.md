@@ -1,3 +1,15 @@
+0.38.0 / in development
+==================
+
+  * Fixed `push` not to modify the first element of another array, #1118.
+  * Fixed property lookup from mixins, #1127.
+  * Fixed `--resolve-url` that removed tails from urls, #1126.
+  * Fixed mime type for `.woff`, #1128.
+  * Fixed `.toString` for undefined functions, #1119.
+  * Fixed path overlap for non-string dest, #1115.
+  * Fixed `path.resolve` for non-true resolveURL, #1116.
+  * Fixed duplicate calls from `this.calling`, #1122.
+
 0.37.0 / 2013-08-19
 ==================
 
