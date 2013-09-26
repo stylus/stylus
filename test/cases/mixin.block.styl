@@ -1,0 +1,19 @@
+mobile()
+  @media screen and (min-width: 20em)
+    font-family: 'Mobile Font'
+    @content
+
+desktop()
+  @media screen and (min-width: 40em)
+    font-family: 'Desktop Font'
+    @content
+
+sidebar()
+  background: black
+
+.sidebar
+  mobile():
+    width: 5em
+  desktop():
+    width: 10em
+  sidebar()
