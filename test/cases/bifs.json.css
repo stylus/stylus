@@ -1,0 +1,27 @@
+@media screen and (min-width:1px) and (max-width:400px) {
+  body {
+    display: none;
+    color: #a27400;
+    background-color: #a27400;
+    border-color: rgba(255,202,69,0.5);
+    outline-color: #400040;
+    padding: 0;
+    outline: 0;
+    margin: 20px;
+    border: #f00;
+  }
+}
+@media screen and (min-width:1501px) {
+  body {
+    -webkit-transition: width 1s ease-out;
+  }
+}
+.a {
+  color: #00f;
+  width: 20px;
+  height: 100px;
+  background: #f00;
+}
+.b {
+  color: $params-color;
+}

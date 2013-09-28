@@ -19,7 +19,7 @@ Return the green component of the given `color`.
 
 Return the blue component of the given `color`.
 
-     red(#00c)
+     blue(#00c)
      // => 204
 
 ### alpha(color)
@@ -196,6 +196,17 @@ Test if `string` matches the given `pattern`.
       round(5.4px)
       // => 5px
 
+**Note:** All rounding functions can accept optional `precision` argument — you can pass the number of digits you want to save after the period:
+
+      ceil(5.52px,1)
+      // => 5.6px
+
+      floor(5.57px,1)
+      // => 5.5px
+
+      round(5.52px,1)
+      // => 5.5px
+
 ### min(a, b)
 
       min(1, 5)
@@ -280,7 +291,7 @@ Return `RGBA` from the r,g,b,a channels or provide a `color` to tweak the alpha.
       rgba(#ffcc00, 0.5)
       // rgba(255,204,0,0.5)
 
- Alternatively stylus supports the `#rgba` and `#rrggbbaa` notations as well:
+ Alternatively, Stylus supports the `#rgba` and `#rrggbbaa` notations as well:
  
     #fc08
     // => rgba(255,204,0,0.5)
@@ -312,9 +323,8 @@ below.
 
 ### darken(color, amount)
 
-Darken the given `color` by `amount`.This function is
-unit-sensitive, for example supporting percentages as shown
-below.
+Darken the given `color` by `amount`. This function is
+unit-sensitive. For example, note the percentages below.
 
     darken(#D62828, 30)
     // => #551010
@@ -335,6 +345,13 @@ Saturate the given `color` by `amount`.
 
     saturate(#c33, 40%)
     // => #f00
+
+### invert(color)
+
+Inverts the color. The red, green, and blue values are inverted, while opacity is left alone.
+
+    invert(#d62828)
+    // => #29d7d7
 
 ### unquote(str | ident)
 

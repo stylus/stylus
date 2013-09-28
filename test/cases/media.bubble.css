@@ -1,0 +1,85 @@
+@media print {
+  body {
+    foo: 'bar';
+  }
+}
+@media print {
+  body something {
+    foo: 'bar';
+  }
+}
+@media print {
+  body something {
+    foo: 'bar';
+  }
+}
+@media print {
+  body ul li something {
+    foo: 'bar';
+  }
+}
+body {
+  one: 1;
+  two: 2;
+}
+@media print {
+  body ul li body {
+    foo: 'bar';
+  }
+}
+.nested {
+  margin-left: 10px;
+}
+@media screen {
+  .nested {
+    margin-left: 20px;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .something {
+    foo: bar;
+    bar: baz;
+  }
+}
+@media only screen {
+  body .thing {
+    background: #123456;
+  }
+  body .thing .child {
+    more: stuff;
+  }
+}
+@media and stuff {
+  complex {
+    stuff: 1234;
+  }
+}
+@media only awesome {
+  complex {
+    fizz: buzz;
+  }
+}
+@media not so awesome {
+  complex {
+    one: 1;
+  }
+  complex .child {
+    two: 2;
+  }
+}
+#logo {
+  background-image: url("/images/logo.png");
+}
+@media all and (-webkit-min-device-pixel-ratio: 1.5) {
+  #logo {
+    background-size: auto auto;
+  }
+}
+#logo {
+  background-image: url("/images/logo.png");
+}
+@media all and (-webkit-min-device-pixel-ratio: 1.5) {
+  #logo {
+    background-size: 50px 100px;
+  }
+}

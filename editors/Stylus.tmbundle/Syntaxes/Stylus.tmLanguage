@@ -12,14 +12,78 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.comment.stylus</string>
+				</dict>
+			</dict>
 			<key>match</key>
-			<string>^ *(&amp;|)</string>
+			<string>(?:^[ \t]+)?(\/\/).*$\n?</string>
+			<key>name</key>
+			<string>comment.line.stylus</string>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>/\*</string>
+			<key>captures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.comment.stylus</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>\*/</string>
+			<key>name</key>
+			<string>comment.block.stylus</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.function.stylus</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(^[-a-zA-Z_][-\w]*)?(\()</string>
+			<key>name</key>
+			<string>meta.function.stylus</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.entity.stylus</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>\.-?[_a-zA-Z]+[_a-zA-Z0-9-]*</string>
+			<key>name</key>
+			<string>entity.other.attribute-name.class.stylus</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>^ *&amp;</string>
+			<key>name</key>
+			<string>entity.language.stylus</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>(arguments)</string>
 			<key>name</key>
 			<string>variable.language.stylus</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(arguments)</string>
+			<string>\b(.*)(?=\s*=)</string>
 			<key>name</key>
 			<string>variable.language.stylus</string>
 		</dict>
@@ -39,21 +103,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(\.)[a-zA-Z0-9_-]+</string>
-			<key>name</key>
-			<string>entity.other.attribute-name.class.stylus</string>
-		</dict>
-		<dict>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.entity.stylus</string>
-				</dict>
-			</dict>
-			<key>match</key>
-			<string>(:+)\b(after|before|first-child|first-letter|first-line|selection)\b</string>
+			<string>(:+)\b(after|before|first-letter|first-line|selection)\b</string>
 			<key>name</key>
 			<string>entity.other.attribute-name.pseudo-element.stylus</string>
 		</dict>
@@ -67,7 +117,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(:)\b(active|hover|link|visited|focus)\b</string>
+			<string>(:)\b(active|hover|focus|target|link|any-link|local-link|visited|scope|current|past|future|dir|lang|enabled|disabled|checked|indeterminate|default|valid|invalid|in-range|out-of-range|required|optional|read-only|read-write|root|first-child|last-child|only-child|nth-child|nth-last-child|first-of-type|last-of-type|nth-of-type|nth-last-of-type|only-of-type|nth-match|nth-last-match|empty|not|column|nth-column|nth-last-column)\b</string>
 			<key>name</key>
 			<string>entity.other.attribute-name.pseudo-class.stylus</string>
 		</dict>
@@ -77,20 +127,20 @@
 			<key>name</key>
 			<string>entity.name.tag.stylus</string>
 		</dict>
-    <dict>
-      <key>captures</key>
-      <dict>
-          <key>1</key>
-          <dict>
-              <key>name</key>
-              <string>punctuation.definition.constant.stylus</string>
-          </dict>
-      </dict>
-      <key>match</key>
-      <string>(#)([0-9a-fA-F]{3}|[0-9a-fA-F]{6})\b</string>
-      <key>name</key>
-      <string>constant.other.color.rgb-value.stylus</string>
-    </dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.constant.stylus</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(#)([0-9a-fA-F]{3}|[0-9a-fA-F]{6})\b</string>
+			<key>name</key>
+			<string>constant.other.color.rgb-value.stylus</string>
+		</dict>
 		<dict>
 			<key>captures</key>
 			<dict>
@@ -107,13 +157,19 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(!important|for|in|return|true|false|null|if|else|unless|return)\b</string>
+			<string>(-webkit-|-moz\-|-ms-|-o-)</string>
+			<key>name</key>
+			<string>meta.vendor-prefix.stylus</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>(\b|\s)(!important|for|in|return|true|false|null|if|else|unless|return)\b</string>
 			<key>name</key>
 			<string>keyword.control.stylus</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>((?:!|~|\+|-|(?:\*)?\*|\/|%|(?:\.)\.\.|&lt;|&gt;|(?:=|:|\?|\+|-|\*|\/|%|&lt;|&gt;)?=|!=)|(?:in|is(?:nt)?|not)\b)</string>
+			<string>((?:!|~|\+|-|(?:\*)?\*|\/|%|(?:\.)\.\.|&lt;|&gt;|(?:=|:|\?|\+|-|\*|\/|%|&lt;|&gt;)?=|!=)|\b(?:in|is(?:nt)?|not)\b)</string>
 			<key>name</key>
 			<string>keyword.operator.stylus</string>
 		</dict>
@@ -134,20 +190,18 @@
 			<string>string.quoted.single.stylus</string>
 		</dict>
 		<dict>
-			<key>begin</key>
-			<string>/\*</string>
-			<key>captures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.comment.js</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>\*/</string>
+			<key>comment</key>
+			<string>http://www.w3.org/TR/CSS21/syndata.html#value-def-color</string>
+			<key>match</key>
+			<string>\b(aqua|black|blue|fuchsia|gray|green|lime|maroon|navy|olive|orange|purple|red|silver|teal|white(?!-)|yellow)\b</string>
 			<key>name</key>
-			<string>comment.block.js</string>
+			<string>support.constant.color.w3c-standard-color-name.stylus</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>(\b(?i:arial|century|comic|courier|garamond|georgia|helvetica|impact|lucida|symbol|system|tahoma|times|trebuchet|utopia|verdana|webdings|sans-serif|serif|monospace)\b)</string>
+			<key>name</key>
+			<string>support.constant.font-name.stylus</string>
 		</dict>
 		<dict>
 			<key>captures</key>
@@ -155,68 +209,36 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.comment.stylus</string>
+					<string>keyword.other.unit.stylus</string>
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(?:^[ \t]+)?(\/\/).*$\n?</string>
+			<string>(?&lt;![a-zA-Z])(?x)
+				(?:-|\+)?(?:(?:[0-9]+(?:\.[0-9]+)?)|(?:\.[0-9]+))
+				((?:px|pt|ch|cm|mm|in|r?em|ex|pc|deg|g?rad|dpi|dpcm|s)\b|%)?</string>
 			<key>name</key>
-			<string>comment.line.stylus</string>
+			<string>constant.numeric.stylus</string>
 		</dict>
 		<dict>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.function.stylus</string>
-				</dict>
-			</dict>
 			<key>match</key>
-			<string>([-a-zA-Z_][-\w]*)?(\()</string>
+			<string>\b(alignment-adjust|alignment-baseline|animation|animation-delay|animation-direction|animation-duration|animation-iteration-count|animation-name|animation-play-state|animation-timing-function|appearance|azimuth|backface-visibility|background|background-attachment|background-clip|background-color|background-image|background-origin|background-position|background-repeat|background-size|baseline-shift|binding|bleed|bookmark-label|bookmark-level|bookmark-state|bookmark-target|border|border-bottom|border-bottom-color|border-bottom-left-radius|border-bottom-right-radius|border-bottom-style|border-bottom-width|border-collapse|border-color|border-image|border-image-outset|border-image-repeat|border-image-slice|border-image-source|border-image-width|border-left|border-left-color|border-left-style|border-left-width|border-radius|border-right|border-right-color|border-right-style|border-right-width|border-spacing|border-style|border-top|border-top-color|border-top-left-radius|border-top-right-radius|border-top-style|border-top-width|border-width|bottom|box-decoration-break|box-shadow|box-sizing|break-after|break-before|break-inside|caption-side|clear|clip|color|color-profile|column-count|column-fill|column-gap|column-rule|column-rule-color|column-rule-style|column-rule-width|column-span|column-width|columns|content|counter-increment|counter-reset|crop|cue|cue-after|cue-before|cursor|direction|display|dominant-baseline|drop-initial-after-adjust|drop-initial-after-align|drop-initial-before-adjust|drop-initial-before-align|drop-initial-size|drop-initial-value|elevation|empty-cells|fit|fit-position|flex-align|flex-flow|flex-line-pack|flex-order|flex-pack|float|float-offset|font|font-family|font-size|font-size-adjust|font-smoothing|font-stretch|font-style|font-variant|font-weight|grid-columns|grid-rows|hanging-punctuation|height|hyphenate-after|hyphenate-before|hyphenate-character|hyphenate-lines|hyphenate-resource|hyphens|icon|image-orientation|image-rendering|image-resolution|inline-box-align|left|letter-spacing|line-break|line-height|line-stacking|line-stacking-ruby|line-stacking-shift|line-stacking-strategy|list-style|list-style-image|list-style-position|list-style-type|margin|margin-bottom|margin-left|margin-right|margin-top|marker-offset|marks|marquee-direction|marquee-loop|marquee-play-count|marquee-speed|marquee-style|max-height|max-width|min-height|min-width|move-to|nav-down|nav-index|nav-left|nav-right|nav-up|opacity|orphans|outline|outline-color|outline-offset|outline-style|outline-width|overflow|overflow-style|overflow-wrap|overflow-x|overflow-y|padding|padding-bottom|padding-left|padding-right|padding-top|page|page-break-after|page-break-before|page-break-inside|page-policy|pause|pause-after|pause-before|perspective|perspective-origin|phonemes|pitch|pitch-range|play-during|pointer-events|position|presentation-level|punctuation-trim|quotes|rendering-intent|resize|rest|rest-after|rest-before|richness|right|rotation|rotation-point|ruby-align|ruby-overhang|ruby-position|ruby-span|size|speak|speak-header|speak-numeral|speak-punctuation|speech-rate|src|stress|string-set|tab-size|table-layout|target|target-name|target-new|target-position|text-align|text-align-last|text-decoration|text-decoration-color|text-decoration-line|text-decoration-skip|text-decoration-style|text-emphasis|text-emphasis-color|text-emphasis-position|text-emphasis-style|text-height|text-indent|text-justify|text-outline|text-shadow|text-space-collapse|text-transform|text-underline-position|text-wrap|top|transform|transform-origin|transform-style|transition|transition-delay|transition-duration|transition-property|transition-timing-function|unicode-bidi|user-select|vertical-align|visibility|voice-balance|voice-duration|voice-family|voice-pitch|voice-pitch-range|voice-rate|voice-stress|voice-volume|volume|white-space|widows|width|word-break|word-spacing|word-wrap|z-index)\b(?=\:|\s\s*)</string>
 			<key>name</key>
-			<string>meta.function.stylus</string>
+			<string>support.type.property-name.stylus</string>
 		</dict>
-    <dict>
-      <key>comment</key>
-      <string>http://www.w3.org/TR/CSS21/syndata.html#value-def-color</string>
-      <key>match</key>
-      <string>\b(aqua|black|blue|fuchsia|gray|green|lime|maroon|navy|olive|orange|purple|red|silver|teal|white|yellow)\b</string>
-      <key>name</key>
-      <string>support.constant.color.w3c-standard-color-name.stylus</string>
-    </dict>
-    <dict>
-      <key>match</key>
-      <string>(\b(?i:arial|century|comic|courier|garamond|georgia|helvetica|impact|lucida|symbol|system|tahoma|times|trebuchet|utopia|verdana|webdings|sans-serif|serif|monospace)\b)</string>
-      <key>name</key>
-      <string>support.constant.font-name.stylus</string>
-    </dict>
-    <dict>
-      <key>captures</key>
-      <dict>
-          <key>1</key>
-          <dict>
-              <key>name</key>
-              <string>keyword.other.unit.stylus</string>
-          </dict>
-      </dict>
-      <key>match</key>
-      <string>(?x)
-          (?:-|\+)?(?:(?:[0-9]+(?:\.[0-9]+)?)|(?:\.[0-9]+))
-          ((?:px|pt|ch|cm|mm|in|r?em|ex|pc|deg|g?rad|dpi|dpcm|s)\b|%)?</string>
-      <key>name</key>
-      <string>constant.numeric.stylus</string>
-    </dict>
-    <dict>
-      <key>match</key> <string>\b(azimuth|background-attachment|background-color|background-image|background-position|background-repeat|background|box-shadow|border-radius|border-bottom-color|border-bottom-style|border-bottom-width|border-bottom|border-collapse|border-color|border-left-color|border-left-style|border-left-width|border-left|border-right-color|border-right-style|border-right-width|border-right|border-spacing|border-style|border-top-color|border-top-style|border-top-width|border-top|border-width|border|bottom|caption-side|clear|clip|color|content|counter-increment|counter-reset|cue-after|cue-before|cue|cursor|direction|display|elevation|empty-cells|float|font-family|font-size-adjust|font-size|font-stretch|font-style|font-variant|font-weight|font|height|image-rendering|left|letter-spacing|line-height|list-style-image|list-style-position|list-style-type|list-style|margin-bottom|margin-left|margin-right|margin-top|marker-offset|margin|marks|max-height|max-width|min-height|min-width|-moz-border-radius|opacity|orphans|outline-color|outline-style|outline-width|outline|overflow(-[xy])?|padding-bottom|padding-left|padding-right|padding-top|padding|page-break-after|page-break-before|page-break-inside|page|pause-after|pause-before|pause|pitch-range|pitch|play-during|pointer-events|position|quotes|resize|richness|right|size|speak-header|speak-numeral|speak-punctuation|speech-rate|speak|src|stress|table-layout|text-(align|decoration|indent|rendering|shadow|transform)|top|transition|transform|unicode-bidi|vertical-align|visibility|voice-family|volume|white-space|widows|width|word-(spacing|wrap)|zoom|z-index)\b</string>
-      <key>name</key>
-      <string>support.type.property-name.stylus</string>
-    </dict>
-    <dict>
-      <key>match</key> <string>\b(absolute|all(-scroll)?|always|armenian|auto|avoid|baseline|below|bidi-override|block|bold|bolder|both|bottom|break-all|break-word|capitalize|center|char|circle|cjk-ideographic|col-resize|collapse|crosshair|dashed|decimal-leading-zero|decimal|default|disabled|disc|distribute-all-lines|distribute-letter|distribute-space|distribute|dotted|double|e-resize|ellipsis|fixed|geometricPrecision|georgian|groove|hand|hebrew|help|hidden|hiragana-iroha|hiragana|horizontal|ideograph-alpha|ideograph-numeric|ideograph-parenthesis|ideograph-space|inactive|inherit|inline-block|inline|inset|inside|inter-ideograph|inter-word|italic|justify|katakana-iroha|katakana|keep-all|left|lighter|line-edge|line-through|line|list-item|loose|lower-alpha|lower-greek|lower-latin|lower-roman|lowercase|lr-tb|ltr|medium|middle|move|n-resize|ne-resize|newspaper|no-drop|no-repeat|nw-resize|none|normal|not-allowed|nowrap|oblique|optimize(Legibility|Quality|Speed)|outset|outside|overline|pointer|pre(-(wrap|line))?|progress|relative|repeat-x|repeat-y|repeat|right|ridge|row-resize|rtl|s-resize|scroll|se-resize|separate|small-caps|solid|square|static|strict|sub|super|sw-resize|table-footer-group|table-header-group|tb-rl|text-bottom|text-top|text|thick|thin|top|transparent|underline|upper-alpha|upper-latin|upper-roman|uppercase|vertical(-(ideographic|text))?|visible(Painted|Fill|Stroke)?|w-resize|wait|whitespace|zero|smaller|larger|((xx?-)?(small|large))|painted|fill|stroke)\b</string>
-      <key>name</key>
-      <string>support.constant.property-value.stylus</string>
-    </dict>
+		<dict>
+			<key>comment</key>
+			<string>http://dev.w3.org/csswg/css3-transitions/#properties-from-css-</string>
+			<key>match</key>
+			<string>\b(background-color|background-position|border-bottom-color|border-bottom-width|border-left-color|border-left-width|border-right-color|border-right-width|border-spacing|border-top-color|border-top-width|bottom|clip|color(-stop)?|crop css3-content will likely advance slower than this specification, in which case this definition should move there|font-size|font-weight|height|left|letter-spacing|line-height|margin-bottom|margin-left|margin-right|margin-top|max-height|max-width|min-height|min-width|opacity|outline-color|outline-offset|outline-width|padding-bottom|padding-left|padding-right|padding-top|right|text-indent|text-shadow|top|vertical-align|visibility|width|word-spacing|z-index)\b(?!\:)</string>
+			<key>name</key>
+			<string>support.constant.transitionable-property-value.stylus</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>\b(absolute|all(-scroll)?|alternate|always|antialiased|armenian|auto|avoid|baseline|below|bidi-override|block|bold|bolder|border-box|both|bottom|break-all|break-word|capitalize|center|char|circle|cjk-ideographic|col-resize|collapse|content-box|crosshair|dashed|decimal-leading-zero|decimal|default|disabled|disc|distribute-all-lines|distribute-letter|distribute-space|distribute|dotted|double|e-resize|ease(-(in(-out)?|out))?|ellipsis|fill|fixed|format|geometricPrecision|georgian|groove|hand|hebrew|help|hidden|hiragana-iroha|hiragana|horizontal|ideograph-alpha|ideograph-numeric|ideograph-parenthesis|ideograph-space|inactive|infinite|inherit|inline-block|inline|inset|inside|inter-ideograph|inter-word|italic|justify|katakana-iroha|katakana|keep-all|larger|left|lighter|line-edge|line-through|line|linear(-gradient)?|list-item|loose|lower-alpha|lower-greek|lower-latin|lower-roman|lowercase|lr-tb|ltr|medium|middle|move|n-resize|ne-resize|newspaper|no-drop|no-repeat|nw-resize|none|normal|not-allowed|nowrap|oblique|optimize(Legibility|Quality|Speed)|outset|outside|overline|padding-box|painted|pointer|pre(-(wrap|line))?|progress|relative|repeat-x|repeat-y|repeat|right|ridge|row-resize|rtl|s-resize|scroll|se-resize|separate|small-caps|smaller|solid|square|static|strict|stroke|sub|subpixel-antialiased|super|sw-resize|table-footer-group|table-header-group|tb-rl|text-bottom|text-top|text|thick|thin|top|transparent|underline|upper-alpha|upper-latin|upper-roman|uppercase|url|vertical(-(ideographic|text))?|visible(Painted|Fill|Stroke)?|w-resize|wait|whitespace|((xx?-)?(small|large))|zero)\b</string>
+			<key>name</key>
+			<string>support.constant.property-value.stylus</string>
+		</dict>
 	</array>
 	<key>scopeName</key>
 	<string>source.stylus</string>

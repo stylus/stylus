@@ -1,3 +1,231 @@
+0.38.0 / 2013-09-24
+==================
+
+  * Fixed `push` not to modify the first element of another array, #1118.
+  * Fixed property lookup from mixins, #1127.
+  * Fixed support for `src` and `dest` in middleware, started tests for middleware #1143.
+  * Fixed `--resolve-url` that removed tails from urls, #1126.
+  * Fixed mime type for `.woff`, #1128.
+  * Fixed `.toString` for undefined functions, #1119.
+  * Fixed path overlap for non-string dest, #1115.
+  * Fixed `path.resolve` for non-true resolveURL, #1116.
+  * Fixed sync return in `stylus.render()`, #1138.
+  * Fixed duplicate calls from `this.calling`, #1122.
+
+0.37.0 / 2013-08-19
+==================
+
+  * Added optional params to the json bif, #1102.
+  * Added `--print` option to print CSS to stdout, #1108.
+  * Fixed json bif to return literals for colours, #875.
+  * Fixed include of the css files when `--resolve-url` is on, #1099.
+  * Fixed error in negating variables, #1101.
+  * Fixed bug in `p` function, #1111.
+  * Fixed tests under windows, #1105.
+  * Fixed regression after #1094, #1113.
+  * Fixed regression after #983, #1098.
+
+0.36.1 / 2013-08-06
+==================
+
+  * Fixed regression after #1090, #1094.
+
+0.36.0 / 2013-08-01
+==================
+
+  * Added `substr`, `replace` and `split` bifs, #1088.
+  * Added possibility to provide functions to src and dest, #930.
+  * Added explicit expose for events, #898.
+  * Added blocking and css manipulation possibility within 'end' event, #923.
+  * Fixed unneeded code for imports, #1090.
+  * Fixed mtime for literal imports, #983.
+  * Fixed empty string as possible quote value for string node, #956.
+  * Fixed non-symmetrical src and dest paths in middleware, #1037.
+
+0.35.1 / 2013-07-29
+==================
+
+  * Fixed the support for progressive JPEGs in `image-size`, #1087.
+
+0.35.0 / 2013-07-29
+==================
+
+  * Added jpeg and svg support to image-size, #1083.
+  * Added `tan` trigonometric function, also `sin` and `cos` now  understand `deg` units.
+  * Added fonts to data URI `url()` mimes, also the list of mimes is now configurable, #841, #1046.
+  * Added base conversion for numbers, #714.
+  * Fixes extends from nested mixins, #1084.
+  * Fixes coercion error, #1082.
+
+0.34.1 / 2013-07-12
+==================
+
+  * Fixed the regression after #865.
+
+0.34.0 / 2013-07-12
+==================
+
+  * Added built-in `use()` function to extend Stylus from inside  of `.styl` files, #788.
+  * Added optional resolver of relative urls, #1070.
+  * Fixes incorrect imports lookup inside function call, #1069.
+  * Fixes a lot of issues with trailing symbols in comments, #865.
+  * Fixes brace on a newline CSS code style.
+  * Some minor fixes to tmbundle: #975, #1033, #1034.
+ 
+0.33.1 / 2013-06-30 
+==================
+
+  * Fixed the `exports.version` to always show an actual one.
+
+0.33.0 / 2013-06-30 
+==================
+
+  * Added extendable placeholder selectors, #1014.
+  * Added optional argument to `image-size` function, #812.
+  * Fixed inline comments after selectors, #862.
+  * Fixed a bug with empty block in CSS syntax, #712.
+ 
+0.32.1 / 2013-02-27 
+==================
+
+  * fix issue on Windows where absolute path starts with two backslashes
+  * fix extends within a loop.
+  * fix: don't try to read absolute urls
+
+0.32.0 / 2013-01-04 
+==================
+
+  * add sync api for #230 #691 #151
+  * fix unsuppressed comments in nested imports
+  * fix #911 Percentage calculation value not copied
+
+0.31.0 / 2012-11-24 
+==================
+
+  * add support for rounding precision
+  * fix extends with parent reference. Closes #879
+  * fix importing of files with ".css" in the dirname
+  * fix #619 Support slash in media  
+  * fix #819 Extends generate duplicate selectors
+  * fix #807 directory with `.styl` in the name and local install of stylus
+  * fix #814 Add property function with media query
+  * fix #828 Add 'x' unit for image-set (synonym to dppx).
+  * fix #834 Percentage calculation not used when value is expression
+
+0.30.1 / 2012-10-17 
+==================
+
+  * fix mozdocument nodes not getting visited during imports. Fixes #853
+
+0.30.0 / 2012-10-15 
+==================
+
+  * add @-moz-document to the lexer and parser. Fixes #436
+  * add --import for issue #485
+  * fix @property lookup when a sibling is null
+  * fix 'limit' file size option that was broken in 61a2cf
+  * fix pseudo-selector properties. Closes #808
+
+0.29.0 / 2012-08-15 
+==================
+
+  * add more features to the textmate bundle [paulmillr]
+  * add `json()` BIF for loading variables from JSON files [geddesign]
+  * fix for #790 allow trailing colon, comma etc in // comments [geddesign]
+
+0.28.2 / 2012-07-15 
+==================
+
+  * fix extend in mixin. Closes #747, #748 and #751
+
+0.28.1 / 2012-07-07 
+==================
+
+  * fix __@media__ cloning
+
+0.28.0 / 2012-07-06 
+==================
+
+  * add suffix to `basename()` BIF
+  * add `pathjoin()` BIF
+  * add `basename()` BIF
+  * add `dirname()` BIF
+  * add `extname()` BIF
+  * fix `@extend` in mixin. Closes #638
+
+0.27.2 / 2012-06-19 
+==================
+
+  * Adding list of all css3 units
+  * Fixed CSS to stylus conversion `!important` support
+  * Fix last rule being ignored if empty indents at the end of the file
+  * Fixes #425: Compiler hangs when the last property isn't followed by semicolon at the end of the document
+  * Fixes #435: Can't concat array inside url()
+
+0.27.1 / 2012-05-28 
+==================
+
+  * Fixes #698: incorrect function call within for with named argument [Tõnis Tiigi]
+  * Fixes #676. Stylus incorrectly imports the .css files that are not in the same folder as the processed .styl file
+
+0.27.0 / 2012-05-10 
+==================
+
+  * Added `add-property()` mixin support [jasonkuhrt]
+  * Added % support for `fade-in()` and `fade-out()` [jasonkuhrt]
+  * Added % support to `rgba()` [jasonkuhrt]
+  * Fixed `.import()` - previously failed to mixin
+
+0.26.1 / 2012-05-07 
+==================
+
+  * any node. Closes #657
+
+0.26.0 / 2012-04-27 
+==================
+
+  * Added BIF shift [gravof]
+  * Added BIF pop [gravof]
+  * Added support for __@media__ bubbling properties [Ian MacLeod]
+  * Changed: strip trailing zeros [gravof]
+
+0.25.0 / 2012-04-03 
+==================
+
+  * Added `make test-cov`
+  * Added temporary multiline support.
+  * Added: allow for '%' unit type in the 'alpha' of rgba and hsla [jasonkuhrt]
+  * Updated cssom dep
+  * Removed growl dep. Closes #583
+  * Fixed BIF retval coercion
+  * Fixed issue #390, nested @media
+
+0.24.0 / 2012-02-16 
+==================
+
+  * Added `mix()` BIF (docs needed)
+  * Added: cast return values from js functions
+  * Fixed binops in mixin selectors. Closes #566
+  * Fixed `opposite-position()` pass through "center"`
+
+0.23.0 / 2012-02-02 
+==================
+
+  * Added `Renderer` "end" event
+  * Added: cast return value from js-functions
+  * Cleaned up documentation grammar etc [Zearin]
+
+0.22.6 / 2012-01-20 
+==================
+
+  * Fixed postfix conditional cloning. Closes #535
+  * Fixed idents prefixed with several hyphens. Closes #536
+  * Fixed up the TextMate bundle syntax [ianstormtaylor]
+
+0.22.5 / 2012-01-16 
+==================
+
+  * Fixed underscore in function identifier. Closes #524
 
 0.22.4 / 2012-01-11 
 ==================

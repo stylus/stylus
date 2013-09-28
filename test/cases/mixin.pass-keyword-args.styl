@@ -1,0 +1,12 @@
+mixinA(height)
+  background: #fff
+  mixinB(height: height);
+
+mixinB(height = 0)
+  height: height
+
+body
+  mixinA(100)
+
+#content
+  mixinA(200)

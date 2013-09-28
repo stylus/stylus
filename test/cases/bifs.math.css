@@ -1,0 +1,69 @@
+.math {
+  test1: 1;
+  test2: 0;
+  test3: 1;
+}
+.math_units {
+  test1: 1px;
+  test2: 0px;
+  test3: 1px;
+}
+.math_precision0 {
+  test1: 1;
+  test2: 0;
+  test3: 0;
+}
+.math_precision1 {
+  test1: 0.5;
+  test2: 0.4;
+  test3: 0.5;
+}
+.math_precision2 {
+  test1: 0.48;
+  test2: 0.47;
+  test3: 0.47;
+}
+.math_PI {
+  foo: 3.141592653589793;
+}
+.math_sin {
+  test1: 0;
+  test2: 0.5;
+  test3: 0.707106781;
+  test4: 0.866025404;
+  test5: 1;
+  test6: 0;
+  test7: -1;
+  test8: 0;
+}
+.math_cos {
+  test1: 1;
+  test2: 0.866025404;
+  test3: 0.707106781;
+  test4: 0.5;
+  test5: 0;
+  test6: -1;
+  test7: 0;
+  test8: 1;
+}
+.math_tan {
+  test1: 0;
+  test2: 0.577350269;
+  test3: 1;
+  test4: 1.732050808;
+  test5: Infinity;
+  test6: 0;
+  test7: Infinity;
+  test8: 0;
+}
+.math_sin_rad {
+  test1: 0.866025404;
+  test2: 0.707106781;
+  test3: 0.5;
+  test4: -0.5;
+  test5: -0.707106781;
+  test6: -0.866025404;
+  test7: -0.866025404;
+  test8: -0.707106781;
+  test9: -0.5;
+}

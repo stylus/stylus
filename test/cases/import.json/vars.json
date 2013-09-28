@@ -1,0 +1,19 @@
+{
+  "bg" : "purple",
+  "nope": "none",
+  "color" : "#ffca45",
+  "background-color": "rgb(255,202,69)",
+  "fade-color": "rgba(255,202,69, 0.5)",
+  "spacing" : 0,
+  "gutter" : "10px",
+  "queries": {
+    "small": "screen and (min-width:1px) and (max-width:400px)",
+    "large": "screen and (min-width:1501px)"
+  },
+  "animate": {
+    "special": {
+      "out": "width 1s ease-out"
+    }
+  },
+  "awesome": true
+}

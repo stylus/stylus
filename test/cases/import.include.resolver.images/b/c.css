@@ -1,0 +1,10 @@
+.c {
+  background: url(a.png);
+  background: url("a.png");
+  background: url('a.png');
+  background: url( 'a.png' );
+  background: url( a.png );
+  background: url(a);
+  background: url("a.png?ver=2.3");
+  background: url(/a.png);
+}

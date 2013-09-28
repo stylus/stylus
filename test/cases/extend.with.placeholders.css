@@ -1,0 +1,47 @@
+button.login {
+  border: 1px solid #000;
+}
+button.login {
+  background: #f00;
+}
+a.link:hover,
+a.error:hover {
+  color: #f00;
+}
+.error {
+  background: #0f0;
+}
+.hello {
+  width: 10px;
+}
+.hello .bar {
+  height: 10px;
+}
+.lol {
+  padding: 10px;
+}
+.hello:hover {
+  background: #000;
+}
+.barbaz_1 {
+  margin: 10px;
+}
+.foolector,
+.barbaz_2 {
+  margin: 20px;
+}
+.barbaz_3 {
+  margin: 30px;
+}
+@media (max-width: 640px) {
+  .helloing,
+  .boo {
+    display: none;
+  }
+}
+.helloing {
+  background: #0f0;
+}
+.boo {
+  background: #f00;
+}

@@ -43,6 +43,11 @@ var convertCSS = false;
 var linenos = false;
 
 /**
+ * Print to stdout flag.
+ */
+var print = false;
+
+/**
  * Firebug flag
  */
 
@@ -91,10 +96,22 @@ var plugins = [];
 var urlFunction = false;
 
 /**
- * Include css on import.
+ * Include CSS on import.
  */
 
 var includeCSS = false;
+
+/**
+ * Set file imports.
+ */
+
+var imports = [];
+
+/**
+ * Resolve relative urls
+ */
+
+var resolveURL = false;
 
 /**
  * Usage docs.
@@ -115,20 +132,23 @@ var usage = [
   , '  Options:'
   , ''
   , '    -i, --interactive       Start interactive REPL'
-  , '    -u, --use <path>        Utilize the stylus plugin at <path>'
-  , '    -U, --inline            Utilize image inlining via data uri support'
+  , '    -u, --use <path>        Utilize the Stylus plugin at <path>'
+  , '    -U, --inline            Utilize image inlining via data URI support'
   , '    -w, --watch             Watch file(s) for changes and re-compile'
   , '    -o, --out <dir>         Output to <dir> when passing files'
-  , '    -C, --css <src> [dest]  Convert css input to stylus'
+  , '    -C, --css <src> [dest]  Convert CSS input to Stylus'
   , '    -I, --include <path>    Add <path> to lookup paths'
-  , '    -c, --compress          Compress css output'
+  , '    -c, --compress          Compress CSS output'
   , '    -d, --compare           Display input along with output'
-  , '    -f, --firebug           Emits debug infos in the generated css that'
+  , '    -f, --firebug           Emits debug infos in the generated CSS that'
   , '                            can be used by the FireStylus Firebug plugin'
-  , '    -l, --line-numbers      Emits comments in the generated css'
-  , '                            indicating the corresponding stylus line'
-  , '    --include-css           Include regular css on @import'
-  , '    -V, --version           Display the version of stylus'
+  , '    -l, --line-numbers      Emits comments in the generated CSS'
+  , '                            indicating the corresponding Stylus line'
+  , '    -p, --print             Print out the compiled CSS'
+  , '    --import <file>         Import stylus <file>'
+  , '    --include-css           Include regular CSS on @import'
+  , '    -r, --resolve-url       Resolve relative urls inside imports'
+  , '    -V, --version           Display the version of Stylus'
   , '    -h, --help              Display help information'
   , ''
 ].join('\n');
@@ -165,6 +185,10 @@ while (args.length) {
     case '--line-numbers':
       linenos = true;
       break;
+    case '-p':
+    case '--print':
+      print = true;
+    break;
     case '-V':
     case '--version':
       console.log(stylus.version);
@@ -232,17 +256,18 @@ while (args.length) {
         plugins.push({ path: path, options: options });
       }
       break;
+    case '--import':
+      var file = args.shift();
+      if (!file) throw new Error('--import <file> required');
+      imports.push(file);
+      break;
+    case '-r':
+    case '--resolve-url':
+      resolveURL = true;
+      break;
     default:
       files.push(arg);
   }
-}
-
-// optional growl support
-
-try {
-  var growl = require('growl');
-} catch (err) {
-  // ignore
 }
 
 // if --watch is used, assume we are
@@ -316,7 +341,7 @@ var options = {
 
 var str = '';
 
-// Convert css to stylus
+// Convert CSS to Stylus
 
 if (convertCSS) {
     switch (files.length) {
@@ -346,7 +371,7 @@ if (convertCSS) {
 }
 
 /**
- * Start stylus REPL.
+ * Start Stylus REPL.
  */
 
 function repl() {
@@ -420,7 +445,7 @@ function repl() {
 }
 
 /**
- * Highlight the given string of stylus.
+ * Highlight the given string of Stylus.
  */
 
 function highlight(str) {
@@ -462,7 +487,9 @@ function compileStdio() {
     // Compile to css
     var style = stylus(str, options);
     if (includeCSS) style.set('include css', true);
+    if (resolveURL) style.set('resolve url', true);
     usePlugins(style);
+    importFiles(style);
     style.render(function(err, css){
       if (err) throw err;
       if (compare) {
@@ -500,13 +527,15 @@ function compileFile(file) {
         options._imports = [];
         var style = stylus(str, options);
         if (includeCSS) style.set('include css', true);
+        if (resolveURL) style.set('resolve url', true);
+
         usePlugins(style);
+        importFiles(style);
         style.render(function(err, css){
           watchImports(file, options._imports);
           if (err) {
             if (watchers) {
               console.error(err.stack || err.message);
-              growl && growl.notify(err.message, { title: 'Stylus error' });
             } else {
               throw err;
             }
@@ -530,10 +559,12 @@ function compileFile(file) {
 }
 
 /**
- * Write the given css output.
+ * Write the given CSS output.
  */
 
 function writeFile(file, css) {
+  // --print support
+  if (print) return process.stdout.write(css);
   // --out support
   var path = dest
     ? join(dest, basename(file, '.styl') + '.css')
@@ -567,7 +598,7 @@ function watch(file, fn) {
       if (event === 'change') fn(file);
     });
   } else {
-    fs.watchFile(file, { interval: 50 }, function(curr, prev) {
+    fs.watchFile(file, { interval: 300 }, function(curr, prev) {
       if (curr.mtime > prev.mtime) fn(file);
     });
   }
@@ -601,5 +632,19 @@ function usePlugins(style) {
     style.use(fn(options));
   });
 
-  if (urlFunction) style.define('url', stylus.url(urlFunction));
+  if (urlFunction) {
+    style.define('url', stylus.url(urlFunction));
+  } else if (resolveURL) {
+    style.define('url', stylus.resolver());
+  }
+}
+
+/**
+ * Imports the indicated files.
+ */
+
+function importFiles(style) {
+  imports.forEach(function(file) {
+    style.import(file);
+  });
 }
