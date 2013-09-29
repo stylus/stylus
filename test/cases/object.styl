@@ -57,3 +57,23 @@ body
 // 
 // body
 //   foo: tobi.species
+
+if true {
+  obj = {
+    color: #0c0
+  }
+
+  body {
+    color: obj.color
+  }
+}
+
+for num in 1..3 {
+  obj = {
+    color: num
+  }
+
+  body {
+    color: obj.color
+  }
+}
