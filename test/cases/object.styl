@@ -54,10 +54,12 @@ body
   foo: tobi.name, a tobi.age year old ferret
 
 tobi['species'] = { kind: Ferret }
+tobi['food'] = apple potato nuts
 
 body
   foo: tobi.species.kind
   bar: tobi['species']['kind']
+  baz: tobi.food[2]
 
 if true {
   obj = {
