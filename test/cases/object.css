@@ -24,6 +24,10 @@ body {
   foo: Tobi, a 2 year old ferret;
 }
 body {
+  foo: Ferret;
+  bar: Ferret;
+}
+body {
   color: #0c0;
 }
 body {

@@ -53,10 +53,11 @@ body
   tobi = { name: Tobi, age: 2 }
   foo: tobi.name, a tobi.age year old ferret
 
-// tobi.species = Ferret
-// 
-// body
-//   foo: tobi.species
+tobi['species'] = { kind: Ferret }
+
+body
+  foo: tobi.species.kind
+  bar: tobi['species']['kind']
 
 if true {
   obj = {
