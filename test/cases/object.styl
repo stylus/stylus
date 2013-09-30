@@ -17,8 +17,9 @@ body
   foo: type(obj)
   bar: 'foo' in obj
   baz: 'something' in obj
-  for prop in obj
+  for prop, value in obj
     {prop}: obj[prop]
+    {prop}: value
 
 sizes = {
   small: .25em .35

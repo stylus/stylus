@@ -9,7 +9,10 @@ body {
   bar: true;
   baz: false;
   foo: 'bar';
+  foo: 'bar';
   bar: 'baz';
+  bar: 'baz';
+  baz: 'raz';
   baz: 'raz';
 }
 body {
