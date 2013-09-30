@@ -13,6 +13,13 @@ body
   list = obj.foo obj.bar
   foo: list
 
+body
+  foo: type(obj)
+  bar: 'foo' in obj
+  baz: 'something' in obj
+  for prop in obj
+    {prop}: obj[prop]
+
 sizes = {
   small: .25em .35
   medium: .5em .7em
