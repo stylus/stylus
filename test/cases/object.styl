@@ -3,6 +3,7 @@ obj = {
   foo: 'bar',
   bar: 'baz',
   baz: 'raz'
+  'qux': 'qux'
 }
 
 body
@@ -12,6 +13,7 @@ body
   foo: obj.foo obj.baz obj.baz
   list = obj.foo obj.bar
   foo: list
+  qux: obj.qux
 
 body
   foo: type(obj)

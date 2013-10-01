@@ -3,6 +3,7 @@ body {
   foo: 'baz';
   foo: 'bar' 'raz' 'raz';
   foo: 'bar' 'baz';
+  qux: 'qux';
 }
 body {
   foo: 'object';
@@ -14,6 +15,8 @@ body {
   bar: 'baz';
   baz: 'raz';
   baz: 'raz';
+  qux: 'qux';
+  qux: 'qux';
   color: #c00;
 }
 body {
