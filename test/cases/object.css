@@ -4,6 +4,7 @@ body {
   foo: 'bar' 'raz' 'raz';
   foo: 'bar' 'baz';
   qux: 'qux';
+  bar: 4;
 }
 body {
   foo: 'object';
