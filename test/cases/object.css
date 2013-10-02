@@ -5,6 +5,7 @@ body {
   foo: 'bar' 'baz';
   qux: 'qux';
   bar: 4;
+  str: {"foo":"('bar')","bar":"('baz')","baz":"('raz')","qux":"('qux')"};
 }
 body {
   foo: 'object';
