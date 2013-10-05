@@ -4,7 +4,6 @@
  */
 
 var stylus = require('../')
-  , path = require('path')
   , fs = require('fs');
 
 // test cases
