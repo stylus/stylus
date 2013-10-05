@@ -7,8 +7,6 @@ var stylus = require('../')
   , path = require('path')
   , fs = require('fs');
 
-var RE_WIN_PATH_SEP = /\\(?=[a-z])/ig;
-
 // test cases
 
 var cases = fs.readdirSync('test/cases').filter(function(file){
@@ -43,7 +41,6 @@ describe('integration', function(){
 
       style.render(function(err, actual){
         if (err) throw err;
-        if ('/' != path.sep) actual = actual.replace(RE_WIN_PATH_SEP, '/');
         actual.trim().should.equal(css);
       });
     })
