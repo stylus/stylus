@@ -26,6 +26,8 @@ body {
   foo: 0.25em 0.35 0.5em 0.7em;
   foo: 0.25em 0.35;
   foo: 0.6em;
+  sizes: 'small' 'medium' 'large';
+  sizes: 0.25em 0.35 0.5em 0.7em 1em 1.4em;
 }
 body {
   foo: true;
