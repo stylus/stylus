@@ -1,0 +1,27 @@
+foo = { bar: { baz: true } }
+prop = 'bar'
+
+.foo
+  test: foo[prop]['baz']
+
+blah(str)
+  str
+
+foo = { bar: baz }
+
+.foo
+  background: blah(foo.bar)
+
+foo = {
+  bar: {
+    baz: baz
+  }
+}
+
+foo['bar']['baz'] = {
+  bar: baz,
+  baz: bar
+}
+
+body
+  test: foo.bar.baz.baz

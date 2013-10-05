@@ -1,0 +1,9 @@
+.foo {
+  test: true;
+}
+.foo {
+  background: baz;
+}
+body {
+  test: bar;
+}
