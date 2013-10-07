@@ -25,3 +25,12 @@ foo['bar']['baz'] = {
 
 body
   test: foo.bar.baz.baz
+
+bar = 'baz'
+
+obj = { baz: 'bar', bar: 'baz' }
+
+body
+  test: obj.bar
+  for i in 1..1
+    test: obj.bar
