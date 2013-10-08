@@ -11,3 +11,13 @@ body {
   test: 'baz';
   test: 'baz';
 }
+.foo {
+  test: 10px;
+  test: 10px;
+  test: 10px;
+  test: 10px;
+  test: 10px;
+  test: 10px;
+  test: 10px;
+  test: 10px;
+}

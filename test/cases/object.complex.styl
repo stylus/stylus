@@ -34,3 +34,18 @@ body
   test: obj.bar
   for i in 1..1
     test: obj.bar
+
+foo = {}
+foo['a'] = {}
+foo['a']['b'] = {}
+foo['a']['b']['c'] = 10px
+
+.foo
+  test: foo['a']['b']['c']
+  test: foo.a.b.c
+  test: foo['a'].b.c
+  test: foo.a['b'].c
+  test: foo.a.b['c']
+  test: foo['a']['b'].c
+  test: foo.a['b']['c']
+  test: foo['a'].b['c']
