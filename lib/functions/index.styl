@@ -217,20 +217,28 @@ invert(color)
 last(expr)
   expr[length(expr) - 1]
 
-// return keys in the given pairs
+// return keys in the given pairs or object
 
 keys(pairs)
   ret = ()
-  for pair in pairs
-    push(ret, pair[0]);
+  if type(pairs) == 'object'
+    for key in pairs
+      push(ret, key)
+  else
+    for pair in pairs
+      push(ret, pair[0]);
   ret
 
-// return values in the given pairs
+// return values in the given pairs or object
 
 values(pairs)
   ret = ()
-  for pair in pairs
-    push(ret, pair[1]);
+  if type(pairs) == 'object'
+    for key, val in pairs
+      push(ret, val)
+  else
+    for pair in pairs
+      push(ret, pair[1]);
   ret
 
 // join values with the given delimiter

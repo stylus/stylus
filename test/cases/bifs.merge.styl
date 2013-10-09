@@ -1,0 +1,12 @@
+obj = {
+  foo: 'foo'
+  bar: 'bar'
+}
+
+obj2 = {
+  baz: 'baz'
+}
+
+body
+  test: merge(obj, obj2, { qux: 'qux' }).qux
+  test: extend(obj, { foo: 'foo1' }).foo

@@ -1,0 +1,66 @@
+body {
+  foo: 'bar';
+  foo: 'baz';
+  foo: 'bar' 'raz' 'raz';
+  foo: 'bar' 'baz';
+  qux: 'qux';
+  bar: 4;
+  str: {"foo":"('bar')","bar":"('baz')","baz":"('raz')","qux":"('qux')"};
+}
+body {
+  foo: 'object';
+  bar: true;
+  baz: false;
+  foo: 'bar';
+  foo: 'bar';
+  bar: 'baz';
+  bar: 'baz';
+  baz: 'raz';
+  baz: 'raz';
+  qux: 'qux';
+  qux: 'qux';
+  color: #c00;
+}
+body {
+  foo: 0.25em 0.35;
+  foo: 0.25em 0.35 0.5em 0.7em;
+  foo: 0.25em 0.35;
+  foo: 0.6em;
+  sizes: 'small' 'medium' 'large';
+  sizes: 0.25em 0.35 0.5em 0.7em 1em 1.4em;
+}
+body {
+  foo: true;
+  foo: Wahoo;
+}
+body {
+  foo: Jane;
+  foo: Tobi;
+  foo: Tobi;
+  foo: Tobi;
+  foo: Jane;
+  foo: Tobi;
+}
+body {
+  foo: Tobi, a 2 year old ferret;
+}
+body {
+  foo: Ferret;
+  bar: Ferret;
+  baz: nuts;
+}
+body {
+  color: #0c0;
+}
+body {
+  color: 1;
+}
+body {
+  color: 2;
+}
+body {
+  color: 3;
+}
+body {
+  color: #00f;
+}
