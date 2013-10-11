@@ -2,6 +2,7 @@
   "bg" : "purple",
   "nope": "none",
   "color" : "#ffca45",
+  "alternate-color": "#abc",
   "background-color": "rgb(255,202,69)",
   "fade-color": "rgba(255,202,69, 0.5)",
   "spacing" : 0,
