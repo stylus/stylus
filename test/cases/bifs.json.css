@@ -24,4 +24,5 @@
 }
 .b {
   color: $params-color;
+  background-color: #abc;
 }
