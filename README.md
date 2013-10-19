@@ -1,5 +1,6 @@
-# Textyll
-
+# Textyll [![Build Status][build]][build-link]
+[build]: https://travis-ci.org/textyll/textyll.png?branch=gh-pages
+[build-link]: https://travis-ci.org/textyll/textyll
 ## Features
 
 ### Smart titles
