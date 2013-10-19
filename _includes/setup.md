@@ -37,6 +37,13 @@ Getting the language from the categories of url
         {% endif %}
     {% endfor %}
 
+Setting the lang prefix
+
+    {% assign lang_prefix = '' %}
+    {% if lang != site.default_lang %}
+        {% capture lang_prefix %}{{ lang }}/{% endcapture %}
+    {% endif %}
+
 Handling links
 
     {% assign link_handles_input = processed_content %}
@@ -82,8 +89,10 @@ Setting the page lang class
 Setting the page type class
 
     {% assign page_type_class = '' %}
-    {% if page.permalink == '/' %}
+    {% capture index_test %}/{{ lang_prefix }}{% endcapture %}
+    {% if page.permalink == index_test %}
         {% capture page_type_class %} page_index{% endcapture %}
+        {% assign is_index = true %}
     {% endif %}
     {% if page.page_type_class %}
         {% capture page_type_class %} page_{{ page.page_type_class }}{% endcapture %}
@@ -110,6 +119,19 @@ Setting the root url:
 Setting the default toc:
 
     {% capture toc %}{% include toc.md %}{% endcapture %}
+
+Setting the default partials:
+
+    {% assign partials_input = page %}
+    {% include tenkan/partials.md %}
+    {% assign partials = partials_result %}
+
+Setting the default partials toc:
+
+    {% assign partials_toc = '' %}
+    {% assign toc_input = partials_result %}
+    {% include toc.md %}
+    {% assign partials_toc = toc_result %}
 
 Transforming sidenotes:
 

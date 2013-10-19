@@ -11,13 +11,26 @@
     <title>{{ title }}</title>
 </head>
 <body class="page-body">
-    <h1>{{ title }}</h1>
-    <div>
+    <fieldset>
+        <legend>Page's Title</legend>
+        <h1>{{ title }}</h1>
+    </fieldset>
+    <fieldset>
+        <legend>Table of Contents</legend>
         {{ toc }}
-    </div>
-    <div>
+    </fieldset>
+    <fieldset>
+        <legend>Processed Content</legend>
         {{ processed_content }}
-    </div>
+    </fieldset>
+    <fieldset>
+        <legend>Partials ToC</legend>
+        {{ partials_toc }}
+    </fieldset>
+    <fieldset>
+        <legend>Partials</legend>
+        {{ partials }}
+    </fieldset>
 
     <script src="{{ root_url }}j/script.js"></script>
 </body>
