@@ -1,0 +1,23 @@
+.foo {
+  test: true;
+}
+.foo {
+  background: baz;
+}
+body {
+  test: bar;
+}
+body {
+  test: 'baz';
+  test: 'baz';
+}
+.foo {
+  test: 10px;
+  test: 10px;
+  test: 10px;
+  test: 10px;
+  test: 10px;
+  test: 10px;
+  test: 10px;
+  test: 10px;
+}
