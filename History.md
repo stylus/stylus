@@ -1,6 +1,7 @@
 0.39.0 / in development
 ==================
 
+  * Fixed calculation inside `calc` CSS function, #1133.
   * Fixed parsing shorthand colors from json config, #1158.
 
 0.38.0 / 2013-09-24
