@@ -1,6 +1,12 @@
 0.39.0 / in development
 ==================
 
+  * Added basic hashes support, #1150.
+  * Allow to inject Evaluator via Renderer's options, #1149.
+  * Fixed infinite loop case, #1147.
+  * Fixed Bug with `else if match`, #1154.
+  * Fixed schemaless absolute urls for `url`, #1148.
+  * Fixed urls in windows 7 for `--relative-url`, #1156.
   * Fixed calculation inside `calc` CSS function, #1133.
   * Fixed parsing shorthand colors from json config, #1158.
 
