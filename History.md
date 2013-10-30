@@ -1,4 +1,4 @@
-0.39.0 / in development
+0.39.0 / 2013-10-30
 ==================
 
   * Added basic hashes support, #1150.
