@@ -1,3 +1,8 @@
+0.39.3 / 2013-11-01
+==================
+
+  * Fixed parse error in conditional statement without `()`, #1178.
+
 0.39.2 / 2013-10-31
 ==================
 
