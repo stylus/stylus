@@ -26,3 +26,15 @@
   color: $params-color;
   background-color: #abc;
 }
+body {
+  display: none;
+  color: #a27400;
+  background-color: #a27400;
+  border-color: rgba(255,202,69,0.5);
+  outline-color: #400040;
+  padding: 0;
+  outline: 0;
+  margin: 20px;
+  -webkit-transition: width 1s ease-out;
+  border: #f00;
+}
