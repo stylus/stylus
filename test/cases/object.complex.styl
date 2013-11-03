@@ -49,3 +49,9 @@ foo['a']['b']['c'] = 10px
   test: foo['a']['b'].c
   test: foo.a['b']['c']
   test: foo['a'].b['c']
+
+foo(obj)
+  return obj.width
+
+body
+  width: foo({ width: 100px })

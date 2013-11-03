@@ -21,3 +21,6 @@ body {
   test: 10px;
   test: 10px;
 }
+body {
+  width: 100px;
+}
