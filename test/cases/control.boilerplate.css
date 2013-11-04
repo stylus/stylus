@@ -265,7 +265,7 @@ button {
   cursor: pointer;
 }
 /* 1) Make inputs and buttons play nice in IE: www.viget.com/inspire/styling-the-button-element-in-internet-explorer/
-   2) WebKit browsers add a 2px margin outside the chrome of form elements. 
+   2) WebKit browsers add a 2px margin outside the chrome of form elements.
       Firefox adds a 1px margin above and below textareas */
 button,
 input,
@@ -339,7 +339,7 @@ h6 {
 /**
  * Primary styles
  *
- * Author: 
+ * Author:
  */
 /**
  * Non-semantic helper classes: please define your styles before this section.
@@ -403,9 +403,9 @@ h6 {
  *
  * These follow after primary styles so they will successfully override.
  */
-@media all and (orientation:portrait) {
+@media all and (orientation: portrait) {
 }
-@media all and (orientation:landscape) {
+@media all and (orientation: landscape) {
 }
 /* Grade-A Mobile Browsers (Opera Mobile, Mobile Safari, Android Chrome)
    consider this: www.cloudfour.com/css-media-query-for-mobile-is-fools-gold/ */
