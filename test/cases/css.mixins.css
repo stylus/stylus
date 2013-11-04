@@ -12,9 +12,9 @@ a.button {
   background: #e3e3e3;
   border: 1px solid #bdbdbd;
   border-radius: 3px;
-  box-shadow: inset 0 0 1px 1px rgba(255,255,255,0.80);
+  box-shadow: inset 0 0 1px 1px rgba(255,255,255,0.8);
   color: #333;
-  font-family: "helvetica neue", helvetica, arial, sans-serif;
+  font-family: 'helvetica neue', helvetica, arial, sans-serif;
   font-size: 12px;
   font-weight: bold;
   line-height: 1;
@@ -26,13 +26,13 @@ a.button {
 button:hover,
 a.button:hover {
   background: #dbdbdb;
-  box-shadow: inset 0 0 1px 1px rgba(255,255,255,0.50);
+  box-shadow: inset 0 0 1px 1px rgba(255,255,255,0.5);
   color: #222;
   cursor: pointer;
 }
 button:active,
 a.button:active {
   background: #d6d6d6;
-  box-shadow: inset 0 0 1px 1px rgba(255,255,255,0.20);
+  box-shadow: inset 0 0 1px 1px rgba(255,255,255,0.2);
   color: #000;
 }

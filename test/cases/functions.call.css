@@ -2,3 +2,7 @@ body {
   foo: 15;
   foo: 7;
 }
+body {
+  width: -webkit-calc(100% - 20px);
+  width: calc(100% - 20px);
+}

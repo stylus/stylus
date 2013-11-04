@@ -19,3 +19,6 @@ body {
   foo: -moz-something(15px);
   foo: something(15px);
 }
+.test-as-mixin {
+  foo: bar;
+}

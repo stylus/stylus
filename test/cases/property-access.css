@@ -16,8 +16,8 @@ no-props {
   foo: ;
 }
 foo {
-  border-color: 1px solid #ff0505;
   border: 1px solid #ff0505;
+  border-color: 1px solid #ff0505;
 }
 #logo {
   z-index: 20;
@@ -34,15 +34,15 @@ foo {
   min-height: 100px;
 }
 body {
-  foo: "bar";
-  bar: "bar";
+  foo: 'bar';
+  bar: 'bar';
 }
 body {
-  foo: "bar";
-  bar: "bar";
+  foo: 'bar';
+  bar: 'bar';
 }
 body {
-  foo: "bar";
-  bar: "bar";
+  foo: 'bar';
+  bar: 'bar';
 }
 

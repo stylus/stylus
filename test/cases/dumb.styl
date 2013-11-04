@@ -1,0 +1,11 @@
+list = red green blue
+no-colors = false
+
+body
+  color: color for color in list if length(list) > 2 unless no-colors
+
+mixin()
+  color: color for color in list if length(list) > 2 unless no-colors
+
+body
+  mixin()

@@ -1,0 +1,16 @@
+form button,
+a.button {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #808080;
+}
+a.button {
+  text-decoration: none;
+}
+form button {
+  padding: 10px;
+  color: #f00;
+}
+form button:hover {
+  color: #00f;
+}

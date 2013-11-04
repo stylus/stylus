@@ -29,7 +29,7 @@ body {
   foo: bar;
   foo: baz;
 }
-@import "foo.css";
+@import 'foo.css';
 body {
   foo: 5;
 }

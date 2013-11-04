@@ -4,10 +4,10 @@ body {
   foo: 10;
 }
 body {
-  foo: "foo bar baz";
-  foo: "foo, bar, baz";
-  foo: "1 2 3";
-  foo: "1, 2, 3";
+  foo: 'foo bar baz';
+  foo: 'foo, bar, baz';
+  foo: '1 2 3';
+  foo: '1, 2, 3';
 }
 body {
   foo: 0 Impact;

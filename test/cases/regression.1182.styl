@@ -1,0 +1,14 @@
+$float = false
+$default-float = left
+
+body
+  if $float == left or $float == true {
+    float: $default-float;
+  } else if $float == false {
+    if $width = 10px {
+      width: $width
+    }
+  }
+  unless $float and $float != right {
+    height: 10px
+  }

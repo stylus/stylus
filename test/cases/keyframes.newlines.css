@@ -1,0 +1,45 @@
+@-moz-keyframes something {
+  0%, 50%, 100% {
+    background: #fff;
+  }
+
+  100% {
+    background: #000;
+  }
+}
+@-webkit-keyframes something {
+  0%, 50%, 100% {
+    background: #fff;
+  }
+
+  100% {
+    background: #000;
+  }
+}
+@-o-keyframes something {
+  0%, 50%, 100% {
+    background: #fff;
+  }
+
+  100% {
+    background: #000;
+  }
+}
+@-ms-keyframes something {
+  0%, 50%, 100% {
+    background: #fff;
+  }
+
+  100% {
+    background: #000;
+  }
+}
+@keyframes something {
+  0%, 50%, 100% {
+    background: #fff;
+  }
+
+  100% {
+    background: #000;
+  }
+}

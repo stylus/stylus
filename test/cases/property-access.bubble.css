@@ -1,0 +1,38 @@
+body {
+  color: #000;
+  background: #000;
+}
+body {
+  color: #f00;
+  background: #f00;
+}
+body {
+  color: #fff;
+}
+body ul li {
+  background: #fff;
+}
+body {
+  background-color: #eee;
+  height: 12px;
+  color: #eee;
+  font-size: 12px;
+}
+body {
+  color: #f00;
+}
+body ul li {
+  color: #00f;
+}
+body ul li a {
+  background-color: #00f;
+}
+ul {
+  color: #ff0;
+}
+ul li {
+  color: #f00;
+}
+ul li {
+  color: true;
+}

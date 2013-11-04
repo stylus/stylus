@@ -18,7 +18,7 @@ body .bar .sdf {
 .bar .baz,
 .foo .raz,
 .bar .raz {
-  something: "else";
+  something: 'else';
 }
 .foo .baz,
 .bar .baz,

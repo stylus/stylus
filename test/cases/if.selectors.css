@@ -1,13 +1,13 @@
 form input {
   border: 1px solid #eee;
 }
-[type="text"] {
+[type='text'] {
   margin: 0;
 }
-input[type="text"] {
+input[type='text'] {
   display: none;
 }
-input[type="password"],
+input[type='password'],
 select {
   background: #eee;
 }

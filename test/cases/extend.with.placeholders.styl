@@ -1,0 +1,77 @@
+$ugly-button
+  border 1px solid black
+
+$ugly-red-button
+  @extend $ugly-button
+  background red
+
+// This selector is never used; its properties won't appear in the output
+$ugly-blue-button
+  @extend $ugly-button
+  background blue
+
+button.login
+  @extend $ugly-red-button
+
+
+$extreme
+  a&:hover
+    color red
+
+.link
+  @extend $extreme
+
+.error
+  @extend $extreme
+  background lime
+
+$foo
+  width: 10px
+
+  .bar
+    height: 10px
+
+  $baz
+    padding: 10px
+
+  &:hover
+    background: #000
+
+.hello
+  @extend $foo
+
+// Extend the placeholder inside another placeholder
+.lol
+  @extend $foo $baz
+
+// Complex placeholder extend: generating placeholders and calling them with interpolations
+fooply()
+  for i in 1..3
+    $foo_{i}
+      margin: 10px*i
+
+fooply()
+
+fooxtend($num)
+  @extend $foo_{$num}
+
+.foolector
+  fooxtend(2)
+
+for i in 1..3
+  .barbaz_{i}
+    fooxtend(i)
+
+
+// Media queries
+@media (max-width: 640px)
+  $hide_at_640
+    display: none
+
+.helloing
+  background: lime
+  @extend $hide_at_640
+
+.boo
+  background: red
+  @extend $hide_at_640

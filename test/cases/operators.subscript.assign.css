@@ -1,5 +1,5 @@
 body {
-  foo: foo 2   "test";
+  foo: foo 2   'test';
   foo: foo;
   foo: 2;
   foo: true;
@@ -8,14 +8,14 @@ body {
   foo: 5;
 }
 body {
-  foo: foo "one" "one" "one";
+  foo: foo 'one' 'one' 'one';
 }
 body {
-  foo: 1    "two" "two";
+  foo: 1    'two' 'two';
 }
 body {
-  foo: 1 2 asdf "three";
+  foo: 1 2 asdf 'three';
 }
 body {
-  foo: 1 2 asdf "three";
+  foo: 1 2 asdf 'three';
 }

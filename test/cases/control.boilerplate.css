@@ -286,8 +286,6 @@ button::-moz-focus-inner {
   padding: 0;
 }
 /* Colors for form validity */
-input:valid,
-textarea:valid,
 input:invalid,
 textarea:invalid {
   border-radius: 1px;

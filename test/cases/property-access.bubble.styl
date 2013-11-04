@@ -1,0 +1,46 @@
+
+body
+  color: black
+  background: @color
+
+mixin()
+  background: @color
+
+body
+  color: red
+  mixin()
+
+body
+  color: white
+  ul
+    li
+      background: @color
+
+one()
+  height: 12px
+  two()
+
+two()
+  color: @background-color
+  font-size: @height
+
+body
+  background-color: #eee
+  one()
+
+body
+  color: red
+  ul
+    li
+      color: blue
+      a
+        background-color: @color
+
+ul
+  color: #ff0
+  li
+    color: @color - #0f0
+
+ul
+  li
+    color: @color == null

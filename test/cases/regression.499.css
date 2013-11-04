@@ -1,0 +1,14 @@
+ul li a,
+a.button,
+input[type=submit] {
+  color: #00f;
+}
+html body h1,
+html body .title,
+html body .huge-title {
+  font-size: 22px;
+  color: #000;
+}
+html body .huge-title {
+  font-size: 33px;
+}

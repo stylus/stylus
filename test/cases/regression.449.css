@@ -1,0 +1,9 @@
+html:lang(en) a {
+  foo: 'bar';
+}
+html:lang(en) a {
+  foo: 'bar';
+}
+ul li:nth-child(2) a {
+  foo: 'bar';
+}

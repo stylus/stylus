@@ -41,3 +41,6 @@ body .nested {
 body .nested .hidden {
   display: none;
 }
+body {
+  foo: 10;
+}

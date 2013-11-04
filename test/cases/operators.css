@@ -20,7 +20,7 @@ body {
   foo: false;
   foo: wahoo;
   foo: nope;
-  foo: "got 15px";
+  foo: 'got 15px';
   foo: 1;
   foo: 5;
   foo: true;
