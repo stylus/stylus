@@ -24,6 +24,7 @@
     , "lib/nodes/ident.js"
     , "lib/nodes/if.js"
     , "lib/nodes/import.js"
+    , "lib/nodes/extend.js"
     , "lib/nodes/index.js"
     , "lib/nodes/jsliteral.js"
     , "lib/nodes/keyframes.js"
