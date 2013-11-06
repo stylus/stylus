@@ -5,6 +5,8 @@ TM_BUNDLE = editors/Stylus.tmbundle
 stylus.js:
 	@node support/compile | cat support/head.js - support/foot.js > $@
 
+test: test-integration
+
 define DETERMINE_TEXTMATE_BUNDLE_PATH
 cd /tmp && \
 	cp /Applications/TextMate.app/Contents/Info.plist /tmp/textmate-info.plist && \

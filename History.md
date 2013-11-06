@@ -1,14 +1,3 @@
-=======
-0.40.0 / 2013-11-05
-==================
-
-  * Allow multiple `end` event handlers + optional result css modification, #1180.
-  * Added Support for proper hashes in json config, #1186.
-  * Allow functions accept object literal as an argument, #1184.
-  * Fixed another infinite loop (`a[` etc.), #1187.
-  * Fixed bug in hashes subassigns with functions, #1181.
-  * Fixed "is" attribute selectors fail, #1185.
-
 0.39.4 / 2013-11-03
 ==================
 
