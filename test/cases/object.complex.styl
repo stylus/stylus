@@ -49,3 +49,21 @@ foo['a']['b']['c'] = 10px
   test: foo['a']['b'].c
   test: foo.a['b']['c']
   test: foo['a'].b['c']
+
+foo()
+  return 10px
+
+bar = {}
+
+bar["baz"] = {
+  raz: foo()
+}
+
+body
+  width: bar.baz.raz
+
+foo(obj)
+  return obj.width
+
+body
+  width: foo({ width: 100px })
