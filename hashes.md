@@ -76,10 +76,10 @@ You can use other normal Stylus stuff with hashes, like `length()`:
 
 You can iterate through hashes with optional key param:
 
-    foo = { width: '10px', height: '20px' }
+    foo = { width: 10px, height: 20px }
 
     for key, value in foo
-      {value}: key
+      {key}: value
 
     // => width: 10px;
     //    height: 20px;
