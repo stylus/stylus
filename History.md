@@ -1,4 +1,17 @@
-=======
+0.40.2 / 2013-11-12
+==================
+
+  * Fixed regression after the #1185, #1207.
+
+0.40.1 / 2013-11-12
+==================
+
+  * Fixed assign to hashes using dot, #1201.
+  * Fixed regression from the #1185.
+  * Fixed precedence of the subscript operator, #1189.
+  * Fixed imports in functions, #1192.
+  * Fixed compressing of time units, #1204.
+
 0.40.0 / 2013-11-05
 ==================
 

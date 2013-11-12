@@ -49,6 +49,8 @@ foo['a']['b']['c'] = 10px
   test: foo['a']['b'].c
   test: foo.a['b']['c']
   test: foo['a'].b['c']
+  test: 'some ' + foo.a.b.c + ' thing'
+  test: 'some ' + foo['a']['b']['c'] + ' thing'
 
 foo()
   return 10px
@@ -67,3 +69,13 @@ foo(obj)
 
 body
   width: foo({ width: 100px })
+
+bar.foo = 10px * 2
+
+if bar.foo {
+  bar.qux = { width: 20px * bar.foo }
+}
+
+body
+  width: bar.qux.width
+  height: bar.buz = 100px

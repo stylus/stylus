@@ -20,10 +20,16 @@ body {
   test: 10px;
   test: 10px;
   test: 10px;
+  test: 'some 10px thing';
+  test: 'some 10px thing';
 }
 body {
   width: 10px;
 }
 body {
   width: 100px;
+}
+body {
+  width: 400px;
+  height: 100px;
 }
