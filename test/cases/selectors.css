@@ -54,6 +54,7 @@ ul > li {
 [null] {
   foo: bar;
 }
-#for {
+#for,
+#aor {
   foo: bar;
 }
