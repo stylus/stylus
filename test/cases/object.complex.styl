@@ -69,3 +69,13 @@ foo(obj)
 
 body
   width: foo({ width: 100px })
+
+bar.foo = 10px * 2
+
+if bar.foo {
+  bar.qux = { width: 20px * bar.foo }
+}
+
+body
+  width: bar.qux.width
+  height: bar.buz = 100px
