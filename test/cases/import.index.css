@@ -7,3 +7,9 @@ body {
 body {
   three: 3;
 }
+body.d {
+  four: 4;
+}
+body {
+  five: 5;
+}

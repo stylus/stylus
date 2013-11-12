@@ -1,2 +1,3 @@
 body{foo:0;foo:0;foo:15;foo:-15;foo:15px;foo:-15px}
 body{foo:.1;foo:-.1;foo:1.1;foo:-1.1;foo:.1;foo:-.1;foo:10.1;foo:-10.1}
+body{transition-delay:0s;transition-delay:0ms}
