@@ -44,11 +44,11 @@ Setting the lang prefix
         {% capture lang_prefix %}{{ lang }}/{% endcapture %}
     {% endif %}
 
-Handling links
+Handling content
 
-    {% assign link_handles_input = processed_content %}
-    {% include link_handles.html %}
-    {% assign processed_content = link_handles_result %}
+    {% assign handle_content_input = processed_content %}
+    {% include handle_content.md %}
+    {% assign processed_content = handle_content_result %}
 
 
 Looking if the page have a translation
@@ -129,22 +129,14 @@ Setting the default partials:
 Setting the default partials toc:
 
     {% assign partials_toc = '' %}
-    {% assign toc_input = partials_result %}
+    {% assign toc_input = partials %}
     {% include toc.md %}
     {% assign partials_toc = toc_result %}
 
-Transforming sidenotes:
+Handling partials
 
-    {% unless sidenotes_input or sidenotes_input == '' %}
-        {% assign sidenotes_input = processed_content %}
-    {% endunless %}
-    {% assign sidenotes_result = '' %}
-    {% capture lolcache %}{% include tenkan/sidenotes.md %}{% endcapture %}
-    {% for sidenote_id in sidenotes_ids %}
-        {% capture sidenote_replace %}<span class="sidenote-wrapper"><a class="sidenote-context" href="#{{ sidenote_id }}" id="{{ sidenote_id }}">{{ sidenotes_contexts[forloop.index0] }}</a><span class="sidenote"><span class="sidenote-misc"> (</span>{{ sidenotes_contents[forloop.index0] }}<span class="sidenote-misc">)</span></span></span>{% endcapture %}
-        {% assign processed_content = processed_content | replace:sidenotes_id_strings[forloop.index0],sidenote_replace %}
-    {% endfor %}
-
-    {% assign sidenotes_input = '' %}
+    {% assign handle_content_input = partials %}
+    {% include handle_content.md %}
+    {% assign partials = handle_content_result %}
 
 {% endcapture %}
