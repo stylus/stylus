@@ -32,6 +32,9 @@ langs:
 default_lang: en
 
 loc:
+    link_to_part:
+        ru: "Ссылка на это место"
+        en: "Link to this place"
     laquo:
         ru: "«"
         en: "“"
