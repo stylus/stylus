@@ -29,6 +29,12 @@ Ok, so you like long documents with a lot of sections? Textyll would provide you
 
 Just use the `{{ toc }}` variable in your layouts!
 
+### Headers anchors
+
+The thing similar to ToCs are links that appear near the headers in the content, so you can easily link to them.
+
+Textyll just gives you this by generating them inside your headers, so you can then use styles so they would be visible and clickable.
+
 ### Link handles
 
 Textyll makes writing blog posts really easy with some helpers for links.
