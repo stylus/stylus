@@ -1,0 +1,11 @@
+foo() {
+  $args = ();
+  for $arg in arguments[0...length(arguments)] {
+    push($args, $arg);
+  }
+  processedFoo: $args;
+}
+
+body {
+  foo: bar baz;
+}
