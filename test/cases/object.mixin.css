@@ -1,0 +1,17 @@
+@media screen and (min-width: 30em) {
+  .sidebar {
+    width: 10em;
+  }
+}
+@media screen and (min-width: 48em) {
+  .sidebar {
+    width: 20px;
+  }
+}
+.foo .foobar-4 {
+  color: #f00;
+  width: 400px;
+}
+.foo .foobar-4:first-child {
+  blah: 2rem;
+}

@@ -1,0 +1,25 @@
+mobile(content)
+  @media screen and (min-width: 30em)
+    {content}
+
+tablet(content)
+  @media screen and (min-width: 48em)
+    {content}
+
+.sidebar
+  mobile({ width: 10em })
+  tablet({ width: 20px })
+
+props = {
+  color: red
+  width: 400px
+}
+
+bar(block, content, int)
+  .foobar-{int}
+    &:first-child
+      {block}
+    {content}
+
+.foo
+  bar({ blah: 2rem }, props, 4)
