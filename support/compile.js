@@ -9,6 +9,9 @@ var fs = require('fs');
 
 var info = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 
+// BIFs
+var bifs = fs.readFileSync('lib/functions/index.styl', 'utf8');
+
 // refactored version of weepy's
 // https://github.com/weepy/brequire/blob/master/browser/brequire.js
 
@@ -77,6 +80,7 @@ var browser = {
 
 console.error();
 console.log(browser.require + '\n\n');
+console.log('var bifs = "' + bifs.replace(/"/g, "'").replace(/\n/g, '\\n\\\n') + '";');
 console.log('require.modules = {};\n\n');
 console.log('require.resolve = ' + browser.resolve + ';\n\n');
 console.log('require.register = ' + browser.register + ';\n\n');

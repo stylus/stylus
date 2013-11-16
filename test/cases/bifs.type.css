@@ -1,11 +1,11 @@
 body {
-  background: "string";
-  background: "unit";
-  background: "unit";
-  background: "hsla";
-  background: "rgba";
-  background: "ident";
-  background: "unit";
-  background: "function";
-  background: "ident";
+  background: 'string';
+  background: 'unit';
+  background: 'unit';
+  background: 'hsla';
+  background: 'rgba';
+  background: 'ident';
+  background: 'unit';
+  background: 'function';
+  background: 'ident';
 }

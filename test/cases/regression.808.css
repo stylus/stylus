@@ -1,0 +1,7 @@
+.hello {
+  background-color: #00f;
+}
+.hello:active {
+  color: #ccc;
+  background-color: #f00;
+}

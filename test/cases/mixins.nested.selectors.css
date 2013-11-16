@@ -1,12 +1,12 @@
 body {
   padding: 5px;
-  color: "bar";
+  color: 'bar';
 }
 body .foo {
-  color: "bar";
+  color: 'bar';
 }
 body .foo .bar {
-  color: "bar";
+  color: 'bar';
 }
 body {
   one: 1;

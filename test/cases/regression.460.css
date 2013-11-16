@@ -1,0 +1,13 @@
+#top {
+  width: 500px;
+  height: 40px;
+}
+#bottom {
+  height: 40px;
+}
+body {
+  foo: bar #fff baz;
+}
+body {
+  foo: 1;
+}

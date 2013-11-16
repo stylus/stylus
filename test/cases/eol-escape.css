@@ -1,0 +1,11 @@
+body {
+  foo: foo bar baz;
+  one: 0;
+  two: 1;
+  three: 2;
+}
+button {
+  padding: 1px 2px;
+  box-shadow: 0 -2px 2px #f00, 0 0 2px #f00, 0 0 5px #f00;
+  color: #f00;
+}

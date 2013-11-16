@@ -1,0 +1,8 @@
+#button_a:hover,
+#button_b:hover {
+  color: #fff;
+}
+body #button_c:hover,
+body #button_d:hover {
+  color: #000;
+}

@@ -30,8 +30,8 @@ body {
   padding: 5px;
 }
 foo bar {
-  color: "asdf";
+  color: 'asdf';
 }
 foo bar {
-  color: "asdf";
+  color: 'asdf';
 }

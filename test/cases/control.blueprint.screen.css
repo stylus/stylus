@@ -111,7 +111,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: "";
+  content: '';
 }
 blockquote,
 q {
@@ -238,7 +238,7 @@ pre {
 pre,
 code,
 tt {
-  font: 1em "andale mono", "lucida console", monospace;
+  font: 1em 'andale mono', 'lucida console', monospace;
   line-height: 1.5;
 }
 li ul,
@@ -280,7 +280,7 @@ td,
 caption {
   padding: 4px 10px 4px 5px;
 }
-tbody tr:nth-child(even)td,
+tbody tr:nth-child(even) td,
 tbody tr.even td {
   background: #e5ecf9;
 }

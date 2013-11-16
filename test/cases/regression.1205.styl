@@ -1,0 +1,17 @@
+$foo = #000 if "foo" == "foo"
+
+$bar = #FFF
+$bar = #000 if "foo" == "bar"
+
+$baz = #000 unless "foo" == "bar"
+
+$raz = #FFF
+$raz = #000 unless "foo" == "foo"
+
+.foo
+  background: $foo
+  color: $bar
+
+.bar
+  background: $baz
+  color: $raz

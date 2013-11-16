@@ -1,0 +1,65 @@
+@-moz-keyframes tada {
+  0% {
+    transform: scale(1);
+  }
+
+  10%, 20% {
+    transform: scale(0.9) rotate(-3deg);
+  }
+
+  0%, 100% {
+    background: scale(0.5);
+  }
+}
+@-webkit-keyframes tada {
+  0% {
+    transform: scale(1);
+  }
+
+  10%, 20% {
+    transform: scale(0.9) rotate(-3deg);
+  }
+
+  0%, 100% {
+    background: scale(0.5);
+  }
+}
+@-o-keyframes tada {
+  0% {
+    transform: scale(1);
+  }
+
+  10%, 20% {
+    transform: scale(0.9) rotate(-3deg);
+  }
+
+  0%, 100% {
+    background: scale(0.5);
+  }
+}
+@-ms-keyframes tada {
+  0% {
+    transform: scale(1);
+  }
+
+  10%, 20% {
+    transform: scale(0.9) rotate(-3deg);
+  }
+
+  0%, 100% {
+    background: scale(0.5);
+  }
+}
+@keyframes tada {
+  0% {
+    transform: scale(1);
+  }
+
+  10%, 20% {
+    transform: scale(0.9) rotate(-3deg);
+  }
+
+  0%, 100% {
+    background: scale(0.5);
+  }
+}

@@ -18,8 +18,8 @@ body {
   foo: 1;
 }
 body {
-  foo: "bar";
+  foo: 'bar';
 }
 body {
-  foo: "bar";
+  foo: 'bar';
 }

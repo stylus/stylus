@@ -1,0 +1,9 @@
+.btn,
+.btn-secondary {
+  font-size: 15px;
+  border-radius: 3px;
+}
+.btn-secondary {
+  background-color: #fff;
+  color: #666;
+}

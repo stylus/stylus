@@ -1,2 +1,5 @@
 @import "foo/bar.css";
-@import "bar/baz.css";
+@import 'bar/baz.css';
+foo {
+  bar: baz;
+}

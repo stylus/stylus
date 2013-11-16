@@ -1,0 +1,10 @@
+body {
+  background: test foo1, stuff, here;
+  background: test bar1, stuff, here;
+  background: test baz1, stuff, here;
+}
+body {
+  background: test foo1;
+  background: test bar1;
+  background: test baz1;
+}

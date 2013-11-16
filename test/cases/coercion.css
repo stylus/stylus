@@ -1,6 +1,13 @@
 body {
   foo: 10px;
   foo: 6px;
-  foo: "foo bar";
-  foo: "value: 5px";
+  foo: 'foo bar';
+  foo: 'value: 5px';
+  foo: 3mm;
+  foo: 60.8mm;
+  foo: 3cm;
+  foo: 6.08cm;
+  foo: 2in;
+  foo: 2in;
+  foo: 50cm;
 }

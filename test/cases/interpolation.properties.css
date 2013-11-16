@@ -16,8 +16,8 @@ body {
   -webkit-box-shadow: awesome;
 }
 body {
-  foo: "one";
-  foo: "two";
+  foo: 'one';
+  foo: 'two';
 }
 body {
   -webkit-something: foo;

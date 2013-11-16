@@ -5,3 +5,5 @@ testing
 node_modules
 stylus.js
 stylus.min.js
+coverage.html
+lib-cov

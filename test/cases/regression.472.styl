@@ -1,0 +1,23 @@
+
+replace(expr, str, val)
+  expr = clone(expr)
+  for e, i in expr
+    if length(e) > 1
+      expr[i] = replace(e, str, val)
+    else
+      if str == e
+        expr[i] = val
+  expr
+
+bar()
+  prop = current-property[0]
+  val = current-property[1]
+  add-property(prop, replace(val, '__CALL__', unquote('foo1')))
+  add-property(prop, replace(val, '__CALL__', unquote('bar1')))
+  unquote('baz1')
+
+body
+  background: test bar(), stuff, here
+
+body
+  background: test bar()

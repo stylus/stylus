@@ -1,0 +1,22 @@
+.message,
+.warning,
+.error,
+.fatal-error {
+  margin: 5px;
+  padding: 20px;
+}
+.large-message,
+.fatal-error {
+  font-size: 18px;
+  font-weight: bold;
+}
+.warning {
+  color: #ff0;
+}
+.error,
+.fatal-error {
+  color: #f00;
+}
+.fatal-error {
+  color: dark-red;
+}

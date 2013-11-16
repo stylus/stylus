@@ -48,3 +48,13 @@ p + p,
 ul > li {
   foo: bar;
 }
+[is],
+[for],
+[or],
+[null] {
+  foo: bar;
+}
+#for,
+#aor {
+  foo: bar;
+}

@@ -1,0 +1,81 @@
+foo = { bar: { baz: true } }
+prop = 'bar'
+
+.foo
+  test: foo[prop]['baz']
+
+blah(str)
+  str
+
+foo = { bar: baz }
+
+.foo
+  background: blah(foo.bar)
+
+foo = {
+  bar: {
+    baz: baz
+  }
+}
+
+foo['bar']['baz'] = {
+  bar: baz,
+  baz: bar
+}
+
+body
+  test: foo.bar.baz.baz
+
+bar = 'baz'
+
+obj = { baz: 'bar', bar: 'baz' }
+
+body
+  test: obj.bar
+  for i in 1..1
+    test: obj.bar
+
+foo = {}
+foo['a'] = {}
+foo['a']['b'] = {}
+foo['a']['b']['c'] = 10px
+
+.foo
+  test: foo['a']['b']['c']
+  test: foo.a.b.c
+  test: foo['a'].b.c
+  test: foo.a['b'].c
+  test: foo.a.b['c']
+  test: foo['a']['b'].c
+  test: foo.a['b']['c']
+  test: foo['a'].b['c']
+  test: 'some ' + foo.a.b.c + ' thing'
+  test: 'some ' + foo['a']['b']['c'] + ' thing'
+
+foo()
+  return 10px
+
+bar = {}
+
+bar["baz"] = {
+  raz: foo()
+}
+
+body
+  width: bar.baz.raz
+
+foo(obj)
+  return obj.width
+
+body
+  width: foo({ width: 100px })
+
+bar.foo = 10px * 2
+
+if bar.foo {
+  bar.qux = { width: 20px * bar.foo }
+}
+
+body
+  width: bar.qux.width
+  height: bar.buz = 100px

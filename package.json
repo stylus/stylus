@@ -3,6 +3,7 @@
       "lib/path.js"
     , "lib/colors.js"
     , "lib/errors.js"
+    , "lib/units.js"
     , "lib/functions/index.js"
     , "lib/functions/image.js"
     , "lib/functions/url.js"
@@ -23,6 +24,7 @@
     , "lib/nodes/ident.js"
     , "lib/nodes/if.js"
     , "lib/nodes/import.js"
+    , "lib/nodes/extend.js"
     , "lib/nodes/index.js"
     , "lib/nodes/jsliteral.js"
     , "lib/nodes/keyframes.js"
@@ -41,6 +43,9 @@
     , "lib/nodes/ternary.js"
     , "lib/nodes/unaryop.js"
     , "lib/nodes/unit.js"
+    , "lib/nodes/object.js"
+    , "lib/nodes/member.js"
+    , "lib/nodes/mozdocument.js"
     , "lib/parser.js"
     , "lib/renderer.js"
     , "lib/stack/index.js"
@@ -52,5 +57,6 @@
     , "lib/visitor/index.js"
     , "lib/visitor/compiler.js"
     , "lib/visitor/evaluator.js"
+    , "lib/visitor/normalizer.js"
   ]
 }

@@ -12,7 +12,11 @@
  
     mkdir -p ~/.local/share/gtksourceview-2.0/language-specs/ && wget https://raw.github.com/LearnBoost/stylus/master/editors/gedit/styl.lang -O ~/.local/share/gtksourceview-2.0/language-specs/styl.lang
 
- Update the mime database and enjoy Stylus syntax in gedit!
+ For gtksourceview 3.0 (gedit 3.0), user:
+ 
+    mkdir -p ~/.local/share/gtksourceview-3.0/language-specs/ && wget https://raw.github.com/LearnBoost/stylus/master/editors/gedit/styl.lang -O ~/.local/share/gtksourceview-3.0/language-specs/styl.lang
+
+ Update the MIME database and enjoy Stylus syntax in gedit!
  
     cd ~/.local/share
     update-mime-database mime
