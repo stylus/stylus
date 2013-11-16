@@ -1,6 +1,18 @@
 
-var bifs = "\
-vendors = moz webkit o ms official\n\
+var stylus = (function(){
+function require(p){
+    var path = require.resolve(p)
+      , mod = require.modules[path];
+    if (!mod) throw new Error('failed to require "' + p + '"');
+    if (!mod.exports) {
+      mod.exports = {};
+      mod.call(mod.exports, mod, mod.exports, require.relative(path));
+    }
+    return mod.exports;
+  }
+
+
+var bifs = "vendors = moz webkit o ms official\n\
 \n\
 // stringify the given arg\n\
 \n\
@@ -10,7 +22,7 @@ vendors = moz webkit o ms official\n\
 // require a color\n\
 \n\
 require-color(color)\n\
-  unless color is a 'color' \n\
+  unless color is a 'color'\n\
     error('RGB or HSL value expected, got a ' + -string(color))\n\
 \n\
 // require a unit\n\
@@ -27,7 +39,7 @@ require-string(str)\n\
 \n\
 // apply js Math function\n\
 \n\
-math(n, fn) \n\
+math(n, fn)\n\
   require-unit(n)\n\
   require-string(fn)\n\
   -math(n, fn)\n\
@@ -43,14 +55,42 @@ adjust(color, prop, amount)\n\
 // Math functions\n\
 \n\
 abs(n) { math(n, 'abs') }\n\
-ceil(n) { math(n, 'ceil') }\n\
-floor(n) { math(n, 'floor') }\n\
-round(n) { math(n, 'round') }\n\
-sin(n) { math(n, 'sin') }\n\
-cos(n) { math(n, 'cos') }\n\
 min(a, b) { a < b ? a : b }\n\
 max(a, b) { a > b ? a : b }\n\
+\n\
+// Trigonometrics\n\
 PI = -math-prop('PI')\n\
+\n\
+radians-to-degrees(angle)\n\
+  angle * (180 / PI)\n\
+\n\
+degrees-to-radians(angle)\n\
+  unit(angle * (PI / 180),'')\n\
+\n\
+sin(n)\n\
+  n = degrees-to-radians(n) if unit(n) == 'deg'\n\
+  round(math(n, 'sin'), 9)\n\
+\n\
+cos(n)\n\
+  n = degrees-to-radians(n) if unit(n) == 'deg'\n\
+  round(math(n, 'cos'), 9)\n\
+\n\
+tan(n)\n\
+  round(sin(n) / cos(n), 9)\n\
+\n\
+// Rounding Math functions\n\
+\n\
+ceil(n, precision = 0)\n\
+  multiplier = 10 ** precision\n\
+  math(n * multiplier, 'ceil') / multiplier\n\
+\n\
+floor(n, precision = 0)\n\
+  multiplier = 10 ** precision\n\
+  math(n * multiplier, 'floor') / multiplier\n\
+\n\
+round(n, precision = 0)\n\
+  multiplier = 10 ** precision\n\
+  math(n * multiplier, 'round') / multiplier\n\
 \n\
 // return the sum of the given numbers\n\
 \n\
@@ -62,6 +102,22 @@ sum(nums)\n\
 \n\
 avg(nums)\n\
   sum(nums) / length(nums)\n\
+\n\
+// return a unitless number, or pass through\n\
+\n\
+remove-unit(n)\n\
+  if typeof(n) is 'unit'\n\
+    unit(n, '')\n\
+  else\n\
+    n\n\
+\n\
+// convert a percent to a decimal, or pass through\n\
+\n\
+percent-to-decimal(n)\n\
+  if unit(n) is '%'\n\
+    remove-unit(n) / 100\n\
+  else\n\
+    n\n\
 \n\
 // color components\n\
 \n\
@@ -113,17 +169,91 @@ lighten(color, amount)\n\
 // decerase opacity by amount\n\
 \n\
 fade-out(color, amount)\n\
-  color - rgba(black, amount)\n\
+  color - rgba(black, percent-to-decimal(amount))\n\
 \n\
 // increase opacity by amount\n\
 \n\
 fade-in(color, amount)\n\
-  color + rgba(black, amount)\n\
+  color + rgba(black, percent-to-decimal(amount))\n\
+\n\
+// spin hue by a given amount\n\
+\n\
+spin(color, amount)\n\
+  color + unit(amount, deg)\n\
+\n\
+// mix two colors by a given amount\n\
+\n\
+mix(color1, color2, weight = 50%)\n\
+  unless weight in 0..100\n\
+    error('Weight must be between 0% and 100%')\n\
+\n\
+  if length(color1) == 2\n\
+    weight = color1[0]\n\
+    color1 = color1[1]\n\
+\n\
+  else if length(color2) == 2\n\
+    weight = 100 - color2[0]\n\
+    color2 = color2[1]\n\
+\n\
+  require-color(color1)\n\
+  require-color(color2)\n\
+\n\
+  p = unit(weight / 100, '')\n\
+  w = p * 2 - 1\n\
+\n\
+  a = alpha(color1) - alpha(color2)\n\
+\n\
+  w1 = (((w * a == -1) ? w : (w + a) / (1 + w * a)) + 1) / 2\n\
+  w2 = 1 - w1\n\
+\n\
+  channels = (red(color1) red(color2)) (green(color1) green(color2)) (blue(color1) blue(color2))\n\
+  rgb = ()\n\
+\n\
+  for pair in channels\n\
+    push(rgb, floor(pair[0] * w1 + pair[1] * w2))\n\
+\n\
+  a1 = alpha(color1) * p\n\
+  a2 = alpha(color1) * (1 - p)\n\
+  alpha = a1 + a2\n\
+\n\
+  rgba(rgb[0], rgb[1], rgb[2], alpha)\n\
+\n\
+// invert colors, leave alpha intact\n\
+\n\
+invert(color)\n\
+  r = 255 - red(color)\n\
+  g = 255 - green(color)\n\
+  b = 255 - blue(color)\n\
+  rgba(r,g,b,alpha(color))\n\
 \n\
 // return the last value in the given expr\n\
 \n\
 last(expr)\n\
   expr[length(expr) - 1]\n\
+\n\
+// return keys in the given pairs or object\n\
+\n\
+keys(pairs)\n\
+  ret = ()\n\
+  if type(pairs) == 'object'\n\
+    for key in pairs\n\
+      push(ret, key)\n\
+  else\n\
+    for pair in pairs\n\
+      push(ret, pair[0]);\n\
+  ret\n\
+\n\
+// return values in the given pairs or object\n\
+\n\
+values(pairs)\n\
+  ret = ()\n\
+  if type(pairs) == 'object'\n\
+    for key, val in pairs\n\
+      push(ret, val)\n\
+  else\n\
+    for pair in pairs\n\
+      push(ret, pair[1]);\n\
+  ret\n\
 \n\
 // join values with the given delimiter\n\
 \n\
@@ -132,21 +262,20 @@ join(delim, vals...)\n\
   vals = vals[0] if length(vals) == 1\n\
   for val, i in vals\n\
     buf += i ? delim + val : val\n\
+\n\
+// add a CSS rule to the containing block\n\
+\n\
+// - This definition allows add-property to be used as a mixin\n\
+// - It has the same effect as interpolation but allows users\n\
+//   to opt for a functional style\n\
+\n\
+add-property-function = add-property\n\
+add-property(name, expr)\n\
+  if mixin\n\
+    {name} expr\n\
+  else\n\
+    add-property-function(name, expr)\n\
 ";
-
-var stylus = (function(){
-function require(p){
-    var path = require.resolve(p)
-      , mod = require.modules[path];
-    if (!mod) throw new Error('failed to require "' + p + '"');
-    if (!mod.exports) {
-      mod.exports = {};
-      mod.call(mod.exports, mod, mod.exports, require.relative(path));
-    }
-    return mod.exports;
-  }
-
-
 require.modules = {};
 
 
@@ -583,6 +712,33 @@ SyntaxError.prototype.__proto__ = Error.prototype;
 });// module: errors.js
 
 
+require.register("units.js", function(module, exports, require){
+
+
+/*!
+ * Stylus - units
+ * Copyright(c) 2010 LearnBoost <dev@learnboost.com>
+ * MIT Licensed
+ */
+
+// units found in http://www.w3.org/TR/css3-values
+
+module.exports = [
+    'em', 'ex', 'ch', 'rem' // relative lengths
+  , 'vw', 'vh', 'vmin' // relative viewport-percentage lengths
+  , 'cm', 'mm', 'in', 'pt', 'pc', 'px' // absolute lengths
+  , 'deg', 'grad', 'rad', 'turn' // angles
+  , 's', 'ms' // times
+  , 'Hz', 'kHz' // frequencies
+  , 'dpi', 'dpcm', 'dppx', 'x' // resolutions
+  , '%' // percentage type
+  , 'fr' // grid-layout (http://www.w3.org/TR/css3-grid-layout/)
+];
+
+
+});// module: units.js
+
+
 require.register("functions/index.js", function(module, exports, require){
 
 
@@ -599,7 +755,9 @@ require.register("functions/index.js", function(module, exports, require){
 var Compiler = require('../visitor/compiler')
   , nodes = require('../nodes')
   , utils = require('../utils')
-  , Image = require('./image');
+  , Image = require('./image')
+  , units = require('../units')
+  , colors = require('../colors');
 
 /**
  * Color component name map.
@@ -669,6 +827,7 @@ exports.hsla = function hsla(hue, saturation, lightness, alpha){
       utils.assertType(saturation, 'unit', 'saturation');
       utils.assertType(lightness, 'unit', 'lightness');
       utils.assertType(alpha, 'unit', 'alpha');
+      if (alpha && '%' == alpha.type) alpha.val /= 100;
       return new nodes.HSLA(
           hue.val
         , saturation.val
@@ -737,15 +896,14 @@ exports.type =
 exports['typeof'] =
 exports['type-of'] = function type(node){
   utils.assertPresent(node, 'expression');
-  var type = node.nodeName;
-  return new nodes.String(type);
+  return node.nodeName;
 };
 
 /**
  * Return component `name` for the given `color`.
  *
  * @param {RGBA|HSLA} color
- * @param {String} na,e
+ * @param {String} name
  * @return {Unit}
  * @api public
  */
@@ -760,6 +918,60 @@ exports.component = function component(color, name) {
   if (!name) throw new Error('invalid color component "' + name + '"');
   return new nodes.Unit(color[type][name], unit);
 };
+
+/**
+ * Return the basename of `path`.
+ *
+ * @param {String} path
+ * @return {String}
+ * @api public
+ */
+
+exports.basename = function basename(p, ext){
+  utils.assertString(p, 'path');
+  return path.basename(p.val, ext && ext.val);
+};
+
+/**
+ * Return the dirname of `path`.
+ *
+ * @param {String} path
+ * @return {String}
+ * @api public
+ */
+
+exports.dirname = function dirname(p){
+  utils.assertString(p, 'path');
+  return path.dirname(p.val);
+};
+
+/**
+ * Return the extname of `path`.
+ *
+ * @param {String} path
+ * @return {String}
+ * @api public
+ */
+
+exports.extname = function extname(p){
+  utils.assertString(p, 'path');
+  return path.extname(p.val);
+};
+
+/**
+ * Peform a path join.
+ *
+ * @param {String} path
+ * @return {String}
+ * @api public
+ */
+
+(exports.pathjoin = function pathjoin(){
+  var paths = [].slice.call(arguments).map(function(path){
+    return path.first.string;
+  });
+  return path.join.apply(null, paths);
+}).raw = true;
 
 /**
  * Return the red component of the given `color`.
@@ -823,7 +1035,7 @@ exports.blue = function blue(color){
  *    rgba(255,0,0,1)
  *    // => #ff0000
  *
- *    rgba(#ffcc00, 0.5)
+ *    rgba(#ffcc00, 50%)
  *    // rgba(255,204,0,0.5)
  *
  * @param {Unit|RGBA|HSLA} red
@@ -848,6 +1060,7 @@ exports.rgba = function rgba(red, green, blue, alpha){
       utils.assertColor(red);
       var color = red.rgba;
       utils.assertType(green, 'unit', 'alpha');
+      if ('%' == green.type) green.val /= 100;
       return new nodes.RGBA(
           color.r
         , color.g
@@ -858,10 +1071,14 @@ exports.rgba = function rgba(red, green, blue, alpha){
       utils.assertType(green, 'unit', 'green');
       utils.assertType(blue, 'unit', 'blue');
       utils.assertType(alpha, 'unit', 'alpha');
+      var r = '%' == red.type ? Math.round(red.val * 2.55) : red.val;
+      var g = '%' == green.type ? Math.round(green.val * 2.55) : green.val;
+      var b = '%' == blue.type ? Math.round(blue.val * 2.55) : blue.val;
+      if (alpha && '%' == alpha.type) alpha.val /= 100;
       return new nodes.RGBA(
-          red.val
-        , green.val
-        , blue.val
+          r
+        , g
+        , b
         , alpha.val);
   }
 };
@@ -904,6 +1121,134 @@ exports.rgb = function rgb(red, green, blue){
 };
 
 /**
+ * Convert a .json file into stylus variables or object.
+ * Nested variable object keys are joined with a dash (-)
+ *
+ * Given this sample media-queries.json file:
+ * {
+ *   "small": "screen and (max-width:400px)",
+ *   "tablet": {
+ *     "landscape": "screen and (min-width:600px) and (orientation:landscape)",
+ *     "portrait": "screen and (min-width:600px) and (orientation:portrait)"
+ *   }
+ * }
+ *
+ * Examples:
+ *
+ *    json('media-queries.json')
+ *
+ *    @media small
+ *    // => @media screen and (max-width:400px)
+ *
+ *    @media tablet-landscape
+ *    // => @media screen and (min-width:600px) and (orientation:landscape)
+ *
+ *    vars = json('vars.json', { hash: true })
+ *    body
+ *      width: vars.width
+ *
+ * @param {String} path
+ * @param {Boolean} [local]
+ * @param {String} [namePrefix]
+ * @api public
+*/
+
+exports.json = function(path, local, namePrefix){
+  utils.assertString(path, 'path');
+
+  // lookup
+  path = path.string;
+  var found = utils.lookup(path, this.options.paths, this.options.filename);
+  if (!found) throw new Error('failed to locate .json file ' + path);
+
+  // read
+  var json = JSON.parse(fs.readFileSync(found, 'utf8'));
+
+  if (local && 'object' == local.nodeName) {
+    return convert(json);
+  } else {
+    exports['-old-json'].call(this, json, local, namePrefix);
+  }
+
+  function convert(obj){
+    var ret = new nodes.Object();
+    for (var key in obj) {
+      var val = obj[key];
+      if ('object' == typeof val) {
+        ret.set(key, convert(val));
+      } else {
+        val = utils.coerce(val);
+        if ('string' == val.nodeName) val = parseString(val.string);
+        ret.set(key, val);
+      }
+    }
+    return ret;
+  }
+};
+
+/**
+ * Old `json` BIF.
+ *
+ * @api private
+ */
+
+exports['-old-json'] = function(json, local, namePrefix){
+  if (namePrefix) {
+    utils.assertString(namePrefix, 'namePrefix');
+    namePrefix = namePrefix.val;
+  } else {
+    namePrefix = '';
+  }
+  local = local ? local.toBoolean() : new nodes.Boolean(local);
+  var scope = local.isTrue ? this.currentScope : this.global.scope;
+
+  convert(json);
+  return;
+
+  function convert(obj, prefix){
+    prefix = prefix ? prefix + '-' : '';
+    for (var key in obj){
+      var val = obj[key];
+      var name = prefix + key;
+      if ('object' == typeof val) {
+        convert(val, name);
+      } else {
+        val = utils.coerce(val);
+        if ('string' == val.nodeName) val = parseString(val.string);
+        scope.add({ name: namePrefix + name, val: val });
+      }
+    }
+  }
+};
+
+/**
+*  Use the given `plugin`
+*  
+*  Examples:
+*
+*     use("plugins/add.js")
+*
+*     width add(10, 100)
+*     // => width: 110
+*/
+
+exports.use = function(plugin){
+  utils.assertString(plugin, 'path');
+
+  // lookup
+  plugin = plugin.string;
+  var found = utils.lookup(plugin, this.options.paths, this.options.filename);
+  if (!found) throw new Error('failed to locate plugin file ' + plugin);
+
+  // use
+  var fn = require(path.resolve(found));
+  if ('function' != typeof fn) {
+    throw new Error('plugin ' + path + ' does not export a function');
+  }
+  this.renderer.use(fn(this.options));
+}
+
+/**
  * Unquote the given `str`.
  *
  * Examples:
@@ -941,7 +1286,7 @@ exports.unit = function unit(unit, type){
     utils.assertString(type, 'type');
     return new nodes.Unit(unit.val, type.string);
   } else {
-    return new nodes.String(unit.type || '');
+    return unit.type || '';
   }
 };
 
@@ -1001,8 +1346,79 @@ exports.match = function match(pattern, val){
   utils.assertType(pattern, 'string', 'pattern');
   utils.assertString(val, 'val');
   var re = new RegExp(pattern.val);
-  return nodes.Boolean(re.test(val.string));
+  return new nodes.Boolean(re.test(val.string));
 };
+
+/**
+ * Returns substring of the given `val`.
+ *
+ * @param {String|Ident} val
+ * @param {Number} start
+ * @param {Number} [length]
+ * @return {String|Ident}
+ * @api public
+ */
+
+(exports.substr = function substr(val, start, length){
+  utils.assertPresent(val, 'string');
+  utils.assertPresent(start, 'start');
+  var valNode = utils.unwrap(val).nodes[0];
+  start = utils.unwrap(start).nodes[0].val;
+  if (length) {
+    length = utils.unwrap(length).nodes[0].val;
+  }
+  var res = valNode.string.substr(start, length);
+  return valNode instanceof nodes.Ident
+      ? new nodes.Ident(res)
+      : new nodes.String(res);
+}).raw = true;
+
+/**
+ * Returns string with all matches of `pattern` replaced by `replacement` in given `val`
+ *
+ * @param {String} pattern
+ * @param {String} replacement
+ * @param {String|Ident} val
+ * @return {String|Ident}
+ * @api public
+ */
+
+(exports.replace = function replace(pattern, replacement, val){
+  utils.assertPresent(pattern, 'pattern');
+  utils.assertPresent(replacement, 'replacement');
+  utils.assertPresent(val, 'val');
+  pattern = new RegExp(utils.unwrap(pattern).nodes[0].string, 'g');
+  replacement = utils.unwrap(replacement).nodes[0].string;
+  var valNode = utils.unwrap(val).nodes[0];
+  var res = valNode.string.replace(pattern, replacement);
+  return valNode instanceof nodes.Ident
+    ? new nodes.Ident(res)
+    : new nodes.String(res);
+}).raw = true;
+
+/**
+ * Splits the given `val` by `delim`
+ *
+ * @param {String} delim
+ * @param {String|Ident} val
+ * @return {Expression}
+ * @api public
+ */
+(exports.split = function split(delim, val){
+  utils.assertPresent(delim, 'delimiter');
+  utils.assertPresent(val, 'val');
+  delim = utils.unwrap(delim).nodes[0].string;
+  var valNode = utils.unwrap(val).nodes[0];
+  var splitted = valNode.string.split(delim);
+  var expr = new nodes.Expression();
+  var ItemNode = valNode instanceof nodes.Ident
+    ? nodes.Ident
+    : nodes.String;
+  for (var i = 0, len = splitted.length; i < len; ++i) {
+    expr.nodes.push(new ItemNode(splitted[i]));
+  }
+  return expr;
+}).raw = true;
 
 /**
  * Return length of the given `expr`.
@@ -1015,12 +1431,17 @@ exports.match = function match(pattern, val){
 (exports.length = function length(expr){
   if (expr) {
     if (expr.nodes) {
-      return new nodes.Unit(utils.unwrap(expr).nodes.length);
+      var nodes = utils.unwrap(expr).nodes;
+      if (1 == nodes.length && 'object' == nodes[0].nodeName) {
+        return nodes[0].length;
+      } else {
+        return nodes.length;
+      }
     } else {
-      return new nodes.Unit(1);
+      return 1;
     }
   }
-  return new nodes.Unit(0);
+  return 0;
 }).raw = true;
 
 /**
@@ -1030,10 +1451,12 @@ exports.match = function match(pattern, val){
  * @api public
  */
 
-(exports.p = function p(expr){
-  expr = utils.unwrap(expr);
-  console.log('\033[90minspect:\033[0m undefined'
-    , expr.toString().replace(/^\(|\)$/g, ''));
+(exports.p = function p(){
+  [].slice.call(arguments).forEach(function(expr){
+    expr = utils.unwrap(expr);
+    if (!expr.nodes.length) return;
+    console.log('\033[90minspect:\033[0m %s', expr.toString().replace(/^\(|\)$/g, ''));
+  })
   return nodes.nil;
 }).raw = true;
 
@@ -1058,7 +1481,7 @@ exports.error = function error(msg){
 
 exports.warn = function warn(msg){
   utils.assertType(msg, 'string', 'msg');
-  console.warn('Warning: undefined', msg.val);
+  console.warn('Warning: %s', msg.val);
   return nodes.nil;
 };
 
@@ -1085,9 +1508,22 @@ exports.trace = function trace(){
 (exports.push = exports.append = function(expr){
   expr = utils.unwrap(expr);
   for (var i = 1, len = arguments.length; i < len; ++i) {
-    expr.nodes.push(utils.unwrap(arguments[i]));
+    expr.nodes.push(utils.unwrap(arguments[i]).clone());
   }
-  return new nodes.Unit(expr.nodes.length);
+  return expr.nodes.length;
+}).raw = true;
+
+/**
+ * Pop a value from `expr`.
+ *
+ * @param {Expression} expr
+ * @return {Node}
+ * @api public
+ */
+
+(exports.pop = function pop(expr) {
+  expr = utils.unwrap(expr);
+  return expr.nodes.pop();
 }).raw = true;
 
 /**
@@ -1104,8 +1540,21 @@ exports.trace = function trace(){
   for (var i = 1, len = arguments.length; i < len; ++i) {
     expr.nodes.unshift(utils.unwrap(arguments[i]));
   }
-  return new nodes.Unit(expr.nodes.length);
+  return expr.nodes.length;
 }).raw = true;
+
+/**
+ * Shift an element from `expr`.
+ *
+ * @param {Expression} expr
+ * @return {Node}
+ * @api public
+ */
+
+ (exports.shift = function(expr){
+   expr = utils.unwrap(expr);
+   return expr.nodes.shift();
+ }).raw = true;
 
 /**
  * Return a `Literal` with the given `fmt`, and
@@ -1133,12 +1582,36 @@ exports.trace = function trace(){
         return new Compiler(arg, self.options).compile();
       case 'd':
         arg = utils.unwrap(arg).first;
-        if ('unit' != arg.nodeName) throw new Error('NaN requires a unit');
+        if ('unit' != arg.nodeName) throw new Error('%d requires a unit');
         return arg.val;
     }
   });
 
   return new nodes.Literal(str);
+}).raw = true;
+
+/**
+ * Return a `Literal` `num` converted to the provided `base`, padded to `width`
+ * with zeroes (default width is 2)
+ *
+ * @param {Number} num
+ * @param {Number} base
+ * @param {Number} width
+ * @return {Literal}
+ * @api public
+ */
+
+(exports['base-convert'] = function(num, base, width) {
+  utils.assertPresent(num, 'number');
+  utils.assertPresent(base, 'base');
+  num = utils.unwrap(num).nodes[0].val;
+  base = utils.unwrap(base).nodes[0].val;
+  width = (width && utils.unwrap(width).nodes[0].val) || 2;
+  var result = Number(num).toString(base);
+  while (result.length < width) {
+    result = "0" + result;
+  }
+  return new nodes.Literal(result);
 }).raw = true;
 
 /**
@@ -1155,7 +1628,7 @@ exports.trace = function trace(){
  */
 
 (exports['opposite-position'] = function oppositePosition(positions){
-  var expr = new nodes.Expression;
+  var expr = [];
   utils.unwrap(positions).nodes.forEach(function(pos, i){
     utils.assertString(pos, 'position ' + i);
     pos = (function(){ switch (pos.string) {
@@ -1163,6 +1636,7 @@ exports.trace = function trace(){
       case 'bottom': return 'top';
       case 'left': return 'right';
       case 'right': return 'left';
+      case 'center': return 'center';
       default: throw new Error('invalid position ' + pos);
     }})();
     expr.push(new nodes.Literal(pos));
@@ -1184,14 +1658,33 @@ exports.trace = function trace(){
  *    image-size('foo.png')[1]
  *    // => 100px
  *
+ * Can be used to test if the image exists,
+ * using an optional argument set to `true`
+ * (without this argument this function throws error
+ * if there is no such image).
+ *
+ * Example:
+ *
+ *    image-size('nosuchimage.png', true)[0]
+ *    // => 0
+ *
  * @param {String} img
+ * @param {Boolean} ignoreErr
  * @return {Expression}
  * @api public
  */
 
-exports['image-size'] = function imageSize(img) {
+exports['image-size'] = function imageSize(img, ignoreErr) {
   utils.assertType(img, 'string', 'img');
-  var img = new Image(this, img.string);
+  try {
+    var img = new Image(this, img.string);
+  } catch (err) {
+    if (ignoreErr) {
+      return [new nodes.Unit(0), new nodes.Unit(0)];
+    } else {
+      throw err;
+    }
+  }
 
   // Read size
   img.open();
@@ -1199,7 +1692,7 @@ exports['image-size'] = function imageSize(img) {
   img.close();
 
   // Return (w h)
-  var expr = new nodes.Expression;
+  var expr = [];
   expr.push(new nodes.Unit(size[0], 'px'));
   expr.push(new nodes.Unit(size[1], 'px'));
 
@@ -1308,6 +1801,84 @@ exports['-adjust'] = function adjust(color, prop, amount){
   return prop;
 }).raw = true;
 
+/**
+ * Merge the object `dest` with the given args.
+ *
+ * @param {Object} dest
+ * @param {Object} ...
+ * @return {Object} dest
+ * @api public
+ */
+
+(exports.merge = exports.extend = function merge(dest){
+  utils.assertPresent(dest, 'dest');
+  dest = utils.unwrap(dest).first;
+  utils.assertType(dest, 'object', 'dest');
+  for (var i = 1, len = arguments.length; i < len; ++i) {
+    utils.merge(dest.vals, utils.unwrap(arguments[i]).first.vals);
+  }
+  return dest;
+}).raw = true;
+
+/**
+ * Attempt to parse unit `str`.
+ *
+ * @param {String} str
+ * @return {Unit}
+ * @api private
+ */
+
+function parseUnit(str){
+  var m = str.match(/^(\d+)(.*)/);
+  if (!m) return;
+  var n = parseInt(m[1], 10);
+  var type = m[2];
+  return new nodes.Unit(n, type);
+}
+
+/**
+ * Attempt to parse color.
+ *
+ * @param {String} str
+ * @return {RGBA}
+ * @api private
+ */
+
+function parseColor(str){
+  if (str.substr(0,1) === '#') {
+    // Handle color shorthands (like #abc)
+    var shorthand = str.length === 4,
+        m = str.match(shorthand ? /\w/g : /\w{2}/g);
+
+    if (!m) return;
+    m = m.map(function(s) { return parseInt(shorthand ? s+s : s, 16) });
+    return new nodes.RGBA(m[0],m[1],m[2],1);
+  }
+  else if (str.substr(0,3) === 'rgb'){
+    var m = str.match(/(\d\.*\d+)/g);
+    if (!m) return;
+    m = m.map(function(s){return parseFloat(s, 10)});
+    return new nodes.RGBA(m[0], m[1], m[2], m[3] || 1);
+  }
+  else {
+    var rgb = colors[str];
+    if (!rgb) return;
+    return new nodes.RGBA(rgb[0], rgb[1], rgb[2], 1);
+  }
+}
+
+/**
+ * Attempt to parse string.
+ *
+ * @param {String} str
+ * @return {Unit|RGBA|Literal}
+ * @api private
+ */
+
+function parseString(str){
+  return parseUnit(str) || parseColor(str) || new nodes.Literal(str);
+}
+
 
 });// module: functions/index.js
 
@@ -1351,6 +1922,8 @@ var Image = module.exports = function Image(ctx, path) {
 
 Image.prototype.open = function(){
   this.fd = fs.openSync(this.path, 'r');
+  this.length = fs.fstatSync(this.fd).size;
+  this.extname = path.extname(this.path).slice(1);
 };
 
 /**
@@ -1369,6 +1942,7 @@ Image.prototype.close = function(){
  *  - gif
  *  - png
  *  - jpeg
+ *  - svg
  *
  * @return {String}
  * @api private
@@ -1389,6 +1963,9 @@ Image.prototype.type = function(){
   // JPEG
   else if (0xff == buf[0] && 0xd8 == buf[1]) type = 'jpeg';
 
+  // SVG
+  else if ('svg' == this.extname) type = this.extname;
+
   return type;
 };
 
@@ -1400,9 +1977,13 @@ Image.prototype.type = function(){
  */
 
 Image.prototype.size = function(){
-  var width
+  var type = this.type()
+    , width
     , height
-    , type = this.type();
+    , buf
+    , offset
+    , blockSize
+    , parser;
 
   function uint16(b) { return b[1] << 8 | b[0]; }
   function uint32(b) { return b[0] << 24 | b[1] << 16 | b[2] << 8 | b[3]; } 
@@ -1410,21 +1991,51 @@ Image.prototype.size = function(){
   // Determine dimensions
   switch (type) {
     case 'jpeg':
-      throw new Error('image-size() jpeg support not yet implemented');
+      buf = new Buffer(this.length);
+      fs.readSync(this.fd, buf, 0, this.length, 0);
+      offset = 4;
+      blockSize = buf[offset] << 8 | buf[offset + 1];
+
+      while (offset < this.length) {
+        offset += blockSize;
+        if (offset >= this.length || 0xff != buf[offset]) break;
+        // SOF0 or SOF2 (progressive)
+        if (0xc0 == buf[offset + 1] || 0xc2 == buf[offset + 1]) {
+          height = buf[offset + 5] << 8 | buf[offset + 6];
+          width = buf[offset + 7] << 8 | buf[offset + 8];
+        } else {
+          offset += 2;
+          blockSize = buf[offset] << 8 | buf[offset + 1];
+        }
+      }
       break;
     case 'png':
-      var buf = new Buffer(8);
+      buf = new Buffer(8);
       // IHDR chunk width / height uint32_t big-endian
       fs.readSync(this.fd, buf, 0, 8, 16);
       width = uint32(buf);
       height = uint32(buf.slice(4, 8));
       break;
     case 'gif':
-      var buf = new Buffer(4);
+      buf = new Buffer(4);
       // width / height uint16_t little-endian
       fs.readSync(this.fd, buf, 0, 4, 6);
       width = uint16(buf);
       height = uint16(buf.slice(2, 4));
+      break;
+    case 'svg':
+      offset = Math.min(this.length, 1024);
+      buf = new Buffer(offset);
+      fs.readSync(this.fd, buf, 0, offset, 0);
+      buf = buf.toString('utf8');
+      parser = sax.parser(true);
+      parser.onopentag = function(node) {
+        if ('svg' == node.name && node.attributes.width && node.attributes.height) {
+          width = parseInt(node.attributes.width, 10);
+          height = parseInt(node.attributes.height, 10);
+        }
+      };
+      parser.write(buf).close();
       break;
   }
 
@@ -1433,6 +2044,7 @@ Image.prototype.size = function(){
 
   return [width, height];
 };
+
 
 });// module: functions/image.js
 
@@ -1451,6 +2063,7 @@ require.register("functions/url.js", function(module, exports, require){
  */
 
 var Compiler = require('../visitor/compiler')
+  , events = require('../renderer').events
   , nodes = require('../nodes')
   // , parse = require('url').parse
   , extname = require('../path').extname
@@ -1461,12 +2074,15 @@ var Compiler = require('../visitor/compiler')
  * Mime table.
  */
 
-var mimes = {
+var defaultMimes = {
     '.gif': 'image/gif'
   , '.png': 'image/png'
   , '.jpg': 'image/jpeg'
   , '.jpeg': 'image/jpeg'
   , '.svg': 'image/svg+xml'
+  , '.ttf': 'application/x-font-ttf'
+  , '.eot': 'application/vnd.ms-fontobject'
+  , '.woff': 'application/font-woff'
 };
 
 /**
@@ -1492,24 +2108,24 @@ var mimes = {
 module.exports = function(options) {
   options = options || {};
 
-  var sizeLimit = options.limit || 30000
-    , _paths = options.paths || [];
+  var _paths = options.paths || [];
+  var sizeLimit = null != options.limit ? options.limit : 30000;
+  var mimes = options.mimes || defaultMimes;
 
-  function url(url){
+  function fn(url){
     // Compile the url
     var compiler = new Compiler(url);
     compiler.isURL = true;
-    var url = url.nodes.map(function(node){
+    url = url.nodes.map(function(node){
       return compiler.visit(node);
     }).join('');
 
-    // Parse literal 
-    var url = parse(url)
-      , ext = extname(url.pathname)
+    // Parse literal
+    url = parse(url);
+    var ext = extname(url.pathname)
       , mime = mimes[ext]
       , literal = new nodes.Literal('url("' + url.href + '")')
       , paths = _paths.concat(this.paths)
-      , founds
       , buf;
 
     // Not supported
@@ -1519,24 +2135,36 @@ module.exports = function(options) {
     if (url.protocol) return literal;
 
     // Lookup
-    found = utils.lookup(url.pathname, paths);
+    var found = utils.lookup(url.pathname, paths);
 
     // Failed to lookup
-    if (!found) return literal;
+    if (!found) {
+      events.emit(
+          'file not found'
+        , 'File ' + literal + ' could not be found, literal url retained!'
+      );
+
+      return literal;
+    }
 
     // Read data
     buf = fs.readFileSync(found);
 
     // To large
-    if (buf.length > sizeLimit) return literal;
+    if (false !== sizeLimit && buf.length > sizeLimit) return literal;
 
     // Encode
     return new nodes.Literal('url("data:' + mime + ';base64,' + buf.toString('base64') + '")');
   };
 
-  url.raw = true;
-  return url;
+  fn.raw = true;
+  return fn;
 };
+
+// Exporting default mimes so we could easily access them
+module.exports.mimes = defaultMimes;
+
+
 
 });// module: functions/url.js
 
@@ -1556,7 +2184,14 @@ require.register("lexer.js", function(module, exports, require){
 
 var Token = require('./token')
   , nodes = require('./nodes')
-  , errors = require('./errors');
+  , errors = require('./errors')
+  , units = require('./units');
+
+/**
+ * Expose `Lexer`.
+ */
+
+exports = module.exports = Lexer;
 
 /**
  * Operator aliases.
@@ -1575,30 +2210,13 @@ var alias = {
  * Units.
  */
 
-var units = [
-    'em'
-  , 'ex'
-  , 'px'
-  , 'mm'
-  , 'cm'
-  , 'in'
-  , 'pt'
-  , 'pc'
-  , 'deg'
-  , 'rad'
-  , 'grad'
-  , 'ms'
-  , 's'
-  , 'Hz'
-  , 'kHz'
-  , 'rem'
-  , '%'].join('|');
+units = units.join('|');
 
 /**
  * Unit RegExp.
  */
 
-var unit = new RegExp('^(-)?(\\d+\\.\\d+|\\d+|\\.\\d+)(' + units + ')? *');
+var unit = new RegExp('^(-)?(\\d+\\.\\d+|\\d+|\\.\\d+)(' + units + ')?[ \\t]*');
 
 /**
  * Initialize a new `Lexer` with the given `str` and `options`.
@@ -1608,13 +2226,27 @@ var unit = new RegExp('^(-)?(\\d+\\.\\d+|\\d+|\\.\\d+)(' + units + ')? *');
  * @api private
  */
 
-var Lexer = module.exports = function Lexer(str, options) {
+function Lexer(str, options) {
   options = options || {};
-  this.str = str.replace(/\r\n?/g, '\n');
   this.stash = [];
   this.indentStack = [];
   this.indentRe = null;
   this.lineno = 1;
+
+  function comment(str, val, offset, s) {
+    var inComment = s.lastIndexOf('/*', offset) > s.lastIndexOf('*/', offset)
+      || s.lastIndexOf('//', offset) > s.lastIndexOf('\n', offset);
+    return inComment
+      ? str
+      : val;
+  };
+
+  this.str = str
+    .replace(/\s+$/, '\n')
+    .replace(/\r\n?/g, '\n')
+    .replace(/\\ *\n/g, ' ')
+    .replace(/([,(]|:(?!\/\/[^ ])) *(?:\/\/[^\n]*)?\n\s*/g, comment)
+    .replace(/\s*\n *([,)])/g, comment);
 };
 
 /**
@@ -1689,6 +2321,28 @@ Lexer.prototype = {
   },
 
   /**
+   * Check if the current token is a part of selector.
+   *
+   * @return {Boolean}
+   * @api private
+   */
+
+  isPartOfSelector: function() {
+    var tok = this.prev;
+    switch (tok && tok.type) {
+      // #for
+      case 'color':
+        return 2 == tok.val.raw.length;
+      // .or
+      case '.':
+      // [is]
+      case '[':
+        return true;
+    }
+    return false;
+  },
+
+  /**
    * Fetch next token.
    *
    * @return {Token}
@@ -1703,7 +2357,9 @@ Lexer.prototype = {
       || this.urlchars()
       || this.atrule()
       || this.scope()
+      || this.extends()
       || this.media()
+      || this.mozdocument()
       || this.comment()
       || this.newline()
       || this.escaped()
@@ -1773,12 +2429,12 @@ Lexer.prototype = {
   },
 
   /**
-   * ';' ' '*
+   * ';' [ \t]*
    */
 
   sep: function() {
     var captures;
-    if (captures = /^; */.exec(this.str)) {
+    if (captures = /^;[ \t]*/.exec(this.str)) {
       this.skip(captures);
       return new Token(';');
     }
@@ -1790,7 +2446,7 @@ Lexer.prototype = {
 
   space: function() {
     var captures;
-    if (captures = /^( +)/.exec(this.str)) {
+    if (captures = /^([ \t]+)/.exec(this.str)) {
       this.skip(captures);
       return new Token('space');
     }
@@ -1802,7 +2458,7 @@ Lexer.prototype = {
    
   escaped: function() {
     var captures;
-    if (captures = /^\\(.) */.exec(this.str)) {
+    if (captures = /^\\(.)[ \t]*/.exec(this.str)) {
       var c = captures[1];
       this.skip(captures);
       return new Token('ident', new nodes.Literal(c));
@@ -1816,7 +2472,7 @@ Lexer.prototype = {
   literal: function() {
     // HACK attack !!!
     var captures;
-    if (captures = /^@css *\{/.exec(this.str)) {
+    if (captures = /^@css[ \t]*\{/.exec(this.str)) {
       this.skip(captures);
       var c
         , braces = 1
@@ -1841,7 +2497,7 @@ Lexer.prototype = {
   
   important: function() {
     var captures;
-    if (captures = /^!important */.exec(this.str)) {
+    if (captures = /^!important[ \t]*/.exec(this.str)) {
       this.skip(captures);
       return new Token('ident', new nodes.Literal('!important'));
     }
@@ -1866,11 +2522,13 @@ Lexer.prototype = {
   
   paren: function() {
     var captures;
-    if (captures = /^([()]) */.exec(this.str)) {
+    if (captures = /^([()])([ \t]*)/.exec(this.str)) {
       var paren = captures[1];
       this.skip(captures);
       if (')' == paren) this.isURL = false;
-      return new Token(paren, paren);
+      var tok = new Token(paren, paren);
+      tok.space = captures[2];
+      return tok;
     }
   },
   
@@ -1879,10 +2537,16 @@ Lexer.prototype = {
    */
   
   nil: function() {
-    var captures;
-    if (captures = /^(null)\b */.exec(this.str)) {
+    var captures
+      , tok;
+    if (captures = /^(null)\b[ \t]*/.exec(this.str)) {
       this.skip(captures);
-      return new Token('null', nodes.nil);
+      if (this.isPartOfSelector()) {
+        tok = new Token('ident', new nodes.Ident('null'));
+      } else {
+        tok = new Token('null', nodes.nil);
+      }
+      return tok;
     }
   },
   
@@ -1896,11 +2560,17 @@ Lexer.prototype = {
    */
   
   keyword: function() {
-    var captures;
-    if (captures = /^(return|if|else|unless|for|in)\b */.exec(this.str)) {
+    var captures
+      , tok;
+    if (captures = /^(return|if|else|unless|for|in)\b[ \t]*/.exec(this.str)) {
       var keyword = captures[1];
       this.skip(captures);
-      return new Token(keyword, keyword);
+      if (this.isPartOfSelector()) {
+        tok = new Token('ident', new nodes.Ident(keyword));
+      } else {
+        tok = new Token(keyword, keyword);
+      }
+      return tok;
     }
   },
   
@@ -1916,12 +2586,17 @@ Lexer.prototype = {
    */
   
   namedop: function() {
-    var captures;
-    if (captures = /^(not|and|or|is a|is defined|isnt|is not|is)\b( *)/.exec(this.str)) {
+    var captures
+      , tok;
+    if (captures = /^(not|and|or|is a|is defined|isnt|is not|is)(?!-)\b([ \t]*)/.exec(this.str)) {
       var op = captures[1];
       this.skip(captures);
-      op = alias[op] || op;
-      var tok = new Token(op, op);
+      if (this.isPartOfSelector()) {
+        tok = new Token('ident', new nodes.Ident(op));
+      } else {
+        op = alias[op] || op;
+        tok = new Token(op, op);
+      }
       tok.space = captures[2];
       return tok;
     }
@@ -1959,19 +2634,33 @@ Lexer.prototype = {
    * | ':'
    * | '['
    * | ']'
+   * | '.'
    * | '..'
    * | '...'
    */
   
   op: function() {
     var captures;
-    if (captures = /^([.]{2,3}|&&|\|\||[!<>=?:]=|\*\*|[-+*\/%]=?|[,=?:!~<>&\[\]])( *)/.exec(this.str)) {
+    if (captures = /^([.]{1,3}|&&|\|\||[!<>=?:]=|\*\*|[-+*\/%]=?|[,=?:!~<>&\[\]])([ \t]*)/.exec(this.str)) {
       var op = captures[1];
       this.skip(captures);
       op = alias[op] || op;
       var tok = new Token(op, op);
       tok.space = captures[2];
+      this.isURL = false;
       return tok;
+    }
+  },
+
+  /**
+   * '@extends' ([^{\n]+)
+   */
+  
+  extends: function() {
+    var captures;
+    if (captures = /^@extends?[ \t]*([^\/{\n;]+)/.exec(this.str)) {
+      this.skip(captures);
+      return new Token('extend', captures[1].trim());
     }
   },
 
@@ -1981,9 +2670,21 @@ Lexer.prototype = {
   
   media: function() {
     var captures;
-    if (captures = /^@media *([^\/{\n]+)/.exec(this.str)) {
+    if (captures = /^@media[ \t]*(.+?)(?=\/\/|[\n{])/.exec(this.str)) {
       this.skip(captures);
       return new Token('media', captures[1].trim());
+    }
+  },
+
+  /**
+   * '@-moz-document' ([^{\n]+)
+   */
+
+  mozdocument: function() {
+    var captures;
+    if (captures = /^@-moz-document[ \t]*([^\/{\n]+)/.exec(this.str)) {
+      this.skip(captures);
+      return new Token('-moz-document', captures[1].trim());
     }
   },
 
@@ -1993,7 +2694,7 @@ Lexer.prototype = {
   
   scope: function() {
     var captures;
-    if (captures = /^@scope *([^\/{\n]+)/.exec(this.str)) {
+    if (captures = /^@scope[ \t]*([^\/{\n]+)/.exec(this.str)) {
       this.skip(captures);
       return new Token('scope', captures[1].trim());
     }
@@ -2005,7 +2706,7 @@ Lexer.prototype = {
   
   atrule: function() {
     var captures;
-    if (captures = /^@(import|(?:-(\w+)-)?keyframes|charset|font-face|page) */.exec(this.str)) {
+    if (captures = /^@(import|(?:-(\w+)-)?keyframes|charset|font-face|page)[ \t]*/.exec(this.str)) {
       this.skip(captures);
       var vendor = captures[2]
         , type = captures[1];
@@ -2051,7 +2752,7 @@ Lexer.prototype = {
   
   boolean: function() {
     var captures;
-    if (captures = /^(true|false)\b( *)/.exec(this.str)) {
+    if (captures = /^(true|false)\b([ \t]*)/.exec(this.str)) {
       var val = nodes.Boolean('true' == captures[1]);
       this.skip(captures);
       var tok = new Token('boolean', val);
@@ -2061,12 +2762,12 @@ Lexer.prototype = {
   },
 
   /**
-   * -?[a-zA-Z$] [-\w\d$]* '('
+   * -*[_a-zA-Z$] [-\w\d$]* '('
    */
   
   fun: function() {
     var captures;
-    if (captures = /^(-?[a-zA-Z$][-\w\d$]*)\(( *)/.exec(this.str)) {
+    if (captures = /^(-*[_a-zA-Z$][-\w\d$]*)\(([ \t]*)/.exec(this.str)) {
       var name = captures[1];
       this.skip(captures);
       this.isURL = 'url' == name;
@@ -2077,12 +2778,12 @@ Lexer.prototype = {
   },
 
   /**
-   * -?[_a-zA-Z$] [-\w\d$]*
+   * -*[_a-zA-Z$] [-\w\d$]*
    */
   
   ident: function() {
     var captures;
-    if (captures = /^(@)?(-?[_a-zA-Z$][-\w\d$]*)/.exec(this.str)) {
+    if (captures = /^(@)?(-*[_a-zA-Z$][-\w\d$]*)/.exec(this.str)) {
       var at = captures[1]
         , name = captures[2]
         , id = new nodes.Ident(name);
@@ -2105,12 +2806,12 @@ Lexer.prototype = {
     // figure out if we are using tabs or spaces
     } else {
       // try tabs
-      re = /^\n([\t]*) */;
+      re = /^\n([\t]*)[ \t]*/;
       captures = re.exec(this.str);
 
       // nope, try spaces
       if (captures && !captures[1].length) {
-        re = /^\n( *)/;
+        re = /^\n([ \t]*)/;
         captures = re.exec(this.str);
       }
 
@@ -2178,32 +2879,65 @@ Lexer.prototype = {
 
   string: function() {
     var captures;
-    if (captures = /^("[^"]*"|'[^']*') */.exec(this.str)) {
-      var str = captures[1];
+    if (captures = /^("[^"]*"|'[^']*')[ \t]*/.exec(this.str)) {
+      var str = captures[1]
+        , quote = captures[0][0];
       this.skip(captures);
       str = str.slice(1,-1).replace(/\\n/g, '\n');
-      return new Token('string', new nodes.String(str));
+      return new Token('string', new nodes.String(str, quote));
     }
   },
 
   /**
-   * #rrggbbaa | #rrggbb | #rgba | #rgb
+   * #rrggbbaa | #rrggbb | #rgba | #rgb | #nn | #n
    */
 
   color: function() {
-		return this.rrggbbaa()
-			|| this.rrggbb()
-			|| this.rgba()
-			|| this.rgb()
+    return this.rrggbbaa()
+      || this.rrggbb()
+      || this.rgba()
+      || this.rgb()
+      || this.nn()
+      || this.n()
   },
+
+  /**
+   * #n
+   */
   
+  n: function() {
+    var captures;
+    if (captures = /^#([a-fA-F0-9]{1})[ \t]*/.exec(this.str)) {
+      this.skip(captures);
+      var n = parseInt(captures[1] + captures[1], 16)
+        , color = new nodes.RGBA(n, n, n, 1);
+      color.raw = captures[0];
+      return new Token('color', color); 
+    }
+  },
+
+  /**
+   * #nn
+   */
+  
+  nn: function() {
+    var captures;
+    if (captures = /^#([a-fA-F0-9]{2})[ \t]*/.exec(this.str)) {
+      this.skip(captures);
+      var n = parseInt(captures[1], 16)
+        , color = new nodes.RGBA(n, n, n, 1);
+      color.raw = captures[0];
+      return new Token('color', color); 
+    }
+  },
+
   /**
    * #rgb
    */
   
   rgb: function() {
     var captures;
-    if (captures = /^#([a-fA-F0-9]{3}) */.exec(this.str)) {
+    if (captures = /^#([a-fA-F0-9]{3})[ \t]*/.exec(this.str)) {
       this.skip(captures);
       var rgb = captures[1]
         , r = parseInt(rgb[0] + rgb[0], 16)
@@ -2221,7 +2955,7 @@ Lexer.prototype = {
   
   rgba: function() {
     var captures;
-    if (captures = /^#([a-fA-F0-9]{4}) */.exec(this.str)) {
+    if (captures = /^#([a-fA-F0-9]{4})[ \t]*/.exec(this.str)) {
       this.skip(captures);
       var rgb = captures[1]
         , r = parseInt(rgb[0] + rgb[0], 16)
@@ -2240,7 +2974,7 @@ Lexer.prototype = {
   
   rrggbb: function() {
     var captures;
-    if (captures = /^#([a-fA-F0-9]{6}) */.exec(this.str)) {
+    if (captures = /^#([a-fA-F0-9]{6})[ \t]*/.exec(this.str)) {
       this.skip(captures);
       var rgb = captures[1]
         , r = parseInt(rgb.substr(0, 2), 16)
@@ -2258,7 +2992,7 @@ Lexer.prototype = {
   
   rrggbbaa: function() {
     var captures;
-    if (captures = /^#([a-fA-F0-9]{8}) */.exec(this.str)) {
+    if (captures = /^#([a-fA-F0-9]{8})[ \t]*/.exec(this.str)) {
       this.skip(captures);
       var rgb = captures[1]
         , r = parseInt(rgb.substr(0, 2), 16)
@@ -2277,7 +3011,7 @@ Lexer.prototype = {
   
   selector: function() {
     var captures;
-    if (captures = /^[^{\n,]+/.exec(this.str)) {
+    if (captures = /^.*?(?=\/\/(?![^\[]*\])|[,\n{])/.exec(this.str)) {
       var selector = captures[0];
       this.skip(captures);
       return new Token('selector', selector);
@@ -2417,6 +3151,17 @@ BinOp.prototype.clone = function(){
   if (this.val) clone.val = this.val.clone();
   return clone;
 };
+
+/**
+ * Return <left> <op> <right>
+ *
+ * @return {String}
+ * @api public
+ */
+BinOp.prototype.toString = function() {
+  return this.left.toString() + ' ' + this.op + ' ' + this.right.toString();
+};
+
 
 });// module: nodes/binop.js
 
@@ -2606,7 +3351,7 @@ Boolean.prototype.__defineGetter__('isFalse', function(){
  */
 
 Boolean.prototype.negate = function(){
-  return Boolean(!this.val);
+  return new Boolean(!this.val);
 };
 
 /**
@@ -2686,15 +3431,21 @@ Call.prototype.clone = function(){
 };
 
 /**
- * Return <name>().
+ * Return <name>(param1, param2, ...).
  *
  * @return {String}
  * @api public
  */
 
 Call.prototype.toString = function(){
-  return this.name + '()';
+  var args = this.args.nodes.map(function(node) {
+    var str = node.toString();
+    return str.slice(1, str.length - 1);
+  }).join(', ');
+
+  return this.name + '(' + args + ')';
 };
+
 
 });// module: nodes/call.js
 
@@ -2966,38 +3717,40 @@ Expression.prototype.operate = function(op, right, val){
       var self = this
         , range = utils.unwrap(right).nodes
         , val = utils.unwrap(val)
-        , len;
+        , len
+        , node;
       range.forEach(function(unit){
         len = self.nodes.length;
         if ('unit' == unit.nodeName) {
           var i = unit.val;
           while (i-- > len) self.nodes[i] = nodes.nil;
           self.nodes[unit.val] = val;
+        } else if ('string' == unit.nodeName) {
+          node = self.nodes[0];
+          if (node && 'object' == node.nodeName) node.set(unit.val, val.clone());
         }
       });
       return val;
     case '[]':
       var expr = new nodes.Expression
         , vals = utils.unwrap(this).nodes
-        , range = utils.unwrap(right).nodes;
+        , range = utils.unwrap(right).nodes
+        , node;
       range.forEach(function(unit){
         if ('unit' == unit.nodeName) {
-          var node = vals[unit.val];
-          if (node) expr.push(node);
+          node = vals[unit.val];
+        } else if ('string' == unit.nodeName && 'object' == vals[0].nodeName) {
+          node = vals[0].get(unit.val);
         }
+        if (node) expr.push(node);
       });
       return expr.isEmpty
         ? nodes.nil
         : utils.unwrap(expr);
     case '||':
-      // we consider lists with length > 1 truth,
-      // for example (0 1 2)
-      if (this.nodes.length > 1) return this;
-
-      // check the return value, and return the lhs expr
-      // as a whole rather than the first item
-      var ret = this.first.operate(op, right, val);
-      return ret == this.nodes[0] ? this : right;
+      return this.toBoolean().isTrue
+        ? this
+        : right;
     case 'in':
       return Node.prototype.operate.call(this, op, right);
     case '!=':
@@ -3022,19 +3775,17 @@ Expression.prototype.operate = function(op, right, val){
 };
 
 /**
- * Iterate nodes to return a `Boolean`.
+ * Expressions with length > 1 are truthy,
+ * otherwise the first value's toBoolean()
+ * method is invoked.
  *
  * @return {Boolean}
  * @api public
  */
 
 Expression.prototype.toBoolean = function(){
-  for (var i = 0, len = this.nodes.length; i < len; ++i) {
-    if (this.nodes[i].toBoolean().isTrue) {
-      return nodes.yes;
-    }
-  }
-  return nodes.no;
+  if (this.nodes.length > 1) return nodes.yes;
+  return this.first.toBoolean();
 };
 
 /**
@@ -3213,7 +3964,7 @@ Function.prototype.toString = function(){
     return this.name
       + '('
       + this.fn.toString()
-        .match(/^function *\((.*?)\)/)
+        .match(/^function *\w*\((.*?)\)/)
         .slice(1)
         .join(', ')
       + ')';
@@ -3253,6 +4004,7 @@ var Node = require('./node');
 var Group = module.exports = function Group(){
   Node.call(this);
   this.nodes = [];
+  this.extends = [];
 };
 
 /**
@@ -3697,6 +4449,7 @@ Ident.prototype.operate = function(op, right){
     case '-':
       if ('unit' == val.nodeName) {
         var expr = new nodes.Expression;
+        val = val.clone();
         val.val = -val.val;
         expr.push(this);
         expr.push(val);
@@ -3765,6 +4518,7 @@ If.prototype.clone = function(){
   var clone = new If(cond, block);
   clone.elses = this.elses.map(function(node){ return node.clone(); });
   clone.negate = this.negate;
+  clone.postfix = this.postfix;
   clone.lineno = this.lineno;
   clone.filename = this.filename;
   return clone;
@@ -3807,8 +4561,81 @@ var Import = module.exports = function Import(expr){
 
 Import.prototype.__proto__ = Node.prototype;
 
+/**
+ * Return a clone of this node.
+ *
+ * @return {Node}
+ * @api public
+ */
+
+Import.prototype.clone = function(){
+  var clone = new Import(this.path.clone());
+  clone.lineno = this.lineno;
+  clone.filename = this.filename;
+  return clone;
+};
+
 
 });// module: nodes/import.js
+
+
+require.register("nodes/extend.js", function(module, exports, require){
+
+
+/*!
+ * Stylus - Extend
+ * Copyright(c) 2010 LearnBoost <dev@learnboost.com>
+ * MIT Licensed
+ */
+
+/**
+ * Module dependencies.
+ */
+
+var Node = require('./node');
+
+/**
+ * Initialize a new `Extend` with the given `selector`.
+ *
+ * @param {Selector} selector
+ * @api public
+ */
+
+var Extend = module.exports = function Extend(selector){
+  Node.call(this);
+  this.selector = selector;
+};
+
+/**
+ * Inherit from `Node.prototype`.
+ */
+
+Extend.prototype.__proto__ = Node.prototype;
+
+/**
+ * Return a clone of this node.
+ * 
+ * @return {Node}
+ * @api public
+ */
+
+Extend.prototype.clone = function(){
+  return new Extend(this.selector);
+};
+
+/**
+ * Return `@extend selector`.
+ *
+ * @return {String}
+ * @api public
+ */
+
+Extend.prototype.toString = function(){
+  return '@extend ' + this.selector;
+};
+
+
+});// module: nodes/extend.js
 
 
 require.register("nodes/index.js", function(module, exports, require){
@@ -3850,13 +4677,17 @@ exports.Media = require('./media');
 exports.Params = require('./params');
 exports.Comment = require('./comment');
 exports.Keyframes = require('./keyframes');
+exports.Member = require('./member');
 exports.Charset = require('./charset');
 exports.Import = require('./import');
+exports.Extend = require('./extend');
+exports.Object = require('./object');
 exports.Function = require('./function');
 exports.Property = require('./property');
 exports.Selector = require('./selector');
 exports.Expression = require('./expression');
 exports.Arguments = require('./arguments');
+exports.MozDocument = require('./mozdocument');
 
 /**
  * Singletons.
@@ -3865,6 +4696,7 @@ exports.Arguments = require('./arguments');
 exports.yes = new exports.Boolean(true);
 exports.no = new exports.Boolean(false);
 exports.nil = new exports.Null;
+
 
 });// module: nodes/index.js
 
@@ -3948,7 +4780,7 @@ Keyframes.prototype.__proto__ = Node.prototype;
 /**
  * Push the given `block` at `pos`.
  *
- * @param {Unit} pos
+ * @param {Array} pos
  * @param {Block} block
  * @api public
  */
@@ -4125,6 +4957,19 @@ var Media = module.exports = function Media(val){
  */
 
 Media.prototype.__proto__ = Node.prototype;
+
+/**
+ * Clone this node.
+ *
+ * @return {Media}
+ * @api public
+ */
+
+Media.prototype.clone = function(){
+  var clone = new Media(this.val);
+  clone.block = this.block.clone();
+  return clone;
+};
 
 /**
  * Return @media "val".
@@ -4304,9 +5149,16 @@ Node.prototype.operate = function(op, right){
         : right;
     case 'in':
       var vals = utils.unwrap(right).nodes
+        , len = vals.length
         , hash = this.hash;
       if (!vals) throw new Error('"in" given invalid right-hand operand, expecting an expression');
-      for (var i = 0, len = vals.length; i < len; ++i) {
+
+      // 'prop' in obj
+      if (1 == len && 'object' == vals[0].nodeName) {
+        return nodes.Boolean(vals[0].has(this.hash));
+      }
+
+      for (var i = 0; i < len; ++i) {
         if (hash == vals[i].hash) {
           return nodes.yes;
         }
@@ -4485,7 +5337,7 @@ var Page = module.exports = function Page(selector, block){
 Page.prototype.__proto__ = Node.prototype;
 
 /**
- * Return `@oage name`.
+ * Return `@page name`.
  *
  * @return {String}
  * @api public
@@ -4622,6 +5474,7 @@ Property.prototype.__proto__ = Node.prototype;
 
 Property.prototype.clone = function(){
   var clone = new Property(this.segments);
+  clone.name = this.name;
   clone.lineno = this.lineno;
   clone.filename = this.filename;
   clone.segments = this.segments.map(function(node){ return node.clone(); });
@@ -4637,7 +5490,7 @@ Property.prototype.clone = function(){
  */
 
 Property.prototype.toString = function(){
-  return 'property(' + this.name + ', ' + this.expr + ')';
+  return 'property(' + this.segments.join('') + ', ' + this.expr + ')';
 };
 
 /**
@@ -4986,7 +5839,7 @@ RGBA.prototype.toString = function(){
       + this.r + ','
       + this.g + ','
       + this.b + ','
-      + this.a.toFixed(2) + ')';
+      + (+this.a.toFixed(3)) + ')';
   }
 };
 
@@ -5094,6 +5947,17 @@ Root.prototype.push = function(node){
 };
 
 /**
+ * Unshift a `node` to this block.
+ *
+ * @param {Node} node
+ * @api public
+ */
+
+Root.prototype.unshift = function(node){
+  this.nodes.unshift(node);
+};
+
+/**
  * Return "root".
  *
  * @return {String}
@@ -5133,6 +5997,7 @@ var Block = require('./block')
 
 var Selector = module.exports = function Selector(segs){
   Node.call(this);
+  this.inherits = true;
   this.segments = segs;
 };
 
@@ -5174,7 +6039,6 @@ Selector.prototype.clone = function(){
 
 require.register("nodes/string.js", function(module, exports, require){
 
-
 /*!
  * Stylus - String
  * Copyright(c) 2010 LearnBoost <dev@learnboost.com>
@@ -5194,13 +6058,19 @@ var Node = require('./node')
  * Initialize a new `String` with the given `val`.
  *
  * @param {String} val
+ * @param {String} quote
  * @api public
  */
 
-var String = module.exports = function String(val){
+var String = module.exports = function String(val, quote){
   Node.call(this);
   this.val = val;
   this.string = val;
+  if (typeof quote !== 'string') {
+    this.quote = "'";
+  } else {
+    this.quote = quote;
+  }
 };
 
 /**
@@ -5217,7 +6087,7 @@ String.prototype.__proto__ = Node.prototype;
  */
 
 String.prototype.toString = function(){
-  return '"' + this.val + '"';
+  return this.quote + this.val + this.quote;
 };
 
 /**
@@ -5228,7 +6098,7 @@ String.prototype.toString = function(){
  */
 
 String.prototype.clone = function(){
-  var clone = new String(this.val);
+  var clone = new String(this.val, this.quote);
   clone.lineno = this.lineno;
   clone.filename = this.filename;
   return clone;
@@ -5495,7 +6365,7 @@ Unit.prototype.clone = function(){
  */
 
 Unit.prototype.operate = function(op, right){
-  var type = this.type || right.type;
+  var type = this.type || right.first.type;
 
   // swap color
   if ('rgba' == right.nodeName || 'hsla' == right.nodeName) {
@@ -5504,11 +6374,12 @@ Unit.prototype.operate = function(op, right){
 
   // operate
   if (this.shouldCoerce(op)) {
+    right = right.first;
     // percentages
     if (('-' == op || '+' == op) && '%' == right.type) {
-      right.val = this.val * (right.val / 100);
+      right = new Unit(this.val * (right.val / 100), '%');
     } else {
-      right = this.coerce(right.first);
+      right = this.coerce(right);
     }
 
     switch (op) {
@@ -5563,51 +6434,15 @@ Unit.prototype.operate = function(op, right){
 Unit.prototype.coerce = function(other){
   if ('unit' == other.nodeName) {
     var a = this
-      , b = other;
-    switch (a.type) {
-      case 'mm':
-        switch (b.type) {
-          case 'cm':
-            return new nodes.Unit(b.val * 2.54, 'mm');
-          case 'in':
-            return new nodes.Unit(b.val * 25.4, 'mm');
-        }
-      case 'cm':
-        switch (b.type) {
-          case 'mm':
-            return new nodes.Unit(b.val / 10, 'cm');
-          case 'in':
-            return new nodes.Unit(b.val * 2.54, 'cm');
-        }
-      case 'in':
-        switch (b.type) {
-          case 'mm':
-            return new nodes.Unit(b.val / 25.4, 'in');
-          case 'cm':
-            return new nodes.Unit(b.val / 2.54, 'in');
-        }
-      case 'ms':
-        switch (b.type) {
-          case 's':
-            return new nodes.Unit(b.val * 1000, 'ms');
-        }
-      case 's':
-        switch (b.type) {
-          case 'ms':
-            return new nodes.Unit(b.val / 1000, 's');
-        }
-      case 'Hz':
-        switch (b.type) {
-          case 'kHz':
-            return new nodes.Unit(b.val * 1000, 'Hz');
-        }
-      case 'kHz':
-        switch (b.type) {
-          case 'Hz':
-            return new nodes.Unit(b.val / 1000, 'kHz');
-        }
-      default:
-        return new nodes.Unit(b.val, a.type);
+      , b = other
+      , factorA = factor(a)
+      , factorB = factor(b);
+
+    if (factorA && factorB && (factorA.label == factorB.label)) {
+      var bVal = b.val * (factorB.val / factorA.val);
+      return new nodes.Unit(bVal, a.type);
+    } else {
+      return new nodes.Unit(b.val, a.type);
     }
   } else if ('string' == other.nodeName) {
     var val = parseInt(other.val, 10);
@@ -5619,12 +6454,268 @@ Unit.prototype.coerce = function(other){
 };
 
 
+/**
+ *  Convert a unit to base unit
+ */
+function factor(unit) {
+  var factorTable = {
+    'mm': {val: 1, label: 'mm'},
+    'cm': {val: 10, label: 'mm'},
+    'in': {val: 25.4, label: 'mm'},
+    'ms': {val: 1, label: 'ms'},
+    's': {val: 1000, label: 'ms'},
+    'Hz': {val: 1, label: 'Hz'},
+    'kHz': {val: 1000, label: 'Hz'}
+  };
+
+  return factorTable[unit.type];
+};
+
+
+
 });// module: nodes/unit.js
+
+
+require.register("nodes/object.js", function(module, exports, require){
+
+
+/*!
+ * Stylus - Object
+ * Copyright(c) 2010 LearnBoost <dev@learnboost.com>
+ * MIT Licensed
+ */
+
+/**
+ * Module dependencies.
+ */
+
+var Node = require('./node')
+  , nodes = require('./index')
+  , nativeObj = {}.constructor;
+
+/**
+ * Initialize a new `Object`.
+ *
+ * @api public
+ */
+
+var Object = module.exports = function Object(){
+  Node.call(this);
+  this.vals = {};
+};
+
+/**
+ * Inherit from `Node.prototype`.
+ */
+
+Object.prototype.__proto__ = Node.prototype;
+
+/**
+ * Set `key` to `val`.
+ *
+ * @param {String} key
+ * @param {Node} val
+ * @return {Object} for chaining
+ * @api public
+ */
+
+Object.prototype.set = function(key, val){
+  this.vals[key] = val;
+  return this;
+};
+
+/**
+ * Return length.
+ *
+ * @return {Number}
+ * @api public
+ */
+
+Object.prototype.__defineGetter__('length', function() {
+  return nativeObj.keys(this.vals).length;
+});
+
+/**
+ * Get `key`.
+ *
+ * @param {String} key
+ * @return {Node}
+ * @api public
+ */
+
+Object.prototype.get = function(key){
+  return this.vals[key] || nodes.nil;
+};
+
+/**
+ * Has `key`?
+ *
+ * @param {String} key
+ * @return {Boolean}
+ * @api public
+ */
+
+Object.prototype.has = function(key){
+  return key in this.vals;
+};
+
+/**
+ * Operate on `right` with the given `op`.
+ *
+ * @param {String} op
+ * @param {Node} right
+ * @return {Node}
+ * @api public
+ */
+
+Object.prototype.operate = function(op, right){
+  switch (op) {
+    case '.':
+    case '[]':
+      return this.get(right.hash);
+    default:
+      return Node.prototype.operate.call(this, op, right);
+  }
+};
+
+/**
+ * Return Boolean based on the length of this object.
+ *
+ * @return {Boolean}
+ * @api public
+ */
+
+Object.prototype.toBoolean = function(){
+  return nodes.Boolean(this.length);
+};
+
+/**
+ * Return a clone of this node.
+ * 
+ * @return {Node}
+ * @api public
+ */
+
+Object.prototype.clone = function(){
+  var clone = new Object;
+  clone.lineno = this.lineno;
+  clone.filename = this.filename;
+  for (var key in this.vals) {
+    clone.vals[key] = this.vals[key].clone();
+  }
+  return clone;
+};
+
+/**
+ * Return "{ <prop>: <val> }"
+ *
+ * @return {String}
+ * @api public
+ */
+
+Object.prototype.toString = function(){
+  var obj = {};
+  for (var prop in this.vals) {
+    obj[prop] = this.vals[prop].toString();
+  }
+  return JSON.stringify(obj);
+};
+
+
+});// module: nodes/object.js
+
+
+require.register("nodes/member.js", function(module, exports, require){
+
+
+/*!
+ * Stylus - Member
+ * Copyright(c) 2010 LearnBoost <dev@learnboost.com>
+ * MIT Licensed
+ */
+
+/**
+ * Module dependencies.
+ */
+
+var BinOp = require('./binop');
+
+/**
+ * Initialize a new `Member` with `left` and `right`.
+ *
+ * @param {Node} left
+ * @param {Node} right
+ * @api public
+ */
+
+var Member = module.exports = function Member(left, right){
+  BinOp.call(this, '.', left, right);
+};
+
+/**
+ * Inherit from `BinOp.prototype`.
+ */
+
+Member.prototype.__proto__ = BinOp.prototype;
+
+/**
+ * Return a clone of this node.
+ *
+ * @return {Node}
+ * @api public
+ */
+
+Member.prototype.clone = function(){
+  var clone = BinOp.prototype.clone.call(this);
+  clone.constructor = Member;
+  return clone;
+};
+
+/**
+ * Return a string representation of this node.
+ *
+ * @return {String}
+ * @api public
+ */
+
+Member.prototype.toString = function(){
+  return this.left.toString()
+    + '.' + this.right.toString();
+};
+
+
+});// module: nodes/member.js
+
+
+require.register("nodes/mozdocument.js", function(module, exports, require){
+
+var Node = require('./node')
+  , nodes = require('./index');
+
+var MozDocument = module.exports = function MozDocument(val){
+  Node.call(this);
+  this.val = val;
+};
+
+MozDocument.prototype.__proto__ = Node.prototype;
+
+MozDocument.prototype.clone = function(){
+  var clone = new MozDocument(this.val);
+  clone.block = this.block.clone();
+  return clone;
+};
+
+MozDocument.prototype.toString = function(){
+  return '@-moz-document ' + this.val;
+}
+
+
+});// module: nodes/mozdocument.js
 
 
 require.register("parser.js", function(module, exports, require){
 
- 
+
 /*!
  * Stylus - Parser
  * Copyright(c) 2010 LearnBoost <dev@learnboost.com>
@@ -5655,6 +6746,7 @@ var selectorTokens = [
   , 'color'
   , 'unit'
   , 'for'
+  , 'in'
   , '['
   , ']'
   , '('
@@ -5671,6 +6763,7 @@ var selectorTokens = [
   , '~'
   , '{'
   , '}'
+  , '.'
 ];
 
 /**
@@ -5719,6 +6812,7 @@ var Parser = module.exports = function Parser(str, options) {
   this.state = ['root'];
   this.stash = [];
   this.parens = 0;
+  this.css = 0;
   this.state.pop = function(){
     self.prevState = [].pop.call(this);
   };
@@ -5729,31 +6823,42 @@ var Parser = module.exports = function Parser(str, options) {
  */
 
 Parser.prototype = {
-  
+
   /**
    * Constructor.
    */
-  
+
   constructor: Parser,
-  
+
   /**
    * Return current state.
    *
    * @return {String}
    * @api private
    */
-  
+
   currentState: function() {
     return this.state[this.state.length - 1];
   },
-  
+
+  /**
+   * Return previous state.
+   *
+   * @return {String}
+   * @api private
+   */
+
+  previousState: function() {
+    return this.state[this.state.length - 2];
+  },
+
   /**
    * Parse the input, then return the root node.
    *
    * @return {Node}
    * @api private
    */
-  
+
   parse: function(){
     var block = this.parent = this.root;
     while ('eos' != this.peek().type) {
@@ -5765,14 +6870,14 @@ Parser.prototype = {
     }
     return block;
   },
-  
+
   /**
    * Throw an `Error` with the given `msg`.
    *
    * @param {String} msg
    * @api private
    */
-  
+
   error: function(msg){
     var type = this.peek().type
       , val = undefined == this.peek().val
@@ -5781,7 +6886,7 @@ Parser.prototype = {
     if (val.trim() == type.trim()) val = '';
     throw new errors.ParseError(msg.replace('{peek}', '"' + type + val + '"'));
   },
-  
+
   /**
    * Accept the given token `type`, and return it,
    * otherwise return `undefined`.
@@ -5811,14 +6916,14 @@ Parser.prototype = {
     }
     return this.next();
   },
-  
+
   /**
    * Get the next token.
    *
    * @return {Token}
    * @api private
    */
-  
+
   next: function() {
     var tok = this.stash.length
       ? this.stash.pop()
@@ -5826,18 +6931,18 @@ Parser.prototype = {
     nodes.lineno = tok.lineno;
     return tok;
   },
-  
+
   /**
    * Peek with lookahead(1).
    *
    * @return {Token}
    * @api private
    */
-  
+
   peek: function() {
     return this.lexer.peek();
   },
-  
+
   /**
    * Lookahead `n` tokens.
    *
@@ -5845,19 +6950,19 @@ Parser.prototype = {
    * @return {Token}
    * @api private
    */
-  
+
   lookahead: function(n){
     return this.lexer.lookahead(n);
   },
-  
+
   /**
-   * Check if the token at `n` is a valid selector token. 
+   * Check if the token at `n` is a valid selector token.
    *
    * @param {Number} n
    * @return {Boolean}
    * @api private
    */
-  
+
   isSelectorToken: function(n) {
     var la = this.lookahead(n).type;
     switch (la) {
@@ -5873,7 +6978,7 @@ Parser.prototype = {
         return ~selectorTokens.indexOf(la);
     }
   },
-  
+
   /**
    * Check if the token at `n` is a pseudo selector.
    *
@@ -5881,7 +6986,7 @@ Parser.prototype = {
    * @return {Boolean}
    * @api private
    */
-  
+
   isPseudoSelector: function(n){
     return ~pseudoSelectors.indexOf(this.lookahead(n).val.name);
   },
@@ -5899,36 +7004,41 @@ Parser.prototype = {
       , la;
 
     while (la = this.lookahead(i++)) {
-      if (~['indent', 'outdent', 'newline'].indexOf(la.type)) return;
+      if (~['indent', 'outdent', 'newline', 'eos'].indexOf(la.type)) return;
       if (type == la.type) return true;
     }
   },
-  
+
   /**
    * Valid selector tokens.
    */
-  
+
   selectorToken: function() {
     if (this.isSelectorToken(1)) {
       if ('{' == this.peek().type) {
         // unclosed, must be a block
         if (!this.lineContains('}')) return;
         // check if ':' is within the braces.
-        // though not required by stylus, chances
+        // though not required by Stylus, chances
         // are if someone is using {} they will
-        // use css-style props, helping us with
+        // use CSS-style props, helping us with
         // the ambiguity in this case
         var i = 0
           , la;
         while (la = this.lookahead(++i)) {
-          if ('}' == la.type) break;
+          if ('}' == la.type) {
+            // Check empty block.
+            if (i == 2 || (i == 3 && this.lookahead(i - 1).type == 'space'))
+              return;
+            break;
+          }
           if (':' == la.type) return;
         }
       }
       return this.next();
     }
   },
-  
+
   /**
    * Consume whitespace.
    */
@@ -5939,14 +7049,23 @@ Parser.prototype = {
   },
 
   /**
+   * Consume newlines.
+   */
+
+  skipNewlines: function() {
+    while ('newline' == this.peek().type)
+      this.next();
+  },
+
+  /**
    * Consume spaces.
    */
-  
+
   skipSpaces: function() {
     while ('space' == this.peek().type)
       this.next();
   },
-  
+
   /**
    * Check if the following sequence of tokens
    * forms a function definition, ie trailing
@@ -5957,12 +7076,12 @@ Parser.prototype = {
     return 'indent' == this.lookahead(i).type
       || '{' == this.lookahead(i).type;
   },
-  
+
   /**
    * Check if the following sequence of tokens
    * forms a selector.
    */
-  
+
   looksLikeSelector: function() {
     var i = 1
       , brace;
@@ -5977,6 +7096,16 @@ Parser.prototype = {
 
       if ('selector' == this.lookahead(i).type)
         return true;
+
+      if ('ident' == this.lookahead(i).type && '.' == this.lookahead(i + 1).type)
+        return true;
+
+      if (('=' == this.lookahead(i).type || 'function' == this.lookahead(i).type)
+        && '{' == this.lookahead(i + 1).type)
+        return false;
+
+      if (':' == this.lookahead(i).type && !this.isPseudoSelector(i + 1) && this.lineContains('.'))
+        return false;
 
       // the ':' token within braces signifies
       // a selector. ex: "foo{bar:'baz'}"
@@ -5995,6 +7124,7 @@ Parser.prototype = {
       // as 'td:th-child(1)' may look like a property
       // and function call to the parser otherwise
       if (':' == this.lookahead(i++).type
+        && !this.lookahead(i-1).space
         && this.isPseudoSelector(i))
         return true;
 
@@ -6028,11 +7158,30 @@ Parser.prototype = {
       , 'for'
       , 'if'
       , ';'
-      , '}'].indexOf(this.lookahead(i).type))
+      , '}'
+      , 'eos'].indexOf(this.lookahead(i).type))
       ++i;
 
     if ('indent' == this.lookahead(i).type)
       return true;
+  },
+
+  /**
+   * Check if the current state allows object literal.
+   */
+
+  stateAllowsObject: function() {
+    switch (this.previousState()) {
+      case 'conditional':
+      case 'for':
+        return false;
+      // if a == 1 {
+      // if a = 1 {
+      case 'expression':
+      case 'assignment':
+        return !this.cond;
+    }
+    return true;
   },
 
   /**
@@ -6048,6 +7197,7 @@ Parser.prototype = {
       case 'function':
       case 'font-face':
       case 'media':
+      case '-moz-document':
       case 'for':
         return true;
     }
@@ -6058,7 +7208,7 @@ Parser.prototype = {
    * | statement 'if' expression
    * | statement 'unless' expression
    */
-  
+
   statement: function() {
     var stmt = this.stmt()
       , state = this.prevState
@@ -6107,7 +7257,7 @@ Parser.prototype = {
 
     return stmt;
   },
-  
+
   /**
    *    ident
    *  | selector
@@ -6125,7 +7275,7 @@ Parser.prototype = {
    *  | expression
    *  | 'return' expression
    */
-  
+
   stmt: function() {
     var type = this.peek().type;
     switch (type) {
@@ -6134,8 +7284,11 @@ Parser.prototype = {
         return this.keyframes();
       case 'font-face':
         return this.fontface();
+      case '-moz-document':
+        return this.mozdocument();
       case 'comment':
       case 'selector':
+      case 'extend':
       case 'literal':
       case 'charset':
       case 'media':
@@ -6168,6 +7321,7 @@ Parser.prototype = {
             case ':':
             case '&':
             case '[':
+            case '.':
               return this.selector();
             case '*':
               return this.property();
@@ -6183,7 +7337,7 @@ Parser.prototype = {
         return expr;
     }
   },
-  
+
   /**
    * indent (!outdent)+ outdent
    */
@@ -6191,13 +7345,13 @@ Parser.prototype = {
   block: function(node, scope) {
     var delim
       , stmt
-      , _ = this.css
       , block = this.parent = new nodes.Block(this.parent, node);
 
     if (false === scope) block.scope = false;
 
     // css-style
-    if (this.css = this.accept('{')) {
+    if (this.accept('{')) {
+      this.css++;
       delim = '}';
       this.skipWhitespace();
     } else {
@@ -6226,7 +7380,7 @@ Parser.prototype = {
       this.skipWhitespace();
       this.expect('}');
       this.skipSpaces();
-      this.css = _;
+      this.css--;
     } else {
       this.expect('outdent');
     }
@@ -6255,13 +7409,15 @@ Parser.prototype = {
       , val = this.id().name;
     if (this.accept(',')) key = this.id().name;
     this.expect('in');
-    var each = new nodes.Each(val, key, this.expression());
     this.state.push('for');
+    this.cond = true;
+    var each = new nodes.Each(val, key, this.expression());
+    this.cond = false;
     each.block = this.block(each, false);
     this.state.pop();
     return each;
   },
-  
+
   /**
    * return expression
    */
@@ -6273,33 +7429,41 @@ Parser.prototype = {
       ? new nodes.Return
       : new nodes.Return(expr);
   },
-  
+
   /**
    * unless expression block
    */
-  
+
   unless: function() {
     this.expect('unless');
-    var node = new nodes.If(this.expression(), true);
     this.state.push('conditional');
+    this.cond = true;
+    var node = new nodes.If(this.expression(), true);
+    this.cond = false;
     node.block = this.block(node, false);
     this.state.pop();
     return node;
   },
-  
+
   /**
    * if expression block (else block)?
    */
 
   ifstmt: function() {
     this.expect('if');
-    var node = new nodes.If(this.expression());
     this.state.push('conditional');
+    this.cond = true;
+    var node = new nodes.If(this.expression())
+      , cond
+      , block;
+    this.cond = false;
     node.block = this.block(node, false);
     while (this.accept('else')) {
       if (this.accept('if')) {
-        var cond = this.expression()
-          , block = this.block(node, false);
+        this.cond = true;
+        cond = this.expression();
+        this.cond = false;
+        block = this.block(node, false);
         node.elses.push(new nodes.If(cond, block));
       } else {
         node.elses.push(this.block(node, false));
@@ -6321,9 +7485,22 @@ Parser.prototype = {
   },
 
   /**
+   * extend
+   */
+
+  extend: function(){
+    var val = this.expect('extend').val
+      , arr = this.selectorParts();
+
+    arr.unshift(new nodes.Literal(val));
+
+    return new nodes.Extend(new nodes.Selector(arr));
+  },
+
+  /**
    * media
    */
-  
+
   media: function() {
     var val = this.expect('media').val
       , media = new nodes.Media(val);
@@ -6334,9 +7511,22 @@ Parser.prototype = {
   },
 
   /**
+   * @-moz-document block
+   */
+
+  mozdocument: function(){
+    var val = this.expect('-moz-document').val
+      , mozdocument = new nodes.MozDocument(val);
+    this.state.push('-moz-document');
+    mozdocument.block = this.block(mozdocument, false);
+    this.state.pop();
+    return mozdocument;
+  },
+
+  /**
    * fontface
    */
-  
+
   fontface: function() {
     this.expect('font-face');
     var node = new nodes.FontFace;
@@ -6355,18 +7545,18 @@ Parser.prototype = {
     this.allowPostfix = true;
     return new nodes.Import(this.expression());
   },
-  
+
   /**
    * charset string
    */
-  
+
   charset: function() {
     this.expect('charset');
     var str = this.expect('string').val;
     this.allowPostfix = true;
     return new nodes.Charset(str);
   },
-  
+
   /**
    * page selector? block
    */
@@ -6379,6 +7569,7 @@ Parser.prototype = {
       selector = new nodes.Literal(':' + str);
     }
     var page = new nodes.Page(selector);
+    this.skipSpaces();
     this.state.push('page');
     page.block = this.block(page);
     this.state.pop();
@@ -6386,21 +7577,27 @@ Parser.prototype = {
   },
 
   /**
-   * keyframes name ((unit | from | to) block)+
+   * keyframes name (
+   *  (unit | from | to)
+   *  (',' (unit | from | to)*)
+   *  block)+
    */
-   
+
   keyframes: function() {
     var pos
-      , _ = this.css
       , tok = this.expect('keyframes')
-      , keyframes = new nodes.Keyframes(this.id(), tok.val);
+      , keyframes = new nodes.Keyframes(this.id(), tok.val)
+      , vals = [];
 
     // css-style
-    if (this.css = this.accept('{')) {
+    if (this.accept('{')) {
+      this.css++;
       this.skipWhitespace();
     } else {
       this.expect('indent');
     }
+
+    this.skipNewlines();
 
     while (pos = this.accept('unit') || this.accept('ident')) {
       // from | to
@@ -6420,51 +7617,58 @@ Parser.prototype = {
         pos = pos.val;
       }
 
+      vals.push(pos);
+
+      // ','
+      if (this.accept(',') || this.accept('newline')) continue;
+
       // block
       this.state.push('keyframe');
       var block = this.block(keyframes);
-      keyframes.push(pos, block);
+      keyframes.push(vals, block);
+      vals = [];
       this.state.pop();
       if (this.css) this.skipWhitespace();
+      this.skipNewlines();
     }
 
     // css-style
     if (this.css) {
       this.skipWhitespace();
       this.expect('}');
-      this.css = _;
+      this.css--;
     } else {
       this.expect('outdent');
     }
 
     return keyframes;
   },
-  
+
   /**
    * literal
    */
-  
+
   literal: function() {
     return this.expect('literal').val;
   },
-  
+
   /**
    * ident space?
    */
-  
+
   id: function() {
     var tok = this.expect('ident');
     this.accept('space');
     return tok.val;
   },
-  
+
   /**
    *   ident
    * | assignment
    * | property
    * | selector
    */
-  
+
   ident: function() {
     var i = 2
       , la = this.lookahead(i).type;
@@ -6481,11 +7685,21 @@ Parser.prototype = {
       case '/=':
       case '%=':
         return this.assignment();
+      // Member
+      case '.':
+        if (this._ident == this.peek()) return this.id();
+        while ('=' != this.lookahead(++i).type
+          && !~[',', 'newline', 'indent', 'eos'].indexOf(this.lookahead(i).type)) ;
+        if ('=' == this.lookahead(i).type) {
+          this._ident = this.peek();
+          return this.expression();
+        }
       // Assignment []=
       case '[':
         if (this._ident == this.peek()) return this.id();
         while (']' != this.lookahead(i++).type
-          && 'selector' != this.lookahead(i).type) ;
+          && 'selector' != this.lookahead(i).type
+          && 'eos' != this.lookahead(i).type) ;
         if ('=' == this.lookahead(i).type) {
           this._ident = this.peek();
           return this.expression();
@@ -6526,8 +7740,15 @@ Parser.prototype = {
             // Part of a selector
             case 'root':
             case 'media':
+            case '-moz-document':
             case 'font-face':
-              return this.selector();
+              return '[' == la
+                ? this.subscript()
+                : this.selector();
+            case 'function':
+              return this.looksLikeSelector()
+                ? this.selector()
+                : this.expression();
             // Do not disrupt the ident when an operand
             default:
               return this.operand
@@ -6543,6 +7764,7 @@ Parser.prototype = {
           case 'for':
           case 'page':
           case 'media':
+          case '-moz-document':
           case 'font-face':
           case 'selector':
           case 'function':
@@ -6554,11 +7776,11 @@ Parser.prototype = {
         }
     }
   },
-  
+
   /**
    * '*'? (ident | '{' expression '}')+
    */
-  
+
   interpolate: function() {
     var node
       , segs = []
@@ -6584,7 +7806,7 @@ Parser.prototype = {
     if (!segs.length) this.expect('ident');
     return segs;
   },
-  
+
   /**
    *   property ':'? expression
    * | ident
@@ -6595,7 +7817,8 @@ Parser.prototype = {
 
     // property
     var ident = this.interpolate()
-      , ret = prop = new nodes.Property(ident);
+      , prop = new nodes.Property(ident)
+      , ret = prop;
 
     // optional ':'
     this.accept('space');
@@ -6614,7 +7837,7 @@ Parser.prototype = {
 
     return ret;
   },
-  
+
   /**
    *   selector ',' selector
    * | selector newline selector
@@ -6622,70 +7845,74 @@ Parser.prototype = {
    */
 
   selector: function() {
-    var tok
-      , arr
+    var arr
       , group = new nodes.Group
       , scope = this.selectorScope
       , isRoot = 'root' == this.currentState();
 
     do {
-      arr = [];
-
       // Clobber newline after ,
       this.accept('newline');
 
-      // Selector candidates,
-      // stitched together to
-      // form a selector.
-      while (tok = this.selectorToken()) {
-        // Selector component
-        switch (tok.type) {
-          case '{':
-            this.skipSpaces();
-            var expr = this.expression();
-            this.skipSpaces();
-            this.expect('}');
-            arr.push(expr);
-            break;
-          case 'comment':
-            arr.push(new nodes.Literal(tok.val.str));
-            break;
-          case 'color':
-            arr.push(new nodes.Literal(tok.val.raw));
-            break;
-          case 'space':
-            arr.push(new nodes.Literal(' '));
-            break;
-          case 'function':
-            arr.push(new nodes.Literal(tok.val.name + '('));
-            break;
-          case 'ident':
-            arr.push(new nodes.Literal(tok.val.name));
-            break;
-          default:
-            arr.push(new nodes.Literal(tok.val));
-            if (tok.space) arr.push(new nodes.Literal(' '));
-        }
-      }
+      arr = this.selectorParts();
 
       // Push the selector
       if (isRoot && scope) arr.unshift(new nodes.Literal(scope + ' '));
-      group.push(new nodes.Selector(arr));
+      if (arr.length) group.push(new nodes.Selector(arr));
     } while (this.accept(',') || this.accept('newline'));
 
-    this.lexer.allowComments = false;
     this.state.push('selector');
     group.block = this.block(group);
     this.state.pop();
 
-
     return group;
   },
-  
+
+  selectorParts: function(){
+    var tok
+      , arr = [];
+
+    // Selector candidates,
+    // stitched together to
+    // form a selector.
+    while (tok = this.selectorToken()) {
+      // Selector component
+      switch (tok.type) {
+        case '{':
+          this.skipSpaces();
+          var expr = this.expression();
+          this.skipSpaces();
+          this.expect('}');
+          arr.push(expr);
+          break;
+        case 'comment':
+          arr.push(new nodes.Literal(tok.val.str));
+          break;
+        case 'color':
+          arr.push(new nodes.Literal(tok.val.raw));
+          break;
+        case 'space':
+          arr.push(new nodes.Literal(' '));
+          break;
+        case 'function':
+          arr.push(new nodes.Literal(tok.val.name + '('));
+          break;
+        case 'ident':
+          arr.push(new nodes.Literal(tok.val.name));
+          break;
+        default:
+          arr.push(new nodes.Literal(tok.val));
+          if (tok.space) arr.push(new nodes.Literal(' '));
+      }
+    }
+
+    return arr;
+  },
+
   /**
    * ident ('=' | '?=') expression
    */
-  
+
   assignment: function() {
     var op
       , node
@@ -6723,7 +7950,7 @@ Parser.prototype = {
 
     return node;
   },
-  
+
   /**
    *   definition
    * | call
@@ -6751,7 +7978,7 @@ Parser.prototype = {
           this.error('failed to find closing paren ")"');
       }
     }
-    
+
     // Definition or call
     switch (this.currentState()) {
       case 'expression':
@@ -6779,21 +8006,23 @@ Parser.prototype = {
   /**
    * ident '(' expression ')'
    */
-  
+
   functionCall: function() {
     if ('url' == this.peek().val.name) return this.url();
     var name = this.expect('function').val.name;
     this.state.push('function arguments');
+    this.parens++;
     var args = this.args();
     this.expect(')');
+    this.parens--;
     this.state.pop();
     return new nodes.Call(name, args);
   },
-  
+
   /**
    * ident '(' params ')' block
    */
-  
+
   functionDefinition: function() {
     var name = this.expect('function').val.name;
 
@@ -6812,14 +8041,14 @@ Parser.prototype = {
     this.state.pop();
     return new nodes.Ident(name, fn);
   },
-  
+
   /**
    *   ident
    * | ident '...'
    * | ident '=' expression
    * | ident ',' ident
    */
-  
+
   params: function() {
     var tok
       , node
@@ -6838,7 +8067,7 @@ Parser.prototype = {
     }
     return params;
   },
-  
+
   /**
    * (ident ':')? expression (',' (ident ':')? expression)*
    */
@@ -6861,7 +8090,7 @@ Parser.prototype = {
 
     return args;
   },
- 
+
   /**
    * expression (',' expression)*
    */
@@ -6880,7 +8109,7 @@ Parser.prototype = {
     }
     return node;
   },
-  
+
   /**
    * negation+
    */
@@ -6896,23 +8125,23 @@ Parser.prototype = {
     this.state.pop();
     return expr;
   },
-  
+
   /**
    *   'not' ternary
    * | ternary
    */
-  
+
   negation: function() {
     if (this.accept('not')) {
       return new nodes.UnaryOp('!', this.negation());
     }
     return this.ternary();
   },
-  
+
   /**
    * logical ('?' expression ':' expression)?
    */
-  
+
   ternary: function() {
     var node = this.logical();
     if (this.accept('?')) {
@@ -6923,11 +8152,11 @@ Parser.prototype = {
     }
     return node;
   },
-  
+
   /**
    * typecheck (('&&' | '||') typecheck)*
    */
-  
+
   logical: function() {
     var op
       , node = this.typecheck();
@@ -6936,11 +8165,11 @@ Parser.prototype = {
     }
     return node;
   },
-  
+
   /**
    * equality ('is a' equality)*
    */
-  
+
   typecheck: function() {
     var op
       , node = this.equality();
@@ -6952,11 +8181,11 @@ Parser.prototype = {
     }
     return node;
   },
-  
+
   /**
    * in (('==' | '!=') in)*
    */
-  
+
   equality: function() {
     var op
       , node = this.inop();
@@ -6983,15 +8212,15 @@ Parser.prototype = {
     }
     return node;
   },
-  
+
   /**
    * range (('>=' | '<=' | '>' | '<') range)*
    */
-  
+
   relational: function() {
     var op
       , node = this.range();
-    while (op = 
+    while (op =
          this.accept('>=')
       || this.accept('<=')
       || this.accept('<')
@@ -7004,11 +8233,11 @@ Parser.prototype = {
     }
     return node;
   },
-  
+
   /**
    * additive (('..' | '...') additive)*
    */
-  
+
   range: function() {
     var op
       , node = this.additive();
@@ -7020,11 +8249,11 @@ Parser.prototype = {
     }
     return node;
   },
-  
+
   /**
    * multiplicative (('+' | '-') multiplicative)*
    */
-  
+
   additive: function() {
     var op
       , node = this.multiplicative();
@@ -7035,11 +8264,11 @@ Parser.prototype = {
     }
     return node;
   },
-  
+
   /**
    * defined (('**' | '*' | '/' | '%') defined)*
    */
-  
+
   multiplicative: function() {
     var op
       , node = this.defined();
@@ -7061,12 +8290,12 @@ Parser.prototype = {
     }
     return node;
   },
-  
+
   /**
    *    unary 'is defined'
    *  | unary
    */
-  
+
   defined: function() {
     var node = this.unary();
     if (this.accept('is defined')) {
@@ -7075,12 +8304,12 @@ Parser.prototype = {
     }
     return node;
   },
-  
+
   /**
    *   ('!' | '~' | '+' | '-') unary
    * | subscript
    */
-  
+
   unary: function() {
     var op
       , node;
@@ -7096,17 +8325,22 @@ Parser.prototype = {
     }
     return this.subscript();
   },
-  
+
   /**
-   *   primary ('[' expression ']' '='?)+
-   * | primary
+   *   member ('[' expression ']' ('.' id)? '='?)+
+   * | member
    */
-  
+
   subscript: function() {
-    var node = this.primary();
+    var node = this.member()
+      , id;
     while (this.accept('[')) {
       node = new nodes.BinOp('[]', node, this.expression());
       this.expect(']');
+      if (this.accept('.')) {
+        id = new nodes.Ident(this.expect('ident').val.string);
+        node = new nodes.Member(node, id);
+      }
       // TODO: TernaryOp :)
       if (this.accept('=')) {
         node.op += '=';
@@ -7115,7 +8349,50 @@ Parser.prototype = {
     }
     return node;
   },
+
+  /**
+   *   primary ('.' id)+ '='?
+   * | primary
+   */
   
+  member: function() {
+    var node = this.primary();
+    if (node) {
+      while (this.accept('.')) {
+        var id = new nodes.Ident(this.expect('ident').val.string);
+        node = new nodes.Member(node, id);
+      }
+      this.skipSpaces();
+      if (this.accept('=')) node.val = this.expression();
+    }
+    return node;
+  },
+
+  /**
+   *   '{' '}'
+   * | '{' pair (ws pair)* '}'
+   */
+
+  object: function(){
+    var id, val;
+    var obj = new nodes.Object;
+    this.expect('{');
+    this.skipWhitespace();
+
+    while (!this.accept('}')) {
+      id = this.accept('ident') || this.accept('string');
+      if (!id) this.error('expected "ident" or "string", got {peek}');
+      id = id.val.hash;
+      this.expect(':');
+      val = this.expression();
+      obj.set(id, val);
+      this.accept(',');
+      this.skipWhitespace();
+    }
+
+    return obj;
+  },
+
   /**
    *   unit
    * | null
@@ -7124,7 +8401,8 @@ Parser.prototype = {
    * | ident
    * | boolean
    * | literal
-   * | '(' expression ')'
+   * | object
+   * | '(' expression ')' '%'?
    */
 
   primary: function() {
@@ -7137,6 +8415,7 @@ Parser.prototype = {
       var expr = this.expression();
       this.expect(')');
       --this.parens;
+      if (this.accept('%')) expr.push(new nodes.Ident('%'));
       return expr;
     }
 
@@ -7149,6 +8428,9 @@ Parser.prototype = {
       case 'literal':
       case 'boolean':
         return this.next().val;
+      case '{':
+        if (this.stateAllowsObject()) return this.object();
+        return;
       case 'ident':
         return this.ident();
       case 'function':
@@ -7177,10 +8459,17 @@ require.register("renderer.js", function(module, exports, require){
 var Parser = require('./parser')
   , Compiler = require('./visitor/compiler')
   , Evaluator = require('./visitor/evaluator')
+  , Normalizer = require('./visitor/normalizer')
   , utils = require('./utils')
   , nodes = require('./nodes')
   , path = require('./path')
   , join = path.join;
+
+/**
+ * Expose `Renderer`.
+ */
+
+module.exports = Renderer;
 
 /**
  * Initialize a new `Renderer` with the given `str` and `options`.
@@ -7190,7 +8479,7 @@ var Parser = require('./parser')
  * @api public
  */
 
-var Renderer = module.exports = function Renderer(str, options) {
+function Renderer(str, options) {
   options = options || {};
   options.globals = {};
   options.functions = {};
@@ -7198,6 +8487,7 @@ var Renderer = module.exports = function Renderer(str, options) {
   // options.imports = [join(__dirname, 'functions')];
   options.paths = options.paths || [];
   options.filename = options.filename || 'stylus';
+  options.Evaluator = options.Evaluator || Evaluator;
   this.options = options;
   this.str = str;
 };
@@ -7213,19 +8503,29 @@ Renderer.prototype.render = function(fn){
   var parser = this.parser = new Parser(this.str, this.options);
   try {
     nodes.filename = this.options.filename;
+    // parse
     var ast = parser.parse();
-    this.evaluator = new Evaluator(ast, this.options);
+
+    // evaluate
+    this.evaluator = new this.options.Evaluator(ast, this.options);
+    this.nodes = nodes;
+    this.evaluator.renderer = this;
     ast = this.evaluator.evaluate();
+
+    // normalize
+    var normalizer = new Normalizer(ast, this.options);
+    ast = normalizer.normalize();
+
+    // compile
     var compiler = new Compiler(ast, this.options)
       , css = compiler.compile()
       , js = compiler.js;
     fn(null, css, js);
   } catch (err) {
-  //   var options = {};
-  //   options.input = err.input || this.str;
-  //   options.filename = err.filename || this.options.filename;
-  //   options.lineno = err.lineno || parser.lexer.lineno;
-  //   fn(utils.formatException(err, options));
+    // var options = {};
+    // options.input = err.input || this.str;
+    // options.filename = err.filename || this.options.filename;
+    // options.lineno = err.lineno || parser.lexer.lineno;
     fn(err);
   }
 };
@@ -7297,6 +8597,8 @@ Renderer.prototype.use = function(fn){
  */
 
 Renderer.prototype.define = function(name, fn, raw){
+  fn = utils.coerce(fn);
+
   if (fn.nodeName) {
     this.options.globals[name] = fn;
     return this;
@@ -7614,7 +8916,6 @@ Scope.prototype.inspect = function(){
 
 require.register("stylus.js", function(module, exports, require){
 
-
 /*!
  * Stylus
  * Copyright(c) 2010 LearnBoost <dev@learnboost.com>
@@ -7640,7 +8941,7 @@ exports = module.exports = render;
  * Library version.
  */
 
-exports.version = '0.16.0';
+exports.version = '0.40.3'
 
 /**
  * Expose nodes.
@@ -7667,6 +8968,7 @@ exports.utils = require('./utils');
 exports.Visitor = require('./visitor');
 exports.Parser = require('./parser');
 exports.Evaluator = require('./visitor/evaluator');
+exports.Compiler = require('./visitor/compiler');
 
 /**
  * Render the given `str` with `options` and callback `fn(err, css)`.
@@ -7679,7 +8981,7 @@ exports.Evaluator = require('./visitor/evaluator');
 
 exports.render = function(str, options, fn){
   if ('function' == typeof options) fn = options, options = {};
-  new Renderer(str, options).render(fn);
+  return new Renderer(str, options).render(fn);
 };
 
 /**
@@ -7692,7 +8994,7 @@ exports.render = function(str, options, fn){
  */
 
 function render(str, options) {
-  str = bifs + str;
+  if (bifs) str = bifs + str;
   return new Renderer(str, options);
 }
 
@@ -7784,8 +9086,9 @@ var nodes = require('./nodes')
  * @api private
  */
 
-exports.absolute = function(path){
-  return /^([a-z]:\\)|\//i.test(path);
+exports.absolute = function(path){  
+  // On Windows the path could start with a drive letter, i.e. a:\\ or two leading backslashes
+  return path.substr(0, 2) == '\\\\' || path[0] == '/' || /^[a-z]:\\/i.test(path);
 };
 
 /**
@@ -7795,12 +9098,14 @@ exports.absolute = function(path){
  * @param {String} path
  * @param {String} paths
  * @param {String} ignore
+ * @param {Boolean} resolveURL
  * @return {String}
  * @api private
  */
 
-exports.lookup = function(path, paths, ignore){
+exports.lookup = function(path, paths, ignore, resolveURL){
   var lookup
+    , method = resolveURL ? resolve : join
     , i = paths.length;
 
   // Absolute
@@ -7819,7 +9124,7 @@ exports.lookup = function(path, paths, ignore){
   // Relative
   while (i--) {
     try {
-      lookup = join(paths[i], path);
+      lookup = method(paths[i], path);
       if (ignore == lookup) continue;
       // fs.statSync(lookup);
       return lookup;
@@ -7972,6 +9277,72 @@ exports.unwrap = function(expr){
 };
 
 /**
+ * Coerce JavaScript values to their Stylus equivalents.
+ *
+ * @param {Mixed} val
+ * @return {Node}
+ * @api public
+ */
+
+exports.coerce = function(val){
+  switch (typeof val) {
+    case 'function':
+      return val;
+    case 'string':
+      return new nodes.String(val);
+    case 'boolean':
+      return new nodes.Boolean(val);
+    case 'number':
+      return new nodes.Unit(val);
+    default:
+      if (null == val) return nodes.nil;
+      if (Array.isArray(val)) return exports.coerceArray(val);
+      if (val.nodeName) return val;
+      return exports.coerceObject(val);
+  }
+};
+
+/**
+ * Coerce a javascript `Array` to a Stylus `Expression`.
+ *
+ * @param {Array} val
+ * @return {Expression}
+ * @api private
+ */
+
+exports.coerceArray = function(val){
+  var expr = new nodes.Expression;
+  val.forEach(function(val){
+    expr.push(exports.coerce(val));
+  });
+  return expr;
+};
+
+/**
+ * Coerce a javascript object to a Stylus `Expression`.
+ *
+ * For example `{ foo: 'bar', bar: 'baz' }` would become
+ * the expression `(foo 'bar') (bar 'baz')`.
+ *
+ * @param {Object} obj
+ * @return {Expression}
+ * @api public
+ */
+
+exports.coerceObject = function(obj){
+  var expr = new nodes.Expression
+    , val;
+
+  for (var key in obj) {
+    val = exports.coerce(obj[key]);
+    key = new nodes.Ident(key);
+    expr.push(exports.coerceArray([key, val]));
+  }
+
+  return expr;
+};
+
+/**
  * Return param names for `fn`.
  *
  * @param {Function} fn
@@ -8043,7 +9414,6 @@ Visitor.prototype.visit = function(node, fn){
 
 require.register("visitor/compiler.js", function(module, exports, require){
 
-
 /*!
  * Stylus - Compiler
  * Copyright(c) 2010 LearnBoost <dev@learnboost.com>
@@ -8063,7 +9433,7 @@ var Visitor = require('./index')
  *
  * Options:
  *
- *   - `compress`  Compress the css output, defaults to false
+ *   - `compress`  Compress the CSS output (default: false)
  *
  * @param {Node} root
  * @api public
@@ -8074,9 +9444,11 @@ var Compiler = module.exports = function Compiler(root, options) {
   this.compress = options.compress;
   this.firebug = options.firebug;
   this.linenos = options.linenos;
+  this.spaces = options['indent spaces'] || 2;
+  this.includeCSS = options['include css'];
   this.indents = 1;
   Visitor.call(this, root);
-  this.tree = [];
+  this.stack = [];
   this.js = '';
 };
 
@@ -8105,9 +9477,8 @@ Compiler.prototype.compile = function(){
  */
 
 Compiler.prototype.__defineGetter__('indent', function(){
-  return this.compress
-     ? ''
-     : new Array(this.indents).join('  ');
+  if (this.compress) return '';
+  return new Array(this.indents).join(Array(this.spaces + 1).join(' '));
 });
 
 /**
@@ -8118,17 +9489,9 @@ Compiler.prototype.visitRoot = function(block){
   this.buf = '';
   for (var i = 0, len = block.nodes.length; i < len; ++i) {
     var node = block.nodes[i];
-    switch (node.nodeName) {
-      case 'null':
-      case 'expression':
-      case 'function':
-      case 'jsliteral':
-      case 'unit':
-        continue;
-      default:
-        var ret = this.visit(node);
-        if (ret) this.buf += ret + '\n';
-    }
+    if (this.linenos || this.firebug) this.debugInfo(node);
+    var ret = this.visit(node);
+    if (ret) this.buf += ret + '\n';
   }
   return this.buf;
 };
@@ -8140,7 +9503,7 @@ Compiler.prototype.visitRoot = function(block){
 Compiler.prototype.visitBlock = function(block){
   var node;
 
-  if (block.hasProperties) {
+  if (block.hasProperties && !block.lacksRenderedSelectors) {
     var arr = [this.compress ? '{' : ' {'];
     ++this.indents;
     for (var i = 0, len = block.nodes.length; i < len; ++i) {
@@ -8154,9 +9517,15 @@ Compiler.prototype.visitBlock = function(block){
         case 'group':
         case 'unit':
           continue;
+        case 'media':
+          // Prevent double-writing the @media declaration when
+          // nested inside of a function/mixin
+          if (node.block.parent.scope) {
+            continue;
+          }
         default:
           arr.push(this.visit(node));
-      } 
+      }
     }
     --this.indents;
     arr.push(this.indent + '}');
@@ -8177,9 +9546,19 @@ Compiler.prototype.visitBlock = function(block){
         this.visit(node);
         break;
       case 'media':
+      case 'mozdocument':
       case 'import':
       case 'fontface':
         this.visit(node);
+        break;
+      case 'comment':
+        // only show comments inside when outside of scope and unsuppressed
+        if (!block.scope && !node.suppress) {
+          this.buf += this.visit(node) + '\n';
+        }
+        break;
+      case 'literal':
+        this.buf += this.visit(node) + '\n';
         break;
     }
   }
@@ -8190,6 +9569,8 @@ Compiler.prototype.visitBlock = function(block){
  */
 
 Compiler.prototype.visitKeyframes = function(node){
+  var comma = this.compress ? ',' : ', ';
+
   var prefix = 'official' == node.prefix
     ? ''
     : '-' + node.prefix + '-';
@@ -8197,13 +9578,15 @@ Compiler.prototype.visitKeyframes = function(node){
   this.buf += '@' + prefix + 'keyframes '
     + this.visit(node.name)
     + (this.compress ? '{' : ' {');
+
   ++this.indents;
   node.frames.forEach(function(frame){
     if (!this.compress) this.buf += '\n  ';
-    this.buf += this.visit(frame.pos);
+    this.buf += this.visit(frame.pos.join(comma));
     this.visit(frame.block);
   }, this);
   --this.indents;
+
   this.buf += '}' + (this.compress ? '' : '\n');
 };
 
@@ -8216,6 +9599,19 @@ Compiler.prototype.visitMedia = function(media){
   this.buf += this.compress ? '{' : ' {\n';
   ++this.indents;
   this.visit(media.block);
+  --this.indents;
+  this.buf += '}' + (this.compress ? '' : '\n');
+};
+
+/**
+ * Visit MozDocument.
+ */
+
+Compiler.prototype.visitMozDocument = function(mozdocument){
+  this.buf += '@-moz-document ' + mozdocument.val;
+  this.buf += this.compress ? '{' : ' {\n';
+  ++this.indents;
+  this.visit(mozdocument.block);
   --this.indents;
   this.buf += '}' + (this.compress ? '' : '\n');
 };
@@ -8297,7 +9693,9 @@ Compiler.prototype.visitCharset = function(charset){
  */
 
 Compiler.prototype.visitLiteral = function(lit){
-  return lit.val.trim().replace(/^  /gm, '');
+  var val = lit.val.trim();
+  if (!this.includeCSS) val = val.replace(/^  /gm, '');
+  return val;
 };
 
 /**
@@ -8335,9 +9733,8 @@ Compiler.prototype.visitUnit = function(unit){
 
   // Compress
   if (this.compress) {
-    // Zero is always '0', unless when
-    // a percentage, this is required by keyframes
-    if ('%' != type && 0 == n) return '0';
+    // Always return '0' unless the unit is a percentage or time
+    if ('%' != type && 's' != type && 'ms' != type && 0 == n) return '0';
     // Omit leading '0' on floats
     if (float && n < 1 && n > -1) {
       return n.toString().replace('0.', '.') + type;
@@ -8352,61 +9749,22 @@ Compiler.prototype.visitUnit = function(unit){
  */
 
 Compiler.prototype.visitGroup = function(group){
-  var self = this
-    , tree = this.tree
-    , prev = tree[tree.length - 1]
-    , curr = [];
+  var stack = this.stack;
 
-  // Construct an array of arrays
-  // representing the selector hierarchy
-  group.nodes.forEach(function(node){
-    curr.push(node.parent
-        ? node
-        : node.val);
-  });
+  stack.push(group.nodes);
 
-  tree.push(curr);
-
-  // Reverse recurse the
-  // hierarchy array to build
-  // up the selector combinations.
-  // When we reach root, we have our
-  // selector string built
-  var selectors = []
-    , buf = [];
-  function join(arr, i) {
-    if (i) {
-      arr[i].forEach(function(str){
-        buf.unshift(str);
-        join(arr, i - 1);
-        buf.shift();
-      });
-    } else {
-      arr[0].forEach(function(selector){
-        var str = selector.trim();
-        if (buf.length) {
-          for (var i = 0, len = buf.length; i < len; ++i) {
-            if (~buf[i].indexOf('&')) {
-              str = buf[i].replace(/&/g, str).trim();
-            } else {
-              str += ' ' + buf[i].trim();
-            }
-          }
-        }
-        selectors.push(self.indent + str.trimRight());
-      });
-    }
-  }
-
-  // Join selectors
+  // selectors
   if (group.block.hasProperties) {
-    join(tree, tree.length - 1);
-    this.buf += (this.selector = selectors.join(this.compress ? ',' : ',\n'));
+    var selectors = this.compileSelectors(stack);
+    if(selectors.length)
+      this.buf += (this.selector = selectors.join(this.compress ? ',' : ',\n'));
+    else
+      group.block.lacksRenderedSelectors = true;
   }
 
-  // Output blocks
+  // output block
   this.visit(group.block);
-  tree.pop();
+  stack.pop();
 };
 
 /**
@@ -8445,7 +9803,7 @@ Compiler.prototype.visitCall = function(call){
     return this.visit(arg);
   }, this).join(this.compress ? ',' : ', ');
   if (this.isURL) args = '"' + args + '"';
-  delete this.isURL;
+  this.isURL = false;
   return call.name + '(' + args + ')';
 };
 
@@ -8484,13 +9842,103 @@ Compiler.prototype.visitArguments = Compiler.prototype.visitExpression;
 
 Compiler.prototype.visitProperty = function(prop){
   var self = this
-    , val = this.visit(prop.expr);
+    , val = this.visit(prop.expr).trim();
   return this.indent + (prop.name || prop.segments.join(''))
     + (this.compress ? ':' + val : ': ' + val)
     + (this.compress
         ? (this.last ? '' : ';')
         : ';');
 };
+
+/**
+ * Compile selector strings in `arr` from the bottom-up
+ * to produce the selector combinations. For example
+ * the following Stylus:
+ *
+ *    ul
+ *      li
+ *      p
+ *        a
+ *          color: red
+ *
+ * Would return:
+ *
+ *      [ 'ul li a', 'ul p a' ]
+ *
+ * @param {Array} arr
+ * @return {Array}
+ * @api private
+ */
+
+Compiler.prototype.compileSelectors = function(arr){
+  var stack = this.stack
+    , self = this
+    , selectors = []
+    , buf = []
+    , hiddenSelectorRegexp = /^\s*\$/;
+
+  function interpolateParent(selector, buf) {
+    var str = selector.val.trim();
+    if (buf.length) {
+      for (var i = 0, len = buf.length; i < len; ++i) {
+        if (~buf[i].indexOf('&')) {
+          str = buf[i].replace(/&/g, str).trim();
+        } else {
+          str += ' ' + buf[i].trim();
+        }
+      }
+    }
+    return str;
+  }
+
+  function compile(arr, i) {
+    if (i) {
+      arr[i].forEach(function(selector){
+        if(selector.val.match(hiddenSelectorRegexp)) return;
+        if (selector.inherits) {
+          buf.unshift(selector.val);
+          compile(arr, i - 1);
+          buf.shift();
+        } else {
+          selectors.push(interpolateParent(selector, buf));
+        }
+      });
+    } else {
+      arr[0].forEach(function(selector){
+        if(selector.val.match(hiddenSelectorRegexp)) return;
+        var str = interpolateParent(selector, buf);
+        selectors.push(self.indent + str.trimRight());
+      });
+    }
+  }
+
+  compile(arr, arr.length - 1);
+
+  return selectors;
+};
+
+/**
+ * Debug info.
+ */
+
+Compiler.prototype.debugInfo = function(node){
+
+  var path = node.filename == 'stdin' ? 'stdin' : fs.realpathSync(node.filename)
+    , line = node.nodes ? node.nodes[0].lineno : node.lineno;
+
+  if (this.linenos){
+    this.buf += '\n/* ' + 'line ' + line + ' : ' + path + ' */\n';
+  }
+
+  if (this.firebug){
+    // debug info for firebug, the crazy formatting is needed
+    path = 'file\\\:\\\/\\\/' + path.replace(/(\/|\.)/g, '\\$1');
+    line = '\\00003' + line;
+    this.buf += '\n@media -stylus-debug-info'
+      + '{filename{font-family:' + path
+      + '}line{font-family:' + line + '}}\n';
+  }
+}
 
 
 });// module: visitor/compiler.js
@@ -8518,7 +9966,42 @@ var Visitor = require('./index')
   , bifs = require('../functions')
   , dirname = require('../path').dirname
   , join = require('../path').join
-  , colors = require('../colors');
+  , colors = require('../colors')
+  , units = require('../units');
+
+/**
+ * Clone the block node within the each loop so we don't keep
+ * extending the same block in multiple contexts
+ *
+ * @param {Node}
+ * @return {Node}
+ */
+function cloneNode (node) {
+  if (node.block && node.block.node) {
+    node.block.node = node.block.node.clone();
+  }
+  if (node.nodes && node.nodes.length) {
+    node.nodes.map(cloneNode);
+  }
+  return node;
+}
+
+/**
+ * Clone the block node within the each loop so we don't keep
+ * extending the same block in multiple contexts
+ *
+ * @param {Node}
+ * @return {Node}
+ */
+function cloneNode (node) {
+  if (node.block && node.block.node) {
+    node.block.node = node.block.node.clone();
+  }
+  if (node.nodes && node.nodes.length) {
+    node.nodes.map(cloneNode);
+  }
+  return node;
+}
 
 /**
  * Initialize a new `Evaluator` with the given `root` Node
@@ -8542,12 +10025,15 @@ var Evaluator = module.exports = function Evaluator(root, options) {
   this.globals = options.globals || {};
   this.paths = options.paths || [];
   this.filename = options.filename;
+  this.includeCSS = options['include css'];
+  this.resolveURL = options['resolve url'];
   this.paths.push(dirname(options.filename || '.'));
   this.stack.push(this.global = new Frame(root));
   this.warnings = options.warn;
   this.options = options;
   this.calling = []; // TODO: remove, use stack
   this.importStack = [];
+  this.ret = 0;
 };
 
 /**
@@ -8592,20 +10078,25 @@ Evaluator.prototype.visit = function(node){
  */
 
 Evaluator.prototype.setup = function(){
+  var root = this.root;
+  var imports = [];
+
   this.populateGlobalScope();
   this.imports.forEach(function(file){
     var expr = new nodes.Expression;
     expr.push(new nodes.String(file));
-    this.visit(new nodes.Import(expr));
+    imports.push(new nodes.Import(expr));
   }, this);
+
+  root.nodes = imports.concat(root.nodes);
 };
 
 /**
  * Populate the global scope with:
- * 
+ *
  *   - css colors
  *   - user-defined globals
- * 
+ *
  * @api private
  */
 
@@ -8644,8 +10135,6 @@ Evaluator.prototype.evaluate = function(){
  */
 
 Evaluator.prototype.visitGroup = function(group){
-  var vendors = this.vendors;
-
   group.nodes = group.nodes.map(function(selector){
     selector.val = this.interpolate(selector);
     return selector;
@@ -8678,7 +10167,63 @@ Evaluator.prototype.visitReturn = function(ret){
 
 Evaluator.prototype.visitMedia = function(media){
   media.block = this.visit(media.block);
+  var query = this.lookup(media.val);
+  if (query) media.val = new nodes.Literal(query.first.string);
   return media;
+};
+
+/**
+ * Visit MozDocument.
+ */
+
+Evaluator.prototype.visitMozDocument = function(mozdocument){
+  mozdocument.block = this.visit(mozdocument.block);
+  return mozdocument;
+};
+
+/**
+ * Visit FontFace.
+ */
+
+Evaluator.prototype.visitFontFace = function(face){
+  face.block = this.visit(face.block);
+  return face;
+};
+
+/**
+ * Visit FontFace.
+ */
+
+Evaluator.prototype.visitPage = function(page){
+  page.block = this.visit(page.block);
+  return page;
+};
+
+/**
+ * Visit Object.
+ */
+
+Evaluator.prototype.visitObject = function(obj){
+  for (var key in obj.vals) {
+    obj.vals[key] = this.visit(obj.vals[key]);
+  }
+  return obj;
+};
+
+/**
+ * Visit Member.
+ */
+
+Evaluator.prototype.visitMember = function(node){
+  var left = node.left
+    , right = node.right
+    , obj = this.visit(left).first;
+
+  if ('object' != obj.nodeName) {
+    throw new Error(left.toString() + ' has no property .' + right);
+  }
+  if (node.val) obj.set(right.name, this.visit(node.val));
+  return obj.get(right.name);
 };
 
 /**
@@ -8731,6 +10276,7 @@ Evaluator.prototype.visitFunction = function(fn){
  */
 
 Evaluator.prototype.visitEach = function(each){
+  this.ret++;
   var expr = utils.unwrap(this.visit(utils.unwrap(each.expr)))
     , len = expr.nodes.length
     , val = new nodes.Ident(each.val)
@@ -8738,16 +10284,38 @@ Evaluator.prototype.visitEach = function(each){
     , scope = this.currentScope
     , block = this.currentBlock
     , vals = []
-    , body;
+    , self = this
+    , body
+    , obj;
+  this.ret--;
 
   each.block.scope = false;
-  for (var i = 0; i < len; ++i) {
-    val.val = expr.nodes[i];
-    key.val = new nodes.Unit(i);
-    scope.add(val);
-    scope.add(key);
-    body = this.visit(each.block.clone());
+
+  function visitBody(body) {
+    body = each.block.clone();
+    body.nodes.map(cloneNode);
+    body = self.visit(body);
     vals = vals.concat(body.nodes);
+  }
+
+  // for prop in obj
+  if (1 == len && 'object' == expr.nodes[0].nodeName) {
+    obj = expr.nodes[0];
+    for (var prop in obj.vals) {
+      val.val = new nodes.String(prop);
+      key.val = obj.get(prop);
+      scope.add(val);
+      scope.add(key);
+      visitBody(body);
+    }
+  } else {
+    for (var i = 0; i < len; ++i) {
+      val.val = expr.nodes[i];
+      key.val = new nodes.Unit(i);
+      scope.add(val);
+      scope.add(key);
+      visitBody(body);
+    }
   }
 
   this.mixin(vals, block);
@@ -8760,6 +10328,7 @@ Evaluator.prototype.visitEach = function(each){
 
 Evaluator.prototype.visitCall = function(call){
   var fn = this.lookup(call.name)
+    , literal
     , ret;
 
   // url()
@@ -8775,9 +10344,15 @@ Evaluator.prototype.visitCall = function(call){
     fn = this.lookupFunction(call.name);
   }
 
-  // Undefined function, render literal css
+  // Undefined function? render literal CSS
   if (!fn || fn.nodeName != 'function') {
-    var ret = this.literalCall(call);
+    // Special case for `calc`
+    if ('calc' == this.unvendorize(call.name)) {
+      literal = call.args.nodes && call.args.nodes[0];
+      if (literal) ret = new nodes.Literal(call.name + literal);
+    } else {
+      ret = this.literalCall(call);
+    }
     this.ignoreColors = false;
     return ret;
   }
@@ -8786,20 +10361,22 @@ Evaluator.prototype.visitCall = function(call){
 
   // Massive stack
   if (this.calling.length > 200) {
-    throw new RangeError('Maximum call stack size exceeded');
+    throw new RangeError('Maximum stylus call stack size exceeded');
   }
 
   // First node in expression
   if ('expression' == fn.nodeName) fn = fn.first;
 
   // Evaluate arguments
-  var _ = this.ret;
-  this.ret = true;
-  var args = this.visit(call.args);
-  for (var key in call.args.map) {
-    call.args.map[key] = this.visit(call.args.map[key]);
+  this.ret++;
+  var args = this.visit(call.args)
+    , mapCopy = {};
+
+  for (var key in args.map) {
+    mapCopy[key] = args.map[key];
+    args.map[key] = this.visit(mapCopy[key].clone());
   }
-  this.ret = _;
+  this.ret--;
 
   // Built-in
   if (fn.fn) {
@@ -8807,6 +10384,11 @@ Evaluator.prototype.visitCall = function(call){
   // User-defined
   } else if ('function' == fn.nodeName) {
     ret = this.invokeFunction(fn, args);
+  }
+
+  // restore kwargs
+  for (key in mapCopy) {
+    args.map[key] = mapCopy[key];
   }
 
   this.calling.pop();
@@ -8830,12 +10412,11 @@ Evaluator.prototype.visitIdent = function(ident){
   } else if (ident.val.isNull) {
     var val = this.lookup(ident.name);
     return val ? this.visit(val) : ident;
-  // Assign  
+  // Assign
   } else {
-    var _ = this.ret;
-    this.ret = true;
+    this.ret++;
     ident.val = this.visit(ident.val);
-    this.ret = _;
+    this.ret--;
     this.currentScope.add(ident);
     return ident.val;
   }
@@ -8849,18 +10430,17 @@ Evaluator.prototype.visitBinOp = function(binop){
   // Special-case "is defined" pseudo binop
   if ('is defined' == binop.op) return this.isDefined(binop.left);
 
-  var _ = this.ret;
-  this.ret = true;
+  this.ret++;
   // Visit operands
   var op = binop.op
     , left = this.visit(binop.left)
     , right = this.visit(binop.right);
-  this.ret = _;
 
   // HACK: ternary
   var val = binop.val
     ? this.visit(binop.val)
     : null;
+  this.ret--;
 
   // Operate
   try {
@@ -8929,6 +10509,10 @@ Evaluator.prototype.visitExpression = function(expr){
   for (var i = 0, len = expr.nodes.length; i < len; ++i) {
     expr.nodes[i] = this.visit(expr.nodes[i]);
   }
+
+  // support (n * 5)px etc
+  if (this.castable(expr)) expr = this.cast(expr);
+
   return expr;
 };
 
@@ -8950,21 +10534,21 @@ Evaluator.prototype.visitProperty = function(prop){
 
   // Function of the same name
   if (call && !literal && !prop.literal) {
-    this.calling.push(name);
     var args = nodes.Arguments.fromExpression(utils.unwrap(prop.expr));
+    prop.name = name;
+    this.property = prop;
     var ret = this.visit(new nodes.Call(name, args));
-    this.calling.pop();
+    delete this.property;
     return ret;
   // Regular property
   } else {
-    var _ = this.ret;
-    this.ret = true;
+    this.ret++;
     prop.name = name;
     prop.literal = true;
     this.property = prop;
     prop.expr = this.visit(prop.expr);
     delete this.property;
-    this.ret = _;
+    this.ret--;
     return prop;
   }
 };
@@ -9014,13 +10598,12 @@ Evaluator.prototype.visitBlock = function(block){
 
 Evaluator.prototype.visitIf = function(node){
   var ret
-    , _ = this.ret
     , block = this.currentBlock
     , negate = node.negate;
 
-  this.ret = true;
+  this.ret++;
   var ok = this.visit(node.cond).first.toBoolean();
-  this.ret = _;
+  this.ret--;
 
   // Evaluate body
   if (negate) {
@@ -9039,11 +10622,11 @@ Evaluator.prototype.visitIf = function(node){
       for (var i = 0; i < len; ++i) {
         // else if
         if (elses[i].cond) {
-          if (this.visit(elses[i].cond).first.toBoolean().isTrue) {
+          if (this.visit(elses[i]).first.toBoolean().isTrue) {
             ret = this.visit(elses[i].block);
             break;
           }
-        // else 
+        // else
         } else {
           ret = this.visit(elses[i]);
         }
@@ -9061,45 +10644,89 @@ Evaluator.prototype.visitIf = function(node){
 };
 
 /**
+ * Visit Extend.
+ */
+
+Evaluator.prototype.visitExtend = function(extend){
+  // Cloning the selector for when we are in a loop and don't want it to affect
+  // the selector nodes and cause the values to be different to expected
+  var selector = this.interpolate(extend.selector.clone());
+  var block = !this.currentBlock.node.extends && this.targetBlock.node.extends ? this.targetBlock : this.currentBlock;
+  if (!block.node.extends && this.extendBlock) block = this.extendBlock;
+  block.node.extends.push(selector);
+  return nodes.nil;
+};
+
+/**
  * Visit Import.
  */
 
 Evaluator.prototype.visitImport = function(imported){
-  var found
-    , root = this.root
+  this.ret++;
+
+  var root = this.root
     , Parser = require('../parser')
-    , path = this.visit(imported.path).first;
+    , path = this.visit(imported.path).first
+    , includeCSS = this.includeCSS
+    , importStack = this.importStack
+    , found
+    , literal
+    , index;
+
+  this.ret--;
 
   // url() passed
   if ('url' == path.name) return imported;
 
-  // Enusre string
+  // Ensure string
   if (!path.string) throw new Error('@import string expected');
   var name = path = path.string;
 
+  // Absolute URL
+  if (/url\s*\(\s*['"]?(?:https?:)?\/\//i.test(path)) {
+    return imported;
+  }
+
   // Literal
-  if (~path.indexOf('.css')) return imported;
-  if (!~path.indexOf('.styl')) path += '.styl';
+  if (~path.indexOf('.css') && !~path.indexOf('.css.')) {
+    literal = true;
+    if (!includeCSS) return imported;
+  }
+
+  // support optional .styl
+  if (!literal && !/\.styl$/i.test(path)) path += '.styl';
 
   // Lookup
   found = utils.lookup(path, this.paths, this.filename);
-  found = found || utils.lookup(join(name, 'index.styl'), this.paths, this.filename);
-
-  // Expose imports
-  imported.path = found;
-  imported.dirname = dirname(found);
-  this.paths.push(imported.dirname);
-  if (this.options._imports) this.options._imports.push(imported);
+  if (!found) {
+    found = utils.lookup(join(name, 'index.styl'), this.paths, this.filename);
+    index = true;
+  }
 
   // Throw if import failed
   if (!found) throw new Error('failed to locate @import file ' + path);
 
+  // Expose imports
+  imported.path = found;
+  imported.dirname = dirname(found);
+  // Store the modified time
+  fs.stat(found, function(err, stat){
+    if (err) return;
+    imported.mtime = stat.mtime;
+  });
+  this.paths.push(imported.dirname);
+
+  if (this.options._imports) this.options._imports.push(imported);
+
   // Parse the file
-  this.importStack.push(found);
+  importStack.push(found);
   nodes.filename = found;
 
-  var str = fs.readFileSync(found, 'utf8')
-    , block = new nodes.Block
+  var str = fs.readFileSync(found, 'utf8');
+  if (literal && !this.resolveURL) return new nodes.Literal(str.replace(/\r\n?/g, "\n"));
+
+  // parse
+  var block = new nodes.Block
     , parser = new Parser(str, utils.merge({ root: block }, this.options));
 
   try {
@@ -9111,18 +10738,12 @@ Evaluator.prototype.visitImport = function(imported){
     throw err;
   }
 
-  // Store the modified time
-  fs.stat(found, function(err, stat){
-    if (err) return;
-    imported.mtime = stat.mtime;
-  });
-
   // Evaluate imported "root"
   block.parent = root;
   block.scope = false;
   var ret = this.visit(block);
-  this.paths.pop();
-  this.importStack.pop();
+  importStack.pop();
+  if (importStack.length || index) this.paths.pop();
 
   return ret;
 };
@@ -9142,7 +10763,6 @@ Evaluator.prototype.invokeFunction = function(fn, args){
 
   // Clone the function body
   // to prevent mutation of subsequent calls
-  // inject argument scope
   var body = fn.block.clone();
 
   // mixin block
@@ -9197,7 +10817,7 @@ Evaluator.prototype.invokeFunction = function(fn, args){
   });
 
   // invoke
-  return this.invoke(body, true);
+  return this.invoke(body, true, fn.filename);
 };
 
 /**
@@ -9226,7 +10846,7 @@ Evaluator.prototype.invokeBuiltin = function(fn, args){
   }
 
   // Invoke the BIF
-  var body = fn.apply(this, args);
+  var body = utils.coerce(fn.apply(this, args));
 
   // Always wrapping allows js functions
   // to return several values with a single
@@ -9247,9 +10867,12 @@ Evaluator.prototype.invokeBuiltin = function(fn, args){
  * @api private
  */
 
-Evaluator.prototype.invoke = function(body, stack){
+Evaluator.prototype.invoke = function(body, stack, filename){
   var self = this
-    , ret;
+    , ret
+    , node;
+
+  if (filename) this.paths.push(dirname(filename));
 
   // Return
   if (this.ret) {
@@ -9258,12 +10881,18 @@ Evaluator.prototype.invoke = function(body, stack){
   // Mixin
   } else {
     var targetFrame = this.stack[this.stack.length - 2];
-    if (targetFrame) this.targetBlock = targetFrame.block;
+    if (targetFrame) {
+      this.targetBlock = targetFrame.block;
+      node = this.targetBlock.node;
+      if (node && node.extends) this.extendBlock = this.targetBlock;
+    }
     body = this.visit(body);
     if (stack) this.stack.pop();
     this.mixin(body.nodes, this.currentBlock);
     ret = nodes.nil;
   }
+
+  if (filename) this.paths.pop();
 
   return ret;
 };
@@ -9364,7 +10993,7 @@ Evaluator.prototype.literalCall = function(call){
 };
 
 /**
- * Lookup property `name` in the in the current block.
+ * Lookup property `name`.
  *
  * @param {String} name
  * @return {Property}
@@ -9372,17 +11001,65 @@ Evaluator.prototype.literalCall = function(call){
  */
 
 Evaluator.prototype.lookupProperty = function(name){
-  var nodes = this.closestBlock.nodes
-    , target = (this.targetBlock && this.targetBlock.nodes) || []
-    , nodes = target.concat(nodes);
+  var i = this.stack.length
+    , index = this.currentBlock.index
+    , top = i
+    , nodes
+    , block
+    , len
+    , other;
 
-  for (var i = 0, len = nodes.length; i < len; ++i) {
-    if ('property' != nodes[i].nodeName) continue;
-    if (name == this.interpolate(nodes[i])) {
-      return nodes[i].clone();
+  while (i--) {
+    block = this.stack[i].block;
+    if (!block.node) continue;
+    switch (block.node.nodeName) {
+      case 'group':
+      case 'function':
+        nodes = block.nodes;
+        // scan siblings from the property index up
+        if (i + 1 == top) {
+          while (index--) {
+            other = this.interpolate(nodes[index]);
+            if (name == other) return nodes[index].clone();
+          }
+        // sequential lookup for non-siblings (for now)
+        } else {
+          len = nodes.length;
+          while (len--) {
+            if ('property' != nodes[len].nodeName) continue;
+            other = this.interpolate(nodes[len]);
+            if (name == other) return nodes[len].clone();
+          }
+        }
+        break;
     }
   }
+
+  return nodes.nil;
 };
+
+/**
+ * Return the closest mixin-able `Block`.
+ *
+ * @return {Block}
+ * @api private
+ */
+
+Evaluator.prototype.__defineGetter__('closestBlock', function(){
+  var i = this.stack.length
+    , block;
+  while (i--) {
+    block = this.stack[i].block;
+    if (block.node) {
+      switch (block.node.nodeName) {
+        case 'group':
+        case 'function':
+        case 'media':
+          return block;
+      }
+    }
+  }
+});
 
 /**
  * Lookup `name`, with support for JavaScript
@@ -9413,26 +11090,28 @@ Evaluator.prototype.lookup = function(name){
 
 Evaluator.prototype.interpolate = function(node){
   var self = this;
-  return node.segments.map(function(node){
-    function toString(node) {
-      switch (node.nodeName) {
-        case 'function':
-        case 'ident':
-          return node.name;
-        case 'literal':
-        case 'string':
-        case 'unit':
-          return node.val;
-        case 'expression':
-          var _ = self.ret;
-          self.ret = true;
-          var ret = toString(self.visit(node).first); 
-          self.ret = _;
-          return ret;
-      }
+  function toString(node) {
+    switch (node.nodeName) {
+      case 'function':
+      case 'ident':
+        return node.name;
+      case 'literal':
+      case 'string':
+      case 'unit':
+        return node.val;
+      case 'expression':
+        self.ret++;
+        var ret = toString(self.visit(node).first);
+        self.ret--;
+        return ret;
     }
+  }
+
+  if (node.segments) {
+    return node.segments.map(toString).join('');
+  } else {
     return toString(node);
-  }).join('');
+  }
 };
 
 /**
@@ -9483,15 +11162,44 @@ Evaluator.prototype.propertyExpression = function(prop, name){
   expr.push(new nodes.String(prop.name));
 
   // replace cyclic call with __CALL__
-  val.nodes = val.nodes.map(function(node){
+  function replace(node) {
     if ('call' == node.nodeName && name == node.name) {
       return new nodes.Literal('__CALL__');
     }
-    return node;
-  });
 
+    if (node.nodes) node.nodes = node.nodes.map(replace);
+    return node;
+  }
+
+  replace(val);
   expr.push(val);
   return expr;
+};
+
+/**
+ * Cast `expr` to the trailing ident.
+ *
+ * @param {Expression} expr
+ * @return {Unit}
+ * @api private
+ */
+
+Evaluator.prototype.cast = function(expr){
+  return new nodes.Unit(expr.first.val, expr.nodes[1].name);
+};
+
+/**
+ * Check if `expr` is castable.
+ *
+ * @param {Expression} expr
+ * @return {Boolean}
+ * @api private
+ */
+
+Evaluator.prototype.castable = function(expr){
+  return 2 == expr.nodes.length
+    && 'unit' == expr.first.nodeName
+    && ~units.indexOf(expr.nodes[1].name);
 };
 
 /**
@@ -9518,28 +11226,6 @@ Evaluator.prototype.__defineGetter__('currentBlock', function(){
 });
 
 /**
- * Return the closest mixin-able `Block`.
- *
- * @return {Block}
- * @api private
- */
-
-Evaluator.prototype.__defineGetter__('closestBlock', function(){
-  var i = this.stack.length
-    , block;
-  while (i--) {
-    block = this.stack[i].block;
-    if (block.node) {
-      switch (block.node.nodeName) {
-        case 'group':
-        case 'function':
-          return block;
-      }
-    }
-  }
-});
-
-/**
  * Return an array of vendor names.
  *
  * @return {Array}
@@ -9552,6 +11238,24 @@ Evaluator.prototype.__defineGetter__('vendors', function(){
     return node.string;
   });
 });
+
+/**
+ * Return the property name without vendor prefix.
+ *
+ * @param {String} prop
+ * @return {String}
+ * @api public
+ */
+
+Evaluator.prototype.unvendorize = function(prop){
+  for (var i = 0, len = this.vendors.length; i < len; i++) {
+    if ('official' != this.vendors[i]) {
+      var vendor = '-' + this.vendors[i] + '-';
+      if (~prop.indexOf(vendor)) return prop.replace(vendor, '');
+    }
+  }
+  return prop;
+};
 
 /**
  * Return the current frame `Scope`.
@@ -9577,6 +11281,295 @@ Evaluator.prototype.__defineGetter__('currentFrame', function(){
 
 
 });// module: visitor/evaluator.js
+
+
+require.register("visitor/normalizer.js", function(module, exports, require){
+
+
+/*!
+ * Stylus - Normalizer
+ * Copyright(c) 2010 LearnBoost <dev@learnboost.com>
+ * MIT Licensed
+ */
+
+/**
+ * Module dependencies.
+ */
+
+var Visitor = require('./index')
+  , nodes = require('../nodes/index')
+  , utils = require('../utils');
+
+/**
+ * Initialize a new `Normalizer` with the given `root` Node.
+ *
+ * This visitor implements the first stage of the duel-stage
+ * compiler, tasked with stripping the "garbage" from
+ * the evaluated nodes, ditching null rules, resolving
+ * ruleset selectors etc. This step performs the logic
+ * necessary to facilitate the "@extend" functionality,
+ * as these must be resolved _before_ buffering output.
+ *
+ * @param {Node} root
+ * @api public
+ */
+
+var Normalizer = module.exports = function Normalizer(root, options) {
+  options = options || {};
+  Visitor.call(this, root);
+  this.stack = [];
+  this.extends = {};
+  this.map = {};
+};
+
+/**
+ * Inherit from `Visitor.prototype`.
+ */
+
+Normalizer.prototype.__proto__ = Visitor.prototype;
+
+/**
+ * Normalize the node tree.
+ *
+ * @return {Node}
+ * @api private
+ */
+
+Normalizer.prototype.normalize = function(){
+  return this.visit(this.root);
+};
+
+/**
+ * Visit Root.
+ */
+
+Normalizer.prototype.visitRoot = function(block){
+  var ret = new nodes.Root
+    , node;
+
+  for (var i = 0, len = block.nodes.length; i < len; ++i) {
+    node = block.nodes[i];
+    switch (node.nodeName) {
+      case 'null':
+      case 'expression':
+      case 'function':
+      case 'jsliteral':
+      case 'unit':
+        continue;
+      default:
+        ret.push(this.visit(node));
+    }
+  }
+
+  return ret;
+};
+
+/**
+ * Visit Block.
+ */
+
+Normalizer.prototype.visitBlock = function(block){
+  var ret = new nodes.Block
+    , node;
+
+  if (block.hasProperties) {
+    for (var i = 0, len = block.nodes.length; i < len; ++i) {
+      this.last = len - 1 == i;
+      node = block.nodes[i];
+      switch (node.nodeName) {
+        case 'null':
+        case 'expression':
+        case 'function':
+        case 'jsliteral':
+        case 'group':
+        case 'unit':
+          continue;
+        default:
+          ret.push(this.visit(node));
+      }
+    }
+  }
+
+  // nesting
+  for (var i = 0, len = block.nodes.length; i < len; ++i) {
+    node = block.nodes[i];
+    ret.push(this.visit(node));
+  }
+
+  return block;
+};
+
+/**
+ * Visit Group.
+ */
+
+Normalizer.prototype.visitGroup = function(group){
+  // TODO: clean this mess up
+  var stack = this.stack
+    , map = this.map
+    , self = this;
+
+  stack.push(group.nodes);
+
+  var selectors = this.compileSelectors(stack);
+
+  // map for extension lookup
+  selectors.forEach(function(selector){
+    map[selector] = map[selector] || [];
+    map[selector].push(group);
+  });
+
+  // extensions
+  this.extend(group, selectors);
+
+  group.block = this.visit(group.block);
+  stack.pop();
+  return group;
+};
+
+/**
+ * Visit Media.
+ */
+
+Normalizer.prototype.visitMedia = function(media){
+  var props = []
+    , other = [];
+
+  media.block.nodes.forEach(function(node, i) {
+    node = this.visit(node);
+
+    if ('property' == node.nodeName) {
+      props.push(node);
+    } else {
+      other.push(node);
+    }
+  }, this);
+
+  // Fake self-referencing group to contain
+  // any props that are floating
+  // directly on the @media declaration
+  if (props.length) {
+    var selfLiteral = new nodes.Literal('&');
+    selfLiteral.lineno = media.lineno;
+    selfLiteral.filename = media.filename;
+
+    var selfSelector = new nodes.Selector(selfLiteral);
+    selfSelector.lineno = media.lineno;
+    selfSelector.filename = media.filename;
+    selfSelector.val = selfLiteral.val;
+
+    var propertyGroup = new nodes.Group;
+    propertyGroup.lineno = media.lineno;
+    propertyGroup.filename = media.filename;
+
+    var propertyBlock = new nodes.Block(media.block, propertyGroup);
+    propertyBlock.lineno = media.lineno;
+    propertyBlock.filename = media.filename;
+
+    props.forEach(function(prop){
+      propertyBlock.push(prop);
+    });
+
+    propertyGroup.push(selfSelector);
+    propertyGroup.block = propertyBlock;
+
+    media.block.nodes = [];
+    media.block.push(propertyGroup);
+    other.forEach(function(node){
+      media.block.push(node);
+    });
+  }
+
+  return media;
+}
+
+/**
+ * Apply `group` extensions.
+ *
+ * @param {Group} group
+ * @param {Array} selectors
+ * @api private
+ */
+
+Normalizer.prototype.extend = function(group, selectors){
+  var map = this.map
+    , self = this;
+
+  group.block.node.extends.forEach(function(extend){
+    var groups = map[extend];
+    if (!groups) throw new Error('Failed to @extend "' + extend + '"');
+    selectors.forEach(function(selector){
+      var node = new nodes.Selector;
+      node.val = selector;
+      node.inherits = false;
+      groups.forEach(function(group){
+        if (!group.nodes.some(function(n){ return n.val == selector })) {
+          self.extend(group, selectors);
+          group.push(node);
+        }
+      });
+    });
+  });
+};
+
+/**
+ * Compile selector strings in `arr` from the bottom-up
+ * to produce the selector combinations. For example
+ * the following Stylus:
+ *
+ *    ul
+ *      li
+ *      p
+ *        a
+ *          color: red
+ *
+ * Would return:
+ *
+ *      [ 'ul li a', 'ul p a' ]
+ *
+ * @param {Array} arr
+ * @return {Array}
+ * @api private
+ */
+
+Normalizer.prototype.compileSelectors = function(arr){
+  // TODO: remove this duplication
+  var stack = this.stack
+    , self = this
+    , selectors = []
+    , buf = [];
+
+  function compile(arr, i) {
+    if (i) {
+      arr[i].forEach(function(selector){
+        buf.unshift(selector.val);
+        compile(arr, i - 1);
+        buf.shift();
+      });
+    } else {
+      arr[0].forEach(function(selector){
+        var str = selector.val.trim();
+        if (buf.length) {
+          for (var i = 0, len = buf.length; i < len; ++i) {
+            if (~buf[i].indexOf('&')) {
+              str = buf[i].replace(/&/g, str).trim();
+            } else {
+              str += ' ' + buf[i].trim();
+            }
+          }
+        }
+        selectors.push(str.trimRight());
+      });
+    }
+  }
+
+  compile(arr, arr.length - 1);
+
+  return selectors;
+};
+
+
+});// module: visitor/normalizer.js
 
   return require('stylus');
 })();
