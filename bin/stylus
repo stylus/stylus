@@ -124,7 +124,7 @@ var usage = [
   , ''
   , '  Commands:'
   , ''
-  , '    help [<type>:]<prop> Opens help info at MDC for <prop> in'
+  , '    help [<type>:]<prop> Opens help info at MDN for <prop> in'
   , '                         your default browser. Optionally'
   , '                         searches other resources of <type>:'
   , '                         safari opera w3c ms caniuse quirksmode'
