@@ -1,3 +1,9 @@
+0.40.3 / 2013-11-16
+==================
+
+  * Fixed current-property to be available in function evaluation context, #1211.
+  * Fixed another regression, #1215.
+
 0.40.2 / 2013-11-12
 ==================
 
