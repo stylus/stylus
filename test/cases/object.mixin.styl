@@ -23,3 +23,43 @@ bar(block, content, int)
 
 .foo
   bar({ blah: 2rem }, props, 4)
+
+foo = {
+  width: 10px
+  bar: 30px
+}
+
+bar() {
+  height: arguments
+}
+
+.test {
+  {foo}
+}
+
+foo = {
+  width: 10px
+  '&:hover': {
+    background: red
+  }
+}
+
+.test {
+  {foo}
+}
+
+foo = {
+  '.foo': {
+    background: red
+    '&:hover': {
+      background: lime
+    }
+  }
+  '@media screen and (min-width:1px) and (max-width:400px)': {
+    '.foo': {
+      display: none
+    }
+  }
+}
+
+{foo}

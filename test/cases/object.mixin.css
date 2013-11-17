@@ -15,3 +15,24 @@
 .foo .foobar-4:first-child {
   blah: 2rem;
 }
+.test {
+  width: 10px;
+  height: 30px;
+}
+.test {
+  width: 10px;
+}
+.test:hover {
+  background: #f00;
+}
+.foo {
+  background: #f00;
+}
+.foo:hover {
+  background: #0f0;
+}
+@media screen and (min-width:1px) and (max-width:400px) {
+  .foo {
+    display: none;
+  }
+}
