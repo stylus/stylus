@@ -36,3 +36,12 @@
     display: none;
   }
 }
+html.touch nav {
+  overflow-scrolling: touch;
+}
+html.touch nav ul li {
+  height: 60px;
+}
+html.touch nav ul li.active {
+  box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.2) inset;
+}
