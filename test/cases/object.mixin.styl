@@ -1,0 +1,94 @@
+mobile(content)
+  @media screen and (min-width: 30em)
+    {content}
+
+tablet(content)
+  @media screen and (min-width: 48em)
+    {content}
+
+.sidebar
+  mobile({ width: 10em })
+  tablet({ width: 20px })
+
+props = {
+  color: red
+  width: 400px
+}
+
+bar(block, content, int)
+  .foobar-{int}
+    &:first-child
+      {block}
+    {content}
+
+.foo
+  bar({ blah: 2rem }, props, 4)
+
+foo = {
+  width: 10px
+  bar: 30px
+}
+
+bar() {
+  height: arguments
+}
+
+.test {
+  {foo}
+}
+
+foo = {
+  width: 10px
+  '&:hover': {
+    background: red
+  }
+}
+
+.test {
+  {foo}
+}
+
+foo = {
+  '.foo': {
+    background: red
+    '&:hover': {
+      background: lime
+    }
+  }
+  '@media screen and (min-width:1px) and (max-width:400px)': {
+    '.foo': {
+      display: none
+    }
+  }
+}
+
+{foo}
+
+touch-support(content)
+  html.touch &
+    {content}
+
+default-box-shadow()
+  box-shadow: 0px 1px 1px 0px rgba(black, 0.2) inset
+
+nav
+  touch-support({
+    overflow-scrolling: touch
+    ul: {
+      li: {
+        // Make li taller so easier to tap with a finger
+        height: 60px
+        '&.active': {
+          default-box-shadow: null
+        }
+      }
+    }
+  })
+
+foo = {
+  padding: 10px 20px 30px
+}
+
+.test
+  {foo}
+  baz: foo.padding
