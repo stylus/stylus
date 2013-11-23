@@ -1,0 +1,63 @@
+foo(w)
+  width: w
+  {block}
+
+.lol
+  +foo(100px) {
+    &:hover {
+      color: red
+    }
+    color: blue
+  }
+
+foo(bar, baz = null)
+  padding: bar
+  {block}
+
+.foo
+  +foo(30px)
+    width: 10px
+    height: 20px
+
+bar()
+  {block}
+
+.bar
+  +bar() {
+    @extend .foo
+    &:hover {
+      color: red;
+    }
+    width: 500px
+  }
+
+mobile()
+  @media screen and (min-width: 30em)
+    {block}
+
+tablet()
+  @media screen and (min-width: 48em)
+    {block}
+
+.sidebar
+  +mobile() { width: 10em }
+  +tablet() { width: 20px }
+
+touch-support()
+  html.touch &
+    {block}
+
+default-inner-box-shadow()
+  box-shadow: 0 1px 1px 0 rgba(black, 0.2) inset
+
+nav
+  +touch-support()
+    overflow-scrolling: touch
+
+    ul
+      li
+        // Make li taller so easier to tap with a finger
+        height: 60px
+
+        &.active
+          default-inner-box-shadow()

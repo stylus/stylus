@@ -1,0 +1,38 @@
+.lol {
+  width: 100px;
+  color: #00f;
+}
+.lol:hover {
+  color: #f00;
+}
+.foo,
+.bar {
+  padding: 30px;
+  width: 10px;
+  height: 20px;
+}
+.bar {
+  width: 500px;
+}
+.bar:hover {
+  color: #f00;
+}
+@media screen and (min-width: 30em) {
+  .sidebar {
+    width: 10em;
+  }
+}
+@media screen and (min-width: 48em) {
+  .sidebar {
+    width: 20px;
+  }
+}
+html.touch nav {
+  overflow-scrolling: touch;
+}
+html.touch nav ul li {
+  height: 60px;
+}
+html.touch nav ul li.active {
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.2) inset;
+}
