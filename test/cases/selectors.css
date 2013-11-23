@@ -58,3 +58,15 @@ ul > li {
 #aor {
   foo: bar;
 }
+button[disabled],
+input[disabled] {
+  cursor: default;
+}
+button[disabled]:hover,
+input[disabled]:hover {
+  cursor: pointer;
+}
+a:hover button[disabled],
+a:hover input[disabled] {
+  cursor: pointer;
+}
