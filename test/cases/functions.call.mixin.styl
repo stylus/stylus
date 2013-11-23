@@ -73,3 +73,14 @@ foo()
   height: 20px
   +foo()
     width: 20px
+
+foo(block = { height: 10px })
+  .foo
+    {block}
+
+.bar
+  +foo()
+    width: 100px
+
+.baz
+  foo()

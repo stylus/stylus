@@ -47,3 +47,9 @@ html.touch nav ul li.active {
 @font-face {
   width: 20px;
 }
+.bar .foo {
+  width: 100px;
+}
+.baz .foo {
+  height: 10px;
+}
