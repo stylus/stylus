@@ -69,4 +69,25 @@ a:hover input[disabled]
 
 input[type="submit"]
 button
-  color: red
+  color red
+
+input[foo] .bar
+  color red
+
+input[foo]["bar"]
+  color red
+
+input["foo"]::before
+  color red
+
+input["bar"] + .foo
+  color red
+
+input["bar"] > .foo
+  color red
+
+input["bar"] ~ .foo
+  color red
+
+input["bar"].foo:hover * .foo
+  color red

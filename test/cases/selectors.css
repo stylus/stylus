@@ -74,3 +74,24 @@ input[type="submit"],
 button {
   color: #f00;
 }
+input[foo] .bar {
+  color: #f00;
+}
+input[foo]["bar"] {
+  color: #f00;
+}
+input["foo"]::before {
+  color: #f00;
+}
+input["bar"] + .foo {
+  color: #f00;
+}
+input["bar"] > .foo {
+  color: #f00;
+}
+input["bar"] ~ .foo {
+  color: #f00;
+}
+input["bar"].foo:hover * .foo {
+  color: #f00;
+}
