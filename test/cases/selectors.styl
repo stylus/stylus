@@ -54,3 +54,40 @@ ul > li:nth-child(2n)
 #for
 #aor
   foo bar
+
+button[disabled]
+input[disabled]
+  cursor default
+
+button[disabled]:hover
+input[disabled]:hover
+  cursor pointer
+
+a:hover button[disabled]
+a:hover input[disabled]
+  cursor pointer
+
+input[type="submit"]
+button
+  color red
+
+input[foo] .bar
+  color red
+
+input[foo]["bar"]
+  color red
+
+input["foo"]::before
+  color red
+
+input["bar"] + .foo
+  color red
+
+input["bar"] > .foo
+  color red
+
+input["bar"] ~ .foo
+  color red
+
+input["bar"].foo:hover * .foo
+  color red
