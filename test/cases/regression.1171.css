@@ -11,3 +11,12 @@
 .return {
   position: absolute;
 }
+a.return {
+  color: #f00;
+}
+a.null {
+  color: #f00;
+}
+a.or {
+  color: #f00;
+}
