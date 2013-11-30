@@ -458,6 +458,19 @@ Check out the `%` string operator for equivalent behaviour.
     length()
     // => 0
 
+### selector()
+
+Returns the compiled current selector or `&` if called at root level.
+
+    .foo
+      selector()
+    // => '.foo'
+
+    .foo
+      &:hover
+        selector()
+    // '.foo:hover'
+
 ### warn(msg)
 
   Warn with the given error `msg`, does not exit.

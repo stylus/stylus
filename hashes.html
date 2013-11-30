@@ -76,6 +76,31 @@ foo["bar"].baz[qux]
 // =&gt; 10px
 </code></pre>
 
+<h3 id="interpolation">Interpolation</h3>
+
+<p>Hashes used inside an interpolation would output the content of the hashes as CSS (without almost any Stylus features though):</p>
+
+<pre><code>foo = {
+  width: 10px,
+  height: 20px,
+  '&amp;:hover': {
+    padding: 0
+
+  }
+}
+
+.bar
+  {foo}
+
+// =&gt; .bar {
+//      width: 10px;
+//      height: 20px;
+//    }
+//    .bar:hover {
+//      padding: 0;
+//    }
+</code></pre>
+
 <h3 id="other-stuff">Other stuff</h3>
 
 <p>You can use other normal Stylus stuff with hashes, like <code>length()</code>:</p>

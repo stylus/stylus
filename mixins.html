@@ -116,6 +116,30 @@ form input[type=button]
 <pre><code>stripe #fff #000
 </code></pre>
 
+<h3 id="block-mixins">Block mixins</h3>
+
+<p>You can pass blocks to mixins by calling mixin with <code>+</code> prefix:</p>
+
+<pre><code>+foo()
+  width: 10px
+</code></pre>
+
+<p>The passed block would be available inside the mixin as <code>block</code> variable, that then could be used with interpolation:</p>
+
+<pre><code>foo()
+  .foo
+    {block}
+
++foo
+  width: 10px
+
+=&gt; .foo {
+     width: 10px;
+   }
+</code></pre>
+
+<p>This feature is in its rough state ATM, but would be enhanced in the future.</p>
+
 <h3 id="mixing-mixins-in-mixins">Mixing Mixins in Mixins</h3>
 
 <p>Mixins can (of course!) utilize other mixins, building upon their own selectors and properties. </p>

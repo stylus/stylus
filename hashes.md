@@ -65,6 +65,30 @@ You can use any combinations you want:
     foo["bar"].baz[qux]
     // => 10px
 
+### Interpolation
+
+Hashes used inside an interpolation would output the content of the hashes as CSS (without almost any Stylus features though):
+
+    foo = {
+      width: 10px,
+      height: 20px,
+      '&:hover': {
+        padding: 0
+
+      }
+    }
+
+    .bar
+      {foo}
+
+    // => .bar {
+    //      width: 10px;
+    //      height: 20px;
+    //    }
+    //    .bar:hover {
+    //      padding: 0;
+    //    }
+
 ### Other stuff
 
 You can use other normal Stylus stuff with hashes, like `length()`:
