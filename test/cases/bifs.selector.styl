@@ -1,0 +1,17 @@
+.foo
+  .bar
+    &:hover
+      bar: selector()
+    foo: selector()
+  qux: selector()
+
+bar()
+  .bar
+    baz: selector()
+
+.foo
+  bar()
+
+.foo,
+.bar
+  baz: selector()
