@@ -37,3 +37,7 @@ body .bar .sdf {
 .circle .cap-soldout {
   border-radius: 200px;
 }
+tag .class,
+bar {
+  foo: bar;
+}
