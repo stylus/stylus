@@ -58,3 +58,40 @@ ul > li {
 #aor {
   foo: bar;
 }
+button[disabled],
+input[disabled] {
+  cursor: default;
+}
+button[disabled]:hover,
+input[disabled]:hover {
+  cursor: pointer;
+}
+a:hover button[disabled],
+a:hover input[disabled] {
+  cursor: pointer;
+}
+input[type="submit"],
+button {
+  color: #f00;
+}
+input[foo] .bar {
+  color: #f00;
+}
+input[foo]["bar"] {
+  color: #f00;
+}
+input["foo"]::before {
+  color: #f00;
+}
+input["bar"] + .foo {
+  color: #f00;
+}
+input["bar"] > .foo {
+  color: #f00;
+}
+input["bar"] ~ .foo {
+  color: #f00;
+}
+input["bar"].foo:hover * .foo {
+  color: #f00;
+}
