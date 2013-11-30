@@ -32,3 +32,12 @@ body .bar .sdf {
 .bar .raz .ASDF {
   background: #fff;
 }
+.circle img,
+.circle .cap-overlay,
+.circle .cap-soldout {
+  border-radius: 200px;
+}
+tag .class,
+bar {
+  foo: bar;
+}

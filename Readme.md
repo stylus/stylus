@@ -118,6 +118,7 @@ form input {
    - [Connect](docs/middleware.md)
    - [Play! 2.0](https://github.com/patiencelabs/play-stylus)
    - [Ruby On Rails](https://github.com/lucasmazza/ruby-stylus)
+   - [Meteor](http://docs.meteor.com/#stylus)
 
 ### CMS Support
 
