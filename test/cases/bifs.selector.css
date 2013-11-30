@@ -1,0 +1,9 @@
+.foo {
+  qux: '.foo';
+}
+.foo .bar {
+  foo: '.foo .bar';
+}
+.foo .bar:hover {
+  bar: '.foo .bar:hover';
+}
