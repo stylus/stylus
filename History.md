@@ -1,9 +1,9 @@
-0.41.0 / in development
+0.41.0 / 2013-11-30
 ==================
 
-  * Added block mixins (`+foo`) with block interpolation (`block`), #1223.
-  * Added `selector()` bif, #1249.
-  * Added hash interpolation to blocks, #1202.
+  * Added basic [block mixins](http://learnboost.github.io/stylus/docs/mixins.html#block-mixins) (`+foo`) with block interpolation (`block`), #1223.
+  * Added [`selector()` bif](http://learnboost.github.io/stylus/docs/selectors.html#selector-bif), #1249.
+  * Added [hash interpolation to blocks](http://learnboost.github.io/stylus/docs/hashes.html#interpolation), #1202.
   * Fixed parent reference in root context from returning `&`.
   * Fixed bug with double writing media blocks, 1ed44a81
   * Fixed a lot of regressions after hashes, #1230, #1236, #1237, #1248.
