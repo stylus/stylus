@@ -1,0 +1,51 @@
+@media screen and (min-width: 30em) {
+  .sidebar {
+    width: 10em;
+  }
+}
+@media screen and (min-width: 48em) {
+  .sidebar {
+    width: 20px;
+  }
+}
+.foo .foobar-4 {
+  color: #f00;
+  width: 400px;
+}
+.foo .foobar-4:first-child {
+  blah: 2rem;
+}
+.test {
+  width: 10px;
+  height: 30px;
+}
+.test {
+  width: 10px;
+}
+.test:hover {
+  background: #f00;
+}
+.foo {
+  background: #f00;
+}
+.foo:hover {
+  background: #0f0;
+}
+@media screen and (min-width:1px) and (max-width:400px) {
+  .foo {
+    display: none;
+  }
+}
+html.touch nav {
+  overflow-scrolling: touch;
+}
+html.touch nav ul li {
+  height: 60px;
+}
+html.touch nav ul li.active {
+  box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.2) inset;
+}
+.test {
+  padding: 10px 20px 30px;
+  baz: 10px 20px 30px;
+}
