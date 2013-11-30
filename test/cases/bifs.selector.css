@@ -7,3 +7,10 @@
 .foo .bar:hover {
   bar: '.foo .bar:hover';
 }
+.foo .bar {
+  baz: '.foo .bar';
+}
+.foo,
+.bar {
+  baz: '.foo,.bar';
+}
