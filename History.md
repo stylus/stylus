@@ -1,6 +1,10 @@
 0.41.0 / in development
 ==================
 
+  * Fixed parent reference in root context from returning `&`.
+
+  * Fixed bug with double writing media blocks, 1ed44a81
+
   * Fixed a lot of regressions after hashes, #1230, #1236, #1237, #1248.
 
 0.40.3 / 2013-11-16

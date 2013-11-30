@@ -1,0 +1,40 @@
+.ok {
+  width: 10px;
+}
+.ok .foo {
+  width: 20px;
+}
+.foo .ok {
+  width: 30px;
+}
+.foo.ok.bar {
+  width: 40px;
+}
+.foo .ok.bar {
+  width: 50px;
+}
+.foo.ok .bar {
+  width: 60px;
+}
+.ok,
+.ok .foo {
+  width: 70px;
+}
+.foo {
+  width: 20px;
+}
+.foo {
+  width: 30px;
+}
+.foo.bar {
+  width: 40px;
+}
+.foo .bar {
+  width: 50px;
+}
+.foo .bar {
+  width: 60px;
+}
+.foo {
+  width: 70px;
+}
