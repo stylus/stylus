@@ -14,3 +14,9 @@
 .bar {
   baz: '.foo,.bar';
 }
+.foo {
+  baz: '.foo';
+}
+.bar {
+  baz: '.bar';
+}

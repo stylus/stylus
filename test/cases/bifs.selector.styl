@@ -15,3 +15,11 @@ bar()
 .foo,
 .bar
   baz: selector()
+
+{selector()}
+  content: "this won't render"
+
+.foo{selector()}
+  baz: selector()
+
+bar()
