@@ -1,3 +1,8 @@
+0.41.0 / in development
+==================
+
+  * Fixed a lot of regressions after hashes, #1230, #1236, #1237, #1248.
+
 0.40.3 / 2013-11-16
 ==================
 
