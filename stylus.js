@@ -1821,6 +1821,17 @@ exports['-adjust'] = function adjust(color, prop, amount){
 }).raw = true;
 
 /**
+ * Return the current selector.
+ *
+ * @return {String}
+ * @api public
+ */
+
+exports.selector = function selector(){
+  return this.currentSelector;
+};
+
+/**
  * Attempt to parse unit `str`.
  *
  * @param {String} str
@@ -2328,7 +2339,7 @@ Lexer.prototype = {
    */
 
   isPartOfSelector: function() {
-    var tok = this.prev;
+    var tok = this.stash[this.stash.length - 1] || this.prev;
     switch (tok && tok.type) {
       // #for
       case 'color':
@@ -3247,6 +3258,11 @@ Block.prototype.clone = function(){
       case 'group':
         node.block.parent = clone;
         break;
+      case 'media':
+      case 'fontface':
+        clone.scope = true;
+        node.block.parent = clone;
+        break;
       case 'ident':
         if ('function' == node.val.nodeName) {
           node.val.block.parent = clone;
@@ -3425,6 +3441,7 @@ Call.prototype.__proto__ = Node.prototype;
 
 Call.prototype.clone = function(){
   var clone = new Call(this.name, this.args.clone());
+  if (this.block) clone.block = this.block.clone();
   clone.lineno = this.lineno;
   clone.filename = this.filename;
   return clone;
@@ -4354,11 +4371,12 @@ var Node = require('./node')
  * @api public
  */
 
-var Ident = module.exports = function Ident(name, val){
+var Ident = module.exports = function Ident(name, val, mixin){
   Node.call(this);
   this.name = name;
   this.string = name;
   this.val = val || nodes.nil;
+  this.mixin = !!mixin;
 };
 
 /**
@@ -4397,7 +4415,7 @@ Ident.prototype.__proto__ = Node.prototype;
  */
 
 Ident.prototype.clone = function(){
-  var clone = new Ident(this.name, this.val.clone());
+  var clone = new Ident(this.name, this.val.clone(), this.mixin);
   clone.lineno = this.lineno;
   clone.filename = this.filename;
   clone.property = this.property;
@@ -6590,6 +6608,35 @@ Object.prototype.toBoolean = function(){
 };
 
 /**
+ * Convert object to string with properties.
+ *
+ * @return {String}
+ * @api private
+ */
+
+Object.prototype.toBlock = function(){
+  var str = '{'
+    , key
+    , val;
+  for (key in this.vals) {
+    val = this.get(key);
+    if ('object' == val.first.nodeName) {
+      str += key + ' ' + this.toBlock.call(val.first);
+    } else {
+      switch (key) {
+        case '@charset':
+          str += key + ' ' + val.first.toString() + ';';
+          break;
+        default:
+          str += key + ':' + val.toString() + ';';
+      }
+    }
+  }
+  str += '}';
+  return str;
+};
+
+/**
  * Return a clone of this node.
  * 
  * @return {Node}
@@ -7097,7 +7144,13 @@ Parser.prototype = {
       if ('selector' == this.lookahead(i).type)
         return true;
 
-      if ('ident' == this.lookahead(i).type && '.' == this.lookahead(i + 1).type)
+      if ('.' == this.lookahead(i).type && 'ident' == this.lookahead(i + 1).type)
+        return true;
+
+      if ('=' == this.lookahead(i).type && this.bracketed)
+        return true;
+
+      if (this.looksLikeAttributeSelector(i))
         return true;
 
       if (('=' == this.lookahead(i).type || 'function' == this.lookahead(i).type)
@@ -7164,6 +7217,20 @@ Parser.prototype = {
 
     if ('indent' == this.lookahead(i).type)
       return true;
+  },
+
+  /**
+   * Check if the following sequence of tokens
+   * forms an attribute selector.
+   */
+
+  looksLikeAttributeSelector: function(n) {
+    var type = this.lookahead(n).type;
+    return ('ident' == type || 'string' == type)
+      && ']' == this.lookahead(n + 1).type
+      && ('newline' == this.lookahead(n + 2).type || this.isSelectorToken(n + 2))
+      && !this.lineContains(':')
+      && !this.lineContains('=');
   },
 
   /**
@@ -7315,7 +7382,6 @@ Parser.prototype = {
           switch (type) {
             case 'color':
             case '~':
-            case '+':
             case '>':
             case '<':
             case ':':
@@ -7323,6 +7389,10 @@ Parser.prototype = {
             case '[':
             case '.':
               return this.selector();
+            case '+':
+              return 'function' == this.lookahead(2).type
+                ? this.functionCall()
+                : this.selector();
             case '*':
               return this.property();
             case '-':
@@ -7687,6 +7757,7 @@ Parser.prototype = {
         return this.assignment();
       // Member
       case '.':
+        if ('space' == this.lookahead(i - 1).type) return this.selector();
         if (this._ident == this.peek()) return this.id();
         while ('=' != this.lookahead(++i).type
           && !~[',', 'newline', 'indent', 'eos'].indexOf(this.lookahead(i).type)) ;
@@ -7772,7 +7843,9 @@ Parser.prototype = {
           case 'conditional':
             return this.property();
           default:
-            return this.id();
+            var id = this.id();
+            if ('interpolation' == this.previousState()) id.mixin = true;
+            return id;
         }
     }
   },
@@ -8008,6 +8081,8 @@ Parser.prototype = {
    */
 
   functionCall: function() {
+    var withBlock = false;
+    if (this.accept('+')) withBlock = true;
     if ('url' == this.peek().val.name) return this.url();
     var name = this.expect('function').val.name;
     this.state.push('function arguments');
@@ -8016,7 +8091,13 @@ Parser.prototype = {
     this.expect(')');
     this.parens--;
     this.state.pop();
-    return new nodes.Call(name, args);
+    var call = new nodes.Call(name, args);
+    if (withBlock) {
+      this.state.push('function');
+      call.block = this.block(call);
+      this.state.pop();
+    }
+    return call;
   },
 
   /**
@@ -8941,7 +9022,7 @@ exports = module.exports = render;
  * Library version.
  */
 
-exports.version = '0.40.3'
+exports.version = '0.41.0';
 
 /**
  * Expose nodes.
@@ -9368,7 +9449,78 @@ exports.params = function(fn){
 exports.merge = function(a, b){
   for (var k in b) a[k] = b[k];
   return a;
-}
+};
+
+/**
+ * Compile selector strings in `arr` from the bottom-up
+ * to produce the selector combinations. For example
+ * the following Stylus:
+ *
+ *    ul
+ *      li
+ *      p
+ *        a
+ *          color: red
+ *
+ * Would return:
+ *
+ *      [ 'ul li a', 'ul p a' ]
+ *
+ * @param {Array} arr
+ * @param {Boolean} leaveHidden
+ * @return {Array}
+ * @api private
+ */
+
+exports.compileSelectors = function(arr, leaveHidden){
+  var self = this
+    , selectors = []
+    , buf = []
+    , hiddenSelectorRegexp = /^\s*\$/;
+
+  function interpolateParent(selector, buf) {
+    var str = selector.val.trim();
+    if (buf.length) {
+      for (var i = 0, len = buf.length; i < len; ++i) {
+        if (~buf[i].indexOf('&')) {
+          str = buf[i].replace(/&/g, str).trim();
+        } else {
+          str += ' ' + buf[i].trim();
+        }
+      }
+    }
+    return str;
+  }
+
+  function compile(arr, i) {
+    if (i) {
+      arr[i].forEach(function(selector){
+        selector.val = selector.val || selector.toString();
+        if (!leaveHidden && selector.val.match(hiddenSelectorRegexp)) return;
+        if (selector.inherits) {
+          buf.unshift(selector.val);
+          compile(arr, i - 1);
+          buf.shift();
+        } else {
+          selectors.push(interpolateParent(selector, buf));
+        }
+      });
+    } else {
+      arr[0].forEach(function(selector){
+        selector.val = selector.val || selector.toString();
+        if (!leaveHidden && selector.val.match(hiddenSelectorRegexp)) return;
+        var str = interpolateParent(selector, buf);
+        if (~str.indexOf('&')) str = str.replace(/&/g, '').trim();
+        if (!str.length) return;
+        selectors.push((self.indent || '') + str.trimRight());
+      });
+    }
+  }
+
+  compile(arr, arr.length - 1);
+
+  return selectors;
+};
 
 
 });// module: utils.js
@@ -9425,7 +9577,8 @@ require.register("visitor/compiler.js", function(module, exports, require){
  */
 
 var Visitor = require('./index')
-  , nodes = require('../nodes');
+  , nodes = require('../nodes')
+  , utils = require('../utils');
 
 /**
  * Initialize a new `Compiler` with the given `root` Node
@@ -9518,7 +9671,8 @@ Compiler.prototype.visitBlock = function(block){
         case 'unit':
           continue;
         case 'media':
-          // Prevent double-writing the @media declaration when
+        case 'fontface':
+          // Prevent double-writing the @media/@font-face declarations when
           // nested inside of a function/mixin
           if (node.block.parent.scope) {
             continue;
@@ -9755,7 +9909,7 @@ Compiler.prototype.visitGroup = function(group){
 
   // selectors
   if (group.block.hasProperties) {
-    var selectors = this.compileSelectors(stack);
+    var selectors = utils.compileSelectors.call(this, stack);
     if(selectors.length)
       this.buf += (this.selector = selectors.join(this.compress ? ',' : ',\n'));
     else
@@ -9848,73 +10002,6 @@ Compiler.prototype.visitProperty = function(prop){
     + (this.compress
         ? (this.last ? '' : ';')
         : ';');
-};
-
-/**
- * Compile selector strings in `arr` from the bottom-up
- * to produce the selector combinations. For example
- * the following Stylus:
- *
- *    ul
- *      li
- *      p
- *        a
- *          color: red
- *
- * Would return:
- *
- *      [ 'ul li a', 'ul p a' ]
- *
- * @param {Array} arr
- * @return {Array}
- * @api private
- */
-
-Compiler.prototype.compileSelectors = function(arr){
-  var stack = this.stack
-    , self = this
-    , selectors = []
-    , buf = []
-    , hiddenSelectorRegexp = /^\s*\$/;
-
-  function interpolateParent(selector, buf) {
-    var str = selector.val.trim();
-    if (buf.length) {
-      for (var i = 0, len = buf.length; i < len; ++i) {
-        if (~buf[i].indexOf('&')) {
-          str = buf[i].replace(/&/g, str).trim();
-        } else {
-          str += ' ' + buf[i].trim();
-        }
-      }
-    }
-    return str;
-  }
-
-  function compile(arr, i) {
-    if (i) {
-      arr[i].forEach(function(selector){
-        if(selector.val.match(hiddenSelectorRegexp)) return;
-        if (selector.inherits) {
-          buf.unshift(selector.val);
-          compile(arr, i - 1);
-          buf.shift();
-        } else {
-          selectors.push(interpolateParent(selector, buf));
-        }
-      });
-    } else {
-      arr[0].forEach(function(selector){
-        if(selector.val.match(hiddenSelectorRegexp)) return;
-        var str = interpolateParent(selector, buf);
-        selectors.push(self.indent + str.trimRight());
-      });
-    }
-  }
-
-  compile(arr, arr.length - 1);
-
-  return selectors;
 };
 
 /**
@@ -10383,7 +10470,7 @@ Evaluator.prototype.visitCall = function(call){
     ret = this.invokeBuiltin(fn.fn, args);
   // User-defined
   } else if ('function' == fn.nodeName) {
-    ret = this.invokeFunction(fn, args);
+    ret = this.invokeFunction(fn, args, call.block);
   }
 
   // restore kwargs
@@ -10411,6 +10498,8 @@ Evaluator.prototype.visitIdent = function(ident){
   // Lookup
   } else if (ident.val.isNull) {
     var val = this.lookup(ident.name);
+    // Object or Block mixin
+    if (val && ident.mixin) this.mixinNode(val);
     return val ? this.visit(val) : ident;
   // Assign
   } else {
@@ -10757,7 +10846,7 @@ Evaluator.prototype.visitImport = function(imported){
  * @api private
  */
 
-Evaluator.prototype.invokeFunction = function(fn, args){
+Evaluator.prototype.invokeFunction = function(fn, args, content){
   var block = new nodes.Block(fn.block.parent);
   fn.block.parent = block;
 
@@ -10815,6 +10904,9 @@ Evaluator.prototype.invokeFunction = function(fn, args){
 
     scope.add(node);
   });
+
+  // mixin block
+  if (content) scope.add(new nodes.Ident('block', content, true));
 
   // invoke
   return this.invoke(body, true, fn.filename);
@@ -10933,6 +11025,60 @@ Evaluator.prototype._mixin = function(nodes, dest){
         break;
       default:
         dest.push(node);
+    }
+  }
+};
+
+/**
+ * Mixin the given `node` to the current block.
+ *
+ * @param {Node} node
+ * @api private
+ */
+
+Evaluator.prototype.mixinNode = function(node){
+  node = this.visit(node.first);
+  var name = node.nodeName;
+  if ('object' == name || 'block' == name) {
+    'block' == name
+      ? this.mixin(node.nodes, this.currentBlock)
+      // HACK
+      : this.mixinObject(node);
+    return nodes.nil;
+  }
+};
+
+/**
+ * Mixin the given `object` to the current block.
+ *
+ * @param {Object} object
+ * @api private
+ */
+
+Evaluator.prototype.mixinObject = function(object){
+  var Parser = require('../parser')
+    , root = this.root
+    , str = '@block ' + object.toBlock()
+    , parser = new Parser(str, utils.merge({ root: block }, this.options))
+    , block;
+
+  try {
+    block = parser.parse();
+  } catch (err) {
+    err.filename = this.filename;
+    err.lineno = parser.lexer.lineno;
+    err.input = str;
+    throw err;
+  }
+
+  block.parent = root;
+  block.scope = false;
+  var ret = this.visit(block)
+    , vals = ret.first.nodes;
+  for (var i = 0, len = vals.length; i < len; ++i) {
+    if (vals[i].block) {
+      this.mixin(vals[i].block.nodes, this.currentBlock);
+      break;
     }
   }
 };
@@ -11059,6 +11205,26 @@ Evaluator.prototype.__defineGetter__('closestBlock', function(){
       }
     }
   }
+});
+
+/**
+ * Return the current selector.
+ *
+ * @return {String}
+ * @api private
+ */
+
+Evaluator.prototype.__defineGetter__('currentSelector', function(){
+  var block
+    , stack = [];
+  for (var i = 0, len = this.stack.length; i < len; ++i) {
+    block = this.stack[i].block;
+    if (block.node && 'group' == block.node.nodeName) {
+      stack.push(block.node.nodes);
+    }
+  }
+  if (!stack.length) return '&';
+  return utils.compileSelectors(stack).join(',');
 });
 
 /**
@@ -11404,14 +11570,12 @@ Normalizer.prototype.visitBlock = function(block){
  */
 
 Normalizer.prototype.visitGroup = function(group){
-  // TODO: clean this mess up
   var stack = this.stack
-    , map = this.map
-    , self = this;
+    , map = this.map;
 
   stack.push(group.nodes);
 
-  var selectors = this.compileSelectors(stack);
+  var selectors = utils.compileSelectors(stack, true);
 
   // map for extension lookup
   selectors.forEach(function(selector){
@@ -11510,62 +11674,6 @@ Normalizer.prototype.extend = function(group, selectors){
       });
     });
   });
-};
-
-/**
- * Compile selector strings in `arr` from the bottom-up
- * to produce the selector combinations. For example
- * the following Stylus:
- *
- *    ul
- *      li
- *      p
- *        a
- *          color: red
- *
- * Would return:
- *
- *      [ 'ul li a', 'ul p a' ]
- *
- * @param {Array} arr
- * @return {Array}
- * @api private
- */
-
-Normalizer.prototype.compileSelectors = function(arr){
-  // TODO: remove this duplication
-  var stack = this.stack
-    , self = this
-    , selectors = []
-    , buf = [];
-
-  function compile(arr, i) {
-    if (i) {
-      arr[i].forEach(function(selector){
-        buf.unshift(selector.val);
-        compile(arr, i - 1);
-        buf.shift();
-      });
-    } else {
-      arr[0].forEach(function(selector){
-        var str = selector.val.trim();
-        if (buf.length) {
-          for (var i = 0, len = buf.length; i < len; ++i) {
-            if (~buf[i].indexOf('&')) {
-              str = buf[i].replace(/&/g, str).trim();
-            } else {
-              str += ' ' + buf[i].trim();
-            }
-          }
-        }
-        selectors.push(str.trimRight());
-      });
-    }
-  }
-
-  compile(arr, arr.length - 1);
-
-  return selectors;
 };
 
 
