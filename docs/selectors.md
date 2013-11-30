@@ -100,6 +100,20 @@ Yielding:
         border: 2px solid #eee;
       }
 
+### selector() bif
+
+You can use the built-in `selector()` to get the current compiled selector. Could be used inside mixins for checks or other clever things.
+
+    .foo
+      selector()
+    // => '.foo'
+
+    .foo
+      &:hover
+        selector()
+    // '.foo:hover'
+
+
 ### Disambiguation
 
 Expressions such as `padding - n` could be interpreted both as a subtraction operation, as well as a property with an unary minus. To disambiguate, wrap the expression with parens:

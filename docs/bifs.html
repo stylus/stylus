@@ -505,6 +505,20 @@ length()
 // =&gt; 0
 </code></pre>
 
+<h3 id="selector">selector()</h3>
+
+<p>Returns the compiled current selector or <code>&amp;</code> if called at root level.</p>
+
+<pre><code>.foo
+  selector()
+// =&gt; '.foo'
+
+.foo
+  &amp;:hover
+    selector()
+// '.foo:hover'
+</code></pre>
+
 <h3 id="warnmsg">warn(msg)</h3>
 
 <p>Warn with the given error <code>msg</code>, does not exit.</p>

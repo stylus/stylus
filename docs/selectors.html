@@ -116,6 +116,20 @@ input:hover {
   }
 </code></pre>
 
+<h3 id="selector-bif">selector() bif</h3>
+
+<p>You can use the built-in <code>selector()</code> to get the current compiled selector. Could be used inside mixins for checks or other clever things.</p>
+
+<pre><code>.foo
+  selector()
+// =&gt; '.foo'
+
+.foo
+  &amp;:hover
+    selector()
+// '.foo:hover'
+</code></pre>
+
 <h3 id="disambiguation">Disambiguation</h3>
 
 <p>Expressions such as <code>padding - n</code> could be interpreted both as a subtraction operation, as well as a property with an unary minus. To disambiguate, wrap the expression with parens:</p>
