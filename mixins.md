@@ -112,13 +112,13 @@ You can pass blocks to mixins by calling mixin with `+` prefix:
 The passed block would be available inside the mixin as `block` variable, that then could be used with interpolation:
 
     foo()
-      .foo
+      .bar
         {block}
 
     +foo
       width: 10px
 
-    => .foo {
+    => .bar {
          width: 10px;
        }
 
