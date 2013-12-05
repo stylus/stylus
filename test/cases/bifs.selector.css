@@ -20,3 +20,6 @@
 .bar {
   baz: '.bar';
 }
+broken selector {
+  foo: 'broken selector';
+}
