@@ -22,3 +22,11 @@ body
   test(-5px)
   test-nested(5px, -5)
   test-unless()
+
+foo()
+  $width = 10px
+  .foo
+    if true
+      width: $width
+
+foo()
