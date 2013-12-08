@@ -31,3 +31,18 @@ broken()
 
 broken
   broken()
+
+foo() {
+  {selector()} {
+    .bar {
+        baz: selector()
+        &:hover {
+          foo: selector()
+        }
+    }
+  }
+}
+
+.foo {
+  foo()
+}
