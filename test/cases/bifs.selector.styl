@@ -23,3 +23,26 @@ bar()
   baz: selector()
 
 bar()
+
+broken()
+  x = selector
+  {x}
+    foo: selector()
+
+broken
+  broken()
+
+foo() {
+  {selector()} {
+    .bar {
+        baz: selector()
+        &:hover {
+          foo: selector()
+        }
+    }
+  }
+}
+
+.foo {
+  foo()
+}
