@@ -8,3 +8,11 @@ body {
 .foo {
   width: 10px;
 }
+@font-face {
+  font-family: foo;
+  src: bar;
+}
+@page {
+  margin: 0;
+  padding: 0;
+}
