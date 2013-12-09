@@ -60,3 +60,26 @@ mixin2()
 body
   foo: 'bar'
   mixin2()
+
+body
+  for i in 1..3
+    width: 75%
+    height: (@width / i)
+
+@page
+  color: red
+  background: @color
+
+@font-face
+  width: 66%
+  height: @width
+
+body
+  unless false
+    width: 75%
+    height: @width
+
+body
+  if true
+    width: 75%
+    height: @width
