@@ -13,3 +13,14 @@ form
     color: red
     &:hover
       color: blue
+
+body
+  width: 75%
+
+form
+  if true
+    @extend body
+
+a.button
+  unless false
+    @extend form
