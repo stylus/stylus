@@ -4,3 +4,6 @@ body {
   foo: color;
   foo: unknown;
 }
+body {
+  color: #00f;
+}
