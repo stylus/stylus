@@ -29,3 +29,11 @@ broken selector {
 .foo .bar:hover {
   foo: '.foo .bar:hover';
 }
+.foo {
+  baz: '.foo:hover';
+  baz: 'li a';
+  baz: '.foo:hover, .foo:active';
+}
+.qux {
+  baz: '.qux__qux';
+}
