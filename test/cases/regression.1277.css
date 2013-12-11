@@ -1,0 +1,35 @@
+.foo {
+  width: 10px;
+}
+.bar {
+  height: 10px;
+}
+@media only screen and (min-width: 481px) and (max-width: 1023px) {
+  .foo {
+    width: 20px;
+  }
+  .bar {
+    height: 20px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .foo {
+    width: 30px;
+  }
+  .bar {
+    height: 30px;
+  }
+}
+@media only screen and (min-width: 200px) {
+  .foo {
+    width: 60px;
+  }
+  .bar {
+    height: 50px;
+  }
+}
+@media only screen and (min-width: 500px) and (max-width: 700px) {
+  .bar {
+    height: 50px;
+  }
+}

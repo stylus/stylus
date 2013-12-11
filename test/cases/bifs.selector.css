@@ -23,9 +23,9 @@
 broken selector {
   foo: 'broken selector';
 }
-.foo .bar {
-  baz: '.foo .bar';
+.foo .foo .bar {
+  baz: '.foo .foo .bar';
 }
-.foo .bar:hover {
-  foo: '.foo .bar:hover';
+.foo .foo .bar:hover {
+  foo: '.foo .foo .bar:hover';
 }
