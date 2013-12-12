@@ -1,3 +1,18 @@
+0.41.2 / 2013-12-10
+==================
+  
+  * Fixed property lookup in blocks, #1273.
+  * Fixed @extend in blocks, #1274.
+  * Fixed if-else-if-else, #1276.
+
+0.41.1 / 2013-12-08
+==================
+
+  * Fixed inaccessible local variable inside conditional which is inside a selector, #1267.
+  * Fixed some minor issues with `selector()` interpolation, #1259.
+  * Fixed missing hashes in base64 converted urls, #1263.
+  * Fixed conditionals inside `@font-face`, #1268.
+
 0.41.0 / 2013-11-30
 ==================
 

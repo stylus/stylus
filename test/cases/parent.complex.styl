@@ -1,0 +1,26 @@
+foo()
+  &
+    width: 10px
+
+  & .foo
+    width: 20px
+
+  .foo &
+    width: 30px
+
+  .foo&.bar
+    width: 40px
+
+  .foo &.bar
+    width: 50px
+
+  .foo& .bar
+    width: 60px
+
+  &, & .foo
+    width: 70px
+
+.ok
+  foo()
+
+foo()
