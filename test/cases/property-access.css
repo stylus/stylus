@@ -45,4 +45,27 @@ body {
   foo: 'bar';
   bar: 'bar';
 }
-
+body {
+  width: 75%;
+  height: 75%;
+  width: 75%;
+  height: 37.5%;
+  width: 75%;
+  height: 25%;
+}
+@page {
+  color: #f00;
+  background: #f00;
+}
+@font-face {
+  width: 66%;
+  height: 66%;
+}
+body {
+  width: 75%;
+  height: 75%;
+}
+body {
+  width: 75%;
+  height: 75%;
+}

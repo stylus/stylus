@@ -7,10 +7,17 @@ a.button {
 a.button {
   text-decoration: none;
 }
-form button {
+form button,
+a.button button {
   padding: 10px;
   color: #f00;
 }
-form button:hover {
+form button:hover,
+a.button button:hover {
   color: #00f;
+}
+body,
+form,
+a.button {
+  width: 75%;
 }

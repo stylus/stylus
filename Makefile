@@ -3,7 +3,10 @@ SRC = $(shell find lib -name "*.js")
 TM_BUNDLE = editors/Stylus.tmbundle
 
 stylus.js:
-	@node support/compile | cat support/head.js - support/foot.js > $@
+	@node support/compile | cat support/polyfills.js support/head.js - support/foot.js > $@
+
+stylus.min.js: stylus.js
+	@uglifyjs $< > $@
 
 define DETERMINE_TEXTMATE_BUNDLE_PATH
 cd /tmp && \
@@ -42,4 +45,4 @@ update-bundle:
 benchmark:
 	@node bm.js
 
-.PHONY: stylus.js test install-bundle update-bundle benchmark test-cov
+.PHONY: stylus.js stylus.min.js test install-bundle update-bundle benchmark test-cov
