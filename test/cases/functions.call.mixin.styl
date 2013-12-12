@@ -43,6 +43,24 @@ tablet()
   +mobile() { width: 10em }
   +tablet() { width: 20px }
 
+foo = ()
+
+bar()
+  height: 10px
+
+baz()
+  foo[0] = block
+  {foo}
+
+qux()
+  return red
+
+.raz
+  +baz()
+    width: 10px
+    color: qux()
+    bar()
+
 touch-support()
   html.touch &
     {block}
