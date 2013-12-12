@@ -37,3 +37,8 @@ broken selector {
 .qux {
   baz: '.qux__qux';
 }
+.foo,
+.bar {
+  baz: '.foo:hover,.bar:hover';
+  baz: '.foo:hover,.bar:hover';
+}
