@@ -10,3 +10,30 @@
   @page :right
     margin-right 5px
 
+.foo
+  if true {
+    width 50%
+    @media screen and (max-width: 500px) {
+      width 100%
+    }
+  }
+
+.bar
+  if false {
+    // nothing
+  } else if true {
+    width 50%
+    @media screen and (max-width: 500px) {
+      width 100%
+    }
+  }
+
+.baz
+  if false {
+    // nothing
+  } else {
+    width 50%
+    @media screen and (max-width: 500px) {
+      width 100%
+    }
+  }
