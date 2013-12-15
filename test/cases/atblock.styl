@@ -18,3 +18,19 @@ b = @block{
 
 .bar
   {b}
+
+bar(b, c)
+  .foo
+    {b}
+  .bar
+    {c}
+
+.baz {
+  bar(@block{
+    .raz {
+      width: 20px
+    }
+  }, @block{
+    height: 20px
+  })
+}

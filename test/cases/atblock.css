@@ -9,3 +9,9 @@
 .bar {
   color: #008000;
 }
+.baz .foo .raz {
+  width: 20px;
+}
+.baz .bar {
+  height: 20px;
+}
