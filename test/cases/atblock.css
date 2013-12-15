@@ -15,3 +15,10 @@
 .baz .bar {
   height: 20px;
 }
+.bar {
+  color: #f00;
+  width: 200px;
+}
+.foo {
+  color: #f00;
+}
