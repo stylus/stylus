@@ -2,4 +2,8 @@ body {
   width: 7;
   display: foobar;
   color: #800000;
+  width: '400px';
+  content: 'some string';
+  z-index: 10;
+  foo: false;
 }
