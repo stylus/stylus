@@ -50,3 +50,23 @@ b = func()
 
 .foo
   {b}
+
+a = {}
+a['foo'] =
+  .bar
+    color: red
+    if true
+      width: 200px
+
+b = a.foo
+{b}
+
+a = ()
+a[0] =
+  .bar
+    color: red
+    if true
+      width: 200px
+
+b = a[0]
+{b}
