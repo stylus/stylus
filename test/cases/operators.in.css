@@ -35,3 +35,6 @@ body {
   foo: true;
   foo: true;
 }
+body {
+  bar: 10px;
+}
