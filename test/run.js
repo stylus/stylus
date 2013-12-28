@@ -45,3 +45,24 @@ describe('integration', function(){
     })
   });
 })
+
+// converter cases
+
+var converter = fs.readdirSync('test/converter').filter(function(file){
+  return ~file.indexOf('.css');
+}).map(function(file){
+  return file.replace('.css', '');
+});
+
+describe('converter', function(){
+  converter.forEach(function(test){
+    var name = test.replace(/[-.]/g, ' ');
+
+    it(name, function(){
+      var path = 'test/converter/' + test + '.styl';
+      var styl = fs.readFileSync(path, 'utf8').replace(/\r/g, '').trim();
+      var css = fs.readFileSync('test/converter/' + test + '.css', 'utf8').replace(/\r/g, '');
+      stylus.convertCSS(css).trim().should.equal(styl);
+    })
+  });
+});

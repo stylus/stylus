@@ -1,0 +1,74 @@
+#dialog {
+  position: fixed;
+  left: 50%;
+  top: 150px;
+  max-width: 600px;
+  min-width: 250px;
+  border: 1px solid #eee;
+  background: #fff;
+  z-index: 1000;
+}
+#dialog .content {
+  padding: 15px 20px;
+}
+#dialog h1 {
+  margin: 0 0 5px 0;
+  font-size: 16px;
+  font-weight: normal;
+}
+#dialog p {
+  margin: 0;
+  padding: 0;
+  font-size: 0.9em;
+}
+#dialog.modal {
+  box-shadow: 0 1px 8px 0 #000;
+}
+/* close */
+#dialog .close {
+  position: absolute;
+  top: 3px;
+  right: 10px;
+  text-decoration: none;
+  color: #888;
+  font-size: 16px;
+  font-weight: bold;
+  display: none;
+}
+#dialog.closable .close {
+  display: block;
+}
+#dialog .close:hover {
+  color: #000;
+}
+#dialog .close:active {
+  margin-top: 1px;
+}
+/* slide */
+#dialog.slide {
+  -webkit-transition: opacity 300ms, top 300ms;
+  -moz-transition: opacity 300ms, top 300ms;
+}
+#dialog.slide.hide {
+  opacity: 0;
+  top: -500px;
+}
+/* fade */
+#dialog.fade {
+  -webkit-transition: opacity 300ms;
+  -moz-transition: opacity 300ms;
+}
+#dialog.fade.hide {
+  opacity: 0;
+}
+/* scale */
+#dialog.scale {
+  -webkit-transition: -webkit-transform 300ms;
+  -moz-transition: -moz-transform 300ms;
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+}
+#dialog.scale.hide {
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+}
