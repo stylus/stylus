@@ -28,7 +28,8 @@
     "cssom": "0.2.x",
     "mkdirp": "0.3.x",
     "debug": "*",
-    "sax": "0.5.x"
+    "sax": "0.5.x",
+    "glob": "3.2.x"
   },
   "devDependencies": {
     "should": "*",
