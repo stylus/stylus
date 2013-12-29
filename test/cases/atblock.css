@@ -1,0 +1,36 @@
+.bar {
+  color: #f00;
+  width: 200px;
+}
+.foo .bar {
+  color: #f00;
+  width: 200px;
+}
+.bar {
+  color: #008000;
+}
+.baz .foo .raz {
+  width: 20px;
+}
+.baz .bar {
+  height: 20px;
+}
+.bar {
+  color: #f00;
+  width: 200px;
+}
+.foo {
+  color: #f00;
+}
+.bar {
+  color: #f00;
+  width: 200px;
+}
+.bar {
+  color: #f00;
+  width: 200px;
+}
+.bar {
+  color: #f00;
+  width: 200px;
+}
