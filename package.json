@@ -25,7 +25,7 @@
     "test": "make test"
   },
   "dependencies": {
-    "cssom": "0.2.x",
+    "css-parse": "1.7.x",
     "mkdirp": "0.3.x",
     "debug": "*",
     "sax": "0.5.x",

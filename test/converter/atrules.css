@@ -1,0 +1,26 @@
+@charset 'utf-8';
+@charset "utf-8";
+@import url("foo.css");
+@import 'foo.css';
+@import "foo.css";
+@media screen and (min-height: 500px) {
+  body {
+    color: #f00;
+  }
+}
+@-moz-document url-prefix() {
+  body {
+    color: #f00;
+  }
+}
+@page {
+  margin: 0;
+}
+@keyframes foo {
+  0% {
+    width: 400px;
+  }
+  100% {
+    width: 200px;
+  }
+}
