@@ -1,6 +1,15 @@
-use('plugins/add.js')
+use('plugins/add.js', {
+  width: 400px,
+  content: 'some string',
+  num: 10,
+  foo: false
+})
 
 body
   width add(4, 3)
   display: something()
   color: set_red(#000, 128)
+  width: get_opt('width')
+  content: get_opt('content')
+  z-index: get_opt('num')
+  foo: get_opt('foo')
