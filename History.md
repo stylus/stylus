@@ -1,3 +1,17 @@
+0.42.0 / in development
+==================
+
+  * Added `require()` bif, #1287.
+  * Added file globbing, #1306 and #1013.
+  * Added basic support for `@block` entity, #1290.
+  * Added string support for `selector()` bif, #1279.
+  * Added options as an optional argument for `use()` bif, #1297.
+  * Fixed broken @media queries in logic blocks, #1289.
+  * Fixed function call inside block mixin is on the `block` variable pass, #1285.
+  * Fixed bug with `if` and color in array check, #1301.
+  * Fixed bug with list of color keywords as default argument, #1294.
+  * Now using `css-parse` instead of `CSSOM` for converting CSS -> Stylus, #1307.
+
 0.41.3 / 2013-12-12
 ==================
   
