@@ -34,8 +34,8 @@ broken selector {
   baz: 'li a';
   baz: '.foo:hover, .foo:active';
 }
-.qux {
-  baz: '.qux__qux';
+.qux .qux {
+  baz: '.qux .qux__qux';
 }
 .foo,
 .bar {
