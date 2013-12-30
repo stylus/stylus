@@ -346,6 +346,13 @@ Saturate the given `color` by `amount`.
     saturate(#c33, 40%)
     // => #f00
 
+### complement(color)
+
+Gives the complementary color. Equals to spinning hue to 180deg.
+
+    complement(#fd0cc7)
+    // => #0cfd42
+
 ### invert(color)
 
 Inverts the color. The red, green, and blue values are inverted, while opacity is left alone.

@@ -212,6 +212,11 @@ invert(color)
   b = 255 - blue(color)
   rgba(r,g,b,alpha(color))
 
+// give complement of the given color
+
+complement( color )
+  spin( color, 180 )
+
 // return the last value in the given expr
 
 last(expr)
