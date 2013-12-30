@@ -360,6 +360,13 @@ Inverts the color. The red, green, and blue values are inverted, while opacity i
     invert(#d62828)
     // => #29d7d7
 
+### grayscale(color)
+
+Gives the grayscale equivalent of the given color. Equals to desaturate by 100%.
+
+    grayscale(#fd0cc7)
+    // => #0cfd42
+
 ### unquote(str | ident)
 
   Unquote the given `str` and returned as a `Literal` node.

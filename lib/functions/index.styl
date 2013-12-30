@@ -217,6 +217,11 @@ invert(color)
 complement( color )
   spin( color, 180 )
 
+// give grayscale of the given color
+
+grayscale( color )
+  desaturate( color, 100% )
+
 // return the last value in the given expr
 
 last(expr)
