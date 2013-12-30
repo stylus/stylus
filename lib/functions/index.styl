@@ -222,6 +222,16 @@ complement( color )
 grayscale( color )
   desaturate( color, 100% )
 
+// mix the given color with white
+
+tint( color, percent )
+  mix( white, color, percent )
+
+// mix the given color with black
+
+shade( color, percent )
+  mix( black, color, percent )
+
 // return the last value in the given expr
 
 last(expr)

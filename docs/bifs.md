@@ -367,6 +367,20 @@ Gives the grayscale equivalent of the given color. Equals to desaturate by 100%.
     grayscale(#fd0cc7)
     // => #0cfd42
 
+### tint(color,percent)
+
+Mix the given color with white.
+
+    tint(#fd0cc7,66%)
+    // => #feaceb
+    
+### shade(color,percent)
+
+Mix the given color with black.
+
+    shade(#fd0cc7,66%)
+    // => #560443
+
 ### unquote(str | ident)
 
   Unquote the given `str` and returned as a `Literal` node.
