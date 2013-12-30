@@ -1,0 +1,37 @@
+.foo {
+  width: 10px;
+}
+.bar,
+.foo {
+  width: 20px;
+}
+.bar {
+  width: 30px;
+}
+.bar {
+  width: 50px;
+}
+.foo {
+  width: 60px;
+}
+.foo .bar,
+.baz {
+  width: 70px;
+  content: '.foo .bar,.baz';
+}
+.foo {
+  width: 80px;
+}
+.zzz {
+  width: 90px;
+}
+.foo,
+.bar {
+  width: 100px;
+}
+.baz {
+  width: 110px;
+}
+.raz {
+  width: 120px;
+}

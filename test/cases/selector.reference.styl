@@ -1,0 +1,47 @@
+/.foo
+  width: 10px
+
+/.bar,
+.foo
+  width: 20px
+
+.foo
+  /.bar
+    width: 30px
+
+/
+  width: 40px
+  /.bar
+    width: 50px
+
+.foo
+  width: 60px
+
+  .bar,
+  /.baz
+    width: 70px
+
+    content: selector()
+
+zzzs()
+  /$fshhh
+    width: 90px
+
+.foo
+  width: 80px
+
+  zzzs()
+
+.zzz
+  @extends $fshhh
+
+.foo,
+.bar
+  width: 100px
+
+  /.baz
+    width: 110px
+
+  /
+    .raz
+      width: 120px
