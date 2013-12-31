@@ -7,6 +7,7 @@
   * Added basic support for `@block` entity, #1290.
   * Added string support for `selector()` bif, #1279.
   * Added options as an optional argument for `use()` bif, #1297.
+  * Added some new colors shortcuts: grayscale, complement, tint & shade, #1308.
   * Fixed broken @media queries in logic blocks, #1289.
   * Fixed function call inside block mixin is on the `block` variable pass, #1285.
   * Fixed bug with `if` and color in array check, #1301.
