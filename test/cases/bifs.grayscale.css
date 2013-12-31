@@ -1,0 +1,8 @@
+body {
+  foo: #6f6f6f;
+  foo: #8c8c8c;
+  foo: #858585;
+}
+body {
+  foo: rgba(80,80,80,0.5);
+}

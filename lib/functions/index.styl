@@ -212,6 +212,26 @@ invert(color)
   b = 255 - blue(color)
   rgba(r,g,b,alpha(color))
 
+// give complement of the given color
+
+complement( color )
+  spin( color, 180 )
+
+// give grayscale of the given color
+
+grayscale( color )
+  desaturate( color, 100% )
+
+// mix the given color with white
+
+tint( color, percent )
+  mix( white, color, percent )
+
+// mix the given color with black
+
+shade( color, percent )
+  mix( black, color, percent )
+
 // return the last value in the given expr
 
 last(expr)
