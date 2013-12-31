@@ -3,6 +3,7 @@
 
   * Added `require()` bif, #1287.
   * Added file globbing, #1306 and #1013.
+  * Added root reference, part of #1240.
   * Added basic support for `@block` entity, #1290.
   * Added string support for `selector()` bif, #1279.
   * Added options as an optional argument for `use()` bif, #1297.
