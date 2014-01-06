@@ -12,3 +12,27 @@
     margin-right: 5px;
   }
 }
+.foo {
+  width: 50%;
+}
+@media screen and (max-width: 500px) {
+  .foo {
+    width: 100%;
+  }
+}
+.bar {
+  width: 50%;
+}
+@media screen and (max-width: 500px) {
+  .bar {
+    width: 100%;
+  }
+}
+.baz {
+  width: 50%;
+}
+@media screen and (max-width: 500px) {
+  .baz {
+    width: 100%;
+  }
+}

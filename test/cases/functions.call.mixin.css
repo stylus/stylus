@@ -27,6 +27,11 @@
     width: 20px;
   }
 }
+.raz {
+  width: 10px;
+  color: #f00;
+  height: 10px;
+}
 html.touch nav {
   overflow-scrolling: touch;
 }

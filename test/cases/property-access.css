@@ -69,3 +69,12 @@ body {
   width: 75%;
   height: 75%;
 }
+body {
+  padding-left: 10px;
+}
+@media screen and (orientation: portrait) {
+  body {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}

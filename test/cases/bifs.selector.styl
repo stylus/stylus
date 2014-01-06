@@ -46,3 +46,27 @@ foo() {
 .foo {
   foo()
 }
+
+.foo {
+  baz: selector('&:hover')
+  baz: selector('li a')
+  baz: selector('&:hover, &:active')
+}
+
+qux() {
+  {selector()} {
+    baz: selector('&__qux')
+  }
+}
+
+.qux {
+  qux()
+}
+
+.foo
+.bar
+  baz: selector('&:hover')
+  bar = ''
+  &:hover
+    bar[0] = selector()
+  baz: bar

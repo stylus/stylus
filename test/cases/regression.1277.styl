@@ -1,0 +1,61 @@
+// Define the cache and the aliases
+$media_cache = {}
+$media_aliases = {
+  palm:       '(max-width: 480px)'
+  lap:        '(min-width: 481px) and (max-width: 1023px)'
+  lap-and-up: '(min-width: 481px)'
+  portable:   '(max-width: 1023px)'
+  desk:       '(min-width: 1024px)'
+  desk-wide:  '(min-width: 1200px)'
+}
+
+// Mixin for caching the blocks with the given conditions
+media($condition)
+  helper($condition)
+    unless $media_cache[$condition]
+      $media_cache[$condition] = ()
+    push($media_cache[$condition], block)
+
+  +helper($condition)
+    {selector()}
+      {block}
+
+// Function we would use to call all the cached styles
+apply_media_cache()
+  for $media, $blocks in $media_cache
+    $media = unquote($media_aliases[$media] || $media)
+    $media = '(%s)' % $media unless match('\(', $media)
+    $media = 'only screen and %s' % $media
+    @media $media
+      for $block in $blocks
+        {$block}
+
+// Here would be our main styles, using the `media` mixin
+.foo
+  width: 10px
+
+  +media('lap')
+    width: 20px
+
+  +media('desk')
+    width: 30px
+
+  +media('min-width: 200px')
+    width: 60px
+
+.bar
+  height: 10px
+
+  +media('lap')
+    height: 20px
+
+  +media('desk')
+    height: 30px
+
+  +media('min-width: 200px')
+    height: 50px
+
+  +media('(min-width: 500px) and (max-width: 700px)')
+    height: 50px
+// Here we call all the cached styles
+apply_media_cache()

@@ -83,3 +83,9 @@ body
   if true
     width: 75%
     height: @width
+
+body
+  padding-left: 10px
+  @media screen and (orientation: portrait)
+    padding-left: 20px
+    padding-right: @padding-left

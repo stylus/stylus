@@ -46,6 +46,7 @@
     , "lib/nodes/object.js"
     , "lib/nodes/member.js"
     , "lib/nodes/mozdocument.js"
+    , "lib/nodes/atblock.js"
     , "lib/parser.js"
     , "lib/renderer.js"
     , "lib/stack/index.js"

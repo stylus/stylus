@@ -1,0 +1,81 @@
+a = @block {
+  .bar {
+    color: red
+    if true {
+      width: 200px
+    }
+  }
+}
+
+b = @block{
+  color: green
+}
+
+{a}
+
+.foo
+  {a}
+
+.bar
+  {b}
+
+bar(b, c)
+  .foo
+    {b}
+  .bar
+    {c}
+
+.baz {
+  bar(@block{
+    .raz {
+      width: 20px
+    }
+  }, @block{
+    height: 20px
+  })
+}
+
+a =
+  .bar
+    color: red
+    if true
+      width: 200px
+
+{a}
+
+func()
+  return @block { color: red }
+
+b = func()
+
+.foo
+  {b}
+
+a = {}
+a['foo'] =
+  .bar
+    color: red
+    if true
+      width: 200px
+
+b = a.foo
+{b}
+
+a.bar =
+  .bar
+    color: red
+    if true
+      width: 200px
+
+b = a.bar
+{b}
+
+a = ()
+a[0] =
+  .bar
+    color: red
+    if true
+      width: 200px
+
+b = a[0]
+{b}

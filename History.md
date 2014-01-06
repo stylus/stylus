@@ -1,3 +1,26 @@
+0.42.0 / 2014-01-06
+==================
+
+  * Added `@require`, #1287.
+  * Added more lookup patterns for the `@import` and `@require`. Support Node.js modules, #1316.
+  * Added file globbing, #1306 and #1013.
+  * Added root reference, part of #1240.
+  * Added basic support for `@block` entity, #1290.
+  * Added string support for `selector()` bif, #1279.
+  * Added options as an optional argument for `use()` bif, #1297.
+  * Added some new colors shortcuts: grayscale, complement, tint & shade, #1308.
+  * Fixed broken @media queries in logic blocks, #1289.
+  * Fixed function call inside block mixin is on the `block` variable pass, #1285.
+  * Fixed bug with `if` and color in array check, #1301.
+  * Fixed bug with list of color keywords as default argument, #1294.
+  * Fixed bug with property lookup in @media queries, #1315.
+  * Now using `css-parse` instead of `CSSOM` for converting CSS -> Stylus, #1307.
+
+0.41.3 / 2013-12-12
+==================
+  
+  * Fixed regression for `selector`, #1278.
+
 0.41.2 / 2013-12-10
 ==================
   
