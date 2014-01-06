@@ -2,3 +2,41 @@
   <li><a href="http://github.com/visionmedia/nib">CSS3 Extensions with Nib</a></li>
   <li><a href="../try.html">Try Stylus Online!</a></li>
   </ul><div id="content">
+
+<h2 id="block">@block</h2>
+
+<p>You can assign any block of code in Stylus to a variable and then call it, pass as an argument or reuse in any other way.</p>
+
+<p>To define a block, either write it down with an increased indent after an assign sign:</p>
+
+<pre><code>foo =
+  width: 20px
+  height: 20px
+</code></pre>
+
+<p>or use a curly braces syntax with <code>@block</code> keyword:</p>
+
+<pre><code>foo = @block {
+  width: 20px
+  height: 20px
+}
+</code></pre>
+
+<p>if you would like to render this block anywhere, you could call this variable inside an interpolation, so</p>
+
+<pre><code>.icon
+  {foo}
+</code></pre>
+
+<p>would render to</p>
+
+<pre><code>.icon {
+  width: 20px;
+  height: 20px;
+}
+</code></pre>
+
+<p>BTW, this is the same way you can use the blocks passed to the <a href="mixins.html#block-mixins">block mixins</a>.</p>
+
+<p>Right now you can only pass the variable as any other variable and render it inside an interpolation. In future we would provide more ways of handling it.</p>
+</div></div></body></html>

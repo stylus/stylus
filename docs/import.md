@@ -1,6 +1,6 @@
 ## Import
 
- Stylus supports both literal __@import__ for CSS, as well as dynamic importing of other Stylus sheets.
+Stylus supports both literal __@import__ for CSS, as well as dynamic importing or requiring of other Stylus sheets.
 
 ### Literal CSS
 
@@ -13,6 +13,8 @@ Render the literal CSS __@import__ shown below:
      @import "reset.css"
 
 ### Stylus Import
+
+*Disclaimer: In all places the __@import__ is used with Stylus sheets, the __@require__ could be used*
 
  When using __@import__ without the `.css` extension, it's assumed to be a Stylus sheet (e.g., `@import "mixins/border-radius"`).
 
@@ -49,6 +51,31 @@ Render the literal CSS __@import__ shown below:
           if (err) throw err;
           console.log(css);
         });
+
+### Require
+
+Along with `@import`, Stylus have also `@require`. It works almost in the same way, with the exception of importing any given file only once.
+
+### File globbing
+
+Stylus supports [globbing](https://github.com/isaacs/node-glob#readme). With it you could import many files using a file mask:
+
+    @import 'product/*'
+
+This would import all the stylus sheets from the `product` directory in such structure:
+
+    ./product
+      |-- body.styl
+      |-- foot.styl
+      |-- head.styl
+
+Note that this works with `@require` too, so if you would have also a `./product/index.styl` with this content:
+
+    @require 'head'
+    @require 'body'
+    @require 'foot'
+
+then `@require 'product/*'` would include each individual sheet only once.
 
 ### Resolving relative urls inside imports
 
