@@ -2,6 +2,6 @@ css
 lib-cov
 testing
 .DS_Store
-node_modules
+/node_modules
 coverage.html
 lib-cov
