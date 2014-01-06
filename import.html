@@ -1,10 +1,10 @@
-<!DOCTYPE html><html><head><title>Stylus</title><link rel="stylesheet" href="../main.css"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head><body><div id="container"><h1><a href='http://learnboost.github.com/stylus'>Stylus</a></h1><p class="tagline"><em class="expressive">Expressive, </em><em class="dynamic">dynamic, </em><em class="robust">robust </em><em class="css">CSS</em></p><div id="ribbon"><a href="http://github.com/learnboost/stylus">Fork me on GitHub</a></div><ul id="menu"><li><a href="../docs/selectors.html">Selectors</a></li><li><a href="../docs/variables.html">Variables</a></li><li><a href="../docs/interpolation.html">Interpolation</a></li><li><a href="../docs/operators.html">Operators</a></li><li><a href="../docs/mixins.html">Mixins</a></li><li><a href="../docs/functions.html">Functions</a></li><li><a href="../docs/kwargs.html">Keyword Arguments</a></li><li><a href="../docs/bifs.html">Built-in Functions</a></li><li><a href="../docs/vargs.html">Rest Params</a></li><li><a href="../docs/comments.html">Comments</a></li><li><a href="../docs/conditionals.html">Conditionals</a></li><li><a href="../docs/hashes.html">Hashes</a></li><li><a href="../docs/iteration.html">Iteration</a></li><li><a href="../docs/import.html">@import</a></li><li><a href="../docs/media.html">@media</a></li><li><a href="../docs/font-face.html">@font-face</a></li><li><a href="../docs/keyframes.html">@keyframes</a><li><a href="../docs/extend.html">@extend</a></li><li><a href="../docs/functions.url.html">url()</a></li><li><a href="../docs/literal.html">CSS Literal</a></li><li><a href="../docs/css-style.html">CSS Style Syntax</a></li><li><a href="../docs/escape.html">Char Escaping</a></li><li><a href="../docs/executable.html">Executable</a></li><li><a href="../docs/error-reporting.html">Error Reporting</a></li><li><a href="../docs/middleware.html">Connect Middleware</a></li><li><a href="../docs/introspection.html">Introspection API</a></li><li><a href="../docs/js.html">JavaScript API</a></li>
+<!DOCTYPE html><html><head><title>Stylus</title><link rel="stylesheet" href="../main.css"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head><body><div id="container"><h1><a href='http://learnboost.github.com/stylus'>Stylus</a></h1><p class="tagline"><em class="expressive">Expressive, </em><em class="dynamic">dynamic, </em><em class="robust">robust </em><em class="css">CSS</em></p><div id="ribbon"><a href="http://github.com/learnboost/stylus">Fork me on GitHub</a></div><ul id="menu"><li><a href="../docs/selectors.html">Selectors</a></li><li><a href="../docs/variables.html">Variables</a></li><li><a href="../docs/interpolation.html">Interpolation</a></li><li><a href="../docs/operators.html">Operators</a></li><li><a href="../docs/mixins.html">Mixins</a></li><li><a href="../docs/functions.html">Functions</a></li><li><a href="../docs/kwargs.html">Keyword Arguments</a></li><li><a href="../docs/bifs.html">Built-in Functions</a></li><li><a href="../docs/vargs.html">Rest Params</a></li><li><a href="../docs/comments.html">Comments</a></li><li><a href="../docs/conditionals.html">Conditionals</a></li><li><a href="../docs/hashes.html">Hashes</a></li><li><a href="../docs/iteration.html">Iteration</a></li><li><a href="../docs/import.html">@import and @require</a></li><li><a href="../docs/media.html">@media</a></li><li><a href="../docs/font-face.html">@font-face</a></li><li><a href="../docs/keyframes.html">@keyframes</a></li><li><a href="../docs/extend.html">@extend</a></li><li><a href="../docs/block.html">@block</a></li><li><a href="../docs/functions.url.html">url()</a></li><li><a href="../docs/literal.html">CSS Literal</a></li><li><a href="../docs/css-style.html">CSS Style Syntax</a></li><li><a href="../docs/escape.html">Char Escaping</a></li><li><a href="../docs/executable.html">Executable</a></li><li><a href="../docs/error-reporting.html">Error Reporting</a></li><li><a href="../docs/middleware.html">Connect Middleware</a></li><li><a href="../docs/introspection.html">Introspection API</a></li><li><a href="../docs/js.html">JavaScript API</a></li>
   <li><a href="http://github.com/visionmedia/nib">CSS3 Extensions with Nib</a></li>
   <li><a href="../try.html">Try Stylus Online!</a></li>
   </ul><div id="content">
 <h2 id="import">Import</h2>
 
-<p>Stylus supports both literal <strong>@import</strong> for CSS, as well as dynamic importing of other Stylus sheets.</p>
+<p>Stylus supports both literal <strong>@import</strong> for CSS, as well as dynamic importing or requiring of other Stylus sheets.</p>
 
 <h3 id="literal-css">Literal CSS</h3>
 
@@ -19,6 +19,8 @@
 </code></pre>
 
 <h3 id="stylus-import">Stylus Import</h3>
+
+<p><em>Disclaimer: In all places the <strong>@import</strong> is used with Stylus sheets, the <strong>@require</strong> could be used</em></p>
 
 <p>When using <strong>@import</strong> without the <code>.css</code> extension, it&#8217;s assumed to be a Stylus sheet (e.g., <code>@import "mixins/border-radius"</code>).</p>
 
@@ -57,6 +59,34 @@
       console.log(css);
     });
 </code></pre>
+
+<h3 id="require">Require</h3>
+
+<p>Along with <code>@import</code>, Stylus have also <code>@require</code>. It works almost in the same way, with the exception of importing any given file only once.</p>
+
+<h3 id="file-globbing">File globbing</h3>
+
+<p>Stylus supports <a href="https://github.com/isaacs/node-glob#readme">globbing</a>. With it you could import many files using a file mask:</p>
+
+<pre><code>@import 'product/*'
+</code></pre>
+
+<p>This would import all the stylus sheets from the <code>product</code> directory in such structure:</p>
+
+<pre><code>./product
+  |-- body.styl
+  |-- foot.styl
+  |-- head.styl
+</code></pre>
+
+<p>Note that this works with <code>@require</code> too, so if you would have also a <code>./product/index.styl</code> with this content:</p>
+
+<pre><code>@require 'head'
+@require 'body'
+@require 'foot'
+</code></pre>
+
+<p>then <code>@require 'product/*'</code> would include each individual sheet only once.</p>
 
 <h3 id="resolving-relative-urls-inside-imports">Resolving relative urls inside imports</h3>
 

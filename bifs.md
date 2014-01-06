@@ -377,12 +377,40 @@ Saturate the given `color` by `amount`.
     saturate(#c33, 40%)
     // => #f00
 
+### complement(color)
+
+Gives the complementary color. Equals to spinning hue to 180deg.
+
+    complement(#fd0cc7)
+    // => #0cfd42
+
 ### invert(color)
 
 Inverts the color. The red, green, and blue values are inverted, while the opacity is left alone.
 
     invert(#d62828)
     // => #29d7d7
+
+### grayscale(color)
+
+Gives the grayscale equivalent of the given color. Equals to desaturate by 100%.
+
+    grayscale(#fd0cc7)
+    // => #0cfd42
+
+### tint(color, amount)
+
+Mix the given color with white.
+
+    tint(#fd0cc7,66%)
+    // => #feaceb
+
+### shade(color, amount)
+
+Mix the given color with black.
+
+    shade(#fd0cc7,66%)
+    // => #560443
 
 ### unquote(str | ident)
 
@@ -674,6 +702,10 @@ If you'd like to return any Stylus objects like `RGBA`, `Ident` or `Unit`, you c
       };
     };
     module.exports = plugin;
+
+You can pass any options as an optional second argument, using the [hash object](hashes.html):
+
+    use("plugins/add.js", { foo: bar })
 
 ### Undefined Functions
 
