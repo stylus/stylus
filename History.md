@@ -1,7 +1,8 @@
-0.42.0 / in development
+0.42.0 / 2014-01-06
 ==================
 
-  * Added `require()` bif, #1287.
+  * Added `@require`, #1287.
+  * Added more lookup patterns for the `@import` and `@require`. Support Node.js modules, #1316.
   * Added file globbing, #1306 and #1013.
   * Added root reference, part of #1240.
   * Added basic support for `@block` entity, #1290.
