@@ -1,4 +1,3 @@
-
 ## Mixins
 
 Both mixins and functions are defined in the same manner, but they are applied in different ways. 
@@ -115,7 +114,7 @@ The passed block would be available inside the mixin as `block` variable, that t
       .bar
         {block}
 
-    +foo
+    +foo()
       width: 10px
 
     => .bar {
