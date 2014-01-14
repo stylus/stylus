@@ -6,3 +6,7 @@ body {
 body {
   foo: rgba(80,80,80,0.5);
 }
+body {
+  foo: grayscale();
+  foo: grayscale(100%);
+}
