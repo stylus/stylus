@@ -139,8 +139,11 @@ desaturate(color, amount)
 
 // saturate color by amount
 
-saturate(color, amount)
-  adjust(color, 'saturation', amount)
+saturate(color = '', amount = 100%)
+  if color is a 'color'
+    adjust(color, 'saturation', amount)
+  else
+    unquote( "saturate(" + color + ")" )
 
 // darken by the given amount
 
@@ -206,11 +209,14 @@ mix(color1, color2, weight = 50%)
 
 // invert colors, leave alpha intact
 
-invert(color)
-  r = 255 - red(color)
-  g = 255 - green(color)
-  b = 255 - blue(color)
-  rgba(r,g,b,alpha(color))
+invert(color = '')
+  if color is a 'color'
+    r = 255 - red(color)
+    g = 255 - green(color)
+    b = 255 - blue(color)
+    rgba(r,g,b,alpha(color))
+  else
+    unquote( "invert(" + color + ")" )
 
 // give complement of the given color
 
@@ -219,8 +225,11 @@ complement( color )
 
 // give grayscale of the given color
 
-grayscale( color )
-  desaturate( color, 100% )
+grayscale( color = '' )
+  if color is a 'color'
+    desaturate( color, 100% )
+  else
+    unquote( "grayscale(" + color + ")" )
 
 // mix the given color with white
 
