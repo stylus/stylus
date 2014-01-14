@@ -8,4 +8,6 @@ body {
   background: 'unit';
   background: 'function';
   background: 'ident';
+  background: 'object';
+  background: 'list';
 }
