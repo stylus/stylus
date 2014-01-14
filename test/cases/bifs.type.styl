@@ -1,3 +1,7 @@
+hash = {foo: 1, bar: 2, baz: 3}
+
+hash-list = {foo: 1} {bar: 2} {baz: 3}
+
 body
   border-type = solid
   size = 15px
@@ -10,5 +14,6 @@ body
   background type(size)
   background type(type)
   background type(border-type)
-  background type({ a: 1, b: 2, c: 3 })
-  background type(1 2 3)
+  background type(hash)
+  background type(hash-list)
+  background type(((((1 2 3)))))
