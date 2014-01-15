@@ -1,0 +1,12 @@
+body {
+  foo: #22f;
+  foo: #278dbf;
+  foo: #02f338;
+}
+body {
+  foo: rgba(220,131,209,0.5);
+}
+body {
+  foo: invert();
+  foo: invert(100%);
+}
