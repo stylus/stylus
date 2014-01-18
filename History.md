@@ -1,4 +1,4 @@
-0.42.1 / 2014-01-18
+0.42.1 / 2014-01-19
 ==================
 
   * Fixed color functions to fallback into literal CSS functions, #1340.
