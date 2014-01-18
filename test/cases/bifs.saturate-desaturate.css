@@ -1,0 +1,24 @@
+body {
+  foo: #ee0;
+  foo: #f3f300;
+  foo: #ff6212;
+  foo: #f0f;
+}
+body {
+  foo: rgba(26,133,39,0.5);
+  foo: rgba(0,160,19,0.5);
+}
+body {
+  foo: #ee0;
+  foo: #c7c716;
+  foo: #aa826e;
+  foo: #858585;
+}
+body {
+  foo: rgba(44,115,53,0.5);
+  foo: rgba(71,88,73,0.5);
+}
+body {
+  foo: saturate();
+  foo: saturate(100%);
+}
