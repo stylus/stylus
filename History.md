@@ -1,6 +1,7 @@
 0.42.1 / 2014-01-18
 ==================
 
+  * Fixed color functions to fallback into literal CSS functions, #1340.
   * Fixed `@import` globbing with `--watch`.
   * Fixed Bug with units as part of the selector.
   * Fixed compiling with UTF-8 BOM.
