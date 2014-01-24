@@ -95,3 +95,6 @@ input["bar"] ~ .foo {
 input["bar"].foo:hover * .foo {
   color: #f00;
 }
+input.foo[bar="baz"] {
+  color: #f00;
+}
