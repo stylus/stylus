@@ -1,18 +1,22 @@
 body
   small = 1..5
   large = (1..5) (6..10)
+  reversed = (5..1) (10..6)
   
   foo small
   foo large
+  foo reversed
   
   foo small[0]
   foo large[0]
+  foo reversed[0]
   
   foo length(small)
   foo length(large)
 
   foo small[length(small) - 1]
   foo large[length(large) - 1]
+  foo reversed[length(reversed) - 1]
   
   foo small[-1] == null
   foo small[123123] == null
@@ -21,3 +25,4 @@ body
   start = 1
   end = 3
   foo start..end
+  foo end..start
