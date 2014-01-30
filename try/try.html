@@ -1,0 +1,47 @@
+---
+permalink: try.html
+partials: steps/
+partials_no_ids: true
+---
+{% include setup.md %}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Stylus</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="try/try.css"/>
+    <link rel="stylesheet" href="try/codemirror.css"/>
+    <script src="try/jquery.js"></script>
+    <script src="try/stylus.min.js"></script>
+    <script src="try/codemirror.js"></script>
+    <script src="try/css-mode.js"></script>
+    <script src="try/try.js"></script>
+</head>
+<body>
+    <div id="container">
+        <h1><a href="{{ root_url }}">Stylus</a></h1>
+        <p class="tagline">
+            <em class="expressive">Expressive, </em>
+            <em class="dynamic">dynamic, </em>
+            <em class="robust">robust </em>
+            <em class="css">CSS</em>
+        </p>
+        <div id="ribbon"><a href="{{ root_url }}">View Documentation</a></div>
+        <div id="content">
+            <div id="try">
+                <h2>Title</h2>
+                <p>Description</p>
+                <div><textarea class="stylus"></textarea>
+                <textarea class="css"></textarea>
+                <p class="clearfix buttons">
+                    <a id="prev" href="#" class="minimal">prev</a>
+                    <a id="next" href="#" class="minimal">next</a>
+                </p>
+            </div>
+
+            {{ partials }}
+        </div>
+    </div>
+</body>
+</html>

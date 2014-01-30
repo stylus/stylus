@@ -1,0 +1,196 @@
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+#try p {
+  line-height: 1.5;
+  width: 400px;
+  color: #888;
+}
+.clearfix {
+	display: inline-block;
+}
+.buttons {
+  float: left;
+  clear: both;
+}
+.buttons a {
+  float: left;
+  margin: 0 2px;
+}
+#prev {
+  opacity: 0;
+  -webkit-transition: opacity 400ms;
+  -moz-transition: opacity 400ms;
+  transition: opacity 400ms;
+}
+#next {
+  -webkit-transition: opacity 400ms;
+  -moz-transition: opacity 400ms;
+  transition: opacity 400ms;
+}
+#next.hide {
+  opacity: 0;
+}
+#prev.show {
+  opacity: 1;
+}
+#prev,
+#next {
+  display: block;
+  border: 1px solid #eee;
+  padding: 50px;
+  -webkit-border-radius: 60px;
+  -moz-border-radius: 60px;
+  border-radius: 60px;
+  -webkit-box-shadow: inset #eee 0 0 5px 0;
+  -moz-box-shadow: inset #eee 0 0 5px 0;
+  -box-shadow: inset #eee 0 0 5px 0;
+  background: white;
+  margin-top: -60px;
+  color: #888;
+}
+#next:hover,
+#prev:hover {
+  text-decoration: none;
+  -webkit-box-shadow: inset #ddd 0 0 10px 0;
+}
+#next:active,
+#prev:active {
+  text-decoration: none;
+  -webkit-box-shadow: inset #ddd 5px 0 10px 0;
+}
+#prev:active {
+  -webkit-box-shadow: inset #ddd -5px 0 10px 0;
+}
+#prev {
+  position: fixed;
+  top: 50%;
+  left: -100px;
+  padding-left: 120px;
+}
+#next {
+  position: fixed;
+  top: 50%;
+  right: -100px;
+  padding-right: 120px;
+}
+/*.minimal {
+  display: block;
+  background: #eee;
+  border: 1px solid #bbb;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 0 1px 1px #f6f6f6;
+  -moz-box-shadow: inset 0 0 1px 1px #f6f6f6;
+  -ms-box-shadow: inset 0 0 1px 1px #f6f6f6;
+  -o-box-shadow: inset 0 0 1px 1px #f6f6f6;
+  box-shadow: inset 0 0 1px 1px #f6f6f6;
+  color: #333;
+  font: bold 12px "helvetica neue", helvetica, arial, sans-serif;
+  line-height: 1;
+  padding: 8px 0 9px;
+  text-align: center;
+  text-shadow: 0 1px 0 #fff;
+  width: 80px; }
+  .minimal:hover {
+    background: #fff;
+    -webkit-box-shadow: inset 0 0 1px 1px #efefef;
+    -moz-box-shadow: inset 0 0 1px 1px #efefef;
+    -ms-box-shadow: inset 0 0 1px 1px #efefef;
+    -o-box-shadow: inset 0 0 1px 1px #efefef;
+    box-shadow: inset 0 0 1px 1px #efefef;
+    color: #222;
+    cursor: pointer; }
+  .minimal:active {
+    background: #d0d0d0;
+    -webkit-box-shadow: inset 0 0 1px 1px #e3e3e3;
+    -moz-box-shadow: inset 0 0 1px 1px #e3e3e3;
+    -ms-box-shadow: inset 0 0 1px 1px #e3e3e3;
+    -o-box-shadow: inset 0 0 1px 1px #e3e3e3;
+    box-shadow: inset 0 0 1px 1px #e3e3e3;
+    color: #000; }*/
+.CodeMirror {
+  line-height: 1.2;
+  font-size: 12px;
+  font-family: monaco, monospace;
+  margin: 5px 1px;
+}
+
+.CodeMirror-scroll {
+  overflow: auto;
+  /* This is needed to prevent an IE[67] bug where the scrolled content
+     is visible outside of the scrolling box. */
+  position: relative;
+  margin: 0;
+  width: 350px;
+}
+.step { display: none;}
+.CodeMirror-gutter {
+  position: absolute; left: 0; top: 0;
+  z-index: 10;
+  background-color: #f7f7f7;
+  border-right: 1px solid #eee;
+  min-width: 2em;
+  height: 100%;
+}
+.CodeMirror-gutter-text {
+  color: #aaa;
+  text-align: right;
+  padding: .4em .2em .4em .4em;
+  display: none;
+}
+.CodeMirror-lines {
+  background: white;
+  padding: 20px;
+}
+
+.CodeMirror pre {
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+  border-width: 0; margin: 0; padding: 0; background: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0; margin: 0;
+  white-space: pre;
+  word-wrap: normal;
+}
+
+.CodeMirror textarea {
+  font-family: inherit !important;
+  font-size: inherit !important;
+}
+
+.CodeMirror-cursor {
+  z-index: 10;
+  position: absolute;
+  visibility: hidden;
+  border-left: 1px solid black !important;
+}
+.CodeMirror-focused .CodeMirror-cursor {
+  visibility: visible;
+}
+
+.cm-number { color: #00A3D4; }
+.cm-string { color: #B80015; }
+.cm-atom { color: #B80015; }
+
+span.CodeMirror-selected {
+  background: #ccc !important;
+  color: HighlightText !important;
+}
+.CodeMirror-focused span.CodeMirror-selected {
+  background: Highlight !important;
+}
+
+.CodeMirror-matchingbracket {color: #0f0 !important;}
+.CodeMirror-nonmatchingbracket {color: #f22 !important;}
