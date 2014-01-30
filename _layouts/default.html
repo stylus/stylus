@@ -11,26 +11,48 @@
     <title>{{ title }}</title>
 </head>
 <body class="page-body">
-    <fieldset>
-        <legend>Page's Title</legend>
-        <h1>{{ title }}</h1>
-    </fieldset>
-    <fieldset>
-        <legend>Table of Contents</legend>
-        {{ toc }}
-    </fieldset>
-    <fieldset>
-        <legend>Processed Content</legend>
-        {{ processed_content }}
-    </fieldset>
-    <fieldset>
-        <legend>Partials ToC</legend>
-        {{ partials_toc }}
-    </fieldset>
-    <fieldset>
-        <legend>Partials</legend>
-        {{ partials }}
-    </fieldset>
+    <div id="container">
+        <h1><a href="http://learnboost.github.com/stylus">Stylus</a></h1>
+        <p class="tagline">
+            <em class="expressive">Expressive, </em>
+            <em class="dynamic">dynamic, </em>
+            <em class="robust">robust </em>
+            <em class="css">CSS</em>
+        </p>
+        <ul id="menu">
+            {% capture menu_cache %}
+                {% assign menu_result = '' %}
+                {% assign current_post_name = page.url | remove:'index.html' %}
+                {% for item in site.menu %}
+                    {% capture item_languaged %}/{{ lang_prefix }}{{ item }}{% endcapture %}
+                    {% for post in site.pages %}
+                        {% assign post_name = post.url | remove:'index.html' %}
+
+                        {% if item_languaged == post_name %}
+                            {% assign get_title_input = post %}
+                            {% include tenkan/get_title.md %}
+                            {% capture menu_result %}{{ menu_result }}
+                                <li>{% if post_name != current_post_name %}<a href="{{ site.production_url }}{{ post.url | remove:'index.html' }}">{% else %}<strong>{% endif %}
+                                    {{ get_title_output }}
+                                {% if post_name != current_post_name %}</a>{% else %}</strong>{% endif %}</li>
+                            {% endcapture %}
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+            {% endcapture %}{{ menu_result }}
+            <li><a href="http://github.com/visionmedia/nib">CSS3 Extensions with Nib</a></li>
+            <li><a href="{{ root_url }}try.html">Try Stylus Online!</a></li>
+        </ul>
+        <div id="ribbon"><a href="http://github.com/learnboost/stylus">Fork me on GitHub</a></div>
+        <div id="content">
+            <h1>{{ title }}</h1>
+            <!-- {{ toc }} -->
+            <!-- {{ partials_toc }} -->
+            {{ processed_content }}
+            <!-- {{ partials }} -->
+
+        </div>
+    </div>
 
     <script src="{{ root_url }}j/script.js"></script>
 </body>

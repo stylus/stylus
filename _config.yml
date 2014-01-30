@@ -11,10 +11,40 @@ exclude: ['bin', 'examples', 'lib', 'test', 'bm.js', 'index.js', 'Makefile', 'pa
 # github_user: kizu
 
 ## Production URL (if different from default GitHub Pages one)
-# production_url: http://example.com/textyll
+production_url: http://learnboost.github.io/stylus
 
 ## Comment out if (in absence of above fields) you'd like to use absolute `/` links
 relative_urls_when_possible: true
+
+menu:
+    - docs/selectors.html
+    - docs/variables.html
+    - docs/interpolation.html
+    - docs/operators.html
+    - docs/mixins.html
+    - docs/functions.html
+    - docs/kwargs.html
+    - docs/bifs.html
+    - docs/vargs.html
+    - docs/comments.html
+    - docs/conditionals.html
+    - docs/hashes.html
+    - docs/iteration.html
+    - docs/import.html
+    - docs/media.html
+    - docs/font-face.html
+    - docs/keyframes.html
+    - docs/extend.html
+    - docs/block.html
+    - docs/functions.url.html
+    - docs/literal.html
+    - docs/css-style.html
+    - docs/escape.html
+    - docs/executable.html
+    - docs/error-reporting.html
+    - docs/middleware.html
+    - docs/introspection.html
+    - docs/js.html
 
 link_handles:
     - prefix: "@"

@@ -4,7 +4,7 @@
 		{
 			"path": ".",
             "folder_exclude_patterns": ["node_modules", "_site"],
-            "file_exclude_patterns": ["*.sublime-workspace", "style.css", "style.ie.css"]
+            "file_exclude_patterns": ["*.sublime-workspace"]
 		}
 	],
     "settings":

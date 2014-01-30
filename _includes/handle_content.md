@@ -32,7 +32,7 @@ Adding anchors to headers
             {% assign thing_to_trim = header_id | truncate:6,'' %}
             {% assign header_id = header_id | remove_first:thing_to_trim | remove:'"' %}
             {% capture what_to_replace %}<h{{ thing_to_trim }}{{ header_id }}">{% endcapture %}
-            {% capture replace_with %}{{ what_to_replace }}<a class="header-anchor" title="{{ site.loc | map: 'link_to_part' | map: lang }}" href="#{{ header_id }}">#</a>{% endcapture %}
+            {% capture replace_with %}{{ what_to_replace }}<a class="header-anchor" title="{{ site.loc | map: 'link_to_part' | map: lang }}" href="#{{ header_id }}"></a>{% endcapture %}
             {% assign handle_content_result = handle_content_result | replace_first:what_to_replace,replace_with %}
         {% endif %}
     {% endfor %}
