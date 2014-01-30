@@ -12,7 +12,7 @@
 </head>
 <body class="page-body">
     <div id="container">
-        <h1><a href="{{ root_url }}">Stylus</a></h1>
+        <h1><a{% unless is_index %} href="{{ root_url }}"{% endunless %}>Stylus</a></h1>
         <p class="tagline">
             <em class="expressive">Expressive, </em>
             <em class="dynamic">dynamic, </em>
