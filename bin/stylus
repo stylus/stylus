@@ -349,7 +349,7 @@ if (convertCSS) {
       compileCSSFile(files[0], files[1]);
       break;
     case 1:
-      compileCSSFile(files[0], files[0].replace('.css', '.styl'));
+      compileCSSFile(files[0], files[0].replace(/\.css$/i, '.styl'));
       break;
     default:
       var stdin = process.openStdin();
@@ -568,7 +568,7 @@ function writeFile(file, css) {
   // --out support
   var path = dest
     ? join(dest, basename(file, '.styl') + '.css')
-    : file.replace('.styl', '.css');
+    : file.replace(/\.styl$/i, '.css');
   fs.writeFile(path, css, function(err){
     if (err) throw err;
     console.log('  \033[90mcompiled\033[0m %s', path);

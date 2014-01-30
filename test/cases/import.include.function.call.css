@@ -1,0 +1,8 @@
+body {
+  color: #f00;
+}
+body {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}

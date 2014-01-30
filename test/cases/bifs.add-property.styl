@@ -49,3 +49,38 @@ body {
 
 .test-as-mixin
   add-property(foo, bar)
+
+display(val)
+  if val == 'flex'
+    display: vendorize(val)
+  else
+    display: val
+
+vendorize(val)
+  for vendor in vendors
+    unless vendor == official
+      add-property('display', '-%s-%s' % (vendor val))
+  val
+
+body
+  display: flex
+  @media all and (min-width: 768px)
+    display: flex
+
+@page
+  display: flex
+
+@font-face
+  display: flex
+
+@keyframes foo
+  0%
+    display: flex
+  100%
+    display: block
+
+bar =
+  display: flex
+
+body
+  {bar}

@@ -22,3 +22,109 @@ body {
 .test-as-mixin {
   foo: bar;
 }
+body {
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: -o-flex;
+  display: -ms-flex;
+  display: flex;
+}
+@media all and (min-width: 768px) {
+  body {
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: -o-flex;
+    display: -ms-flex;
+    display: flex;
+  }
+}
+@page {
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: -o-flex;
+  display: -ms-flex;
+  display: flex;
+}
+@font-face {
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: -o-flex;
+  display: -ms-flex;
+  display: flex;
+}
+body {
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: -o-flex;
+  display: -ms-flex;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: -o-flex;
+  display: -ms-flex;
+  display: flex;
+}
+@-moz-keyframes foo {
+  0% {
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: -o-flex;
+    display: -ms-flex;
+    display: flex;
+  }
+
+  100% {
+    display: block;
+  }
+}
+@-webkit-keyframes foo {
+  0% {
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: -o-flex;
+    display: -ms-flex;
+    display: flex;
+  }
+
+  100% {
+    display: block;
+  }
+}
+@-o-keyframes foo {
+  0% {
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: -o-flex;
+    display: -ms-flex;
+    display: flex;
+  }
+
+  100% {
+    display: block;
+  }
+}
+@-ms-keyframes foo {
+  0% {
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: -o-flex;
+    display: -ms-flex;
+    display: flex;
+  }
+
+  100% {
+    display: block;
+  }
+}
+@keyframes foo {
+  0% {
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: -o-flex;
+    display: -ms-flex;
+    display: flex;
+  }
+
+  100% {
+    display: block;
+  }
+}
