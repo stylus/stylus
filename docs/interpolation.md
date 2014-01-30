@@ -1,5 +1,9 @@
+---
+layout: default
+permalink: docs/interpolation.html
+---
 
-## Interpolation
+# Interpolation
 
   Stylus supports interpolation by using the `{}` characters to surround an expression, which then becomes part of the identifier. For example, `-webkit-{'border' + '-radius'}` evaluates to `-webkit-border-radius`.
 

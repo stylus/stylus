@@ -1,4 +1,9 @@
-## gedit language-spec
+---
+layout: default
+permalink: docs/gedit.html
+---
+
+# gedit language-spec
 
  Stylus ships with a temporary version of `styl.lang` for [GtkSourceView](http://live.gnome.org/GtkSourceView), based off [Yanekk](https://github.com/yanekk)'s [work](https://github.com/gmate/gmate/blob/master/lang-specs/scss.lang) on `scss.lang`.
  

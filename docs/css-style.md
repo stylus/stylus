@@ -1,9 +1,13 @@
+---
+layout: default
+permalink: docs/css-style.html
+---
 
-## CSS Style
+# CSS Style Syntax
 
  Stylus transparently supports a regular CSS-style syntax. This means you don't need an alternative parser, or specify that a certain file uses a specific style.
 
-### Example
+## Example
 
  Below is a small style using the indented approach:
  

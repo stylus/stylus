@@ -1,9 +1,13 @@
+---
+layout: default
+permalink: docs/functions.html
+---
 
-## Functions
+# Functions
 
  Stylus features powerful in-language function definitions. Function definitions appear identical to mixins; however, functions may return a value.
 
-### Return Values
+## Return Values
 
  Let's try a trivial example: creating a function that adds two numbers.
 
@@ -21,7 +25,7 @@
        padding: 15px;
      }
 
-### Argument Defaults
+## Argument Defaults
 
  Optional arguments may default to a given expression. With Stylus we may even default arguments to earlier arguments! 
  
@@ -42,7 +46,7 @@
      add(a, b = unit(a, px))
        a + b
 
-### Named Parameters
+## Named Parameters
 
 Functions accept named parameters. This frees you from remembering the order of parameters, or simply improves the readability of your code.
 
@@ -53,7 +57,7 @@ For example:
 
     subtract(b: 10, a: 25)
 
-### Function Bodies
+## Function Bodies
 
  We can take our simple `add()` function further. Let's casting all units passed as `px` via the `unit()` built-in. It reassigns each argument, and provides a unit-type string (or identifier), which ignores unit conversion.
  
@@ -65,7 +69,7 @@ For example:
      add(15%, 10deg)
      // => 25
 
-### Multiple Return Values
+## Multiple Return Values
 
  Stylus functions can return several values—just as you can assign several values to a variable. 
  
@@ -97,7 +101,7 @@ To disambiguate, we can either wrap with parentheses, or use the `return` keywor
       swap(a, b)
         return b a
 
-### Conditionals
+## Conditionals
 
  Let's say we want to create a function named `stringish()` to determine whether the argument can be transformed to a string. We check if `val` is a string, or an ident (which is string-like). Because undefined identifiers yield themselves as the value, we may compare them to themselves as shown below (where `yes` and `no` are used in place of `true` and `false`):
  
@@ -142,7 +146,7 @@ Usage:
     compare(10, 10)
     // => equal
 
-### Aliasing
+## Aliasing
 
   To alias a function, simply assign a function's name to a new identifier. For example, our `add()` function could be aliased as `plus()`, like so:
   
@@ -151,7 +155,7 @@ Usage:
       plus(1, 2)
       // => 3
 
-### Variable Functions
+## Variable Functions
 
   In the same way that we can "alias" a function, we can pass a function as well. Here, our `invoke()` function accepts a function, so we can pass it `add()` or `sub()`.
 
@@ -172,7 +176,7 @@ Yielding:
       padding: -5;
     }
 
-### arguments
+## arguments
 
  The `arguments` local is available to all function bodies, and contains all the arguments passed. 
  
@@ -186,7 +190,7 @@ Yielding:
      sum(1,2,3,4,5)
      // => 15
 
-### Hash Example
+## Hash Example
 
  Below we define the `get(hash, key)` function, which returns the
  value of `key` (or `null`). We iterate each `pair` in `hash`, returning the pair's second node when the first (the `key`) matches. 

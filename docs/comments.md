@@ -1,5 +1,9 @@
+---
+layout: default
+permalink: docs/comments.html
+---
 
-## Comments
+# Comments
 
   Stylus supports three kinds of comments: single-line, and multi-line comments, and multi-line buffered comments.
 

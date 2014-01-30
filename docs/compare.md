@@ -1,8 +1,13 @@
-## Implementation Comparisons
+---
+layout: default
+permalink: docs/compare.html
+---
+
+# Implementation Comparisons
 
 Below we go head to head with other implementations.
 
-### Variables
+## Variables
 
 SCSS:
 
@@ -19,7 +24,7 @@ Stylus:
      main-color = #006
      color main-color
 
-### Mixins
+## Mixins
 
 SCSS:
 
@@ -49,7 +54,7 @@ Stylus:
       .msg
         pad(5px, 10px)
 
-### Larger Example
+## Larger Example
 
 Less:
 

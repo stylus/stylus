@@ -1,3 +1,9 @@
+---
+layout: default
+permalink: docs/operators.html
+---
+
+# Operators
 
 ## Operator Precedence
 

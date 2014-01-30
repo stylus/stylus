@@ -1,9 +1,13 @@
+---
+layout: default
+permalink: docs/conditionals.html
+---
 
-## Conditionals
+# Conditionals
 
  Conditionals provide control flow to a language which is otherwise static, providing conditional imports, mixins, functions, and more. The examples below are simply examples, and not recommended :)
 
-### if / else if / else
+## if / else if / else
 
  The `if` conditional works as you would expect, simply accepting an expression, evaluating the following block when `true`. Along with `if` are the typical `else if` and `else` tokens, acting as fallbacks.
  
@@ -36,7 +40,7 @@ Another `box()` helper:
       else
         padding y x
 
-### unless
+## unless
 
  For users familiar with the Ruby programming language, we have the `unless` conditional. It’s basically the opposite of `if`—essentially `if (!(expr))`.
 
@@ -51,7 +55,7 @@ In the example below, if `disable-padding-override` is `undefined` or `false`, `
      body
        padding 5px 10px
 
-### Postfix Conditionals
+## Postfix Conditionals
 
   Stylus supports postfix conditionals. This means that `if` and `unless` act as operators; they evaluate the left-hand operand when the right-hand expression is truthy.
   

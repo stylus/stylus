@@ -1,28 +1,32 @@
+---
+layout: default
+permalink: docs/bifs.html
+---
 
-## Built-in Functions
+# Built-in Functions
 
-### red(color)
+## red(color)
 
 Return the red component of the given `color`.
 
      red(#c00)
      // => 204
 
-### green(color)
+## green(color)
 
 Return the green component of the given `color`.
 
      green(#0c0)
      // => 204
 
-### blue(color)
+## blue(color)
 
 Return the blue component of the given `color`.
 
      blue(#00c)
      // => 204
 
-### alpha(color)
+## alpha(color)
 
 Return the alpha component of the given `color`.
 
@@ -32,7 +36,7 @@ Return the alpha component of the given `color`.
       alpha(rgba(0,0,0,0.3))
       // => 0.3
 
-### dark(color)
+## dark(color)
 
 Check if `color` is dark:
 
@@ -46,7 +50,7 @@ Check if `color` is dark:
       // => false
 
 
-### light(color)
+## light(color)
 
 Check if `color` is light:
 
@@ -59,28 +63,28 @@ Check if `color` is light:
     light(#00FF40)
     // => true
 
-### hue(color)
+## hue(color)
 
 Return the hue of the given `color`.
 
     hue(hsla(50deg, 100%, 80%))
     // => 50deg
 
-### saturation(color)
+## saturation(color)
 
 Return the saturation of the given `color`.
 
     saturation(hsla(50deg, 100%, 80%))
     // => 100%
 
-### lightness(color)
+## lightness(color)
 
 Return the lightness of the given `color`.
 
     lightness(hsla(50deg, 100%, 80%))
     // => 80%
 
-### push(expr, args...)
+## push(expr, args...)
 
  Push the given `args` to `expr`.
 
@@ -92,7 +96,7 @@ Return the lightness of the given `color`.
 
  Aliased as `append()`
 
-### unshift(expr, args...)
+## unshift(expr, args...)
 
  Unshift the given `args` to `expr`.
 
@@ -104,7 +108,7 @@ Return the lightness of the given `color`.
 
  Aliased as `prepend()`
 
-### keys(pairs)
+## keys(pairs)
 
   Return keys in the given `pairs`:
 
@@ -112,7 +116,7 @@ Return the lightness of the given `color`.
      keys(pairs)
      // => one two three
 
-### values(pairs)
+## values(pairs)
 
   Return values in the given `pairs`:
 
@@ -120,7 +124,7 @@ Return the lightness of the given `color`.
      values(pairs)
      // => 1 2 3
 
-### typeof(node)
+## typeof(node)
 
 Return type of `node` as a string.
 
@@ -138,7 +142,7 @@ Return type of `node` as a string.
 
 Aliased as `type-of` and `type`.
 
-### unit(unit[, type])
+## unit(unit[, type])
 
 Return a string for the type of `unit` or an empty string,
 or assign the given `type` without unit conversion.
@@ -155,7 +159,7 @@ or assign the given `type` without unit conversion.
     unit(15%, px)
     // => 15px
 
-### match(pattern, string)
+## match(pattern, string)
 
 Test if `string` matches the given `pattern`.
 
@@ -170,7 +174,7 @@ Test if `string` matches the given `pattern`.
     match('^foo(bar)?', 'bar')
     // => false
 
-### abs(unit)
+## abs(unit)
 
       abs(-5px)
       // => 5px
@@ -178,17 +182,17 @@ Test if `string` matches the given `pattern`.
       abs(5px)
       // => 5px
 
-### ceil(unit)
+## ceil(unit)
 
       ceil(5.5in)
       // => 6in
 
-### floor(unit)
+## floor(unit)
 
       floor(5.6px)
       // => 5px
 
-### round(unit)
+## round(unit)
 
       round(5.5px)
       // => 6px
@@ -207,7 +211,7 @@ Test if `string` matches the given `pattern`.
       round(5.52px,1)
       // => 5.5px
 
-### sin(angle)
+## sin(angle)
 
 Returns the value of sine for the given `angle`. If the angle is given as a degree unit, like `45deg`, it is treated as a degree, otherwise it is treated as radians.
 
@@ -217,14 +221,14 @@ Returns the value of sine for the given `angle`. If the angle is given as a degr
     sin(3*PI/4)
     // => 0.707106781
 
-### cos(angle)
+## cos(angle)
 
 Returns the value of cosine for the given `angle`. If the angle is given as a degree unit, like `45deg`, it is treated as a degree, otherwise it is treated as radians.
 
     cos(180deg)
     // => -1
 
-### tan(angle)
+## tan(angle)
 
 Returns the value of tangent for the given `angle`. If the angle is given as a degree unit, like `45deg`, it is treated as a degree, otherwise it is treated as radians.
 
@@ -234,37 +238,37 @@ Returns the value of tangent for the given `angle`. If the angle is given as a d
     tan(90deg)
     // => Infinity
 
-### min(a, b)
+## min(a, b)
 
       min(1, 5)
       // => 1
 
-### max(a, b)
+## max(a, b)
 
       max(1, 5)
       // => 5
 
-### even(unit)
+## even(unit)
 
       even(6px)
       // => true
 
-### odd(unit)
+## odd(unit)
 
       odd(5mm)
       // => true
 
-### sum(nums)
+## sum(nums)
 
       sum(1 2 3)
       // => 6
 
-### avg(nums)
+## avg(nums)
 
      avg(1 2 3)
      // => 2
 
-### base-convert(num, base, width)
+## base-convert(num, base, width)
 
 Returns a `Literal` `num` converted to the provided `base`, padded to `width` with zeroes (default width is 2)
 
@@ -278,7 +282,7 @@ Returns a `Literal` `num` converted to the provided `base`, padded to `width` wi
     // => 101010
 
 
-### join(delim, vals...)
+## join(delim, vals...)
 
   Join the given `vals` with `delim`.
 
@@ -297,7 +301,7 @@ Returns a `Literal` `num` converted to the provided `base`, padded to `width` wi
       join(', ', 1 2, 3 4, 5 6)
       // => "1 2, 3 4, 5 6"
 
-### hsla(color | h,s,l,a)
+## hsla(color | h,s,l,a)
 
 Convert the given `color` to an `HSLA` node,
 or h,s,l,a component values.
@@ -308,7 +312,7 @@ or h,s,l,a component values.
      hslaa(#ffcc00)
      // => HSLA
 
-### hsla(color | h,s,l)
+## hsla(color | h,s,l)
 
 Convert the given `color` to an `HSLA` node,
 or h,s,l component values.
@@ -319,7 +323,7 @@ or h,s,l component values.
      hsla(#ffcc00)
      // => HSLA
 
-### rgba(color | r,g,b,a)
+## rgba(color | r,g,b,a)
 
 Return `RGBA` from the r,g,b,a channels or provide a `color` to tweak the alpha.
 
@@ -340,7 +344,7 @@ Return `RGBA` from the r,g,b,a channels or provide a `color` to tweak the alpha.
     #ffcc00ee
     // => rgba(255,204,0,0.9)
 
-### rgb(color | r,g,b)
+## rgb(color | r,g,b)
 
 Return a `RGBA` from the r,g,b channels or cast to an `RGBA` node.
 
@@ -350,7 +354,7 @@ Return a `RGBA` from the r,g,b channels or cast to an `RGBA` node.
     rgb(#fff)
     // => #fff
 
-### lighten(color, amount)
+## lighten(color, amount)
 
 Lighten the given `color` by `amount`. This function is
 unit-sensitive, for example supporting percentages as shown
@@ -362,7 +366,7 @@ below.
     lighten(#2c2c2c, 30%)
     // => #393939
 
-### darken(color, amount)
+## darken(color, amount)
 
 Darken the given `color` by `amount`.This function is
 unit-sensitive, for example supporting percentages as shown
@@ -374,56 +378,56 @@ below.
     darken(#D62828, 30%)
     // => #961c1c
 
-### desaturate(color, amount)
+## desaturate(color, amount)
 
 Desaturate the given `color` by `amount`.
 
     desaturate(#f00, 40%)
     // => #c33
 
-### saturate(color, amount)
+## saturate(color, amount)
 
 Saturate the given `color` by `amount`.
 
     saturate(#c33, 40%)
     // => #f00
 
-### complement(color)
+## complement(color)
 
 Gives the complementary color. Equals to spinning hue to 180deg.
 
     complement(#fd0cc7)
     // => #0cfd42
 
-### invert(color)
+## invert(color)
 
 Inverts the color. The red, green, and blue values are inverted, while the opacity is left alone.
 
     invert(#d62828)
     // => #29d7d7
 
-### grayscale(color)
+## grayscale(color)
 
 Gives the grayscale equivalent of the given color. Equals to desaturate by 100%.
 
     grayscale(#fd0cc7)
     // => #0cfd42
 
-### tint(color, amount)
+## tint(color, amount)
 
 Mix the given color with white.
 
     tint(#fd0cc7,66%)
     // => #feaceb
 
-### shade(color, amount)
+## shade(color, amount)
 
 Mix the given color with black.
 
     shade(#fd0cc7,66%)
     // => #560443
 
-### unquote(str | ident)
+## unquote(str | ident)
 
   Unquote the given `str` and returned as a `Literal` node.
 
@@ -436,7 +440,7 @@ Mix the given color with black.
        unquote('1px / 2px')
        // => 1px / 2px
 
-### s(fmt, ...)
+## s(fmt, ...)
 
  The `s()` function is similar to `unquote()`, in that it returns
  a `Literal` node, however it accepts a format string much like C's `sprintf()`. Currently the only specifier is `%s`.
@@ -464,7 +468,7 @@ Mix the given color with black.
 
 Check out the `%` string operator for equivalent behaviour.
 
-### operate(op, left, right)
+## operate(op, left, right)
 
   Perform the given `op` on the `left` and `right` operands:
 
@@ -472,7 +476,7 @@ Check out the `%` string operator for equivalent behaviour.
       operate(op, 15, 5)
       // => 20
 
-### length([expr])
+## length([expr])
 
   Parenthesized expressions may act as tuples, the `length()` function returns the length of such expressions.
 
@@ -497,7 +501,7 @@ Check out the `%` string operator for equivalent behaviour.
     length()
     // => 0
 
-### selector()
+## selector()
 
 Returns the compiled current selector or `&` if called at root level.
 
@@ -510,13 +514,13 @@ Returns the compiled current selector or `&` if called at root level.
         selector()
     // '.foo:hover'
 
-### warn(msg)
+## warn(msg)
 
   Warn with the given error `msg`, does not exit.
 
       warn("oh noes!")
 
-### error(msg)
+## error(msg)
 
   Exits with the given error `msg`.
 
@@ -525,7 +529,7 @@ Returns the compiled current selector or `&` if called at root level.
         error('add() expects units')
       a + b
 
-### last(expr)
+## last(expr)
 
  Return the _last_ value in the given `expr`:
 
@@ -538,7 +542,7 @@ Returns the compiled current selector or `&` if called at root level.
       last(list)
       // => (three 3)
 
-### p(expr)
+## p(expr)
 
  Inspect the given `expr`:
 
@@ -565,7 +569,7 @@ stdout:
      inspect: rgba(0,0,0,0.2)
      inspect: add(a, b)
 
-### opposite-position(positions)
+## opposite-position(positions)
 
  Return the opposites of the given `positions`.
 
@@ -578,7 +582,7 @@ stdout:
      opposite-position('top' 'left')
      // => bottom right
 
-### image-size(path)
+## image-size(path)
 
   Returns the `width` and `height` of the image found at `path`. Lookups are performed in the same manner as `@import`, altered by the `paths` setting.
 
@@ -594,7 +598,7 @@ stdout:
       image-size('tux.png')[0] == width('tux.png')
       // => true
 
-### add-property(name, expr)
+## add-property(name, expr)
 
   Adds property `name`, with the given `expr` to the closest block.
 
@@ -682,7 +686,7 @@ yields:
 
 Our implementation is now fully transparent both in regards to the property it is called within, and the position of the call. This powerful concept aids in transparent vendor support for function calls, such as gradients.
 
-### use(path)
+## use(path)
 
 You can use any given js-plugin at given `path` with `use()` function right inside your '.styl' files, like this:
 
@@ -718,7 +722,7 @@ You can pass any options as an optional second argument, using the [hash object]
 
     use("plugins/add.js", { foo: bar })
 
-### Undefined Functions
+## Undefined Functions
 
   Undefined functions will output as literals, so for example
   we may call `rgba-stop(50%, #fff)` within our css, and it will

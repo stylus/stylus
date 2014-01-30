@@ -1,5 +1,9 @@
+---
+layout: default
+permalink: docs/variables.html
+---
 
-## Variables
+# Variables
 
 We may assign expressions to variables and use them throughout our stylesheet:
 

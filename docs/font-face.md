@@ -1,5 +1,9 @@
+---
+layout: default
+permalink: docs/font-face.html
+---
 
-## @font-face
+# @font-face
 
  The `@font-face` at-rule expects as you would expect. Simply add a block of properties after it, like so:
  

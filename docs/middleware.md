@@ -1,12 +1,16 @@
+---
+layout: default
+permalink: docs/middleware.html
+---
 
-## Connect Middleware
+# Connect Middleware
 
  Stylus ships with [Connect](http://www.senchalabs.org/connect/) middleware for auto-compiling Stylus sheets whenever they're modified.
 
 ## stylus.middleware(options)
 
 
-#### Options
+### Options
 
 Return Connect middleware with the given `options`.
 
@@ -23,7 +27,7 @@ Return Connect middleware with the given `options`.
       `linenos`   Emits comments in the generated css indicating 
                   the corresponding stylus line
 
-#### Examples
+### Examples
 
  Serve .styl files from ./public:
 

@@ -1,4 +1,9 @@
-## Mixins
+---
+layout: default
+permalink: docs/mixins.html
+---
+
+# Mixins
 
 Both mixins and functions are defined in the same manner, but they are applied in different ways. 
 
@@ -63,7 +68,7 @@ Rendering:
           filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
         }
 
-### Parent References
+## Parent References
 
  Mixins may utilize the parent reference character `&`, acting on the parent instead of further nesting. 
  
@@ -101,7 +106,7 @@ If we wished, we could invoke `stripe()` as if it were a property:
 
     stripe #fff #000
 
-### Block mixins
+## Block mixins
 
 You can pass blocks to mixins by calling mixin with `+` prefix:
 
@@ -123,7 +128,7 @@ The passed block would be available inside the mixin as `block` variable, that t
 
 This feature is in its rough state ATM, but would be enhanced in the future.
 
-### Mixing Mixins in Mixins
+## Mixing Mixins in Mixins
 
  Mixins can (of course!) utilize other mixins, building upon their own selectors and properties. 
  

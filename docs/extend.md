@@ -1,10 +1,14 @@
+---
+layout: default
+permalink: docs/extend.html
+---
 
-## Extend
+# @extend
 
   The Stylus __@extend__ directive is inspired by (and essentially the same as) the [SASS Implementation](http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#extend), with few subtle differences. This feature significantly simplifies maintenance of semantic rulesets that inherit from other semantic rulesets.
 
 
-### “Extending” with mixins
+## “Extending” with mixins
 
   Although you can use mixins to achieve a similar effect, this can lead to duplicate CSS. A typical pattern is to define several classes as shown below, then combine them on the element such as "warning message". 
   
@@ -21,7 +25,7 @@
       }
 
 
-### Using __`@extend`__
+## Using __`@extend`__
 
   To produce this same output with __`@extend`__, simply pass it the desired selector (note that `@extend` and `@extends` are equal, one is just an alias of another).  Stylus will then append the `.warning` selector to the existing `.message` ruleset.  The `.warning` class then inherits properties from `.message`.
 
@@ -121,7 +125,7 @@
           padding: 10px;
         }
       
-### Extending placeholder selectors
+## Extending placeholder selectors
 
 Stylus have the feature similar to the one in [Sass](http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#placeholders) — placeholder selectors.
 

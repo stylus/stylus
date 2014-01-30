@@ -1,5 +1,9 @@
+---
+layout: default
+permalink: docs/block.html
+---
 
-## @block
+# @block
 
 You can assign any block of code in Stylus to a variable and then call it, pass as an argument or reuse in any other way.
 

@@ -1,5 +1,9 @@
+---
+layout: default
+permalink: docs/executable.html
+---
 
-## Stylus Executable
+# Executable
 
 Stylus ships with the `stylus` executable for converting Stylus to CSS.
 
@@ -35,7 +39,7 @@ Stylus ships with the `stylus` executable for converting Stylus to CSS.
         -V, --version           Display the version of Stylus
         -h, --help              Display help information
 
-### STDIO Compilation Example
+## STDIO Compilation Example
 
  `stylus` reads from _stdin_ and outputs to _stdout_, so for example:
 
@@ -48,7 +52,7 @@ Try Stylus some in the terminal!  Type below and press `CTRL-D` for `__EOF__`:
         color red
         font 14px Arial, sans-serif
 
-### Compiling Files Example
+## Compiling Files Example
 
  `stylus` also accepts files and directories. For example, a directory named `css` will compile and output `.css` files in the same directory.
 
@@ -72,7 +76,7 @@ Try Stylus some in the terminal!  Type below and press `CTRL-D` for `__EOF__`:
 
       $ stylus --firebug <path>
 
-### Converting CSS
+## Converting CSS
 
  If you wish to convert CSS to the terse Stylus syntax, use the `--css` flag.
 
@@ -88,13 +92,13 @@ Try Stylus some in the terminal!  Type below and press `CTRL-D` for `__EOF__`:
 
       $ stylus --css test.css /tmp/out.styl
 
-### CSS Property Help
+## CSS Property Help
 
   On OS X, `stylus help <prop>` will open your default browser and display help documentation for the given `<prop>`.
 
     $ stylus help box-shadow
 
-### Interactive Shell
+## Interactive Shell
 
  The Stylus REPL (Read-Eval-Print-Loop) or "interactive shell" allows you to
  play around with Stylus expressions directly from your terminal.
@@ -116,13 +120,13 @@ Try Stylus some in the terminal!  Type below and press `CTRL-D` for `__EOF__`:
      => rgba(55,205,255,0.5)
 
 
-### Resolving relative urls inside imports
+## Resolving relative urls inside imports
 
 By default Stylus don't resolve the urls in imported `.styl` files, so if you'd happen to have a `foo.styl` with `@import "bar/bar.styl"` which would have `url("baz.png")`, it would be `url("baz.png")` too in a resulting CSS.
 
 But you can alter this behavior by using `--resolve-url` (or just `-r`) option to get `url("bar/baz.png")` in your resulting CSS.
 
-### Utilizing Plugins
+## Utilizing Plugins
 
  For this example we'l use the [nib](https://github.com/visionmedia/nib) Stylus plugin to illustrate its CLI usage.
 

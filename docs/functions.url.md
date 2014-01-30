@@ -1,8 +1,15 @@
+---
+layout: default
+permalink: docs/functions.url.html
+---
+
+# url()
+
 ## Data URI Image Inlining
 
 Stylus is bundled with an optional function named `url()`, which replaces the literal `url()` calls (and conditionally inlines them using base64 [Data URIs](http://en.wikipedia.org/wiki/Data_URI_scheme)).
 
-### Example
+## Example
 
 The function itself is available via `require('stylus').url`. It accepts an `options` object, returning a function that Stylus calls internally when it sees `url()`.
 
@@ -26,7 +33,7 @@ Likewise, if instead we wanted `url(tobi.png)`, we could pass `paths: [__dirname
 
         });
 
-### Options
+## Options
 
   - `limit` bytesize limit defaulting to 30Kb (30000), use `false` to disable the limit
   - `paths` image resolution path(s)

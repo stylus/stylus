@@ -1,8 +1,13 @@
-## Hashes
+---
+layout: default
+permalink: docs/hashes.html
+---
+
+# Hashes
 
 In `0.39.0` version Stylus got hash objects.
 
-### Define
+## Define
 
 You can define a hash using the curly braces and colons to divide the keys and values:
 
@@ -34,7 +39,7 @@ Note that while you can't use variables or interpolations in curly braces define
     foo.baz
     // => raz
 
-### Getters
+## Getters
 
 For retrieving values from hashes you can use the dot for idents:
 
@@ -65,7 +70,7 @@ You can use any combinations you want:
     foo["bar"].baz[qux]
     // => 10px
 
-### Interpolation
+## Interpolation
 
 Hashes used inside an interpolation would output the content of the hashes as CSS (without almost any Stylus features though):
 
@@ -89,7 +94,7 @@ Hashes used inside an interpolation would output the content of the hashes as CS
     //      padding: 0;
     //    }
 
-### Other stuff
+## Other stuff
 
 You can use other normal Stylus stuff with hashes, like `length()`:
 

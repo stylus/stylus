@@ -1,5 +1,9 @@
+---
+layout: default
+permalink: docs/firebug.html
+---
 
-## FireStylus extension for Firebug
+# FireStylus extension for Firebug
 
 [FireStylus](//github.com/parallel/firestylus) is a Firebug extension 
 that makes Firebug display the Stylus filename and line numbers of 
@@ -7,7 +11,7 @@ the Stylus-generated CSS styles rather than those of the generated CSS.
 
 ![Screenshot](//raw.github.com/parallel/firestylus/master/src/chrome/skin/screenshot.png)
 
-### Usage
+## Usage
 
 First, you need to install [Firebug](https://addons.mozilla.org/firefox/downloads/latest/1843/addon-1843-latest.xpi?src=addondetail)
 and the [FireStylus extension](//github.com/parallel/firestylus)
@@ -42,14 +46,14 @@ Connect / Express:
       , connect.static(__dirname + '/public')
     );
 
-### Compatibility
+## Compatibility
 
  FireStylus should work with Firefox versions 3.0 and up, and with Firebug versions 1.4 and up.
 
  - Firefox 3+ (also works with version 5)
  - Firebug 1.4+
 
-### Limitations
+## Limitations
 
 FireStylus and FireSass are incompatible. You cannot enable them
 simultaneously.

@@ -1,8 +1,13 @@
-## Import
+---
+layout: default
+permalink: docs/import.html
+---
+
+# @import and @require
 
 Stylus supports both literal __@import__ for CSS, as well as dynamic importing or requiring of other Stylus sheets.
 
-### Literal CSS
+## Literal CSS
 
   Any filename with the extension `.css` will become a literal. For example:
 
@@ -12,7 +17,7 @@ Render the literal CSS __@import__ shown below:
 
      @import "reset.css"
 
-### Stylus Import
+## Stylus Import
 
 
 *Disclaimer: In all places the __@import__ is used with Stylus sheets, the __@require__ could be used*
@@ -53,11 +58,11 @@ Render the literal CSS __@import__ shown below:
           console.log(css);
         });
 
-### Require
+## Require
 
 Along with `@import`, Stylus have also `@require`. It works almost in the same way, with the exception of importing any given file only once.
 
-### File globbing
+## File globbing
 
 Stylus supports [globbing](https://github.com/isaacs/node-glob#readme). With it you could import many files using a file mask:
 
@@ -78,13 +83,13 @@ Note that this works with `@require` too, so if you would have also a `./product
 
 then `@require 'product/*'` would include each individual sheet only once.
 
-### Resolving relative urls inside imports
+## Resolving relative urls inside imports
 
 By default Stylus don't resolve the urls in imported `.styl` files, so if you'd happen to have a `foo.styl` with `@import "bar/bar.styl"` which would have `url("baz.png")`, it would be `url("baz.png")` too in a resulting CSS.
 
 But you can alter this behavior by using `--resolve-url` (or just `-r`) CLI option to get `url("bar/baz.png")` in your resulting CSS.
 
-### JavaScript Import API
+## JavaScript Import API
 
  When using the `.import(path)` method, these imports are deferred until evaluation:
 
