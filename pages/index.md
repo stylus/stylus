@@ -4,7 +4,8 @@ layout: default
 
 permalink: /
 
-partials: "partial_"
-
 ---
 
+# Hello
+
+text

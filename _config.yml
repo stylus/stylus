@@ -4,6 +4,9 @@ safe: false
 permalink: /:categories/:title
 relative_permalinks: false
 
+## Exculding all the extra things from the submodule
+exclude: ['bin', 'examples', 'lib', 'test', 'bm.js', 'index.js', 'Makefile', 'package.json']
+
 ## Uncomment and set your GitHub username to enable absolute links
 # github_user: kizu
 
