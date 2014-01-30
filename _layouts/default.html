@@ -4,11 +4,10 @@
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width"/>
 
-	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7,IE=edge"/><!--[if gt IE 7]><!-->
-    <link rel="stylesheet" href="{{ root_url }}s/style.css" /><!--<![endif]--><!--[if lt IE 8]>
-    <link rel="stylesheet" href="{{ root_url }}s/style.ie.css" /><![endif]-->
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7,IE=edge"/>
+    <link rel="stylesheet" href="{{ root_url }}s/style.css" />
 
-    <title>{{ title }}</title>
+    <title>{{ title }} — {% if is_index %}expressive, robust, feature-rich CSS preprocessor{% else %}Stylus{% endif %}</title>
 </head>
 <body class="page-body">
     <div id="container">
@@ -43,7 +42,7 @@
             <li><a href="http://github.com/visionmedia/nib">CSS3 Extensions with Nib</a></li>
             <li><a href="{{ root_url }}try.html">Try Stylus Online!</a></li>
         </ul>
-        <div id="ribbon"><a href="http://github.com/learnboost/stylus">Fork me on GitHub</a></div>
+        <div id="ribbon"><a href="https://github.com/LearnBoost/stylus">Fork me on GitHub</a></div>
         <div id="content">
             <h1>{{ title }}</h1>
             <!-- {{ toc }} -->
@@ -55,6 +54,7 @@
     </div>
 
     <script src="{{ root_url }}j/script.js"></script>
+    <!-- Yandex.Metrika counter --><script type="text/javascript">(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter23802394 = new Ya.Metrika({id:23802394, clickmap:true, trackLinks:true, accurateTrackBounce:true, trackHash:true}); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="//mc.yandex.ru/watch/23802394" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->
 </body>
 </html>
 
