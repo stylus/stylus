@@ -5,9 +5,18 @@ var i = 0
 
 function next() {
   var tryme = $('#try')
-    , step = $('.step').eq(i)
+    , steps = $('.step')
+    , lastStep = steps.length - 1
     , styl = tryme.find('.stylus')
     , css = tryme.find('.css');
+
+  if (i < 0) {
+    i = lastStep;
+  }
+  if (i > lastStep) {
+    i = 0;
+  }
+  var step = steps.eq(i);
 
   if (i) {
     $('#prev').addClass('show');
@@ -15,7 +24,7 @@ function next() {
     $('#prev').removeClass('show');
   }
 
-  if (i == $('.step').length - 1) {
+  if (i == lastStep) {
     $('#next').addClass('hide');
   } else {
     $('#next').removeClass('hide');
