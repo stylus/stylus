@@ -1,3 +1,16 @@
+0.42.2 / 2014-01-30
+==================
+
+  * Added support for reverse ranges.
+  * Fixed bug with an expression as arguments of function call.
+  * Fixed bug with property lookup inside `@block`.
+  * Fixed bug with parsing an attribute selector.
+  * Fixed bug with `add-property` inside function call.
+  * Fixed compiling to a directory with `.styl` in the name.
+  * Fixed bug with missed `mtime` in middleware imports.
+  * Fixed an incorrect line number in multi-line group selectors.
+  * Fixed incorrect file path in win32 debug info, #1353.
+
 0.42.1 / 2014-01-19
 ==================
 
