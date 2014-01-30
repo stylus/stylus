@@ -1,4 +1,3 @@
-
 ## Mixins
 
 Both mixins and functions are defined in the same manner, but they are applied in different ways. 
@@ -101,6 +100,28 @@ Alternatively, `stripe()` could be defined without parent references:
 If we wished, we could invoke `stripe()` as if it were a property:
 
     stripe #fff #000
+
+### Block mixins
+
+You can pass blocks to mixins by calling mixin with `+` prefix:
+
+    +foo()
+      width: 10px
+
+The passed block would be available inside the mixin as `block` variable, that then could be used with interpolation:
+
+    foo()
+      .bar
+        {block}
+
+    +foo()
+      width: 10px
+
+    => .bar {
+         width: 10px;
+       }
+
+This feature is in its rough state ATM, but would be enhanced in the future.
 
 ### Mixing Mixins in Mixins
 

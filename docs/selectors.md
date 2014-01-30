@@ -100,6 +100,52 @@ Yielding:
         border: 2px solid #eee;
       }
 
+### Root Reference
+
+The `/` character at the start of the selector is a root reference. It references the root context and this means the selector won't prepend the parent's selector to it (unless you would use it with `&`). It is helpful when you need to write some styles both to some nested selector and to another one, not in the current scope.
+
+    textarea
+    input
+      color #A7A7A7
+      &:hover,
+      /.is-hovered
+        color #000
+
+Compiles to:
+
+    textarea,
+    input {
+      color: #a7a7a7;
+    }
+    textarea:hover,
+    input:hover,
+    .is-hovered {
+      color: #000;
+    }
+
+### selector() bif
+
+You can use the built-in `selector()` to get the current compiled selector. Could be used inside mixins for checks or other clever things.
+
+    .foo
+      selector()
+    // => '.foo'
+
+    .foo
+      &:hover
+        selector()
+    // '.foo:hover'
+
+This bif could also accept an optional string argument, in this case it would return the compiled selector. Note that it wouldn't prepend the selector of the current scope in case it don't have any `&` symbols.
+
+    .foo
+      selector('.bar')
+    // => '.bar'
+
+    .foo
+      selector('&:hover')
+    // '.foo:hover'
+
 ### Disambiguation
 
 Expressions such as `padding - n` could be interpreted both as a subtraction operation, as well as a property with an unary minus. To disambiguate, wrap the expression with parens:
@@ -130,4 +176,3 @@ Have weird property values that Stylus can't process? `unquote()` can help you o
 Yields:
 
     filter progid:DXImageTransform.Microsoft.BasicImage(rotation=1)
-    

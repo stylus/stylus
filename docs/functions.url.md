@@ -12,10 +12,10 @@ The `.define(name, callback)` method assigned a JavaScript function that can be 
         .set('filename', __dirname + '/css/test.styl')
         .define('url', stylus.url())
         .render(function(err, css){
-
+    
         });
 
-For example, imagine our images live in `./public/images`.  We want to use `url(images/tobi.png)`.  We could pass `paths` our public directory, so that it becomes part of the lookup process.
+For example, imagine our images live in `./public/images`.  We want to use `url(images/tobi.png)`.  We could pass `paths` our public directory, so that it becomes part of the lookup process. 
 
 Likewise, if instead we wanted `url(tobi.png)`, we could pass `paths: [__dirname + '/public/images']`.
 

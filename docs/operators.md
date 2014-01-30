@@ -1,3 +1,4 @@
+
 ## Operator Precedence
 
 Below is the operator precedence table, highest to lowest:

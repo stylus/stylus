@@ -28,7 +28,7 @@ Return the alpha component of the given `color`.
 
       alpha(#fff)
       // => 1
-      
+
       alpha(rgba(0,0,0,0.3))
       // => 0.3
 
@@ -55,7 +55,7 @@ Check if `color` is light:
 
     light(white)
     // => true
-    
+
     light(#00FF40)
     // => true
 
@@ -89,7 +89,7 @@ Return the lightness of the given `color`.
 
      nums
      // => 1 2 3 4 5
- 
+
  Aliased as `append()`
 
 ### unshift(expr, args...)
@@ -101,13 +101,13 @@ Return the lightness of the given `color`.
 
      nums
      // => 1 2 3 4 5
- 
+
  Aliased as `prepend()`
 
 ### keys(pairs)
 
   Return keys in the given `pairs`:
-  
+
      pairs = (one 1) (two 2) (three 3)
      keys(pairs)
      // => one two three
@@ -115,7 +115,7 @@ Return the lightness of the given `color`.
 ### values(pairs)
 
   Return values in the given `pairs`:
-  
+
      pairs = (one 1) (two 2) (three 3)
      values(pairs)
      // => 1 2 3
@@ -129,7 +129,7 @@ Return type of `node` as a string.
 
       typeof(12)
       // => 'unit'
-      
+
       typeof(#fff)
       // => 'rgba'
 
@@ -145,10 +145,10 @@ or assign the given `type` without unit conversion.
 
     unit(10)
     // => ''
-    
+
     unit(15in)
     // => 'in'
-    
+
     unit(15%, 'px')
     // => 15px
 
@@ -166,7 +166,7 @@ Test if `string` matches the given `pattern`.
     match('^foo(bar)?', 'foo')
     match('^foo(bar)?', 'foobar')
     // => true
-    
+
     match('^foo(bar)?', 'bar')
     // => false
 
@@ -207,6 +207,33 @@ Test if `string` matches the given `pattern`.
       round(5.52px,1)
       // => 5.5px
 
+### sin(angle)
+
+Returns the value of sine for the given `angle`. If the angle is given as a degree unit, like `45deg`, it is treated as a degree, otherwise it is treated as radians.
+
+    sin(30deg)
+    // => 0.5
+
+    sin(3*PI/4)
+    // => 0.707106781
+
+### cos(angle)
+
+Returns the value of cosine for the given `angle`. If the angle is given as a degree unit, like `45deg`, it is treated as a degree, otherwise it is treated as radians.
+
+    cos(180deg)
+    // => -1
+
+### tan(angle)
+
+Returns the value of tangent for the given `angle`. If the angle is given as a degree unit, like `45deg`, it is treated as a degree, otherwise it is treated as radians.
+
+    tan(45deg)
+    // => 1
+
+    tan(90deg)
+    // => Infinity
+
 ### min(a, b)
 
       min(1, 5)
@@ -237,16 +264,30 @@ Test if `string` matches the given `pattern`.
      avg(1 2 3)
      // => 2
 
+### base-convert(num, base, width)
+
+Returns a `Literal` `num` converted to the provided `base`, padded to `width` with zeroes (default width is 2)
+
+    base-convert(1, 10, 3)
+    // => 001
+
+    base-convert(14, 16, 1)
+    // => e
+
+    base-convert(42, 1)
+    // => 101010
+
+
 ### join(delim, vals...)
 
   Join the given `vals` with `delim`.
 
       join(' ', 1 2 3)
       // => "1 2 3"
-      
+
       join(',', 1 2 3)
       // => "1,2,3"
-      
+
       join(', ', foo bar baz)
       // => "foo, bar, baz"
 
@@ -284,15 +325,15 @@ Return `RGBA` from the r,g,b,a channels or provide a `color` to tweak the alpha.
 
       rgba(255,0,0,0.5)
       // => rgba(255,0,0,0.5)
-  
+
       rgba(255,0,0,1)
       // => #ff0000
-  
+
       rgba(#ffcc00, 0.5)
       // rgba(255,204,0,0.5)
 
- Alternatively, Stylus supports the `#rgba` and `#rrggbbaa` notations as well:
- 
+ Alternatively stylus supports the `#rgba` and `#rrggbbaa` notations as well:
+
     #fc08
     // => rgba(255,204,0,0.5)
 
@@ -302,10 +343,10 @@ Return `RGBA` from the r,g,b,a channels or provide a `color` to tweak the alpha.
 ### rgb(color | r,g,b)
 
 Return a `RGBA` from the r,g,b channels or cast to an `RGBA` node.
-    
+
     rgb(255,204,0)
     // => #ffcc00
-    
+
     rgb(#fff)
     // => #fff
 
@@ -323,8 +364,9 @@ below.
 
 ### darken(color, amount)
 
-Darken the given `color` by `amount`. This function is
-unit-sensitive. For example, note the percentages below.
+Darken the given `color` by `amount`.This function is
+unit-sensitive, for example supporting percentages as shown
+below.
 
     darken(#D62828, 30)
     // => #551010
@@ -355,7 +397,7 @@ Gives the complementary color. Equals to spinning hue to 180deg.
 
 ### invert(color)
 
-Inverts the color. The red, green, and blue values are inverted, while opacity is left alone.
+Inverts the color. The red, green, and blue values are inverted, while the opacity is left alone.
 
     invert(#d62828)
     // => #29d7d7
@@ -367,14 +409,14 @@ Gives the grayscale equivalent of the given color. Equals to desaturate by 100%.
     grayscale(#fd0cc7)
     // => #0cfd42
 
-### tint(color,percent)
+### tint(color, amount)
 
 Mix the given color with white.
 
     tint(#fd0cc7,66%)
     // => #feaceb
-    
-### shade(color,percent)
+
+### shade(color, amount)
 
 Mix the given color with black.
 
@@ -384,10 +426,10 @@ Mix the given color with black.
 ### unquote(str | ident)
 
   Unquote the given `str` and returned as a `Literal` node.
- 
+
        unquote("sans-serif")
        // => sans-serif
- 
+
        unquote(sans-serif)
        // => sans-serif
 
@@ -407,25 +449,25 @@ Mix the given color with black.
 
         s('bar(%s)', baz);
         // => bar(baz)
-        
+
         s('bar(%s)', 15px);
         // => bar(15px)
-        
+
         s('rgba(%s, %s, %s, 0.5)', 255, 100, 50);
         // => rgba(255, 100, 50, 0.5)
-        
+
         s('bar(%Z)', 15px);
         // => bar(%Z)
-        
+
         s('bar(%s, %s)', 15px);
         // => bar(15px, null)
-        
+
 Check out the `%` string operator for equivalent behaviour.
 
 ### operate(op, left, right)
 
   Perform the given `op` on the `left` and `right` operands:
-  
+
       op = '+'
       operate(op, 15, 5)
       // => 20
@@ -439,13 +481,13 @@ Check out the `%` string operator for equivalent behaviour.
 
     length((1 2))
     // => 2
-  
+
     length((1))
     // => 1
-  
+
     length(())
     // => 0
-  
+
     length(1 2 3)
     // => 3
 
@@ -454,6 +496,19 @@ Check out the `%` string operator for equivalent behaviour.
 
     length()
     // => 0
+
+### selector()
+
+Returns the compiled current selector or `&` if called at root level.
+
+    .foo
+      selector()
+    // => '.foo'
+
+    .foo
+      &:hover
+        selector()
+    // '.foo:hover'
 
 ### warn(msg)
 
@@ -473,12 +528,12 @@ Check out the `%` string operator for equivalent behaviour.
 ### last(expr)
 
  Return the _last_ value in the given `expr`:
- 
+
       nums = 1 2 3
       last(nums)
       last(1 2 3)
       // => 3
-      
+
       list = (one 1) (two 2) (three 3)
       last(list)
       // => (three 3)
@@ -486,7 +541,7 @@ Check out the `%` string operator for equivalent behaviour.
 ### p(expr)
 
  Inspect the given `expr`:
- 
+
      fonts = Arial, sans-serif
      p('test')
      p(123)
@@ -494,10 +549,10 @@ Check out the `%` string operator for equivalent behaviour.
      p(fonts)
      p(#fff)
      p(rgba(0,0,0,0.2))
-     
+
      add(a, b)
        a + b
-    
+
      p(add)
 
 stdout:
@@ -513,7 +568,7 @@ stdout:
 ### opposite-position(positions)
 
  Return the opposites of the given `positions`.
-  
+
      opposite-position(right)
      // => left
 
@@ -563,7 +618,7 @@ yields:
 
   For example if we were to inspect this local variable using `p()`, we
   get the following:
-  
+
         p(current-property)
         // => "foo" (foo __CALL__ bar baz)
 
@@ -596,7 +651,7 @@ yields:
         }
 
   If you noticed in the example above, `bar` is only present for the initial call, since we returned `something(15px)`, it remained in-place within the expression, however the others do not take the rest of the expression into account.
-  
+
   Our more robust solution below, defines a function named `replace()` which clones the expression to prevent mutation, replaces the string value of an expression with another, and returns the cloned expression. We then move on to replace `__CALL__` within the expressions, which represents the cyclic call to `something()`.
 
         replace(expr, str, val)
@@ -627,15 +682,51 @@ yields:
 
 Our implementation is now fully transparent both in regards to the property it is called within, and the position of the call. This powerful concept aids in transparent vendor support for function calls, such as gradients.
 
+### use(path)
+
+You can use any given js-plugin at given `path` with `use()` function right inside your '.styl' files, like this:
+
+    use("plugins/add.js")
+
+    width add(10, 100)
+    // => width: 110
+
+And the `add.js` plugin in this case looks this way:
+
+    var plugin = function(){
+      return function(style){
+        style.define('add', function(a, b) {
+          return a.operate('+', b);
+        });
+      };
+    };
+    module.exports = plugin;
+
+If you'd like to return any Stylus objects like `RGBA`, `Ident` or `Unit`, you could use the provided Stylus nodes like this:
+
+    var plugin = function(){
+      return function(style){
+        var nodes = this.nodes;
+        style.define('something', function() {
+          return new nodes.Ident('foobar');
+        });
+      };
+    };
+    module.exports = plugin;
+
+You can pass any options as an optional second argument, using the [hash object](hashes.html):
+
+    use("plugins/add.js", { foo: bar })
+
 ### Undefined Functions
 
   Undefined functions will output as literals, so for example
   we may call `rgba-stop(50%, #fff)` within our css, and it will
   output as you would expect. We can use this within helpers as well.
-  
-  In the example below we simply define the function `stop()` which 
+
+  In the example below we simply define the function `stop()` which
   returns the literal `rgba-stop()` call.
-  
+
     stop(pos, rgba)
       rgba-stop(pos, rgba)
 

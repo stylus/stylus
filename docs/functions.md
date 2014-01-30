@@ -44,14 +44,14 @@
 
 ### Named Parameters
 
- Functions accept named parameters. This frees you from remembering the order of parameters, or simply improves the readability of your code.
+Functions accept named parameters. This frees you from remembering the order of parameters, or simply improves the readability of your code.
 
- For example:
+For example:
 
-     subtract(a, b)
-       a - b
+    subtract(a, b)
+      a - b
 
-     subtract(b: 10, a: 25)
+    subtract(b: 10, a: 25)
 
 ### Function Bodies
 
