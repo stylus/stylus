@@ -11,7 +11,8 @@ exclude: ['bin', 'examples', 'lib', 'test', 'bm.js', 'index.js', 'Makefile', 'pa
 # github_user: kizu
 
 ## Production URL (if different from default GitHub Pages one)
-production_url: http://learnboost.github.io/stylus
+production_url: http://kizu.ru/new-stylus-docs
+# production_url: http://learnboost.github.io/stylus
 
 ## Comment out if (in absence of above fields) you'd like to use absolute `/` links
 relative_urls_when_possible: true
