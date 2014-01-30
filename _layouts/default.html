@@ -44,7 +44,7 @@
         </ul>
         <div id="ribbon"><a href="https://github.com/LearnBoost/stylus">Fork me on GitHub</a></div>
         <div id="content">
-            <h1>{{ title }}</h1>
+            {% unless is_index %}<h1>{{ title }}</h1>{% endunless %}
             {% comment %}<!-- {{ toc }} -->{% endcomment %}
             {% comment %}<!-- {{ partials_toc }} -->{% endcomment %}
             {{ processed_content }}
