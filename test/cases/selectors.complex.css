@@ -26,3 +26,12 @@ ul > li:last-child {
 body form > input:nth-child(2) {
   border: 1px solid #eee;
 }
+.foo {
+  bar: baz;
+}
+.foo-2x .bar {
+  baz: quux;
+}
+.foo-3x.foo {
+  baz: qux;
+}
