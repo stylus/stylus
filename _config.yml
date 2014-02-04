@@ -5,14 +5,13 @@ permalink: /:categories/:title
 relative_permalinks: false
 
 ## Exculding all the extra things from the submodule
-exclude: ['bin', 'examples', 'lib', 'test', 'bm.js', 'index.js', 'Makefile', 'package.json']
+exclude: ['bin', 'examples', 'lib', 'test', 'bm.js', 'index.js', 'Makefile', 'Gemfile', 'package.json', '*.sublime-project', 'node_modules']
 
 ## Uncomment and set your GitHub username to enable absolute links
 # github_user: kizu
 
 ## Production URL (if different from default GitHub Pages one)
-production_url: http://kizu.ru/new-stylus-docs
-# production_url: http://learnboost.github.io/stylus
+production_url: http://learnboost.github.io/stylus
 
 ## Comment out if (in absence of above fields) you'd like to use absolute `/` links
 relative_urls_when_possible: true
