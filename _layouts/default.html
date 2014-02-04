@@ -32,9 +32,9 @@
                             {% assign get_title_input = post %}
                             {% include tenkan/get_title.md %}
                             {% capture menu_result %}{{ menu_result }}
-                                <li>{% if post_name != current_post_name %}<a href="{{ site.production_url }}{{ post.url | remove:'index.html' }}">{% else %}<strong>{% endif %}
-                                    {{ get_title_output }}
-                                {% if post_name != current_post_name %}</a>{% else %}</strong>{% endif %}</li>
+            <li>{% if post_name != current_post_name %}<a href="{{ site.production_url }}{{ post.url | remove:'index.html' }}">{% else %}<strong>{% endif %}
+                {{ get_title_output }}
+            {% if post_name != current_post_name %}</a>{% else %}</strong>{% endif %}</li>
                             {% endcapture %}
                         {% endif %}
                     {% endfor %}
@@ -46,14 +46,9 @@
         <div id="ribbon"><a href="https://github.com/LearnBoost/stylus">Fork me on GitHub</a></div>
         <div id="content">
             {% unless is_index %}<h1>{{ title }}</h1>{% endunless %}
-            {% comment %}<!-- {{ toc }} -->{% endcomment %}
-            {% comment %}<!-- {{ partials_toc }} -->{% endcomment %}
             {{ processed_content }}
-            {% comment %}<!-- {{ partials }} -->{% endcomment %}
-
         </div>
     </div>
-
     {% comment %}<!-- <script src="{{ root_url }}j/script.js"></script> -->{% endcomment %}
     <!-- Yandex.Metrika counter --><script type="text/javascript">(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter23802394 = new Ya.Metrika({id:23802394, clickmap:true, trackLinks:true, accurateTrackBounce:true, trackHash:true}); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="//mc.yandex.ru/watch/23802394" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->
 </body>
