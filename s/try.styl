@@ -1,0 +1,164 @@
+
+large = 60px
+small = 14px
+dark-gray = #222
+light-gray = lighten(dark-gray, 15%)
+red = #a00
+green = #b3d107
+
+clearfix()
+  &:before
+  &:after
+    content: ""
+    display: table
+  &:after
+    clear: both
+  zoom: 1 if support-for-ie
+
+border-radius(args...)
+  -webkit-border-radius args
+  -moz-border-radius args
+  border-radius args
+
+user-select(type)
+  -webkit-user-select type
+
+box-shadow(args...)
+  -moz-box-shadow args
+  -webkit-box-shadow args
+  box-shadow args
+
+transform(args...)
+  -webkit-transform args
+  -moz-transform args
+
+ribbon(color)
+  position absolute
+  top 2.5em
+  left -3.75em
+  transform rotate(-45deg)
+  background-color color
+  padding 1px 0
+  overflow hidden
+  box-shadow 1px 1px 3px rgba(0,0,0,0.3)
+  a
+    color #fff
+    border 1px solid desaturate(lighten(color, 40%), 20%)
+    display block
+    margin 0.05em 0
+    padding 0.5em 3.5em
+    text-align center
+    text-decoration none
+
+inset()
+  background white
+  border-radius 5px
+  box-shadow rgba(dark-gray, 0.1) -1px -1px
+
+body
+  padding 120px 50px
+  font small/1.4 'helvetica neue', helvetica, arial, sans-serif
+  color light-gray
+
+h1
+h2
+h3
+  color dark-gray
+  a
+    color dark-gray
+    &:hover
+      text-decoration none
+
+h1
+  display none
+  margin 10px 0 15px 0
+  font-weight bold
+  font-size large
+
+h2
+  margin 0
+  font-size 18px
+
+h3
+  font-size 14px
+
+a
+  text-decoration none
+  color #B90101
+  &:hover
+    text-decoration underline
+
+strong
+  color red
+
+ul
+  margin 0
+  padding 0 25px
+  li
+    list-style square
+
+.tagline
+  display none
+  margin 0
+  padding 0
+  em
+    font-style normal
+    &.expressive
+      color dark-gray
+    &.dynamic
+      color lighten(dark-gray, 20%)
+    &.robust
+      color lighten(dark-gray, 40%)
+    &.css
+      color lighten(dark-gray, 60%)
+
+#container
+  text-align center
+  #content
+    margin 0 auto
+    padding-top 30px
+    padding-left 30px
+    width 70%
+    text-align left
+
+#menu
+  position fixed
+  top -5px
+  right 60px
+  margin 0
+  padding 15px 0 10px 5px
+  background rgba(white,0.3)
+  border 1px solid #ddd
+  box-shadow inset rgba(dark-gray, 0.1) 0 4px 4px
+  border-radius 5px
+  text-align left
+  li
+    list-style none
+    a
+      display block
+      width 150px
+      padding 1px 10px
+      color lighten(light-gray, 20%)
+      font-size 13px
+      &:hover
+        color black
+        text-decoration none
+      
+
+.example
+  margin-top 25px
+  clearfix()
+
+.CodeMirror
+  float: left
+  margin: 0 10px
+
+p
+  code
+    padding 2px 4px
+    color lighten(light-gray, 10%)
+    font-size 85%
+    inset()
+
+#ribbon
+  ribbon(green)

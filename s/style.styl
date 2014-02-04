@@ -1,0 +1,8 @@
+// Using stylobuild to build the styles
+use('node_modules/stylobuild', {
+  ie: ie
+})
+
+@import "if-ie.styl" // Handling IE
+@import 'main.styl' // Old Stylus docs styles
+@import 'extras.styl' // Some extras

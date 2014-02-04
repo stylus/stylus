@@ -1,0 +1,156 @@
+large = 60px
+small = 14px
+dark-gray = #222
+light-gray = lighten(dark-gray, 15%)
+green = #b3d107
+
+ribbon(color)
+  position absolute
+  top 2.5em
+  left -3.75em
+  transform rotate(-45deg)
+  background-color color
+  padding 1px 0
+  overflow hidden
+  box-shadow 1px 1px 3px rgba(0,0,0,0.3)
+  a
+    color #fff
+    border 1px solid desaturate(lighten(color, 40%), 20%)
+    display block
+    margin 0.05em 0
+    padding 0.5em 3.5em
+    text-align center
+    text-decoration none
+
+inset()
+  background white
+  border-radius 5px
+  box-shadow rgba(dark-gray, 0.1) -1px -1px
+
+html
+  dark = #ECECEC
+  background dark
+  background -moz-linear-gradient(-90deg, #fff, dark) fixed
+  background -webkit-gradient(linear, left top, left bottom, from(#fff), to(dark)) fixed
+
+body
+  padding 120px 150px
+  font small/1.4 'helvetica neue', helvetica, arial, sans-serif
+  color light-gray
+
+h1
+h2
+h3
+  color dark-gray
+  a
+    color dark-gray
+    &:hover
+      text-decoration none
+
+#container > h1
+  margin 10px 0 15px 0
+  font-weight bold
+  font-size large
+  &>a
+    background url("assets/stylus.png") no-repeat 39px
+    width 299px
+    height 206px
+    display inline-block
+    text-indent -10000px
+
+#content h1,
+.page_index h2
+  margin 0
+  font-size 18px
+
+h2
+  font-size 14px
+
+a
+  text-decoration none
+  color darken(green, 10%);
+  &:hover
+    text-decoration underline
+
+strong
+  color darken(green, 10%);
+
+ul
+  margin 0
+  padding 0 25px
+  li
+    list-style square
+
+.tagline
+  margin 0
+  padding 0
+  em
+    font-style normal
+    &.expressive
+      color dark-gray
+    &.dynamic
+      color lighten(dark-gray, 20%)
+    &.robust
+      color lighten(dark-gray, 40%)
+    &.css
+      color lighten(dark-gray, 60%)
+
+#container
+  text-align center
+  #content
+    margin 0 auto
+    padding-top 40px
+    width 320px
+    text-align left
+
+#menu
+  position fixed
+  top 5px
+  right 60px
+  max-height: 90%
+  margin 0
+  padding 15px 0 10px 5px
+  overflow: auto
+  background rgba(white,0.3)
+  border 1px solid #ddd
+  box-shadow inset rgba(dark-gray, 0.1) 0 4px 4px
+  border-radius 5px
+  text-align left
+  li
+    list-style none
+    a,
+    strong
+      display block
+      width 150px
+      padding 1px 10px
+      color lighten(light-gray, 20%)
+      font-size 13px
+    a:hover
+      color black
+      text-decoration none
+
+
+pre
+  width width = 320px
+  padding 30px
+  color color = #8D8D8D
+  font 12px\/1.4 monaco, monospace
+  overflow-x auto
+  inset()
+  &.terminal
+    width width + 40
+    padding 10px
+    background #2B2B2B
+    color lighten(color, 30%)
+    box-shadow white -1px -1px
+
+p
+  code
+    padding 2px 4px
+    color lighten(light-gray, 10%)
+    font-size 85%
+    white-space nowrap
+    inset()
+
+#ribbon
+  ribbon(green)

@@ -1,0 +1,36 @@
+pre > code
+  font: inherit
+
+.header-anchor
+  float: left
+
+  width: 0
+  padding-top: 0
+  padding-right: 0.7em
+  border: 0.3em solid transparent
+  margin: -0.3em 0 0 -1.3em
+
+  opacity: 0
+
+  transform: translate(100%, 0)
+  transition: opacity 0.3s 1s, transform 0.3s 1s
+
+  h2:hover > &,
+  h3:hover > &,
+  h4:hover > &,
+  h5:hover > &,
+  h6:hover > &
+    opacity: 1
+
+    transform: translate(0, 0)
+    transition: opacity 0.2s 0.15s, transform 0.2s 0.15s
+
+  &:before
+    content: "#"
+
+@keyframes target-fade
+  0%
+    background-color: rgba(255,255,0,0.8)
+
+  100%
+    background-color: rgba(255,255,0,0.15)

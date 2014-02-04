@@ -1,0 +1,21 @@
+{
+  "private": true,
+
+  "name": "stylus-gh-pages",
+  "version": "0.0.0",
+
+  "author": "Roman Komarov <kizmarh@ya.ru> (http://kizu.ru/en/)",
+  "licence": "MIT",
+
+  "description": "Engine for running Stylus GitHub pages.",
+  "homepage": "http://learnboost.github.io/stylus/",
+  "bugs": { "url": "https://github.com/learnboost/stylus/issues?labels=s%3A+Docs" },
+
+  "dependencies": {
+    "stylus": "0.42.x",
+    "stylobuild": "0.4.x",
+    "if-ie.styl": "0.2.x"
+  },
+
+  "engines": { "node": ">=0.6" }
+}

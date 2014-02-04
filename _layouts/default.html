@@ -4,8 +4,9 @@
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width"/>
 
-	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7,IE=edge"/>
-    <link rel="stylesheet" href="{{ root_url }}s/style.css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7,IE=edge"/><!--[if gt IE 7]><!-->
+    <link rel="stylesheet" href="{{ root_url }}s/style.css" /><!--<![endif]--><!--[if lt IE 8]>
+    <link rel="stylesheet" href="{{ root_url }}s/style.ie.css" /><![endif]-->
 
     <title>{{ title }} — {% if is_index %}expressive, robust, feature-rich CSS preprocessor{% else %}Stylus{% endif %}</title>
 </head>
