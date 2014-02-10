@@ -4,6 +4,7 @@
 .travis.yml
 
 History.md
+Workflow.md
 Makefile
 
 docs/
