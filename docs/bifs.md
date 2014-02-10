@@ -514,6 +514,12 @@ Returns the compiled current selector or `&` if called at root level.
         selector()
     // '.foo:hover'
 
+## log(msg)
+
+  Log the given `msg` to the console.
+
+      log("hi there!")
+
 ## warn(msg)
 
   Warn with the given error `msg`, does not exit.
