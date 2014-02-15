@@ -93,4 +93,16 @@ body
   foo: '<a: %s b: %s>' % 1 2 // not what you might think
   foo: '<a: %s b: %s>' % (1 2)
   foo: 'X::Micrsoft::crap(%s)' % rgb(0,255,0)
-  foo: '<%s, %s, %s>' % (foo bar baz)  
+  foo: '<%s, %s, %s>' % (foo bar baz)
+
+body
+  foo 5 < '5.1'
+  foo 5 < 5.1
+  foo 5 <= 5.1
+  foo !(5 < '5')
+  foo 5.1 > 5
+  foo !(5 > 5)
+  foo '5.1' > 5
+  foo '5.1' > '5'
+  foo (5 - "5.1") != 0
+  foo !(5 == '5.1')
