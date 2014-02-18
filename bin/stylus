@@ -427,10 +427,15 @@ function repl() {
     try {
       var expr = parser.parse();
       var ret = evaluator.visit(expr);
-      ret = ret.nodes[ret.nodes.length - 1];
-      ret = ret.toString();
-      if ('(' == ret[0]) ret = ret.replace(/^\(|\)$/g, '');
-      console.log('\033[90m=> \033[0m' + highlight(ret));
+      var node;
+      while (node = ret.nodes.pop()) {
+        if (!node.suppress) {
+          var str = node.toString();
+          if ('(' == str[0]) str = str.replace(/^\(|\)$/g, '');
+          console.log('\033[90m=> \033[0m' + highlight(str));
+          break;
+        }
+      }
       repl.prompt();
     } catch (err) {
       console.error('\033[31merror: %s\033[0m', err.message || err.stack);
