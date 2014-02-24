@@ -55,3 +55,7 @@ three * {
   two: 2;
   three: 3;
 }
+.foo.bar.raz,
+.foo.baz.raz {
+  padding: 0;
+}
