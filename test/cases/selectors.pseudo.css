@@ -25,3 +25,24 @@ table :nth-child(2),
 table :nth-child(3) {
   background: #000;
 }
+table td:after,
+table td .after {
+  background: #f00;
+}
+table td {
+  background: #fff;
+}
+table td:before,
+table td::before {
+  color: #008000;
+}
+table td:selection,
+table td::selection {
+  color: #f00;
+}
+table td:first-line {
+  color: #ff0;
+}
+table td::first-letter {
+  color: #000;
+}

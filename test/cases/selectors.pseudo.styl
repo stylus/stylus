@@ -22,3 +22,19 @@ table
   :nth-child(2)
   :nth-child(3)
     background black
+
+table
+  td:after, td .after
+    background red
+  td
+    background white
+
+table
+  td:before, td::before
+    color green
+  td:selection, td::selection
+    color red
+  td:first-line
+    color yellow
+  td::first-letter
+    color black
