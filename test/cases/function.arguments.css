@@ -2,3 +2,7 @@ body {
   padding: 15;
   padding: 1 2;
 }
+.foo {
+  p0: 4px;
+  p1: 5px;
+}
