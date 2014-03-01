@@ -48,3 +48,11 @@ for selector in selectors
   {'&.bar, &.baz'}
     &.raz
       padding: 0
+
+.foo_hack
+  &{",x::-moz-focus-inner"}
+    padding: 0
+
+.foo_hack2
+  &{", /x::-moz-focus-inner"}
+    padding: 0
