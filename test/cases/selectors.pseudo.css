@@ -46,3 +46,55 @@ table td:first-line {
 table td::first-letter {
   color: #000;
 }
+label input:indeterminate,
+label span {
+  color: #001;
+}
+label input:checked,
+label span {
+  color: #002;
+}
+label a:any-link,
+label span {
+  color: #003;
+}
+label a:local-link,
+label span {
+  color: #004;
+}
+label input:read-only,
+label span {
+  color: #005;
+}
+label input:read-write,
+label span {
+  color: #006;
+}
+label input:placeholder-shown,
+label span {
+  color: #007;
+}
+label input:default,
+label span {
+  color: #008;
+}
+label input:out-of-range,
+label span {
+  color: #010;
+}
+label input:required,
+label span {
+  color: #011;
+}
+label input:optional,
+label span {
+  color: #012;
+}
+label input:user-error,
+label span {
+  color: #013;
+}
+label input:blank,
+label span {
+  color: #014;
+}
