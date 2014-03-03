@@ -1,0 +1,8 @@
+hey {
+  foo: #234567;
+  bar: #456789;
+  baz: 42;
+}
+body {
+  border: 1px solid #000;
+}

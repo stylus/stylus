@@ -1,0 +1,24 @@
+foo = #123456
+define('foo', #234567)
+define('bar', #345678)
+define('bar', #456789)
+define('baz', 42)
+
+hey
+  foo: foo
+  bar: bar
+  baz: baz
+
+prefix = 'border'
+
+define('border', {
+  color: #000,
+  length: 1px,
+  style: solid
+})
+
+for prop, val in border
+  define(prefix + '-' + prop, val)
+
+body
+  border: border-length border-style border-color
