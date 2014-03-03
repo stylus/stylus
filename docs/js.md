@@ -1,4 +1,9 @@
-## JavaScript API
+---
+layout: default
+permalink: docs/js.html
+---
+
+# JavaScript API
 
 Simply `require` the module, and call `render()` with the given string of Stylus code, and (optional) `options` object. 
 
@@ -21,14 +26,14 @@ We can also do the same thing in a more progressive manner:
         // logic
       });
 
-### .set(setting, value)
+## .set(setting, value)
 
  Apply a setting such as a `filename`, or import `paths`:
  
      .set('filename', __dirname + '/test.styl')
      .set('paths', [__dirname, __dirname + '/mixins'])
 
-### .include(path)
+## .include(path)
 
   A progressive alternative to `.set('paths',...)` is `.include()`.  This is ideal when exposing external Stylus libraries which expose a path.
   
@@ -37,7 +42,7 @@ We can also do the same thing in a more progressive manner:
       .include(process.env.HOME + '/mixins')
       .render(...)
 
-### .import(path)
+## .import(path)
 
 Defer importing of the given `path` until evaluation is performed. The example below is essentially the same as doing `@import 'mixins/vendor'` within your Stylus sheet.
 
@@ -52,7 +57,7 @@ Defer importing of the given `path` until evaluation is performed. The example b
         console.log(css);
       });
 
-### .define(name, node)
+## .define(name, node)
 
  By passing a `Node`, we may define a global variable. This is useful when exposing conditional features within your library depending on the availability of another. For example the **Nib** extension library conditionally supports node-canvas, providing image generation. 
  
@@ -77,7 +82,7 @@ Defer importing of the given `path` until evaluation is performed. The example b
        return ['foo', 'bar', 'baz'];
      })
 
-### .define(name, fn)
+## .define(name, fn)
 
  This method allows you to provide a JavaScript-defined function to Stylus. Think of these as you would JavaScript-to-C++ bindings. When there's something you cannot do in Stylus, define it in JavaScript!
 
@@ -143,7 +148,7 @@ In this example, we define four functions: `add()`, `sub()`, `image-width()`, an
    - `lib/nodes/*`
    - `lib/utils.js`
 
-### .use(fn)
+## .use(fn)
 
   When called, the given `fn` is invoked with the renderer, allowing all of the methods above to be used. This allows for plugins to easily expose themselves, defining functions, paths etc.
 

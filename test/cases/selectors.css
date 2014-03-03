@@ -58,6 +58,18 @@ ul > li {
 #aor {
   foo: bar;
 }
+#for .foo {
+  foo: bar;
+}
+.or .foo {
+  foo: bar;
+}
+.return  .foo {
+  foo: bar;
+}
+.null .foo {
+  foo: bar;
+}
 button[disabled],
 input[disabled] {
   cursor: default;

@@ -1,5 +1,9 @@
+---
+layout: default
+permalink: docs/vargs.html
+---
 
-## Rest Parameters
+# Rest Params
 
  Stylus supports rest parameters in the form of `name...`. These params consume the remaining arguments passed to a mixin or function. This is useful when utilizing (for example) the implicit function call support to apply vendor prefixes like `-webkit` or `-moz`.
  
@@ -42,7 +46,7 @@ Yielding:
           box-shadow: 1px 2px 5px #eee;
         }
 
-### arguments
+## arguments
 
   The `arguments` variable is injected into mixin and function bodies, containing the exact expression passed. This is useful for several reasons (especially vendor support) as you get the _exact_ expression, commas and all.
 

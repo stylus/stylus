@@ -1,3 +1,14 @@
+0.42.3 / 2014-03-03
+==================
+
+  * Fixed bug with pseudo-elements as part of the nested selector with a class, #1415.
+  * Ignoring comments in REPL, #1390.
+  * Fixed bug with print of the line numbers when node has empty `nodes` array, #1412.
+  * Fixed bug with first argument for defaulted arguments, #1407.
+  * Fixed compression of blocks with nested rules, #1396.
+  * Fixed bug with importing of files with `.css` in the dirname, #1385.
+  * Fixed eaten whitespace after selector with a keyword, #1383.
+
 0.42.2 / 2014-01-30
 ==================
 

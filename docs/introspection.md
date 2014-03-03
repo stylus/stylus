@@ -1,5 +1,9 @@
+---
+layout: default
+permalink: docs/introspection.html
+---
 
-## Introspection API
+# Introspection API
 
  Stylus supports an introspection API. This allows mixins and functions to reflect relative to the caller, etc.
 

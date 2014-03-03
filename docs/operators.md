@@ -1,3 +1,10 @@
+---
+layout: default
+permalink: docs/operators.html
+---
+
+# Operators
+
 ## Operator Precedence
 
 Below is the operator precedence table, highest to lowest:

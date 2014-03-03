@@ -1,5 +1,9 @@
+---
+layout: default
+permalink: docs/keyframes.html
+---
 
-## @keyframes
+# @keyframes
 
  Stylus supports the `@keyframes` at-rule, which is converted to `@-webkit-keyframes` when compiled:
 
