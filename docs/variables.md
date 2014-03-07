@@ -87,3 +87,21 @@ Identifiers (variable names, functions, etc.) may also include the `$` character
             color: blue
             a
               background-color: @color
+
+## Default values
+
+We may set variables that haven't been set before by using the existential operator, `?=`. This allows us to set default values of variables: if the variable hasn't been defined before, it will be now.
+
+    fast ?= 500ms
+    
+    .button
+      animation-speed: fast
+      
+If a variable has been set before it was assigned via `?=`, it won't be re-assigned.
+
+    fast = 200ms
+    
+    fast ?= 500ms
+    
+    .button
+      animation-speed: fast  /* result: 200ms */
