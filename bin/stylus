@@ -43,6 +43,11 @@ var convertCSS = false;
 var linenos = false;
 
 /**
+ * CSS class prefix.
+ */
+var prefix = '';
+
+/**
  * Print to stdout flag.
  */
 var print = false;
@@ -144,6 +149,7 @@ var usage = [
   , '                            can be used by the FireStylus Firebug plugin'
   , '    -l, --line-numbers      Emits comments in the generated CSS'
   , '                            indicating the corresponding Stylus line'
+  , '    -P, --prefix [prefix]   prefix all css classes'
   , '    -p, --print             Print out the compiled CSS'
   , '    --import <file>         Import stylus <file>'
   , '    --include-css           Include regular CSS on @import'
@@ -185,10 +191,15 @@ while (args.length) {
     case '--line-numbers':
       linenos = true;
       break;
+    case '-P':
+    case '--prefix':
+      prefix = args.shift();
+      if (!prefix) throw new Error('--prefix <prefix> required');
+      break;
     case '-p':
     case '--print':
       print = true;
-    break;
+      break;
     case '-V':
     case '--version':
       console.log(stylus.version);
@@ -335,6 +346,7 @@ var options = {
   , firebug: firebug
   , linenos: linenos
   , paths: [process.cwd()].concat(paths)
+  , prefix: prefix
 };
 
 // Buffer stdin
