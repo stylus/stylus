@@ -14,7 +14,7 @@ a.prefix-error:hover {
 .prefix-hello {
   width: 10px;
 }
-.prefix-hello .bar {
+.prefix-hello .prefix-bar {
   height: 10px;
 }
 .prefix-lol {
