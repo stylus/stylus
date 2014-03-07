@@ -1,0 +1,90 @@
+form {'input'}:last-child {
+  display: none;
+}
+
+form {'input'}:nth-child({10 + 5}) {
+  display: none;
+}
+
+for n in 1 2 3 4 5 {
+  .grid-{n} {
+    width: unit(n * 100, 'px');
+  }
+}
+
+pos = last
+
+body {form} {
+  input:{  pos  }-child {
+    display: none
+  }
+}
+
+mixin(n) {
+  &:nth-child({ n }) {
+    display: none
+  }
+}
+
+ul li {
+  mixin(2);
+}
+
+{foo} {bar} {
+  foo: bar;
+}
+
+{foo} {
+  {bar} {
+    {baz} {
+      foo: bar;
+    }
+  }
+}
+
+{foo} {
+  {bar} {
+    {baz} {
+      {foo}: bar
+    }
+    {one} 1
+  }
+  {two} 2
+}
+
+selectors = one two three;
+props = (one 1) (two 2) (three 3);
+
+for selector in selectors {
+  {selector} * {
+    for prop in props {
+      {prop[0]}: prop[1];
+    }
+  }
+}
+
+
+li a:active { color: black; background: white; }
+
+state = 'active'
+li a:{state} { color: black; background: white; }
+
+.col-{1}-{0} :nth-child(1) { foo: 'bar'; }
+
+cols = 1 2 3
+
+for col in cols
+  .col-{col} { foo: 'bar'; }
+
+
+@media print {
+  blockquote { border: 1px solid #999 }
+  blockquote {
+   border: 1px solid #999
+  }
+  block{'quote'} { border: 1px solid #999 }
+  block{'quote'} {
+   border: 1px solid #999
+  }
+}
+
