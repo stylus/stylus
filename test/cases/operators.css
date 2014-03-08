@@ -38,3 +38,6 @@ body {
   foo: X::Micrsoft::crap(#0f0);
   foo: <foo, bar, baz>;
 }
+body {
+  foo: 'bar';
+}
