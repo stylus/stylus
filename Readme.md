@@ -108,6 +108,7 @@ form input {
   - heroku [web service](http://styl.heroku.com) for compiling stylus
   - [style guide](https://github.com/lepture/ganam) parser and generator
   - transparent vendor-specific function expansion
+  - [sourcemaps](docs/sourcemaps.md) support
 
 ### Community modules
 
@@ -138,7 +139,7 @@ form input {
 
   - Language [comparisons](docs/compare.md)
 
-## License 
+## License
 
 (The MIT License)
 
