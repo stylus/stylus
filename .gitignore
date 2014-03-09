@@ -1,7 +1,44 @@
+### Custom ###
 css
 lib-cov
 testing
-.DS_Store
-/node_modules
 coverage.html
+
+
+# Created by http://www.gitignore.io
+
+### Node ###
 lib-cov
+lcov.info
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+
+pids
+logs
+results
+build
+.grunt
+
+node_modules
+
+
+### OSX ###
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must ends with two \r.
+Icon
+
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
