@@ -54,6 +54,12 @@ var print = false;
 var firebug = false;
 
 /**
+ * Sourcemaps flag
+ */
+
+var sourcemaps = false;
+
+/**
  * Files to processes.
  */
 
@@ -140,6 +146,7 @@ var usage = [
   , '    -I, --include <path>    Add <path> to lookup paths'
   , '    -c, --compress          Compress CSS output'
   , '    -d, --compare           Display input along with output'
+  , '    -m, --sourcemaps        Emits debug infos in sourcemaps v3 format'
   , '    -f, --firebug           Emits debug infos in the generated CSS that'
   , '                            can be used by the FireStylus Firebug plugin'
   , '    -l, --line-numbers      Emits comments in the generated CSS'
@@ -180,6 +187,10 @@ while (args.length) {
     case '-f':
     case '--firebug':
       firebug = true;
+      break;
+    case '-m':
+    case '--sourcemaps':
+      sourcemaps = true;
       break;
     case '-l':
     case '--line-numbers':
@@ -334,6 +345,7 @@ var options = {
   , compress: compress
   , firebug: firebug
   , linenos: linenos
+  , sourcemaps: sourcemaps
   , paths: [process.cwd()].concat(paths)
 };
 
