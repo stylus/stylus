@@ -114,6 +114,12 @@ var imports = [];
 var resolveURL = false;
 
 /**
+ * Cache type.
+ */
+
+var cache = '';
+
+/**
  * Usage docs.
  */
 
@@ -147,6 +153,10 @@ var usage = [
   , '    -p, --print             Print out the compiled CSS'
   , '    --import <file>         Import stylus <file>'
   , '    --include-css           Include regular CSS on @import'
+  , '    --cache <type>          Use one of the cache methods:'
+  , '                              "fs" — cache items on the file system'
+  , '                              "memory" — cache items in the memory (default)'
+  , '                            to disable cache pass "false"'
   , '    -r, --resolve-url       Resolve relative urls inside imports'
   , '    -V, --version           Display the version of Stylus'
   , '    -h, --help              Display help information'
@@ -214,6 +224,10 @@ while (args.length) {
       break;
     case '--include-css':
       includeCSS = true;
+      break;
+    case '--cache':
+      cache = args.shift();
+      if (!cache) throw new Error('--cache <type> required');
       break;
     case '-i':
     case '--repl':
@@ -331,6 +345,7 @@ function help(name) {
 
 var options = {
     filename: 'stdin'
+  , cache: cache
   , compress: compress
   , firebug: firebug
   , linenos: linenos
