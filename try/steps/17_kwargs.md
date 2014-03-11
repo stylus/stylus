@@ -12,7 +12,6 @@ you to disregard argument ordering.
 
 <div><textarea class="stylus">
 fade-out(color, amount = 50%)
-  amount /= 100
   color - rgba(0,0,0,amount)
 
 body
