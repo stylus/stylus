@@ -32,7 +32,7 @@ describe('integration', function(){
 
       if (~test.indexOf('compress')) style.set('compress', true);
       if (~test.indexOf('include')) style.set('include css', true);
-      if (~test.indexOf('prefix')) style.set('prefix', 'prefix-');
+      if (~test.indexOf('prefix.')) style.set('prefix', 'prefix-');
 
       if (~test.indexOf('resolver')) {
           style.set('resolve url', true);
