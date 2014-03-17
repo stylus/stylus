@@ -403,9 +403,9 @@ h6 {
  *
  * These follow after primary styles so they will successfully override.
  */
-@media all and (orientation:portrait) {
+@media all and (orientation: portrait) {
 }
-@media all and (orientation:landscape) {
+@media all and (orientation: landscape) {
 }
 /* Grade-A Mobile Browsers (Opera Mobile, Mobile Safari, Android Chrome)
    consider this: www.cloudfour.com/css-media-query-for-mobile-is-fools-gold/ */
