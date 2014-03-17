@@ -1,0 +1,92 @@
+// Modified version of Bootstrap3's grid generation code
+
+// Number of columns in the grid.
+grid-columns = 12
+// Padding between columns. Gets divided in half for the left and right.
+grid-gutter-width = 30px
+
+lesscss-percentage(n)
+  (n * 100)%
+
+// Framework grid generation
+//
+// Used only by Bootstrap to generate the correct number of grid classes given
+// any value of `@grid-columns`.
+make-grid-columns()
+  // Common styles for all sizes of grid columns, widths 1-12
+  // recursive method
+  col(index, list)
+    if index <= grid-columns
+      // general
+      item = unquote(".col-xs-" + index + ", .col-sm-" + index + ", .col-md-" + index + ", .col-lg-" + index + "")
+      col((index + 1), unquote("" + list + ", " + item + ""))
+    else
+      // terminal
+      {list}
+        position relative
+        // Prevent columns from collapsing when empty
+        min-height 1px
+        // Inner gutter via padding
+        padding-left (grid-gutter-width / 2)
+        padding-right (grid-gutter-width / 2)
+
+  // initial method
+  col_start(index)
+    item = unquote(".col-xs-" + index + ", .col-sm-" + index + ", .col-md-" + index + ", .col-lg-" + index + "")
+    col((index + 1), item)
+  col_start(1)  // kickstart it
+
+float-grid-columns(class)
+  // recursive method
+  col(index, list)
+    if index <= grid-columns
+      item = unquote(".col-" + class + "-" + index + "")
+      col((index + 1), unquote("" + list + ", " + item + ""))
+    else
+      {list}
+        float left
+  // initial
+  col_start(index)
+    item = unquote(".col-" + class + "-" + index + "")
+    col((index + 1), item)
+  col_start(1)  // kickstart it
+
+
+calc-grid-column(index, class, type)
+  if index > 0 and type == width
+    item = unquote(".col-" + class + "-" + index + "")
+    {item}
+      width lesscss-percentage((index / grid-columns))
+  else if type == push
+    item = unquote(".col-" + class + "-push-" + index + "")
+    {item}
+      left lesscss-percentage((index / grid-columns))
+  else if type == pull
+    item = unquote(".col-" + class + "-pull-" + index + "")
+    {item}
+      right lesscss-percentage((index / grid-columns))
+  else if type == offset
+    item = unquote(".col-" + class + "-offset-" + index + "")
+    {item}
+      margin-left lesscss-percentage((index / grid-columns))
+
+// Looping
+loop-grid-columns(index, class, type)
+  if index >= 0
+    calc-grid-column(index, class, type)
+    // next iteration
+    loop-grid-columns((index - 1), class, type)
+
+// Create grid for specific class
+make-grid(class)
+  float-grid-columns(class)
+  loop-grid-columns(grid-columns, class, width)
+  loop-grid-columns(grid-columns, class, pull)
+  loop-grid-columns(grid-columns, class, push)
+  loop-grid-columns(grid-columns, class, offset)
+
+make-grid-columns()
+make-grid(lg)
+make-grid(md)
+make-grid(sm)
+make-grid(xs)

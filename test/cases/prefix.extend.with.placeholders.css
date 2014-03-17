@@ -1,0 +1,47 @@
+button.prefix-login {
+  border: 1px solid #000;
+}
+button.prefix-login {
+  background: #f00;
+}
+a.prefix-link:hover,
+a.prefix-error:hover {
+  color: #f00;
+}
+.prefix-error {
+  background: #0f0;
+}
+.prefix-hello {
+  width: 10px;
+}
+.prefix-hello .prefix-bar {
+  height: 10px;
+}
+.prefix-lol {
+  padding: 10px;
+}
+.prefix-hello:hover {
+  background: #000;
+}
+.prefix-barbaz_1 {
+  margin: 10px;
+}
+.prefix-foolector,
+.prefix-barbaz_2 {
+  margin: 20px;
+}
+.prefix-barbaz_3 {
+  margin: 30px;
+}
+@media (max-width: 640px) {
+  .prefix-helloing,
+  .prefix-boo {
+    display: none;
+  }
+}
+.prefix-helloing {
+  background: #0f0;
+}
+.prefix-boo {
+  background: #f00;
+}
