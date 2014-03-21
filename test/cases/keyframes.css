@@ -7,3 +7,28 @@
     color: #fff;
   }
 }
+@-moz-keyframes foo {
+  0% {
+    width: 100%;
+  }
+}
+@-webkit-keyframes foo {
+  0% {
+    width: 100%;
+  }
+}
+@-o-keyframes foo {
+  0% {
+    width: 100%;
+  }
+}
+@-ms-keyframes foo {
+  0% {
+    width: 100%;
+  }
+}
+@keyframes foo {
+  0% {
+    width: 100%;
+  }
+}
