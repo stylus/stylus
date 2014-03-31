@@ -468,6 +468,27 @@ Mix the given color with black.
 
 Check out the `%` string operator for equivalent behaviour.
 
+## define(name, expr)
+
+Allows to create or overwrite a variable with a given name, passed as a string, onto current scope.
+
+This bif can be useful on those cases in which you'd wish interpolation in variable names:
+
+    prefix = 'border'
+    border = { color: #000, length: 1px, style: solid }
+
+    for prop, val in border
+      define(prefix + '-' + prop, val)
+
+    body
+      border: border-length border-style border-color
+
+yields:
+
+    body {
+      border: 1px solid #000;
+    }
+
 ## operate(op, left, right)
 
   Perform the given `op` on the `left` and `right` operands:
