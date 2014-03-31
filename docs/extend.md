@@ -125,6 +125,35 @@ permalink: docs/extend.html
           padding: 10px;
         }
       
+## Extending multiple selectors
+
+Stylus allows you to extend multiple selectors at once, just write them with the comma:
+
+    .a
+      color: red
+
+    .b
+      width: 100px
+
+    .c
+      @extend .a, .b
+      height: 200px
+
+Yielding:
+
+
+    .a,
+    .c {
+      color: #f00;
+    }
+    .b,
+    .c {
+      width: 100px;
+    }
+    .c {
+      height: 200px;
+    }
+
 ## Extending placeholder selectors
 
 Stylus have the feature similar to the one in [Sass](http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#placeholders) — placeholder selectors.
