@@ -6,6 +6,7 @@
   "background-color": "rgb(255,202,69)",
   "fade-color": "rgba(255,202,69, 0.5)",
   "decoration-color": "rgba(0,0,0,0.5)",
+  "shadow-color": "rgba(0,0,0,.5)",
   "spacing" : 0,
   "gutter" : "10px",
   "queries": {
