@@ -248,6 +248,14 @@ Returns the value of tangent for the given `angle`. If the angle is given as a d
       max(1, 5)
       // => 5
 
+## power(a, b)
+
+      power(7,2)
+      // => 49
+
+      power(7px,2)
+      // => 49px
+
 ## even(unit)
 
       even(6px)

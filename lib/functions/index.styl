@@ -30,6 +30,12 @@ math(n, fn)
   require-string(fn)
   -math(n, fn)
 
+math-ext(a, b, fn)
+  require-unit(a)
+  require-unit(b)
+  require-string(fn)
+  -math-ext(a, b, fn)
+
 // adjust the given color's property by amount
 
 adjust(color, prop, amount)
@@ -77,6 +83,11 @@ floor(n, precision = 0)
 round(n, precision = 0)
   multiplier = 10 ** precision
   math(n * multiplier, 'round') / multiplier
+
+// Power function
+
+power(a, b)
+  math-ext(a, b, 'pow')
 
 // return the sum of the given numbers
 
