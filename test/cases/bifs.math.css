@@ -53,7 +53,7 @@
   test4: 1.732050808;
   test5: Infinity;
   test6: 0;
-  test7: Infinity;
+  test7: -Infinity;
   test8: 0;
 }
 .math_sin_rad {
