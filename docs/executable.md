@@ -32,6 +32,7 @@ Stylus ships with the `stylus` executable for converting Stylus to CSS.
                                 can be used by the FireStylus Firebug plugin
         -l, --line-numbers      Emits comments in the generated CSS
                                 indicating the corresponding Stylus line
+        -P, --prefix [prefix]   Prefix all css classes
         -p, --print             Print out the compiled CSS
         --import <file>         Import stylus <file>
         --include-css           Include regular CSS on @import
@@ -75,6 +76,25 @@ Try Stylus some in the terminal!  Type below and press `CTRL-D` for `__EOF__`:
   the [FireStylus extension for Firebug](//github.com/LearnBoost/stylus/blob/master/docs/firebug.md):
 
       $ stylus --firebug <path>
+
+## Prefixing classes
+
+`stylus` executable provides you a way to prefix all the generated styles using `--prefix` option with given `[prefix]`,
+
+    $ stylus --prefix foo-
+
+used with this code:
+
+    .bar
+      width: 10px
+
+would yield
+
+    .foo-bar {
+      width: 10px;
+    }
+
+All the classes would be prefixed: interpolated, extended etc.
 
 ## Converting CSS
 

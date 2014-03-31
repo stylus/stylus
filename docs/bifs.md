@@ -468,6 +468,20 @@ Mix the given color with black.
 
 Check out the `%` string operator for equivalent behaviour.
 
+## +prefix-classes(prefix)
+
+Stylus comes with a block mixin `prefix-classes` that can be used for prefixing the classes inside any given Stylus' block. For example:
+
+    +prefix-classes('foo-')
+      .bar
+        width: 10px
+
+Yields:
+
+    .foo-bar {
+      width: 10px;
+    }
+
 ## define(name, expr)
 
 Allows to create or overwrite a variable with a given name, passed as a string, onto current scope.
