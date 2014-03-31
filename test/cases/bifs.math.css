@@ -2,11 +2,13 @@
   test1: 1;
   test2: 0;
   test3: 1;
+  test4: 49;
 }
 .math_units {
   test1: 1px;
   test2: 0px;
   test3: 1px;
+  test4: 49px;
 }
 .math_precision0 {
   test1: 1;
