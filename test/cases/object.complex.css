@@ -33,3 +33,9 @@ body {
   width: 400px;
   height: 100px;
 }
+.foo {
+  width: 10px;
+  height: 20px;
+  width: 100px;
+  height: 200px;
+}
