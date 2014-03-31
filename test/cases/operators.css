@@ -50,3 +50,6 @@ body {
   foo: true;
   foo: true;
 }
+body {
+  foo: 'bar';
+}
