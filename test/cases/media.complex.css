@@ -34,3 +34,8 @@
     background-color: #bf5340;
   }
 }
+@media all and (min-width: 100px), only print and (width: 100px), (monochrome) {
+  body {
+    color: #0c0;
+  }
+}
