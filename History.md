@@ -1,4 +1,4 @@
-0.43.0 / in development
+0.43.0 / 2014-04-05
 
   * Added better support for media queries — interpolations, expressions in values and more, #1453.
   * Added `define` bif, #1382.
