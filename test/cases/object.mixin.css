@@ -31,7 +31,7 @@
 .foo:hover {
   background: #0f0;
 }
-@media screen and (min-width:1px) and (max-width:400px) {
+@media screen and (min-width: 1px) and (max-width: 400px) {
   .foo {
     display: none;
   }
