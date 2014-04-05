@@ -33,3 +33,21 @@ for column in 1 2 3
 , /* comment */ (monochrome /* bar */)
   body
     color #0c0
+
+@media (min-width: 10px) {}
+
+@media (min-width: 10px)
+  // hello
+
+@media (min-width: 10px)
+  $foo
+    width: 20px
+
+@media (min-width: 10px)
+  .foo
+    // hello
+
+@media (min-width: 10px)
+  if false
+    .foo
+      width: 20px
