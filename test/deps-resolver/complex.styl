@@ -1,0 +1,35 @@
+foo = false
+
+bar()
+  if !foo
+    @import 'complex/a'
+
+baz()
+  @import 'f.styl'
+
+bar()
+
+@media print {
+  @import 'complex/b'
+}
+
+.foo {
+  @import 'complex/c.styl'
+}
+
+for i in 1..5 {
+  @import 'complex/d.styl'
+}
+
+a = @block {
+  @import 'complex/e.styl'
+}
+
+{a}
+
+quz()
+  {block}
+
++quz() {
+  @import 'd.styl'
+}

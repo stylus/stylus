@@ -119,6 +119,12 @@ var imports = [];
 var resolveURL = false;
 
 /**
+ * Display dependencies flag.
+ */
+
+var deps = false;
+
+/**
  * Usage docs.
  */
 
@@ -153,6 +159,7 @@ var usage = [
   , '    -p, --print             Print out the compiled CSS'
   , '    --import <file>         Import stylus <file>'
   , '    --include-css           Include regular CSS on @import'
+  , '    -D, --deps              Display dependencies of the compiled file'
   , '    -r, --resolve-url       Resolve relative urls inside imports'
   , '    -V, --version           Display the version of Stylus'
   , '    -h, --help              Display help information'
@@ -276,6 +283,10 @@ while (args.length) {
     case '--resolve-url':
       resolveURL = true;
       break;
+    case '-D':
+    case '--deps':
+      deps = true;
+      break;
     default:
       files.push(arg);
   }
@@ -374,6 +385,10 @@ if (convertCSS) {
   }
 } else if (interactive) {
   repl();
+} else if (deps) {
+  // if --deps is used, just display list of the dependencies
+  // not working with stdio and dirs
+  displayDeps();
 } else {
   if (files.length) {
     compileFiles(files);
@@ -526,6 +541,29 @@ function compileStdio() {
 
 function compileFiles(files) {
   files.forEach(compileFile);
+}
+
+/**
+ * Display dependencies of the compiled files.
+ */
+
+function displayDeps() {
+  files.forEach(function(file){
+    // ensure file exists
+    fs.lstat(file, function(err, stat){
+      if (err) throw err;
+      fs.readFile(file, 'utf8', function(err, str){
+        if (err) throw err;
+        options.filename = file;
+        var style = stylus(str, options);
+        if (resolveURL) style.set('resolve url', true);
+
+        usePlugins(style);
+        importFiles(style);
+        console.log(style.deps().join('\n'));
+      });
+    });
+  });
 }
 
 /**
