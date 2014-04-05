@@ -149,7 +149,7 @@ But you can alter this behavior by using `--resolve-url` (or just `-r`) option t
 
 ## List dependencies
 
-You can use `--deps` (or just `-d`) flag to get a list of dependencies of the compiled file.
+You can use `--deps` (or just `-D`) flag to get a list of dependencies of the compiled file.
 
 For example, suppose we have `test.styl`:
 
