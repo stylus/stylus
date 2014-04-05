@@ -1,8 +1,11 @@
 0.43.0 / in development
 
+  * Added better support for media queries — interpolations, expressions in values and more, #1453.
   * Added `define` bif, #1382.
   * Add `--prefix` option for CLI and `+prefix-classes` mixin, #1420.
+  * Added `--deps` flag to list the dependencies of the compiled file and stylus.deps function, #1429.
   * Added support for multiple selectors in `@extend`, #1419.
+  * Added the support of the hash objects to `define`, #1444.
   * Fixed some floating point problems in maths, #1339.
   * Fixed the lost decimal part of units can when coercing from a string, #1387.
   * Fixed bug with hash lookup when a property name is the same as a name of local variable, #1433.
