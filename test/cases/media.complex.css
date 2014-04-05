@@ -39,3 +39,8 @@
     color: #0c0;
   }
 }
+@media all and (width: 100px) {
+  body {
+    width: 10px;
+  }
+}
