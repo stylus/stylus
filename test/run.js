@@ -66,3 +66,28 @@ describe('converter', function(){
     })
   });
 });
+
+// JS API
+
+describe('JS API', function(){
+  it('define a variable with object as hash', function(){
+    stylus('body { foo: test-obj.baz.foo.quz; bar: test-obj.bar[0].foo  }')
+      .set('compress', true)
+      .define('test-obj', {
+        bar: [{ foo: 1 }],
+        baz: {
+          foo: { quz: 'quz' },
+        }
+      }, true).render().should.equal("body{foo:'quz';bar:1}");
+  });
+
+  it('define a variable with object as list', function(){
+    stylus('body { foo: test-obj  }')
+      .set('compress', true)
+      .define('test-obj', {
+        baz: {
+          foo: { quz: 'quz' }
+        }
+      }).render().should.equal("body{foo:baz foo quz 'quz'}");
+  });
+});
