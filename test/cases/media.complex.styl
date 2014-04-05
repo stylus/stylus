@@ -1,0 +1,59 @@
+obj = {
+  print: 500px
+  desktop: 1023px
+}
+
+foo = 3em
+@media (max-width: foo)
+  body
+    color #fff
+
+@media only screen and (  max-width: foo * 10   ), not print and (orientation:portrait) && (min-{'width'} obj.print),
+  (monochrome) and (bar baz)
+  body
+    color #c00
+
+@media (max-width obj.desktop)
+  body
+    color #ccc
+
+unit = 220px
+for column in 1 2 3
+  size = unit * column
+  limit = size + column - 1px
+  @media screen and (min-width: size) and (max-width: limit)
+    .page-works
+      .inner
+        foo column
+        width size
+        background-color hsl(column * 3, 50, 50)
+
+@media /* foo */all/* bar */ and   /*  baz */(/* bar */ min-width :/* quz */  100px  /* foo */ )/* quz */  ,
+/* bar */  only/* foo */  print  and/* foo   */  (width/* bar */ 100px)
+, /* comment */ (monochrome /* bar */)
+  body
+    color #0c0
+
+@media (min-width: 10px) {}
+
+@media (min-width: 10px)
+  // hello
+
+@media (min-width: 10px)
+  $foo
+    width: 20px
+
+@media (min-width: 10px)
+  .foo
+    // hello
+
+@media (min-width: 10px)
+  if false
+    .foo
+      width: 20px
+
+condition = all
+
+@media condition and (width: 100px)
+  body
+    width: 10px

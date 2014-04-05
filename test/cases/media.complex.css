@@ -1,0 +1,46 @@
+@media (max-width: 3em) {
+  body {
+    color: #fff;
+  }
+}
+@media only screen and (max-width: 30em), not print and (orientation: portrait) and (min-width: 500px), (monochrome) and (bar: baz) {
+  body {
+    color: #c00;
+  }
+}
+@media (max-width: 1023px) {
+  body {
+    color: #ccc;
+  }
+}
+@media screen and (min-width: 220px) and (max-width: 220px) {
+  .page-works .inner {
+    foo: 1;
+    width: 220px;
+    background-color: #bf4640;
+  }
+}
+@media screen and (min-width: 440px) and (max-width: 441px) {
+  .page-works .inner {
+    foo: 2;
+    width: 440px;
+    background-color: #bf4d40;
+  }
+}
+@media screen and (min-width: 660px) and (max-width: 662px) {
+  .page-works .inner {
+    foo: 3;
+    width: 660px;
+    background-color: #bf5340;
+  }
+}
+@media all and (min-width: 100px), only print and (width: 100px), (monochrome) {
+  body {
+    color: #0c0;
+  }
+}
+@media all and (width: 100px) {
+  body {
+    width: 10px;
+  }
+}

@@ -43,6 +43,11 @@ var convertCSS = false;
 var linenos = false;
 
 /**
+ * CSS class prefix.
+ */
+var prefix = '';
+
+/**
  * Print to stdout flag.
  */
 var print = false;
@@ -114,6 +119,12 @@ var imports = [];
 var resolveURL = false;
 
 /**
+ * Display dependencies flag.
+ */
+
+var deps = false;
+
+/**
  * Usage docs.
  */
 
@@ -144,9 +155,11 @@ var usage = [
   , '                            can be used by the FireStylus Firebug plugin'
   , '    -l, --line-numbers      Emits comments in the generated CSS'
   , '                            indicating the corresponding Stylus line'
+  , '    -P, --prefix [prefix]   prefix all css classes'
   , '    -p, --print             Print out the compiled CSS'
   , '    --import <file>         Import stylus <file>'
   , '    --include-css           Include regular CSS on @import'
+  , '    -D, --deps              Display dependencies of the compiled file'
   , '    -r, --resolve-url       Resolve relative urls inside imports'
   , '    -V, --version           Display the version of Stylus'
   , '    -h, --help              Display help information'
@@ -185,10 +198,15 @@ while (args.length) {
     case '--line-numbers':
       linenos = true;
       break;
+    case '-P':
+    case '--prefix':
+      prefix = args.shift();
+      if (!prefix) throw new Error('--prefix <prefix> required');
+      break;
     case '-p':
     case '--print':
       print = true;
-    break;
+      break;
     case '-V':
     case '--version':
       console.log(stylus.version);
@@ -265,6 +283,10 @@ while (args.length) {
     case '--resolve-url':
       resolveURL = true;
       break;
+    case '-D':
+    case '--deps':
+      deps = true;
+      break;
     default:
       files.push(arg);
   }
@@ -335,6 +357,7 @@ var options = {
   , firebug: firebug
   , linenos: linenos
   , paths: [process.cwd()].concat(paths)
+  , prefix: prefix
 };
 
 // Buffer stdin
@@ -362,6 +385,10 @@ if (convertCSS) {
   }
 } else if (interactive) {
   repl();
+} else if (deps) {
+  // if --deps is used, just display list of the dependencies
+  // not working with stdio and dirs
+  displayDeps();
 } else {
   if (files.length) {
     compileFiles(files);
@@ -517,6 +544,29 @@ function compileFiles(files) {
 }
 
 /**
+ * Display dependencies of the compiled files.
+ */
+
+function displayDeps() {
+  files.forEach(function(file){
+    // ensure file exists
+    fs.lstat(file, function(err, stat){
+      if (err) throw err;
+      fs.readFile(file, 'utf8', function(err, str){
+        if (err) throw err;
+        options.filename = file;
+        var style = stylus(str, options);
+        if (resolveURL) style.set('resolve url', true);
+
+        usePlugins(style);
+        importFiles(style);
+        console.log(style.deps().join('\n'));
+      });
+    });
+  });
+}
+
+/**
  * Compile the given file.
  */
 
@@ -578,34 +628,44 @@ function writeFile(file, css) {
     if (err) throw err;
     console.log('  \033[90mcompiled\033[0m %s', path);
     // --watch support
-    watch(file, compileFile);
+    watch(file, file);
   });
 }
 
 /**
- * Watch the given `file` and invoke `fn` when modified.
+ * Watch the given `file` and recompiling `rootFile` when modified.
  */
 
-function watch(file, fn) {
+function watch(file, rootFile) {
   // not watching
   if (!watchers) return;
 
   // already watched
-  if (watchers[file]) return;
+  if (watchers[file]) {
+    watchers[file][rootFile] = true;
+    return;
+  }
 
   // watch the file itself
-  watchers[file] = true;
+  watchers[file] = {};
+  watchers[file][rootFile] = true;
   console.log('  \033[90mwatching\033[0m %s', file);
   // if is windows use fs.watch api instead
   // TODO: remove watchFile when fs.watch() works on osx etc
   if (isWindows) {
     fs.watch(file, function(event) {
-      if (event === 'change') fn(file);
+      if (event === 'change') compile();
     });
   } else {
     fs.watchFile(file, { interval: 300 }, function(curr, prev) {
-      if (curr.mtime > prev.mtime) fn(file);
+      if (curr.mtime > prev.mtime) compile();
     });
+  }
+
+  function compile() {
+    for (var rootFile in watchers[file]) {
+      compileFile(rootFile);
+    }
   }
 }
 
@@ -616,9 +676,7 @@ function watch(file, fn) {
 function watchImports(file, imports) {
   imports.forEach(function(imported){
     if (!imported.path) return;
-    watch(imported.path, function(){
-      compileFile(file);
-    });
+    watch(imported.path, file);
   });
 }
 

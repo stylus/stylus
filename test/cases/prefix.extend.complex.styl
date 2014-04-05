@@ -1,0 +1,26 @@
+form button
+  padding: 10px
+  border-radius: 5px
+  border: 1px solid gray
+
+a.button
+  @extends form button
+  text-decoration: none
+
+form
+  button
+    padding: 10px
+    color: red
+    &:hover
+      color: blue
+
+body
+  width: 75%
+
+form
+  if true
+    @extend body
+
+a.button
+  unless false
+    @extend form

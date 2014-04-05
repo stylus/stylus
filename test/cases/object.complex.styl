@@ -79,3 +79,24 @@ if bar.foo {
 body
   width: bar.qux.width
   height: bar.buz = 100px
+
+foo(obj)
+  .foo
+    for size, settings in obj
+      width = settings.width
+      height = settings.height
+      width width
+      height height
+
+obj = {
+  small: {
+    width: 10px
+    height: 20px
+  }
+  large: {
+    width: 100px
+    height: 200px
+  }
+}
+
+foo(obj)

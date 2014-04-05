@@ -7,6 +7,9 @@ body
   foo 5 != 1
   foo 5 != asdf
   foo 5 == asdf == false
+  foo !(5 == '5.1')
+  foo 5 != '5.1'
+  foo '5' != '5.1'
 
 body
   foo 1000ms == 1s

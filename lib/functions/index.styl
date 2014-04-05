@@ -61,9 +61,6 @@ cos(n)
   n = degrees-to-radians(n) if unit(n) == 'deg'
   round(math(n, 'cos'), 9)
 
-tan(n)
-  round(sin(n) / cos(n), 9)
-
 // Rounding Math functions
 
 ceil(n, precision = 0)
@@ -290,3 +287,6 @@ add-property(name, expr)
     {name} expr
   else
     add-property-function(name, expr)
+
+prefix-classes(prefix)
+  -prefix-classes(prefix, block)

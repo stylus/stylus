@@ -1,0 +1,36 @@
+.a,
+.c,
+.d {
+  color: #f00;
+}
+.b,
+.c,
+.d {
+  width: 100px;
+}
+.c,
+.d {
+  height: 200px;
+}
+.d[data-prop*=','],
+.foo {
+  color: #00f;
+}
+.d-1,
+.e {
+  width: 100%;
+}
+.foo:before,
+.e:before,
+.foo:after,
+.e:after {
+  content: ' ';
+  clear: both;
+  display: table;
+  font: 0/0 a;
+  visibility: hidden;
+}
+.foo,
+.e {
+  display: inline-block;
+}

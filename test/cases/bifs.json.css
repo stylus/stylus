@@ -9,6 +9,8 @@
     outline: 0;
     margin: 20px;
     border: #f00;
+    text-decoration-color: rgba(0,0,0,0.5);
+    text-shadow: 0 1px rgba(0,0,0,0.5);
   }
 }
 @media screen and (min-width:1501px) {
