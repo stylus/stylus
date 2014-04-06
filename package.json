@@ -29,6 +29,7 @@
     "mkdirp": "0.3.x",
     "debug": "*",
     "sax": "0.5.x",
+    "source-map": "~0.1.29",
     "glob": "3.2.x"
   },
   "devDependencies": {
