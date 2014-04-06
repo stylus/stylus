@@ -1,0 +1,5 @@
+test/deps-resolver/complex/a.styl
+test/deps-resolver/complex/b.styl
+test/deps-resolver/complex/c.styl
+test/deps-resolver/complex/d.styl
+test/deps-resolver/complex/e.styl

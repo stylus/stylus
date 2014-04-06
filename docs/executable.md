@@ -32,9 +32,11 @@ Stylus ships with the `stylus` executable for converting Stylus to CSS.
                                 can be used by the FireStylus Firebug plugin
         -l, --line-numbers      Emits comments in the generated CSS
                                 indicating the corresponding Stylus line
+        -P, --prefix [prefix]   Prefix all css classes
         -p, --print             Print out the compiled CSS
         --import <file>         Import stylus <file>
         --include-css           Include regular CSS on @import
+        -D, --deps              Display dependencies of the compiled file
         -r, --resolve-url       Resolve relative urls inside imports
         -V, --version           Display the version of Stylus
         -h, --help              Display help information
@@ -75,6 +77,25 @@ Try Stylus some in the terminal!  Type below and press `CTRL-D` for `__EOF__`:
   the [FireStylus extension for Firebug](//github.com/LearnBoost/stylus/blob/master/docs/firebug.md):
 
       $ stylus --firebug <path>
+
+## Prefixing classes
+
+`stylus` executable provides you a way to prefix all the generated styles using `--prefix` option with given `[prefix]`,
+
+    $ stylus --prefix foo-
+
+used with this code:
+
+    .bar
+      width: 10px
+
+would yield
+
+    .foo-bar {
+      width: 10px;
+    }
+
+All the classes would be prefixed: interpolated, extended etc.
 
 ## Converting CSS
 
@@ -125,6 +146,31 @@ Try Stylus some in the terminal!  Type below and press `CTRL-D` for `__EOF__`:
 By default Stylus don't resolve the urls in imported `.styl` files, so if you'd happen to have a `foo.styl` with `@import "bar/bar.styl"` which would have `url("baz.png")`, it would be `url("baz.png")` too in a resulting CSS.
 
 But you can alter this behavior by using `--resolve-url` (or just `-r`) option to get `url("bar/baz.png")` in your resulting CSS.
+
+## List dependencies
+
+You can use `--deps` (or just `-D`) flag to get a list of dependencies of the compiled file.
+
+For example, suppose we have `test.styl`:
+
+    @import 'foo'
+    @import 'bar'
+
+And inside `foo.styl`:
+
+    @import 'baz'
+
+Running:
+
+    $ stylus --deps test.styl
+
+Will give us list of the imports paths:
+
+    foo.styl
+    baz.styl
+    bar.styl
+
+**Note that currently this does not works for dynamically generated paths**.
 
 ## Utilizing Plugins
 

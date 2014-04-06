@@ -49,7 +49,7 @@ body {
     more: stuff;
   }
 }
-@media and stuff {
+@media stuff {
   complex {
     stuff: 1234;
   }
@@ -59,7 +59,7 @@ body {
     fizz: buzz;
   }
 }
-@media not so awesome {
+@media not awesome {
   complex {
     one: 1;
   }

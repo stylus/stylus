@@ -1,0 +1,27 @@
+.foo
+  width: 10px
+
+foo()
+  .bar
+    {block}
+
++prefix-classes('prefix-')
+  .test
+    width: 1px
+  .test2
+    width: 1px
+
++foo()
+  width: 10px
+  +prefix-classes('prefix2-')
+    .test
+      width: 1px
+    .test2
+      width: 1px
+
+
++prefix-classes('lol-')
+  .bar
+    height: 10px
+
+  @import 'import.basic/a'

@@ -1,0 +1,34 @@
+body {
+  foo: 0rem;
+  foo: 0.1rem;
+  foo: 0.2rem;
+  foo: 0.3rem;
+  foo: 0.4rem;
+  foo: 0.5rem;
+  foo: 0.6rem;
+  foo: 0.7rem;
+  foo: 0.8rem;
+  foo: 0.9rem;
+  foo: 1rem;
+  foo: 1.1rem;
+  foo: 1.2rem;
+  foo: 1.3rem;
+  foo: 1.4rem;
+  foo: 1.5rem;
+  foo: 1.6rem;
+  foo: 1.7rem;
+  foo: 1.8rem;
+  foo: 1.9rem;
+  foo: 2rem;
+  foo: 50%;
+  foo: 33.333333333333336%;
+  foo: 25%;
+  foo: 20%;
+  foo: 16.666666666666668%;
+  foo: 14.285714285714286%;
+  foo: 12.5%;
+  foo: 11.11111111111111%;
+  foo: 10%;
+  foo: 9.090909090909092%;
+  foo: 8.333333333333334%;
+}

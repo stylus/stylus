@@ -1,0 +1,38 @@
+.a
+  color: red
+
+.b
+  width: 100px
+
+.c
+  @extend .a, .b
+  height: 200px
+
+.d
+  @extend .b,.c
+
+.d[data-prop*=',']
+  color: blue
+
+.d-1
+  width: 100%
+
+$cf
+  &:before
+  &:after
+    content: ' '
+    clear: both
+    display: table
+    font: 0/0 a
+    visibility: hidden
+
+$ib
+  display: inline-block
+
+.foo
+  @extend .d[data-prop*=','], $cf, $ib
+
+$i = 1
+
+.e
+  @extend .d-{$i}, $cf, $ib

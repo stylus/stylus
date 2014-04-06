@@ -1,0 +1,23 @@
+form button,
+a.prefix-button {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #808080;
+}
+a.prefix-button {
+  text-decoration: none;
+}
+form button,
+a.prefix-button button {
+  padding: 10px;
+  color: #f00;
+}
+form button:hover,
+a.prefix-button button:hover {
+  color: #00f;
+}
+body,
+form,
+a.prefix-button {
+  width: 75%;
+}

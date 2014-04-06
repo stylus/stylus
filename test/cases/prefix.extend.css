@@ -1,0 +1,13 @@
+.prefix-message,
+.prefix-warning,
+.prefix-error {
+  margin: 5px;
+  padding: 20px;
+  font-weight: bold;
+}
+.prefix-warning {
+  color: #ff0;
+}
+.prefix-error {
+  color: #f00;
+}
