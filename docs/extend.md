@@ -156,9 +156,9 @@ Yielding:
 
 ## Extending placeholder selectors
 
-Stylus have the feature similar to the one in [Sass](http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#placeholders) — placeholder selectors.
+Stylus has a feature similar to the one in [Sass](http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#placeholders) — placeholder selectors.
 
-Those selectors should start `$` symbol (for example, `$foo`), and are not yielded in the resulting CSS. But you still can extend them:
+Those selectors should start with a `$` symbol (for example, `$foo`), and are not yielded in the resulting CSS. But you can still extend them:
 
     $foo
       color: #FFF
