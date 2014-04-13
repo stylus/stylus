@@ -27,3 +27,11 @@
   @top-center { content: 'foo' }
   @bottom-center { content: counter(page) }
 }
+
+@page
+  counter-reset: footnote
+  @footnote
+    counter-increment: footnote
+    float: bottom
+    column-span: all
+    height: auto
