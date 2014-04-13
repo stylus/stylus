@@ -40,3 +40,12 @@
 @supports (display: flex)
   div
     display: flex;
+
+foo(i)
+  a = 'bar'
+  @foo {a}{i} {
+    color: red
+  }
+
+for i in 1..5
+  foo(i)

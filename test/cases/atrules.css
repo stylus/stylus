@@ -39,3 +39,18 @@
     display: flex;
   }
 }
+@foo bar1 {
+  color: #f00;
+}
+@foo bar2 {
+  color: #f00;
+}
+@foo bar3 {
+  color: #f00;
+}
+@foo bar4 {
+  color: #f00;
+}
+@foo bar5 {
+  color: #f00;
+}
