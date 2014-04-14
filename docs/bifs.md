@@ -468,6 +468,15 @@ Mix the given color with black.
 
 Check out the `%` string operator for equivalent behaviour.
 
+## current-media()
+
+`current-media()` function returns the string of the current block's `@media` rule or `''` if there is no `@media` above the block.
+
+    @media only screen and (min-width: 1024px)
+      current-media()
+    // => '@media (only screen and (min-width: (1024px)))'
+
+
 ## +prefix-classes(prefix)
 
 Stylus comes with a block mixin `prefix-classes` that can be used for prefixing the classes inside any given Stylus' block. For example:
