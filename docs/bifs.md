@@ -468,6 +468,22 @@ Mix the given color with black.
 
 Check out the `%` string operator for equivalent behaviour.
 
+## `called-from` property
+
+`called-from` property contains the list of the functions the current function was called from in the reverse order (the first item is the deepest function).
+
+    foo()
+      bar()
+
+    bar()
+      baz()
+
+    baz()
+      return called-from
+
+    foo()
+    // => bar foo
+
 ## current-media()
 
 `current-media()` function returns the string of the current block's `@media` rule or `''` if there is no `@media` above the block.
