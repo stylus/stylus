@@ -1,0 +1,14 @@
+.a,
+.b {
+  width: 10px;
+}
+.a {
+  height: 20px;
+}
+.b,
+.c {
+  height: 2em;
+}
+.c {
+  width: 1px;
+}

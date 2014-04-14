@@ -1,0 +1,32 @@
+foo(arguments)
+  +cache(arguments)
+    width: arguments
+
+.a
+  foo: 10px
+
+.b
+  foo: 20px
+
+@media only screen and (min-width: 1024px)
+  .c
+    foo: 10px
+
+.d
+  foo: 10px
+
+@media only screen and (min-width: 1024px)
+  .e
+    foo: 10px
+
+@media only screen and (min-width: 1024px)
+  .f
+    foo: 20px
+
+@media only screen and (min-width: 1600px)
+  .f
+    foo: 10px
+
+.g
+  @media only screen and (min-width: 1600px)
+    foo: 10px
