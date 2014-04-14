@@ -1,0 +1,24 @@
+.a,
+.d {
+  width: 10px;
+}
+.b {
+  width: 20px;
+}
+@media only screen and (min-width: 1024px) {
+  .c,
+.e {
+    width: 10px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .f {
+    width: 20px;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .f,
+.g {
+    width: 10px;
+  }
+}
