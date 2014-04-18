@@ -55,3 +55,21 @@ three * {
   two: 2;
   three: 3;
 }
+.foo.bar.raz,
+.foo.baz.raz {
+  padding: 0;
+}
+.foo_hack,
+x::-moz-focus-inner {
+  padding: 0;
+}
+.foo_hack2,
+x::-moz-focus-inner {
+  padding: 0;
+}
+.bar_escaped_amp[title^=&] {
+  width: 10px;
+}
+.bar_escaped_comma[title^=,&z,] {
+  width: 10px;
+}
