@@ -1,57 +1,49 @@
 @-webkit-keyframes something {
-  0% {
+  from {
     color: #f00;
   }
-
-  100% {
+  to {
     color: #00f;
   }
 }
 @-webkit-keyframes fade {
-  0% {
+  from {
     opacity: 0;
   }
-
-  100% {
+  to {
     opacity: 1;
   }
 }
 @-webkit-keyframes bouce {
-  0% {
+  from {
     foo: bar;
   }
-
   50% {
     foo: bar;
   }
-
-  100% {
+  to {
     foo: bar;
   }
 }
 @-webkit-keyframes bouce {
-  0% {
+  from {
     foo: bar;
   }
-
   50% {
     foo: bar;
   }
-
-  100% {
+  to {
     foo: bar;
   }
 }
 @-webkit-keyframes bouce {
-  0% {
+  from {
     foo: bar;
   }
-
   50% {
     foo: bar;
   }
-
-  100% {
+  to {
     foo: bar;
   }
 }

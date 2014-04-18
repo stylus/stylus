@@ -21,3 +21,20 @@
   to {
   }
 }
+
+vendors = official
+
+@keyframes active
+  for i in 0..10
+    percent = unit(i * 10, '%')
+    {percent}
+      background-image: radial-gradient(yellow 0%, red percent, black 100%)
+
+foo()
+  0%
+    color: red
+  100%
+    color: yellow
+
+@keyframes foo
+  foo() if true
