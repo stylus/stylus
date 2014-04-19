@@ -34,25 +34,21 @@ yielding:
           opacity: 1;
           -webkit-transform: scale(1) rotate(0deg);
         }
-
         33% {
           background-color: blue;
           opacity: 0.75;
           -webkit-transform: scale(1.1) rotate(-5deg);
         }
-
         67% {
           background-color: green;
           opacity: 0.5;
           -webkit-transform: scale(1.1) rotate(5deg);
         }
-
         100% {
           background-color: red;
           opacity: 1;
           -webkit-transform: scale(1) rotate(0deg);
         }
-
       }
 
 ## Expansion
@@ -76,7 +72,6 @@ This expands to our two default vendors, and the official syntax:
       0% {
         color: #000;
       }
-
       100% {
         color: #fff;
       }
@@ -85,7 +80,6 @@ This expands to our two default vendors, and the official syntax:
       0% {
         color: #000;
       }
-
       100% {
         color: #fff;
       }
@@ -94,7 +88,6 @@ This expands to our two default vendors, and the official syntax:
       0% {
         color: #000;
       }
-
       100% {
         color: #fff;
       }
@@ -119,7 +112,6 @@ Yielding:
       0% {
         color: #000;
       }
-
       100% {
         color: #fff;
       }

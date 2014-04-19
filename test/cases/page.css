@@ -1,6 +1,9 @@
 @page {
   margin: 2.5cm;
 }
+@page name {
+  color: #f00;
+}
 @page :left {
   margin-left: 5cm;
 }
@@ -13,4 +16,26 @@
 }
 @page :left {
   margin-left: 5cm;
+}
+@page :blank {
+  @top-center {
+    content: none;
+  }
+}
+@page :right {
+  @top-center {
+    content: 'foo';
+  }
+  @bottom-center {
+    content: counter(page);
+  }
+}
+@page {
+  counter-reset: footnote;
+  @footnote {
+    counter-increment: footnote;
+    float: bottom;
+    column-span: all;
+    height: auto;
+  }
 }
