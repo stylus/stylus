@@ -105,6 +105,11 @@ Yielding:
         border: 2px solid #eee;
       }
 
+If you'd need to use the ampersand symbol in a selector without it behaving like a parent reference, you can just escape it:
+
+    .foo[title*='\&']
+    // => .foo[title*='&']
+
 ## Root Reference
 
 The `/` character at the start of the selector is a root reference. It references the root context and this means the selector won't prepend the parent's selector to it (unless you would use it with `&`). It is helpful when you need to write some styles both to some nested selector and to another one, not in the current scope.

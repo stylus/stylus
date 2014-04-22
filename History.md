@@ -1,3 +1,13 @@
+0.44.0 / 2014-04-22
+===================
+
+  * Major performance tuning and basic caching support, almost ⨉2 build time boost, #1428.
+  * Added `+cache` built-in mixin for caching the result of functions and mixins into placeholders, #1466.
+  * Added `current-media()` bif that returns the string for the current media query, #1466.
+  * Added `called-from` property in functions that contains the names of the functions from the call stack till the current one, #1466.
+  * Added a way to escape commas and parent references inside selectors, #1413.
+  * Fixed rendering of multiple selectors inside interpolation, #1413.
+
 0.43.1 / 2014-04-07
 ===================
 
