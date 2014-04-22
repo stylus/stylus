@@ -1,2 +1,2 @@
 debug: true
-production_url: http://localhost:4000
+production_url: //localhost:4000
