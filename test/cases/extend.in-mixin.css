@@ -2,3 +2,13 @@
 #col3 {
   width: 50%;
 }
+.one-half,
+.two-quarters {
+  width: 50%;
+}
+@media test-media {
+  .test-one-half,
+  .test-two-quarters {
+    width: 50%;
+  }
+}
