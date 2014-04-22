@@ -1,18 +1,16 @@
 @-moz-keyframes foo {
-  0% {
+  from {
     color: #000;
   }
-
-  100% {
+  to {
     color: #fff;
   }
 }
 @keyframes foo {
-  0% {
+  from {
     color: #000;
   }
-
-  100% {
+  to {
     color: #fff;
   }
 }

@@ -1,0 +1,56 @@
+@-moz-viewport {
+  color: #f00;
+}
+@viewport {
+  color: #00f;
+}
+@host {
+  body {
+    color: #008000;
+  }
+}
+@foo {
+  @bar {
+    color: #cc0;
+  }
+}
+@namespace svg "http://www.w3.org/2000/svg";
+@namespace "foo";
+@namespace foo "http://example.com/foo";
+@region div.region:first-of-type {
+  p {
+    color: #fff;
+  }
+}
+@media screen and (max-width: 400px) {
+  @-ms-viewport {
+    width: 320px;
+/* the viewport for small devices is set to 320px  */
+  }
+  @-o-viewport {
+    width: device-width;
+  }
+  @viewport {
+    width: device-width;
+  }
+}
+@supports (display: flex) {
+  div {
+    display: flex;
+  }
+}
+@foo bar1 {
+  color: #f00;
+}
+@foo bar2 {
+  color: #f00;
+}
+@foo bar3 {
+  color: #f00;
+}
+@foo bar4 {
+  color: #f00;
+}
+@foo bar5 {
+  color: #f00;
+}
