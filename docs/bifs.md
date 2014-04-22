@@ -468,6 +468,69 @@ Mix the given color with black.
 
 Check out the `%` string operator for equivalent behaviour.
 
+## `called-from` property
+
+`called-from` property contains the list of the functions the current function was called from in the reverse order (the first item is the deepest function).
+
+    foo()
+      bar()
+
+    bar()
+      baz()
+
+    baz()
+      return called-from
+
+    foo()
+    // => bar foo
+
+## current-media()
+
+`current-media()` function returns the string of the current block's `@media` rule or `''` if there is no `@media` above the block.
+
+    @media only screen and (min-width: 1024px)
+      current-media()
+    // => '@media (only screen and (min-width: (1024px)))'
+
+
+## +cache(keys...)
+
+`+cache` is a really powerful built-in function that allows you to create your own “cachable” mixins.
+
+“Cachable mixin” is the one, that would apply its contents to the given selector on the first call, but would `@extend` the first call's selector at the second call with the same params.
+
+    size($width, $height = $width)
+      +cache('w' + $width)
+        width: $width
+      +cache('h' + $height)
+        height: $height
+
+    .a
+      size: 10px 20px
+    .b
+      size: 10px 2em
+    .c
+      size: 1px 2em
+
+Would yield to
+
+    .a,
+    .b {
+      width: 10px;
+    }
+    .a {
+      height: 20px;
+    }
+    .b,
+    .c {
+      height: 2em;
+    }
+    .c {
+      width: 1px;
+    }
+
+See how the selectors are grouped together by the used property.
+
 ## +prefix-classes(prefix)
 
 Stylus comes with a block mixin `prefix-classes` that can be used for prefixing the classes inside any given Stylus' block. For example:

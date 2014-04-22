@@ -1,0 +1,32 @@
+.test1
+  test: called-from
+
+foo()
+  return called-from
+
+.test2
+  test: foo()
+
+bar()
+  return foo()
+
+.test3
+  test: bar()
+
+baz()
+  return bar()
+
+.test4
+  test: baz()
+
+.test5
+  test: baz()[0]
+
+foo2()
+  return called-from
+
+bar2()
+  foo2()
+
+.test6
+  test: bar2()

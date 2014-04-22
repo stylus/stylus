@@ -1,3 +1,5 @@
+called-from = ()
+
 vendors = moz webkit o ms official
 
 // stringify the given arg
@@ -275,3 +277,20 @@ add-property(name, expr)
 
 prefix-classes(prefix)
   -prefix-classes(prefix, block)
+
+// Caching mixin, use inside your functions to enable caching by extending.
+
+$stylus_mixin_cache = {}
+cache()
+  $key = (current-media() or 'no-media') + '__' + called-from[0] + '__' + arguments
+  if $key in $stylus_mixin_cache
+    @extend {"$cache_placeholder_for_" + $stylus_mixin_cache[$key]}
+  else if 'cache' in called-from
+    {block}
+  else
+    $id = length($stylus_mixin_cache)
+
+    &,
+    /$cache_placeholder_for_{$id}
+      $stylus_mixin_cache[$key] = $id
+      {block}
