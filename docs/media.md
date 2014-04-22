@@ -90,7 +90,3 @@ would yield to
         width: 400px;
       }
     }
-
-Note that if you'd need to use the `/`, like in ratios, you'd need to escape it:
-
-    @media screen and (device-aspect-ratio: 16\/9)

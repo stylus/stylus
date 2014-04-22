@@ -119,6 +119,12 @@ var imports = [];
 var resolveURL = false;
 
 /**
+ * Disable cache.
+ */
+
+var disableCache = false;
+
+/**
  * Display dependencies flag.
  */
 
@@ -160,6 +166,7 @@ var usage = [
   , '    --import <file>         Import stylus <file>'
   , '    --include-css           Include regular CSS on @import'
   , '    -D, --deps              Display dependencies of the compiled file'
+  , '    --disable-cache         Disable caching'
   , '    -r, --resolve-url       Resolve relative urls inside imports'
   , '    -V, --version           Display the version of Stylus'
   , '    -h, --help              Display help information'
@@ -232,6 +239,9 @@ while (args.length) {
       break;
     case '--include-css':
       includeCSS = true;
+      break;
+    case '--disable-cache':
+      disableCache = true;
       break;
     case '-i':
     case '--repl':
@@ -520,6 +530,7 @@ function compileStdio() {
     var style = stylus(str, options);
     if (includeCSS) style.set('include css', true);
     if (resolveURL) style.set('resolve url', true);
+    if (disableCache) style.set('cache', false);
     usePlugins(style);
     importFiles(style);
     style.render(function(err, css){
@@ -583,6 +594,7 @@ function compileFile(file) {
         var style = stylus(str, options);
         if (includeCSS) style.set('include css', true);
         if (resolveURL) style.set('resolve url', true);
+        if (disableCache) style.set('cache', false);
 
         usePlugins(style);
         importFiles(style);
