@@ -119,10 +119,10 @@ var imports = [];
 var resolveURL = false;
 
 /**
- * Cache type.
+ * Disable cache.
  */
 
-var cache = '';
+var disableCache = false;
 
 /**
  * Display dependencies flag.
@@ -166,10 +166,7 @@ var usage = [
   , '    --import <file>         Import stylus <file>'
   , '    --include-css           Include regular CSS on @import'
   , '    -D, --deps              Display dependencies of the compiled file'
-  , '    --cache <type>          Use one of the cache methods:'
-  , '                              "fs" — cache items on the file system'
-  , '                              "memory" — cache items in the memory (default)'
-  , '                            to disable cache pass "false"'
+  , '    --disable-cache         Disable caching'
   , '    -r, --resolve-url       Resolve relative urls inside imports'
   , '    -V, --version           Display the version of Stylus'
   , '    -h, --help              Display help information'
@@ -243,9 +240,8 @@ while (args.length) {
     case '--include-css':
       includeCSS = true;
       break;
-    case '--cache':
-      cache = args.shift();
-      if (!cache) throw new Error('--cache <type> required');
+    case '--disable-cache':
+      disableCache = true;
       break;
     case '-i':
     case '--repl':
@@ -367,7 +363,6 @@ function help(name) {
 
 var options = {
     filename: 'stdin'
-  , cache: cache
   , compress: compress
   , firebug: firebug
   , linenos: linenos
@@ -535,6 +530,7 @@ function compileStdio() {
     var style = stylus(str, options);
     if (includeCSS) style.set('include css', true);
     if (resolveURL) style.set('resolve url', true);
+    if (disableCache) style.set('cache', false);
     usePlugins(style);
     importFiles(style);
     style.render(function(err, css){
@@ -598,6 +594,7 @@ function compileFile(file) {
         var style = stylus(str, options);
         if (includeCSS) style.set('include css', true);
         if (resolveURL) style.set('resolve url', true);
+        if (disableCache) style.set('cache', false);
 
         usePlugins(style);
         importFiles(style);
