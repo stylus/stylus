@@ -1,34 +1,218 @@
 @-moz-keyframes foo {
-  0% {
+  from {
     color: #000;
   }
-
-  100% {
+  to {
     color: #fff;
   }
 }
+@keyframes lol1 {
+  10% {
+    left: 10;
+  }
+  20% {
+    left: 20;
+  }
+  30% {
+    left: 30;
+  }
+  40% {
+    left: 40;
+  }
+  50% {
+    left: 50;
+  }
+  60% {
+    left: 60;
+  }
+  70% {
+    left: 70;
+  }
+  80% {
+    left: 80;
+  }
+  90% {
+    left: 90;
+  }
+  100% {
+    left: 100;
+  }
+}
+@keyframes foo1 {
+  5% {
+    left: 5;
+  }
+  10% {
+    left: 10;
+  }
+  15% {
+    left: 15;
+  }
+  20% {
+    left: 20;
+  }
+  25% {
+    left: 25;
+  }
+}
+@keyframes lol2 {
+  10% {
+    left: 10;
+  }
+  20% {
+    left: 20;
+  }
+  30% {
+    left: 30;
+  }
+  40% {
+    left: 40;
+  }
+  50% {
+    left: 50;
+  }
+  60% {
+    left: 60;
+  }
+  70% {
+    left: 70;
+  }
+  80% {
+    left: 80;
+  }
+  90% {
+    left: 90;
+  }
+  100% {
+    left: 100;
+  }
+}
+@keyframes foo2 {
+  5% {
+    left: 5;
+  }
+  10% {
+    left: 10;
+  }
+  15% {
+    left: 15;
+  }
+  20% {
+    left: 20;
+  }
+  25% {
+    left: 25;
+  }
+}
+@keyframes lol3 {
+  10% {
+    left: 10;
+  }
+  20% {
+    left: 20;
+  }
+  30% {
+    left: 30;
+  }
+  40% {
+    left: 40;
+  }
+  50% {
+    left: 50;
+  }
+  60% {
+    left: 60;
+  }
+  70% {
+    left: 70;
+  }
+  80% {
+    left: 80;
+  }
+  90% {
+    left: 90;
+  }
+  100% {
+    left: 100;
+  }
+}
+@keyframes foo3 {
+  5% {
+    left: 5;
+  }
+  10% {
+    left: 10;
+  }
+  15% {
+    left: 15;
+  }
+  20% {
+    left: 20;
+  }
+  25% {
+    left: 25;
+  }
+}
 @-moz-keyframes foo {
-  0% {
+  from {
     width: 100%;
   }
 }
 @-webkit-keyframes foo {
-  0% {
+  from {
     width: 100%;
   }
 }
 @-o-keyframes foo {
-  0% {
-    width: 100%;
-  }
-}
-@-ms-keyframes foo {
-  0% {
+  from {
     width: 100%;
   }
 }
 @keyframes foo {
-  0% {
+  from {
     width: 100%;
+  }
+}
+@keyframes active {
+  0% {
+    background-image: radial-gradient(#ff0 0%, #f00 0%, #000 100%);
+  }
+  10% {
+    background-image: radial-gradient(#ff0 0%, #f00 10%, #000 100%);
+  }
+  20% {
+    background-image: radial-gradient(#ff0 0%, #f00 20%, #000 100%);
+  }
+  30% {
+    background-image: radial-gradient(#ff0 0%, #f00 30%, #000 100%);
+  }
+  40% {
+    background-image: radial-gradient(#ff0 0%, #f00 40%, #000 100%);
+  }
+  50% {
+    background-image: radial-gradient(#ff0 0%, #f00 50%, #000 100%);
+  }
+  60% {
+    background-image: radial-gradient(#ff0 0%, #f00 60%, #000 100%);
+  }
+  70% {
+    background-image: radial-gradient(#ff0 0%, #f00 70%, #000 100%);
+  }
+  80% {
+    background-image: radial-gradient(#ff0 0%, #f00 80%, #000 100%);
+  }
+  90% {
+    background-image: radial-gradient(#ff0 0%, #f00 90%, #000 100%);
+  }
+  100% {
+    background-image: radial-gradient(#ff0 0%, #f00 100%, #000 100%);
+  }
+}
+@keyframes foo {
+  0% {
+    color: #f00;
+  }
+  100% {
+    color: #ff0;
   }
 }

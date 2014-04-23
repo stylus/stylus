@@ -1,13 +1,11 @@
 @-webkit-keyframes movingBorder {
-  0% {
+  from {
     border-radius: 0 0 0 35px;
   }
-
   50% {
     border-radius: 0 0 25px 0;
   }
-
-  100% {
+  to {
     border-radius: 0 25px 0 0;
   }
 }

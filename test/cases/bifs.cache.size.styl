@@ -1,0 +1,15 @@
+size($width, $height = $width)
+  +cache('w' + $width)
+    width: $width
+  +cache('h' + $height)
+    height: $height
+
+
+.a
+  size: 10px 20px
+
+.b
+  size: 10px 2em
+
+.c
+  size: 1px 2em

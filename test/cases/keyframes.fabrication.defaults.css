@@ -1,45 +1,32 @@
 @-moz-keyframes foo {
-  0% {
+  from {
     color: #000;
   }
-
-  100% {
+  to {
     color: #fff;
   }
 }
 @-webkit-keyframes foo {
-  0% {
+  from {
     color: #000;
   }
-
-  100% {
+  to {
     color: #fff;
   }
 }
 @-o-keyframes foo {
-  0% {
+  from {
     color: #000;
   }
-
-  100% {
-    color: #fff;
-  }
-}
-@-ms-keyframes foo {
-  0% {
-    color: #000;
-  }
-
-  100% {
+  to {
     color: #fff;
   }
 }
 @keyframes foo {
-  0% {
+  from {
     color: #000;
   }
-
-  100% {
+  to {
     color: #fff;
   }
 }

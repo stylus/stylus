@@ -1,0 +1,45 @@
+.lol,
+.foo__child,
+.sub__child {
+  height: 20px;
+}
+.foo,
+.foo2 {
+  color: #f00;
+}
+.foo__child,
+.foo2__child {
+  color: #0f0;
+  background-color: #00f;
+  height: 10px;
+}
+.foo__next-child,
+.foo2__next-child {
+  color: #00f;
+  text-shadow: 1px 1px #f00;
+}
+.sub,
+.sub2 {
+  color: #fff;
+}
+.sub__child,
+.sub2__child {
+  color: #000;
+  background-color: #f00;
+  height: 10px;
+}
+.sub__next-child,
+.sub2__next-child {
+  color: #f00;
+  text-shadow: 1px 1px #fff;
+}
+.fooz {
+  height: 10px;
+}
+.fooz,
+.maz {
+  width: 10px;
+}
+.maz {
+  padding: 0;
+}

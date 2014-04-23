@@ -2,8 +2,7 @@
   0%, 50%, 100% {
     background: #fff;
   }
-
-  100% {
+  to {
     background: #000;
   }
 }
@@ -11,8 +10,7 @@
   0%, 50%, 100% {
     background: #fff;
   }
-
-  100% {
+  to {
     background: #000;
   }
 }
@@ -20,17 +18,7 @@
   0%, 50%, 100% {
     background: #fff;
   }
-
-  100% {
-    background: #000;
-  }
-}
-@-ms-keyframes something {
-  0%, 50%, 100% {
-    background: #fff;
-  }
-
-  100% {
+  to {
     background: #000;
   }
 }
@@ -38,8 +26,7 @@
   0%, 50%, 100% {
     background: #fff;
   }
-
-  100% {
+  to {
     background: #000;
   }
 }

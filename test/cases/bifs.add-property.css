@@ -71,7 +71,6 @@ body {
     display: -ms-flex;
     display: flex;
   }
-
   100% {
     display: block;
   }
@@ -84,7 +83,6 @@ body {
     display: -ms-flex;
     display: flex;
   }
-
   100% {
     display: block;
   }
@@ -97,20 +95,6 @@ body {
     display: -ms-flex;
     display: flex;
   }
-
-  100% {
-    display: block;
-  }
-}
-@-ms-keyframes foo {
-  0% {
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: -o-flex;
-    display: -ms-flex;
-    display: flex;
-  }
-
   100% {
     display: block;
   }
@@ -123,7 +107,6 @@ body {
     display: -ms-flex;
     display: flex;
   }
-
   100% {
     display: block;
   }

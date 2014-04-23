@@ -2,12 +2,10 @@
   0% {
     transform: scale(1);
   }
-
   10%, 20% {
     transform: scale(0.9) rotate(-3deg);
   }
-
-  0%, 100% {
+  from, to {
     background: scale(0.5);
   }
 }
@@ -15,12 +13,10 @@
   0% {
     transform: scale(1);
   }
-
   10%, 20% {
     transform: scale(0.9) rotate(-3deg);
   }
-
-  0%, 100% {
+  from, to {
     background: scale(0.5);
   }
 }
@@ -28,25 +24,10 @@
   0% {
     transform: scale(1);
   }
-
   10%, 20% {
     transform: scale(0.9) rotate(-3deg);
   }
-
-  0%, 100% {
-    background: scale(0.5);
-  }
-}
-@-ms-keyframes tada {
-  0% {
-    transform: scale(1);
-  }
-
-  10%, 20% {
-    transform: scale(0.9) rotate(-3deg);
-  }
-
-  0%, 100% {
+  from, to {
     background: scale(0.5);
   }
 }
@@ -54,12 +35,10 @@
   0% {
     transform: scale(1);
   }
-
   10%, 20% {
     transform: scale(0.9) rotate(-3deg);
   }
-
-  0%, 100% {
+  from, to {
     background: scale(0.5);
   }
 }

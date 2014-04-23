@@ -1,0 +1,44 @@
+bar()
+  +cache(arguments)
+    height: arguments
+
+foo($colorTheme = #f00 #0f0 #00f)
+  +cache(arguments)
+    color: $colorTheme[0]
+
+    &__child
+      color: $colorTheme[1]
+      background-color: $colorTheme[2]
+      bar(10px)
+      bar(20px)
+
+    &__next-child
+      color: $colorTheme[2]
+      text-shadow: 1px 1px $colorTheme[0]
+
+.lol
+  bar(20px)
+
+.foo
+  foo()
+
+.sub
+  foo(white black red)
+
+.foo2
+  foo()
+
+.sub2
+  foo(white black red)
+
+baz()
+  +cache()
+    width: 10px
+
+.fooz
+  baz()
+  height: 10px
+
+.maz
+  padding: 0
+  baz()
