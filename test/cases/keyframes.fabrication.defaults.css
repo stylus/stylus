@@ -22,14 +22,6 @@
     color: #fff;
   }
 }
-@-ms-keyframes foo {
-  from {
-    color: #000;
-  }
-  to {
-    color: #fff;
-  }
-}
 @keyframes foo {
   from {
     color: #000;

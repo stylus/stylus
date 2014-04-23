@@ -168,11 +168,6 @@
     width: 100%;
   }
 }
-@-ms-keyframes foo {
-  from {
-    width: 100%;
-  }
-}
 @keyframes foo {
   from {
     width: 100%;
