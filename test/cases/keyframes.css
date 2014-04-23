@@ -6,6 +6,153 @@
     color: #fff;
   }
 }
+@keyframes lol1 {
+  10% {
+    left: 10;
+  }
+  20% {
+    left: 20;
+  }
+  30% {
+    left: 30;
+  }
+  40% {
+    left: 40;
+  }
+  50% {
+    left: 50;
+  }
+  60% {
+    left: 60;
+  }
+  70% {
+    left: 70;
+  }
+  80% {
+    left: 80;
+  }
+  90% {
+    left: 90;
+  }
+  100% {
+    left: 100;
+  }
+}
+@keyframes foo1 {
+  5% {
+    left: 5;
+  }
+  10% {
+    left: 10;
+  }
+  15% {
+    left: 15;
+  }
+  20% {
+    left: 20;
+  }
+  25% {
+    left: 25;
+  }
+}
+@keyframes lol2 {
+  10% {
+    left: 10;
+  }
+  20% {
+    left: 20;
+  }
+  30% {
+    left: 30;
+  }
+  40% {
+    left: 40;
+  }
+  50% {
+    left: 50;
+  }
+  60% {
+    left: 60;
+  }
+  70% {
+    left: 70;
+  }
+  80% {
+    left: 80;
+  }
+  90% {
+    left: 90;
+  }
+  100% {
+    left: 100;
+  }
+}
+@keyframes foo2 {
+  5% {
+    left: 5;
+  }
+  10% {
+    left: 10;
+  }
+  15% {
+    left: 15;
+  }
+  20% {
+    left: 20;
+  }
+  25% {
+    left: 25;
+  }
+}
+@keyframes lol3 {
+  10% {
+    left: 10;
+  }
+  20% {
+    left: 20;
+  }
+  30% {
+    left: 30;
+  }
+  40% {
+    left: 40;
+  }
+  50% {
+    left: 50;
+  }
+  60% {
+    left: 60;
+  }
+  70% {
+    left: 70;
+  }
+  80% {
+    left: 80;
+  }
+  90% {
+    left: 90;
+  }
+  100% {
+    left: 100;
+  }
+}
+@keyframes foo3 {
+  5% {
+    left: 5;
+  }
+  10% {
+    left: 10;
+  }
+  15% {
+    left: 15;
+  }
+  20% {
+    left: 20;
+  }
+  25% {
+    left: 25;
+  }
+}
 @-moz-keyframes foo {
   from {
     width: 100%;
