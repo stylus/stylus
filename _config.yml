@@ -34,6 +34,7 @@ menu:
     - docs/media.html
     - docs/font-face.html
     - docs/keyframes.html
+    - docs/atrules.html
     - docs/extend.html
     - docs/block.html
     - docs/functions.url.html
