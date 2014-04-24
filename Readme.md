@@ -86,7 +86,7 @@ form input {
   - parent reference
   - in-language [functions](docs/functions.md)
   - [variable arguments](docs/vargs.md)
-  - built-in [functions](docs/bifs.md) (over 25)
+  - built-in [functions](docs/bifs.md) (over 60)
   - optional [image inlining](docs/functions.url.md)
   - optional compression
   - JavaScript [API](docs/js.md)
