@@ -15,19 +15,15 @@ cd /tmp && \
 endef
 
 TM_BUNDLE_DEST = $(shell $(DETERMINE_TEXTMATE_BUNDLE_PATH))
-REPORTER = dot
 
 test:
-	@./node_modules/.bin/mocha test/ test/middleware/ \
-		--require should \
-		--bail \
-		--reporter $(REPORTER)
+	npm test
 
 test-cov: lib-cov
-	STYLUS_COV=1 $(MAKE) REPORTER=html-cov > coverage.html
+	STYLUS_COV=1 npm run-script test-cov
 
 lib-cov: lib
-	jscoverage $< $@
+	./node_modules/.bin/jscoverage $< $@
 
 install-bundle:
 	mkdir -p "$(TM_BUNDLE_DEST)"

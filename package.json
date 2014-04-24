@@ -22,7 +22,8 @@
   },
   "scripts": {
     "prepublish": "npm prune",
-    "test": "make test"
+    "test": "mocha test/ test/middleware/ --require should --bail --reporter dot",
+    "test-cov": "mocha test/ test/middleware/ --require should --bail --reporter html-cov > coverage.html"
   },
   "dependencies": {
     "css-parse": "1.7.x",
