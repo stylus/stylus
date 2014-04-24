@@ -17,10 +17,10 @@ endef
 TM_BUNDLE_DEST = $(shell $(DETERMINE_TEXTMATE_BUNDLE_PATH))
 
 test:
-	npm test
+	@npm test
 
 test-cov: lib-cov
-	STYLUS_COV=1 npm run-script test-cov
+	@STYLUS_COV=1 npm run-script test-cov
 
 lib-cov: lib
 	./node_modules/.bin/jscoverage $< $@
