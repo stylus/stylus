@@ -33,6 +33,7 @@
   },
   "devDependencies": {
     "should": "*",
-    "mocha": "*"
+    "mocha": "*",
+    "jscoverage": "0.3.8"
   }
 }
