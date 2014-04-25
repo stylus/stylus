@@ -57,3 +57,10 @@ condition = all
 @media condition and (width: 100px)
   body
     width: 10px
+
+foo()
+  return 640px
+
+@media (min-width: foo())
+  body
+    color: red
