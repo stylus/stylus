@@ -7,3 +7,9 @@ two {
 three {
   foo: bar;
 }
+.block {
+  color: #00f;
+}
+.block .foo {
+  color: #f00;
+}
