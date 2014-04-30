@@ -110,3 +110,14 @@ input["bar"].foo:hover * .foo {
 input.foo[bar="baz"] {
   color: #f00;
 }
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  cursor: pointer;
+}
+button,
+input,
+a {
+  color: #f00;
+}
