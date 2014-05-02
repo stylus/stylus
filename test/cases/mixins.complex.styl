@@ -39,3 +39,15 @@ body
 
 body
   pad(true, true)
+
+qux()
+  test bar
+  test baz
+
+foo()
+  bar = 1
+  baz = 2
+  qux()
+
+body
+  foo()
