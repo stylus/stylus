@@ -20,3 +20,7 @@
 .fatal-error {
   color: dark-red;
 }
+.foo,
+.bar {
+  color: #f00;
+}
