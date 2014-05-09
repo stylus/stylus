@@ -36,3 +36,11 @@
     width: 100%;
   }
 }
+.quux {
+  font-weight: bold;
+}
+@media screen {
+  .quux {
+    background-position: 100px 0px;
+  }
+}
