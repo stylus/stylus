@@ -1,4 +1,4 @@
-0.45.0 / in development
+0.45.0 / 2014-05-11
 ===================
 
   * Added support for more CSS-like syntax variants: indented code blocks, closing curly brace on the same line with props etc (as now ignoring meaningless tokens while parsing), #1506.
