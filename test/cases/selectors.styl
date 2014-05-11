@@ -110,3 +110,12 @@ input["bar"].foo:hover * .foo
 
 input.foo[bar="baz"]
   color red
+
+button,
+html input[type="button"], /* 1 */
+input[type="reset"], /* 2 */
+input[type="submit"]
+  cursor pointer
+
+button, input, /* foo */ a
+  color red
