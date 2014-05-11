@@ -19,7 +19,6 @@ Render the literal CSS __@import__ shown below:
 
 ## Stylus Import
 
-
 *Disclaimer: In all places the __@import__ is used with Stylus sheets, the __@require__ could be used*
 
  When using __@import__ without the `.css` extension, it's assumed to be a Stylus sheet (e.g., `@import "mixins/border-radius"`).
@@ -61,6 +60,34 @@ Render the literal CSS __@import__ shown below:
 ## Require
 
 Along with `@import`, Stylus have also `@require`. It works almost in the same way, with the exception of importing any given file only once.
+
+## Block-level import
+
+Stylus supports block-level import. It means that you can use `@import` not only at root level, but also nested inside other selectors or at-rules.
+
+If you have a `bar.styl` with this code:
+
+    .bar
+      width: 10px;
+
+Then you can import it inside a `foo.styl` like this:
+
+    .foo
+      @import 'bar.styl'
+
+    @media screen and (min-width: 640px)
+      @import 'bar.styl'
+
+And you'll get this compiled CSS as a result:
+
+    .foo .bar {
+      width: 10px;
+    }
+    @media screen and (min-width: 640px) {
+      .bar {
+        width: 10px;
+      }
+    }
 
 ## File globbing
 

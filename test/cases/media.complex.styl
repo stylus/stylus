@@ -57,3 +57,44 @@ condition = all
 @media condition and (width: 100px)
   body
     width: 10px
+
+foo()
+  return 640px
+
+@media (min-width: foo())
+  body
+    color: red
+
+medium()
+  return 'only screen and (min-width: 960px)'
+
+breakpoints = {
+  condensed: 'only screen'
+  desktop: {
+    min: 'only screen and (min-width: 760px)'
+    max: 'only screen and (max-width: 1020px)'
+    medium: medium()
+  }
+}
+
+@media breakpoints["condensed"]
+  body
+    width: 400px
+
+@media breakpoints.condensed
+   body
+    width: 400px
+
+a = 'desktop'
+
+@media breakpoints[a].min
+  body
+    color: red
+
+@media breakpoints.desktop['medium']
+  body
+    color: green
+
+@media breakpoints[a]['max']
+  body
+    color: blue

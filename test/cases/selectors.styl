@@ -21,6 +21,11 @@ input[type="text"]
 * .foo-bar
   foo bar
 
+*
+*:before
+*:after
+  foo bar
+
 body > #container *
   foo bar
 
@@ -104,4 +109,13 @@ input["bar"].foo:hover * .foo
   color red
 
 input.foo[bar="baz"]
+  color red
+
+button,
+html input[type="button"], /* 1 */
+input[type="reset"], /* 2 */
+input[type="submit"]
+  cursor pointer
+
+button, input, /* foo */ a
   color red

@@ -44,3 +44,33 @@
     width: 10px;
   }
 }
+@media (min-width: 640px) {
+  body {
+    color: #f00;
+  }
+}
+@media only screen {
+  body {
+    width: 400px;
+  }
+}
+@media only screen {
+  body {
+    width: 400px;
+  }
+}
+@media only screen and (min-width: 760px) {
+  body {
+    color: #f00;
+  }
+}
+@media only screen and (min-width: 960px) {
+  body {
+    color: #008000;
+  }
+}
+@media only screen and (max-width: 1020px) {
+  body {
+    color: #00f;
+  }
+}

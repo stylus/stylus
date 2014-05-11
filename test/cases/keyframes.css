@@ -153,6 +153,14 @@
     left: 25;
   }
 }
+@keyframes foo {
+  0%, 50% {
+    color: #00f;
+  }
+  100% {
+    color: #008000;
+  }
+}
 @-moz-keyframes foo {
   from {
     width: 100%;

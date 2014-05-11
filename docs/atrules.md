@@ -1,6 +1,6 @@
 ---
 layout: default
-permalink: docs/font-face.html
+permalink: docs/atrules.html
 ---
 
 # Other @-rules

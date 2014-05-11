@@ -19,3 +19,15 @@ foo(p0 = 4px, p1 = 5px)
 
 .foo
   foo()
+
+color-proxy()
+  return rgba(arguments)
+
+.foo
+  color: color-proxy(0, 0, 0, 1)
+
+semi-transparent()
+  return rgba(arguments, 0.5)
+
+.bar
+  color: semi-transparent(0, 0, 0)

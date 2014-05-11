@@ -58,3 +58,7 @@ html.touch nav ul li.active {
 .baz .foo {
   height: 10px;
 }
+body {
+  color: #f00;
+  display: block !important;
+}
