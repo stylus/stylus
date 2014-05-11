@@ -1,3 +1,27 @@
+0.45.0 / in development
+===================
+
+  * Added support for more CSS-like syntax variants: indented code blocks, closing curly brace on the same line with props etc (as now ignoring meaningless tokens while parsing), #1506.
+  * Added support for block-level `@import` and `@require`, #1495.
+  * Added hash values support in `@media`, #1504.
+  * Added coercion for pt units, #1483.
+  * Added a way to escape `\` in a tag name, #1487.
+  * Fixed trailing spaces and comments in the selector groups, #1499.
+  * Fixed comments in the selector parts (now ignoring them), #1517.
+  * Fixed bug with url string having a protocol, #1510.
+  * Fixed bug with `@scope` and complex selectors, #1505.
+  * Fixed the recursion with the `display: block` inside block mixins, #1515.
+  * Fixed bug with current-property and block mixins, #1512.
+  * Fixed bug with complex selectors in conditionals, #1500.
+  * Fixed bug with `@media` bubbling and conditionals, #1518.
+  * Fixed bug with newlines and comments in conditionals, #1520.
+  * Fixed bug with the variable in the first line of mixin, #1502.
+  * Fixed but with the variable right after iterating over an empty list, #1503.
+  * Fixed bug with built-in function calls inside a hash assignment, #1488.
+  * Fixed bug with `*` selector first in the group, #1498.
+  * Fixed unnecessary bubbling for `@keyframes`, #1490.
+  * Fixed bug with undefined `filename` on keyframes, #1485.
+
 0.44.0 / 2014-04-23
 ===================
 
