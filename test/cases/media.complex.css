@@ -44,6 +44,11 @@
     width: 10px;
   }
 }
+@media (min-width: 640px) {
+  body {
+    color: #f00;
+  }
+}
 @media only screen {
   body {
     width: 400px;
