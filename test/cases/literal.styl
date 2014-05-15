@@ -16,3 +16,19 @@ border-radius() {
 #login {
   border-radius: 1px 2px / 3px 4px;
 }
+
+#login {
+  color: red;
+  @css {
+    background: url("test.png");
+  }
+}
+
+#test {
+  @css { width: 100% }
+}
+
+#logon {
+  @extend #test
+  color: red
+}
