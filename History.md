@@ -1,3 +1,8 @@
+0.45.1 / 2014-05-16
+===================
+
+  * Fixed regression with `@require` and globbed paths inside functions, #1529.
+
 0.45.0 / 2014-05-11
 ===================
 
