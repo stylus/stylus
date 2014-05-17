@@ -139,7 +139,7 @@ So get the binaries for your platform and make sure that they also include npm, 
 Now, type in your terminal:
 
 {:.terminal}
-    $ npm install stylus
+    $ npm install stylus -g
 
 If you want an expressive css language for nodejs with these
 features or the features listed below, head over to 
