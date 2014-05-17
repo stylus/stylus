@@ -74,3 +74,16 @@
     color: #00f;
   }
 }
+.foo {
+  width: 1000px;
+}
+@media (min-width: 256px) {
+  .foo {
+    width: 100px;
+  }
+}
+@media (min-width: 512px) {
+  .foo {
+    width: 200px;
+  }
+}
