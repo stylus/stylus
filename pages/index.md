@@ -166,7 +166,7 @@ for more information.
 - Parent referencing
 - Variable function calls
 - Lexical scoping
-- Built-in functions (over 25)
+- Built-in functions (over 60)
 - In-language functions
 - Optional compression
 - Optional image inlining

@@ -5,7 +5,7 @@
 
 ## Built-in functions
 
-Stylus is packed with over 40 built-in functions for manipulating colors,
+Stylus is packed with over 60 built-in functions for manipulating colors,
 checking variable types, math, list operations, and more, many of which
 are defined in the Stylus language itself.
 
