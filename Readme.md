@@ -5,7 +5,7 @@
 ## Installation
 
 ```bash
-$ npm install stylus
+$ npm install stylus -g
 ```
 
 ### Example
