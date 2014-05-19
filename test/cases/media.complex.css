@@ -74,3 +74,33 @@
     color: #00f;
   }
 }
+@media (min-width: 400px) and (-webkit-min-device-pixel-ratio: 1.5) {
+  .button {
+    background: url("button@2x.png");
+  }
+}
+@media (max-width: 500px) {
+  .foo {
+    color: #000;
+  }
+}
+@media (max-width: 500px) and (min-width: 100px) {
+  .foo {
+    color: #100;
+  }
+}
+@media print {
+  .foo {
+    color: #f00;
+  }
+}
+@media print {
+  body {
+    color: #f00;
+  }
+}
+@media print and (min-width: 500px), print and (max-width: 1000px) {
+  body {
+    width: 100%;
+  }
+}
