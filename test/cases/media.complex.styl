@@ -99,6 +99,12 @@ a = 'desktop'
   body
     color: blue
 
+@media breakpoints[a]['max'] {
+  body {
+    color: blue
+  }
+}
+
 @media (min-width: 400px)
   @media (-webkit-min-device-pixel-ratio: 1.5)
     .button

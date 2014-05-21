@@ -74,6 +74,11 @@
     color: #00f;
   }
 }
+@media only screen and (max-width: 1020px) {
+  body {
+    color: #00f;
+  }
+}
 @media (min-width: 400px) and (-webkit-min-device-pixel-ratio: 1.5) {
   .button {
     background: url("button@2x.png");
