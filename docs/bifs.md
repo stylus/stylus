@@ -440,6 +440,22 @@ Mix the given color with black.
        unquote('1px / 2px')
        // => 1px / 2px
 
+## convert(str)
+
+  Like `unquote()` but tries to convert the given `str` to a Stylus node.
+
+       unit = convert('40px')
+       typeof(unit)
+       // => 'unit'
+
+       color = convert('#fff')
+       typeof(color)
+       // => 'rgba'
+
+       foo = convert('foo')
+       tyepof(foo)
+       // => 'literal'
+
 ## s(fmt, ...)
 
  The `s()` function is similar to `unquote()`, in that it returns
