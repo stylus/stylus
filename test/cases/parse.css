@@ -18,3 +18,9 @@ body {
   color: #f00;
   width: 100px;
 }
+body {
+  color: #666;
+}
+a:hover {
+  color: #333;
+}
