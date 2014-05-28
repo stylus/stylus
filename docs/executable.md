@@ -175,7 +175,7 @@ Will give us list of the imports paths:
 
 ## Utilizing Plugins
 
- For this example we'l use the [nib](https://github.com/visionmedia/nib) Stylus plugin to illustrate its CLI usage.
+ For this example we'll use the [nib](https://github.com/visionmedia/nib) Stylus plugin to illustrate its CLI usage.
 
  Suppose we have the following Stylus, which imports nib to use its `linear-gradient()` function.
 
