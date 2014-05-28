@@ -59,7 +59,7 @@ Render the literal CSS __@import__ shown below:
 
 ## Require
 
-Along with `@import`, Stylus have also `@require`. It works almost in the same way, with the exception of importing any given file only once.
+Along with `@import`, Stylus also has `@require`. It works almost in the same way, with the exception of importing any given file only once.
 
 ## Block-level import
 
