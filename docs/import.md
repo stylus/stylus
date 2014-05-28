@@ -112,7 +112,7 @@ then `@require 'product/*'` would include each individual sheet only once.
 
 ## Resolving relative urls inside imports
 
-By default Stylus don't resolve the urls in imported `.styl` files, so if you'd happen to have a `foo.styl` with `@import "bar/bar.styl"` which would have `url("baz.png")`, it would be `url("baz.png")` too in a resulting CSS.
+By default Stylus doesn't resolve the urls in imported `.styl` files, so if you'd happen to have a `foo.styl` with `@import "bar/bar.styl"` which would have `url("baz.png")`, it would be `url("baz.png")` too in a resulting CSS.
 
 But you can alter this behavior by using `--resolve-url` (or just `-r`) CLI option to get `url("bar/baz.png")` in your resulting CSS.
 
