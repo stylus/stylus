@@ -8,3 +8,7 @@ a.button {
   -moz-border-radius: 5px;
   border-radius: 5px;
 }
+p.important {
+  -webkit-box-shadow: 1px -1px 0 1px rgba(0,0,0,0.5) !important;
+  box-shadow: 1px -1px 0 1px rgba(0,0,0,0.5) !important;
+}
