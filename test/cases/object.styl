@@ -111,3 +111,18 @@ bar = {}
 body
   if true
     bar[length(bar['baz'])] = 'raz'
+
+obj = {
+  /* margin */
+  foobar: 10px
+
+  /* height */
+  ,bar  : 40px
+
+  ,  baz /* comment */  : 500px
+}
+
+body
+  margin: obj.foobar
+  height: obj.bar
+  width: obj.baz
