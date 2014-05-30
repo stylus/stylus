@@ -33,7 +33,7 @@
     "glob": "3.2.x"
   },
   "devDependencies": {
-    "should": "*",
+    "should": "2.x",
     "mocha": "*",
     "jscoverage": "0.3.8"
   }
