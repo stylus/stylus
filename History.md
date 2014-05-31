@@ -1,3 +1,23 @@
+0.46.0 / in development
+===================
+
+  * Added support for nested media queries, #1540.
+  * Added `convert` built-in funciton, #1545.
+  * Add negative index values support for subscripts, #1564.
+  * Fixed the dropped commas in splat arguments, #1525.
+  * Fixed double-writing the `@media` and other at-rules in mixins, #1535.
+  * Fixed unit expression precedence error, #1537.
+  * Fixed comments inside the property expressions, #1538.
+  * Fixed incorrect line numbers on errors, #1543.
+  * Fixed import cloning with cache, #1548.
+  * Fixed cloning to preserve `property.literal`, #1558.
+  * Fixed bifs arguments cloning bug, #1560.
+  * Fixed `current-property`'s value to be evaluated in the right context, #1562.
+  * Fixed spaces and comments inside a hash declaration, #1554.
+  * Fixed aliases for transparent mixins, #1557.
+  * Fixed compilation fail when 'dest' path doesn't end with '/', #1541.
+  * Fixed bug with CSS to Stylus `@keyframes` converting, #1549.
+
 0.45.1 / 2014-05-16
 ===================
 
