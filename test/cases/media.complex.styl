@@ -98,3 +98,13 @@ a = 'desktop'
 @media breakpoints[a]['max']
   body
     color: blue
+
+foo()
+  width: 1000px
+
+  for i in 1..2
+    @media (min-width: 2**(i+7)px)
+      width: 100px*i
+
+.foo
+  foo()

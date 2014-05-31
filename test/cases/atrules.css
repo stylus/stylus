@@ -54,3 +54,12 @@
 @foo bar5 {
   color: #f00;
 }
+.foo {
+  width: 1000px;
+}
+@font-face {
+  font-family: 'Arial-1';
+}
+@font-face {
+  font-family: 'Arial-2';
+}
