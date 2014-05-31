@@ -440,6 +440,19 @@ Mix the given color with black.
     shade(#fd0cc7,66%)
     // => #560443
 
+## luminosity(color)
+
+Returns the [relative luminance](http://www.w3.org/TR/WCAG20/#relativeluminancedef) of the given `color`.
+
+    luminosity(white)
+    // => 1
+
+    luminosity(#000)
+    // => 0
+
+    luminosity(red)
+    // => 0.2126
+
 ## unquote(str | ident)
 
   Unquote the given `str` and returned as a `Literal` node.
