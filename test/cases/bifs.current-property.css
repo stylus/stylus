@@ -5,3 +5,6 @@ raz {
   test: 'foo' taz;
   test: 'bar' taz;
 }
+body {
+  padding-left: 1.5rem;
+}
