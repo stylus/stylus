@@ -453,6 +453,19 @@ Returns the [relative luminance](http://www.w3.org/TR/WCAG20/#relativeluminanced
     luminosity(red)
     // => 0.2126
 
+## contrast(top, bottom)
+
+Returns the [contrast ratio](http://www.w3.org/TR/2008/REC-WCAG20-20081211/#contrast-ratiodef) object between `top` and `bottom` colors, based on [script](https://github.com/LeaVerou/contrast-ratio/blob/gh-pages/color.js#L108) underlying “[contrast ratio](http://leaverou.github.io/contrast-ratio/)” tool by Lea Verou.
+
+The second argument is optional and is defaulted to `#fff`.
+
+The main key in the returned object is `ratio`, it also have `min` and `max` values that are different from the `ratio` only when the `bottom` color is transparent. In that case the `error` also contains an error margin.
+
+    contrast(#000, #fff).ratio
+    => 21
+    contrast(#000, rgba(#FFF, 0.5))
+    => { "ratio": "13.15;", "error": "-7.85", "min": "5.3", "max": "21" }
+
 ## unquote(str | ident)
 
   Unquote the given `str` and returned as a `Literal` node.
