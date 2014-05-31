@@ -9,3 +9,13 @@ form
 
 a.button
   border-radius 5px
+
+box-shadow-important()
+  push(arguments, !important)
+  -webkit-box-shadow arguments
+  box-shadow arguments
+
+box-shadow = box-shadow-important
+
+p.important
+  box-shadow 1px -1px 0 1px rgba(0, 0, 0, .5)
