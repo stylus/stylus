@@ -28,3 +28,7 @@ body {
   pad: 3 4 5;
   len: 3;
 }
+body {
+  bar: 1 2 3;
+  bar: 1, 2, 3;
+}
