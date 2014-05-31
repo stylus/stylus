@@ -354,6 +354,19 @@ Return a `RGBA` from the r,g,b channels or cast to an `RGBA` node.
     rgb(#fff)
     // => #fff
 
+## blend(top, bottom)
+
+Blends the given `top` color over the `bottom` one using the normal blending. The `bottom` argument is optional and is defaulted to `#fff`.
+
+    blend(rgba(#FFF, 0.5), #000)
+    // => #808080
+
+    blend(rgba(#FFDE00,.42), #19C261)
+    // => #7ace38
+
+    blend(rgba(lime, 0.5), rgba(red, 0.25))
+    // => rgba(128,128,0,0.625)
+
 ## lighten(color, amount)
 
 Lighten the given `color` by `amount`. This function is
