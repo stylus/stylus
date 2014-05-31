@@ -77,6 +77,18 @@ describe('JS API', function(){
         }
       }).render().should.equal("body{foo:baz foo quz 'quz'}");
   });
+
+  it('import cloning with cache', function(){
+    var path = __dirname + '/cases/import.basic/'
+      , styl = fs.readFileSync(path + 'clone.styl', 'utf-8').replace(/\r/g, '')
+      , css = 'body{background:linear-gradient(from bottom,#f00,#00f)}';
+
+    stylus(styl, { compress: true })
+      .render().should.equal(css);
+
+    stylus('@import "clone"', { compress: true, paths: [path] })
+      .render().should.equal(css);
+  });
 });
 
 function addSuite(desc, cases, fn, ignore) {
