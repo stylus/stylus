@@ -35,15 +35,18 @@ Return the blue component of the given `color`, or set the blue component to the
      blue(#000, 255)
      // => #00f
 
-## alpha(color)
+## alpha(color[, value])
 
-Return the alpha component of the given `color`.
+Return the alpha component of the given `color`, or set the alpha component to the optional second `value` argument.
 
       alpha(#fff)
       // => 1
 
       alpha(rgba(0,0,0,0.3))
       // => 0.3
+
+      alpha(#fff, 0.5)
+      // => rgba(255,255,255,0.5)
 
 ## dark(color)
 
