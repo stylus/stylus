@@ -36,3 +36,9 @@ ul li {
 ul li {
   color: true;
 }
+.parent {
+  font-size: 16px;
+}
+.parent .child {
+  font-size: 16px;
+}
