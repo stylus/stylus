@@ -5,26 +5,35 @@ permalink: docs/bifs.html
 
 # Built-in Functions
 
-## red(color)
+## red(color[, value])
 
-Return the red component of the given `color`.
+Return the red component of the given `color`, or set the red component to the optional second `value` argument.
 
      red(#c00)
      // => 204
 
-## green(color)
+     red(#000, 255)
+     // => #f00
 
-Return the green component of the given `color`.
+## green(color[, value])
+
+Return the green component of the given `color`, or set the green component to the optional second `value` argument.
 
      green(#0c0)
      // => 204
 
-## blue(color)
+     green(#000, 255)
+     // => #0f0
 
-Return the blue component of the given `color`.
+## blue(color[, value])
+
+Return the blue component of the given `color`, or set the blue component to the optional second `value` argument.
 
      blue(#00c)
      // => 204
+
+     blue(#000, 255)
+     // => #00f
 
 ## alpha(color)
 
@@ -354,7 +363,7 @@ Return a `RGBA` from the r,g,b channels or cast to an `RGBA` node.
     rgb(#fff)
     // => #fff
 
-## blend(top, bottom)
+## blend(top[, bottom])
 
 Blends the given `top` color over the `bottom` one using the normal blending. The `bottom` argument is optional and is defaulted to `#fff`.
 
@@ -453,7 +462,7 @@ Returns the [relative luminance](http://www.w3.org/TR/WCAG20/#relativeluminanced
     luminosity(red)
     // => 0.2126
 
-## contrast(top, bottom)
+## contrast(top[, bottom])
 
 Returns the [contrast ratio](http://www.w3.org/TR/2008/REC-WCAG20-20081211/#contrast-ratiodef) object between `top` and `bottom` colors, based on [script](https://github.com/LeaVerou/contrast-ratio/blob/gh-pages/color.js#L108) underlying “[contrast ratio](http://leaverou.github.io/contrast-ratio/)” tool by Lea Verou.
 
