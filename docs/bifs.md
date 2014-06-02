@@ -75,26 +75,35 @@ Check if `color` is light:
     light(#00FF40)
     // => true
 
-## hue(color)
+## hue(color[, value])
 
-Return the hue of the given `color`.
+Return the hue of the given `color`, or set the hue component to the optional second `value` argument.
 
     hue(hsla(50deg, 100%, 80%))
     // => 50deg
 
-## saturation(color)
+    hue(#00c, 90deg)
+    // => #6c0
 
-Return the saturation of the given `color`.
+## saturation(color[, value])
+
+Return the saturation of the given `color`, or set the saturation component to the optional second `value` argument.
 
     saturation(hsla(50deg, 100%, 80%))
     // => 100%
 
-## lightness(color)
+    saturation(#00c, 50%)
+    // => #339
 
-Return the lightness of the given `color`.
+## lightness(color[, value])
+
+Return the lightness of the given `color`, or set the lightness component to the optional second `value` argument.
 
     lightness(hsla(50deg, 100%, 80%))
     // => 80%
+
+    lightness(#00c, 80%)
+    // => #99f
 
 ## push(expr, args...)
 
