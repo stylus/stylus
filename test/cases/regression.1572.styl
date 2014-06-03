@@ -1,0 +1,19 @@
+_modernizr(features, declaration, support)
+  selector = support ? '' : ('.no-js ' + selector())
+  for feature in features
+    selector += support ? ('.' + feature) : (', .no-' + feature + ' ' + selector())
+  selector += (' ' + selector()) if support
+  /{selector}
+    {declaration}
+
+yep()
+  _modernizr(arguments, block, true)
+
+nope()
+  _modernizr(arguments, block, false)
+
+.test
+  +yep(csstransforms csstransforms3d)
+    transform: translate3d(100px, 0, 0)
+  +nope(csstransforms csstransforms3d)
+    left: 100px
