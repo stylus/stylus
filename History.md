@@ -1,3 +1,8 @@
+0.46.1 / 2014-06-04
+===================
+
+  * Fixed regression with a root reference in interpolated selectors, #1573.
+
 0.46.0 / 2014-06-03
 ===================
 
