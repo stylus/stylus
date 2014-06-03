@@ -1,0 +1,16 @@
+foo(prop, args)
+  {prop}: args
+
+background()
+  if match('-gradient\(', ''+arguments)
+    foo('background', arguments)
+  else
+    background arguments
+
+linear-gradient(start, stops...)
+  error('color stops required') unless length(stops)
+
+  unquote('linear-gradient(' + join(', ',arguments) + ')')
+
+body
+  background: linear-gradient(top, transparent, rgba(0, 0, 0, .6))
