@@ -98,3 +98,52 @@ a = 'desktop'
 @media breakpoints[a]['max']
   body
     color: blue
+
+foo()
+  width: 1000px
+
+  for i in 1..2
+    @media (min-width: 2**(i+7)px)
+      width: 100px*i
+
+.foo
+  foo()
+
+@media breakpoints[a]['max'] {
+  body {
+    color: blue
+  }
+}
+
+@media (min-width: 400px)
+  @media (-webkit-min-device-pixel-ratio: 1.5)
+    .button
+      background: url(button@2x.png)
+
+@media (max-width: 500px)
+  .foo
+    color: #000
+
+  @media (min-width: 100px)
+    .foo
+      color: #100
+
+@media print
+  .foo
+    color: red
+
+  @media not print
+    .foo
+      color: blue
+
+body
+  @media print
+    color: red
+
+    @media (min-width: 500px), (max-width: 1000px)
+      width: 100%
+
+@media screen
+  .sidebar, .header, .footer
+    @media (orientation: landscape)
+      width: 650px;

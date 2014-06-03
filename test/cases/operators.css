@@ -53,3 +53,7 @@ body {
 body {
   foo: 'bar';
 }
+body {
+  width: 'em';
+  height: false;
+}

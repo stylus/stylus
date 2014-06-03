@@ -112,3 +112,9 @@ str = ''
 body
   str += 'bar'
   foo: str
+
+body
+  foo = 40em
+  bar = '40em'
+  width type(foo) == 'unit' && unit(foo)
+  height type(bar) == 'unit' && unit(bar)

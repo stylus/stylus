@@ -20,3 +20,14 @@ baz()
 raz
   foo: taz
   bar: taz
+
+$global-padding ?= .75rem;
+
+padding-left()
+  {current-property[0]}: arguments
+
+mixin($padding = $global-padding)
+  padding-left: $padding * 2;
+
+body
+  mixin()

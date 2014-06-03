@@ -64,3 +64,8 @@ body {
 body {
   color: #00f;
 }
+body {
+  margin: 10px;
+  height: 40px;
+  width: 500px;
+}

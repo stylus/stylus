@@ -57,5 +57,19 @@ apply_media_cache()
 
   +media('(min-width: 500px) and (max-width: 700px)')
     height: 50px
+
+helper($args)
+  {current-property[0]}: $args
+
+min-width()
+  helper(arguments)
+
+some-mixin()
+  min-width: 400px
+
+.baz
+  +media('min-width: 400px')
+    some-mixin()
+
 // Here we call all the cached styles
 apply_media_cache()
