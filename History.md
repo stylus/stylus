@@ -1,4 +1,4 @@
-0.46.0 / in development
+0.46.0 / 2014-06-03
 ===================
 
   * Added support for nested media queries, #1540.
