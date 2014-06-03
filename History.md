@@ -12,6 +12,8 @@
   * Fixed import cloning with cache, #1548.
   * Fixed cloning to preserve `property.literal`, #1558.
   * Fixed bifs arguments cloning bug, #1560.
+  * Fixed bug with nested interpolated selectors with a comma, 1568.
+  * Fixed `current-property` ignored in property lookup, #1565.
   * Fixed `current-property`'s value to be evaluated in the right context, #1562.
   * Fixed spaces and comments inside a hash declaration, #1554.
   * Fixed aliases for transparent mixins, #1557.
