@@ -44,3 +44,11 @@ ul
 ul
   li
     color: @color == null
+
+foo()
+  return @font-size
+
+.parent
+  font-size: 16px
+  .child
+    font-size: foo()
