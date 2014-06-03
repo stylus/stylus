@@ -3,11 +3,13 @@
 
   * Added support for nested media queries, #1540.
   * Added `convert` built-in funciton, #1545.
-  * Add negative index values support for subscripts, #1564.
+  * Added negative index values support for subscripts, #1564.
+  * Add short-circuit evaluation for logical operators, #1532.
   * Fixed the dropped commas in splat arguments, #1525.
   * Fixed double-writing the `@media` and other at-rules in mixins, #1535.
   * Fixed unit expression precedence error, #1537.
   * Fixed comments inside the property expressions, #1538.
+  * Fixed handling of the `@css` and `unquote` inside groups, #1527.
   * Fixed incorrect line numbers on errors, #1543.
   * Fixed import cloning with cache, #1548.
   * Fixed cloning to preserve `property.literal`, #1558.
