@@ -1,3 +1,8 @@
+0.46.2 / 2014-06-04
+===================
+
+  * Fixed regression with double writing of transparent mixin value, #1574.
+
 0.46.1 / 2014-06-04
 ===================
 
