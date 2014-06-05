@@ -487,6 +487,24 @@ The main key in the returned object is `ratio`, it also have `min` and `max` val
     contrast(#000, rgba(#FFF, 0.5))
     => { "ratio": "13.15;", "error": "-7.85", "min": "5.3", "max": "21" }
 
+## transparentify(top[, bottom, alpha])
+
+Returns the transparent version of the given `top` color, as if it was blend over the given `bottom` color (or the closest to it, if it is possible).
+
+The second argument is optional and is defaulted to `#fff`.
+
+The third argument is optional and overrides the autodetected alpha.
+
+    transparentify(#808080)
+    => rgba(0,0,0,0.5)
+
+    transparentify(#414141, #000)
+    => rgba(255,255,255,0.25)
+
+    transparentify(#91974C, #F34949, 0.5)
+    => rgba(47,229,79,0.5)
+ 
+
 ## unquote(str | ident)
 
   Unquote the given `str` and returned as a `Literal` node.
