@@ -1,0 +1,31 @@
+.foo
+  &:hover
+    {root()}__bar
+      test selector()
+
+/*! ---- */
+
+{root()}
+  content "it won't render but won't cause an error also"
+  test selector()
+
+/*! ---- */
+
+.foo
+  & + {root()}--bar
+    test selector()
+
+/*! ---- */
+
+.foo
+  .bar
+    .baz
+      {root()}__bar
+        test selector()
+    test: selector()
+    
+    {root()}__baz
+      test: selector()
+
+
+

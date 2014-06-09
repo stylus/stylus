@@ -1,0 +1,41 @@
+.foo
+  &__bar
+    &:hover
+      & + {up(1)}
+        test selector()
+      & + {up()}
+        test selector()
+        content "this output must be the same as previous"
+      & + {up(-1)}
+        test selector()
+        content "this output must be the same as two previous"
+
+/*! ---- */
+
+.block
+  &:hover
+    .aaa
+      {up(2)}__element2
+        test selector()
+      {up(-2)}__element2
+        test selector()
+        content "this output must be the same as previous"
+
+/*! ---- */
+
+{up()}
+  content "it won't render but won't cause an error also"
+  test selector()
+
+/*! ---- */
+
+.block
+  &__element
+    &--modifier
+      &:hover
+        {up(200)}--baz a
+          test selector()
+        {up(-200)}--baz a
+          test selector()
+          content "this output must be the same as two previous"
+

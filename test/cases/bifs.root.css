@@ -1,0 +1,18 @@
+.foo:hover .foo__bar {
+  test: '.foo:hover .foo__bar';
+}
+/* ---- */
+/* ---- */
+.foo + .foo--bar {
+  test: '.foo + .foo--bar';
+}
+/* ---- */
+.foo .bar {
+  test: '.foo .bar';
+}
+.foo .bar .baz .foo__bar {
+  test: '.foo .bar .baz .foo__bar';
+}
+.foo .bar .foo__baz {
+  test: '.foo .bar .foo__baz';
+}
