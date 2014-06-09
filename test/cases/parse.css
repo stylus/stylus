@@ -24,3 +24,9 @@ body {
 a:hover {
   color: #333;
 }
+h1 {
+  font-family: 'Economica', sans-serif;
+}
+a:hover {
+  color: #000;
+}
