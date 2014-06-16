@@ -5,3 +5,6 @@
 body {
   font-families: Helvetica, Arial, sans-serif;
 }
+body {
+  foo: 'bar';
+}

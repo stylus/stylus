@@ -41,3 +41,21 @@ families = Helvetica,
 
 body
   font-families: families
+
+a = {}
+
+bar(obj, bool)
+  obj.params = { foo: 'bar' }
+
+baz(params)
+  body
+    foo: params.foo
+
+foo()
+  if true
+    bar(a,
+      true)
+
+  baz(a.params)
+
+foo()
