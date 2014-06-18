@@ -53,6 +53,12 @@ var prefix = '';
 var print = false;
 
 /**
+ * CSS filename extension;
+ */
+
+var extension = '.css';
+
+/**
  * Firebug flag
  */
 
@@ -157,6 +163,7 @@ var usage = [
   , '    -I, --include <path>    Add <path> to lookup paths'
   , '    -c, --compress          Compress CSS output'
   , '    -d, --compare           Display input along with output'
+  , '    -e, --extension <ext>   Use <ext> as the output file extension'
   , '    -f, --firebug           Emits debug infos in the generated CSS that'
   , '                            can be used by the FireStylus Firebug plugin'
   , '    -l, --line-numbers      Emits comments in the generated CSS'
@@ -196,6 +203,11 @@ while (args.length) {
     case '-C':
     case '--css':
       convertCSS = true;
+      break;
+    case '-e':
+    case '--extension':
+      extension = args.shift();
+      if (!extension) throw new Error('--extension <ext> required');
       break;
     case '-f':
     case '--firebug':
@@ -634,8 +646,8 @@ function writeFile(file, css) {
   if (print) return process.stdout.write(css);
   // --out support
   var path = dest
-    ? join(dest, basename(file, '.styl') + '.css')
-    : file.replace(/\.styl$/i, '.css');
+    ? join(dest, basename(file, '.styl') + extension)
+    : file.replace(/\.styl$/i, extension);
   fs.writeFile(path, css, function(err){
     if (err) throw err;
     console.log('  \033[90mcompiled\033[0m %s', path);

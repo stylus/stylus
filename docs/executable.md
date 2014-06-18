@@ -28,6 +28,7 @@ Stylus ships with the `stylus` executable for converting Stylus to CSS.
         -I, --include <path>    Add <path> to lookup paths
         -c, --compress          Compress CSS output
         -d, --compare           Display input along with output
+        -e, --extension <ext>   Use <ext> as the output file extension
         -f, --firebug           Emits debug infos in the generated CSS that
                                 can be used by the FireStylus Firebug plugin
         -l, --line-numbers      Emits comments in the generated CSS
@@ -78,6 +79,10 @@ Try Stylus some in the terminal!  Type below and press `CTRL-D` for `__EOF__`:
   the [FireStylus extension for Firebug](//github.com/LearnBoost/stylus/blob/master/docs/firebug.md):
 
       $ stylus --firebug <path>
+
+  The default extension is `.css`. Use the `extension` option to use a custom extension:
+
+      $ stylus one.styl --extension .min.css
 
 ## Prefixing classes
 
