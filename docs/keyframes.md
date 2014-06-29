@@ -53,7 +53,7 @@ For example, consider the following:
       }
     }
 
-This expands to our two default vendors, and the official syntax:
+This expands to our three default vendors, and the official syntax:
 
     @-moz-keyframes foo {
       from {
