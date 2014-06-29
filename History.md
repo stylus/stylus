@@ -1,3 +1,5 @@
+  * Added option to use custom filename extension.
+
 0.46.3 / 2014-06-09
 ===================
 
