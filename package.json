@@ -11,7 +11,10 @@
     "jade",
     "language"
   ],
-  "repository": "git://github.com/LearnBoost/stylus",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/LearnBoost/stylus"
+  },
   "main": "./index.js",
   "browserify": "./lib/browserify.js",
   "engines": {
@@ -36,5 +39,15 @@
     "should": "2.x",
     "mocha": "*",
     "jscoverage": "0.3.8"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/LearnBoost/stylus/issues"
+  },
+  "homepage": "https://github.com/LearnBoost/stylus",
+  "directories": {
+    "doc": "docs",
+    "example": "examples",
+    "test": "test"
+  },
+  "license": "MIT"
 }
