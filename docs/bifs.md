@@ -124,6 +124,18 @@ Return the lightness of the given `color`.
      values(pairs)
      // => 1 2 3
 
+## list-separator(list)
+
+  Return the separator of the given `list`.
+
+     list1 = a b c
+     list-separator(list1)
+     // => ' '
+
+     list2 = a, b, c
+     list-separator(list2)
+     // => ','
+
 ## typeof(node)
 
 Return type of `node` as a string.
