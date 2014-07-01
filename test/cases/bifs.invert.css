@@ -5,6 +5,7 @@ body {
 }
 body {
   foo: rgba(220,131,209,0.5);
+  foo: rgba(220,131,209,0.25);
 }
 body {
   foo: invert();

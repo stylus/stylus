@@ -224,3 +224,11 @@
     color: #ff0;
   }
 }
+@keyframes foo {
+  0% {
+    color: #f00;
+  }
+  100% {
+    color: #00f;
+  }
+}

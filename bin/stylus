@@ -504,7 +504,7 @@ function highlight(str) {
  */
 
 function compileCSSFile(file, fileOut) {
-  fs.lstat(file, function(err, stat){
+  fs.stat(file, function(err, stat){
     if (err) throw err;
     if (stat.isFile()) {
       fs.readFile(file, 'utf8', function(err, str){
@@ -561,7 +561,7 @@ function compileFiles(files) {
 function displayDeps() {
   files.forEach(function(file){
     // ensure file exists
-    fs.lstat(file, function(err, stat){
+    fs.stat(file, function(err, stat){
       if (err) throw err;
       fs.readFile(file, 'utf8', function(err, str){
         if (err) throw err;
@@ -583,7 +583,7 @@ function displayDeps() {
 
 function compileFile(file) {
   // ensure file exists
-  fs.lstat(file, function(err, stat){
+  fs.stat(file, function(err, stat){
     if (err) throw err;
     // file
     if (stat.isFile()) {

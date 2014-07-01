@@ -159,11 +159,14 @@ Usage:
 
   In the same way that we can "alias" a function, we can pass a function as well. Here, our `invoke()` function accepts a function, so we can pass it `add()` or `sub()`.
 
-    invoke(a, b, fn)
-      fn(a, b)
-
     add(a, b)
       a + b
+
+    sub(a, b)
+      a - b
+
+    invoke(a, b, fn)
+      fn(a, b)
 
     body
       padding invoke(5, 10, add)
@@ -175,6 +178,34 @@ Yielding:
       padding: 15;
       padding: -5;
     }
+
+## Anonymous functions
+
+You can use anonymous functions where needed using `@(){}` syntax. Here is how you could use it to create a custom `sort()` function:
+
+    sort(list, fn = null)
+      // default sort function
+      if fn == null
+        fn = @(a, b) {
+          a > b
+        }
+
+      // bubble sort
+      for $i in 1..length(list) - 1
+        for $j in 0..$i - 1
+          if fn(list[$j], list[$i])
+            $temp = list[$i]
+            list[$i] = list[$j]
+            list[$j] = $temp
+      return list
+
+      sort('e' 'c' 'f' 'a' 'b' 'd')
+      // => 'a' 'b' 'c' 'd' 'e' 'f'
+
+      sort(5 3 6 1 2 4, @(a, b){
+        a < b
+      })
+      // => 6 5 4 3 2 1
 
 ## arguments
 

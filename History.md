@@ -1,3 +1,24 @@
+0.47.0 / 2014-07-01
+===================
+
+  * Added support for anonymous functions, #1580.
+  * A lot of better color functions, #1526:
+      * Added support for two arguments for `hsla`.
+      * Added component setters (`red`, `hue`, `alpha` etc.).
+      * Added `luminance` bif.
+      * Added `blend` bif.
+      * Added `contrast` bif.
+      * Added `transparentify` bif.
+  * Added `list-separator` bif, #1576.
+  * Added symlinks support to CLI, #1577.
+  * Added idents and units coercion, #1605.
+  * Fixed `@keyframes` parsing issue.
+  * Fixed parse error when `{` is on a new line in at-rules.
+  * Fixed an issue with multiline parsing.
+  * Fixed another issue with cached imports, #1587.
+  * Fixed illegal unary "%", missing left-hand operand, #1586.
+  * Reverted #1527.
+
 0.46.3 / 2014-06-09
 ===================
 

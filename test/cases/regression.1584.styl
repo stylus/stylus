@@ -1,0 +1,15 @@
+font-face(font-family, file-path, weight = normal, style = normal) {
+  @font-face {
+    font-family: '"%s"' % (unquote(font-family));
+    font-weight: unquote(weight);
+    font-style: unquote(style);
+    src: 'url("%s.eot")' % (unquote(file-path));
+    src: 'local("%s")' % (unquote(font-family)),
+         'url("%s.eot?#iefix")' % (unquote(file-path)) format('embedded-opentype'),
+         'url("%s.woff")' % (unquote(file-path)) format('woff'),
+         'url("%s.ttf")' % (unquote(file-path)) format('truetype'),
+         'url("%s.svg#%s")' % (unquote(file-path) unquote(font-family)) format('svg');
+  }
+}
+
+font-face('foo', 'foo')
