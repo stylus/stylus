@@ -38,7 +38,7 @@ Yielding (expanded prefixes ommited):
 
 ## Expansion
 
-By using `@keyframes`, your rules are automatically expanded to the vendor prefixes defined by the `vendors` variable (default: `moz webkit o official`). This means we can alter it at any time for the expansion to take effect immediately. 
+By using `@keyframes`, your rules are automatically expanded to the vendor prefixes defined by the `vendors` variable (default: `moz webkit o ms official`). This means we can alter it at any time for the expansion to take effect immediately. 
 
 **Note that expansion of `@keyframes` to the prefixed at-rules would be removed from the Stylus 1.0 when we'd get to it**
  
@@ -53,7 +53,7 @@ For example, consider the following:
       }
     }
 
-This expands to our two default vendors, and the official syntax:
+This expands to our three default vendors, and the official syntax:
 
     @-moz-keyframes foo {
       from {
