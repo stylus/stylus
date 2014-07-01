@@ -503,7 +503,7 @@ The third argument is optional and overrides the autodetected alpha.
 
     transparentify(#91974C, #F34949, 0.5)
     => rgba(47,229,79,0.5)
- 
+
 
 ## unquote(str | ident)
 
