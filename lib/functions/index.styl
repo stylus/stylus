@@ -89,13 +89,6 @@ percent-to-decimal(n)
   else
     n
 
-// color components
-
-alpha(color) { component(hsl(color), 'alpha') }
-hue(color) { component(hsl(color), 'hue') }
-saturation(color) { component(hsl(color), 'saturation') }
-lightness(color) { component(hsl(color), 'lightness') }
-
 // check if n is an odd number
 
 odd(n)
@@ -195,10 +188,7 @@ mix(color1, color2, weight = 50%)
 
 invert(color = '')
   if color is a 'color'
-    r = 255 - red(color)
-    g = 255 - green(color)
-    b = 255 - blue(color)
-    rgba(r,g,b,alpha(color))
+    rgba(#fff - color, alpha(color))
   else
     unquote( "invert(" + color + ")" )
 

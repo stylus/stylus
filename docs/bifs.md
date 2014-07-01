@@ -5,36 +5,48 @@ permalink: docs/bifs.html
 
 # Built-in Functions
 
-## red(color)
+## red(color[, value])
 
-Return the red component of the given `color`.
+Return the red component of the given `color`, or set the red component to the optional second `value` argument.
 
      red(#c00)
      // => 204
 
-## green(color)
+     red(#000, 255)
+     // => #f00
 
-Return the green component of the given `color`.
+## green(color[, value])
+
+Return the green component of the given `color`, or set the green component to the optional second `value` argument.
 
      green(#0c0)
      // => 204
 
-## blue(color)
+     green(#000, 255)
+     // => #0f0
 
-Return the blue component of the given `color`.
+## blue(color[, value])
+
+Return the blue component of the given `color`, or set the blue component to the optional second `value` argument.
 
      blue(#00c)
      // => 204
 
-## alpha(color)
+     blue(#000, 255)
+     // => #00f
 
-Return the alpha component of the given `color`.
+## alpha(color[, value])
+
+Return the alpha component of the given `color`, or set the alpha component to the optional second `value` argument.
 
       alpha(#fff)
       // => 1
 
       alpha(rgba(0,0,0,0.3))
       // => 0.3
+
+      alpha(#fff, 0.5)
+      // => rgba(255,255,255,0.5)
 
 ## dark(color)
 
@@ -63,26 +75,35 @@ Check if `color` is light:
     light(#00FF40)
     // => true
 
-## hue(color)
+## hue(color[, value])
 
-Return the hue of the given `color`.
+Return the hue of the given `color`, or set the hue component to the optional second `value` argument.
 
     hue(hsla(50deg, 100%, 80%))
     // => 50deg
 
-## saturation(color)
+    hue(#00c, 90deg)
+    // => #6c0
 
-Return the saturation of the given `color`.
+## saturation(color[, value])
+
+Return the saturation of the given `color`, or set the saturation component to the optional second `value` argument.
 
     saturation(hsla(50deg, 100%, 80%))
     // => 100%
 
-## lightness(color)
+    saturation(#00c, 50%)
+    // => #339
 
-Return the lightness of the given `color`.
+## lightness(color[, value])
+
+Return the lightness of the given `color`, or set the lightness component to the optional second `value` argument.
 
     lightness(hsla(50deg, 100%, 80%))
     // => 80%
+
+    lightness(#00c, 80%)
+    // => #99f
 
 ## push(expr, args...)
 
@@ -366,6 +387,19 @@ Return a `RGBA` from the r,g,b channels or cast to an `RGBA` node.
     rgb(#fff)
     // => #fff
 
+## blend(top[, bottom])
+
+Blends the given `top` color over the `bottom` one using the normal blending. The `bottom` argument is optional and is defaulted to `#fff`.
+
+    blend(rgba(#FFF, 0.5), #000)
+    // => #808080
+
+    blend(rgba(#FFDE00,.42), #19C261)
+    // => #7ace38
+
+    blend(rgba(lime, 0.5), rgba(red, 0.25))
+    // => rgba(128,128,0,0.625)
+
 ## lighten(color, amount)
 
 Lighten the given `color` by `amount`. This function is
@@ -438,6 +472,50 @@ Mix the given color with black.
 
     shade(#fd0cc7,66%)
     // => #560443
+
+## luminosity(color)
+
+Returns the [relative luminance](http://www.w3.org/TR/WCAG20/#relativeluminancedef) of the given `color`.
+
+    luminosity(white)
+    // => 1
+
+    luminosity(#000)
+    // => 0
+
+    luminosity(red)
+    // => 0.2126
+
+## contrast(top[, bottom])
+
+Returns the [contrast ratio](http://www.w3.org/TR/2008/REC-WCAG20-20081211/#contrast-ratiodef) object between `top` and `bottom` colors, based on [script](https://github.com/LeaVerou/contrast-ratio/blob/gh-pages/color.js#L108) underlying “[contrast ratio](http://leaverou.github.io/contrast-ratio/)” tool by Lea Verou.
+
+The second argument is optional and is defaulted to `#fff`.
+
+The main key in the returned object is `ratio`, it also have `min` and `max` values that are different from the `ratio` only when the `bottom` color is transparent. In that case the `error` also contains an error margin.
+
+    contrast(#000, #fff).ratio
+    => 21
+    contrast(#000, rgba(#FFF, 0.5))
+    => { "ratio": "13.15;", "error": "-7.85", "min": "5.3", "max": "21" }
+
+## transparentify(top[, bottom, alpha])
+
+Returns the transparent version of the given `top` color, as if it was blend over the given `bottom` color (or the closest to it, if it is possible).
+
+The second argument is optional and is defaulted to `#fff`.
+
+The third argument is optional and overrides the autodetected alpha.
+
+    transparentify(#808080)
+    => rgba(0,0,0,0.5)
+
+    transparentify(#414141, #000)
+    => rgba(255,255,255,0.25)
+
+    transparentify(#91974C, #F34949, 0.5)
+    => rgba(47,229,79,0.5)
+
 
 ## unquote(str | ident)
 
