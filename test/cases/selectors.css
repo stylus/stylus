@@ -126,3 +126,9 @@ input,
 a {
   color: #f00;
 }
+paper {
+  background: #008000;
+}
+paper paper-input::shadow .color {
+  background: #f00;
+}
