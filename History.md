@@ -1,3 +1,9 @@
+0.47.1 / 2014-07-02
+===================
+
+  * Fixed treatment of unknown pseudo-elements, #1608.
+  * Fixed unit expression precedence error, #1611.
+
 0.47.0 / 2014-07-01
 ===================
 
