@@ -113,7 +113,7 @@ You can iterate through hashes with optional key param:
     // => width: 10px;
     //    height: 20px;
 
-You can check existance of a key in hash using `in`:
+You can check existence of a key in hash using `in`:
 
     foo = { bar: 10px}
 
