@@ -11,7 +11,7 @@
   * A lot of better color functions, #1526:
       * Added support for two arguments for `hsla`.
       * Added component setters (`red`, `hue`, `alpha` etc.).
-      * Added `luminance` bif.
+      * Added `luminosity` bif.
       * Added `blend` bif.
       * Added `contrast` bif.
       * Added `transparentify` bif.
