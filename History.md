@@ -1,3 +1,12 @@
+0.47.2 / 2014-07-19
+===================
+
+  * Fixed comma-first multiline syntax, #1634.
+  * Fixed hsla arguments for different color functions, #1619.
+  * Fixed Bug with @media and placeholder selectors, #1625.
+  * Fixed bug with nested media queries, 1620.
+  * Fixed broken URL parsing for source and destination paths, #1613.
+
 0.47.1 / 2014-07-02
 ===================
 
@@ -11,7 +20,7 @@
   * A lot of better color functions, #1526:
       * Added support for two arguments for `hsla`.
       * Added component setters (`red`, `hue`, `alpha` etc.).
-      * Added `luminance` bif.
+      * Added `luminosity` bif.
       * Added `blend` bif.
       * Added `contrast` bif.
       * Added `transparentify` bif.
