@@ -134,3 +134,8 @@
     color: #f00;
   }
 }
+@media screen {
+  body {
+    color: #f00;
+  }
+}
