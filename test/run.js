@@ -89,6 +89,18 @@ describe('JS API', function(){
     stylus('@import "clone"', { compress: true, paths: [path] })
       .render().should.equal(css);
   });
+
+  it('import cloning with cache #2', function(){
+    var path = __dirname + '/cases/import.basic/'
+      , styl = fs.readFileSync(path + 'clone2.styl', 'utf-8').replace(/\r/g, '')
+      , css = 'body{color:#f00}body{color:#00f}body{color:#00f}body{color:#00f}body{color:#008000}';
+
+    stylus(styl, { compress: true })
+      .render().should.equal(css);
+
+    stylus('@import "clone2"', { compress: true, paths: [path] })
+      .render().should.equal(css);
+  });
 });
 
 function addSuite(desc, cases, fn, ignore) {
