@@ -24,3 +24,8 @@ body
 /* foo */
   height: 300px;
 }
+@media only screen and (max-width: 1230px) {
+  .test {
+    foo: bar;
+  }
+}
