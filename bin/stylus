@@ -463,7 +463,8 @@ function repl() {
     evaluator.return = true;
     try {
       var expr = parser.parse();
-      var ret = evaluator.visit(expr);
+      evaluator.root = expr;
+      var ret = evaluator.evaluate();
       var node;
       while (node = ret.nodes.pop()) {
         if (!node.suppress) {
