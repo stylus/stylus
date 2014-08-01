@@ -139,3 +139,13 @@
     color: #f00;
   }
 }
+@media (width: 100px) {
+  .x {
+    color: #f00;
+  }
+}
+@media (width: 100px) and (height: 100px) {
+  .x {
+    color: #00f;
+  }
+}
