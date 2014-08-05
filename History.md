@@ -58,7 +58,7 @@
 ===================
 
   * Added support for nested media queries, #1540.
-  * Added `convert` built-in funciton, #1545.
+  * Added `convert` built-in function, #1545.
   * Added negative index values support for subscripts, #1564.
   * Add short-circuit evaluation for logical operators, #1532.
   * Fixed the dropped commas in splat arguments, #1525.
@@ -977,7 +977,7 @@ Closes #401
   * Added `avg(nums)` built-in function
   * Added `join(delim, vals)` built-in function
   * Added `Evaluator#{currentScope,currentBlock}`
-  * Added multi-line function paramter definition support
+  * Added multi-line function parameter definition support
   * Changed: `0` is falsey, `0%`, `0em`, `0px` etc truthy. Closes #160
   * Fixed `for` implicit __return__ value
   * Fixed `for` explicit __return__ value
