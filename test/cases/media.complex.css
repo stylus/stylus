@@ -149,3 +149,8 @@
     color: #00f;
   }
 }
+@media screen and (width: 500px) {
+  body {
+    color: #f00;
+  }
+}
