@@ -311,7 +311,7 @@ Returns a `Literal` `num` converted to the provided `base`, padded to `width` wi
     base-convert(14, 16, 1)
     // => e
 
-    base-convert(42, 1)
+    base-convert(42, 2)
     // => 101010
 
 
