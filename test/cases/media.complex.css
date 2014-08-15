@@ -154,3 +154,13 @@
     color: #f00;
   }
 }
+ul.left li a:link,
+ul.left li a:visited {
+  color: #00f;
+}
+@media only screen and (max-width: 699px) {
+  ul.left li a:link,
+  ul.left li a:visited {
+    border-right: 0;
+  }
+}

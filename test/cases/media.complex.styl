@@ -178,3 +178,14 @@ bar(width)
 @media screen
   if true
     bar(500px)
+
+link = '&:link, &:visited'
+
+ul
+  &.left
+    li
+      a
+        {link}
+          color: blue
+          @media only screen and (max-width: 699px)
+            border-right: 0
