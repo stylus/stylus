@@ -98,6 +98,37 @@ describe('JS API', function(){
       }).render().should.equal("body{foo:baz foo quz 'quz'}");
   });
 
+  it('use variable from options object', function(){
+    stylus
+      .render(
+        'body { foo: bar  }',
+        {
+          compress: true,
+          globals: {
+            'bar': 'baz'
+          }
+        }
+      ).should.equal("body{foo:baz}");
+  });
+
+  it('use functions from options object', function(){
+    stylus
+      .render(
+        'body { foo: add(4, 3); bar: something() }',
+        {
+          compress: true,
+          functions: {
+            add: function(a, b) {
+              return a.operate('+', b);
+            },
+            something: function() {
+              return new stylus.nodes.Ident('foobar');
+            }
+          }
+        }
+      ).should.equal("body{foo:7;bar:foobar}");
+  });
+
   it('import cloning with cache', function(){
     var path = __dirname + '/cases/import.basic/'
       , styl = readFile(path + 'clone.styl')
