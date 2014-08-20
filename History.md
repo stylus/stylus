@@ -1,4 +1,4 @@
-0.48.0 / In development
+0.48.0 / 2014-08-20
 ===================
 
   * Added basic sourcemaps support, #1655.
