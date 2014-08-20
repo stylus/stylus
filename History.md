@@ -1,3 +1,20 @@
+0.48.0 / In development
+===================
+
+  * Added `rebeccapurple` named color.
+  * Added `unicode-range` support (#1648).
+  * Fixed bug with property lookup inside mixin block (#1645).
+  * Fixed a bug with nested media queries inside mixins (#1643).
+  * Fixed an `@extend` inside `@media` queries with multi-level selectors (#1658).
+  * Fixed bug with cloning of an interpolated selector with comma (#1660).
+  * Fixed bug with nested media queries in conditionals.
+  * Fixed a bug with cached imports (#1641).
+  * Fixed `@css` literal that generated `u+0085` characters instead of newlines (#1663).
+  * Fixed escaped comma (`\,`) inside hashes (#1666).
+  * Fixed a string representation of HSLA node to preserve `%` (#1439).
+  * Fixed incorrect position of inline comments (#1597).
+  * Fixed a bug with an apostrophe and a colon in a single-line comment (#1647).
+
 0.47.3 / 2014-07-22
 ===================
 
