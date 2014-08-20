@@ -1,6 +1,7 @@
 0.48.0 / In development
 ===================
 
+  * Added `globals` and `functions` keys to options object in JS API, #1653.
   * Added `rebeccapurple` named color.
   * Added `unicode-range` support (#1648).
   * Changed the behaviour of adding percents together to the more sane one, #1664.
