@@ -15,7 +15,8 @@ body {
   foo: 100%;
   foo: 75%;
   foo: 25%;
-  foo: 25%;
+  foo: 0%;
+  foo: 70%;
 }
 body {
   foo: 10em;
