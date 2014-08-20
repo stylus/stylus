@@ -59,6 +59,12 @@ var print = false;
 var firebug = false;
 
 /**
+ * Sourcemap flag
+ */
+
+var sourcemap = false;
+
+/**
  * Files to processes.
  */
 
@@ -161,6 +167,10 @@ var usage = [
   , '                            can be used by the FireStylus Firebug plugin'
   , '    -l, --line-numbers      Emits comments in the generated CSS'
   , '                            indicating the corresponding Stylus line'
+  , '    -m, --sourcemap         Generates a sourcemap in sourcemaps v3 format'
+  , '    --sourcemap-inline      Inlines sourcemap with full source text in base64 format'
+  , '    --sourcemap-root <url>  "sourceRoot" property of the generated sourcemap'
+  , '    --sourcemap-base <path> Base <path> from which sourcemap and all sources are relative'
   , '    -P, --prefix [prefix]   prefix all css classes'
   , '    -p, --print             Print out the compiled CSS'
   , '    --import <file>         Import stylus <file>'
@@ -204,6 +214,26 @@ while (args.length) {
     case '-l':
     case '--line-numbers':
       linenos = true;
+      break;
+    case '-m':
+    case '--sourcemap':
+      sourcemap = {};
+      break;
+    case '--sourcemap-inline':
+      sourcemap = sourcemap || {};
+      sourcemap.inline = true;
+      break;
+    case '--sourcemap-root':
+      var url = args.shift();
+      if (!url) throw new Error('--sourcemap-root <url> required');
+      sourcemap = sourcemap || {};
+      sourcemap.sourceRoot = url;
+      break;
+    case '--sourcemap-base':
+      var path = args.shift();
+      if (!path) throw new Error('--sourcemap-base <path> required');
+      sourcemap = sourcemap || {};
+      sourcemap.basePath = path;
       break;
     case '-P':
     case '--prefix':
@@ -312,6 +342,9 @@ if (watchers && !files.length) {
   });
 }
 
+// --sourcemap flag is not working with stdio
+if (sourcemap && !files.length) sourcemap = false;
+
 /**
  * Open the default browser to the CSS property `name`.
  *
@@ -366,6 +399,7 @@ var options = {
   , compress: compress
   , firebug: firebug
   , linenos: linenos
+  , sourcemap: sourcemap
   , paths: [process.cwd()].concat(paths)
   , prefix: prefix
 };
@@ -596,6 +630,7 @@ function compileFile(file) {
         if (includeCSS) style.set('include css', true);
         if (resolveURL) style.set('resolve url', true);
         if (disableCache) style.set('cache', false);
+        if (sourcemap) style.set('sourcemap', sourcemap);
 
         usePlugins(style);
         importFiles(style);
@@ -609,6 +644,10 @@ function compileFile(file) {
             }
           } else {
             writeFile(file, css);
+            // write sourcemap
+            if (sourcemap && !sourcemap.inline) {
+              writeSourcemap(file, style.sourcemap);
+            }
           }
         });
       });
@@ -642,6 +681,21 @@ function writeFile(file, css) {
     console.log('  \033[90mcompiled\033[0m %s', path);
     // --watch support
     watch(file, file);
+  });
+}
+
+/**
+* Write the given sourcemap.
+*/
+
+function writeSourcemap(file, sourcemap) {
+  // --out support
+  var path = dest
+    ? join(dest, basename(file) + '.map')
+    : file + '.map';
+  fs.writeFile(path, JSON.stringify(sourcemap), function(err){
+    if (err) throw err;
+    console.log('  \033[90mgenerated\033[0m %s', path);
   });
 }
 
