@@ -3,6 +3,7 @@
 
   * Added `rebeccapurple` named color.
   * Added `unicode-range` support (#1648).
+  * Changed the behaviour of adding percents together to the more sane one, #1664.
   * Fixed bug with property lookup inside mixin block (#1645).
   * Fixed a bug with nested media queries inside mixins (#1643).
   * Fixed an `@extend` inside `@media` queries with multi-level selectors (#1658).
