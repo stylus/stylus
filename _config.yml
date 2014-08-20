@@ -46,6 +46,7 @@ menu:
     - docs/middleware.html
     - docs/introspection.html
     - docs/js.html
+    - docs/sourcemaps.html
 
 link_handles:
     - prefix: "@"
