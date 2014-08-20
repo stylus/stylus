@@ -1,6 +1,8 @@
 0.48.0 / In development
 ===================
 
+  * Added basic sourcemaps support, #1655.
+  * Added info on columns for sourcemaps and better error reporting.
   * Added `globals` and `functions` keys to options object in JS API, #1653.
   * Added `rebeccapurple` named color.
   * Added `unicode-range` support (#1648).
