@@ -18,3 +18,14 @@ body
   -webkit-box-shadow: 1px 0 0 #fff, 2px 0 0 #000;
   -moz-box-shadow: 1px 0 0 #fff 2px 0 0 #000;
 }
+.foo {
+  color: #f00; /* inline */
+  width: 100px;
+/* foo */
+  height: 300px;
+}
+@media only screen and (max-width: 1230px) {
+  .test {
+    foo: bar;
+  }
+}

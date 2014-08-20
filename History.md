@@ -1,3 +1,24 @@
+0.48.0 / 2014-08-20
+===================
+
+  * Added basic sourcemaps support, #1655.
+  * Added info on columns for sourcemaps and better error reporting.
+  * Added `globals` and `functions` keys to options object in JS API, #1653.
+  * Added `rebeccapurple` named color.
+  * Added `unicode-range` support (#1648).
+  * Changed the behaviour of adding percents together to the more sane one, #1664.
+  * Fixed bug with property lookup inside mixin block (#1645).
+  * Fixed a bug with nested media queries inside mixins (#1643).
+  * Fixed an `@extend` inside `@media` queries with multi-level selectors (#1658).
+  * Fixed bug with cloning of an interpolated selector with comma (#1660).
+  * Fixed bug with nested media queries in conditionals.
+  * Fixed a bug with cached imports (#1641).
+  * Fixed `@css` literal that generated `u+0085` characters instead of newlines (#1663).
+  * Fixed escaped comma (`\,`) inside hashes (#1666).
+  * Fixed a string representation of HSLA node to preserve `%` (#1439).
+  * Fixed incorrect position of inline comments (#1597).
+  * Fixed a bug with an apostrophe and a colon in a single-line comment (#1647).
+
 0.47.3 / 2014-07-22
 ===================
 
@@ -58,7 +79,7 @@
 ===================
 
   * Added support for nested media queries, #1540.
-  * Added `convert` built-in funciton, #1545.
+  * Added `convert` built-in function, #1545.
   * Added negative index values support for subscripts, #1564.
   * Add short-circuit evaluation for logical operators, #1532.
   * Fixed the dropped commas in splat arguments, #1525.
@@ -977,7 +998,7 @@ Closes #401
   * Added `avg(nums)` built-in function
   * Added `join(delim, vals)` built-in function
   * Added `Evaluator#{currentScope,currentBlock}`
-  * Added multi-line function paramter definition support
+  * Added multi-line function parameter definition support
   * Changed: `0` is falsey, `0%`, `0em`, `0px` etc truthy. Closes #160
   * Fixed `for` implicit __return__ value
   * Fixed `for` explicit __return__ value

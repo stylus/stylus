@@ -153,3 +153,39 @@ body
     @media (-webkit-min-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 13/10), (min-resolution: 120dpi), (min-resolution: 1.3dppx)
       body
         color: red
+
+@media screen
+  foo()
+    body
+      color: red
+
+  foo()
+
+bluefy()
+  @media (height 100px)
+    color blue
+
+@media (width 100px)
+  .x
+    color red
+    bluefy()
+
+bar(width)
+  @media (width width)
+    body
+      color red
+
+@media screen
+  if true
+    bar(500px)
+
+link = '&:link, &:visited'
+
+ul
+  &.left
+    li
+      a
+        {link}
+          color: blue
+          @media only screen and (max-width: 699px)
+            border-right: 0

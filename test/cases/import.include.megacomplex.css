@@ -1,14 +1,17 @@
 body {
   background: #000;
 }
+
 h1 {
   color: #c00;
   background: url(foo.gif);
 }
+
 h2 {
   color: #0c0;
   background: url(foo.png);
 }
+
 h4 {
   background: url(../foo.jpg);
 }

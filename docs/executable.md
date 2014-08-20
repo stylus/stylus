@@ -32,6 +32,10 @@ Stylus ships with the `stylus` executable for converting Stylus to CSS.
                                 can be used by the FireStylus Firebug plugin
         -l, --line-numbers      Emits comments in the generated CSS
                                 indicating the corresponding Stylus line
+        -m, --sourcemap         Generates a sourcemap in sourcemaps v3 format
+        --sourcemap-inline      Inlines sourcemap with full source text in base64 format
+        --sourcemap-root <url>  "sourceRoot" property of the generated sourcemap
+        --sourcemap-base <path> Base <path> from which sourcemap and all sources are relative
         -P, --prefix [prefix]   Prefix all css classes
         -p, --print             Print out the compiled CSS
         --import <file>         Import stylus <file>

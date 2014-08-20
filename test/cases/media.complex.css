@@ -134,3 +134,33 @@
     color: #f00;
   }
 }
+@media screen {
+  body {
+    color: #f00;
+  }
+}
+@media (width: 100px) {
+  .x {
+    color: #f00;
+  }
+}
+@media (width: 100px) and (height: 100px) {
+  .x {
+    color: #00f;
+  }
+}
+@media screen and (width: 500px) {
+  body {
+    color: #f00;
+  }
+}
+ul.left li a:link,
+ul.left li a:visited {
+  color: #00f;
+}
+@media only screen and (max-width: 699px) {
+  ul.left li a:link,
+  ul.left li a:visited {
+    border-right: 0;
+  }
+}

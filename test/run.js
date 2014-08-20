@@ -10,8 +10,8 @@ var stylus = require('../')
 
 addSuite('integration', readDir('test/cases'), function(test){
   var path = 'test/cases/' + test + '.styl'
-    , styl = fs.readFileSync(path, 'utf8').replace(/\r/g, '')
-    , css = fs.readFileSync('test/cases/' + test + '.css', 'utf8').replace(/\r/g, '').trim()
+    , styl = readFile(path)
+    , css = readFile('test/cases/' + test + '.css')
     , style = stylus(styl)
         .set('filename', path)
         .include(__dirname + '/images')
@@ -37,8 +37,8 @@ addSuite('integration', readDir('test/cases'), function(test){
 
 addSuite('converter', readDir('test/converter', '.css'), function(test){
   var path = 'test/converter/' + test + '.styl'
-    , styl = fs.readFileSync(path, 'utf8').replace(/\r/g, '').trim()
-    , css = fs.readFileSync('test/converter/' + test + '.css', 'utf8').replace(/\r/g, '');
+    , styl = readFile(path)
+    , css = readFile('test/converter/' + test + '.css');
 
   stylus.convertCSS(css).trim().should.equal(styl);
 });
@@ -47,11 +47,31 @@ addSuite('converter', readDir('test/converter', '.css'), function(test){
 
 addSuite('dependency resolver', readDir('test/deps-resolver'), function(test){
   var path = 'test/deps-resolver/' + test + '.styl'
-    , styl = fs.readFileSync(path, 'utf8').replace(/\r/g, '')
-    , deps = fs.readFileSync('test/deps-resolver/' + test + '.deps', 'utf8').replace(/\r/g, '').trim()
+    , styl = readFile(path)
+    , deps = readFile('test/deps-resolver/' + test + '.deps')
     , style = stylus(styl).set('filename', path);
 
   style.deps().join('\n').trim().should.equal(deps);
+});
+
+// sourcemap cases
+
+addSuite('sourcemap', readDir('test/sourcemap'), function(test){
+  var inline = ~test.indexOf('inline')
+    , path = 'test/sourcemap/' + test + '.styl'
+    , styl = readFile(path)
+    , style = stylus(styl).set('filename', path).set('sourcemap',
+      { inline: inline, sourceRoot: '/', basePath: 'test/sourcemap' })
+    , expected = readFile(path.replace('.styl', inline ? '.css' : '.map'));
+
+  style.render(function(err, css) {
+    if (err) throw err;
+    if (inline) {
+      css.should.equal(expected);
+    } else {
+      JSON.stringify(style.sourcemap).should.equal(expected);
+    }
+  });
 });
 
 // JS API
@@ -78,9 +98,40 @@ describe('JS API', function(){
       }).render().should.equal("body{foo:baz foo quz 'quz'}");
   });
 
+  it('use variable from options object', function(){
+    stylus
+      .render(
+        'body { foo: bar  }',
+        {
+          compress: true,
+          globals: {
+            'bar': 'baz'
+          }
+        }
+      ).should.equal("body{foo:baz}");
+  });
+
+  it('use functions from options object', function(){
+    stylus
+      .render(
+        'body { foo: add(4, 3); bar: something() }',
+        {
+          compress: true,
+          functions: {
+            add: function(a, b) {
+              return a.operate('+', b);
+            },
+            something: function() {
+              return new stylus.nodes.Ident('foobar');
+            }
+          }
+        }
+      ).should.equal("body{foo:7;bar:foobar}");
+  });
+
   it('import cloning with cache', function(){
     var path = __dirname + '/cases/import.basic/'
-      , styl = fs.readFileSync(path + 'clone.styl', 'utf-8').replace(/\r/g, '')
+      , styl = readFile(path + 'clone.styl')
       , css = 'body{background:linear-gradient(from bottom,#f00,#00f)}';
 
     stylus(styl, { compress: true })
@@ -89,7 +140,21 @@ describe('JS API', function(){
     stylus('@import "clone"', { compress: true, paths: [path] })
       .render().should.equal(css);
   });
+
+  it('import cloning with cache #2', function(){
+    var path = __dirname + '/cases/import.basic/'
+      , styl = fs.readFileSync(path + 'clone2.styl', 'utf-8').replace(/\r/g, '')
+      , css = 'body{color:#f00}body{color:#00f}body{color:#00f}body{color:#00f}body{color:#008000}';
+
+    stylus(styl, { compress: true })
+      .render().should.equal(css);
+
+    stylus('@import "clone2"', { compress: true, paths: [path] })
+      .render().should.equal(css);
+  });
 });
+
+// helper functions
 
 function addSuite(desc, cases, fn, ignore) {
   describe(desc, function(){
@@ -111,6 +176,14 @@ function readDir(dir, ext){
   });
 }
 
+function readFile(path){
+  return normalizeContent(fs.readFileSync(path, 'utf-8'));
+}
+
 function normalizeName(name){
   return name.replace(/[-.]/g, ' ');
+}
+
+function normalizeContent(str){
+  return str.replace(/\r/g, '').trim();
 }
