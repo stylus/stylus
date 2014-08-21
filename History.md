@@ -1,3 +1,9 @@
+0.48.1 / 2014-08-21
+===================
+
+  * Fixed sourcemap paths when `--out` flag is present, #1668.
+  * Fixed the naming convention for maps: `.styl.map` => `.css.map`, #1668.
+
 0.48.0 / 2014-08-20
 ===================
 
