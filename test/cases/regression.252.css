@@ -1,4 +1,4 @@
-@-webkit-keyframes movingBorder {
+@keyframes movingBorder {
   from {
     border-radius: 0 0 0 35px;
   }

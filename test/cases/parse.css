@@ -35,30 +35,6 @@ a:hover {
     color: #f00;
   }
 }
-@-moz-keyframes foo {
-  from {
-    color: #f00;
-  }
-  to {
-    color: #00f;
-  }
-}
-@-webkit-keyframes foo {
-  from {
-    color: #f00;
-  }
-  to {
-    color: #00f;
-  }
-}
-@-o-keyframes foo {
-  from {
-    color: #f00;
-  }
-  to {
-    color: #00f;
-  }
-}
 @keyframes foo {
   from {
     color: #f00;

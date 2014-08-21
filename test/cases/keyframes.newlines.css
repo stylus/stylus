@@ -1,27 +1,3 @@
-@-moz-keyframes something {
-  0%, 50%, 100% {
-    background: #fff;
-  }
-  to {
-    background: #000;
-  }
-}
-@-webkit-keyframes something {
-  0%, 50%, 100% {
-    background: #fff;
-  }
-  to {
-    background: #000;
-  }
-}
-@-o-keyframes something {
-  0%, 50%, 100% {
-    background: #fff;
-  }
-  to {
-    background: #000;
-  }
-}
 @keyframes something {
   0%, 50%, 100% {
     background: #fff;

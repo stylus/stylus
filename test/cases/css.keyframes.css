@@ -1,4 +1,4 @@
-@-webkit-keyframes something {
+@keyframes something {
   from {
     color: #f00;
   }
@@ -14,7 +14,7 @@
     opacity: 1;
   }
 }
-@-webkit-keyframes bouce {
+@keyframes bouce {
   from {
     foo: bar;
   }
@@ -25,7 +25,7 @@
     foo: bar;
   }
 }
-@-webkit-keyframes bouce {
+@keyframes bouce {
   from {
     foo: bar;
   }
@@ -36,7 +36,7 @@
     foo: bar;
   }
 }
-@-webkit-keyframes bouce {
+@keyframes bouce {
   from {
     foo: bar;
   }

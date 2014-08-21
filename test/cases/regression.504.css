@@ -1,36 +1,3 @@
-@-moz-keyframes tada {
-  0% {
-    transform: scale(1);
-  }
-  10%, 20% {
-    transform: scale(0.9) rotate(-3deg);
-  }
-  from, to {
-    background: scale(0.5);
-  }
-}
-@-webkit-keyframes tada {
-  0% {
-    transform: scale(1);
-  }
-  10%, 20% {
-    transform: scale(0.9) rotate(-3deg);
-  }
-  from, to {
-    background: scale(0.5);
-  }
-}
-@-o-keyframes tada {
-  0% {
-    transform: scale(1);
-  }
-  10%, 20% {
-    transform: scale(0.9) rotate(-3deg);
-  }
-  from, to {
-    background: scale(0.5);
-  }
-}
 @keyframes tada {
   0% {
     transform: scale(1);

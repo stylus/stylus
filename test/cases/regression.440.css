@@ -1,4 +1,4 @@
-@-moz-keyframes foo {
+@keyframes foo {
   from {
     barbaz: raz;
   }

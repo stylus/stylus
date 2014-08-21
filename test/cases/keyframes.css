@@ -6,6 +6,54 @@
     color: #fff;
   }
 }
+@keyframes foo {
+  from {
+    width: 100%;
+  }
+}
+@keyframes active {
+  0% {
+    background-image: radial-gradient(#ff0 0%, #f00 0%, #000 100%);
+  }
+  10% {
+    background-image: radial-gradient(#ff0 0%, #f00 10%, #000 100%);
+  }
+  20% {
+    background-image: radial-gradient(#ff0 0%, #f00 20%, #000 100%);
+  }
+  30% {
+    background-image: radial-gradient(#ff0 0%, #f00 30%, #000 100%);
+  }
+  40% {
+    background-image: radial-gradient(#ff0 0%, #f00 40%, #000 100%);
+  }
+  50% {
+    background-image: radial-gradient(#ff0 0%, #f00 50%, #000 100%);
+  }
+  60% {
+    background-image: radial-gradient(#ff0 0%, #f00 60%, #000 100%);
+  }
+  70% {
+    background-image: radial-gradient(#ff0 0%, #f00 70%, #000 100%);
+  }
+  80% {
+    background-image: radial-gradient(#ff0 0%, #f00 80%, #000 100%);
+  }
+  90% {
+    background-image: radial-gradient(#ff0 0%, #f00 90%, #000 100%);
+  }
+  100% {
+    background-image: radial-gradient(#ff0 0%, #f00 100%, #000 100%);
+  }
+}
+@keyframes foo {
+  0% {
+    color: #f00;
+  }
+  100% {
+    color: #ff0;
+  }
+}
 @keyframes lol1 {
   10% {
     left: 10;
@@ -159,77 +207,6 @@
   }
   100% {
     color: #008000;
-  }
-}
-div {
-  color: #00f;
-}
-@keyframes lol {
-  from {
-    color: #f00;
-  }
-}
-@-moz-keyframes foo {
-  from {
-    width: 100%;
-  }
-}
-@-webkit-keyframes foo {
-  from {
-    width: 100%;
-  }
-}
-@-o-keyframes foo {
-  from {
-    width: 100%;
-  }
-}
-@keyframes foo {
-  from {
-    width: 100%;
-  }
-}
-@keyframes active {
-  0% {
-    background-image: radial-gradient(#ff0 0%, #f00 0%, #000 100%);
-  }
-  10% {
-    background-image: radial-gradient(#ff0 0%, #f00 10%, #000 100%);
-  }
-  20% {
-    background-image: radial-gradient(#ff0 0%, #f00 20%, #000 100%);
-  }
-  30% {
-    background-image: radial-gradient(#ff0 0%, #f00 30%, #000 100%);
-  }
-  40% {
-    background-image: radial-gradient(#ff0 0%, #f00 40%, #000 100%);
-  }
-  50% {
-    background-image: radial-gradient(#ff0 0%, #f00 50%, #000 100%);
-  }
-  60% {
-    background-image: radial-gradient(#ff0 0%, #f00 60%, #000 100%);
-  }
-  70% {
-    background-image: radial-gradient(#ff0 0%, #f00 70%, #000 100%);
-  }
-  80% {
-    background-image: radial-gradient(#ff0 0%, #f00 80%, #000 100%);
-  }
-  90% {
-    background-image: radial-gradient(#ff0 0%, #f00 90%, #000 100%);
-  }
-  100% {
-    background-image: radial-gradient(#ff0 0%, #f00 100%, #000 100%);
-  }
-}
-@keyframes foo {
-  0% {
-    color: #f00;
-  }
-  100% {
-    color: #ff0;
   }
 }
 @keyframes foo {
