@@ -9,7 +9,7 @@ permalink: docs/sourcemaps.html
 
 ## Create a sourcemap
 
-  Pass the `--sourcemap` flag (or `-m`) with a Stylus file. This will create a `style.css` file, and a `style.styl.map` file as siblings to your `style.styl` file and place a sourcemap link at the bottom of `style.css` to your sourcemap.
+  Pass the `--sourcemap` flag (or `-m`) with a Stylus file. This will create a `style.css` file, and a `style.css.map` file as siblings to your `style.styl` and place a sourcemap link at the bottom of `style.css` to your sourcemap.
 
   `stylus -m style.styl`
 
