@@ -402,6 +402,7 @@ var options = {
   , sourcemap: sourcemap
   , paths: [process.cwd()].concat(paths)
   , prefix: prefix
+  , dest: dest
 };
 
 // Buffer stdin
@@ -691,8 +692,8 @@ function writeFile(file, css) {
 function writeSourcemap(file, sourcemap) {
   // --out support
   var path = dest
-    ? join(dest, basename(file) + '.map')
-    : file + '.map';
+    ? join(dest, basename(file, '.styl') + '.css.map')
+    : file.replace(/\.styl$/i, '.css.map');
   fs.writeFile(path, JSON.stringify(sourcemap), function(err){
     if (err) throw err;
     console.log('  \033[90mgenerated\033[0m %s', path);
