@@ -447,7 +447,7 @@ if (convertCSS) {
  */
 
 function repl() {
-  var options = { filename: 'stdin', imports: [join(__dirname, '..', 'lib', 'functions')] }
+  var options = { cache: false, filename: 'stdin', imports: [join(__dirname, '..', 'lib', 'functions')] }
     , parser = new stylus.Parser('', options)
     , evaluator = new stylus.Evaluator(parser.parse(), options)
     , rl = require('readline')
