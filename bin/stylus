@@ -696,7 +696,8 @@ function writeSourcemap(file, sourcemap) {
     : file.replace(/\.styl$/i, '.css.map');
   fs.writeFile(path, JSON.stringify(sourcemap), function(err){
     if (err) throw err;
-    console.log('  \033[90mgenerated\033[0m %s', path);
+    // don't output log message if --print is present
+    if (!print) console.log('  \033[90mgenerated\033[0m %s', path);
   });
 }
 
