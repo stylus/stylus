@@ -17,6 +17,8 @@
 @namespace svg "http://www.w3.org/2000/svg";
 @namespace "foo";
 @namespace foo "http://example.com/foo";
+@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+@namespace url("http://www.w3.org/1999/xhtml");
 @region div.region:first-of-type {
   p {
     color: #fff;
