@@ -36,11 +36,6 @@
     width: device-width;
   }
 }
-@supports (display: flex) {
-  div {
-    display: flex;
-  }
-}
 @foo bar1 {
   color: #f00;
 }
