@@ -1,46 +1,4 @@
-json('import.json/vars.json')
-
-@media queries-small
-  body
-    //string variable
-    display nope
-    //color calc
-    color darken(color, 50%)
-    //color calc rgb(a)
-    background-color: darken(background-color, 50%)
-    border-color: fade-color
-    //color calc alias (i.e. "purple")
-    outline-color: darken(bg, 50%)
-    //number variable
-    padding spacing
-    //acts the same as regular variables
-    outline 1.5 * spacing
-    margin gutter * 2
-    if awesome
-      border red
-    //rgba with single digit values
-    text-decoration-color decoration-color
-    text-shadow 0 1px shadow-color
-
-//nested json variable
-@media queries-large
-  body
-    //deep nested json variable
-    -webkit-transition animate-special-out
-
-.a
-  prefix = '$'
-  json('import.json/local-vars.json', true, prefix)
-  color $params-color
-  width 10px * $a
-  height 10px * $b
-  background $bg
-
-.b
-  color $params-color
-  background-color alternate-color
-
-vars = json('import.json/vars.json', { hash: true });
+vars = json('import.json/vars.json');
 
 body
   display: vars.nope
