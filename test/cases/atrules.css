@@ -60,3 +60,8 @@
 @font-face {
   font-family: 'Arial-2';
 }
+@foo {
+  .bar {
+    color: #f00;
+  }
+}
