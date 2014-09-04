@@ -86,17 +86,7 @@ describe('JS API', function(){
         baz: {
           foo: { quz: 'quz' },
         }
-      }, true).render().should.equal("body{foo:'quz';bar:1}");
-  });
-
-  it('define a variable with object as list', function(){
-    stylus('body { foo: test-obj  }')
-      .set('compress', true)
-      .define('test-obj', {
-        baz: {
-          foo: { quz: 'quz' }
-        }
-      }).render().should.equal("body{foo:baz foo quz 'quz'}");
+      }).render().should.equal("body{foo:'quz';bar:1}");
   });
 
   it('use variable from options object', function(){
