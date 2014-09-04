@@ -52,9 +52,9 @@ for column in 1 2 3
     .foo
       width: 20px
 
-condition = all
+condition = 'all and (width: 100px)'
 
-@media condition and (width: 100px)
+@media condition
   body
     width: 10px
 
@@ -189,3 +189,9 @@ ul
           color: blue
           @media only screen and (max-width: 699px)
             border-right: 0
+
+a = 'all and (-webkit-min-device-pixel-ratio:1.5),(min--moz-device-pixel-ratio:1.5),(-o-min-device-pixel-ratio:1.5/1),(min-device-pixel-ratio:1.5),(min-resolution:138dpi),(min-resolution:1.5dppx)'
+@media screen
+  @media a
+    body
+      color: red

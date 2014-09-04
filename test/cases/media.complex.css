@@ -164,3 +164,8 @@ ul.left li a:visited {
     border-right: 0;
   }
 }
+@media screen and (min--moz-device-pixel-ratio: 1.5), screen and (-o-min-device-pixel-ratio: 1.5/1), screen and (min-device-pixel-ratio: 1.5), screen and (min-resolution: 138dpi), screen and (min-resolution: 1.5dppx) {
+  body {
+    color: #f00;
+  }
+}
