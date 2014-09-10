@@ -52,3 +52,7 @@ a.error:hover {
 #thing .goomba {
   visibility: hidden;
 }
+.foo,
+.bar {
+  padding: 0;
+}

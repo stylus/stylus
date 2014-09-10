@@ -92,3 +92,11 @@ $test-thang
       @extends $test-thang
   #thing .goomba
     @extends $test-thang
+
+$foo
+  .foo
+    padding: 0
+
+.foo,
+.bar
+  @extends $foo .foo
