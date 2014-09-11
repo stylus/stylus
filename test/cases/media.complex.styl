@@ -195,3 +195,19 @@ a = 'all and (-webkit-min-device-pixel-ratio:1.5),(min--moz-device-pixel-ratio:1
   @media a
     body
       color: red
+
+background-mix() {
+  background-color: #fff;
+  @media only screen {
+    @media (min-width: 100px) {
+      @media (max-width: 500px) {
+        color: blue;
+      }
+      background-color: #000;
+    }
+  }
+}
+
+body {
+  background-mix()
+}
