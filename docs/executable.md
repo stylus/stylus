@@ -56,8 +56,8 @@ Try Stylus some in the terminal!  Type below and press `CTRL-D` for `__EOF__`:
 
       $ stylus
       body
-        color red
-        font 14px Arial, sans-serif
+        color: red
+        font: 14px Arial, sans-serif
 
 ## Compiling Files Example
 

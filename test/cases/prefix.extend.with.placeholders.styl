@@ -1,14 +1,14 @@
 $ugly-button
-  border 1px solid black
+  border: 1px solid black
 
 $ugly-red-button
   @extend $ugly-button
-  background red
+  background: red
 
 // This selector is never used; its properties won't appear in the output
 $ugly-blue-button
   @extend $ugly-button
-  background blue
+  background: blue
 
 button.login
   @extend $ugly-red-button
@@ -16,14 +16,14 @@ button.login
 
 $extreme
   a&:hover
-    color red
+    color: red
 
 .link
   @extend $extreme
 
 .error
   @extend $extreme
-  background lime
+  background: lime
 
 $foo
   width: 10px

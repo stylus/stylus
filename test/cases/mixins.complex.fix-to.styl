@@ -1,28 +1,28 @@
 
 fix-to(a, b)
-  position fixed
-  {a} 0
-  {b} 0
+  position: fixed
+  {a}: 0
+  {b}: 0
 
 .button
-  fix-to bottom left
+  fix-to: bottom left
 
 
 fix-to(pos...)
-  position fixed
+  position: fixed
   if length(pos) == 2
-    {pos[0]} 0
-    {pos[1]} 0
+    {pos[0]}: 0
+    {pos[1]}: 0
   else if length(pos) == 4
     a = pos[0..1]
     b = pos[2..3]
-    {a[0]} a[1]
-    {b[0]} b[1]
+    {a[0]}: a[1]
+    {b[0]}: b[1]
   else
     error('invalid arguments. fix-to: <pos> [n] <pos> [n];')
     
 .button
-  fix-to bottom left
+  fix-to: bottom left
 
 .button
-  fix-to bottom 5px left 5px
+  fix-to: bottom 5px left 5px

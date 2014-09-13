@@ -936,7 +936,7 @@ You can use any given js-plugin at given `path` with `use()` function right insi
 
     use("plugins/add.js")
 
-    width add(10, 100)
+    width: add(10, 100)
     // => width: 110
 
 And the `add.js` plugin in this case looks this way:

@@ -1,12 +1,12 @@
 
 something(arg)
-  bar arg arg
+  bar: arg arg
 
 recurse()
-  foo recurse
-  foo recurse
+  foo: recurse
+  foo: recurse
 
 body
-  foo bar(1px, baz(5px))
+  foo: bar(1px, baz(5px))
   something(baz(5px))
   recurse()

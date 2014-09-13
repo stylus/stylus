@@ -10,9 +10,9 @@ Stylus supports interpolation by using the `{}` characters to surround an expres
 A great example use-case for this is expanding properties with vendor prefixes.
 
       vendor(prop, args)
-        -webkit-{prop} args
-        -moz-{prop} args
-        {prop} args
+        -webkit-{prop}: args
+        -moz-{prop}: args
+        {prop}: args
 
       border-radius()
         vendor('border-radius', arguments)
@@ -21,7 +21,7 @@ A great example use-case for this is expanding properties with vendor prefixes.
         vendor('box-shadow', arguments)
 
       button
-        border-radius 1px 2px / 3px 4px
+        border-radius: 1px 2px / 3px 4px
 
 Yields:
 

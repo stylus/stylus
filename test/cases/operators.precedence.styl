@@ -1,82 +1,82 @@
 body
   // 4
-  foo (--- 0) or 4
+  foo: (--- 0) or 4
   // 4
-  foo --- 0 or 4
+  foo: --- 0 or 4
   // -5px
-  foo ---5px
+  foo: ---5px
   // 2
-  foo (!!!5) or 2
-  foo !!!5 or 2
+  foo: (!!!5) or 2
+  foo: !!!5 or 2
 
 
 body
   // true
-  foo !(! 5)
-  foo !!5
+  foo: !(! 5)
+  foo: !!5
 
 body
   // 5
-  foo (! false) and (! false) and 5
-  foo ! false and ! false and 5
+  foo: (! false) and (! false) and 5
+  foo: ! false and ! false and 5
 
 body
   // true
-  foo (!!5 == true) or (!!0 == false)
-  foo !!5 == true or !!0 == false
-  foo (!!5 == false) or (!!0 == false)
-  foo !!5 == false or !!0 == false
+  foo: (!!5 == true) or (!!0 == false)
+  foo: !!5 == true or !!0 == false
+  foo: (!!5 == false) or (!!0 == false)
+  foo: !!5 == false or !!0 == false
   // 2
-  foo 5 < 10 and !!5 and 2
+  foo: 5 < 10 and !!5 and 2
 
 body
   // true
-  foo (!!true) and (!!true)
-  foo !!true and !!true
+  foo: (!!true) and (!!true)
+  foo: !!true and !!true
 
 body
   test()
     5 * 2 - 15 / 2
   // 2.5
-  foo test()
-  foo (5 * 2) - (15 / 2)
+  foo: test()
+  foo: (5 * 2) - (15 / 2)
 
 body
   // true
-  foo not 5 < 10 ? 0 : 1
+  foo: not 5 < 10 ? 0 : 1
   // true
-  foo !(5 < 10 ? 0 : 1)
+  foo: !(5 < 10 ? 0 : 1)
   // false
-  foo !(5 > 10 ? 0 : 1)
+  foo: !(5 > 10 ? 0 : 1)
   // wahoo
-  foo !! 1 ? wahoo : fail
+  foo: !! 1 ? wahoo : fail
   // fail
-  foo !1 ? wahoo : fail
+  foo: !1 ? wahoo : fail
 
 body
   foo = 'test'
   bar = 'test'
   // true
-  foo (foo is defined) and (bar is defined)
-  foo foo is defined and bar is defined
+  foo: (foo is defined) and (bar is defined)
+  foo: foo is defined and bar is defined
 
 body
   // true
-  foo 5 > 4 is a 'boolean'
+  foo: 5 > 4 is a 'boolean'
 
   foo = type is a 'unit' ? type : 1
   // 1
-  foo foo
+  foo: foo
 
 body
   padding = false
   margin = false
 
   // true
-  foo !padding or !margin
-  foo not padding or margin
+  foo: !padding or !margin
+  foo: not padding or margin
   
   // false
-  foo not padding or margin == !padding or !margin
+  foo: not padding or margin == !padding or !margin
   // true
-  foo (not padding or margin) == !padding or !margin
+  foo: (not padding or margin) == !padding or !margin

@@ -6,16 +6,16 @@ obj = {
 foo = 3em
 @media (max-width: foo)
   body
-    color #fff
+    color: #fff
 
-@media only screen and (  max-width: foo * 10   ), not print and (orientation:portrait) && (min-{'width'} obj.print),
-  (monochrome) and (bar baz)
+@media only screen and (  max-width: foo * 10   ), not print and (orientation:portrait) && (min-{'width'}: obj.print),
+  (monochrome) and (bar: baz)
   body
-    color #c00
+    color: #c00
 
-@media (max-width obj.desktop)
+@media (max-width: obj.desktop)
   body
-    color #ccc
+    color: #ccc
 
 unit = 220px
 for column in 1 2 3
@@ -24,15 +24,15 @@ for column in 1 2 3
   @media screen and (min-width: size) and (max-width: limit)
     .page-works
       .inner
-        foo column
-        width size
-        background-color hsl(column * 3, 50, 50)
+        foo: column
+        width: size
+        background-color: hsl(column * 3, 50, 50)
 
 @media /* foo */all/* bar */ and   /*  baz */(/* bar */ min-width :/* quz */  100px  /* foo */ )/* quz */  ,
-/* bar */  only/* foo */  print  and/* foo   */  (width/* bar */ 100px)
+/* bar */  only/* foo */  print  and/* foo   */  (width:/* bar */ 100px)
 , /* comment */ (monochrome /* bar */)
   body
-    color #0c0
+    color: #0c0
 
 @media (min-width: 10px) {}
 
@@ -162,18 +162,18 @@ body
   foo()
 
 bluefy()
-  @media (height 100px)
-    color blue
+  @media (height: 100px)
+    color: blue
 
-@media (width 100px)
+@media (width: 100px)
   .x
-    color red
+    color: red
     bluefy()
 
 bar(width)
-  @media (width width)
+  @media (width: width)
     body
-      color red
+      color: red
 
 @media screen
   if true

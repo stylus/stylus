@@ -5,21 +5,21 @@ permalink: docs/error-reporting.html
 
 # Error Reporting
 
- Stylus has fantastic error reporting built-in for syntax, parse, and evaluation errors—complete with stack traces, line numbers, and filenames.
+ Stylus has fantastic error reporting built-in for syntax, parse, and evaluation errors—complete with stack traces, line numbers, column numbers, and filenames.
 
 ## Parse Error
 
 Parse error example:
 
      body
-       form input
-         == padding 5px
+       form: input
+         == padding: 5px
 
 Yielding:
 
      Error: /Users/tj/Projects/stylus/testing/test.styl:4
        3: '  form input'
-       4: '    == padding 5px'
+       4: '    == padding: 5px'
 
      illegal unary ==
 
@@ -33,19 +33,19 @@ Yielding:
 
       border-radius(n)
         ensure(n, 'unit')
-        -webkit-border-radius n
-        -moz-border-radius n
-        border-radius n
+        -webkit-border-radius: n
+        -moz-border-radius: n
+        border-radius: n
 
       body
-        border-radius '5px'
+        border-radius: '5px'
 
 Yielding:
 
       Error: /Users/tj/Projects/stylus/examples/error.styl:12
         11: ''
         12: 'body'
-        13: '  border-radius \'5px\''
+        13: '  border-radius: \'5px\''
         14: ''
 
       expected a unit, but got string

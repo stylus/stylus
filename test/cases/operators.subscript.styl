@@ -1,46 +1,46 @@
 body
-  foo ()[0] == null
-  foo (1(2(3 4 5)))[1][1]
-  foo (1 2 3)['test'] == null
-  foo !(1 0)[1]
-  foo !(1 0)[0]
-  foo - - -(1 2 3 4 5)[4]
+  foo: ()[0] == null
+  foo: (1(2(3 4 5)))[1][1]
+  foo: (1 2 3)['test'] == null
+  foo: !(1 0)[1]
+  foo: !(1 0)[0]
+  foo: - - -(1 2 3 4 5)[4]
 
 body
-  foo (1 (2 (3 4)))
-  foo (1 (2 (3 4)))[0]
-  foo (1 (2 (3 4)))[1]
-  foo (1 (2 (3 4)))[1][0]
-  foo (1 (2 (3 4)))[1][1]
-  foo (1 (2 (3 4)))[1][1][0]
-  foo (1 (2 (3 4)))[1][1][1]
-  foo (1 (2 (3 4)))[1][1][3]
+  foo: (1 (2 (3 4)))
+  foo: (1 (2 (3 4)))[0]
+  foo: (1 (2 (3 4)))[1]
+  foo: (1 (2 (3 4)))[1][0]
+  foo: (1 (2 (3 4)))[1][1]
+  foo: (1 (2 (3 4)))[1][1][0]
+  foo: (1 (2 (3 4)))[1][1][1]
+  foo: (1 (2 (3 4)))[1][1][3]
 
 body
-  foo (error 'message')[0]
-  foo (error 'message')[1]
+  foo: (error 'message')[0]
+  foo: (error 'message')[1]
 
 size(a, b)
   return a b
 
 body
-  foo size(5, 10)[0]
-  foo size(5, 10)[1]
+  foo: size(5, 10)[0]
+  foo: size(5, 10)[1]
 
 size(a, b)
   (a b)
 
 body
-  foo size(5, 10)[0]
-  foo size(5, 10)[1]
+  foo: size(5, 10)[0]
+  foo: size(5, 10)[1]
 
 size()
   (1 2) (3 4)
 
 body
-  foo size()[0]
-  foo size()[1]
-  foo size()[1][1]
+  foo: size()[0]
+  foo: size()[1]
+  foo: size()[1][1]
 
 image-size(path)
   w = 100
@@ -49,33 +49,33 @@ image-size(path)
 
 body
   size = image-size('test.png')
-  foo size
-  foo size[0]
-  foo size[1]
-  foo length(size)
+  foo: size
+  foo: size[0]
+  foo: size[1]
+  foo: length(size)
 
 image-size(path)
   100 200
 
 body
   size = image-size('test.png')
-  foo size
-  foo size[0]
-  foo size[1]
-  foo length(size)
+  foo: size
+  foo: size[0]
+  foo: size[1]
+  foo: length(size)
 
 size = 100 200
 
 body
-  foo size
-  foo size[0]
-  foo size[1]
-  foo length(size)
+  foo: size
+  foo: size[0]
+  foo: size[1]
+  foo: length(size)
 
 size = (100 200)
 
 body
-  foo size
-  foo size[0]
-  foo size[1]
-  foo length(size)
+  foo: size
+  foo: size[0]
+  foo: size[1]
+  foo: length(size)

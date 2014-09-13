@@ -9,12 +9,12 @@ permalink: docs/font-face.html
  
  
      @font-face
-       font-family Geo
-       font-style normal
-       src url(fonts/geo_sans_light/GensansLight.ttf)
+       font-family: Geo
+       font-style: normal
+       src: url(fonts/geo_sans_light/GensansLight.ttf)
 
      .ingeo
-       font-family Geo
+       font-family: Geo
 
 Yielding:
 

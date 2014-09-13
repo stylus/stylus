@@ -11,12 +11,12 @@ permalink: docs/vargs.html
 In the example below, we consume all the arguments passed, and simply apply them to multiple properties.
 
      box-shadow(args...)
-       -webkit-box-shadow args
-       -moz-box-shadow args
-       box-shadow args
+       -webkit-box-shadow: args
+       -moz-box-shadow: args
+       box-shadow: args
 
      #login
-       box-shadow 1px 2px 5px #eee
+       box-shadow: 1px 2px 5px #eee
 
 Yielding:
 
@@ -29,10 +29,10 @@ Yielding:
 If we wanted to peek at a specific argument—say, `x-offset`—we could simply use `args[0]`. Or, we may wish to redefine the mixin:
 
         box-shadow(offset-x, args...)
-          got-offset-x offset-x
-          -webkit-box-shadow offset-x args
-          -moz-box-shadow offset-x args
-          box-shadow offset-x args
+          got-offset-x: offset-x
+          -webkit-box-shadow: offset-x args
+          -moz-box-shadow: offset-x args
+          box-shadow: offset-x args
 
         #login
           box-shadow 1px 2px 5px #eee
@@ -53,12 +53,12 @@ Yielding:
   For example, if we use a rest param, the comma is consumed (since it is an expression delimiter):
   
       box-shadow(args...)
-        -webkit-box-shadow args
-        -moz-box-shadow args
-        box-shadow args
+        -webkit-box-shadow: args
+        -moz-box-shadow: args
+        box-shadow: args
 
       #login
-        box-shadow #ddd 1px 1px, #eee 2px 2px 
+        box-shadow: #ddd 1px 1px, #eee 2px 2px 
 
 Yielding undesired results:
 
@@ -71,12 +71,12 @@ Yielding undesired results:
 Let's redefine the mixin using `arguments`:
 
       box-shadow()
-        -webkit-box-shadow arguments
-        -moz-box-shadow arguments
-        box-shadow arguments
+        -webkit-box-shadow: arguments
+        -moz-box-shadow: arguments
+        box-shadow: arguments
 
       body
-        box-shadow #ddd 1px 1px, #eee 2px 2px
+        box-shadow: #ddd 1px 1px, #eee 2px 2px
 
 Now, yielding the desired result:
 

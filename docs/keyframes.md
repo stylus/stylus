@@ -11,7 +11,7 @@ Stylus supports `@keyframes` both with curly braces or without them, you can als
     @keyframes {$keyframe-name}
       for i in 0..10
         {10% * i}
-          opacity (i/10)
+          opacity: (i/10)
 
 Yielding:
 

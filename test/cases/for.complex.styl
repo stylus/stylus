@@ -2,30 +2,30 @@ vals = a b c d e f g
 
 body
   for val in vals
-    foo val
+    foo: val
 
 body
   for val in vals[0]
-    foo val
+    foo: val
 
 body
   for val, i in vals[1..3]
-    foo i unquote(':') val
+    foo: i unquote(':') val
 
 body
   for msg in (error 'test') (error 'foo')
-    foo msg[0] test msg[1]
+    foo: msg[0] test msg[1]
 
 body
   for char in a b c d
     for num in 0 1 2 3
-      foo num char
+      foo: num char
 
 fonts = helvetica, arial, sans-serif
 
 body
   for font in fonts
-    foo font
+    foo: font
 
 foo()
   bar = 1
@@ -33,8 +33,8 @@ foo()
   for x in arguments
     null
 
-  baz bar is defined
-  baz bar is defined
+  baz: bar is defined
+  baz: bar is defined
 
 body
   foo()

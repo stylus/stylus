@@ -1,56 +1,56 @@
 
 vendor(prop, args)
-  -webkit-{prop} args
-  -moz-{prop} args
-  {prop} args
+  -webkit-{prop}: args
+  -moz-{prop}: args
+  {prop}: args
 
 border-radius()
   vendor('border-radius', arguments)
 
 #login
-  border-radius 1px 2px / 3px 4px
+  border-radius: 1px 2px / 3px 4px
 
 body
   prop = 'something'
-  foo bar
-  foo-{prop} foo
-  foo-{prop}-bar foo
-  {prop}-foo foo
-  {prop} foo
+  foo: bar
+  foo-{prop}: foo
+  foo-{prop}-bar: foo
+  {prop}-foo: foo
+  {prop}: foo
 
 body
-  {'test' + '-stuff'}-yup awesome
-  -webkit-{border-radius} awesome
-  -webkit-{box-shadow} awesome
+  {'test' + '-stuff'}-yup: awesome
+  -webkit-{border-radius}: awesome
+  -webkit-{box-shadow}: awesome
 
 testing(var, one, two)
   {var}
 
 body
-  foo testing('one', 1, 2)
-  foo testing('two', 1, 2)
+  foo: testing('one', 1, 2)
+  foo: testing('two', 1, 2)
 
 body
   nested(prop)
-    -webkit-{prop} foo
-    {prop} foo
+    -webkit-{prop}: foo
+    {prop}: foo
     form input
-      -webkit-{prop} foo
-      {prop} foo
+      -webkit-{prop}: foo
+      {prop}: foo
       p
-        {prop} foo
+        {prop}: foo
   nested('something')
 
 top-right()
-  position absolute
-  top 0
-  right 0
+  position: absolute
+  top: 0
+  right: 0
 
 foo(ret)
   ret
 
 body
-  foo-{foo('test')}-baz bar
-  foo-{foo('test')} bar
-  {foo('test')} bar
-  {foo('top')}-right bar
+  foo-{foo('test')}-baz: bar
+  foo-{foo('test')}: bar
+  {foo('test')}: bar
+  {foo('top')}-right: bar

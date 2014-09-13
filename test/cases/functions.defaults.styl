@@ -3,10 +3,10 @@ size = 15px
 small = 5
 
 pad-var(x, y = size)
-  padding y x y x
+  padding: y x y x
 
 pad-arg(x, y = x)
-  padding y x y x
+  padding: y x y x
 
 body
   pad-var(5px)
@@ -21,7 +21,7 @@ add(a, b)
   a + b
 
 pad-call(n = unit(add(small, small), 'px'))
-  padding n
+  padding: n
 
 body
   pad-call()

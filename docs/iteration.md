@@ -13,7 +13,7 @@ For example:
 
     body
       for num in 1 2 3
-        foo num
+        foo: num
 
 Yields:
 
@@ -28,7 +28,7 @@ The example below shows how to use the `<key-name>`:
       body
         fonts = Impact Arial sans-serif
         for font, i in fonts
-          foo i font
+          foo: i font
 
 Yielding:
 
@@ -42,7 +42,7 @@ And here's how you do a regular for loop
 
     body
       for num in (1..5)
-        foo num
+        foo: num
 
 Yields:
 
@@ -63,7 +63,7 @@ Yields:
      apply(props)
        props = arguments if length(arguments) > 1
        for prop in props
-         {prop[0]} prop[1]
+         {prop[0]}: prop[1]
 
      body
        apply(one 1, two 2, three 3)

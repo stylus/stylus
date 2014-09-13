@@ -12,21 +12,21 @@ permalink: docs/css-style.html
  Below is a small style using the indented approach:
  
      border-radius()
-       -webkit-border-radius arguments
-       -moz-border-radius arguments
-       border-radius arguments
+       -webkit-border-radius: arguments
+       -moz-border-radius: arguments
+       border-radius: arguments
 
      body a
-       font 12px/1.4 "Lucida Grande", Arial, sans-serif
-       background black
-       color #ccc
+       font: 12px/1.4 "Lucida Grande", Arial, sans-serif
+       background: black
+       color: #ccc
 
      form input
-       padding 5px
-       border 1px solid
-       border-radius 5px
+       padding: 5px
+       border: 1px solid
+       border-radius: 5px
 
- Since braces, colons, and semi-colons are optional, we could write this example just as we would with normal CSS:
+ Since braces and semi-colons are optional, we could write this example just as we would with normal CSS:
  
      border-radius() {
        -webkit-border-radius: arguments;

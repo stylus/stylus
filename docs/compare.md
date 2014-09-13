@@ -22,7 +22,7 @@ Less:
 Stylus:
 
      main-color = #006
-     color main-color
+     color: main-color
 
 ## Mixins
 
@@ -49,7 +49,7 @@ Less:
 Stylus:
 
       pad(x, y)
-        padding y x
+        padding: y x
 
       .msg
         pad(5px, 10px)
@@ -74,13 +74,13 @@ Less:
 Stylus:
 
     box-shadow()
-      -webkit-box-shadow arguments
-      -moz-box-shadow arguments
-      box-shadow arguments
+      -webkit-box-shadow: arguments
+      -moz-box-shadow: arguments
+      box-shadow: arguments
 
     .box
       base = #f938ab
-      color saturate(base, 5%)
-      border-color lighten(base, 30%)
+      color: saturate(base, 5%)
+      border-color: lighten(base, 30%)
       div
-        box-shadow 0 0 5px 0.4
+        box-shadow: 0 0 5px 0.4

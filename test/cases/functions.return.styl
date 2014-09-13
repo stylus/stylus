@@ -31,22 +31,22 @@ set()
 
 body
   // no
-  foo large(15)
+  foo: large(15)
   
   // yes
-  foo large(150)
+  foo: large(150)
 
   // false
-  foo large('string')
+  foo: large('string')
   
   // yes
-  foo nested()
+  foo: nested()
   
   // 'a is not a unit'
-  foo nested('wahoo')
+  foo: nested('wahoo')
 
   // 2
-  foo set()
+  foo: set()
 
 deep-implicit()
   one
@@ -73,8 +73,8 @@ deep-explicit()
   five
 
 body
-  foo deep-implicit()
-  foo deep-explicit()
+  foo: deep-implicit()
+  foo: deep-explicit()
 
 test()
   return 1 if false
@@ -83,4 +83,4 @@ test()
   return 4
 
 body
-  foo test()
+  foo: test()

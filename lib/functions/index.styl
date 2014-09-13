@@ -261,7 +261,7 @@ join(delim, vals...)
 add-property-function = add-property
 add-property(name, expr)
   if mixin
-    {name} expr
+    {name}: expr
   else
     add-property-function(name, expr)
 

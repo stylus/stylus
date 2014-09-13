@@ -1,20 +1,20 @@
 
 padding(n)
-  padding n
+  padding: n
 
 body
   padding(5px)
   padding(5px 10px)
 
 padding(y, x = null)
-  padding y x
+  padding: y x
 
 body
   padding(5px)
   padding(5px, 10px)
 
 padding(args...)
-  padding args
+  padding: args
 
 body
   padding(5px)
@@ -22,9 +22,9 @@ body
   padding(5px, 10px, 0 2px)
 
 padding(y, rest...)
-  test-y y
+  test-y: y
   if rest
-    padding rest
+    padding: rest
 
 body
   padding(1px)
@@ -32,8 +32,8 @@ body
 
 padding(args...)
   if args
-    test-y args[0]
-    test-x args[1]
+    test-y: args[0]
+    test-x: args[1]
 
 body
   padding(1px)

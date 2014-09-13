@@ -10,7 +10,7 @@ permalink: docs/media.html
      @media print
        #header
        #footer
-         display none
+         display: none
 
 Yielding:
 
@@ -26,10 +26,10 @@ Yielding:
 Media queries can be nested, too, and they will be expanded to wrap the context in which they are used. For example:
 
     .widget
-      padding 10px
+      padding: 10px
       
       @media screen and (min-width: 600px)
-        padding 20px
+        padding: 20px
 
 Yielding:
 
@@ -76,7 +76,7 @@ You can use both interpolations and variables inside media queries, so it is pos
     bar = 30em
     @media (max-{foo}: bar)
       body
-        color #fff
+        color: #fff
 
 This would yield
 

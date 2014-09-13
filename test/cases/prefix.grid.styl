@@ -23,12 +23,12 @@ make-grid-columns()
     else
       // terminal
       {list}
-        position relative
+        position: relative
         // Prevent columns from collapsing when empty
-        min-height 1px
+        min-height: 1px
         // Inner gutter via padding
-        padding-left (grid-gutter-width / 2)
-        padding-right (grid-gutter-width / 2)
+        padding-left: (grid-gutter-width / 2)
+        padding-right: (grid-gutter-width / 2)
 
   // initial method
   col_start(index)
@@ -44,7 +44,7 @@ float-grid-columns(class)
       col((index + 1), unquote("" + list + ", " + item + ""))
     else
       {list}
-        float left
+        float: left
   // initial
   col_start(index)
     item = unquote(".col-" + class + "-" + index + "")
@@ -56,19 +56,19 @@ calc-grid-column(index, class, type)
   if index > 0 and type == width
     item = unquote(".col-" + class + "-" + index + "")
     {item}
-      width lesscss-percentage((index / grid-columns))
+      width: lesscss-percentage((index / grid-columns))
   else if type == push
     item = unquote(".col-" + class + "-push-" + index + "")
     {item}
-      left lesscss-percentage((index / grid-columns))
+      left: lesscss-percentage((index / grid-columns))
   else if type == pull
     item = unquote(".col-" + class + "-pull-" + index + "")
     {item}
-      right lesscss-percentage((index / grid-columns))
+      right: lesscss-percentage((index / grid-columns))
   else if type == offset
     item = unquote(".col-" + class + "-offset-" + index + "")
     {item}
-      margin-left lesscss-percentage((index / grid-columns))
+      margin-left: lesscss-percentage((index / grid-columns))
 
 // Looping
 loop-grid-columns(index, class, type)

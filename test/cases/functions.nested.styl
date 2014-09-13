@@ -5,7 +5,7 @@ add(a, b)
   a + div(b, 2)
 
 body
-  padding add(1,5)
+  padding: add(1,5)
   // => 3.5
 
 add(a, b)
@@ -14,7 +14,7 @@ add(a, b)
   a + half()
 
 body
-  padding add(1,5)
+  padding: add(1,5)
   // => 3.5
 
 getFunction(name)
@@ -27,11 +27,11 @@ getFunction(name)
 
 body
   fn = getFunction('add')
-  padding fn(5, 5)
+  padding: fn(5, 5)
   // => 10
   
   fn = getFunction('sub')
   fn2 = fn
   fn3 = fn2
-  padding fn3(5, 5)
+  padding: fn3(5, 5)
   // => 0

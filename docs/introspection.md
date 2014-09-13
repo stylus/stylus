@@ -19,9 +19,9 @@ permalink: docs/introspection.html
       reset()
         if mixin == 'root'
           got
-            root true
+            root: true
         else if mixin
-          got 'a mixin'
+          got: 'a mixin'
         else
           'not a mixin'
 
@@ -29,7 +29,7 @@ permalink: docs/introspection.html
 
       body
         reset()
-        foo reset()
+        foo: reset()
 
 Compiles to:
 

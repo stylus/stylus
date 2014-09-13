@@ -7,19 +7,19 @@ string(val)
 
 body
   // false
-  foo stringish(12)
+  foo: stringish(12)
   
   // true
-  foo stringish('12')
+  foo: stringish('12')
 
   // true
-  foo stringish(wahoo)
+  foo: stringish(wahoo)
 
   // false
   num = 12
-  foo stringish(num)
-  foo stringish()
+  foo: stringish(num)
+  foo: stringish()
 
-  foo string(something)
-  foo string('something')
-  foo string(12)
+  foo: string(something)
+  foo: string('something')
+  foo: string(12)

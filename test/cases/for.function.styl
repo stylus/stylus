@@ -15,9 +15,9 @@ sum3(nums...)
   sum += n for n in nums
 
 body
-  foo sum(1,2,3,4)
-  foo sum2(1,2,3,4)
-  foo sum3(1,2,3,4)
+  foo: sum(1,2,3,4)
+  foo: sum2(1,2,3,4)
+  foo: sum3(1,2,3,4)
 
 join(delim, args)
   buf = ''
@@ -29,15 +29,15 @@ join2(delim, args)
   buf += i ? delim + arg : arg for arg, i in args
 
 body
-  foo join(' ', foo bar baz)
-  foo join(', ', foo bar baz)
-  foo join2(' ', 1 2 3)
-  foo join2(', ', 1 2 3)
+  foo: join(' ', foo bar baz)
+  foo: join(', ', foo bar baz)
+  foo: join2(' ', 1 2 3)
+  foo: join2(', ', 1 2 3)
 
 body
   fonts = Impact Arial sans-serif
   for font, i in fonts
-    foo i font
+    foo: i font
 
 last-even(nums...)
   ret = n if n % 2 == 0 for n in nums
@@ -47,5 +47,5 @@ first-even(nums...)
   return n if n % 2 == 0 for n in nums
 
 body
-  foo last-even(1,3,30,5,6,12,2,24,3)
-  foo first-even(1,3,30,5,6,12,2,24,3)
+  foo: last-even(1,3,30,5,6,12,2,24,3)
+  foo: first-even(1,3,30,5,6,12,2,24,3)

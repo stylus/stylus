@@ -10,7 +10,7 @@ permalink: docs/escape.html
  For example:
 
      body
-       padding 1 \+ 2
+       padding: 1 \+ 2
 
 Compiles to:
 
@@ -22,8 +22,8 @@ Compiles to:
 Note that Stylus requires that `/` is parenthesized when used in a property:
 
     body
-      font 14px/1.4
-      font (14px/1.4)
+      font: 14px/1.4
+      font: (14px/1.4)
 
 yields:
 

@@ -1,89 +1,89 @@
 body
   // 5px
-  foo 0 || 5px
+  foo: 0 || 5px
 
   // 0px
-  foo 0px || 5px
+  foo: 0px || 5px
 
   // 0px
-  foo 0px || 0px
+  foo: 0px || 0px
 
   // false
-  foo 0 or false
+  foo: 0 or false
 
   // true
-  foo 0 || 0 || true
+  foo: 0 || 0 || true
 
   // 5px
-  foo 1px && 5px
+  foo: 1px && 5px
 
   // 1px
-  foo 0px && 1px
+  foo: 0px && 1px
 
   // 0
-  foo 1px && 0
+  foo: 1px && 0
 
   // false
-  foo 1px and false
+  foo: 1px and false
 
   // 10
-  foo 5px && 5px && 10
+  foo: 5px && 5px && 10
 
   // #fff
-  foo #000 && #fff
+  foo: #000 && #fff
 
   // 1
-  foo 8 && (4 && 1)
+  foo: 8 && (4 && 1)
 
   // true
   type = "color"
-  foo #fff is a type
-  foo #fff is a 'color'
+  foo: #fff is a type
+  foo: #fff is a 'color'
 
   // false
-  foo 15px is a 'color'
+  foo: 15px is a 'color'
   // true
-  foo 15px is a 'unit'
+  foo: 15px is a 'unit'
 
   // true
-  foo 15px is a 'unit' and #fff is a 'color'
+  foo: 15px is a 'unit' and #fff is a 'color'
 
   // true
   foo = 'bar'
 
   // true
   bar = 'baz'
-  foo foo is defined and bar is defined
+  foo: foo is defined and bar is defined
 
   // false
-  foo baz is defined
+  foo: baz is defined
 
   // wahoo
-  foo bar is defined ? wahoo : nope
+  foo: bar is defined ? wahoo : nope
 
   // nope
-  foo rawr is defined ? yes : nope
+  foo: rawr is defined ? yes : nope
 
   // "got 15px"
-  foo "got " + 15px
+  foo: "got " + 15px
 
   // 1
-  foo true and 1 or 5
+  foo: true and 1 or 5
 
   // 5
-  foo !false and !false and 5
+  foo: !false and !false and 5
 
   // true
-  foo !!5 is true or !!0 is false
-  foo !!5 == false or !!0 == false
+  foo: !!5 is true or !!0 is false
+  foo: !!5 == false or !!0 == false
 
   // true
-  foo wahoo == wahoo
+  foo: wahoo == wahoo
 
   // false
-  foo 0 == true
-  foo true == 0
-  foo #fff == undefined
+  foo: 0 == true
+  foo: true == 0
+  foo: #fff == undefined
 
 
 body
@@ -96,16 +96,16 @@ body
   foo: '<%s, %s, %s>' % (foo bar baz)
 
 body
-  foo 5 < '5.1'
-  foo 5 < 5.1
-  foo 5 <= 5.1
-  foo !(5 < '5')
-  foo 5.1 > 5
-  foo !(5 > 5)
-  foo '5.1' > 5
-  foo '5.1' > '5'
-  foo (5 - "5.1") != 0
-  foo !(5 == '5.1')
+  foo: 5 < '5.1'
+  foo: 5 < 5.1
+  foo: 5 <= 5.1
+  foo: !(5 < '5')
+  foo: 5.1 > 5
+  foo: !(5 > 5)
+  foo: '5.1' > 5
+  foo: '5.1' > '5'
+  foo: (5 - "5.1") != 0
+  foo: !(5 == '5.1')
 
 str = ''
 
@@ -116,5 +116,5 @@ body
 body
   foo = 40em
   bar = '40em'
-  width type(foo) == 'unit' && unit(foo)
-  height type(bar) == 'unit' && unit(bar)
+  width: type(foo) == 'unit' && unit(foo)
+  height: type(bar) == 'unit' && unit(bar)

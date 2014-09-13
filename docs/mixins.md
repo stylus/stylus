@@ -12,9 +12,9 @@ For example, we have a `border-radius(n)` function defined below, which is invok
 When `border-radius()` is invoked within a selector, the properties are expanded and copied into the selector.
 
     border-radius(n)
-      -webkit-border-radius n
-      -moz-border-radius n
-      border-radius n
+      -webkit-border-radius: n
+      -moz-border-radius: n
+      border-radius: n
 
     form input[type=button]
       border-radius(5px)
@@ -30,21 +30,21 @@ Compiles to:
 When using mixins you can omit the parentheses altogether, providing fantastic transparent vendor property support!
 
     border-radius(n)
-      -webkit-border-radius n
-      -moz-border-radius n
-      border-radius n
+      -webkit-border-radius: n
+      -moz-border-radius: n
+      border-radius: n
 
     form input[type=button]
-      border-radius 5px
+      border-radius: 5px
 
 Note that the `border-radius` within our mixin is treated as a property, and not a recursive function invocation. 
 
 To take this further, we can utilize the automatic `arguments` local variable, containing the expression passed, allowing multiple values to be passed:
 
     border-radius()
-      -webkit-border-radius arguments
-      -moz-border-radius arguments
-      border-radius arguments
+      -webkit-border-radius: arguments
+      -moz-border-radius: arguments
+      border-radius: arguments
 
 Now we can pass values like `border-radius 1px 2px / 3px 4px`!
 
@@ -53,13 +53,13 @@ Another great use of this is the addition of transparent support for vendor-spec
         support-for-ie ?= true
 
         opacity(n)
-          opacity n
+          opacity: n
           if support-for-ie
-            filter unquote('progid:DXImageTransform.Microsoft.Alpha(Opacity=' + round(n * 100) + ')')
+            filter: unquote('progid:DXImageTransform.Microsoft.Alpha(Opacity=' + round(n * 100) + ')')
 
         #logo
           &:hover
-            opacity 0.5
+            opacity: 0.5
 
 Rendering:
 
@@ -76,35 +76,35 @@ Rendering:
  
      stripe(even = #fff, odd = #eee)
        tr
-         background-color odd
+         background-color: odd
          &.even
          &:nth-child(even)
-           background-color even
+           background-color: even
 
 We may then utilize the mixin as shown below:
 
      table
        stripe()
        td
-         padding 4px 10px
+         padding: 4px 10px
 
      table#users
        stripe(#303030, #494848)
        td
-         color white
+         color: white
 
 Alternatively, `stripe()` could be defined without parent references:
 
     stripe(even = #fff, odd = #eee)
       tr
-        background-color odd
+        background-color: odd
       tr.even
       tr:nth-child(even)
-        background-color even
+        background-color: even
 
 If we wished, we could invoke `stripe()` as if it were a property:
 
-    stripe #fff #000
+    stripe: #fff #000
 
 ## Block mixins
 
@@ -137,15 +137,15 @@ This feature is in its rough state ATM, but would be enhanced in the future.
  
      inline-list()
        li
-         display inline
+         display: inline
 
      comma-list()
        inline-list()
        li
          &:after
-           content ', '
+           content: ', '
          &:last-child:after
-           content ''
+           content: ''
 
      ul
        comma-list()

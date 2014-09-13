@@ -13,7 +13,7 @@ permalink: docs/comments.html
 
     // I'm a comment!
     body
-      padding 5px // some awesome padding
+      padding: 5px // some awesome padding
 
 ## Multi-line
 

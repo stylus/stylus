@@ -17,7 +17,7 @@ permalink: docs/functions.html
  We can then use this function in conditions, in property values, etc.
  
      body 
-       padding add(10px, 5)
+       padding: add(10px, 5)
 
  Rendering:
      
@@ -169,8 +169,8 @@ Usage:
       fn(a, b)
 
     body
-      padding invoke(5, 10, add)
-      padding invoke(5, 10, sub)
+      padding: invoke(5, 10, add)
+      padding: invoke(5, 10, sub)
 
 Yielding:
 

@@ -10,7 +10,7 @@ We may assign expressions to variables and use them throughout our stylesheet:
      font-size = 14px
 
      body
-       font font-size Arial, sans-serif
+       font: font-size Arial, sans-serif
 
 Compiles to:
 
@@ -24,7 +24,7 @@ Variables can even consist of an expression list:
     font = font-size "Lucida Grande", Arial
 
     body
-      font font, sans-serif
+      font: font, sans-serif
 
 Compiles to:
 

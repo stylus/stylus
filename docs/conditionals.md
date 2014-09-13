@@ -17,17 +17,17 @@ permalink: docs/conditionals.html
 
     if overload-padding
       padding(y, x)
-        margin y x
+        margin: y x
 
     body
-      padding 5px 10px
+      padding: 5px 10px
 
 Another example:
 
     box(x, y, margin = false)
-      padding y x
+      padding: y x
       if margin
-        margin y x
+        margin: y x
 
     body
       box(5px, 10px, true)
@@ -36,9 +36,9 @@ Another `box()` helper:
 
     box(x, y, margin-only = false)
       if margin-only
-        margin y x
+        margin: y x
       else
-        padding y x
+        padding: y x
 
 ## unless
 
@@ -50,10 +50,10 @@ In the example below, if `disable-padding-override` is `undefined` or `false`, `
 
      unless disable-padding-override is defined and disable-padding-override
        padding(x, y)
-         margin y x
+         margin: y x
 
      body
-       padding 5px 10px
+       padding: 5px 10px
 
 ## Postfix Conditionals
 
@@ -83,8 +83,8 @@ In the example below, if `disable-padding-override` is `undefined` or `false`, `
   
   
       pad(types = margin padding, n = 5px)
-        padding unit(n, px) if padding in types
-        margin unit(n, px) if margin in types
+        padding: unit(n, px) if padding in types
+        margin: unit(n, px) if margin in types
 
       body
         pad()

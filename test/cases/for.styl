@@ -1,51 +1,51 @@
 
 test(args...)
-  test-args args
+  test-args: args
   for arg in args
-    foo arg
+    foo: arg
 
 size(a, b)
   return a b
 
 body
-  test 1 2 3
-  test (1 2) (3 4) 5
-  test size(1, 2) size(3, 4)
+  test: 1 2 3
+  test: (1 2) (3 4) 5
+  test: size(1, 2) size(3, 4)
 
 body
   sizes = size(1, 2) size(3, 4)
   for size in sizes
-    foo size
+    foo: size
 
 body
   for n in 1..5
-    foo n
+    foo: n
 
 body
   for n in 1 2 3
-    foo n
+    foo: n
 
 body
   for n in 1 2 3
     foo
-      bar n
+      bar: n
       
 func(num)
   return num
   
 body
   for n in 1 2 3
-    bar func(num: n)
+    bar: func(num: n)
 
 test(args...)
   foo
     for arg in args
       bar
-        baz arg
+        baz: arg
 
 body
-  test 1 2 3
+  test: 1 2 3
 
 body
   for val, index in foo bar baz
-    foo index val
+    foo: index val

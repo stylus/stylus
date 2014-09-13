@@ -1,20 +1,20 @@
 
 @media print and (width: 21cm) and (height: 29cm)
   body
-    margin 3cm
-    padding 0
+    margin: 3cm
+    padding: 0
 
 @media print
   @page :left
-    margin-left 5px
+    margin-left: 5px
   @page :right
-    margin-right 5px
+    margin-right: 5px
 
 .foo
   if true {
-    width 50%
+    width: 50%
     @media screen and (max-width: 500px) {
-      width 100%
+      width: 100%
     }
   }
 
@@ -22,9 +22,9 @@
   if false {
     // nothing
   } else if true {
-    width 50%
+    width: 50%
     @media screen and (max-width: 500px) {
-      width 100%
+      width: 100%
     }
   }
 
@@ -32,16 +32,16 @@
   if false {
     // nothing
   } else {
-    width 50%
+    width: 50%
     @media screen and (max-width: 500px) {
-      width 100%
+      width: 100%
     }
   }
 
 .quux
-  font-weight bold
+  font-weight: bold
   @media screen
     if false
-      background-position 45px 0px
+      background-position: 45px 0px
     else
-      background-position 100px 0px
+      background-position: 100px 0px

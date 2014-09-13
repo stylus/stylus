@@ -1,21 +1,21 @@
 input[for=name]
-  width 200px
+  width: 200px
 
 nums = 1 2 3
 for n in nums
   body
-    foo n
+    foo: n
 
 body
   foo
     for n in nums
-      bar n
+      bar: n
 
 something()
   nums = 1 2 3
   foo
   input[for=name]
-    foo bar
+    foo: bar
 
 #login
   something()
@@ -25,7 +25,7 @@ something()
   foo
     for n in nums
       input[for=name]
-        bar n
+        bar: n
 
 #login
   something()

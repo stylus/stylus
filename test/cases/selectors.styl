@@ -4,124 +4,124 @@
     outline: none
 
 foo bar baz
-  foo bar
+  foo: bar
 
 foo > bar
-  foo bar
+  foo: bar
 
 input[type=text]
-  foo bar
+  foo: bar
 
 input[type="text"]
-  foo bar
+  foo: bar
 
 *
-  foo bar
+  foo: bar
 
 * .foo-bar
-  foo bar
+  foo: bar
 
 *
 *:before
 *:after
-  foo bar
+  foo: bar
 
 body > #container *
-  foo bar
+  foo: bar
 
 #foo > #bar + .baz
-  foo bar
+  foo: bar
 #foo>#bar
-  foo bar
+  foo: bar
 
 p + p ~ p
-  foo bar
+  foo: bar
 
 ul :odd
-  foo bar
+  foo: bar
 
 ul > li:last-child
-  foo bar
+  foo: bar
 
 ul > li:nth-child(2n)
-  foo bar
+  foo: bar
 
 *, p + p, ul > li
-  foo bar
+  foo: bar
 
 [is]
 [for]
 [or]
 [null]
-  foo bar
+  foo: bar
 
 #for
 #aor
-  foo bar
+  foo: bar
 
 #for .foo
-  foo bar
+  foo: bar
 
 .or .foo
-  foo bar
+  foo: bar
 
 .return  .foo
-  foo bar
+  foo: bar
 
 .null .foo
-  foo bar
+  foo: bar
 
 button[disabled]
 input[disabled]
-  cursor default
+  cursor: default
 
 button[disabled]:hover
 input[disabled]:hover
-  cursor pointer
+  cursor: pointer
 
 a:hover button[disabled]
 a:hover input[disabled]
-  cursor pointer
+  cursor: pointer
 
 input[type="submit"]
 button
-  color red
+  color: red
 
 input[foo] .bar
-  color red
+  color: red
 
 input[foo]["bar"]
-  color red
+  color: red
 
 input["foo"]::before
-  color red
+  color: red
 
 input["bar"] + .foo
-  color red
+  color: red
 
 input["bar"] > .foo
-  color red
+  color: red
 
 input["bar"] ~ .foo
-  color red
+  color: red
 
 input["bar"].foo:hover * .foo
-  color red
+  color: red
 
 input.foo[bar="baz"]
-  color red
+  color: red
 
 button,
 html input[type="button"], /* 1 */
 input[type="reset"], /* 2 */
 input[type="submit"]
-  cursor pointer
+  cursor: pointer
 
 button, input, /* foo */ a
-  color red
+  color: red
 
 paper
-  background green
+  background: green
 
   paper-input::shadow .color
-    background red
+    background: red

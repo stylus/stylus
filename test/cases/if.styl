@@ -4,7 +4,7 @@ if !n
   n = 100
 
 body
-  padding n
+  padding: n
 
 n = false
 
@@ -12,13 +12,13 @@ if not not n
   n = 50
 
 body
-  padding n
+  padding: n
 
 if not n
   n = 150
 
 body
-  padding n
+  padding: n
 
 if n
   n = n / 2
@@ -26,7 +26,7 @@ else
   n = 10000
 
 body
-  padding n
+  padding: n
 
 if n > 100
   n = n * 2
@@ -34,7 +34,7 @@ else
   n = -1
 
 body
-  padding n
+  padding: n
 
 n = 75
 
@@ -47,7 +47,7 @@ else
     n = -1
 
 body
-  padding n
+  padding: n
 
 negative(n)
   unless n is a 'unit'
@@ -60,30 +60,30 @@ negative(n)
     zero
 
 body
-  foo negative(-5)
-  foo negative(5)
-  foo negative(0)
-  foo negative('asdf')
+  foo: negative(-5)
+  foo: negative(5)
+  foo: negative(0)
+  foo: negative('asdf')
 
 body
   .input
     pad = true
     margin = false
     if pad
-      padding 5px
+      padding: 5px
     if margin
-      margin 5px
+      margin: 5px
     else
-      no unquote('margin')
+      no: unquote('margin')
 
 mixin()
-  foo bar
-  bar baz
+  foo: bar
+  bar: baz
 
 body
   form input
     if true
-      foo negative(5)
+      foo: negative(5)
       mixin()
   something
     mixin()
@@ -93,15 +93,15 @@ body
     if true
       if true
         if true
-          foo bar
+          foo: bar
           .hidden
             if true
-              display none
+              display: none
 
 a = 10
 
 if a == 10 {
   body {
-    foo a
+    foo: a
   }
 }

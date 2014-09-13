@@ -1,55 +1,55 @@
 
 mixin()
   if true
-    foo 6
-    foo 7 if true
-    foo 8 unless true
+    foo: 6
+    foo: 7 if true
+    foo: 8 unless true
 
 body
-  foo 1
-  foo 2 if true
-  foo 3 unless false
+  foo: 1
+  foo: 2 if true
+  foo: 3 unless false
   if true
-    foo 4
-    foo 5
+    foo: 4
+    foo: 5
   mixin()
 
 body
-  foo 1 if false
-  foo 2 unless true
-  foo 3
+  foo: 1 if false
+  foo: 2 unless true
+  foo: 3
 
 above-5(n)
   true if n > 5
 
 body
-  foo above-5(2) == null
-  foo above-5(6) == true
+  foo: above-5(2) == null
+  foo: above-5(6) == true
 
 below-5(n)
   return true unless n > 5
   false
 
 body
-  foo below-5(3) == true
-  foo below-5(7) == false
+  foo: below-5(3) == true
+  foo: below-5(7) == false
 
 body
-  foo 5 unless 5 + 5 == 10
+  foo: 5 unless 5 + 5 == 10
 
 body
-  foo 5 if 5 + 5 == 10 and true
+  foo: 5 if 5 + 5 == 10 and true
 
 mixin()
-  foo bar
-  foo baz
+  foo: bar
+  foo: baz
 
 body
   mixin() if true
   mixin() unless true
 
 body
-  mixin test if true
+  mixin: test if true
 
 
 @import 'foo.css' if true
@@ -59,7 +59,7 @@ body
 num = 5 unless num is defined
 
 body
-  foo num
+  foo: num
 
 type(arg = null)
   return string if arg is a 'string'
@@ -67,36 +67,36 @@ type(arg = null)
   unknown
 
 body
-  foo type('test')
-  foo type(12)
-  foo type()
+  foo: type('test')
+  foo: type(12)
+  foo: type()
 
 is-a-string(arg = null)
   arg is a 'string' unless arg == null
 
 body
-  foo is-a-string() == null
-  foo is-a-string('test')
-  foo is-a-string(12) if true
+  foo: is-a-string() == null
+  foo: is-a-string('test')
+  foo: is-a-string(12) if true
 
 empty(expr)
   0 == length(expr)
 
 font-list = arial, sans-serif
 body
-  fonts font-list unless empty(font-list)
+  fonts: font-list unless empty(font-list)
   font-list = ()
-  fonts font-list unless empty(font-list)
+  fonts: font-list unless empty(font-list)
 
 truthy(val)
   yes if 1 == val or 'yes' == val or 'y' == val
 
 body
-  foo truthy(1)
-  foo truthy('yes')
-  foo truthy('y')
-  foo truthy(0)
-  foo truthy('no')
+  foo: truthy(1)
+  foo: truthy('yes')
+  foo: truthy('y')
+  foo: truthy(0)
+  foo: truthy('no')
 
 negative(n)
   return invalid unless n is a 'unit'
@@ -105,7 +105,7 @@ negative(n)
   zero
 
 body
-  foo negative(-5)
-  foo negative(5)
-  foo negative(0)
-  foo negative('asdf')
+  foo: negative(-5)
+  foo: negative(5)
+  foo: negative(0)
+  foo: negative('asdf')

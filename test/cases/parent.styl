@@ -1,33 +1,33 @@
 dim-on-hover()
-  -webkit-transition opacity 1s ease-out
+  -webkit-transition: opacity 1s ease-out
   &:hover
-    opacity 2
+    opacity: 2
 
 .button
-  padding 5px
+  padding: 5px
   dim-on-hover()
 
 textarea
 input
-  color #A7A7A7
+  color: #A7A7A7
   &:hover
-    color #000
+    color: #000
 
 .dim
-  opacity .2
+  opacity: .2
   &:hover
   &.show
-    opacity 1
+    opacity: 1
 
 box-shadow()
-  -webkit-box-shadow arguments
-  -moz-box-shadow arguments
-  box-shadow arguments
+  -webkit-box-shadow: arguments
+  -moz-box-shadow: arguments
+  box-shadow: arguments
   html.ie8 &,
   html.ie7 & foo,
   html.ie6 &
-    border solid 1px arguments[length(arguments) - 1]
+    border: solid 1px arguments[length(arguments) - 1]
 
 body
   #login
-    box-shadow 1px 1px 3px #eee
+    box-shadow: 1px 1px 3px #eee

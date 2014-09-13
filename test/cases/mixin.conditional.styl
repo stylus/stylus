@@ -1,11 +1,11 @@
 
 pad(size = small)
   if large == size
-    padding 20px
+    padding: 20px
   if medium == size
-    padding 10px
+    padding: 10px
   if small == size
-    padding 3px
+    padding: 3px
 
 body
   pad(large)
@@ -15,22 +15,22 @@ body
 
 nested(val)
   if val
-    foo bar
-    bar baz
+    foo: bar
+    bar: baz
     .two
-      level two
+      level: two
       &:hover
-        level three
+        level: three
 
 form input
   nested(true)
   nested(false)
 
 break()
-  foo bar
-  bar baz
+  foo: bar
+  bar: baz
   return
-  baz raz
+  baz: raz
 
 body
   break()

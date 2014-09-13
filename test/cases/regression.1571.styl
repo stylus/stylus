@@ -5,7 +5,7 @@ background()
   if match('-gradient\(', ''+arguments)
     foo('background', arguments)
   else
-    background arguments
+    background: arguments
 
 linear-gradient(start, stops...)
   error('color stops required') unless length(stops)

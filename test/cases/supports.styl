@@ -2,11 +2,11 @@
   div
     display: flex;
 
-@supports ((transition-property color !important))
+@supports ((transition-property: color !important))
   body
     color: blue
 
-@supports ((transition-property color) or (animation-name: foo)) and (transform: rotate(10deg))
+@supports ((transition-property: color) or (animation-name: foo)) and (transform: rotate(10deg))
   body
     color: red
 

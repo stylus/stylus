@@ -6,19 +6,19 @@ height(img)
   return image-size(img)[1]
 
 body
-  foo image-size('gif')
-  foo image-size('gif')[0] == width('gif')
-  foo image-size('gif')[1] == height('gif')
+  foo: image-size('gif')
+  foo: image-size('gif')[0] == width('gif')
+  foo: image-size('gif')[1] == height('gif')
 
 body
-  foo image-size('tux.png')
-  foo image-size('tux.png')
-  bar image-size('flowers.jpeg')
-  bar image-size('flowers_p.jpg')
-  baz image-size('tiger.svg')
+  foo: image-size('tux.png')
+  foo: image-size('tux.png')
+  bar: image-size('flowers.jpeg')
+  bar: image-size('flowers_p.jpg')
+  baz: image-size('tiger.svg')
 
 body
-  foo image-size('foo.png', true)
+  foo: image-size('foo.png', true)
 
 // Checking for the file, so we could do a fallback
 body.tux

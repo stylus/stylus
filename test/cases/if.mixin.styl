@@ -1,21 +1,21 @@
 
 test(n)
   if n < 0
-    got below
+    got: below
   else
-    got above
+    got: above
 
 test-nested(a, b)
   if a > 1
     if unit(-5) == ''
-      got empty
-      yup just lots of empty
+      got: empty
+      yup: just lots of empty
     else
-      got unit(-5px)
+      got: unit(-5px)
 
 test-unless(n = 0)
   unless n
-    padding 10px
+    padding: 10px
 
 body
   test(5px)
@@ -33,13 +33,13 @@ foo()
 
 bar()
   @font-face
-    font-family foo
+    font-family: foo
     if true
-      src bar
+      src: bar
 
   @page
-    margin 0
+    margin: 0
     if true
-      padding 0
+      padding: 0
 
 bar()

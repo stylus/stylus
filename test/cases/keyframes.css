@@ -209,6 +209,14 @@
     color: #008000;
   }
 }
+div {
+  color: #00f;
+}
+@keyframes lol {
+  from {
+    color: #f00;
+  }
+}
 @keyframes foo {
   0% {
     color: #f00;

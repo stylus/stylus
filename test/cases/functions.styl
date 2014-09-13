@@ -3,13 +3,13 @@ add(a, b)
   a + b
 
 pad(x, y)
-  padding y x y x
+  padding: y x y x
 
 body
   pad(5px, 10px)
 
 form .button
-  padding-left add(10px, 5px)
+  padding-left: add(10px, 5px)
 
 -opposite-position(pos)
   if pos == top
@@ -29,6 +29,6 @@ opposite(positions)
     ret = ret is defined ? ret pos : pos
 
 body
-  foo opposite(top)
-  foo opposite(left)
-  foo opposite(top left)
+  foo: opposite(top)
+  foo: opposite(left)
+  foo: opposite(top left)

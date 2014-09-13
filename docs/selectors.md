@@ -10,7 +10,7 @@ permalink: docs/selectors.html
 Stylus is "pythonic" (i.e. indentation-based). Whitespace is significant, so we substitute `{` and `}` with an _indent_, and an _outdent_ as shown below:
 
     body
-      color white
+      color: white
 
 Which compiles to:
 
@@ -28,13 +28,13 @@ If preferred, you can use colons to separate properties and values:
 Stylus, just like CSS, allows you to define properties for several selectors at once through comma separation.
 
     textarea, input
-      border 1px solid #eee
+      border: 1px solid #eee
 
 The same can be done with a newline:
 
     textarea
     input
-      border 1px solid #eee
+      border: 1px solid #eee
 
 Both compile to:
 
@@ -47,14 +47,14 @@ Both compile to:
 
     foo bar baz
     > input
-      border 1px solid
+      border: 1px solid
 
 So for this reason (or simply if preferred), we may trail with a comma:
 
     foo bar baz,
     form input,
     > a
-      border 1px solid
+      border: 1px solid
 
 ## Parent Reference
 
@@ -62,9 +62,9 @@ The `&` character references the parent selector(s). In the example below our tw
 
     textarea
     input
-      color #A7A7A7
+      color: #A7A7A7
       &:hover
-        color #000
+        color: #000
 
 Compiles to:
 
@@ -80,17 +80,17 @@ Compiles to:
 Below is an example providing a simple `2px` border for Internet Exploder utilizing the parent reference within a mixin:
 
       box-shadow()
-        -webkit-box-shadow arguments
-        -moz-box-shadow arguments
-        box-shadow arguments
+        -webkit-box-shadow: arguments
+        -moz-box-shadow: arguments
+        box-shadow: arguments
         html.ie8 &,
         html.ie7 &,
         html.ie6 &
-          border 2px solid arguments[length(arguments) - 1]
+          border: 2px solid arguments[length(arguments) - 1]
 
       body
         #login
-          box-shadow 1px 1px 3px #eee
+          box-shadow: 1px 1px 3px #eee
 
 Yielding:
 
@@ -116,10 +116,10 @@ The `/` character at the start of the selector is a root reference. It reference
 
     textarea
     input
-      color #A7A7A7
+      color: #A7A7A7
       &:hover,
       /.is-hovered
-        color #000
+        color: #000
 
 Compiles to:
 
@@ -177,12 +177,12 @@ However, this is only true in functions (since functions act both as mixins, or 
 For example, the following is fine (and yields the same results as above):
 
     body
-      padding -5px
+      padding: -5px
 
 Have weird property values that Stylus can't process? `unquote()` can help you out:
 
-    filter unquote('progid:DXImageTransform.Microsoft.BasicImage(rotation=1)')
+    filter: unquote('progid:DXImageTransform.Microsoft.BasicImage(rotation=1)')
 
 Yields:
 
-    filter progid:DXImageTransform.Microsoft.BasicImage(rotation=1)
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1)

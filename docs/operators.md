@@ -94,16 +94,16 @@ With:
          (error 'a and b must be units!')
 
      body
-       padding add(1,'5')
+       padding: add(1,'5')
        // => padding: error "a and b must be units";
        
-       padding add(1,'5')[0]
+       padding: add(1,'5')[0]
        // => padding: error;
        
-       padding add(1,'5')[0] == error
+       padding: add(1,'5')[0] == error
        // => padding: true;
 
-       padding add(1,'5')[1]
+       padding: add(1,'5')[1]
        // => padding: "a and b must be units";
 
  Here's a more complex example. Now we're invoking the built-in `error()` function with the return error message, whenever the ident (the first value) equals `error`.
@@ -313,9 +313,9 @@ Example usage in mixin:
 
       pad(types = padding, n = 5px)
         if padding in types
-          padding n
+          padding: n
         if margin in types
-          margin n
+          margin: n
 
       body
         pad()
@@ -414,7 +414,7 @@ This operator is essential, as an undefined identifier is still a truthy value. 
 
     body
       if ohnoes
-        padding 5px
+        padding: 5px
 
 _Will_ yield the following CSS when undefined:
 
@@ -426,7 +426,7 @@ However this will be safe:
 
     body
       if ohnoes is defined
-        padding 5px
+        padding: 5px
 
 ## Ternary
 
