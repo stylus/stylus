@@ -67,9 +67,10 @@ addSuite('sourcemap', readDir('test/sourcemap'), function(test){
   style.render(function(err, css) {
     if (err) throw err;
     if (inline) {
-      css.should.equal(expected);
+      style.sourcemap.sourcesContent.should.not.be.empty;
+      css.should.include('sourceMappingURL=data:application/json;base64,');
     } else {
-      JSON.stringify(style.sourcemap).should.equal(expected);
+      style.sourcemap.should.eql(JSON.parse(expected));
     }
   });
 });
