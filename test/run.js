@@ -129,6 +129,24 @@ describe('JS API', function(){
       ).should.equal("body{foo:7;bar:foobar}");
   });
 
+  it('use plugin(s) from options object', function(){
+    var plugin = function(key, value) {
+      return function(style) {
+        style.define(key, new stylus.nodes.Literal(value));
+      }
+    };
+
+    stylus('body { foo: bar  }', {
+      compress: true,
+      use: plugin('bar', 'baz')
+    }).render().should.equal('body{foo:baz}');
+
+    stylus('body { foo: bar; foo: qux  }', {
+      compress: true,
+      use: [plugin('bar', 'baz'), plugin('qux', 'fred')]
+    }).render().should.equal('body{foo:baz;foo:fred}');
+  });
+
   it('import cloning with cache', function(){
     var path = __dirname + '/cases/import.basic/'
       , styl = readFile(path + 'clone.styl')
