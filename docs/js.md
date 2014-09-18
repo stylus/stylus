@@ -160,3 +160,11 @@ In this example, we define four functions: `add()`, `sub()`, `image-width()`, an
     stylus(str)
       .use(mylib)
       .render(...)
+
+  When calling the `render()` method with options, the `use` option can be given
+  a function or array of functions to be invoked with the renderer.
+
+    stylus.render(str, { use: mylib }, function(err, css){
+      if (err) throw err;
+      console.log(css);
+    });
