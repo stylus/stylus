@@ -1,3 +1,24 @@
+0.49.0 / 2014-09-22
+===================
+
+  * Added a way to use plugins in stylus.render options, #1697.
+  * Added LRU for memory caching.
+  * Now returning literal CSS on parser error when `--resolve-url` is set.
+  * Now not showing JS stack trace for stylus' `error()` calls.
+  * Fixed inconsistent source maps' field orders.
+  * Fixed bug with calling functions inside an inline loop.
+  * Fixed bug with nested media queries inside a mixin.
+  * Fixed bug with extending nested selector inside placeholder selector.
+  * Fixed bug with alpha variable for hsla/rgba.
+  * Fixed extending of rules inside unknown at-rules.
+  * Fixed incorrect merging of media queries using variables.
+  * Fixed bubbling for `@keyframes`.
+  * Fixed incorrect `@supports` parsing.
+  * Fixed `url()` support for `@namespace`.
+  * Fixed incorrect filename and column information for cached nodes.
+  * Fixed `--sourcemap-base` to be ignored when `--out` is present.
+  * Fixed outputting sourcemap log message when `--print` was present.
+
 0.48.1 / 2014-08-21
 ===================
 

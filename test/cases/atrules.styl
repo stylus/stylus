@@ -21,6 +21,8 @@
 @namespace svg "http://www.w3.org/2000/svg"
 @namespace "foo" if true
 @namespace foo   "http://example.com/foo";
+@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+@namespace url("http://www.w3.org/1999/xhtml");
 
 @region div.region:first-of-type
   p
@@ -36,10 +38,6 @@
 
   @viewport
     width: device-width;
-
-@supports (display: flex)
-  div
-    display: flex;
 
 foo(i)
   a = 'bar'
@@ -59,3 +57,10 @@ foo()
 
 .foo
   foo()
+
+@foo
+  $bar
+    color: red
+
+.bar
+  @extend $bar
