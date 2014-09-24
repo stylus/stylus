@@ -1,3 +1,10 @@
+0.49.1 / 2014-09-24
+===================
+
+  * Fixed an output order of nested media queries.
+  * Fixed regression with cached nodes.
+  * Fixed support for `Woff2` and `WebP` mime-tipes, #1699.
+
 0.49.0 / 2014-09-22
 ===================
 
