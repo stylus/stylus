@@ -182,3 +182,18 @@ body {
     color: #00f;
   }
 }
+@media (min-width: 60em) and (min-height: 39em) {
+  .foo {
+    font-size: 0.8em;
+  }
+}
+@media (min-width: 67.5em) and (min-height: 43.875em) {
+  .foo {
+    font-size: 0.9em;
+  }
+}
+@media (min-width: 75em) and (min-height: 48.75em) {
+  .foo {
+    font-size: 1em;
+  }
+}
