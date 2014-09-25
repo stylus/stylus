@@ -62,3 +62,7 @@ body {
   color: #f00;
   display: block !important;
 }
+.red {
+  display: block;
+  background: #f00;
+}
