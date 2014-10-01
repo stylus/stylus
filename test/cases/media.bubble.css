@@ -83,3 +83,24 @@ body {
     background-size: 50px 100px;
   }
 }
+nav#sticky-nav .logo {
+  background-image: url("../img/logo.png");
+}
+@media all and (-webkit-min-device-pixel-ratio: 1.5) {
+  nav#sticky-nav .logo {
+    background-size: 56px 56px;
+  }
+}
+@media (max-width: 640px), (max-height: 320px) {
+  nav#sticky-nav .logo {
+    width: 42px;
+    height: 42px;
+    margin-top: -21px;
+    background-image: url("../img/logo-dark.png");
+  }
+}
+@media all and (max-width: 640px) and (-webkit-min-device-pixel-ratio: 1.5), all and (max-height: 320px) and (-webkit-min-device-pixel-ratio: 1.5) {
+  nav#sticky-nav .logo {
+    background-size: 42px 42px;
+  }
+}
