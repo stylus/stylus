@@ -339,21 +339,21 @@ Returns a `Literal` `num` converted to the provided `base`, padded to `width` wi
 Convert the given `color` to an `HSLA` node,
 or h,s,l,a component values.
 
-     hslaa(10deg, 50%, 30%, 0.5)
-     // => HSLA
-
-     hslaa(#ffcc00)
-     // => HSLA
-
-## hsla(color | h,s,l)
-
-Convert the given `color` to an `HSLA` node,
-or h,s,l component values.
-
-     hsla(10, 50, 30)
+     hsla(10deg, 50%, 30%, 0.5)
      // => HSLA
 
      hsla(#ffcc00)
+     // => HSLA
+
+## hsl(color | h,s,l)
+
+Convert the given `color` to an `HSLA` node,
+or h,s,l,a component values.
+
+     hsl(10, 50, 30)
+     // => HSLA
+
+     hsl(#ffcc00)
      // => HSLA
 
 ## rgba(color | r,g,b,a)
@@ -573,6 +573,43 @@ The third argument is optional and overrides the autodetected alpha.
         // => bar(15px, null)
 
 Check out the `%` string operator for equivalent behaviour.
+
+## basename(path[, ext])
+
+Returns the basename of `path`, (optionally) with `ext` extension removed.
+
+    basename('images/foo.png')
+    // => "foo.png"
+
+    basename('images/foo.png', '.png')
+    // => "foo"
+
+## dirname(path)
+
+Returns the dirname of `path`.
+
+    dirname('images/foo.png')
+    // => "images"
+
+## extname(path)
+
+Returns the filename extension of `path` including the dot.
+
+    extname('images/foo.png')
+    // => ".png"
+
+
+## pathjoin(...)
+
+Peform a path join.
+
+    pathjoin('images', 'foo.png')
+    // => "images/foo.png"
+
+    path = 'images/foo.png'
+    ext = extname(path)
+    pathjoin(dirname(path), basename(path, ext) + _thumb + ext)
+    // => 'images/foo_thumb.png'
 
 ## `called-from` property
 
