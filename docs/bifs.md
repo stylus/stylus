@@ -574,6 +574,43 @@ The third argument is optional and overrides the autodetected alpha.
 
 Check out the `%` string operator for equivalent behaviour.
 
+## basename(path[, ext])
+
+Returns the basename of `path`, (optionally) with `ext` extension removed.
+
+    basename('images/foo.png')
+    // => "foo.png"
+
+    basename('images/foo.png', '.png')
+    // => "foo"
+
+## dirname(path)
+
+Returns the dirname of `path`.
+
+    dirname('images/foo.png')
+    // => "images"
+
+## extname(path)
+
+Returns the filename extension of `path` including the dot.
+
+    extname('images/foo.png')
+    // => ".png"
+
+
+## pathjoin(...)
+
+Peform a path join.
+
+    pathjoin('images', 'foo.png')
+    // => "images/foo.png"
+
+    path = 'images/foo.png'
+    ext = extname(path)
+    pathjoin(dirname(path), basename(path, ext) + _thumb + ext)
+    // => 'images/foo_thumb.png'
+
 ## `called-from` property
 
 `called-from` property contains the list of the functions the current function was called from in the reverse order (the first item is the deepest function).
