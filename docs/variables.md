@@ -24,12 +24,12 @@ Variables can even consist of an expression list:
     font = font-size "Lucida Grande", Arial
 
     body
-      font font sans-serif
+      font font, sans-serif
 
 Compiles to:
 
     body {
-      font: 14px "Lucida Grande", Arial sans-serif;
+      font: 14px "Lucida Grande", Arial, sans-serif;
     }
 
 Identifiers (variable names, functions, etc.) may also include the `$` character. For example:
