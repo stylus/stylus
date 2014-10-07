@@ -917,12 +917,15 @@ yields:
           else
             error('something() must be used within a property')
 
+        body
+          foo: something(5px) bar baz
+
 yields:
 
           body {
-            foo: foo -webkit-something(5px) bar baz;
-            foo: foo -moz-something(5px) bar baz;
-            foo: foo something(5px) bar baz;
+            foo: -webkit-something(5px) bar baz;
+            foo: -moz-something(5px) bar baz;
+            foo: something(5px) bar baz;
           }
 
 Our implementation is now fully transparent both in regards to the property it is called within, and the position of the call. This powerful concept aids in transparent vendor support for function calls, such as gradients.
