@@ -194,7 +194,7 @@ while (args.length) {
     case '-h':
     case '--help':
       console.error(usage);
-      process.exit(1);
+      process.exit(0);
     case '-d':
     case '--compare':
       compare = true;
