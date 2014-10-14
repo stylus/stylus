@@ -418,7 +418,8 @@ if (convertCSS) {
       compileCSSFile(files[0], files[1]);
       break;
     case 1:
-      compileCSSFile(files[0], basename(files[0], extname(files[0])) + '.styl');
+      var file = files[0];
+      compileCSSFile(file, join(dirname(file), basename(file, extname(file))) + '.styl');
       break;
     default:
       var stdin = process.openStdin();
@@ -678,7 +679,7 @@ function writeFile(file, css) {
   var out = basename(file, extname(file)) + '.css'
     , path = dest
       ? join(dest, out)
-      : out;
+      : join(dirname(file), out);
   fs.writeFile(path, css, function(err){
     if (err) throw err;
     console.log('  \033[90mcompiled\033[0m %s', path);
@@ -696,7 +697,7 @@ function writeSourcemap(file, sourcemap) {
   var out = basename(file, extname(file)) + '.css.map'
     , path = dest
       ? join(dest, out)
-      : out;
+      : join(dirname(file), out);
   fs.writeFile(path, JSON.stringify(sourcemap), function(err){
     if (err) throw err;
     // don't output log message if --print is present
