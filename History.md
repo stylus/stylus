@@ -1,3 +1,11 @@
+0.49.2 / 2014-10-14
+===================
+
+  * Fixed regression #1727 + small fixes for #1717.
+  * Fixed nested selectors when using nested and bubbled media queries.
+  * Fixed issue when mixin's block is used as part of a property value.
+  * Fixed hardcoded `.styl` extension from CLI (added `extname` arg).
+
 0.49.1 / 2014-09-24
 ===================
 
