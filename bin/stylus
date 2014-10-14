@@ -8,6 +8,7 @@ var fs = require('fs')
   , stylus = require('../lib/stylus')
   , basename = require('path').basename
   , dirname = require('path').dirname
+  , extname = require('path').extname
   , resolve = require('path').resolve
   , join = require('path').join
   , isWindows = process.platform === 'win32';
@@ -194,7 +195,7 @@ while (args.length) {
     case '-h':
     case '--help':
       console.error(usage);
-      process.exit(1);
+      process.exit(0);
     case '-d':
     case '--compare':
       compare = true;
@@ -417,7 +418,8 @@ if (convertCSS) {
       compileCSSFile(files[0], files[1]);
       break;
     case 1:
-      compileCSSFile(files[0], files[0].replace(/\.css$/i, '.styl'));
+      var file = files[0];
+      compileCSSFile(file, join(dirname(file), basename(file, extname(file))) + '.styl');
       break;
     default:
       var stdin = process.openStdin();
@@ -674,9 +676,10 @@ function writeFile(file, css) {
   // --print support
   if (print) return process.stdout.write(css);
   // --out support
-  var path = dest
-    ? join(dest, basename(file, '.styl') + '.css')
-    : file.replace(/\.styl$/i, '.css');
+  var out = basename(file, extname(file)) + '.css'
+    , path = dest
+      ? join(dest, out)
+      : join(dirname(file), out);
   fs.writeFile(path, css, function(err){
     if (err) throw err;
     console.log('  \033[90mcompiled\033[0m %s', path);
@@ -691,9 +694,10 @@ function writeFile(file, css) {
 
 function writeSourcemap(file, sourcemap) {
   // --out support
-  var path = dest
-    ? join(dest, basename(file, '.styl') + '.css.map')
-    : file.replace(/\.styl$/i, '.css.map');
+  var out = basename(file, extname(file)) + '.css.map'
+    , path = dest
+      ? join(dest, out)
+      : join(dirname(file), out);
   fs.writeFile(path, JSON.stringify(sourcemap), function(err){
     if (err) throw err;
     // don't output log message if --print is present
