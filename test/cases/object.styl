@@ -125,3 +125,16 @@ body
   margin: obj.foobar
   height: obj.bar
   width: obj.baz
+
+obj1 = {}
+obj2 = { foo: 1, bar: 2 }
+
+body
+  test: obj1 == obj2
+  test: obj2 != obj1
+  test: obj1 == {}
+  test: obj2 == { foo: 1, bar: 2 }
+
+  obj2.qux = { baz: 1 }
+  test: obj2 == { foo: 1, bar: 2, qux: { baz: 1 } }
+  test: obj == 42
