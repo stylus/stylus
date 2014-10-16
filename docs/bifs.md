@@ -688,6 +688,34 @@ Yields:
       width: 10px;
     }
 
+## lookup(name)
+
+Allows to lookup a variable with a given name, passed as a string.
+Returns `null` if the variable is undefined.
+
+Useful when you need to get a value of a variable with dynamically
+generated name:
+
+    font-size-1 = 10px
+    font-size-2 = 20px
+    font-size-3 = 30px
+
+    for i in 1..3
+      .text-{i}
+        font-size: lookup('font-size-' + i)
+
+Yields:
+
+    .text-1 {
+      font-size: 10px;
+    }
+    .text-2 {
+      font-size: 20px;
+    }
+    .text-3 {
+      font-size: 30px;
+    }
+
 ## define(name, expr)
 
 Allows to create or overwrite a variable with a given name, passed as a string, onto current scope.
