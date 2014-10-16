@@ -84,3 +84,12 @@ bar =
 
 body
   {bar}
+
+quz()
+  @media print
+    {block}
+
+body
+  +quz()
+    display: block
+    foo: something(4px)
