@@ -139,3 +139,17 @@ body
   obj2.qux = { baz: 1 }
   test: obj2 == { foo: 1, bar: 2, qux: { baz: 1 } }
   test: obj == 42
+
+plans = {
+  'free-plan': #673,
+  'freelancer': #669,
+  'small-business': #668,
+  'professional-business': #667,
+  'enterprise': #666
+}
+
+body
+  for plan in free-plan freelancer small-business professional-business enterprise
+    test: plans[plan]
+    plans[plan] = #ccc
+  test: plans
