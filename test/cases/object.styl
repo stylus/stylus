@@ -152,3 +152,11 @@ body
     test: plans[plan]
     plans[plan] = #ccc
   test: plans
+
+obj = {}
+obj.list = 1, 2, 3
+
+body
+  test: obj.list[0]
+  obj['list'] = 4, 5, 6
+  test: obj.list[0..2]
