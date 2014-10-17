@@ -85,3 +85,7 @@ body {
   test: #666;
   test: {"free-plan":"(#ccc)","freelancer":"(#ccc)","small-business":"(#ccc)","professional-business":"(#ccc)","enterprise":"(#ccc)"};
 }
+body {
+  test: 1;
+  test: 4 5 6;
+}
