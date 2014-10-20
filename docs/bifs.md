@@ -301,6 +301,48 @@ Returns the value of tangent for the given `angle`. If the angle is given as a d
      avg(1 2 3)
      // => 2
 
+## range(start, stop[, step])
+
+Returns a list of units from `start` to `stop` (included) by given `step`. If `step`
+argument is omitted, it defaults to 1. The `step` must not be zero.
+
+    range(1, 6)
+    // equals to `1..6`
+    // 1 2 3 4 5 6
+
+    range(1, 6, 2)
+    // 1 3 5
+
+    range(-6, -1, 2)
+    // -6 -4 -2
+
+    range(1px, 3px, 0.5px)
+    // 1px 1.5px 2px 2.5px 3px
+
+It is most often used in `for` loops:
+
+    for i in range(10px, 50px, 10)
+      .col-{i}
+        width: i
+
+Yields:
+
+    .col-10 {
+      width: 10px;
+    }
+    .col-20 {
+      width: 20px;
+    }
+    .col-30 {
+      width: 30px;
+    }
+    .col-40 {
+      width: 40px;
+    }
+    .col-50 {
+      width: 50px;
+    }
+
 ## base-convert(num, base, width)
 
 Returns a `Literal` `num` converted to the provided `base`, padded to `width` with zeroes (default width is 2)
