@@ -119,6 +119,7 @@ form input {
    - [Play! 2.0](https://github.com/patiencelabs/play-stylus)
    - [Ruby On Rails](https://github.com/lucasmazza/ruby-stylus)
    - [Meteor](http://docs.meteor.com/#stylus)
+   - [Grails](http://grails.org/plugin/stylus-asset-pipeline)
 
 ### CMS Support
 
