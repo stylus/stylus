@@ -53,3 +53,6 @@ html.touch nav ul li.active {
   width: 400px;
   box-shadow: 1px 1px 1px #000 , 1px 1px 1px #0c0;
 }
+body {
+  left: 0.5px;
+}
