@@ -1,0 +1,25 @@
+
+a
+  & + {end()}
+    test selector()
+
+/*! ---- */
+
+.foo
+  &--bar
+    & + {end()}
+      test selector()
+
+/*! ---- */
+
+{end()}
+  content "it won't render but won't cause an error also"
+  test selector()
+
+/*! ---- */
+
+.block
+  &:hover
+    {root()}__element
+      & + {end()}--modifier
+        test selector()

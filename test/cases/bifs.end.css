@@ -1,0 +1,12 @@
+a + a {
+  test: 'a + a';
+}
+/* ---- */
+.foo--bar + .foo--bar {
+  test: '.foo--bar + .foo--bar';
+}
+/* ---- */
+/* ---- */
+.block:hover .block__element + .block__element--modifier {
+  test: '.block:hover .block__element + .block__element--modifier';
+}

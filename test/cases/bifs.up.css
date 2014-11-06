@@ -1,0 +1,28 @@
+.foo__bar:hover + .foo__bar {
+  test: '.foo__bar:hover + .foo__bar';
+}
+.foo__bar:hover + .foo__bar {
+  test: '.foo__bar:hover + .foo__bar';
+  content: "this output must be the same as previous";
+}
+.foo__bar:hover + .foo__bar {
+  test: '.foo__bar:hover + .foo__bar';
+  content: "this output must be the same as two previous";
+}
+/* ---- */
+.block:hover .aaa .block__element2 {
+  test: '.block:hover .aaa .block__element2';
+}
+.block:hover .aaa .block__element2 {
+  test: '.block:hover .aaa .block__element2';
+  content: "this output must be the same as previous";
+}
+/* ---- */
+/* ---- */
+.block__element--modifier:hover .block--baz a {
+  test: '.block__element--modifier:hover .block--baz a';
+}
+.block__element--modifier:hover .block--baz a {
+  test: '.block__element--modifier:hover .block--baz a';
+  content: "this output must be the same as two previous";
+}
