@@ -1,3 +1,8 @@
+0.49.3 / 2014-11-06
+===================
+
+  * Fixed regression with `block` keyword inside block mixin.
+
 0.49.2 / 2014-10-14
 ===================
 
