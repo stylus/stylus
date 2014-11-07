@@ -30,3 +30,11 @@ foo(arguments)
 .g
   @media only screen and (min-width: 1600px)
     foo: 10px
+
+bar()
+  +cache()
+    @media only screen and (min-width: 600px)
+      width: 10px
+
+.h
+  bar()
