@@ -825,6 +825,32 @@ Returns the compiled current selector or `&` if called at root level.
         selector()
     // '.foo:hover'
 
+## selector-exists(selector)
+
+Returns true if the given selector exists.
+
+    .foo
+      color red
+
+      a
+        font-size 12px
+
+    selector-exists('.foo') // true
+    selector-exists('.foo a') // true
+    selector-exists('.foo li') // false
+    selector-exists('.bar') // false
+
+This method does not take into account the current context meaning:
+
+    .foo
+      color red
+
+      a
+        font-size 12px
+
+      selector-exists('a') // false
+      selector-exists(selector() + ' a') // true
+
 ## warn(msg)
 
   Warn with the given error `msg`, does not exit.
