@@ -138,6 +138,12 @@ var disableCache = false;
 var deps = false;
 
 /**
+ * Hoist at-rules.
+ */
+
+var hoist = false;
+
+/**
  * Usage docs.
  */
 
@@ -178,6 +184,7 @@ var usage = [
   , '    --include-css           Include regular CSS on @import'
   , '    -D, --deps              Display dependencies of the compiled file'
   , '    --disable-cache         Disable caching'
+  , '    --hoist-atrules         Move @import and @charset to the top'
   , '    -r, --resolve-url       Resolve relative urls inside imports'
   , '    -V, --version           Display the version of Stylus'
   , '    -h, --help              Display help information'
@@ -273,6 +280,9 @@ while (args.length) {
       break;
     case '--disable-cache':
       disableCache = true;
+      break;
+    case '--hoist-atrules':
+      hoist = true;
       break;
     case '-i':
     case '--repl':
@@ -404,6 +414,7 @@ var options = {
   , paths: [process.cwd()].concat(paths)
   , prefix: prefix
   , dest: dest
+  , 'hoist atrules': hoist
 };
 
 // Buffer stdin

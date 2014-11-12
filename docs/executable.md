@@ -42,6 +42,7 @@ Stylus ships with the `stylus` executable for converting Stylus to CSS.
         --include-css           Include regular CSS on @import
         -D, --deps              Display dependencies of the compiled file
         --disable-cache         Disable caching
+        --hoist-atrules         Move @import and @charset to the top
         -r, --resolve-url       Resolve relative urls inside imports
         -V, --version           Display the version of Stylus
         -h, --help              Display help information
