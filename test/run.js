@@ -75,6 +75,15 @@ addSuite('sourcemap', readDir('test/sourcemap'), function(test){
   });
 });
 
+addSuite('errors', readDir('test/errors'), function(test){
+  var path = 'test/errors/' + test + '.styl';
+  (function() {
+    stylus(readFile(path))
+      .set('filename', path)
+      .render();
+  }).should.throw();
+});
+
 // JS API
 
 describe('JS API', function(){

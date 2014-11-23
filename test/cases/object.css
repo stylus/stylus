@@ -30,7 +30,6 @@ body {
   sizes: 0.25em 0.35 0.5em 0.7em 1em 1.4em;
 }
 body {
-  foo: true;
   foo: Wahoo;
 }
 body {
