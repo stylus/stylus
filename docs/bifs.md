@@ -117,6 +117,30 @@ Return the lightness of the given `color`, or set the lightness component to the
 
  Aliased as `append()`
 
+## pop(expr)
+
+ Pop a value from `expr`.
+
+     nums = 4 5 3 2 1
+     num = pop(nums)
+
+     nums
+     // => 4 5 3 2
+     num
+     // => 1
+
+## shift(expr)
+
+ Shift an element from `expr`.
+
+     nums = 4 5 3 2 1
+     num = shift(nums)
+
+     nums
+     // => 5 3 2 1
+     num
+     // => 4
+
 ## unshift(expr, args...)
 
  Unshift the given `args` to `expr`.
