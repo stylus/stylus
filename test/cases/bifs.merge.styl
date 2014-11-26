@@ -1,12 +1,30 @@
 obj = {
   foo: 'foo'
   bar: 'bar'
+  abc: {
+    a: 'a'
+    b: 'c'
+    nest: {
+      q: '1'
+    }
+  }
+
 }
 
 obj2 = {
   baz: 'baz'
+  abc: {
+    a: 'x'
+    nest: {
+      b: '2'
+    }
+  }
+
 }
 
 body
   test: merge(obj, obj2, { qux: 'qux' }).qux
   test: extend(obj, { foo: 'foo1' }).foo
+  test: merge(obj,obj2).abc.a
+  test: merge(obj,obj2).abc.b
+  test: merge(obj,obj2).abc.nest.q
