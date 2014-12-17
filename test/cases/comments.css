@@ -29,3 +29,11 @@ body
     foo: bar;
   }
 }
+@media (max-width: 830px) {
+  /*
+  * uncss:ignore
+  */
+  nav.open .links {
+    transform: translate(0, 0);
+  }
+}
