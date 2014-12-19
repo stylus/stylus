@@ -89,3 +89,12 @@ li a:active {
     border: 1px solid #999;
   }
 }
+#a[foo="baz"] {
+  margin: 0;
+}
+#l[foo="baz"] {
+  padding: 0;
+}
+div p[foo="baz"] {
+  border: 0;
+}
