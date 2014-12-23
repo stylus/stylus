@@ -1,0 +1,4 @@
+body {
+  test: '42 is 42';
+  test: '\{answer}';
+}
