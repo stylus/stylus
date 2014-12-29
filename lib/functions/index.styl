@@ -179,7 +179,7 @@ mix(color1, color2, weight = 50%)
     push(rgb, floor(pair[0] * w1 + pair[1] * w2))
 
   a1 = alpha(color1) * p
-  a2 = alpha(color1) * (1 - p)
+  a2 = alpha(color2) * (1 - p)
   alpha = a1 + a2
 
   rgba(rgb[0], rgb[1], rgb[2], alpha)
