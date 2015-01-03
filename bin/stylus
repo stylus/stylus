@@ -672,14 +672,18 @@ function compileFile(file) {
  * Write the given CSS output.
  */
 
+function createPath(file) {
+  // --out support
+  var out = basename(file, extname(file)) + '.css';
+  return dest
+    ? join(dest, out)
+    : join(dirname(file), out);
+}
+
 function writeFile(file, css) {
   // --print support
   if (print) return process.stdout.write(css);
-  // --out support
-  var out = basename(file, extname(file)) + '.css'
-    , path = dest
-      ? join(dest, out)
-      : join(dirname(file), out);
+  var path = createPath(file);
   fs.writeFile(path, css, function(err){
     if (err) throw err;
     console.log('  \033[90mcompiled\033[0m %s', path);
@@ -693,11 +697,7 @@ function writeFile(file, css) {
 */
 
 function writeSourcemap(file, sourcemap) {
-  // --out support
-  var out = basename(file, extname(file)) + '.css.map'
-    , path = dest
-      ? join(dest, out)
-      : join(dirname(file), out);
+  var path = createPath(file);
   fs.writeFile(path, JSON.stringify(sourcemap), function(err){
     if (err) throw err;
     // don't output log message if --print is present
