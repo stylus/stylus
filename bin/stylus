@@ -672,12 +672,13 @@ function compileFile(file) {
  * Write the given CSS output.
  */
 
-function createPath(file) {
-  // --out support
-  var out = basename(file, extname(file)) + '.css';
+function createPath(file, sourceMap) {
+  var out;
   if (files.length === 1 && extname(dest) === '.css') {
-    return dest;
+    return [dest, sourceMap ? '.map' : ''].join('');
   }
+  // --out support
+  out = [basename(file, extname(file)), sourceMap ? '.css.map' : '.css'].join('');
   return dest
     ? join(dest, out)
     : join(dirname(file), out);
@@ -700,7 +701,7 @@ function writeFile(file, css) {
 */
 
 function writeSourcemap(file, sourcemap) {
-  var path = createPath(file);
+  var path = createPath(file, true);
   fs.writeFile(path, JSON.stringify(sourcemap), function(err){
     if (err) throw err;
     // don't output log message if --print is present
