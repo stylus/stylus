@@ -675,6 +675,9 @@ function compileFile(file) {
 function createPath(file) {
   // --out support
   var out = basename(file, extname(file)) + '.css';
+  if (files.length === 1 && extname(dest) === '.css') {
+    return dest;
+  }
   return dest
     ? join(dest, out)
     : join(dirname(file), out);
