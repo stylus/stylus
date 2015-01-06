@@ -133,6 +133,12 @@ You can get keys or values of the hash using corresponding bifs:
     values(foo)
     // => 'a' 'b'
 
+You can remove a key from the hash using `remove` bif:
+
+    obj = { foo: 1, bar: 2 }
+    remove(obj, 'foo')
+    // => {"bar":"(2)"}
+
 And you can use `merge` (aliased as `extend`) to merge hashes:
 
     obj = {
