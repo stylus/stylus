@@ -1050,6 +1050,34 @@ yields:
 
 Our implementation is now fully transparent both in regards to the property it is called within, and the position of the call. This powerful concept aids in transparent vendor support for function calls, such as gradients.
 
+## json(path)
+
+Convert a .json file into stylus variables or an object. Nested variable object keys are joined with a dash (-). 
+
+For example, the following sample media-queries.json file:
+
+    {
+        "small": "screen and (max-width:400px)",
+        "tablet": {
+            "landscape": "screen and (min-width:600px) and (orientation:landscape)",
+            "portrait": "screen and (min-width:600px) and (orientation:portrait)"
+        }
+    }
+
+May be used in the following ways:
+
+    json('media-queries.json')
+    
+    @media small
+    // => @media screen and (max-width:400px)
+
+    @media tablet-landscape
+    // => @media screen and (min-width:600px) and (orientation:landscape)
+    
+    vars = json('vars.json', { hash: true })
+    body
+      width: vars.width
+
 ## use(path)
 
 You can use any given js-plugin at given `path` with `use()` function right inside your '.styl' files, like this:
