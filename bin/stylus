@@ -405,6 +405,10 @@ function help(name) {
 
 // Compilation options
 
+if (files.length > 1 && extname(dest) === '.css') {
+  dest = dirname(dest);
+}
+
 var options = {
     filename: 'stdin'
   , compress: compress
