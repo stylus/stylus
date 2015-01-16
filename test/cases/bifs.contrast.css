@@ -6,4 +6,6 @@
   test4_min: 5.3;
   test4_max: 21;
   test5: 6.3;
+  filter: contrast();
+  filter: contrast(200%);
 }
