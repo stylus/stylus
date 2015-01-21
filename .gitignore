@@ -1,6 +1,4 @@
 .DS_Store
 _site
 node_modules
-s/style.css
-s/style.ie.css
 *.sublime-workspace
