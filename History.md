@@ -1,3 +1,28 @@
+0.50.0 / 2015-02-05
+===================
+
+  * Added `!optional` directive for extending, #1757.
+  * Added `selector-exists` bif, #1758.
+  * Added `remove` bif for removing items from hashes.
+  * Added optional recursive hash merging, #1771.
+  * Added optional (`--hoist-atrules` flag) `@import` and `@charset` hoisting.
+  * Added a way to output to specific file path with CLI, #1800.
+  * Fixed regression with using `@media` inside `+cache`.
+  * Fixed `resolve-url` for hash urls, #1778.
+  * Fixed `mix` bif for differently transparent colors, #1792.
+  * Fixed bug with postfix `&` without comma.
+  * Fixed incorrectly imported functions defined in other files with nested @require.
+  * Fixed duplicated selectors when extending into placeholders with MQ.
+  * Fixed `filter: contrast()` error.
+  * Fixed the cloning of cached nodes.
+  * Fixed incorrect filenames included in source maps, #1812.
+  * Fixed stripping of unsuppressed comments from nested blocks.
+  * Fixed build error for multiple files, #1813.
+  * Fixed error handling slightly.
+  * Fixed (throwing error) edge case of watching and printing at the same time, #1798.
+  * Fixed watch to log to std.err, #1796.
+  * Fixed indent in complex rules at CSS to Stylus conversion, #1808.
+
 0.49.3 / 2014-11-06
 ===================
 
