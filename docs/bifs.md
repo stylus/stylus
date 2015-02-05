@@ -117,6 +117,30 @@ Return the lightness of the given `color`, or set the lightness component to the
 
  Aliased as `append()`
 
+## pop(expr)
+
+ Pop a value from `expr`.
+
+     nums = 4 5 3 2 1
+     num = pop(nums)
+
+     nums
+     // => 4 5 3 2
+     num
+     // => 1
+
+## shift(expr)
+
+ Shift an element from `expr`.
+
+     nums = 4 5 3 2 1
+     num = shift(nums)
+
+     nums
+     // => 5 3 2 1
+     num
+     // => 4
+
 ## unshift(expr, args...)
 
  Unshift the given `args` to `expr`.
@@ -825,6 +849,32 @@ Returns the compiled current selector or `&` if called at root level.
         selector()
     // '.foo:hover'
 
+## selector-exists(selector)
+
+Returns true if the given selector exists.
+
+    .foo
+      color red
+
+      a
+        font-size 12px
+
+    selector-exists('.foo') // true
+    selector-exists('.foo a') // true
+    selector-exists('.foo li') // false
+    selector-exists('.bar') // false
+
+This method does not take into account the current context meaning:
+
+    .foo
+      color red
+
+      a
+        font-size 12px
+
+      selector-exists('a') // false
+      selector-exists(selector() + ' a') // true
+
 ## warn(msg)
 
   Warn with the given error `msg`, does not exit.
@@ -999,6 +1049,34 @@ yields:
           }
 
 Our implementation is now fully transparent both in regards to the property it is called within, and the position of the call. This powerful concept aids in transparent vendor support for function calls, such as gradients.
+
+## json(path)
+
+Convert a .json file into stylus variables or an object. Nested variable object keys are joined with a dash (-). 
+
+For example, the following sample media-queries.json file:
+
+    {
+        "small": "screen and (max-width:400px)",
+        "tablet": {
+            "landscape": "screen and (min-width:600px) and (orientation:landscape)",
+            "portrait": "screen and (min-width:600px) and (orientation:portrait)"
+        }
+    }
+
+May be used in the following ways:
+
+    json('media-queries.json')
+    
+    @media small
+    // => @media screen and (max-width:400px)
+
+    @media tablet-landscape
+    // => @media screen and (min-width:600px) and (orientation:landscape)
+    
+    vars = json('vars.json', { hash: true })
+    body
+      width: vars.width
 
 ## use(path)
 

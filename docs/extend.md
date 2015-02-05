@@ -185,3 +185,19 @@ Yielding:
     }
 
 Note that if the selector is not extended, it won't be in the resulting CSS, so it's a powerful way to create a library of extendable code. While you can insert code through mixins, they would insert the same code every time you use them, while extending placeholders would give you compact output.
+
+## Optional extending
+
+Sometimes it might be usefull to be able to extend something that might exists or not depending on the context. You can suffix any selector by `!optional` to achieve this:
+
+    $specialDesign
+      color: #FFF
+
+    .btn
+      @extend .design !optional, $specialDesign !optional
+
+Yielding:
+
+    .btn {
+      color: #fff;
+    }
