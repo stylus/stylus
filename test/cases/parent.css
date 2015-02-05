@@ -30,3 +30,10 @@ html.ie7 body #login foo,
 html.ie6 body #login {
   border: solid 1px #eee;
 }
+.test {
+  display: inline;
+}
+div.test,
+p.test {
+  display: block;
+}

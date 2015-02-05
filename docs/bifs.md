@@ -117,6 +117,30 @@ Return the lightness of the given `color`, or set the lightness component to the
 
  Aliased as `append()`
 
+## pop(expr)
+
+ Pop a value from `expr`.
+
+     nums = 4 5 3 2 1
+     num = pop(nums)
+
+     nums
+     // => 4 5 3 2
+     num
+     // => 1
+
+## shift(expr)
+
+ Shift an element from `expr`.
+
+     nums = 4 5 3 2 1
+     num = shift(nums)
+
+     nums
+     // => 5 3 2 1
+     num
+     // => 4
+
 ## unshift(expr, args...)
 
  Unshift the given `args` to `expr`.
@@ -300,6 +324,48 @@ Returns the value of tangent for the given `angle`. If the angle is given as a d
 
      avg(1 2 3)
      // => 2
+
+## range(start, stop[, step])
+
+Returns a list of units from `start` to `stop` (included) by given `step`. If `step`
+argument is omitted, it defaults to 1. The `step` must not be zero.
+
+    range(1, 6)
+    // equals to `1..6`
+    // 1 2 3 4 5 6
+
+    range(1, 6, 2)
+    // 1 3 5
+
+    range(-6, -1, 2)
+    // -6 -4 -2
+
+    range(1px, 3px, 0.5px)
+    // 1px 1.5px 2px 2.5px 3px
+
+It is most often used in `for` loops:
+
+    for i in range(10px, 50px, 10)
+      .col-{i}
+        width: i
+
+Yields:
+
+    .col-10 {
+      width: 10px;
+    }
+    .col-20 {
+      width: 20px;
+    }
+    .col-30 {
+      width: 30px;
+    }
+    .col-40 {
+      width: 40px;
+    }
+    .col-50 {
+      width: 50px;
+    }
 
 ## base-convert(num, base, width)
 
@@ -688,6 +754,34 @@ Yields:
       width: 10px;
     }
 
+## lookup(name)
+
+Allows to lookup a variable with a given name, passed as a string.
+Returns `null` if the variable is undefined.
+
+Useful when you need to get a value of a variable with dynamically
+generated name:
+
+    font-size-1 = 10px
+    font-size-2 = 20px
+    font-size-3 = 30px
+
+    for i in 1..3
+      .text-{i}
+        font-size: lookup('font-size-' + i)
+
+Yields:
+
+    .text-1 {
+      font-size: 10px;
+    }
+    .text-2 {
+      font-size: 20px;
+    }
+    .text-3 {
+      font-size: 30px;
+    }
+
 ## define(name, expr)
 
 Allows to create or overwrite a variable with a given name, passed as a string, onto current scope.
@@ -754,6 +848,32 @@ Returns the compiled current selector or `&` if called at root level.
       &:hover
         selector()
     // '.foo:hover'
+
+## selector-exists(selector)
+
+Returns true if the given selector exists.
+
+    .foo
+      color red
+
+      a
+        font-size 12px
+
+    selector-exists('.foo') // true
+    selector-exists('.foo a') // true
+    selector-exists('.foo li') // false
+    selector-exists('.bar') // false
+
+This method does not take into account the current context meaning:
+
+    .foo
+      color red
+
+      a
+        font-size 12px
+
+      selector-exists('a') // false
+      selector-exists(selector() + ' a') // true
 
 ## warn(msg)
 
@@ -929,6 +1049,34 @@ yields:
           }
 
 Our implementation is now fully transparent both in regards to the property it is called within, and the position of the call. This powerful concept aids in transparent vendor support for function calls, such as gradients.
+
+## json(path)
+
+Convert a .json file into stylus variables or an object. Nested variable object keys are joined with a dash (-). 
+
+For example, the following sample media-queries.json file:
+
+    {
+        "small": "screen and (max-width:400px)",
+        "tablet": {
+            "landscape": "screen and (min-width:600px) and (orientation:landscape)",
+            "portrait": "screen and (min-width:600px) and (orientation:portrait)"
+        }
+    }
+
+May be used in the following ways:
+
+    json('media-queries.json')
+    
+    @media small
+    // => @media screen and (max-width:400px)
+
+    @media tablet-landscape
+    // => @media screen and (min-width:600px) and (orientation:landscape)
+    
+    vars = json('vars.json', { hash: true })
+    body
+      width: vars.width
 
 ## use(path)
 

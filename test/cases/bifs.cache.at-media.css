@@ -7,7 +7,7 @@
 }
 @media only screen and (min-width: 1024px) {
   .c,
-.e {
+  .e {
     width: 10px;
   }
 }
@@ -18,7 +18,12 @@
 }
 @media only screen and (min-width: 1600px) {
   .f,
-.g {
+  .g {
+    width: 10px;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .h {
     width: 10px;
   }
 }
