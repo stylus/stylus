@@ -197,3 +197,8 @@ body {
     font-size: 1em;
   }
 }
+@media print {
+  .test {
+    background-color: #800080;
+  }
+}

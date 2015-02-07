@@ -217,3 +217,13 @@ body {
     @media (min-width: (1200 / 16 * j / 10)em)
       @media (min-height: (780 / 16 * j / 10)em)
         font-size: (j / 10)em
+
+mixin()
+  $placeholder-print
+    $background
+      background-color: purple
+  .test
+    @extend $placeholder-print $background
+
+@media print
+  mixin()
