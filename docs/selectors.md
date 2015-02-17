@@ -158,10 +158,10 @@ This bif could also accept an optional string argument, in this case it would re
 
 ## Disambiguation
 
-Expressions such as `padding - n` could be interpreted both as a subtraction operation, as well as a property with an unary minus. To disambiguate, wrap the expression with parens:
+Expressions such as `margin - n` could be interpreted both as a subtraction operation, as well as a property with an unary minus. To disambiguate, wrap the expression with parens:
 
     pad(n)
-      padding (- n)
+      margin (- n)
 
     body
       pad(5px)
@@ -169,7 +169,7 @@ Expressions such as `padding - n` could be interpreted both as a subtraction ope
 Compiles to:
 
     body {
-      padding: -5px;
+      margin: -5px;
     }
 
 However, this is only true in functions (since functions act both as mixins, or calls with return values). 
@@ -177,7 +177,7 @@ However, this is only true in functions (since functions act both as mixins, or 
 For example, the following is fine (and yields the same results as above):
 
     body
-      padding -5px
+      margin -5px
 
 Have weird property values that Stylus can't process? `unquote()` can help you out:
 
