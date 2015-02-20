@@ -117,7 +117,7 @@ form input {
 
    - [Connect](docs/middleware.md)
    - [Play! 2.0](https://github.com/patiencelabs/play-stylus)
-   - [Ruby On Rails](https://github.com/lucasmazza/ruby-stylus)
+   - [Ruby On Rails](https://github.com/forgecrafted/ruby-stylus-source)
    - [Meteor](http://docs.meteor.com/#stylus)
    - [Grails](http://grails.org/plugin/stylus-asset-pipeline)
    - [Derby](https://github.com/derbyjs/derby-stylus)
