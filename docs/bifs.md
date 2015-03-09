@@ -518,12 +518,26 @@ Inverts the color. The red, green, and blue values are inverted, while the opaci
     invert(#d62828)
     // => #29d7d7
 
+## spin(color, amount)
+
+Spins hue of the given `color` by `amount`.
+
+     spin(#ff0000, 90deg)
+     // => #80ff00
+
 ## grayscale(color)
 
 Gives the grayscale equivalent of the given color. Equals to desaturate by 100%.
 
     grayscale(#fd0cc7)
     // => #0cfd42
+
+## mix(color1, color2[, amount])
+
+Mix two colors by a given amount. The `amount` is optional and is defaulted to `50%`.
+
+    mix(#000, #fff, 30%)
+    // => #b2b2b2
 
 ## tint(color, amount)
 
