@@ -1,11 +1,11 @@
 $test
   a
-    color red
+    color: red
 
 class
-  if selector-exists($test a)
-    color #FFF
+  if selector-exists('$test a')
+    color: #FFF
   if selector-exists('$test')
-    border #FFF
+    border: #FFF
   if selector-exists('$test li')
-    font-size 12px
+    font-size: 12px
