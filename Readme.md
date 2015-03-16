@@ -10,7 +10,7 @@ $ npm install stylus -g
 
 ### Example
 
-```sass
+```stylus
 border-radius()
   -webkit-border-radius: arguments
   -moz-border-radius: arguments
@@ -46,7 +46,7 @@ form input {
 
 the following is equivalent to the indented version of Stylus source, using the CSS syntax instead:
 
-```sass
+```stylus
 border-radius() {
   -webkit-border-radius: arguments
   -moz-border-radius: arguments
