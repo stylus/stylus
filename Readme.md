@@ -1,4 +1,4 @@
-# Stylus [![Build Status](https://travis-ci.org/LearnBoost/stylus.svg?branch=master)](https://travis-ci.org/LearnBoost/stylus)
+# Stylus [![Build Status](https://travis-ci.org/stylus/stylus.svg?branch=master)](https://travis-ci.org/stylus/stylus)
 
  Stylus is a revolutionary new language, providing an efficient, dynamic, and expressive way to generate CSS. Supporting both an indented syntax and regular CSS style.
 
@@ -10,7 +10,7 @@ $ npm install stylus -g
 
 ### Example
 
-```sass
+```stylus
 border-radius()
   -webkit-border-radius: arguments
   -moz-border-radius: arguments
@@ -46,7 +46,7 @@ form input {
 
 the following is equivalent to the indented version of Stylus source, using the CSS syntax instead:
 
-```sass
+```stylus
 border-radius() {
   -webkit-border-radius: arguments
   -moz-border-radius: arguments
@@ -111,13 +111,13 @@ form input {
 
 ### Community modules
 
-  - https://github.com/LearnBoost/stylus/wiki
+  - https://github.com/stylus/stylus/wiki
 
 ### Framework Support
 
    - [Connect](docs/middleware.md)
    - [Play! 2.0](https://github.com/patiencelabs/play-stylus)
-   - [Ruby On Rails](https://github.com/lucasmazza/ruby-stylus)
+   - [Ruby On Rails](https://github.com/forgecrafted/ruby-stylus-source)
    - [Meteor](http://docs.meteor.com/#stylus)
    - [Grails](http://grails.org/plugin/stylus-asset-pipeline)
    - [Derby](https://github.com/derbyjs/derby-stylus)
@@ -144,7 +144,7 @@ form input {
 
 (The MIT License)
 
-Copyright (c) 2010 LearnBoost &lt;dev@learnboost.com&gt;
+Copyright (c) Automattic &lt;developer.wordpress.com&gt;
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

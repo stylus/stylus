@@ -80,7 +80,7 @@ Try Stylus some in the terminal!  Type below and press `CTRL-D` for `__EOF__`:
       $ stylus --line-numbers <path>
 
   Or the `firebug` option if you want to use
-  the [FireStylus extension for Firebug](//github.com/LearnBoost/stylus/blob/master/docs/firebug.md):
+  the [FireStylus extension for Firebug](//github.com/stylus/stylus/blob/master/docs/firebug.md):
 
       $ stylus --firebug <path>
 
