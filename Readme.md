@@ -1,4 +1,4 @@
-# Stylus [![Build Status](https://travis-ci.org/LearnBoost/stylus.svg?branch=master)](https://travis-ci.org/LearnBoost/stylus)
+# Stylus [![Build Status](https://travis-ci.org/stylus/stylus.svg?branch=master)](https://travis-ci.org/stylus/stylus)
 
  Stylus is a revolutionary new language, providing an efficient, dynamic, and expressive way to generate CSS. Supporting both an indented syntax and regular CSS style.
 
@@ -111,7 +111,7 @@ form input {
 
 ### Community modules
 
-  - https://github.com/LearnBoost/stylus/wiki
+  - https://github.com/stylus/stylus/wiki
 
 ### Framework Support
 
@@ -144,7 +144,7 @@ form input {
 
 (The MIT License)
 
-Copyright (c) 2010 LearnBoost &lt;dev@learnboost.com&gt;
+Copyright (c) Automattic &lt;developer.wordpress.com&gt;
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

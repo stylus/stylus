@@ -13,7 +13,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/LearnBoost/stylus"
+    "url": "git://github.com/stylus/stylus"
   },
   "main": "./index.js",
   "browserify": "./lib/browserify.js",
@@ -42,9 +42,9 @@
     "jscoverage": "0.3.8"
   },
   "bugs": {
-    "url": "https://github.com/LearnBoost/stylus/issues"
+    "url": "https://github.com/stylus/stylus/issues"
   },
-  "homepage": "https://github.com/LearnBoost/stylus",
+  "homepage": "https://github.com/stylus/stylus",
   "directories": {
     "doc": "docs",
     "example": "examples",
