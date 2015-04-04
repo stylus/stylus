@@ -42,3 +42,14 @@ broken selector {
   baz: '.foo:hover,.bar:hover';
   baz: '.foo:hover,.bar:hover';
 }
+.test,
+.test__foo,
+.test__bar {
+  color: #f00;
+}
+.test__foo {
+  border: 1px solid;
+}
+.test__bar {
+  border-radius: 4px;
+}
