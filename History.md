@@ -1,3 +1,19 @@
+0.51.0 / 2015-04-23
+===================
+
+  * Added support for cascading extend.
+  * Added "transparent" as a named color.
+  * Added support for blockless unknown at-rules.
+  * Made math more strict.
+  * Fixed bug with extending nested placeholder selectors inside MQ.
+  * Fixed imports inside `@media` blocks.
+  * Fixed url resolver to consider `--out` options.
+  * Fixed parsing of multiple "else if" statements.
+  * Fixed an edge case with recursive extend.
+  * Fixed regression with nested media queries.
+  * Fixed parsing of nested comments.
+  * Fixed checking paths overlap if 'dest' is a function in middleware.
+
 0.50.0 / 2015-02-05
 ===================
 
