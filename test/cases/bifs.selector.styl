@@ -70,3 +70,12 @@ qux() {
   &:hover
     bar[0] = selector()
   baz: bar
+
+.test
+  color: red
+  /{selector()}__foo
+    border: 1px solid
+    @extend .test
+  /{selector()}__bar
+    border-radius: 4px
+    @extend .test

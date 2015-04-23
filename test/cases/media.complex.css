@@ -197,3 +197,13 @@ body {
     font-size: 1em;
   }
 }
+@media print {
+  .test {
+    background-color: #800080;
+  }
+}
+@media print {
+@import 'print.css';
+
+  body { color: red }
+}
