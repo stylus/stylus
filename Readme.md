@@ -104,6 +104,7 @@ form input {
   - Coda/SubEtha Edit [Syntax mode](https://github.com/atljeremy/Stylus.mode)
   - gedit [language-spec](docs/gedit.md)
   - VIM [Syntax](https://github.com/wavded/vim-stylus)
+  - Espresso [Sugar](https://github.com/aljs/Stylus.sugar)
   - [Firebug extension](docs/firebug.md)
   - heroku [web service](http://styl.heroku.com) for compiling stylus
   - [style guide](https://github.com/lepture/ganam) parser and generator
