@@ -1,3 +1,9 @@
+0.51.1 / 2015-04-28
+===================
+
+  * Fixed `;` at the end of blockless unknown at-rules.
+  * Fixed float units convertion by `convert` bif.
+
 0.51.0 / 2015-04-23
 ===================
 
