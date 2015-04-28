@@ -2,4 +2,6 @@ body {
   test: 'unit';
   test: 'rgba';
   test: 'literal';
+  test: 11.334em;
+  test: 5.5em;
 }
