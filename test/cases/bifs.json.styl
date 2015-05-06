@@ -54,3 +54,8 @@ body
   -webkit-transition: vars.animate.special.out
   if vars.awesome
     border red
+
+icons = json('import.json/icons.json', { hash: true, leave-strings: true });
+
+.icon
+  content: icons.menu
