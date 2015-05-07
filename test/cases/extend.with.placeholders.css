@@ -56,3 +56,10 @@ a.error:hover {
 .bar {
   padding: 0;
 }
+@media screen {
+  #a article,
+  .test,
+  .blurg {
+    padding-bottom: 67px;
+  }
+}
