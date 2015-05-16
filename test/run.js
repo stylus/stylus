@@ -172,6 +172,15 @@ describe('JS API', function(){
     stylus('@import "clone2"', { compress: true, paths: [path] })
       .render().should.equal(css);
   });
+
+  it('import loop detection', function(){
+    var path = __dirname + '/cases/import.loop/'
+      , styl = fs.readFileSync(path + 'test.styl', 'utf-8');
+
+    (function() {
+      stylus(styl, { paths: [path] }).render();
+    }).should.throw(/import loop has been found/);
+  });
 });
 
 // helper functions
