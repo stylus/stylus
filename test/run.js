@@ -69,7 +69,7 @@ addSuite('sourcemap', readDir('test/sourcemap'), function(test){
     if (err) throw err;
     if (inline) {
       style.sourcemap.sourcesContent.should.not.be.empty;
-      css.should.include('sourceMappingURL=data:application/json;base64,');
+      css.should.include('sourceMappingURL=data:application/json;charset=utf-8;base64,');
     } else {
       style.sourcemap.should.eql(JSON.parse(expected));
     }
