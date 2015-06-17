@@ -231,3 +231,7 @@ Will give us list of the imports paths:
       background: linear-gradient(top, #fff 0%, #000 100%);
     }
 
+If you need to pass arguments to the plugin, use the `--with` option. `--with` evaluates any valid javascript expression and passes its value to the plugin. For example:
+```
+$ stylus < test.styl --use ../node_modules/autoprefixer-stylus --with "{ browsers: ['ie 7', 'ie 8'] }"
+```
