@@ -1,7 +1,8 @@
 body {
   test: 'unit';
   test: 'rgba';
-  test: 'literal';
+  test: 'ident';
+  test: 10 20 30 40 50;
   test: 11.334em;
   test: 5.5em;
 }

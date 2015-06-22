@@ -624,7 +624,7 @@ The third argument is optional and overrides the autodetected alpha.
 
        foo = convert('foo')
        tyepof(foo)
-       // => 'literal'
+       // => 'ident'
 
 ## s(fmt, ...)
 
