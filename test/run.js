@@ -63,13 +63,15 @@ addSuite('sourcemap', readDir('test/sourcemap'), function(test){
     , styl = readFile(path)
     , style = stylus(styl).set('filename', path).set('sourcemap',
       { inline: inline, sourceRoot: '/', basePath: 'test/sourcemap' })
-    , expected = readFile(path.replace('.styl', inline ? '.css' : '.map'));
+    , expected = readFile(path.replace('.styl', inline ? '.css' : '.map'))
+    , comment = 'sourceMappingURL=data:application/json;';
 
   style.render(function(err, css) {
     if (err) throw err;
     if (inline) {
       style.sourcemap.sourcesContent.should.not.be.empty;
-      css.should.include('sourceMappingURL=data:application/json;charset=utf-8;base64,');
+      if (~test.indexOf('utf-8')) comment += 'charset=utf-8;';
+      css.should.include(comment + 'base64,');
     } else {
       style.sourcemap.should.eql(JSON.parse(expected));
     }
