@@ -1096,6 +1096,11 @@ May be used in the following ways:
     typeof(vars.icon)
     // => 'string'
 
+    // don't throw an error if the JSON file doesn't exist
+    optional = json('optional.json', { hash: true, optional: true })
+    typeof(optional)
+    // => 'null'
+
 ## use(path)
 
 You can use any given js-plugin at given `path` with `use()` function right inside your '.styl' files, like this:

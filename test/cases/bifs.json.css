@@ -43,3 +43,6 @@ body {
 .icon {
   content: '';
 }
+body {
+  test: true;
+}
