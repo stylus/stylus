@@ -22,11 +22,7 @@ addSuite('integration', readDir('test/cases'), function(test){
   if (~test.indexOf('include')) style.set('include css', true);
   if (~test.indexOf('prefix.')) style.set('prefix', 'prefix-');
   if (~test.indexOf('hoist.')) style.set('hoist atrules', true);
-
-  if (~test.indexOf('resolver')) {
-    style.set('resolve url', true);
-    style.define('url', stylus.resolver());
-  }
+  if (~test.indexOf('resolver')) style.define('url', stylus.resolver());
 
   style.render(function(err, actual){
     if (err) throw err;

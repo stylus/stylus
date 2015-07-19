@@ -186,6 +186,7 @@ var usage = [
   , '    --disable-cache         Disable caching'
   , '    --hoist-atrules         Move @import and @charset to the top'
   , '    -r, --resolve-url       Resolve relative urls inside imports'
+  , '    --resolve-url-nocheck   Like --resolve-url but without file existence check'
   , '    -V, --version           Display the version of Stylus'
   , '    -h, --help              Display help information'
   , ''
@@ -332,7 +333,10 @@ while (args.length) {
       break;
     case '-r':
     case '--resolve-url':
-      resolveURL = true;
+      resolveURL = {};
+      break;
+    case '--resolve-url-nocheck':
+      resolveURL = { nocheck: true };
       break;
     case '-D':
     case '--deps':
@@ -582,7 +586,6 @@ function compileStdio() {
     // Compile to css
     var style = stylus(str, options);
     if (includeCSS) style.set('include css', true);
-    if (resolveURL) style.set('resolve url', true);
     if (disableCache) style.set('cache', false);
     usePlugins(style);
     importFiles(style);
@@ -620,7 +623,6 @@ function displayDeps() {
         if (err) throw err;
         options.filename = file;
         var style = stylus(str, options);
-        if (resolveURL) style.set('resolve url', true);
 
         usePlugins(style);
         importFiles(style);
@@ -646,7 +648,6 @@ function compileFile(file) {
         options._imports = [];
         var style = stylus(str, options);
         if (includeCSS) style.set('include css', true);
-        if (resolveURL) style.set('resolve url', true);
         if (disableCache) style.set('cache', false);
         if (sourcemap) style.set('sourcemap', sourcemap);
 
@@ -794,7 +795,7 @@ function usePlugins(style) {
   if (urlFunction) {
     style.define('url', stylus.url(urlFunction));
   } else if (resolveURL) {
-    style.define('url', stylus.resolver());
+    style.define('url', stylus.resolver(resolveURL));
   }
 }
 
