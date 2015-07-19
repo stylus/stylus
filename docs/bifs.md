@@ -624,7 +624,7 @@ The third argument is optional and overrides the autodetected alpha.
 
        foo = convert('foo')
        tyepof(foo)
-       // => 'literal'
+       // => 'ident'
 
 ## s(fmt, ...)
 
@@ -1064,7 +1064,7 @@ yields:
 
 Our implementation is now fully transparent both in regards to the property it is called within, and the position of the call. This powerful concept aids in transparent vendor support for function calls, such as gradients.
 
-## json(path)
+## json(path[, options])
 
 Convert a .json file into stylus variables or an object. Nested variable object keys are joined with a dash (-). 
 
@@ -1091,6 +1091,15 @@ May be used in the following ways:
     vars = json('vars.json', { hash: true })
     body
       width: vars.width
+
+    vars = json('vars.json', { hash: true, leave-strings: true })
+    typeof(vars.icon)
+    // => 'string'
+
+    // don't throw an error if the JSON file doesn't exist
+    optional = json('optional.json', { hash: true, optional: true })
+    typeof(optional)
+    // => 'null'
 
 ## use(path)
 
