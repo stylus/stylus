@@ -22,11 +22,7 @@ addSuite('integration', readDir('test/cases'), function(test){
   if (~test.indexOf('include')) style.set('include css', true);
   if (~test.indexOf('prefix.')) style.set('prefix', 'prefix-');
   if (~test.indexOf('hoist.')) style.set('hoist atrules', true);
-
-  if (~test.indexOf('resolver')) {
-    style.set('resolve url', true);
-    style.define('url', stylus.resolver());
-  }
+  if (~test.indexOf('resolver')) style.define('url', stylus.resolver());
 
   style.render(function(err, actual){
     if (err) throw err;
@@ -63,13 +59,15 @@ addSuite('sourcemap', readDir('test/sourcemap'), function(test){
     , styl = readFile(path)
     , style = stylus(styl).set('filename', path).set('sourcemap',
       { inline: inline, sourceRoot: '/', basePath: 'test/sourcemap' })
-    , expected = readFile(path.replace('.styl', inline ? '.css' : '.map'));
+    , expected = readFile(path.replace('.styl', inline ? '.css' : '.map'))
+    , comment = 'sourceMappingURL=data:application/json;';
 
   style.render(function(err, css) {
     if (err) throw err;
     if (inline) {
       style.sourcemap.sourcesContent.should.not.be.empty;
-      css.should.include('sourceMappingURL=data:application/json;base64,');
+      if (~test.indexOf('utf-8')) comment += 'charset=utf-8;';
+      css.should.include(comment + 'base64,');
     } else {
       style.sourcemap.should.eql(JSON.parse(expected));
     }
@@ -171,6 +169,15 @@ describe('JS API', function(){
 
     stylus('@import "clone2"', { compress: true, paths: [path] })
       .render().should.equal(css);
+  });
+
+  it('import loop detection', function(){
+    var path = __dirname + '/cases/import.loop/'
+      , styl = fs.readFileSync(path + 'test.styl', 'utf-8');
+
+    (function() {
+      stylus(styl, { paths: [path] }).render();
+    }).should.throw(/import loop has been found/);
   });
 });
 

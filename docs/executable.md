@@ -44,6 +44,7 @@ Stylus ships with the `stylus` executable for converting Stylus to CSS.
         --disable-cache         Disable caching
         --hoist-atrules         Move @import and @charset to the top
         -r, --resolve-url       Resolve relative urls inside imports
+        --resolve-url-nocheck   Like --resolve-url but without file existence check
         -V, --version           Display the version of Stylus
         -h, --help              Display help information
 
@@ -230,4 +231,8 @@ Will give us list of the imports paths:
       background: -moz-linear-gradient(top, #fff 0%, #000 100%);
       background: linear-gradient(top, #fff 0%, #000 100%);
     }
+
+If you need to pass arguments to the plugin, use the `--with` option. `--with` evaluates any valid javascript expression and passes its value to the plugin. For example:
+
+    $ stylus < test.styl --use ../node_modules/autoprefixer-stylus --with "{ browsers: ['ie 7', 'ie 8'] }"
 

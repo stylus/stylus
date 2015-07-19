@@ -135,7 +135,7 @@ form input {
 
 ### Authors
 
-  - [TJ Holowaychuk (visionmedia)](http://github.com/visionmedia)
+  - [TJ Holowaychuk (tj)](https://github.com/tj)
 
 ### More Information
 

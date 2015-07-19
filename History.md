@@ -1,3 +1,21 @@
+0.52.0 / 2015-07-19
+===================
+
+  * Feature: new url resolver without url checks (`--resolve-url-nocheck`).
+  * Feature: New option to json bif ("leave-strings").
+  * Feature: New option to json bif ("optional").
+  * Feature: Adding utf-8 charset to inline sourcemap.
+  * Feature: allow inline CSS comments inside value.
+  * Fix: shouldn't fail to compile in strict mode, #1923.
+  * Fix: Paths should be normalized for windows support, #1954.
+  * Fix: Proper parsing of selector groups with placeholder and color-like ID.
+  * Fix: Proper import loop detection.
+  * Fix: Correct output of namespaces and charsets inside imports.
+  * Fix: Indented comments shouldn't cause errors.
+  * Fix: Proper way of parsing lists in "convert" bif.
+  * Fix: Proper comma escaping in an object interpolation.
+  * Fix: Allow no whitespace between keyframes name and the following curly brace.
+
 0.51.1 / 2015-04-28
 ===================
 

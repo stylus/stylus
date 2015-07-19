@@ -1,0 +1,14 @@
+@charset 'utf-8';
+@namespace svg url("http://www.w3.org/2000/svg");
+body {
+  background-color: #f00;
+}
+svg|svg {
+  fill: #00f;
+}
+svg|.foo {
+  fill: #008000;
+}
+svg|.bar {
+  fill: #ff0;
+}
