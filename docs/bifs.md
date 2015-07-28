@@ -79,7 +79,7 @@ Check if `color` is light:
 
 Return the hue of the given `color`, or set the hue component to the optional second `value` argument.
 
-    hue(hsla(50deg, 100%, 80%))
+    hue(hsla(50deg, 100%, 80%, 10%))
     // => 50deg
 
     hue(#00c, 90deg)
@@ -89,7 +89,7 @@ Return the hue of the given `color`, or set the hue component to the optional se
 
 Return the saturation of the given `color`, or set the saturation component to the optional second `value` argument.
 
-    saturation(hsla(50deg, 100%, 80%))
+    saturation(hsla(50deg, 100%, 80%, 10%))
     // => 100%
 
     saturation(#00c, 50%)
