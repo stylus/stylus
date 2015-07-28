@@ -99,7 +99,7 @@ Return the saturation of the given `color`, or set the saturation component to t
 
 Return the lightness of the given `color`, or set the lightness component to the optional second `value` argument.
 
-    lightness(hsla(50deg, 100%, 80%))
+    lightness(hsla(50deg, 100%, 80%, 10%))
     // => 80%
 
     lightness(#00c, 80%)
