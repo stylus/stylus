@@ -1,0 +1,6 @@
+.foo {
+  test1: 0, 1;
+  test2: 0, 1;
+  test1: 0 1;
+  test2: 0 1;
+}
