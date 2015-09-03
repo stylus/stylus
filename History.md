@@ -1,3 +1,14 @@
+0.52.1 / 2015-09-03
+===================
+
+  * Fix: Correct line numbers in error messages for files with CSS comments.
+  * Fix: Better absolute urls detection.
+  * Fix: Added type assertions to "substr", "split" and "replace" bifs.
+  * Fix: Atrules parsing with a block at a new line.
+  * Fix: Bug with commented indented lines at the end of a file.
+  * Fix: Stylus error messages for Node 0.12+.
+  * Fix: A bug with arguments cloning.
+
 0.52.0 / 2015-07-19
 ===================
 
