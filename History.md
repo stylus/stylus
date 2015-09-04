@@ -1,3 +1,8 @@
+0.52.4 / 2015-09-04
+===================
+
+  * Fix: Revert changes in "looksLikeSelector" method.
+
 0.52.3 / 2015-09-04
 ===================
 
