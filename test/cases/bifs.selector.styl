@@ -53,6 +53,15 @@ foo() {
   baz: selector('&:hover, &:active')
 }
 
+.foo {
+  .bar {
+    .baz {
+      baz: selector('^[0]:hover')
+      baz: selector('^[1]:hover') == selector('../:hover')
+    }
+  }
+}
+
 qux() {
   {selector()} {
     baz: selector('&__qux')

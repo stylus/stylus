@@ -45,3 +45,35 @@ zzzs()
   /
     .raz
       width: 120px
+
+foo /deep/
+  color: red
+
+  /deep/
+    color: red
+
+.foo
+  &__bar
+    &_baz
+      width: 10px
+
+      ^[-1]:hover &
+        width: 20px
+
+    &[disabled]
+      width: 100px
+
+.foo
+  .bar
+    width: 10px
+    &[href^='../']
+    &[href^='"../"']
+      color: red
+
+.foo
+  .bar
+    width: 10px
+
+    &,
+    ../ .baz
+      height: 10px

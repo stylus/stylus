@@ -35,3 +35,32 @@
 .raz {
   width: 120px;
 }
+foo /deep/ {
+  color: #f00;
+}
+foo /deep/ /deep/ {
+  color: #f00;
+}
+.foo__bar_baz {
+  width: 10px;
+}
+.foo__bar:hover .foo__bar_baz {
+  width: 20px;
+}
+.foo__bar[disabled] {
+  width: 100px;
+}
+.foo .bar {
+  width: 10px;
+}
+.foo .bar[href^='../'],
+.foo .bar[href^='"../"'] {
+  color: #f00;
+}
+.foo .bar {
+  width: 10px;
+}
+.foo .bar,
+.foo .baz {
+  height: 10px;
+}
