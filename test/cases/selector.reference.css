@@ -64,3 +64,9 @@ foo /deep/ /deep/ {
 .foo .baz {
   height: 10px;
 }
+.foo {
+  color: #00f;
+}
+.foo.foo + .bar {
+  color: #f00;
+}
