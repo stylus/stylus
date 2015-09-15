@@ -70,3 +70,11 @@ foo /deep/ /deep/ {
 .foo.foo + .bar {
   color: #f00;
 }
+.a .c,
+.b .c {
+  width: 10px;
+}
+.a_hover .d,
+.b_hover .d {
+  height: 10px;
+}
