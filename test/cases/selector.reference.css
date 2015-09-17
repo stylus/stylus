@@ -78,3 +78,9 @@ foo /deep/ /deep/ {
 .b_hover .d {
   height: 10px;
 }
+.foo .bar {
+  width: 10px;
+}
+.foo:hover .bar {
+  width: 20px;
+}

@@ -58,6 +58,8 @@ foo() {
     .baz {
       baz: selector('^[0]:hover')
       baz: selector('^[1]:hover') == selector('../:hover')
+      baz: selector('^[0] ^[1..1]:hover')
+      baz: selector('^[2..2] ^[-1..1]:hover')
     }
   }
 }

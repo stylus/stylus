@@ -90,3 +90,10 @@ foo /deep/
 
     ^[0]_hover .d
       height: 10px
+
+.foo
+  & .bar
+    width: 10px
+
+    ^[0]:hover ^[1..-1]
+      width: 20px
