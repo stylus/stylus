@@ -67,10 +67,10 @@ x::-moz-focus-inner {
 x::-moz-focus-inner {
   padding: 0;
 }
-.bar_escaped_amp[title^=&] {
+.foo .bar_escaped_amp[title^=&] {
   width: 10px;
 }
-.bar_escaped_comma[title^=,&z,] {
+.foo .bar_escaped_comma[title^=,&z,] {
   width: 10px;
 }
 .wrapper .foo,

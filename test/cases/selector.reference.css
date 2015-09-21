@@ -84,3 +84,6 @@ foo /deep/ /deep/ {
 .foo:hover .bar {
   width: 20px;
 }
+.foo ^[ 0..5  ]:hover {
+  color: #f00;
+}
