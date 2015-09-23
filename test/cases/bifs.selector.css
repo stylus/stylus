@@ -40,6 +40,10 @@ broken selector {
   baz: '.foo .bar:hover';
   baz: '.baz .bar .baz:hover';
 }
+.foo .bar,
+.bar {
+  test: '.bar';
+}
 .qux .qux {
   baz: '.qux .qux__qux';
 }

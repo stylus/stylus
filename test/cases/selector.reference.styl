@@ -101,3 +101,12 @@ foo /deep/
 .foo
   \\^[ 0..5  ]:hover
     color: red
+
+& > .foo
+  color: red
+
+&   + .foo
+  color: red
+
+&   ~  .foo
+  color: blue

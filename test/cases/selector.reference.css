@@ -87,3 +87,12 @@ foo /deep/ /deep/ {
 .foo ^[ 0..5  ]:hover {
   color: #f00;
 }
+.foo {
+  color: #f00;
+}
+.foo {
+  color: #f00;
+}
+.foo {
+  color: #00f;
+}
