@@ -110,3 +110,14 @@ foo /deep/
 
 &   ~  .foo
   color: blue
+
+.a
+  .b
+    ^[0] .c,
+    ^[10] .c
+      test: selector('^[0]')
+      test: selector('^[1]')
+      test: selector('^[10]')
+
+    ^[10] .c
+      what: ever

@@ -96,3 +96,8 @@ foo /deep/ /deep/ {
 .foo {
   color: #00f;
 }
+.a .c {
+  test: '.a';
+  test: '.a .b';
+  test: ;
+}
