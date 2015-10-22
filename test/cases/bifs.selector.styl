@@ -96,3 +96,14 @@ qux() {
   /{selector()}__bar
     border-radius: 4px
     @extend .test
+
+selector-list = '.a', '.b', '.c, .d'
+
+{selector(selector-list)}
+  color: red
+
+{selector('.a', '.b', '^[0]:hover .e, ^[1]:hover .f')}
+  color: green
+
+{selector('.a' '.b' '.c')}
+  color: blue
