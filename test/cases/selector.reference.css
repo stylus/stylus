@@ -99,5 +99,5 @@ foo /deep/ /deep/ {
 .a .c {
   test: '.a';
   test: '.a .b';
-  test: ;
+  test: '';
 }
