@@ -106,7 +106,7 @@ form input {
   - VIM [Syntax](https://github.com/wavded/vim-stylus)
   - Espresso [Sugar](https://github.com/aljs/Stylus.sugar)
   - [Firebug extension](docs/firebug.md)
-  - heroku [web service](http://styl.heroku.com) for compiling stylus
+  - heroku [web service](http://styl.herokuapp.com/) for compiling stylus
   - [style guide](https://github.com/lepture/ganam) parser and generator
   - transparent vendor-specific function expansion
 
@@ -125,13 +125,13 @@ form input {
 
 ### CMS Support
 
-   - [DocPad](https://github.com/bevry/docpad)
+   - [DocPad](https://github.com/docpad/docpad)
    - [Punch](https://github.com/laktek/punch-stylus-compiler)
 
 ### Screencasts
 
-  - [Stylus Intro](http://screenr.com/bNY)
-  - [CSS Syntax & Postfix Conditionals](http://screenr.com/A8v)
+  - [Stylus Intro](http://www.screenr.com/bNY)
+  - [CSS Syntax & Postfix Conditionals](http://www.screenr.com/A8v)
 
 ### Authors
 
