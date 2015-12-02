@@ -409,7 +409,7 @@ function help(name) {
 
 // Compilation options
 
-if (files.length > 1 && extname(dest) === '.css') {
+if (files.length > 1 && isFilename(dest)) {
   dest = dirname(dest);
 }
 
@@ -690,7 +690,7 @@ function compileFile(file) {
 
 function createPath(file, sourceMap) {
   var out;
-  if (files.length === 1 && extname(dest) === '.css') {
+  if (files.length === 1 && isFilename(dest)) {
     return [dest, sourceMap ? '.map' : ''].join('');
   }
   // --out support
@@ -807,4 +807,11 @@ function importFiles(style) {
   imports.forEach(function(file) {
     style.import(file);
   });
+}
+
+/**
+ * Is a file
+ */
+function isFilename(path) {
+  return extname(path).length > 0
 }
