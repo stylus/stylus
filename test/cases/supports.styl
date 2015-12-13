@@ -68,3 +68,7 @@ body
 @supports ( (background-blend-mode: normal) and ( not ( mask-type: alpha) ) )
   select
     padding: 9px 16px 9px 10px
+
+@supports (-webkit-font-feature-settings: "smcp", "c2sc")
+  body
+    color: red
