@@ -17,6 +17,12 @@ If you'll have any questions, feel free to mention us or use emails from our pro
 
 
 
+## Code of Conduct
+
+Please note that this project is released with a [Contributor Code of Conduct](Code_of_Conduct.md). By participating in this project you agree to abide by its terms.
+
+
+
 ## How you can help
 
 You're welcomed to:
