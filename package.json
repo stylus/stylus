@@ -25,7 +25,7 @@
   },
   "scripts": {
     "prepublish": "npm prune",
-    "test": "mocha test/ test/middleware/ --require should --bail --reporter dot",
+    "test": "mocha test/ test/middleware/ --require should --bail --check-leaks --reporter dot",
     "test-cov": "mocha test/ test/middleware/ --require should --bail --reporter html-cov > coverage.html"
   },
   "dependencies": {
