@@ -19,6 +19,6 @@
 #sidebar ul li a:hover {
   margin: 10px 0;
 }
-body.signup-page[attr='foo']  > .container {
+body.signup-page[attr='foo']  .container {
   color: #f00;
 }

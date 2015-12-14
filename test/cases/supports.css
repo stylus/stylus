@@ -67,3 +67,8 @@
     padding: 9px 16px 9px 10px;
   }
 }
+@supports (-webkit-font-feature-settings: "smcp", "c2sc") {
+  body {
+    color: #f00;
+  }
+}

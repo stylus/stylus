@@ -1,3 +1,22 @@
+0.53.0 / 2015-12-14
+===================
+
+  * Feature: Numeric partial references.
+  * Feature: Relative references.
+  * Feature: New `selectors()` bif.
+  * Feature: Support for comma-separated lists as `selector()`'s arguments.
+  * Docs: Reworked contribution guidelines.
+  * Docs: Added Contributor Code of Conduct.
+  * Fix: Support for multiple consecutive parent references.
+  * Fix: Proper removal of parent references at the root when combinators are present.
+  * Fix: Don't add space before unknown units.
+  * Fix: Allow comma-separated lists in `@supports` value.
+  * Fix: No more error message for "assertType" without parameter name.
+  * Fix: Proper middleware overlap function on windows. Thanks to #2029 by @bcomnes.
+  * Fix: Better absolute path detection for Windows. Thanks to #2033 by @mlohbihler.
+  * Refactoring: Moved bifs to separate files.
+
+
 0.52.4 / 2015-09-04
 ===================
 
