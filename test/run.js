@@ -179,6 +179,12 @@ describe('JS API', function(){
       stylus(styl, { paths: [path] }).render();
     }).should.throw(/import loop has been found/);
   });
+
+  it('conditional assignment with define', function(){
+    stylus('foo ?= baz; body { test: foo }', { compress: true })
+      .define('foo', new stylus.nodes.Literal('bar'))
+      .render().should.equal("body{test:bar}");
+  });
 });
 
 // helper functions
