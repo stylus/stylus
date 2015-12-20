@@ -185,6 +185,17 @@ describe('JS API', function(){
       .define('foo', new stylus.nodes.Literal('bar'))
       .render().should.equal("body{test:bar}");
   });
+
+  it('sourcemap with dest option set to a file name', function(){
+    var style = stylus('body { color: red }', {
+      compress: true,
+      sourcemap: true,
+      filename: 'test.styl',
+      dest: 'test/build.css'
+    });
+    style.render().should.equal('body{color:#f00}/*# sourceMappingURL=build.css.map */');
+    style.sourcemap.sources[0].should.equal('../test.styl');
+  });
 });
 
 // helper functions
