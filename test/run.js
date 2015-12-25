@@ -111,6 +111,15 @@ describe('JS API', function(){
       ).should.equal("body{foo:baz}");
   });
 
+  it('use variable from options object inside expression', function() {
+    stylus('body { color: rgba(convert($red), .5) }', {
+      globals: {
+        $red: '#E20303'
+      },
+      compress: true
+    }).render().should.equal('body{color:rgba(226,3,3,0.5)}');
+  });
+
   it('use functions from options object', function(){
     stylus
       .render(
