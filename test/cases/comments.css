@@ -38,3 +38,10 @@ body
     transform: translate(0, 0);
   }
 }
+@font-face {
+  font-family: "DIN Alternate";
+  src: url("DIN-Alternate-Medium.eot") /* IE9 */;
+  src: url("DIN-Alternate-Medium.eot?#iefix") format("embedded-opentype"), url("DIN-Alternate-Medium.woff") format("woff"), url("DIN-Alternate-Medium.ttf") format("truetype"), url("DIN-Alternate-Medium.svg#DIN") format("svg") /* iOS 4.1- */;
+  font-style: normal;
+  font-weight: normal;
+}
