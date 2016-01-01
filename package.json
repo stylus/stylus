@@ -37,7 +37,7 @@
     "source-map": "0.1.x"
   },
   "devDependencies": {
-    "should": "2.x",
+    "should": "8.x",
     "mocha": "*",
     "jscoverage": "0.3.8"
   },
