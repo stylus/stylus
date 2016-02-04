@@ -77,7 +77,7 @@ Compiles to:
       color: #000;
     }
 
-Below is an example providing a simple `2px` border for Internet Exploder utilizing the parent reference within a mixin:
+Below is an example providing a simple `2px` border for Internet Explorer utilizing the parent reference within a mixin:
 
       box-shadow()
         -webkit-box-shadow arguments
