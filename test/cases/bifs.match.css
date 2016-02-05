@@ -5,3 +5,31 @@ body {
 body {
   bar: baz;
 }
+body {
+  content: 'height>=1024px' 'height' '>=' '1024px';
+}
+body {
+  no-flags: 'ain';
+  g-flag: 'ain' 'ain' 'ain';
+  gi-flag: 'ain' 'AIN' 'ain' 'ain';
+}
+@media (min-width: 401px) {
+  body {
+    margin: 1px;
+  }
+}
+@media (max-width: 399px) {
+  body {
+    margin: 2px;
+  }
+}
+@media (min-width: 400px) {
+  body {
+    margin: 3px;
+  }
+}
+@media (max-width: 400px) {
+  body {
+    margin: 4px;
+  }
+}
