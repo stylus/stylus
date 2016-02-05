@@ -216,20 +216,30 @@ or assign the given `type` without unit conversion.
     unit(15%, px)
     // => 15px
 
-## match(pattern, string)
+## match(pattern, string, flags)
 
-Test if `string` matches the given `pattern`.
+Retrieves the matches when matching a `val`(string) against a `pattern`(regular expression).
 
-    match('^foo(bar)?', foo)
-    match('^foo(bar)?', foobar)
-    // => true
+    match('^(height|width)?([<>=]{1,})(.*)', 'height>=1024px')
+    // => 'height>=1024px' 'height' '>=' '1024px'
 
-    match('^foo(bar)?', 'foo')
-    match('^foo(bar)?', 'foobar')
-    // => true
+    match('^foo(?:bar)?', 'foo')
+    // => 'foo'
 
-    match('^foo(bar)?', 'bar')
-    // => false
+    match('^foo(?:bar)?', 'foobar')
+    // => 'foobar'
+
+    match('^foo(?:bar)?', 'bar')
+    // => null
+
+    match('ain', 'The rain in SPAIN stays mainly in the plain')
+    // => 'ain'
+
+    match('ain', 'The rain in SPAIN stays mainly in the plain', g)
+    // => 'ain' 'ain' 'ain'
+
+    match('ain', 'The rain in SPAIN stays mainly in the plain', 'gi')
+    // => 'ain' 'AIN' 'ain' 'ain'
 
 ## abs(unit)
 
@@ -1066,7 +1076,7 @@ Our implementation is now fully transparent both in regards to the property it i
 
 ## json(path[, options])
 
-Convert a .json file into stylus variables or an object. Nested variable object keys are joined with a dash (-). 
+Convert a .json file into stylus variables or an object. Nested variable object keys are joined with a dash (-).
 
 For example, the following sample media-queries.json file:
 
@@ -1081,13 +1091,13 @@ For example, the following sample media-queries.json file:
 May be used in the following ways:
 
     json('media-queries.json')
-    
+
     @media small
     // => @media screen and (max-width:400px)
 
     @media tablet-landscape
     // => @media screen and (min-width:600px) and (orientation:landscape)
-    
+
     vars = json('vars.json', { hash: true })
     body
       width: vars.width
