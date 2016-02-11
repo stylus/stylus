@@ -816,9 +816,9 @@ Yields:
       font-size: 30px;
     }
 
-## define(name, expr)
+## define(name, expr[, global])
 
-Allows to create or overwrite a variable with a given name, passed as a string, onto current scope.
+Allows to create or overwrite a variable with a given name, passed as a string, onto current scope (or global scope if `global` is true).
 
 This bif can be useful on those cases in which you'd wish interpolation in variable names:
 

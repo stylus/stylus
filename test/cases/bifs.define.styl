@@ -22,3 +22,14 @@ for prop, val in border
 
 body
   border: border-length border-style border-color
+
+a = 10
+
+foo(global)
+  a = 5
+  define('a', 15, global)
+
+body
+  test: a == 10
+  foo(true)
+  test: a == 15
