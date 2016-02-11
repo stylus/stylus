@@ -289,3 +289,9 @@ cache()
 
 percentage(num)
   return unit(num * 100, '%')
+
+// Returns the position of a `value` within a `list`
+
+index(list, value)
+  for val, i in list
+    return i if val == value
