@@ -216,7 +216,17 @@ or assign the given `type` without unit conversion.
     unit(15%, px)
     // => 15px
 
-## match(pattern, string, flags)
+## percentage(num)
+
+Convert a `num` to a percentage.
+
+    percentage(.5)
+    // => 50%
+
+    percentage(4 / 100)
+    // => 4%
+
+## match(pattern, string[, flags])
 
 Retrieves the matches when matching a `val`(string) against a `pattern`(regular expression).
 

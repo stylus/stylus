@@ -15,35 +15,29 @@ The function itself is available via `require('stylus').url`. It accepts an `opt
 
 The `.define(name, callback)` method assigned a JavaScript function that can be called from Stylus source. In this case, since our images are in `./css/images`,  we can ignore the `paths` option (by default image lookups are performed relative to the file being rendered).  But if desired, this behavior can be altered:
 
-```javascript
-stylus(str)
-  .set('filename', __dirname + '/css/test.styl')
-  .define('embedurl', stylus.url())
-  .render(function(err, css){
-    // render it
-  });
-```
+    stylus(str)
+      .set('filename', __dirname + '/css/test.styl')
+      .define('embedurl', stylus.url())
+      .render(function(err, css){
+        // render it
+      });
 
 For example, imagine our images live in `./public/images`. We want to use `url(images/tobi.png)`.  We could pass `paths` our public directory, so that it becomes part of the lookup process. 
 
 Likewise, if instead we wanted `url(tobi.png)`, we could pass `paths: [__dirname + '/public/images']`.
 
-```javascript
-stylus(str)
-  .set('filename', __dirname + '/css/test.styl')
-  .define('embedurl', stylus.url({ paths: [__dirname + '/public'] }))
-  .render(function(err, css){
-    // render it
-  });
-```
+    stylus(str)
+      .set('filename', __dirname + '/css/test.styl')
+      .define('embedurl', stylus.url({ paths: [__dirname + '/public'] }))
+      .render(function(err, css){
+        // render it
+      });
 
 Since base64 encoding an image actually increases the original size, you have the option to use `utf8` encoding when inlining SVG's.
 
-```stylus
-.embed-with-utf8 {
-  background-image: embedurl("circle.svg", "utf8");
-}
-```
+    .embed-with-utf8 {
+      background-image: embedurl("circle.svg", "utf8");
+    }
 
 ## Options
 
