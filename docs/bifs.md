@@ -153,6 +153,18 @@ Return the lightness of the given `color`, or set the lightness component to the
 
  Aliased as `prepend()`
 
+## index(list, value)
+
+  Returns the index (zero-based) of a `value` within a `list`.
+
+    list = 1 2 3
+
+    index(list, 2)
+    // => 1
+
+    index(1px solid red, red)
+    // => 2
+
 ## keys(pairs)
 
   Return keys in the given `pairs`:
