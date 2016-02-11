@@ -1,3 +1,21 @@
+0.54.0 / 2016-02-12
+===================
+
+  * Feature: New `index()` bif.
+  * Feature: New `percentage()` bif.
+  * Feature: Support for UTF-8 encoding of urls, #2084.
+  * Feature: Added `global` flag to `define()` function.
+  * Feature: `match()` bif now returns the matched values instead of a boolean, #2109.
+  * Feature: Added an optional `flags` argument to `match()` bif, #2109.
+  * Docs: Added basic “getting started” to Readme, #2073.
+  * Docs: Updated information about error reporting.
+  * Fix: Proper conditional assignment and "define" method.
+  * Fix: Proper relative paths in sourcemaps if --out flag is set to a filename.
+  * Fix: [Evaluator] Support for function as a default argument for functions.
+  * Fix: [Lexer] Proper multiline comments inside multiline expressions.
+  * Fix: [JS API] Proper variables from options object inside expressions.
+  * Fix: [Renderer] No more caching of parsed AST for deps-resolver.
+
 0.53.0 / 2015-12-14
 ===================
 
