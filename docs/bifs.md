@@ -1005,6 +1005,16 @@ stdout:
       image-size('tux.png')[0] == width('tux.png')
       // => true
 
+## embedurl(path[, encoding])
+
+Returns an inline image as a `url()` literal, encoded with `encoding` (available encodings: `base64` (default), and `utf8`).
+
+    background: embedurl('logo.png')
+    // => background: url("data:image/png;base64,…")
+
+    background: embedurl('logo.svg', 'utf8')
+    // => background: url("data:image/svg+xml;charset=utf-8,…")
+
 ## add-property(name, expr)
 
   Adds property `name`, with the given `expr` to the closest block.

@@ -187,6 +187,21 @@ One number in the range would be the start index, the second — the end index. 
 
 When both numbers are equal, the result would be just one raw level of a selector, so you could replace `^[1..-1]` in a previous example to `^[-1..-1]`, and it would be equal to the same last one raw selector, but would be more reliable if used inside mixins.
 
+## Initial Reference
+
+The `~/` characters at the start of a selector can be used to point at the selector at the first nesting and could be considered as a shortcut to `^[0]`. The only drawback is that you can use initial reference only at the start of a selector:
+
+    .block
+      &__element
+        ~/:hover &
+          color: red
+
+Would be rendered as
+
+    .block:hover .block__element {
+      color: #f00;
+    }
+
 ## Relative Reference
 
 The `../` characters at the start of a selector mark a relative reference, which points to the previous to the `&` compiled selector. You can nest relative reference: `../../` to get deeper levels, but note that it can be used only at the start of the selector.
