@@ -1,6 +1,8 @@
-0.54.0 / 2016-02-12
+0.54.0 / 2016-02-13
 ===================
 
+  * Feature: Added initial reference selector.
+  * Feature: New `embedurl()` bif with optional utf8 uncoding support for SVG.
   * Feature: New `index()` bif.
   * Feature: New `percentage()` bif.
   * Feature: Support for UTF-8 encoding of urls, #2084.

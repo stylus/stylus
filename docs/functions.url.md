@@ -17,7 +17,7 @@ The `.define(name, callback)` method assigned a JavaScript function that can be 
 
     stylus(str)
       .set('filename', __dirname + '/css/test.styl')
-      .define('embedurl', stylus.url())
+      .define('url', stylus.url())
       .render(function(err, css){
         // render it
       });
@@ -28,15 +28,36 @@ Likewise, if instead we wanted `url(tobi.png)`, we could pass `paths: [__dirname
 
     stylus(str)
       .set('filename', __dirname + '/css/test.styl')
-      .define('embedurl', stylus.url({ paths: [__dirname + '/public'] }))
+      .define('url', stylus.url({ paths: [__dirname + '/public'] }))
       .render(function(err, css){
         // render it
       });
 
-Since base64 encoding an image actually increases the original size, you have the option to use `utf8` encoding when inlining SVG's.
+### `utf8` encoding for SVGs
+
+Since base64 encoding an image actually increases the original size, you have the option to use `utf8` encoding when inlining SVGs.
+
+There is a bif for this: `embedurl`:
 
     .embed-with-utf8 {
       background-image: embedurl("circle.svg", "utf8");
+    }
+
+Would result in utf-encoded inline SVG instead of base64 one.
+
+If you'd like to use the JS define so you could use the `paths` alongside the utf encoding, you'll need to define it using another name, not `url()`. This is Due to how `url()` function is parsed in Stylus: it is impossible now to pass the extra param to it, so you couldn't just call `url` with the second param to set the encoding. But if you'd define the `url` with another name:
+
+    stylus(str)
+      .set('filename', __dirname + '/css/test.styl')
+      .define('inline-url', stylus.url({ paths: [__dirname + '/public'] }))
+      .render(function(err, css){
+        // render it
+      });
+
+You could then use `inline-url` bif just like you can use `embedurl`, but with an added `paths` functionality:
+
+    .embed-with-utf8-at-path {
+      background-image: inline-url("tobi.svg", "utf8");
     }
 
 ## Options
