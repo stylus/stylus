@@ -101,3 +101,7 @@ foo /deep/ /deep/ {
   test: '.a .b';
   test: '';
 }
+.foo {
+  test: '.foo';
+  test: '.baz ~/';
+}
