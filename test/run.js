@@ -16,7 +16,8 @@ addSuite('integration', readDir('test/cases'), function(test){
     , style = stylus(styl)
         .set('filename', path)
         .include(__dirname + '/images')
-        .include(__dirname + '/cases/import.basic');
+        .include(__dirname + '/cases/import.basic')
+        .define('url', stylus.url());
 
   if (~test.indexOf('compress')) style.set('compress', true);
   if (~test.indexOf('include')) style.set('include css', true);
