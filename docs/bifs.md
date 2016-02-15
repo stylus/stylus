@@ -216,31 +216,6 @@ or assign the given `type` without unit conversion.
     unit(15%, px)
     // => 15px
 
-## match(pattern, string, flags)
-
-Retrieves the matches when matching a `val`(string) against a `pattern`(regular expression).
-
-    match('^(height|width)?([<>=]{1,})(.*)', 'height>=1024px')
-    // => 'height>=1024px' 'height' '>=' '1024px'
-
-    match('^foo(?:bar)?', 'foo')
-    // => 'foo'
-
-    match('^foo(?:bar)?', 'foobar')
-    // => 'foobar'
-
-    match('^foo(?:bar)?', 'bar')
-    // => null
-
-    match('ain', 'The rain in SPAIN stays mainly in the plain')
-    // => 'ain'
-
-    match('ain', 'The rain in SPAIN stays mainly in the plain', g)
-    // => 'ain' 'ain' 'ain'
-
-    match('ain', 'The rain in SPAIN stays mainly in the plain', 'gi')
-    // => 'ain' 'AIN' 'ain' 'ain'
-
 ## abs(unit)
 
       abs(-5px)
@@ -391,6 +366,43 @@ Returns a `Literal` `num` converted to the provided `base`, padded to `width` wi
     // => 101010
 
 
+## match(pattern, string, flags)
+
+Retrieves the matches when matching a `val`(string) against a `pattern`(regular expression).
+
+    match('^(height|width)?([<>=]{1,})(.*)', 'height>=1024px')
+    // => 'height>=1024px' 'height' '>=' '1024px'
+
+    match('^foo(?:bar)?', 'foo')
+    // => 'foo'
+
+    match('^foo(?:bar)?', 'foobar')
+    // => 'foobar'
+
+    match('^foo(?:bar)?', 'bar')
+    // => null
+
+    match('ain', 'The rain in SPAIN stays mainly in the plain')
+    // => 'ain'
+
+    match('ain', 'The rain in SPAIN stays mainly in the plain', g)
+    // => 'ain' 'ain' 'ain'
+
+    match('ain', 'The rain in SPAIN stays mainly in the plain', 'gi')
+    // => 'ain' 'AIN' 'ain' 'ain'
+
+
+## replace(pattern, replacement, val)
+
+Returns string with all matches of `pattern` replaced by `replacement` in given `val`
+
+    replace(i, e, 'griin')
+    // => 'green'
+
+    replace(i, e, griin)
+    // => #008000
+
+
 ## join(delim, vals...)
 
   Join the given `vals` with `delim`.
@@ -409,6 +421,49 @@ Returns a `Literal` `num` converted to the provided `base`, padded to `width` wi
 
       join(', ', 1 2, 3 4, 5 6)
       // => "1 2, 3 4, 5 6"
+
+
+## split(delim, val)
+
+The `split()`` method splits a string/ident into an array of strings by separating the string into substrings.
+
+    split(_, bar1_bar2_bar3)
+    // => bar1 bar2 bar3
+
+    split(_, 'bar1_bar2_bar3')
+    // => 'bar1' 'bar2' 'bar3'
+
+
+## substr(val, start, length)
+
+The `substr()` method returns the characters in a string beginning at the specified location through the specified number of characters.
+
+    substr(ident, 1, 2)
+    // => de
+
+    substr('string', 1, 2)
+    // => 'tr'
+
+    val = dredd
+    substr(substr(val, 1), 0, 3)
+    // => #f00
+
+
+## slice(val, start, end)
+
+The `slice()` method extracts a section of a string/list and returns a new string/list.
+
+  slice('lorem' 'ipsum' 'dolor', 1, 2)
+  slice('lorem' 'ipsum' 'dolor', 1, -1)
+  // => 'ipsum'
+
+  slice('lorem ipsum', 1, 5)
+  // => 'orem'
+  slice(rredd, 1, -1)
+  // => #f00
+
+  slice(1px solid black, 1)
+  // => solid #000
 
 ## hsla(color | h,s,l,a)
 
