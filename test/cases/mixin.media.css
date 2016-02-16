@@ -1,0 +1,30 @@
+@media (min-width: 568px) {
+  .foo-1\@sm {
+    media-variable: '\@sm';
+    test-current-media: '@media ((min-width: (568px)))';
+  }
+  .foo-1\@sm:before {
+    media-variable: '\@sm';
+    test-current-media: '@media ((min-width: (568px)))';
+  }
+}
+@media (min-width: 768px) {
+  .foo-2\@md {
+    media-variable: '\@md';
+    test-current-media: '@media ((min-width: (768px)))';
+  }
+  .foo-2\@md:before {
+    media-variable: '\@md';
+    test-current-media: '@media ((min-width: (768px)))';
+  }
+}
+@media (min-width: 1024px) {
+  .foo-3\@lg {
+    media-variable: '\@lg';
+    test-current-media: '@media ((min-width: (1024px)))';
+  }
+  .foo-3\@lg:before {
+    media-variable: '\@lg';
+    test-current-media: '@media ((min-width: (1024px)))';
+  }
+}

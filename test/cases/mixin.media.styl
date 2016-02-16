@@ -1,0 +1,31 @@
+@import 'mixins/media'
+
+// Note: `$media` is being set in the `media` mixin that is being imported
+
++media('>=sm')
+  .foo-1{$media}
+    media-variable $media
+    test-current-media current-media()
+
+    &:before
+      media-variable $media
+      test-current-media current-media()
+
+.foo-2{$media}
+  +media('>=md')
+    media-variable $media
+    test-current-media current-media()
+
+    &:before
+      media-variable $media
+      test-current-media current-media()
+
+.foo-3
+  +media('>=lg')
+    &{$media}
+      media-variable $media
+      test-current-media current-media()
+
+      &:before
+        media-variable $media
+        test-current-media current-media()
