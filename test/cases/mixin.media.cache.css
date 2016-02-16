@@ -1,0 +1,76 @@
+.foo,
+.bar {
+  list-style: none outside none;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+}
+.foo {
+  background: #f00;
+}
+.bar {
+  background: #00f;
+}
+@media (min-width: 568px) {
+  .foo\@sm,
+  .bar\@sm,
+  .qux\@sm,
+  .quux\@sm,
+  .garply\@sm {
+    list-style: none outside none;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+  }
+  .foo\@sm {
+    background: #f00;
+  }
+  .bar\@sm {
+    background: #00f;
+  }
+}
+@media (min-width: 768px) {
+  .foo\@md,
+  .bar\@md {
+    list-style: none outside none;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+  }
+  .foo\@md {
+    background: #f00;
+  }
+  .bar\@md {
+    background: #00f;
+  }
+}
+@media (min-width: 1024px) {
+  .foo\@lg,
+  .bar\@lg {
+    list-style: none outside none;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+  }
+  .foo\@lg {
+    background: #f00;
+  }
+  .bar\@lg {
+    background: #00f;
+  }
+}
+@media (min-width: 1400px) {
+  .foo\@xl,
+  .bar\@xl {
+    list-style: none outside none;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+  }
+  .foo\@xl {
+    background: #f00;
+  }
+  .bar\@xl {
+    background: #00f;
+  }
+}
