@@ -4,7 +4,8 @@
  */
 
 var stylus = require('../')
-  , fs = require('fs');
+  , fs = require('fs')
+  , should = require('should');
 
 // integration cases
 
@@ -16,7 +17,7 @@ addSuite('integration', readDir('test/cases'), function(test){
         .set('filename', path)
         .include(__dirname + '/images')
         .include(__dirname + '/cases/import.basic')
-        .define('url', stylus.url());
+        .define('embedurl', stylus.url());
 
   if (~test.indexOf('compress')) style.set('compress', true);
   if (~test.indexOf('include')) style.set('include css', true);
