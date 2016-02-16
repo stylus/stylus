@@ -216,6 +216,16 @@ or assign the given `type` without unit conversion.
     unit(15%, px)
     // => 15px
 
+## percentage(num)
+
+Convert a `num` to a percentage.
+
+    percentage(.5)
+    // => 50%
+
+    percentage(4 / 100)
+    // => 4%
+
 ## abs(unit)
 
       abs(-5px)
@@ -366,7 +376,7 @@ Returns a `Literal` `num` converted to the provided `base`, padded to `width` wi
     // => 101010
 
 
-## match(pattern, string, flags)
+## match(pattern, string[, flags])
 
 Retrieves the matches when matching a `val`(string) against a `pattern`(regular expression).
 
@@ -449,7 +459,7 @@ The `substr()` method returns the characters in a string beginning at the specif
     // => #f00
 
 
-## slice(val, start, end)
+## slice(val, start[, end])
 
 The `slice()` method extracts a section of a string/list and returns a new string/list.
 
