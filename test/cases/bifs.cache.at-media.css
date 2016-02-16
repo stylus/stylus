@@ -27,3 +27,66 @@
     width: 10px;
   }
 }
+@media (min-width: 568px) {
+  .foo\@sm,
+  .bar\@sm,
+  .qux\@sm,
+  .quux\@sm,
+  .garply\@sm {
+    list-style: none outside none;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+  }
+  .foo\@sm {
+    width: 50px;
+  }
+  .bar\@sm {
+    width: 60px;
+  }
+}
+@media (min-width: 768px) {
+  .foo\@md,
+  .bar\@md {
+    list-style: none outside none;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+  }
+  .foo\@md {
+    width: 50px;
+  }
+  .bar\@md {
+    width: 60px;
+  }
+}
+@media (min-width: 1024px) {
+  .foo\@lg,
+  .bar\@lg {
+    list-style: none outside none;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+  }
+  .foo\@lg {
+    width: 50px;
+  }
+  .bar\@lg {
+    width: 60px;
+  }
+}
+@media (min-width: 1400px) {
+  .foo\@xl,
+  .bar\@xl {
+    list-style: none outside none;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+  }
+  .foo\@xl {
+    width: 50px;
+  }
+  .bar\@xl {
+    width: 60px;
+  }
+}
