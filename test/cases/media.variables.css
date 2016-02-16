@@ -1,0 +1,28 @@
+.foo {
+  scope: 'initial scope';
+}
+.bar {
+  scope: 'initial scope';
+}
+@media (min-width: 500px) {
+  .foo {
+    scope: '@media (min-width: 500px)';
+  }
+  .bar {
+    scope: '@media (min-width: 500px) .bar';
+  }
+}
+@media (min-width: 500px) {
+  .foo {
+    scope: '@media (min-width: 500px)';
+  }
+  .bar {
+    scope: '@media (min-width: 500px) .bar';
+  }
+}
+.foo {
+  scope: 'initial scope';
+}
+.bar {
+  scope: 'initial scope';
+}
