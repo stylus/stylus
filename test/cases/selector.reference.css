@@ -105,3 +105,9 @@ foo /deep/ /deep/ {
   test: '.foo';
   test: '.baz ~/';
 }
+.s1-s2-s3 {
+  syntax: "^[2]";
+}
+.s1-s2-s3 {
+  syntax: "^[0..2]";
+}

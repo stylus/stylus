@@ -127,3 +127,14 @@ foo /deep/
     ~/
       test: selector('~/')
       test: selector('.baz ~/')
+
+.s1
+  &-s2
+    &-s3
+      &-s4
+        ^[2]
+          // first three levels of selectors
+          syntax: "^[2]"
+        ^[0..2]
+          // I expect this to be identical to the above, but it's not
+          syntax: "^[0..2]"
