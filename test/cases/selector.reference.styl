@@ -97,6 +97,16 @@ foo /deep/
 
     ^[0]:hover ^[1..-1]
       width: 20px
+.foo
+  &.on-foo
+    width: 10px
+    ^[0]--modifier^[1..-1]
+      width: 20px
+  & .child-of-foo
+  .another-child-of-foo
+    width: 10px
+    ^[0]--modifier^[1..-1]
+      width: 20px
 
 .foo
   \\^[ 0..5  ]:hover
