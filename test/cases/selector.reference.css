@@ -84,6 +84,20 @@ foo /deep/ /deep/ {
 .foo:hover .bar {
   width: 20px;
 }
+.foo.on-foo {
+  width: 10px;
+}
+.foo--modifier.on-foo {
+  width: 20px;
+}
+.foo .child-of-foo,
+.foo .another-child-of-foo {
+  width: 10px;
+}
+.foo--modifier .child-of-foo,
+.foo--modifier .another-child-of-foo {
+  width: 20px;
+}
 .foo ^[ 0..5  ]:hover {
   color: #f00;
 }
