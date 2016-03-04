@@ -165,7 +165,7 @@ Note that partial reference contain the whole rendered chain of selectors until 
 
 If you'd have a case when you'd need to get the raw part of the selector, or to get the range of parts programmatically, you could use ranges inside partial reference.
 
-If the range would start from the positive value, the result won't contain the selectors of the previous levels and you'd get the result as if the selectors of those levels were inserted at the root of the stylesheet:
+If the range would start from the positive value, the result won't contain the selectors of the previous levels and you'd get the result as if the selectors of those levels were inserted at the root of the stylesheet with the combinators omitted:
 
     .foo
       & .bar
