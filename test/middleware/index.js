@@ -24,7 +24,7 @@ describe('middleware', function() {
         dest: __dirname
       })(req, res, function() {
         path = __dirname + '/test.css';
-        fs.readFileSync(path).toString().should.include('color: #000');
+        fs.readFileSync(path).toString().should.containEql('color: #000');
         fs.unlinkSync(path);
         done();
       });
@@ -39,7 +39,7 @@ describe('middleware', function() {
         dest: __dirname
       })(req, res, function() {
         path = __dirname + '/test.css';
-        fs.readFileSync(path).toString().should.include('sourceMappingURL=');
+        fs.readFileSync(path).toString().should.containEql('sourceMappingURL=');
         fs.unlinkSync(path);
         done();
       });

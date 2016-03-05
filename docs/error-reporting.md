@@ -17,11 +17,14 @@ Parse error example:
 
 Yielding:
 
-     Error: /Users/tj/Projects/stylus/testing/test.styl:4
-       3: '  form input'
-       4: '    == padding 5px'
+      ParseError: test.styl:3:16
+        1| body
+        2|    form input
+        3|      == padding 5px
+     ---------------------^
+        4|
 
-     illegal unary ==
+      illegal unary "==", missing left-hand operand
 
 ## Evaluation Error
 
@@ -42,13 +45,16 @@ Yielding:
 
 Yielding:
 
-      Error: /Users/tj/Projects/stylus/examples/error.styl:12
-        11: ''
-        12: 'body'
-        13: '  border-radius \'5px\''
-        14: ''
+      Error: test.styl:3:62
+        1| ensure(val, type)
+        2|     unless val is a type
+        3|       error('expected a ' + type + ', but got ' + typeof(val))
+     -------------------------------------------------------------------^
+        4|
+        5| border-radius(n)
+        6|   ensure(n, 'unit')
 
       expected a unit, but got string
-          at ensure() (/Users/tj/Projects/stylus/examples/error.styl:2)
-          at border-radius() (/Users/tj/Projects/stylus/examples/error.styl:5)
-          at "body" (/Users/tj/Projects/stylus/examples/error.styl:10)
+          at ensure() (test.styl:2:17)
+          at border-radius() (test.styl:6:16)
+          at "body" (test.styl:10:18)

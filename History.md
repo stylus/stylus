@@ -1,3 +1,29 @@
+0.54.0 / 2016-03-05
+
+  * Feature: Added initial reference selector.
+  * Feature: New `embedurl()` bif with optional utf8 uncoding support for SVG.
+  * Feature: New `index()` bif.
+  * Feature: New `percentage()` bif.
+  * Feature: New `slice()` bif, #2115.
+  * Feature: Support for UTF-8 encoding of urls, #2084.
+  * Feature: Added `global` flag to `define()` function.
+  * Feature: `match()` bif now returns the matched values instead of a boolean, #2109.
+  * Feature: Added an optional `flags` argument to `match()` bif, #2109.
+  * Docs: Added basic “getting started” to Readme, #2073.
+  * Docs: Updated information about error reporting.
+  * Fix: `selectors()` now returns proper subselectors.
+  * Fix: No more unneeded spaces with partial reference selector using ranges.
+  * Fix: Proper evaluating of the default arguments.
+  * Fix: Evaluate variables in current-media function.
+  * Fix: Validate regexp flags for `match` function.
+  * Fix: Proper conditional assignment and "define" method.
+  * Fix: Proper relative paths in sourcemaps if --out flag is set to a filename.
+  * Fix: Proper errors with `--include-css` and `--resolve-url` used concurrently.
+  * Fix: [Evaluator] Support for function as a default argument for functions.
+  * Fix: [Lexer] Proper multiline comments inside multiline expressions.
+  * Fix: [JS API] Proper variables from options object inside expressions.
+  * Fix: [Renderer] No more caching of parsed AST for deps-resolver.
+
 0.53.0 / 2015-12-14
 ===================
 
@@ -396,9 +422,9 @@
 0.41.0 / 2013-11-30
 ==================
 
-  * Added basic [block mixins](http://learnboost.github.io/stylus/docs/mixins.html#block-mixins) (`+foo`) with block interpolation (`block`), #1223.
-  * Added [`selector()` bif](http://learnboost.github.io/stylus/docs/selectors.html#selector-bif), #1249.
-  * Added [hash interpolation to blocks](http://learnboost.github.io/stylus/docs/hashes.html#interpolation), #1202.
+  * Added basic [block mixins](http://stylus-lang.com/docs/mixins.html#block-mixins) (`+foo`) with block interpolation (`block`), #1223.
+  * Added [`selector()` bif](http://stylus-lang.com/docs/selectors.html#selector-bif), #1249.
+  * Added [hash interpolation to blocks](http://stylus-lang.com/docs/hashes.html#interpolation), #1202.
   * Fixed parent reference in root context from returning `&`.
   * Fixed bug with double writing media blocks, 1ed44a81
   * Fixed a lot of regressions after hashes, #1230, #1236, #1237, #1248.

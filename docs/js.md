@@ -179,7 +179,7 @@ In this example, we define four functions: `add()`, `sub()`, `image-width()`, an
       // => ['a.styl', 'b.styl']
 
   See also [--deps CLI
-  flag](http://learnboost.github.io/stylus/docs/executable.html#list-dependencies).
+  flag](http://stylus-lang.com/docs/executable.html#list-dependencies).
 
 ## stylus.resolver([options])
 
@@ -192,7 +192,7 @@ In this example, we define four functions: `add()`, `sub()`, `image-width()`, an
         });
 
   See also [--resolve-url CLI
-  flag](http://learnboost.github.io/stylus/docs/executable.html#resolving-relative-urls-inside-imports).
+  flag](http://stylus-lang.com/docs/executable.html#resolving-relative-urls-inside-imports).
 
   Options:
 

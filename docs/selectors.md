@@ -77,7 +77,7 @@ Compiles to:
       color: #000;
     }
 
-Below is an example providing a simple `2px` border for Internet Exploder utilizing the parent reference within a mixin:
+Below is an example providing a simple `2px` border for Internet Explorer utilizing the parent reference within a mixin:
 
       box-shadow()
         -webkit-box-shadow arguments
@@ -165,7 +165,7 @@ Note that partial reference contain the whole rendered chain of selectors until 
 
 If you'd have a case when you'd need to get the raw part of the selector, or to get the range of parts programmatically, you could use ranges inside partial reference.
 
-If the range would start from the positive value, the result won't contain the selectors of the previous levels and you'd get the result as if the selectors of those levels were inserted at the root of the stylesheet:
+If the range would start from the positive value, the result won't contain the selectors of the previous levels and you'd get the result as if the selectors of those levels were inserted at the root of the stylesheet with the combinators omitted:
 
     .foo
       & .bar
@@ -186,6 +186,21 @@ would be rendered as
 One number in the range would be the start index, the second — the end index. Note that the order of those numbers won't matter as the selectors would always render from the first levels to the last, so `^[1..-1]` would be equal to the `^[-1..1]`.
 
 When both numbers are equal, the result would be just one raw level of a selector, so you could replace `^[1..-1]` in a previous example to `^[-1..-1]`, and it would be equal to the same last one raw selector, but would be more reliable if used inside mixins.
+
+## Initial Reference
+
+The `~/` characters at the start of a selector can be used to point at the selector at the first nesting and could be considered as a shortcut to `^[0]`. The only drawback is that you can use initial reference only at the start of a selector:
+
+    .block
+      &__element
+        ~/:hover &
+          color: red
+
+Would be rendered as
+
+    .block:hover .block__element {
+      color: #f00;
+    }
 
 ## Relative Reference
 

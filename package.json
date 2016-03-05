@@ -55,6 +55,7 @@
     , "lib/functions/selectors.js"
     , "lib/functions/shift.js"
     , "lib/functions/split.js"
+    , "lib/functions/slice.js"
     , "lib/functions/substr.js"
     , "lib/functions/tan.js"
     , "lib/functions/trace.js"

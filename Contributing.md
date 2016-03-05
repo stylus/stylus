@@ -25,7 +25,7 @@ Please note that this project is released with a [Contributor Code of Conduct](C
 
 ## How you can help
 
-You're welcomed to:
+You're welcome to:
 
 - send pull requests;
 - report bugs;
@@ -63,7 +63,7 @@ We'll close your PR or issue if:
 Please do not take offense if your ticket is closed. We're only trying to keep the number of issues manageable.
 
 
-### Filling bugs
+### Filing bugs
 
 If you found an error, typo, or any other flaw in the project, please report it using [GitHub Issues](https://github.com/stylus/stylus/issues). Try searching the issues to see if there is an existing report of your bug, and if you'd find it, you could bump it by adding your test case there.
 
@@ -132,6 +132,20 @@ Each minor release should be first compiled into `rc-`branch. Minor release *sho
 
 Patch releases don't need their own `rc` branches, as they could be released from the `dev` branch. 
 
+
+### Adding tests
+
+First you want to make sure to run the below commands
+
+```
+npm install
+# for a more verbose output you can install mocha at a global level
+npm install mocha -g
+```
+
+Then at the root of the project you can run `npm test` or `mocha` to execute all tests. If you need to add or edit tests, they are located in the `test/cases` directory.
+
+Each `.styl` file has a corresponding `.css` file. The `.styl` is the mock, and the `.css` is the expected result.
 
 
 * * *

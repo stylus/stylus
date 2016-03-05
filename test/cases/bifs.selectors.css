@@ -7,3 +7,6 @@
 .b .c .d {
   test: '.a,.b', '& .c', '& .d';
 }
+.wrapper > figure {
+  test: '.wrapper', '& > figure';
+}
