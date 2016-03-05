@@ -11,8 +11,14 @@
   * Feature: Added an optional `flags` argument to `match()` bif, #2109.
   * Docs: Added basic “getting started” to Readme, #2073.
   * Docs: Updated information about error reporting.
+  * Fix: `selectors()` now returns proper subselectors.
+  * Fix: No more unneeded spaces with partial reference selector using ranges.
+  * Fix: Proper evaluating of the default arguments.
+  * Fix: Evaluate variables in current-media function.
+  * Fix: Validate regexp flags for `match` function.
   * Fix: Proper conditional assignment and "define" method.
   * Fix: Proper relative paths in sourcemaps if --out flag is set to a filename.
+  * Fix: Proper errors with `--include-css` and `--resolve-url` used concurrently.
   * Fix: [Evaluator] Support for function as a default argument for functions.
   * Fix: [Lexer] Proper multiline comments inside multiline expressions.
   * Fix: [JS API] Proper variables from options object inside expressions.
