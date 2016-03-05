@@ -1,0 +1,19 @@
+.string {
+  test0: 'ipsum';
+  test1: 'orem ipsum';
+  test2: 'm';
+  test3: 'orem ipsum';
+  test4: 'orem ipsu';
+}
+.list {
+  test0: 'ipsum';
+  test1: 'ipsum';
+  test2: 'ipsum' 'dolor' 'sit' 'amet,' 'consectetur' 'adipisicing' 'elit';
+  test3: 'elit';
+  test4: 'ipsum' 'dolor' 'sit' 'amet,' 'consectetur' 'adipisicing';
+  test5: 'ipsum' 'dolor' 'sit';
+}
+.ident {
+  test0: #f00;
+  test1: solid #000;
+}

@@ -1,0 +1,22 @@
+// string
+str_short = 'lorem ipsum'
+str_long = 'lorem ipsum dolor sit amet, consectetur adipisicing elit'
+
+.string
+  test0 slice('lorem ipsum', 6)
+  test1 slice(str_short, 1)
+  test2 slice(str_short, -1)
+  test3 slice(str_short, 1, 11)
+  test4 slice(str_short, 1, -1)
+
+.list
+  test0 slice(split(' ', str_short), 1)
+  test1 slice(split(' ', str_short), -1)
+  test2 slice(split(' ', str_long), 1)
+  test3 slice(split(' ', str_long), -1)
+  test4 slice(split(' ', str_long), 1, -1)
+  test5 slice(split(' ', str_long), 1, 4)
+
+.ident
+  test0 slice(rredd, 1, -1)
+  test1 slice(1px solid black, 1)
