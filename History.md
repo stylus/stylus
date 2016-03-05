@@ -1,10 +1,11 @@
-0.54.0 / 2016-02-13
+0.54.0 / 2016-03-05
 ===================
 
   * Feature: Added initial reference selector.
   * Feature: New `embedurl()` bif with optional utf8 uncoding support for SVG.
   * Feature: New `index()` bif.
   * Feature: New `percentage()` bif.
+  * Feature: New `slice()` bif, #2115.
   * Feature: Support for UTF-8 encoding of urls, #2084.
   * Feature: Added `global` flag to `define()` function.
   * Feature: `match()` bif now returns the matched values instead of a boolean, #2109.
