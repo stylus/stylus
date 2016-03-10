@@ -710,7 +710,7 @@ The third argument is optional and overrides the autodetected alpha.
        // => 'rgba'
 
        foo = convert('foo')
-       tyepof(foo)
+       typeof(foo)
        // => 'ident'
 
 ## s(fmt, ...)
