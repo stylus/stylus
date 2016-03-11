@@ -1,4 +1,10 @@
+0.54.2 / 2016-03-11
+===================
+
+  * Fix: False-positive import loop with empty imported file.
+
 0.54.0 / 2016-03-05
+===================
 
   * Feature: Added initial reference selector.
   * Feature: New `embedurl()` bif with optional utf8 uncoding support for SVG.
