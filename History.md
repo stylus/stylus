@@ -1,4 +1,4 @@
-0.54.1 / 2016-03-11
+0.54.2 / 2016-03-11
 ===================
 
   * Fix: False-positive import loop with empty imported file.
