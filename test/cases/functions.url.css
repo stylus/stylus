@@ -8,7 +8,7 @@
 }
 .embed-with-utf8 {
   color: #c00;
-  background: url("data:image/svg+xml;charset=utf-8,%3C?xml%20version=%221.0%22%20encoding=%22utf-8%22?%3E%0A%3Csvg%20width=%22120%22%20height=%22120%22%20viewPort=%220%200%20120%20120%22%20version=%221.1%22%20xmlns=%22http://www.w3.org/2000/svg%22%3E%0A%20%20%20%20%3Ccircle%20cx=%2260%22%20cy=%2260%22%20r=%2250%22/%3E%0A%3C/svg%3E%0A");
+  background: url("data:image/svg+xml;charset=utf-8,%3C?xml version=%221.0%22 encoding=%22utf-8%22?%3E %3Csvg width=%22120%22 height=%22120%22 viewPort=%220 0 120 120%22 version=%221.1%22 xmlns=%22http://www.w3.org/2000/svg%22%3E %3Ccircle cx=%2260%22 cy=%2260%22 r=%2250%22/%3E %3C/svg%3E");
 }
 .too-big-no-hash {
   color: #c00;
