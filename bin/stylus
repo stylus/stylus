@@ -750,9 +750,7 @@ function watch(file, rootFile) {
   // if is windows use fs.watch api instead
   // TODO: remove watchFile when fs.watch() works on osx etc
   if (isWindows) {
-    fs.watch(file, function(event) {
-      if (event === 'change') compile();
-    });
+    fs.watch(file, compile);
   } else {
     fs.watchFile(file, { interval: 300 }, function(curr, prev) {
       if (curr.mtime > prev.mtime) compile();
