@@ -1,3 +1,10 @@
+0.54.3 / 2016-04-26
+===================
+
+  * Fix: Proper embedurl encoding for svg files with a hash.
+  * Fix: Validate this.dest before using path.extname.
+  * Fix: Update node-glob version.
+
 0.54.2 / 2016-03-11
 ===================
 
