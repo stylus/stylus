@@ -1,7 +1,7 @@
 {
   "name": "stylus",
   "description": "Robust, expressive, and feature-rich CSS superset",
-  "version": "0.54.2",
+  "version": "0.54.3",
   "author": "TJ Holowaychuk <tj@vision-media.ca>",
   "keywords": [
     "css",
@@ -33,7 +33,7 @@
     "mkdirp": "0.5.x",
     "debug": "*",
     "sax": "0.5.x",
-    "glob": "3.2.x",
+    "glob": "7.0.x",
     "source-map": "0.1.x"
   },
   "devDependencies": {
