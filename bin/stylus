@@ -203,7 +203,7 @@ while (args.length) {
     case '-h':
     case '--help':
       console.error(usage);
-      process.exit(0);
+      return;
     case '-d':
     case '--compare':
       compare = true;
@@ -256,8 +256,7 @@ while (args.length) {
     case '-V':
     case '--version':
       console.log(stylus.version);
-      process.exit(0);
-      break;
+      return;
     case '-o':
     case '--out':
       dest = args.shift();
