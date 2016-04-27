@@ -409,7 +409,7 @@ function help(name) {
 
 // Compilation options
 
-if (files.length > 1 && extname(dest) === '.css') {
+if (files.length > 1 && isCSS(dest)) {
   dest = dirname(dest);
 }
 
@@ -690,7 +690,7 @@ function compileFile(file) {
 
 function createPath(file, sourceMap) {
   var out;
-  if (files.length === 1 && extname(dest) === '.css') {
+  if (files.length === 1 && isCSS(dest)) {
     return [dest, sourceMap ? '.map' : ''].join('');
   }
   // --out support
@@ -698,6 +698,14 @@ function createPath(file, sourceMap) {
   return dest
     ? join(dest, out)
     : join(dirname(file), out);
+}
+
+/**
+ * Check if the given path is a CSS file.
+ */
+
+function isCSS(file) {
+  return file && '.css' === extname(file);
 }
 
 function writeFile(file, css) {
