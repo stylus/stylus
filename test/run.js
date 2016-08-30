@@ -4,7 +4,8 @@
  */
 
 var stylus = require('../')
-  , fs = require('fs');
+  , fs = require('fs')
+  , should = require('should');
 
 // integration cases
 
@@ -22,11 +23,7 @@ addSuite('integration', readDir('test/cases'), function(test){
   if (~test.indexOf('include')) style.set('include css', true);
   if (~test.indexOf('prefix.')) style.set('prefix', 'prefix-');
   if (~test.indexOf('hoist.')) style.set('hoist atrules', true);
-
-  if (~test.indexOf('resolver')) {
-    style.set('resolve url', true);
-    style.define('url', stylus.resolver());
-  }
+  if (~test.indexOf('resolver')) style.define('url', stylus.resolver());
 
   style.render(function(err, actual){
     if (err) throw err;
@@ -63,13 +60,15 @@ addSuite('sourcemap', readDir('test/sourcemap'), function(test){
     , styl = readFile(path)
     , style = stylus(styl).set('filename', path).set('sourcemap',
       { inline: inline, sourceRoot: '/', basePath: 'test/sourcemap' })
-    , expected = readFile(path.replace('.styl', inline ? '.css' : '.map'));
+    , expected = readFile(path.replace('.styl', inline ? '.css' : '.map'))
+    , comment = 'sourceMappingURL=data:application/json;';
 
   style.render(function(err, css) {
     if (err) throw err;
     if (inline) {
       style.sourcemap.sourcesContent.should.not.be.empty;
-      css.should.include('sourceMappingURL=data:application/json;base64,');
+      if (~test.indexOf('utf-8')) comment += 'charset=utf-8;';
+      css.should.containEql(comment + 'base64,');
     } else {
       style.sourcemap.should.eql(JSON.parse(expected));
     }
@@ -111,6 +110,15 @@ describe('JS API', function(){
           }
         }
       ).should.equal("body{foo:baz}");
+  });
+
+  it('use variable from options object inside expression', function() {
+    stylus('body { color: rgba(convert($red), .5) }', {
+      globals: {
+        $red: '#E20303'
+      },
+      compress: true
+    }).render().should.equal('body{color:rgba(226,3,3,0.5)}');
   });
 
   it('use functions from options object', function(){
@@ -171,6 +179,32 @@ describe('JS API', function(){
 
     stylus('@import "clone2"', { compress: true, paths: [path] })
       .render().should.equal(css);
+  });
+
+  it('import loop detection', function(){
+    var path = __dirname + '/cases/import.loop/'
+      , styl = fs.readFileSync(path + 'test.styl', 'utf-8');
+
+    (function() {
+      stylus(styl, { paths: [path] }).render();
+    }).should.throw(/import loop has been found/);
+  });
+
+  it('conditional assignment with define', function(){
+    stylus('foo ?= baz; body { test: foo }', { compress: true })
+      .define('foo', new stylus.nodes.Literal('bar'))
+      .render().should.equal("body{test:bar}");
+  });
+
+  it('sourcemap with dest option set to a file name', function(){
+    var style = stylus('body { color: red }', {
+      compress: true,
+      sourcemap: true,
+      filename: 'test.styl',
+      dest: 'test/build.css'
+    });
+    style.render().should.equal('body{color:#f00}/*# sourceMappingURL=build.css.map */');
+    style.sourcemap.sources[0].should.equal('../test.styl');
   });
 });
 

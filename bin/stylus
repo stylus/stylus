@@ -186,6 +186,7 @@ var usage = [
   , '    --disable-cache         Disable caching'
   , '    --hoist-atrules         Move @import and @charset to the top'
   , '    -r, --resolve-url       Resolve relative urls inside imports'
+  , '    --resolve-url-nocheck   Like --resolve-url but without file existence check'
   , '    -V, --version           Display the version of Stylus'
   , '    -h, --help              Display help information'
   , ''
@@ -202,7 +203,7 @@ while (args.length) {
     case '-h':
     case '--help':
       console.error(usage);
-      process.exit(0);
+      return;
     case '-d':
     case '--compare':
       compare = true;
@@ -255,8 +256,7 @@ while (args.length) {
     case '-V':
     case '--version':
       console.log(stylus.version);
-      process.exit(0);
-      break;
+      return;
     case '-o':
     case '--out':
       dest = args.shift();
@@ -332,7 +332,10 @@ while (args.length) {
       break;
     case '-r':
     case '--resolve-url':
-      resolveURL = true;
+      resolveURL = {};
+      break;
+    case '--resolve-url-nocheck':
+      resolveURL = { nocheck: true };
       break;
     case '-D':
     case '--deps':
@@ -405,7 +408,7 @@ function help(name) {
 
 // Compilation options
 
-if (files.length > 1 && extname(dest) === '.css') {
+if (files.length > 1 && isCSS(dest)) {
   dest = dirname(dest);
 }
 
@@ -582,7 +585,6 @@ function compileStdio() {
     // Compile to css
     var style = stylus(str, options);
     if (includeCSS) style.set('include css', true);
-    if (resolveURL) style.set('resolve url', true);
     if (disableCache) style.set('cache', false);
     usePlugins(style);
     importFiles(style);
@@ -620,7 +622,6 @@ function displayDeps() {
         if (err) throw err;
         options.filename = file;
         var style = stylus(str, options);
-        if (resolveURL) style.set('resolve url', true);
 
         usePlugins(style);
         importFiles(style);
@@ -646,7 +647,6 @@ function compileFile(file) {
         options._imports = [];
         var style = stylus(str, options);
         if (includeCSS) style.set('include css', true);
-        if (resolveURL) style.set('resolve url', true);
         if (disableCache) style.set('cache', false);
         if (sourcemap) style.set('sourcemap', sourcemap);
 
@@ -689,7 +689,7 @@ function compileFile(file) {
 
 function createPath(file, sourceMap) {
   var out;
-  if (files.length === 1 && extname(dest) === '.css') {
+  if (files.length === 1 && isCSS(dest)) {
     return [dest, sourceMap ? '.map' : ''].join('');
   }
   // --out support
@@ -697,6 +697,14 @@ function createPath(file, sourceMap) {
   return dest
     ? join(dest, out)
     : join(dirname(file), out);
+}
+
+/**
+ * Check if the given path is a CSS file.
+ */
+
+function isCSS(file) {
+  return file && '.css' === extname(file);
 }
 
 function writeFile(file, css) {
@@ -794,7 +802,7 @@ function usePlugins(style) {
   if (urlFunction) {
     style.define('url', stylus.url(urlFunction));
   } else if (resolveURL) {
-    style.define('url', stylus.resolver());
+    style.define('url', stylus.resolver(resolveURL));
   }
 }
 

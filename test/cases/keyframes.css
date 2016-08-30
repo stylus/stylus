@@ -240,3 +240,8 @@ div {
     color: #00f;
   }
 }
+@keyframes foo {
+  0% {
+    bar: baz;
+  }
+}

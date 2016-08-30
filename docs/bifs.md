@@ -79,7 +79,7 @@ Check if `color` is light:
 
 Return the hue of the given `color`, or set the hue component to the optional second `value` argument.
 
-    hue(hsla(50deg, 100%, 80%))
+    hue(hsl(50deg, 100%, 80%))
     // => 50deg
 
     hue(#00c, 90deg)
@@ -89,7 +89,7 @@ Return the hue of the given `color`, or set the hue component to the optional se
 
 Return the saturation of the given `color`, or set the saturation component to the optional second `value` argument.
 
-    saturation(hsla(50deg, 100%, 80%))
+    saturation(hsl(50deg, 100%, 80%))
     // => 100%
 
     saturation(#00c, 50%)
@@ -99,7 +99,7 @@ Return the saturation of the given `color`, or set the saturation component to t
 
 Return the lightness of the given `color`, or set the lightness component to the optional second `value` argument.
 
-    lightness(hsla(50deg, 100%, 80%))
+    lightness(hsl(50deg, 100%, 80%))
     // => 80%
 
     lightness(#00c, 80%)
@@ -152,6 +152,18 @@ Return the lightness of the given `color`, or set the lightness component to the
      // => 1 2 3 4 5
 
  Aliased as `prepend()`
+
+## index(list, value)
+
+  Returns the index (zero-based) of a `value` within a `list`.
+
+    list = 1 2 3
+
+    index(list, 2)
+    // => 1
+
+    index(1px solid red, red)
+    // => 2
 
 ## keys(pairs)
 
@@ -216,20 +228,15 @@ or assign the given `type` without unit conversion.
     unit(15%, px)
     // => 15px
 
-## match(pattern, string)
+## percentage(num)
 
-Test if `string` matches the given `pattern`.
+Convert a `num` to a percentage.
 
-    match('^foo(bar)?', foo)
-    match('^foo(bar)?', foobar)
-    // => true
+    percentage(.5)
+    // => 50%
 
-    match('^foo(bar)?', 'foo')
-    match('^foo(bar)?', 'foobar')
-    // => true
-
-    match('^foo(bar)?', 'bar')
-    // => false
+    percentage(4 / 100)
+    // => 4%
 
 ## abs(unit)
 
@@ -381,6 +388,43 @@ Returns a `Literal` `num` converted to the provided `base`, padded to `width` wi
     // => 101010
 
 
+## match(pattern, string[, flags])
+
+Retrieves the matches when matching a `val`(string) against a `pattern`(regular expression).
+
+    match('^(height|width)?([<>=]{1,})(.*)', 'height>=1024px')
+    // => 'height>=1024px' 'height' '>=' '1024px'
+
+    match('^foo(?:bar)?', 'foo')
+    // => 'foo'
+
+    match('^foo(?:bar)?', 'foobar')
+    // => 'foobar'
+
+    match('^foo(?:bar)?', 'bar')
+    // => null
+
+    match('ain', 'The rain in SPAIN stays mainly in the plain')
+    // => 'ain'
+
+    match('ain', 'The rain in SPAIN stays mainly in the plain', g)
+    // => 'ain' 'ain' 'ain'
+
+    match('ain', 'The rain in SPAIN stays mainly in the plain', 'gi')
+    // => 'ain' 'AIN' 'ain' 'ain'
+
+
+## replace(pattern, replacement, val)
+
+Returns string with all matches of `pattern` replaced by `replacement` in given `val`
+
+    replace(i, e, 'griin')
+    // => 'green'
+
+    replace(i, e, griin)
+    // => #008000
+
+
 ## join(delim, vals...)
 
   Join the given `vals` with `delim`.
@@ -399,6 +443,49 @@ Returns a `Literal` `num` converted to the provided `base`, padded to `width` wi
 
       join(', ', 1 2, 3 4, 5 6)
       // => "1 2, 3 4, 5 6"
+
+
+## split(delim, val)
+
+The `split()`` method splits a string/ident into an array of strings by separating the string into substrings.
+
+    split(_, bar1_bar2_bar3)
+    // => bar1 bar2 bar3
+
+    split(_, 'bar1_bar2_bar3')
+    // => 'bar1' 'bar2' 'bar3'
+
+
+## substr(val, start, length)
+
+The `substr()` method returns the characters in a string beginning at the specified location through the specified number of characters.
+
+    substr(ident, 1, 2)
+    // => de
+
+    substr('string', 1, 2)
+    // => 'tr'
+
+    val = dredd
+    substr(substr(val, 1), 0, 3)
+    // => #f00
+
+
+## slice(val, start[, end])
+
+The `slice()` method extracts a section of a string/list and returns a new string/list.
+
+  slice('lorem' 'ipsum' 'dolor', 1, 2)
+  slice('lorem' 'ipsum' 'dolor', 1, -1)
+  // => 'ipsum'
+
+  slice('lorem ipsum', 1, 5)
+  // => 'orem'
+  slice(rredd, 1, -1)
+  // => #f00
+
+  slice(1px solid black, 1)
+  // => solid #000
 
 ## hsla(color | h,s,l,a)
 
@@ -623,8 +710,8 @@ The third argument is optional and overrides the autodetected alpha.
        // => 'rgba'
 
        foo = convert('foo')
-       tyepof(foo)
-       // => 'literal'
+       typeof(foo)
+       // => 'ident'
 
 ## s(fmt, ...)
 
@@ -796,9 +883,9 @@ Yields:
       font-size: 30px;
     }
 
-## define(name, expr)
+## define(name, expr[, global])
 
-Allows to create or overwrite a variable with a given name, passed as a string, onto current scope.
+Allows to create or overwrite a variable with a given name, passed as a string, onto current scope (or global scope if `global` is true).
 
 This bif can be useful on those cases in which you'd wish interpolation in variable names:
 
@@ -973,6 +1060,16 @@ stdout:
       image-size('tux.png')[0] == width('tux.png')
       // => true
 
+## embedurl(path[, encoding])
+
+Returns an inline image as a `url()` literal, encoded with `encoding` (available encodings: `base64` (default), and `utf8`).
+
+    background: embedurl('logo.png')
+    // => background: url("data:image/png;base64,…")
+
+    background: embedurl('logo.svg', 'utf8')
+    // => background: url("data:image/svg+xml;charset=utf-8,…")
+
 ## add-property(name, expr)
 
   Adds property `name`, with the given `expr` to the closest block.
@@ -1064,9 +1161,9 @@ yields:
 
 Our implementation is now fully transparent both in regards to the property it is called within, and the position of the call. This powerful concept aids in transparent vendor support for function calls, such as gradients.
 
-## json(path)
+## json(path[, options])
 
-Convert a .json file into stylus variables or an object. Nested variable object keys are joined with a dash (-). 
+Convert a .json file into stylus variables or an object. Nested variable object keys are joined with a dash (-).
 
 For example, the following sample media-queries.json file:
 
@@ -1081,16 +1178,25 @@ For example, the following sample media-queries.json file:
 May be used in the following ways:
 
     json('media-queries.json')
-    
+
     @media small
     // => @media screen and (max-width:400px)
 
     @media tablet-landscape
     // => @media screen and (min-width:600px) and (orientation:landscape)
-    
+
     vars = json('vars.json', { hash: true })
     body
       width: vars.width
+
+    vars = json('vars.json', { hash: true, leave-strings: true })
+    typeof(vars.icon)
+    // => 'string'
+
+    // don't throw an error if the JSON file doesn't exist
+    optional = json('optional.json', { hash: true, optional: true })
+    typeof(optional)
+    // => 'null'
 
 ## use(path)
 

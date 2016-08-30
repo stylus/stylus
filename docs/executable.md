@@ -44,6 +44,7 @@ Stylus ships with the `stylus` executable for converting Stylus to CSS.
         --disable-cache         Disable caching
         --hoist-atrules         Move @import and @charset to the top
         -r, --resolve-url       Resolve relative urls inside imports
+        --resolve-url-nocheck   Like --resolve-url but without file existence check
         -V, --version           Display the version of Stylus
         -h, --help              Display help information
 

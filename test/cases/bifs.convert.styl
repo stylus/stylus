@@ -6,5 +6,8 @@ body
   test: type(convert(foo))
   test: type(convert(bar))
   test: type(convert(baz))
+  list = convert('10 20 30 40')
+  push(list, 50)
+  test: list
   test: 10em + convert('1.334em')
   test: 10em + convert('-4.5em')

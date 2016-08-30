@@ -30,3 +30,8 @@
     test: '@media (only screen and (min-width: (1024px)))';
   }
 }
+@media screen {
+  .i {
+    test: '@media (screen)';
+  }
+}

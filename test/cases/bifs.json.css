@@ -40,3 +40,9 @@ body {
   -webkit-transition: width 1s ease-out;
   border: #f00;
 }
+.icon {
+  content: '';
+}
+body {
+  test: true;
+}

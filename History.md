@@ -1,3 +1,115 @@
+0.54.5 / 2016-04-28
+===================
+
+  * Fix: [CLI] Correct console output for Node 6.0
+
+0.54.4 / 2016-04-27
+===================
+
+  * Fix: Correct extname checks for Node 6.0
+
+0.54.3 / 2016-04-26
+===================
+
+  * Fix: Proper embedurl encoding for svg files with a hash.
+  * Fix: Validate this.dest before using path.extname.
+  * Fix: Update node-glob version.
+
+0.54.2 / 2016-03-11
+===================
+
+  * Fix: False-positive import loop with empty imported file.
+
+0.54.0 / 2016-03-05
+===================
+
+  * Feature: Added initial reference selector.
+  * Feature: New `embedurl()` bif with optional utf8 uncoding support for SVG.
+  * Feature: New `index()` bif.
+  * Feature: New `percentage()` bif.
+  * Feature: New `slice()` bif, #2115.
+  * Feature: Support for UTF-8 encoding of urls, #2084.
+  * Feature: Added `global` flag to `define()` function.
+  * Feature: `match()` bif now returns the matched values instead of a boolean, #2109.
+  * Feature: Added an optional `flags` argument to `match()` bif, #2109.
+  * Docs: Added basic “getting started” to Readme, #2073.
+  * Docs: Updated information about error reporting.
+  * Fix: `selectors()` now returns proper subselectors.
+  * Fix: No more unneeded spaces with partial reference selector using ranges.
+  * Fix: Proper evaluating of the default arguments.
+  * Fix: Evaluate variables in current-media function.
+  * Fix: Validate regexp flags for `match` function.
+  * Fix: Proper conditional assignment and "define" method.
+  * Fix: Proper relative paths in sourcemaps if --out flag is set to a filename.
+  * Fix: Proper errors with `--include-css` and `--resolve-url` used concurrently.
+  * Fix: [Evaluator] Support for function as a default argument for functions.
+  * Fix: [Lexer] Proper multiline comments inside multiline expressions.
+  * Fix: [JS API] Proper variables from options object inside expressions.
+  * Fix: [Renderer] No more caching of parsed AST for deps-resolver.
+
+0.53.0 / 2015-12-14
+===================
+
+  * Feature: Numeric partial references.
+  * Feature: Relative references.
+  * Feature: New `selectors()` bif.
+  * Feature: Support for comma-separated lists as `selector()`'s arguments.
+  * Docs: Reworked contribution guidelines.
+  * Docs: Added Contributor Code of Conduct.
+  * Fix: Support for multiple consecutive parent references.
+  * Fix: Proper removal of parent references at the root when combinators are present.
+  * Fix: Don't add space before unknown units.
+  * Fix: Allow comma-separated lists in `@supports` value.
+  * Fix: No more error message for "assertType" without parameter name.
+  * Fix: Proper middleware overlap function on windows. Thanks to #2029 by @bcomnes.
+  * Fix: Better absolute path detection for Windows. Thanks to #2033 by @mlohbihler.
+  * Refactoring: Moved bifs to separate files.
+
+
+0.52.4 / 2015-09-04
+===================
+
+  * Fix: Revert changes in "looksLikeSelector" method.
+
+0.52.3 / 2015-09-04
+===================
+
+  * Fix: Another parsing regression.
+
+0.52.2 / 2015-09-03
+===================
+
+  * Fix: A parsing regression.
+
+0.52.1 / 2015-09-03
+===================
+
+  * Fix: Correct line numbers in error messages for files with CSS comments.
+  * Fix: Better absolute urls detection.
+  * Fix: Added type assertions to "substr", "split" and "replace" bifs.
+  * Fix: Atrules parsing with a block at a new line.
+  * Fix: Bug with commented indented lines at the end of a file.
+  * Fix: Stylus error messages for Node 0.12+.
+  * Fix: A bug with arguments cloning.
+
+0.52.0 / 2015-07-19
+===================
+
+  * Feature: new url resolver without url checks (`--resolve-url-nocheck`).
+  * Feature: New option to json bif ("leave-strings").
+  * Feature: New option to json bif ("optional").
+  * Feature: Adding utf-8 charset to inline sourcemap.
+  * Feature: allow inline CSS comments inside value.
+  * Fix: shouldn't fail to compile in strict mode, #1923.
+  * Fix: Paths should be normalized for windows support, #1954.
+  * Fix: Proper parsing of selector groups with placeholder and color-like ID.
+  * Fix: Proper import loop detection.
+  * Fix: Correct output of namespaces and charsets inside imports.
+  * Fix: Indented comments shouldn't cause errors.
+  * Fix: Proper way of parsing lists in "convert" bif.
+  * Fix: Proper comma escaping in an object interpolation.
+  * Fix: Allow no whitespace between keyframes name and the following curly brace.
+
 0.51.1 / 2015-04-28
 ===================
 
@@ -333,9 +445,9 @@
 0.41.0 / 2013-11-30
 ==================
 
-  * Added basic [block mixins](http://learnboost.github.io/stylus/docs/mixins.html#block-mixins) (`+foo`) with block interpolation (`block`), #1223.
-  * Added [`selector()` bif](http://learnboost.github.io/stylus/docs/selectors.html#selector-bif), #1249.
-  * Added [hash interpolation to blocks](http://learnboost.github.io/stylus/docs/hashes.html#interpolation), #1202.
+  * Added basic [block mixins](http://stylus-lang.com/docs/mixins.html#block-mixins) (`+foo`) with block interpolation (`block`), #1223.
+  * Added [`selector()` bif](http://stylus-lang.com/docs/selectors.html#selector-bif), #1249.
+  * Added [hash interpolation to blocks](http://stylus-lang.com/docs/hashes.html#interpolation), #1202.
   * Fixed parent reference in root context from returning `&`.
   * Fixed bug with double writing media blocks, 1ed44a81
   * Fixed a lot of regressions after hashes, #1230, #1236, #1237, #1248.

@@ -116,7 +116,7 @@ permalink: docs/extend.html
    Yielding:
    
         form input[type=text],
-        form textarea {
+        textarea {
           padding: 5px;
           border: 1px solid #eee;
           color: #ddd;

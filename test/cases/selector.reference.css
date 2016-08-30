@@ -35,3 +35,79 @@
 .raz {
   width: 120px;
 }
+foo /deep/ {
+  color: #f00;
+}
+foo /deep/ /deep/ {
+  color: #f00;
+}
+.foo__bar_baz {
+  width: 10px;
+}
+.foo__bar:hover .foo__bar_baz {
+  width: 20px;
+}
+.foo__bar[disabled] {
+  width: 100px;
+}
+.foo .bar {
+  width: 10px;
+}
+.foo .bar[href^='../'],
+.foo .bar[href^='"../"'] {
+  color: #f00;
+}
+.foo .bar {
+  width: 10px;
+}
+.foo .bar,
+.foo .baz {
+  height: 10px;
+}
+.foo {
+  color: #00f;
+}
+.foo.foo + .bar {
+  color: #f00;
+}
+.a .c,
+.b .c {
+  width: 10px;
+}
+.a_hover .d,
+.b_hover .d {
+  height: 10px;
+}
+.foo .bar {
+  width: 10px;
+}
+.foo:hover .bar {
+  width: 20px;
+}
+.foo ^[ 0..5  ]:hover {
+  color: #f00;
+}
+.foo {
+  color: #f00;
+}
+.foo {
+  color: #f00;
+}
+.foo {
+  color: #00f;
+}
+.a .c {
+  test: '.a';
+  test: '.a .b';
+  test: '';
+}
+.foo {
+  test: '.foo';
+  test: '.baz ~/';
+}
+.s1-s2-s3 {
+  syntax: "^[2]";
+}
+.s1-s2-s3 {
+  syntax: "^[0..2]";
+}

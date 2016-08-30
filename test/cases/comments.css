@@ -15,11 +15,12 @@ body
   background: url("img.png") 8px 8px no-repeat, rgba(0,0,0,0.41);
 }
 .popup {
-  -webkit-box-shadow: 1px 0 0 #fff, 2px 0 0 #000;
-  -moz-box-shadow: 1px 0 0 #fff 2px 0 0 #000;
+  -webkit-box-shadow: 1px 0 0 #fff, /* TODO */ 2px 0 0 #000;
+  -moz-box-shadow: 1px 0 0 #fff /* TODO */ 2px 0 0 #000;
 }
 .foo {
   color: #f00; /* inline */
+  background: url("img.png") /* inline */;
   width: 100px;
 /* foo */
   height: 300px;
@@ -36,4 +37,11 @@ body
   nav.open .links {
     transform: translate(0, 0);
   }
+}
+@font-face {
+  font-family: "DIN Alternate";
+  src: url("DIN-Alternate-Medium.eot") /* IE9 */;
+  src: url("DIN-Alternate-Medium.eot?#iefix") format("embedded-opentype"), url("DIN-Alternate-Medium.woff") format("woff"), url("DIN-Alternate-Medium.ttf") format("truetype"), url("DIN-Alternate-Medium.svg#DIN") format("svg") /* iOS 4.1- */;
+  font-style: normal;
+  font-weight: normal;
 }

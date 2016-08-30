@@ -1,0 +1,16 @@
+.a
+  .b
+    &__c
+      parts = selectors()
+      foo: parts[0]
+      bar: parts[1]
+      baz: parts[2]
+
+.a, .b
+  .c
+    .d
+      test: selectors()
+
+.wrapper
+  & > figure
+    test: selectors()

@@ -168,3 +168,33 @@ In this example, we define four functions: `add()`, `sub()`, `image-width()`, an
       if (err) throw err;
       console.log(css);
     });
+
+## .deps()
+
+  Returns array of dependencies (import files):
+
+      stylus('@import "a"; @import "b"')
+        .deps();
+
+      // => ['a.styl', 'b.styl']
+
+  See also [--deps CLI
+  flag](http://stylus-lang.com/docs/executable.html#list-dependencies).
+
+## stylus.resolver([options])
+
+  Optional built-in function which may be used to resolve relative urls inside imported files:
+
+      stylus(str)
+        .define('url', stylus.resolver())
+        .render(function(err, css) {
+
+        });
+
+  See also [--resolve-url CLI
+  flag](http://stylus-lang.com/docs/executable.html#resolving-relative-urls-inside-imports).
+
+  Options:
+
+  - `paths` additional resolution path(s)
+  - `nocheck` don't check file existence
