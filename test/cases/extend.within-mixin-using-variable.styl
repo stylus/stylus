@@ -1,0 +1,11 @@
+grid($namespace="")
+  .{$namespace}one-half
+    width 50%
+
+  .{$namespace}two-quarters
+    @extend .{$namespace}one-half
+
+grid()
+
+@media test-media
+  grid("test-")
