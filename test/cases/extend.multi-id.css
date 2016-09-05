@@ -1,0 +1,7 @@
+#foo.bar {
+  a: b;
+}
+.bar,
+#baz {
+  c: d;
+}

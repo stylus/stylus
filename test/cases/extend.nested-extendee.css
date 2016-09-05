@@ -1,0 +1,5 @@
+.foo .bar,
+.foo .baz .qux,
+.baz .foo .qux {
+  a: b;
+}
