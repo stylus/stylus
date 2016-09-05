@@ -11,6 +11,7 @@ var fs = require('fs')
   , extname = require('path').extname
   , resolve = require('path').resolve
   , join = require('path').join
+  , isLinux = process.platform === 'linux'
   , isWindows = process.platform === 'win32';
 
 /**
@@ -756,7 +757,7 @@ function watch(file, rootFile) {
   console.log('  \033[90mwatching\033[0m %s', file);
   // if is windows use fs.watch api instead
   // TODO: remove watchFile when fs.watch() works on osx etc
-  if (isWindows) {
+  if (isWindows || isLinux) {
     fs.watch(file, function(event) {
       if (event === 'change') compile();
     });
