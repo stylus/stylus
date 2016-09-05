@@ -589,7 +589,10 @@ function compileStdio() {
     usePlugins(style);
     importFiles(style);
     style.render(function(err, css){
-      if (err) throw err;
+      if (err) {
+        console.error(err.stack || err.message);
+        throw err;
+      }
       if (compare) {
         console.log('\n\x1b[1mInput:\x1b[0m');
         console.log(str);
@@ -655,11 +658,8 @@ function compileFile(file) {
         style.render(function(err, css){
           watchImports(file, options._imports);
           if (err) {
-            if (watchers) {
-              console.error(err.stack || err.message);
-            } else {
-              throw err;
-            }
+            console.error(err.stack || err.message);
+            if (!watchers) throw err;
           } else {
             writeFile(file, css);
             // write sourcemap
