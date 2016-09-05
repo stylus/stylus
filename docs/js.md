@@ -22,8 +22,18 @@ We can also do the same thing in a more progressive manner:
 
     stylus(str)
       .set('filename', 'nesting.css')
-      .render(function(err, css){
+      .render(function(err, css, ast){              
         // logic
+      });
+      
+You can also use/access Stylus' AST:
+
+    var stylus = require('stylus');
+
+    stylus(str)
+      .set('filename', 'nesting.css')
+      .render(function(err, css, ast){              
+        console.log( JSON.stringify( ast ) );
       });
 
 ## .set(setting, value)
@@ -52,7 +62,7 @@ Defer importing of the given `path` until evaluation is performed. The example b
       stylus(str)
         .set('filename', __dirname + '/test.styl')
         .import('mixins/vendor')
-        .render(function(err, css){
+        .render(function(err, css, ast){
         if (err) throw err;
         console.log(css);
       });
@@ -138,7 +148,7 @@ In this example, we define four functions: `add()`, `sub()`, `image-width()`, an
         .define('sub', sub)
         .define('image-width', imageWidth)
         .define('image-height', imageHeight)
-        .render(function(err, css){
+        .render(function(err, css, ast){
           if (err) throw err;
           console.log(css);
         });
@@ -164,7 +174,7 @@ In this example, we define four functions: `add()`, `sub()`, `image-width()`, an
   When calling the `render()` method with options, the `use` option can be given
   a function or array of functions to be invoked with the renderer.
 
-    stylus.render(str, { use: mylib }, function(err, css){
+    stylus.render(str, { use: mylib }, function(err, css, ast){
       if (err) throw err;
       console.log(css);
     });
