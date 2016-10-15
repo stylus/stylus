@@ -45,7 +45,7 @@ function Renderer(str, options) {
   this.options = options;
   this.str = str;
   this.events = events;
-};
+}
 
 /**
  * Inherit from `EventEmitter.prototype`.
@@ -62,7 +62,7 @@ module.exports.events = events;
 /**
  * Parse and evaluate AST, then callback `fn(err, css, js)`.
  *
- * @param {Function} fn
+ * @param {Function} [fn]
  * @api public
  */
 

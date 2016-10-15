@@ -21,8 +21,8 @@ var Evaluator = require('../visitor/evaluator')
  */
 
 function CoercionError(msg) {
-  this.name = 'CoercionError'
-  this.message = msg
+  this.name = 'CoercionError';
+  this.message = msg;
   Error.captureStackTrace(this, CoercionError);
 }
 

@@ -152,6 +152,7 @@ var Parser = module.exports = function Parser(str, options) {
   var self = this;
   options = options || {};
   Parser.cache = Parser.cache || Parser.getCache(options);
+  //c8c1fd7c886fd9a64cce7e83afe4a88f9463b38d
   this.hash = Parser.cache.key(str, options);
   this.lexer = {};
   if (!Parser.cache.has(this.hash)) {

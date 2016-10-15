@@ -72,7 +72,7 @@ function Lexer(str, options) {
     return inComment
       ? str
       : val + '\r';
-  };
+  }
 
   // Remove UTF-8 BOM.
   if ('\uFEFF' == str.charAt(0)) str = str.slice(1);
@@ -83,7 +83,7 @@ function Lexer(str, options) {
     .replace(/\\ *\n/g, '\r')
     .replace(/([,(:](?!\/\/[^ ])) *(?:\/\/[^\n]*|\/\*.*?\*\/)?\n\s*/g, comment)
     .replace(/\s*\n[ \t]*([,)])/g, comment);
-};
+}
 
 /**
  * Lexer prototype.
