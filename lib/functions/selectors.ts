@@ -1,5 +1,5 @@
-var nodes = require('../nodes')
-  , Parser = require('../selector-parser');
+import nodes = require('../nodes');
+import Parser = require('../selector-parser');
 
 /**
  * Return a list with raw selectors parts

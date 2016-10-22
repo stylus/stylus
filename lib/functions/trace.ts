@@ -1,4 +1,4 @@
-var nodes = require('../nodes');
+import nodes = require('../nodes');
 
 /**
  * Output stack trace.
@@ -8,5 +8,5 @@ var nodes = require('../nodes');
 
 module.exports = function trace(){
   console.log(this.stack);
-  return nodes.null;
+  return nodes.nullNode;
 };

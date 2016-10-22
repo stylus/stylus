@@ -1,4 +1,4 @@
-var utils = require('../utils');
+import utils = require('../utils');
 
 /**
  * Return length of the given `expr`.
@@ -8,7 +8,8 @@ var utils = require('../utils');
  * @api public
  */
 
-(module.exports = function length(expr){
+export = class length {
+	constructor(expr){
   if (expr) {
     if (expr.nodes) {
       var nodes = utils.unwrap(expr).nodes;
@@ -22,4 +23,7 @@ var utils = require('../utils');
     }
   }
   return 0;
-}).raw = true;
+}
+
+	static raw = true;
+}

@@ -1,5 +1,5 @@
-var utils = require('../utils')
-  , nodes = require('../nodes');
+import utils = require('../utils');
+import nodes = require('../nodes');
 
 /**
  * Color component name map.
@@ -48,7 +48,7 @@ var typeMap = {
  * @api public
  */
 
-module.exports = function component(color, name) {
+export = function component(color, name) {
   utils.assertColor(color, 'color');
   utils.assertString(name, 'name');
   var name = name.string

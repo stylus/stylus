@@ -5,3 +5,11 @@ testing
 /node_modules
 coverage.html
 /yarn.lock
+/lib/**/*.js.map
+/lib/**/*.js
+/test/**/*.js.map
+/test/**/*.js
+/typings/
+/npm-debug.log
+/index.js
+/index.js.map

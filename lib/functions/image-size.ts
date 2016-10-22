@@ -1,6 +1,6 @@
-var utils = require('../utils')
-  , nodes = require('../nodes')
-  , Image = require('./image');
+import utils = require('../utils');
+import nodes = require('../nodes');
+import {Image} from './image';
 
 /**
  * Return the width and height of the given `img` path.
@@ -32,10 +32,10 @@ var utils = require('../utils')
  * @api public
  */
 
-module.exports = function imageSize(img, ignoreErr) {
+export = function imageSize(img, ignoreErr) {
   utils.assertType(img, 'string', 'img');
   try {
-    var img = new Image(this, img.string);
+    img = new Image(this, img.string);
   } catch (err) {
     if (ignoreErr) {
       return [new nodes.Unit(0), new nodes.Unit(0)];

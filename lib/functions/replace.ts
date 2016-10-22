@@ -1,5 +1,5 @@
-var utils = require('../utils')
-  , nodes = require('../nodes');
+import utils = require('../utils');
+import nodes = require('../nodes');
 
 /**
  * Returns string with all matches of `pattern` replaced by `replacement` in given `val`
@@ -11,7 +11,7 @@ var utils = require('../utils')
  * @api public
  */
 
-module.exports = function replace(pattern, replacement, val){
+export = function replace(pattern, replacement, val){
   utils.assertString(pattern, 'pattern');
   utils.assertString(replacement, 'replacement');
   utils.assertString(val, 'val');

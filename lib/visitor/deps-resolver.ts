@@ -3,12 +3,12 @@
  * Module dependencies.
  */
 
-var Visitor = require('./')
-  , Parser = require('../parser')
-  , nodes = require('../nodes')
-  , utils = require('../utils')
-  , dirname = require('path').dirname
-  , fs = require('fs');
+import Visitor = require('./');
+import Parser = require('../parser');
+import nodes = require('../nodes');
+import utils = require('../utils');
+import {dirname} from 'path';
+import fs = require('fs');
 
 /**
  * Initialize a new `DepsResolver` with the given `root` Node
@@ -19,25 +19,24 @@ var Visitor = require('./')
  * @api private
  */
 
-var DepsResolver = module.exports = function DepsResolver(root, options) {
-  this.root = root;
-  this.filename = options.filename;
-  this.paths = options.paths || [];
-  this.paths.push(dirname(options.filename || '.'));
-  this.options = options;
-  this.functions = {};
-  this.deps = [];
-};
+export = class DepsResolver extends Visitor {
+  private filename;
+  private paths;
+  private options;
+  private functions;
+  private deps;
 
-/**
- * Inherit from `Visitor.prototype`.
- */
+  constructor(root, options) {
+    super(root);
+    this.filename = options.filename;
+    this.paths = options.paths || [];
+    this.paths.push(dirname(options.filename || '.'));
+    this.options = options;
+    this.functions = {};
+    this.deps = [];
+  }
 
-DepsResolver.prototype.__proto__ = Visitor.prototype;
-
-var visit = DepsResolver.prototype.visit;
-
-DepsResolver.prototype.visit = function(node) {
+visit(node) {
   switch (node.nodeName) {
     case 'root':
     case 'block':
@@ -54,62 +53,62 @@ DepsResolver.prototype.visit = function(node) {
       this.visit(node.block);
       break;
     default:
-      visit.call(this, node);
+      super.visit(node);
   }
-};
+}
 
 /**
  * Visit Root.
  */
 
-DepsResolver.prototype.visitRoot = function(block) {
+visitRoot(block) {
   for (var i = 0, len = block.nodes.length; i < len; ++i) {
     this.visit(block.nodes[i]);
   }
-};
+}
 
 /**
  * Visit Ident.
  */
 
-DepsResolver.prototype.visitIdent = function(ident) {
+visitIdent(ident) {
   this.visit(ident.val);
-};
+}
 
 /**
  * Visit If.
  */
 
-DepsResolver.prototype.visitIf = function(node) {
+visitIf(node) {
   this.visit(node.block);
   this.visit(node.cond);
   for (var i = 0, len = node.elses.length; i < len; ++i) {
     this.visit(node.elses[i]);
   }
-};
+}
 
 /**
  * Visit Function.
  */
 
-DepsResolver.prototype.visitFunction = function(fn) {
+visitFunction(fn) {
   this.functions[fn.name] = fn.block;
-};
+}
 
 /**
  * Visit Call.
  */
 
-DepsResolver.prototype.visitCall = function(call) {
+visitCall(call) {
   if (call.name in this.functions) this.visit(this.functions[call.name]);
   if (call.block) this.visit(call.block);
-};
+}
 
 /**
  * Visit Import.
  */
 
-DepsResolver.prototype.visitImport = function(node) {
+visitImport(node) {
   var path = node.path.first.val
     , literal, found, oldPath;
 
@@ -141,7 +140,7 @@ DepsResolver.prototype.visitImport = function(node) {
       , dir = dirname(file)
       , str = fs.readFileSync(file, 'utf-8')
       , block = new nodes.Block
-      , parser = new Parser(str, utils.merge({ root: block }, this.options));
+      , parser = new Parser(str, utils.merge({root: block}, this.options));
 
     if (!~this.paths.indexOf(dir)) this.paths.push(dir);
 
@@ -157,13 +156,14 @@ DepsResolver.prototype.visitImport = function(node) {
 
     this.visit(block);
   }
-};
+}
 
 /**
  * Get dependencies.
  */
 
-DepsResolver.prototype.resolve = function() {
+resolve() {
   this.visit(this.root);
   return utils.uniq(this.deps);
-};
+}
+}

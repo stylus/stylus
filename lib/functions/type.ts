@@ -1,4 +1,4 @@
-var utils = require('../utils');
+import utils = require('../utils');
 
 /**
  * Return type of `node`.

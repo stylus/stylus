@@ -1,5 +1,5 @@
-var utils = require('../utils')
-  , nodes = require('../nodes');
+import utils = require('../utils');
+import nodes = require('../nodes');
 
 var VALID_FLAGS = 'igm';
 
@@ -24,7 +24,7 @@ var VALID_FLAGS = 'igm';
  * @api public
  */
 
-module.exports = function match(pattern, val, flags){
+export = function match(pattern, val, flags){
   utils.assertType(pattern, 'string', 'pattern');
   utils.assertString(val, 'val');
   var re = new RegExp(pattern.val, validateFlags(flags) ? flags.string : '');

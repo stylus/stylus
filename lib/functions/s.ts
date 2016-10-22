@@ -1,6 +1,6 @@
-var utils = require('../utils')
-  , nodes = require('../nodes')
-  , Compiler = require('../visitor/compiler');
+import utils = require('../utils');
+import nodes = require('../nodes');
+import Compiler = require('../visitor/compiler');
 
 /**
  * Return a `Literal` with the given `fmt`, and
@@ -12,20 +12,21 @@ var utils = require('../utils')
  * @api public
  */
 
-(module.exports = function s(fmt){
+export = class s{
+  options;
+  constructor(fmt){
   fmt = utils.unwrap(fmt).nodes[0];
   utils.assertString(fmt);
-  var self = this
-    , str = fmt.string
+  var str = fmt.string
     , args = arguments
     , i = 1;
 
   // format
-  str = str.replace(/%(s|d)/g, function(_, specifier){
-    var arg = args[i++] || nodes.null;
+  str = str.replace(/%(s|d)/g, (_, specifier) => {
+    var arg = args[i++] || nodes.nullNode;
     switch (specifier) {
       case 's':
-        return new Compiler(arg, self.options).compile();
+        return new Compiler(arg, this.options).compile();
       case 'd':
         arg = utils.unwrap(arg).first;
         if ('unit' != arg.nodeName) throw new Error('%d requires a unit');
@@ -34,4 +35,7 @@ var utils = require('../utils')
   });
 
   return new nodes.Literal(str);
-}).raw = true;
+}
+
+  static raw = true;
+}

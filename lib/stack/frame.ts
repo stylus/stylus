@@ -9,7 +9,7 @@
  * Module dependencies.
  */
 
-var Scope = require('./scope');
+import Scope = require('./scope');
 
 /**
  * Initialize a new `Frame` with the given `block`.
@@ -18,12 +18,17 @@ var Scope = require('./scope');
  * @api private
  */
 
-var Frame = module.exports = function Frame(block) {
+export = class Frame {
+  _scope;
+  block;
+  parent;
+
+  constructor(block) {
   this._scope = false === block.scope
     ? null
     : new Scope;
   this.block = block;
-};
+}
 
 /**
  * Return this frame's scope or the parent scope
@@ -33,9 +38,9 @@ var Frame = module.exports = function Frame(block) {
  * @api public
  */
 
-Frame.prototype.__defineGetter__('scope', function(){
+get scope(){
   return this._scope || this.parent.scope;
-});
+}
 
 /**
  * Lookup the given local variable `name`.
@@ -45,9 +50,9 @@ Frame.prototype.__defineGetter__('scope', function(){
  * @api private
  */
 
-Frame.prototype.lookup = function(name){
+lookup(name){
   return this.scope.lookup(name)
-};
+}
 
 /**
  * Custom inspect.
@@ -56,10 +61,11 @@ Frame.prototype.lookup = function(name){
  * @api public
  */
 
-Frame.prototype.inspect = function(){
+inspect(){
   return '[Frame '
     + (false === this.block.scope
         ? 'scope-less'
         : this.scope.inspect())
     + ']';
-};
+}
+}

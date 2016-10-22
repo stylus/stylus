@@ -1,5 +1,5 @@
-var utils = require('../utils')
-  , nodes = require('../nodes');
+import utils = require('../utils');
+import nodes = require('../nodes');
 
 /**
  * Splits the given `val` by `delim`

@@ -9,7 +9,7 @@
  * Module dependencies.
  */
 
-var Node = require('./node');
+import Node = require('./node');
 
 /**
  * Initialize a new `Query`.
@@ -17,18 +17,14 @@ var Node = require('./node');
  * @api public
  */
 
-var Query = module.exports = function Query(){
-  Node.call(this);
-  this.nodes = [];
-  this.type = '';
-  this.predicate = '';
+export = class Query extends Node {
+  nodes = [];
+  type: any = '';
+  predicate: any = '';
+
+  constructor() {
+  super();
 };
-
-/**
- * Inherit from `Node.prototype`.
- */
-
-Query.prototype.__proto__ = Node.prototype;
 
 /**
  * Return a clone of this node.
@@ -37,7 +33,7 @@ Query.prototype.__proto__ = Node.prototype;
  * @api public
  */
 
-Query.prototype.clone = function(parent){
+clone(parent){
   var clone = new Query;
   clone.predicate = this.predicate;
   clone.type = this.type;
@@ -48,7 +44,7 @@ Query.prototype.clone = function(parent){
   clone.column = this.column;
   clone.filename = this.filename;
   return clone;
-};
+}
 
 /**
  * Push the given `feature`.
@@ -57,9 +53,9 @@ Query.prototype.clone = function(parent){
  * @api public
  */
 
-Query.prototype.push = function(feature){
+push(feature){
   this.nodes.push(feature);
-};
+}
 
 /**
  * Return resolved type of this query.
@@ -68,13 +64,13 @@ Query.prototype.push = function(feature){
  * @api private
  */
 
-Query.prototype.__defineGetter__('resolvedType', function(){
+get resolvedType(){
   if (this.type) {
     return this.type.nodeName
       ? this.type.string
       : this.type;
   }
-});
+}
 
 /**
  * Return resolved predicate of this query.
@@ -83,13 +79,13 @@ Query.prototype.__defineGetter__('resolvedType', function(){
  * @api private
  */
 
-Query.prototype.__defineGetter__('resolvedPredicate', function(){
+get resolvedPredicate(){
   if (this.predicate) {
     return this.predicate.nodeName
       ? this.predicate.string
       : this.predicate;
   }
-});
+}
 
 /**
  * Merges this query with the `other`.
@@ -99,7 +95,7 @@ Query.prototype.__defineGetter__('resolvedPredicate', function(){
  * @api private
  */
 
-Query.prototype.merge = function(other){
+merge(other){
   var query = new Query
     , p1 = this.resolvedPredicate
     , p2 = other.resolvedPredicate
@@ -110,7 +106,7 @@ Query.prototype.merge = function(other){
   // Stolen from Sass :D
   t1 = t1 || t2;
   t2 = t2 || t1;
-  if (('not' == p1) ^ ('not' == p2)) {
+  if (('not' == p1) !== ('not' == p2)) {
     if (t1 == t2) return;
     type = ('not' == p1) ? t2 : t1;
     pred = ('not' == p1) ? p2 : p1;
@@ -128,7 +124,7 @@ Query.prototype.merge = function(other){
   query.type = type;
   query.nodes = this.nodes.concat(other.nodes);
   return query;
-};
+}
 
 /**
  * Return "<a> and <b> and <c>"
@@ -137,7 +133,7 @@ Query.prototype.merge = function(other){
  * @api public
  */
 
-Query.prototype.toString = function(){
+toString(){
   var pred = this.predicate ? this.predicate + ' ' : ''
     , type = this.type || ''
     , len = this.nodes.length
@@ -148,7 +144,7 @@ Query.prototype.toString = function(){
     }).join(' and ');
   }
   return str;
-};
+}
 
 /**
  * Return a JSON representation of this node.
@@ -157,7 +153,7 @@ Query.prototype.toString = function(){
  * @api public
  */
 
-Query.prototype.toJSON = function(){
+toJSON(){
   return {
     __type: 'Query',
     predicate: this.predicate,
@@ -167,4 +163,5 @@ Query.prototype.toJSON = function(){
     column: this.column,
     filename: this.filename
   };
-};
+}
+}

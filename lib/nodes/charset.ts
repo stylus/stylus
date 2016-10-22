@@ -9,7 +9,7 @@
  * Module dependencies.
  */
 
-var Node = require('./node');
+import Node = require('./node');
 
 /**
  * Initialize a new `Charset` with the given `val`
@@ -18,16 +18,11 @@ var Node = require('./node');
  * @api public
  */
 
-var Charset = module.exports = function Charset(val){
-  Node.call(this);
+export = class Charset extends Node {
+  constructor(val){
+    super();
   this.val = val;
-};
-
-/**
- * Inherit from `Node.prototype`.
- */
-
-Charset.prototype.__proto__ = Node.prototype;
+}
 
 /**
  * Return @charset "val".
@@ -36,9 +31,9 @@ Charset.prototype.__proto__ = Node.prototype;
  * @api public
  */
 
-Charset.prototype.toString = function(){
+toString(){
   return '@charset ' + this.val;
-};
+}
 
 /**
  * Return a JSON representation of this node.
@@ -47,7 +42,7 @@ Charset.prototype.toString = function(){
  * @api public
  */
 
-Charset.prototype.toJSON = function(){
+toJSON(){
   return {
     __type: 'Charset',
     val: this.val,
@@ -55,4 +50,5 @@ Charset.prototype.toJSON = function(){
     column: this.column,
     filename: this.filename
   };
-};
+}
+}

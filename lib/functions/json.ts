@@ -1,6 +1,6 @@
-var utils = require('../utils')
-  , nodes = require('../nodes')
-  , readFile = require('fs').readFileSync;
+import utils = require('../utils');
+import nodes = require('../nodes');
+import {readFileSync as readFile} from 'fs';
 
 /**
  * Convert a .json file into stylus variables or object.
@@ -35,7 +35,7 @@ var utils = require('../utils')
  * @api public
 */
 
-module.exports = function(path, local, namePrefix){
+export = function(path, local, namePrefix){
   utils.assertString(path, 'path');
 
   // lookup
@@ -46,7 +46,7 @@ module.exports = function(path, local, namePrefix){
   if (!found) {
     // optional JSON file
     if (options && options.get('optional').toBoolean().isTrue) {
-      return nodes.null;
+      return nodes.nullNode;
     }
     throw new Error('failed to locate .json file ' + path);
   }
@@ -99,7 +99,7 @@ function oldJson(json, local, namePrefix){
   convert(json);
   return;
 
-  function convert(obj, prefix){
+  function convert(obj, prefix?){
     prefix = prefix ? prefix + '-' : '';
     for (var key in obj){
       var val = obj[key];
@@ -113,4 +113,4 @@ function oldJson(json, local, namePrefix){
       }
     }
   }
-};
+}

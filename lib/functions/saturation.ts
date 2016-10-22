@@ -1,6 +1,6 @@
-var nodes = require('../nodes')
-  , hsla = require('./hsla')
-  , component = require('./component');
+import nodes = require('../nodes');
+import hsla = require('./hsla');
+import component = require('./component');
 
 /**
  * Return the saturation component of the given `color`,
@@ -20,7 +20,7 @@ var nodes = require('../nodes')
  * @api public
  */
 
-module.exports = function saturation(color, value){
+export = function saturation(color, value){
   if (value) {
     var hslaColor = color.hsla;
     return hsla(

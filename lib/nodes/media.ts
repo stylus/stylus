@@ -9,7 +9,7 @@
  * Module dependencies.
  */
 
-var Atrule = require('./atrule');
+import Atrule = require('./atrule');
 
 /**
  * Initialize a new `Media` with the given `val`
@@ -18,16 +18,11 @@ var Atrule = require('./atrule');
  * @api public
  */
 
-var Media = module.exports = function Media(val){
-  Atrule.call(this, 'media');
+export = class Media extends Atrule {
+  constructor(val?){
+  super('media');
   this.val = val;
 };
-
-/**
- * Inherit from `Atrule.prototype`.
- */
-
-Media.prototype.__proto__ = Atrule.prototype;
 
 /**
  * Clone this node.
@@ -36,7 +31,7 @@ Media.prototype.__proto__ = Atrule.prototype;
  * @api public
  */
 
-Media.prototype.clone = function(parent){
+clone(parent){
   var clone = new Media;
   clone.val = this.val.clone(parent, clone);
   clone.block = this.block.clone(parent, clone);
@@ -53,7 +48,7 @@ Media.prototype.clone = function(parent){
  * @api public
  */
 
-Media.prototype.toJSON = function(){
+toJSON(){
   return {
     __type: 'Media',
     val: this.val,
@@ -71,6 +66,7 @@ Media.prototype.toJSON = function(){
  * @api public
  */
 
-Media.prototype.toString = function(){
+toString(){
   return '@media ' + this.val;
-};
+}
+}

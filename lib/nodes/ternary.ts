@@ -9,7 +9,7 @@
  * Module dependencies.
  */
 
-var Node = require('./node');
+import Node = require('./node');
 
 /**
  * Initialize a new `Ternary` with `cond`, `trueExpr` and `falseExpr`.
@@ -20,18 +20,10 @@ var Node = require('./node');
  * @api public
  */
 
-var Ternary = module.exports = function Ternary(cond, trueExpr, falseExpr){
-  Node.call(this);
-  this.cond = cond;
-  this.trueExpr = trueExpr;
-  this.falseExpr = falseExpr;
-};
-
-/**
- * Inherit from `Node.prototype`.
- */
-
-Ternary.prototype.__proto__ = Node.prototype;
+export = class Ternary extends Node {
+  constructor(public cond?, public trueExpr?, public falseExpr?){
+  super();
+}
 
 /**
  * Return a clone of this node.
@@ -40,7 +32,7 @@ Ternary.prototype.__proto__ = Node.prototype;
  * @api public
  */
 
-Ternary.prototype.clone = function(parent){
+clone(parent){
   var clone = new Ternary();
   clone.cond = this.cond.clone(parent, clone);
   clone.trueExpr = this.trueExpr.clone(parent, clone);
@@ -49,7 +41,7 @@ Ternary.prototype.clone = function(parent){
   clone.column = this.column;
   clone.filename = this.filename;
   return clone;
-};
+}
 
 /**
  * Return a JSON representation of this node.
@@ -58,7 +50,7 @@ Ternary.prototype.clone = function(parent){
  * @api public
  */
 
-Ternary.prototype.toJSON = function(){
+toJSON(){
   return {
     __type: 'Ternary',
     cond: this.cond,
@@ -68,4 +60,5 @@ Ternary.prototype.toJSON = function(){
     column: this.column,
     filename: this.filename
   };
-};
+}
+}

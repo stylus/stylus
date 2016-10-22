@@ -9,7 +9,7 @@
  * Module dependencies.
  */
 
-var Node = require('./node');
+import Node = require('./node');
 
 /**
  * Initialize a new `If` with the given `cond`.
@@ -19,9 +19,14 @@ var Node = require('./node');
  * @api public
  */
 
-var If = module.exports = function If(cond, negate){
-  Node.call(this);
-  this.cond = cond;
+export = class If extends Node {
+  elses;
+  block;
+  negate;
+  postfix;
+
+  constructor(public cond?, negate?){
+  super();
   this.elses = [];
   if (negate && negate.nodeName) {
     this.block = negate;
@@ -31,19 +36,13 @@ var If = module.exports = function If(cond, negate){
 };
 
 /**
- * Inherit from `Node.prototype`.
- */
-
-If.prototype.__proto__ = Node.prototype;
-
-/**
  * Return a clone of this node.
  * 
  * @return {Node}
  * @api public
  */
 
-If.prototype.clone = function(parent){
+clone(parent){
   var clone = new If();
   clone.cond = this.cond.clone(parent, clone);
   clone.block = this.block.clone(parent, clone);
@@ -54,7 +53,7 @@ If.prototype.clone = function(parent){
   clone.column = this.column;
   clone.filename = this.filename;
   return clone;
-};
+}
 
 /**
  * Return a JSON representation of this node.
@@ -63,7 +62,7 @@ If.prototype.clone = function(parent){
  * @api public
  */
 
-If.prototype.toJSON = function(){
+toJSON(){
   return {
     __type: 'If',
     cond: this.cond,
@@ -75,4 +74,5 @@ If.prototype.toJSON = function(){
     column: this.column,
     filename: this.filename
   };
-};
+}
+}

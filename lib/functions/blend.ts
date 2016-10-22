@@ -1,5 +1,5 @@
-var utils = require('../utils')
-  , nodes = require('../nodes');
+import utils = require('../utils');
+import nodes = require('../nodes');
 
 /**
  * Blend the `top` color over the `bottom`
@@ -21,7 +21,7 @@ var utils = require('../utils')
  * @api public
  */
 
-module.exports = function blend(top, bottom){
+export = function blend(top, bottom){
   // TODO: different blend modes like overlay etc.
   utils.assertColor(top);
   top = top.rgba;

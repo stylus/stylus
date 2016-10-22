@@ -1,4 +1,3 @@
-
 /*!
  * Stylus - Evaluator
  * Copyright (c) Automattic <developer.wordpress.com>
@@ -9,17 +8,17 @@
  * Module dependencies.
  */
 
-var Visitor = require('./')
-  , units = require('../units')
-  , nodes = require('../nodes')
-  , Stack = require('../stack')
-  , Frame = require('../stack/frame')
-  , utils = require('../utils')
-  , bifs = require('../functions')
-  , dirname = require('path').dirname
-  , colors = require('../colors')
-  , debug = require('debug')('stylus:evaluator')
-  , fs = require('fs');
+import Visitor = require('./');
+import units = require('../units');
+import nodes = require('../nodes');
+import Stack = require('../stack');
+import Frame = require('../stack/frame');
+import utils = require('../utils');
+import bifs = require('../functions');
+import {dirname} from 'path';
+import colors = require('../colors');
+var debug = require('debug')('stylus:evaluator')
+import fs = require('fs');
 
 /**
  * Import `file` and return Block node.
@@ -33,7 +32,7 @@ function importFile(node, file, literal) {
 
   // Handling the `require`
   if (node.once) {
-    if (this.requireHistory[file]) return nodes.null;
+    if (this.requireHistory[file]) return nodes.nullNode;
     this.requireHistory[file] = true;
 
     if (literal && !this.includeCSS) {
@@ -48,7 +47,7 @@ function importFile(node, file, literal) {
   var str = fs.readFileSync(file, 'utf8');
 
   // shortcut for empty files
-  if (!str.trim()) return nodes.null;
+  if (!str.trim()) return nodes.nullNode;
 
   // Expose imports
   node.path = file;
@@ -72,7 +71,7 @@ function importFile(node, file, literal) {
 
   // parse
   var block = new nodes.Block
-    , parser = new Parser(str, utils.merge({ root: block }, this.options));
+    , parser = new Parser(str, utils.merge({root: block}, this.options));
 
   try {
     block = parser.parse();
@@ -116,9 +115,30 @@ function importFile(node, file, literal) {
  * @api private
  */
 
-var Evaluator = module.exports = function Evaluator(root, options) {
+export = class Evaluator extends Visitor {
+  functions;
+  stack;
+  imports;
+  globals;
+  paths;
+  prefix;
+  filename;
+  includeCSS;
+  resolveURL;
+  warnings;
+  options;
+  calling;
+  importStack;
+  requireHistory;
+  return;
+  global;
+  ignoreColors;
+  property;
+  _selector;
+
+  constructor(root, options?) {
+  super(root);
   options = options || {};
-  Visitor.call(this, root);
   var functions = this.functions = options.functions || {};
   this.stack = new Stack;
   this.imports = options.imports || [];
@@ -138,13 +158,7 @@ var Evaluator = module.exports = function Evaluator(root, options) {
   this.importStack = [];
   this.requireHistory = {};
   this.return = 0;
-};
-
-/**
- * Inherit from `Visitor.prototype`.
- */
-
-Evaluator.prototype.__proto__ = Visitor.prototype;
+}
 
 /**
  * Proxy visit to expose node line numbers.
@@ -154,10 +168,9 @@ Evaluator.prototype.__proto__ = Visitor.prototype;
  * @api private
  */
 
-var visit = Visitor.prototype.visit;
-Evaluator.prototype.visit = function(node){
+visit(node) {
   try {
-    return visit.call(this, node);
+    return super.visit(node);
   } catch (err) {
     if (err.filename) throw err;
     err.lineno = node.lineno;
@@ -182,12 +195,12 @@ Evaluator.prototype.visit = function(node){
  * @api private
  */
 
-Evaluator.prototype.setup = function(){
+setup() {
   var root = this.root;
   var imports = [];
 
   this.populateGlobalScope();
-  this.imports.forEach(function(file){
+  this.imports.forEach(function (file) {
     var expr = new nodes.Expression;
     expr.push(new nodes.String(file));
     imports.push(new nodes.Import(expr));
@@ -205,11 +218,11 @@ Evaluator.prototype.setup = function(){
  * @api private
  */
 
-Evaluator.prototype.populateGlobalScope = function(){
+populateGlobalScope() {
   var scope = this.global.scope;
 
   // colors
-  Object.keys(colors).forEach(function(name){
+  Object.keys(colors).forEach(function (name) {
     var color = colors[name]
       , rgba = new nodes.RGBA(color[0], color[1], color[2], color[3])
       , node = new nodes.Ident(name, rgba);
@@ -227,7 +240,7 @@ Evaluator.prototype.populateGlobalScope = function(){
 
   // user-defined globals
   var globals = this.globals;
-  Object.keys(globals).forEach(function(name){
+  Object.keys(globals).forEach(function (name) {
     var val = globals[name];
     if (!val.nodeName) val = new nodes.Literal(val);
     scope.add(new nodes.Ident(name, val));
@@ -241,7 +254,7 @@ Evaluator.prototype.populateGlobalScope = function(){
  * @api private
  */
 
-Evaluator.prototype.evaluate = function(){
+evaluate() {
   debug('eval %s', this.filename);
   this.setup();
   return this.visit(this.root);
@@ -251,8 +264,8 @@ Evaluator.prototype.evaluate = function(){
  * Visit Group.
  */
 
-Evaluator.prototype.visitGroup = function(group){
-  group.nodes = group.nodes.map(function(selector){
+visitGroup(group) {
+  group.nodes = group.nodes.map(function (selector) {
     selector.val = this.interpolate(selector);
     debug('ruleset %s', selector.val);
     return selector;
@@ -266,7 +279,7 @@ Evaluator.prototype.visitGroup = function(group){
  * Visit Return.
  */
 
-Evaluator.prototype.visitReturn = function(ret){
+visitReturn(ret) {
   ret.expr = this.visit(ret.expr);
   throw ret;
 };
@@ -275,7 +288,7 @@ Evaluator.prototype.visitReturn = function(ret){
  * Visit Media.
  */
 
-Evaluator.prototype.visitMedia = function(media){
+visitMedia(media) {
   media.block = this.visit(media.block);
   media.val = this.visit(media.val);
   return media;
@@ -285,7 +298,7 @@ Evaluator.prototype.visitMedia = function(media){
  * Visit QueryList.
  */
 
-Evaluator.prototype.visitQueryList = function(queries){
+visitQueryList(queries) {
   var val, query;
   queries.nodes.forEach(this.visit, this);
 
@@ -306,7 +319,7 @@ Evaluator.prototype.visitQueryList = function(queries){
  * Visit Query.
  */
 
-Evaluator.prototype.visitQuery = function(node){
+visitQuery(node) {
   node.predicate = this.visit(node.predicate);
   node.type = this.visit(node.type);
   node.nodes.forEach(this.visit, this);
@@ -317,7 +330,7 @@ Evaluator.prototype.visitQuery = function(node){
  * Visit Feature.
  */
 
-Evaluator.prototype.visitFeature = function(node){
+visitFeature(node) {
   node.name = this.interpolate(node);
   if (node.expr) {
     this.return++;
@@ -331,7 +344,7 @@ Evaluator.prototype.visitFeature = function(node){
  * Visit Object.
  */
 
-Evaluator.prototype.visitObject = function(obj){
+visitObjectNode(obj) {
   for (var key in obj.vals) {
     obj.vals[key] = this.visit(obj.vals[key]);
   }
@@ -342,7 +355,7 @@ Evaluator.prototype.visitObject = function(obj){
  * Visit Member.
  */
 
-Evaluator.prototype.visitMember = function(node){
+visitMember(node) {
   var left = node.left
     , right = node.right
     , obj = this.visit(left).first;
@@ -362,7 +375,7 @@ Evaluator.prototype.visitMember = function(node){
  * Visit Keyframes.
  */
 
-Evaluator.prototype.visitKeyframes = function(keyframes){
+visitKeyframes(keyframes) {
   var val;
   if (keyframes.fabricated) return keyframes;
   keyframes.val = this.interpolate(keyframes).trim();
@@ -373,7 +386,7 @@ Evaluator.prototype.visitKeyframes = function(keyframes){
 
   if ('official' != keyframes.prefix) return keyframes;
 
-  this.vendors.forEach(function(prefix){
+  this.vendors.forEach(function (prefix) {
     // IE never had prefixes for keyframes
     if ('ms' == prefix) return;
     var node = keyframes.clone();
@@ -384,14 +397,14 @@ Evaluator.prototype.visitKeyframes = function(keyframes){
     this.currentBlock.push(node);
   }, this);
 
-  return nodes.null;
+  return nodes.nullNode;
 };
 
 /**
  * Visit Function.
  */
 
-Evaluator.prototype.visitFunction = function(fn){
+visitFunction(fn) {
   // check local
   var local = this.stack.currentFrame.scope.lookup(fn.name);
   if (local) this.warn('local ' + local.nodeName + ' "' + fn.name + '" previously defined in this scope');
@@ -411,7 +424,7 @@ Evaluator.prototype.visitFunction = function(fn){
  * Visit Each.
  */
 
-Evaluator.prototype.visitEach = function(each){
+visitEach(each) {
   this.return++;
   var expr = utils.unwrap(this.visit(each.expr))
     , len = expr.nodes.length
@@ -451,14 +464,14 @@ Evaluator.prototype.visitEach = function(each){
   }
 
   this.mixin(vals, block);
-  return vals[vals.length - 1] || nodes.null;
+  return vals[vals.length - 1] || nodes.nullNode;
 };
 
 /**
  * Visit Call.
  */
 
-Evaluator.prototype.visitCall = function(call){
+visitCall(call) {
   debug('call %s', call);
   var fn = this.lookup(call.name)
     , literal
@@ -514,7 +527,7 @@ Evaluator.prototype.visitCall = function(call){
   if (fn.fn) {
     debug('%s is built-in', call);
     ret = this.invokeBuiltin(fn.fn, args);
-  // User-defined
+    // User-defined
   } else if ('function' == fn.nodeName) {
     debug('%s is user-defined', call);
     // Evaluate mixin block
@@ -531,21 +544,21 @@ Evaluator.prototype.visitCall = function(call){
  * Visit Ident.
  */
 
-Evaluator.prototype.visitIdent = function(ident){
+visitIdent(ident) {
   var prop;
   // Property lookup
   if (ident.property) {
     if (prop = this.lookupProperty(ident.name)) {
       return this.visit(prop.expr.clone());
     }
-    return nodes.null;
-  // Lookup
+    return nodes.nullNode;
+    // Lookup
   } else if (ident.val.isNull) {
     var val = this.lookup(ident.name);
     // Object or Block mixin
     if (val && ident.mixin) this.mixinNode(val);
     return val ? this.visit(val) : ident;
-  // Assign
+    // Assign
   } else {
     this.return++;
     ident.val = this.visit(ident.val);
@@ -559,7 +572,7 @@ Evaluator.prototype.visitIdent = function(ident){
  * Visit BinOp.
  */
 
-Evaluator.prototype.visitBinOp = function(binop){
+visitBinOp(binop) {
   // Special-case "is defined" pseudo binop
   if ('is defined' == binop.op) return this.isDefined(binop.left);
 
@@ -568,7 +581,7 @@ Evaluator.prototype.visitBinOp = function(binop){
   var op = binop.op
     , left = this.visit(binop.left)
     , right = ('||' == op || '&&' == op)
-      ? binop.right : this.visit(binop.right);
+    ? binop.right : this.visit(binop.right);
 
   // HACK: ternary
   var val = binop.val
@@ -585,9 +598,9 @@ Evaluator.prototype.visitBinOp = function(binop){
     if ('CoercionError' == err.name) {
       switch (op) {
         case '==':
-          return nodes.false;
+          return nodes.falseNode;
         case '!=':
-          return nodes.true;
+          return nodes.trueNode;
       }
     }
     throw err;
@@ -598,7 +611,7 @@ Evaluator.prototype.visitBinOp = function(binop){
  * Visit UnaryOp.
  */
 
-Evaluator.prototype.visitUnaryOp = function(unary){
+visitUnaryOp(unary) {
   var op = unary.op
     , node = this.visit(unary.expr);
 
@@ -628,7 +641,7 @@ Evaluator.prototype.visitUnaryOp = function(unary){
  * Visit TernaryOp.
  */
 
-Evaluator.prototype.visitTernary = function(ternary){
+visitTernary(ternary) {
   var ok = this.visit(ternary.cond).toBoolean();
   return ok.isTrue
     ? this.visit(ternary.trueExpr)
@@ -639,7 +652,7 @@ Evaluator.prototype.visitTernary = function(ternary){
  * Visit Expression.
  */
 
-Evaluator.prototype.visitExpression = function(expr){
+visitExpression(expr) {
   for (var i = 0, len = expr.nodes.length; i < len; ++i) {
     expr.nodes[i] = this.visit(expr.nodes[i]);
   }
@@ -654,13 +667,13 @@ Evaluator.prototype.visitExpression = function(expr){
  * Visit Arguments.
  */
 
-Evaluator.prototype.visitArguments = Evaluator.prototype.visitExpression;
+visitArguments = this.visitExpression;
 
 /**
  * Visit Property.
  */
 
-Evaluator.prototype.visitProperty = function(prop){
+visitProperty(prop) {
   var name = this.interpolate(prop)
     , fn = this.lookup(name)
     , call = fn && 'function' == fn.first.nodeName
@@ -678,7 +691,7 @@ Evaluator.prototype.visitProperty = function(prop){
     var ret = this.visit(new nodes.Call(name, args));
     this.property = _prop;
     return ret;
-  // Regular property
+    // Regular property
   } else {
     this.return++;
     prop.name = name;
@@ -695,7 +708,7 @@ Evaluator.prototype.visitProperty = function(prop){
  * Visit Root.
  */
 
-Evaluator.prototype.visitRoot = function(block){
+visitRoot(block) {
   // normalize cached imports
   if (block != this.root) {
     block.constructor = nodes.Block;
@@ -713,7 +726,7 @@ Evaluator.prototype.visitRoot = function(block){
  * Visit Block.
  */
 
-Evaluator.prototype.visitBlock = function(block){
+visitBlock(block) {
   this.stack.push(new Frame(block));
   for (block.index = 0; block.index < block.nodes.length; ++block.index) {
     try {
@@ -740,7 +753,7 @@ Evaluator.prototype.visitBlock = function(block){
  * Visit Atblock.
  */
 
-Evaluator.prototype.visitAtblock = function(atblock){
+visitAtblock(atblock) {
   atblock.block = this.visit(atblock.block);
   return atblock;
 };
@@ -749,7 +762,7 @@ Evaluator.prototype.visitAtblock = function(atblock){
  * Visit Atrule.
  */
 
-Evaluator.prototype.visitAtrule = function(atrule){
+visitAtrule(atrule) {
   atrule.val = this.interpolate(atrule);
   if (atrule.block) atrule.block = this.visit(atrule.block);
   return atrule;
@@ -759,7 +772,7 @@ Evaluator.prototype.visitAtrule = function(atrule){
  * Visit Supports.
  */
 
-Evaluator.prototype.visitSupports = function(node){
+visitSupports(node) {
   var condition = node.condition
     , val;
 
@@ -780,7 +793,7 @@ Evaluator.prototype.visitSupports = function(node){
  * Visit If.
  */
 
-Evaluator.prototype.visitIf = function(node){
+visitIf(node) {
   var ret
     , block = this.currentBlock
     , negate = node.negate;
@@ -801,7 +814,7 @@ Evaluator.prototype.visitIf = function(node){
     // if
     if (ok.isTrue) {
       ret = this.visit(node.block);
-    // else
+      // else
     } else if (node.elses.length) {
       var elses = node.elses
         , len = elses.length
@@ -817,7 +830,7 @@ Evaluator.prototype.visitIf = function(node){
             ret = this.visit(elses[i].block);
             break;
           }
-        // else
+          // else
         } else {
           elses[i].scope = elses[i].hasMedia;
           ret = this.visit(elses[i]);
@@ -830,25 +843,25 @@ Evaluator.prototype.visitIf = function(node){
   // a selector group or at-rule
   if (ret && !node.postfix && block.node
     && ~['group'
-       , 'atrule'
-       , 'media'
-       , 'supports'
-       , 'keyframes'].indexOf(block.node.nodeName)) {
+      , 'atrule'
+      , 'media'
+      , 'supports'
+      , 'keyframes'].indexOf(block.node.nodeName)) {
     this.mixin(ret.nodes, block);
-    return nodes.null;
+    return nodes.nullNode;
   }
 
-  return ret || nodes.null;
+  return ret || nodes.nullNode;
 };
 
 /**
  * Visit Extend.
  */
 
-Evaluator.prototype.visitExtend = function(extend){
+visitExtend(extend) {
   var block = this.currentBlock;
   if ('group' != block.node.nodeName) block = this.closestGroup;
-  extend.selectors.forEach(function(selector){
+  extend.selectors.forEach(function (selector) {
     block.node.extends.push({
       // Cloning the selector for when we are in a loop and don't want it to affect
       // the selector nodes and cause the values to be different to expected
@@ -858,14 +871,14 @@ Evaluator.prototype.visitExtend = function(extend){
       column: selector.column
     });
   }, this);
-  return nodes.null;
+  return nodes.nullNode;
 };
 
 /**
  * Visit Import.
  */
 
-Evaluator.prototype.visitImport = function(imported){
+visitImport(imported) {
   this.return++;
 
   var path = this.visit(imported.path).first
@@ -913,7 +926,7 @@ Evaluator.prototype.visitImport = function(imported){
 
   // Throw if import failed
   if (!found) throw new Error('failed to locate @' + nodeName + ' file ' + path);
-  
+
   var block = new nodes.Block;
 
   for (var i = 0, len = found.length; i < len; ++i) {
@@ -932,7 +945,7 @@ Evaluator.prototype.visitImport = function(imported){
  * @api private
  */
 
-Evaluator.prototype.invokeFunction = function(fn, args, content){
+invokeFunction(fn, args, content) {
   var block = new nodes.Block(fn.block.parent);
 
   // Clone the function body
@@ -958,7 +971,7 @@ Evaluator.prototype.invokeFunction = function(fn, args, content){
 
   // mixin scope introspection
   scope.add(new nodes.Ident('mixin', this.return
-    ? nodes.false
+    ? nodes.falseNode
     : new nodes.String(mixinBlock.nodeName)));
 
   // current property
@@ -966,27 +979,28 @@ Evaluator.prototype.invokeFunction = function(fn, args, content){
     var prop = this.propertyExpression(this.property, fn.name);
     scope.add(new nodes.Ident('current-property', prop));
   } else {
-    scope.add(new nodes.Ident('current-property', nodes.null));
+    scope.add(new nodes.Ident('current-property', nodes.nullNode));
   }
 
   // current call stack
   var expr = new nodes.Expression;
-  for (var i = this.calling.length - 1; i-- ; ) {
+  for (var i = this.calling.length - 1; i--;) {
     expr.push(new nodes.Literal(this.calling[i]));
-  };
+  }
+  ;
   scope.add(new nodes.Ident('called-from', expr));
 
   // inject arguments as locals
   var i = 0
     , len = args.nodes.length;
-  fn.params.nodes.forEach(function(node){
+  fn.params.nodes.forEach(function (node) {
     // rest param support
     if (node.rest) {
       node.val = new nodes.Expression;
       for (; i < len; ++i) node.val.push(args.nodes[i]);
       node.val.preserve = true;
       node.val.isList = args.isList;
-    // argument default support
+      // argument default support
     } else {
       var arg = args.map[node.name] || args.nodes[i++];
       node = node.clone();
@@ -1021,7 +1035,7 @@ Evaluator.prototype.invokeFunction = function(fn, args, content){
  * @api private
  */
 
-Evaluator.prototype.invokeBuiltin = function(fn, args){
+invokeBuiltin(fn, args) {
   // Map arguments to first node
   // providing a nicer js api for
   // BIFs. Functions may specify that
@@ -1030,7 +1044,7 @@ Evaluator.prototype.invokeBuiltin = function(fn, args){
   if (fn.raw) {
     args = args.nodes;
   } else {
-    args = utils.params(fn).reduce(function(ret, param){
+    args = utils.params(fn).reduce(function (ret, param) {
       var arg = args.map[param] || args.nodes.shift()
       if (arg) {
         arg = utils.unwrap(arg);
@@ -1069,7 +1083,7 @@ Evaluator.prototype.invokeBuiltin = function(fn, args){
  * @api private
  */
 
-Evaluator.prototype.invoke = function(body, stack, filename){
+invoke(body, stack?, filename?) {
   var self = this
     , ret;
 
@@ -1079,12 +1093,12 @@ Evaluator.prototype.invoke = function(body, stack, filename){
   if (this.return) {
     ret = this.eval(body.nodes);
     if (stack) this.stack.pop();
-  // Mixin
+    // Mixin
   } else {
     body = this.visit(body);
     if (stack) this.stack.pop();
     this.mixin(body.nodes, this.currentBlock);
-    ret = nodes.null;
+    ret = nodes.nullNode;
   }
 
   if (filename) this.paths.pop();
@@ -1100,7 +1114,7 @@ Evaluator.prototype.invoke = function(body, stack, filename){
  * @api private
  */
 
-Evaluator.prototype.mixin = function(nodes, block){
+mixin(nodes, block) {
   if (!nodes.length) return;
   var len = block.nodes.length
     , head = block.nodes.slice(0, block.index)
@@ -1119,7 +1133,7 @@ Evaluator.prototype.mixin = function(nodes, block){
  * @api private
  */
 
-Evaluator.prototype._mixin = function(items, dest, block){
+_mixin(items, dest, block) {
   var node
     , len = items.length;
   for (var i = 0; i < len; ++i) {
@@ -1155,16 +1169,16 @@ Evaluator.prototype._mixin = function(items, dest, block){
  * @api private
  */
 
-Evaluator.prototype.mixinNode = function(node){
+mixinNode(node) {
   node = this.visit(node.first);
   switch (node.nodeName) {
     case 'object':
       this.mixinObject(node);
-      return nodes.null;
+      return nodes.nullNode;
     case 'block':
     case 'atblock':
       this.mixin(node.nodes, this.currentBlock);
-      return nodes.null;
+      return nodes.nullNode;
   }
 };
 
@@ -1175,11 +1189,11 @@ Evaluator.prototype.mixinNode = function(node){
  * @api private
  */
 
-Evaluator.prototype.mixinObject = function(object){
+mixinObject(object) {
   var Parser = require('../parser')
     , root = this.root
     , str = '$block ' + object.toBlock()
-    , parser = new Parser(str, utils.merge({ root: block }, this.options))
+    , parser = new Parser(str, utils.merge({root: block}, this.options))
     , block;
 
   try {
@@ -1212,10 +1226,10 @@ Evaluator.prototype.mixinObject = function(object){
  * @api private
  */
 
-Evaluator.prototype.eval = function(vals){
-  if (!vals) return nodes.null;
+eval(vals) {
+  if (!vals) return nodes.nullNode;
   var len = vals.length
-    , node = nodes.null;
+    , node = nodes.nullNode;
 
   try {
     for (var i = 0; i < len; ++i) {
@@ -1254,7 +1268,7 @@ Evaluator.prototype.eval = function(vals){
  * @api private
  */
 
-Evaluator.prototype.literalCall = function(call){
+literalCall(call) {
   call.args = this.visit(call.args);
   return call;
 };
@@ -1267,7 +1281,7 @@ Evaluator.prototype.literalCall = function(call){
  * @api private
  */
 
-Evaluator.prototype.lookupProperty = function(name){
+lookupProperty(name) {
   var i = this.stack.length
     , index = this.currentBlock.index
     , top = i
@@ -1297,7 +1311,7 @@ Evaluator.prototype.lookupProperty = function(name){
             other = this.interpolate(nodes[index]);
             if (name == other) return nodes[index].clone();
           }
-        // sequential lookup for non-siblings (for now)
+          // sequential lookup for non-siblings (for now)
         } else {
           len = nodes.length;
           while (len--) {
@@ -1311,7 +1325,7 @@ Evaluator.prototype.lookupProperty = function(name){
     }
   }
 
-  return nodes.null;
+  return nodes.nullNode;
 };
 
 /**
@@ -1321,7 +1335,7 @@ Evaluator.prototype.lookupProperty = function(name){
  * @api private
  */
 
-Evaluator.prototype.__defineGetter__('closestBlock', function(){
+get closestBlock() {
   var i = this.stack.length
     , block;
   while (i--) {
@@ -1338,7 +1352,7 @@ Evaluator.prototype.__defineGetter__('closestBlock', function(){
       }
     }
   }
-});
+}
 
 /**
  * Return the closest group block.
@@ -1347,7 +1361,7 @@ Evaluator.prototype.__defineGetter__('closestBlock', function(){
  * @api private
  */
 
-Evaluator.prototype.__defineGetter__('closestGroup', function(){
+get closestGroup() {
   var i = this.stack.length
     , block;
   while (i--) {
@@ -1356,7 +1370,7 @@ Evaluator.prototype.__defineGetter__('closestGroup', function(){
       return block;
     }
   }
-});
+}
 
 /**
  * Return the current selectors stack.
@@ -1365,20 +1379,20 @@ Evaluator.prototype.__defineGetter__('closestGroup', function(){
  * @api private
  */
 
-Evaluator.prototype.__defineGetter__('selectorStack', function(){
+get selectorStack() {
   var block
     , stack = [];
   for (var i = 0, len = this.stack.length; i < len; ++i) {
     block = this.stack[i].block;
     if (block.node && 'group' == block.node.nodeName) {
-      block.node.nodes.forEach(function(selector) {
+      block.node.nodes.forEach(function (selector) {
         if (!selector.val) selector.val = this.interpolate(selector);
       }, this);
       stack.push(block.node.nodes);
     }
   }
   return stack;
-});
+}
 
 /**
  * Lookup `name`, with support for JavaScript
@@ -1389,7 +1403,7 @@ Evaluator.prototype.__defineGetter__('selectorStack', function(){
  * @api private
  */
 
-Evaluator.prototype.lookup = function(name){
+lookup(name) {
   var val;
   if (this.ignoreColors && name in colors) return;
   if (val = this.stack.lookup(name)) {
@@ -1407,9 +1421,10 @@ Evaluator.prototype.lookup = function(name){
  * @api private
  */
 
-Evaluator.prototype.interpolate = function(node){
+interpolate(node) {
   var self = this
     , isSelector = ('selector' == node.nodeName);
+
   function toString(node) {
     switch (node.nodeName) {
       case 'function':
@@ -1453,7 +1468,7 @@ Evaluator.prototype.interpolate = function(node){
  * @api private
  */
 
-Evaluator.prototype.lookupFunction = function(name){
+lookupFunction(name) {
   var fn = this.functions[name] || bifs[name];
   if (fn) return new nodes.Function(name, fn);
 };
@@ -1466,7 +1481,7 @@ Evaluator.prototype.lookupFunction = function(name){
  * @api private
  */
 
-Evaluator.prototype.isDefined = function(node){
+isDefined(node) {
   if ('ident' == node.nodeName) {
     return nodes.Boolean(this.lookup(node.name));
   } else {
@@ -1485,7 +1500,7 @@ Evaluator.prototype.isDefined = function(node){
  * @api private
  */
 
-Evaluator.prototype.propertyExpression = function(prop, name){
+propertyExpression(prop, name) {
   var expr = new nodes.Expression
     , val = prop.expr.clone();
 
@@ -1515,7 +1530,7 @@ Evaluator.prototype.propertyExpression = function(prop, name){
  * @api private
  */
 
-Evaluator.prototype.cast = function(expr){
+cast(expr) {
   return new nodes.Unit(expr.first.val, expr.nodes[1].name);
 };
 
@@ -1527,11 +1542,11 @@ Evaluator.prototype.cast = function(expr){
  * @api private
  */
 
-Evaluator.prototype.castable = function(expr){
+castable(expr) {
   return 2 == expr.nodes.length
     && 'unit' == expr.first.nodeName
     && ~units.indexOf(expr.nodes[1].name);
-};
+}
 
 /**
  * Warn with the given `msg`.
@@ -1540,10 +1555,10 @@ Evaluator.prototype.castable = function(expr){
  * @api private
  */
 
-Evaluator.prototype.warn = function(msg){
+warn(msg) {
   if (!this.warnings) return;
   console.warn('\u001b[33mWarning:\u001b[0m ' + msg);
-};
+}
 
 /**
  * Return the current `Block`.
@@ -1552,9 +1567,9 @@ Evaluator.prototype.warn = function(msg){
  * @api private
  */
 
-Evaluator.prototype.__defineGetter__('currentBlock', function(){
+get currentBlock() {
   return this.stack.currentFrame.block;
-});
+}
 
 /**
  * Return an array of vendor names.
@@ -1563,11 +1578,11 @@ Evaluator.prototype.__defineGetter__('currentBlock', function(){
  * @api private
  */
 
-Evaluator.prototype.__defineGetter__('vendors', function(){
-  return this.lookup('vendors').nodes.map(function(node){
+get vendors() {
+  return this.lookup('vendors').nodes.map(function (node) {
     return node.string;
   });
-});
+}
 
 /**
  * Return the property name without vendor prefix.
@@ -1577,7 +1592,7 @@ Evaluator.prototype.__defineGetter__('vendors', function(){
  * @api public
  */
 
-Evaluator.prototype.unvendorize = function(prop){
+unvendorize(prop) {
   for (var i = 0, len = this.vendors.length; i < len; i++) {
     if ('official' != this.vendors[i]) {
       var vendor = '-' + this.vendors[i] + '-';
@@ -1594,9 +1609,9 @@ Evaluator.prototype.unvendorize = function(prop){
  * @api private
  */
 
-Evaluator.prototype.__defineGetter__('currentScope', function(){
+get currentScope() {
   return this.stack.currentFrame.scope;
-});
+}
 
 /**
  * Return the current `Frame`.
@@ -1605,6 +1620,7 @@ Evaluator.prototype.__defineGetter__('currentScope', function(){
  * @api private
  */
 
-Evaluator.prototype.__defineGetter__('currentFrame', function(){
+get currentFrame() {
   return this.stack.currentFrame;
-});
+}
+}

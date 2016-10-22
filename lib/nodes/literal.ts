@@ -9,8 +9,8 @@
  * Module dependencies.
  */
 
-var Node = require('./node')
-  , nodes = require('./');
+import Node = require('./node');
+import nodes = require('./');
 
 /**
  * Initialize a new `Literal` with the given `str`.
@@ -19,18 +19,12 @@ var Node = require('./node')
  * @api public
  */
 
-var Literal = module.exports = function Literal(str){
-  Node.call(this);
-  this.val = str;
-  this.string = str;
-  this.prefixed = false;
+export = class Literal extends Node {
+  prefixed = false;
+  constructor(public string){
+  super();
+  this.val = string;
 };
-
-/**
- * Inherit from `Node.prototype`.
- */
-
-Literal.prototype.__proto__ = Node.prototype;
 
 /**
  * Return hash.
@@ -39,9 +33,9 @@ Literal.prototype.__proto__ = Node.prototype;
  * @api public
  */
 
-Literal.prototype.__defineGetter__('hash', function(){
+get hash(){
   return this.val;
-});
+}
 
 /**
  * Return literal value.
@@ -50,7 +44,7 @@ Literal.prototype.__defineGetter__('hash', function(){
  * @api public
  */
 
-Literal.prototype.toString = function(){
+toString(){
   return this.val.toString();
 };
 
@@ -62,16 +56,16 @@ Literal.prototype.toString = function(){
  * @api public
  */
 
-Literal.prototype.coerce = function(other){
+coerce(other){
   switch (other.nodeName) {
     case 'ident':
     case 'string':
     case 'literal':
       return new Literal(other.string);
     default:
-      return Node.prototype.coerce.call(this, other);
+      return super.coerce(other);
   }
-};
+}
 
 /**
  * Operate on `right` with the given `op`.
@@ -82,15 +76,15 @@ Literal.prototype.coerce = function(other){
  * @api public
  */
 
-Literal.prototype.operate = function(op, right){
+operate(op, right){
   var val = right.first;
   switch (op) {
     case '+':
       return new nodes.Literal(this.string + this.coerce(val).string);
     default:
-      return Node.prototype.operate.call(this, op, right);
+      return super.operate(op, right);
   }
-};
+}
 
 /**
  * Return a JSON representation of this node.
@@ -99,7 +93,7 @@ Literal.prototype.operate = function(op, right){
  * @api public
  */
 
-Literal.prototype.toJSON = function(){
+toJSON(){
   return {
     __type: 'Literal',
     val: this.val,
@@ -109,4 +103,5 @@ Literal.prototype.toJSON = function(){
     column: this.column,
     filename: this.filename
   };
-};
+}
+}

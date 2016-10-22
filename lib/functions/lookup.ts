@@ -1,5 +1,5 @@
-var utils = require('../utils')
-  , nodes = require('../nodes');
+import utils = require('../utils');
+import nodes = require('../nodes');
 
 /**
  * Lookup variable `name` or return Null.
@@ -12,6 +12,6 @@ var utils = require('../utils')
 module.exports = function lookup(name){
   utils.assertType(name, 'string', 'name');
   var node = this.lookup(name.val);
-  if (!node) return nodes.null;
+  if (!node) return nodes.nullNode;
   return this.visit(node);
 };

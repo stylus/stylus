@@ -9,7 +9,7 @@
  * Module dependencies.
  */
 
-var Node = require('./node');
+import Node = require('./node');
 
 /**
  * Initialize a new `Call` with `name` and `args`.
@@ -19,17 +19,12 @@ var Node = require('./node');
  * @api public
  */
 
-var Call = module.exports = function Call(name, args){
-  Node.call(this);
-  this.name = name;
-  this.args = args;
-};
+export = class Call extends Node {
+  block;
 
-/**
- * Inherit from `Node.prototype`.
- */
-
-Call.prototype.__proto__ = Node.prototype;
+  constructor(public name, public args?){
+  super();
+}
 
 /**
  * Return a clone of this node.
@@ -38,7 +33,7 @@ Call.prototype.__proto__ = Node.prototype;
  * @api public
  */
 
-Call.prototype.clone = function(parent){
+clone(parent){
   var clone = new Call(this.name);
   clone.args = this.args.clone(parent, clone);
   if (this.block) clone.block = this.block.clone(parent, clone);
@@ -55,7 +50,7 @@ Call.prototype.clone = function(parent){
  * @api public
  */
 
-Call.prototype.toString = function(){
+toString(){
   var args = this.args.nodes.map(function(node) {
     var str = node.toString();
     return str.slice(1, str.length - 1);
@@ -71,8 +66,8 @@ Call.prototype.toString = function(){
  * @api public
  */
 
-Call.prototype.toJSON = function(){
-  var json = {
+toJSON(){
+  var json: any = {
     __type: 'Call',
     name: this.name,
     args: this.args,
@@ -82,4 +77,5 @@ Call.prototype.toJSON = function(){
   };
   if (this.block) json.block = this.block;
   return json;
-};
+}
+}

@@ -1,5 +1,5 @@
-var utils = require('../utils')
-  , nodes = require('../nodes');
+import utils = require('../utils');
+import nodes = require('../nodes');
 
 /**
  * Set a variable `name` on current scope.
@@ -10,7 +10,7 @@ var utils = require('../utils')
  * @api public
  */
 
-module.exports = function define(name, expr, global){
+export = function define(name, expr, global){
   utils.assertType(name, 'string', 'name');
   expr = utils.unwrap(expr);
   var scope = this.currentScope;
@@ -19,5 +19,5 @@ module.exports = function define(name, expr, global){
   }
   var node = new nodes.Ident(name.val, expr);
   scope.add(node);
-  return nodes.null;
+  return nodes.nullNode;
 };

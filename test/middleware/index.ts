@@ -1,5 +1,6 @@
-var stylus = require('../../')
-  , fs = require('fs');
+import stylus = require('../../');
+import fs = require('fs');
+import 'should';
 
 describe('middleware', function() {
     var res = {};

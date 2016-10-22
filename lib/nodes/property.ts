@@ -9,7 +9,7 @@
  * Module dependencies.
  */
 
-var Node = require('./node');
+import Node = require('./node');
 
 /**
  * Initialize a new `Property` with the given `segs` and optional `expr`.
@@ -19,17 +19,12 @@ var Node = require('./node');
  * @api public
  */
 
-var Property = module.exports = function Property(segs, expr){
-  Node.call(this);
-  this.segments = segs;
-  this.expr = expr;
-};
-
-/**
- * Inherit from `Node.prototype`.
- */
-
-Property.prototype.__proto__ = Node.prototype;
+export = class Property extends Node {
+  name;
+  literal;
+  constructor(public segments, public expr?){
+  super();
+}
 
 /**
  * Return a clone of this node.
@@ -38,7 +33,7 @@ Property.prototype.__proto__ = Node.prototype;
  * @api public
  */
 
-Property.prototype.clone = function(parent){
+clone(parent){
   var clone = new Property(this.segments);
   clone.name = this.name;
   if (this.literal) clone.literal = this.literal;
@@ -48,7 +43,7 @@ Property.prototype.clone = function(parent){
   clone.segments = this.segments.map(function(node){ return node.clone(parent, clone); });
   if (this.expr) clone.expr = this.expr.clone(parent, clone);
   return clone;
-};
+}
 
 /**
  * Return a JSON representation of this node.
@@ -57,8 +52,8 @@ Property.prototype.clone = function(parent){
  * @api public
  */
 
-Property.prototype.toJSON = function(){
-  var json = {
+toJSON(){
+  var json: any = {
     __type: 'Property',
     segments: this.segments,
     name: this.name,
@@ -69,7 +64,7 @@ Property.prototype.toJSON = function(){
   if (this.expr) json.expr = this.expr;
   if (this.literal) json.literal = this.literal;
   return json;
-};
+}
 
 /**
  * Return string representation of this node.
@@ -78,9 +73,9 @@ Property.prototype.toJSON = function(){
  * @api public
  */
 
-Property.prototype.toString = function(){
+toString(){
   return 'property(' + this.segments.join('') + ', ' + this.expr + ')';
-};
+}
 
 /**
  * Operate on the property expression.
@@ -91,6 +86,7 @@ Property.prototype.toString = function(){
  * @api public
  */
 
-Property.prototype.operate = function(op, right, val){
+operate(op, right, val){
   return this.expr.operate(op, right, val);
-};
+}
+}

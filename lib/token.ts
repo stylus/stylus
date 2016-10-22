@@ -9,7 +9,7 @@
  * Module dependencies.
  */
 
-var inspect = require('util').inspect;
+import {inspect} from 'util';
 
 /**
  * Initialize a new `Token` with the given `type` and `val`.
@@ -19,35 +19,30 @@ var inspect = require('util').inspect;
  * @api private
  */
 
-var Token = exports = module.exports = function Token(type, val) {
-  this.type = type;
-  this.val = val;
-};
+export = class Token {
+  lineno;
+  column;
+  space;
+  constructor(public type: string, public val?) {
+  }
 
-/**
- * Custom inspect.
- *
- * @return {String}
- * @api public
- */
+  /**
+   * Custom inspect.
+   */
+  inspect(): string {
+    var val = ' ' + inspect(this.val);
+    return '[Token:' + this.lineno + ':' + this.column + ' '
+      + '\x1b[32m' + this.type + '\x1b[0m'
+      + '\x1b[33m' + (this.val ? val : '') + '\x1b[0m'
+      + ']';
+  };
 
-Token.prototype.inspect = function(){
-  var val = ' ' + inspect(this.val);
-  return '[Token:' + this.lineno + ':' + this.column + ' '
-    + '\x1b[32m' + this.type + '\x1b[0m'
-    + '\x1b[33m' + (this.val ? val : '') + '\x1b[0m'
-    + ']';
-};
-
-/**
- * Return type or val.
- *
- * @return {String}
- * @api public
- */
-
-Token.prototype.toString = function(){
-  return (undefined === this.val
-    ? this.type
-    : this.val).toString();
-};
+  /**
+   * Return type or val.
+   */
+  toString() : string {
+    return (undefined === this.val
+      ? this.type
+      : this.val).toString();
+  }
+}

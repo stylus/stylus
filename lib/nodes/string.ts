@@ -8,10 +8,10 @@
  * Module dependencies.
  */
 
-var Node = require('./node')
-  , sprintf = require('../functions').s
-  , utils = require('../utils')
-  , nodes = require('./');
+import Node = require('./node');
+import {s as sprintf} from '../functions';
+import utils = require('../utils');
+import nodes = require('./');
 
 /**
  * Initialize a new `String` with the given `val`.
@@ -21,23 +21,24 @@ var Node = require('./node')
  * @api public
  */
 
-var String = module.exports = function String(val, quote){
-  Node.call(this);
-  this.val = val;
+export = class StringNode extends Node {
+  string;
+  prefixed = false;
+  quote;
+
+  constructor(public val, quote?){
+  super();
   this.string = val;
-  this.prefixed = false;
   if (typeof quote !== 'string') {
     this.quote = "'";
   } else {
     this.quote = quote;
   }
-};
+}
 
-/**
- * Inherit from `Node.prototype`.
- */
-
-String.prototype.__proto__ = Node.prototype;
+  get nodeName() {
+    return 'string';
+  }
 
 /**
  * Return quoted string.
@@ -46,9 +47,9 @@ String.prototype.__proto__ = Node.prototype;
  * @api public
  */
 
-String.prototype.toString = function(){
+toString(){
   return this.quote + this.val + this.quote;
-};
+}
 
 /**
  * Return a clone of this node.
@@ -57,13 +58,13 @@ String.prototype.toString = function(){
  * @api public
  */
 
-String.prototype.clone = function(){
-  var clone = new String(this.val, this.quote);
+clone(){
+  var clone = new StringNode(this.val, this.quote);
   clone.lineno = this.lineno;
   clone.column = this.column;
   clone.filename = this.filename;
   return clone;
-};
+}
 
 /**
  * Return a JSON representation of this node.
@@ -72,7 +73,7 @@ String.prototype.clone = function(){
  * @api public
  */
 
-String.prototype.toJSON = function(){
+toJSON(){
   return {
     __type: 'String',
     val: this.val,
@@ -81,7 +82,7 @@ String.prototype.toJSON = function(){
     column: this.column,
     filename: this.filename
   };
-};
+}
 
 /**
  * Return Boolean based on the length of this string.
@@ -90,9 +91,9 @@ String.prototype.toJSON = function(){
  * @api public
  */
 
-String.prototype.toBoolean = function(){
+toBoolean(){
   return nodes.Boolean(this.val.length);
-};
+}
 
 /**
  * Coerce `other` to a string.
@@ -102,18 +103,18 @@ String.prototype.toBoolean = function(){
  * @api public
  */
 
-String.prototype.coerce = function(other){
+coerce(other){
   switch (other.nodeName) {
     case 'string':
       return other;
     case 'expression':
-      return new String(other.nodes.map(function(node){
+      return new StringNode(other.nodes.map(function(node){
         return this.coerce(node).val;
       }, this).join(' '));
     default:
-      return new String(other.toString());
+      return new StringNode(other.toString());
   }
-};
+}
 
 /**
  * Operate on `right` with the given `op`.
@@ -124,7 +125,7 @@ String.prototype.coerce = function(other){
  * @api public
  */
 
-String.prototype.operate = function(op, right){
+operate(op, right){
   switch (op) {
     case '%':
       var expr = new nodes.Expression;
@@ -136,12 +137,13 @@ String.prototype.operate = function(op, right){
         : [right];
 
       // apply
-      return sprintf.apply(null, [expr].concat(args));
+      return sprintf.apply({}, [expr].concat(args));
     case '+':
       var expr = new nodes.Expression;
-      expr.push(new String(this.val + this.coerce(right).val));
+      expr.push(new StringNode(this.val + this.coerce(right).val));
       return expr;
     default:
-      return Node.prototype.operate.call(this, op, right);
+      return super.operate(op, right);
   }
-};
+}
+}

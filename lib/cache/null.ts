@@ -2,7 +2,7 @@
  * Module dependencies.
  */
 
-var NullCache = module.exports = function() {};
+export = class NullCache {
 
 /**
  * Set cache item with given `key` to `value`.
@@ -12,7 +12,7 @@ var NullCache = module.exports = function() {};
  * @api private
  */
 
-NullCache.prototype.set = function(key, value) {};
+set(key, value) {};
 
 /**
  * Get cache item with given `key`.
@@ -22,7 +22,7 @@ NullCache.prototype.set = function(key, value) {};
  * @api private
  */
 
-NullCache.prototype.get = function(key) {};
+get(key) {};
 
 /**
  * Check if cache has given `key`.
@@ -32,7 +32,7 @@ NullCache.prototype.get = function(key) {};
  * @api private
  */
 
-NullCache.prototype.has = function(key) {
+has(key) {
   return false;
 };
 
@@ -45,6 +45,7 @@ NullCache.prototype.has = function(key) {
  * @api private
  */
 
-NullCache.prototype.key = function(str, options) {
+key(str, options) {
   return '';
-};
+}
+}

@@ -1,4 +1,4 @@
-var utils = require('../utils');
+import utils = require('../utils');
 
 /**
  * Remove the given `key` from the `object`.
@@ -9,7 +9,7 @@ var utils = require('../utils');
  * @api public
  */
 
-module.exports = function remove(object, key){
+export = function remove(object, key){
   utils.assertType(object, 'object', 'object');
   utils.assertString(key, 'key');
   delete object.vals[key.string];

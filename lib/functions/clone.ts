@@ -1,4 +1,4 @@
-var utils = require('../utils');
+import utils = require('../utils');
 
 /**
  * Return a clone of the given `expr`.
@@ -8,7 +8,11 @@ var utils = require('../utils');
  * @api public
  */
 
-(module.exports = function clone(expr){
+export = class clone {
+	constructor(expr){
   utils.assertPresent(expr, 'expr');
   return expr.clone();
-}).raw = true;
+}
+
+	static raw = true;
+}

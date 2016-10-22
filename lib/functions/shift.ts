@@ -1,4 +1,4 @@
-var utils = require('../utils');
+import utils = require('../utils');
 
 /**
  * Shift an element from `expr`.
@@ -8,8 +8,12 @@ var utils = require('../utils');
  * @api public
  */
 
- (module.exports = function(expr){
+ export = class shift{
+   constructor(expr){
    expr = utils.unwrap(expr);
    return expr.nodes.shift();
- }).raw = true;
+ }
+
+	static raw = true;
+}
 

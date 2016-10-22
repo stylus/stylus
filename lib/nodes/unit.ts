@@ -9,8 +9,8 @@
  * Module dependencies.
  */
 
-var Node = require('./node')
-  , nodes = require('./');
+import Node = require('./node');
+import nodes = require('./');
 
 /**
  * Unit conversion table.
@@ -36,17 +36,9 @@ var FACTOR_TABLE = {
  * @api public
  */
 
-var Unit = module.exports = function Unit(val, type){
-  Node.call(this);
-  this.val = val;
-  this.type = type;
-};
-
-/**
- * Inherit from `Node.prototype`.
- */
-
-Unit.prototype.__proto__ = Node.prototype;
+export = class Unit extends Node {constructor(public val, public type){
+  super();
+}
 
 /**
  * Return Boolean based on the unit value.
@@ -55,11 +47,11 @@ Unit.prototype.__proto__ = Node.prototype;
  * @api public
  */
 
-Unit.prototype.toBoolean = function(){
+toBoolean(){
   return nodes.Boolean(this.type
       ? true
       : this.val);
-};
+}
 
 /**
  * Return unit string.
@@ -68,9 +60,9 @@ Unit.prototype.toBoolean = function(){
  * @api public
  */
 
-Unit.prototype.toString = function(){
+toString(){
   return this.val + (this.type || '');
-};
+}
 
 /**
  * Return a clone of this node.
@@ -79,13 +71,13 @@ Unit.prototype.toString = function(){
  * @api public
  */
 
-Unit.prototype.clone = function(){
+clone(){
   var clone = new Unit(this.val, this.type);
   clone.lineno = this.lineno;
   clone.column = this.column;
   clone.filename = this.filename;
   return clone;
-};
+}
 
 /**
  * Return a JSON representation of this node.
@@ -94,7 +86,7 @@ Unit.prototype.clone = function(){
  * @api public
  */
 
-Unit.prototype.toJSON = function(){
+toJSON(){
   return {
     __type: 'Unit',
     val: this.val,
@@ -103,7 +95,7 @@ Unit.prototype.toJSON = function(){
     column: this.column,
     filename: this.filename
   };
-};
+}
 
 /**
  * Operate on `right` with the given `op`.
@@ -114,7 +106,7 @@ Unit.prototype.toJSON = function(){
  * @api public
  */
 
-Unit.prototype.operate = function(op, right){
+operate(op, right){
   var type = this.type || right.first.type;
 
   // swap color
@@ -166,8 +158,8 @@ Unit.prototype.operate = function(op, right){
     }
   }
 
-  return Node.prototype.operate.call(this, op, right);
-};
+  return super.operate(op, right);
+}
 
 /**
  * Coerce `other` unit to the same type as `this` unit.
@@ -189,7 +181,7 @@ Unit.prototype.operate = function(op, right){
  * @api public
  */
 
-Unit.prototype.coerce = function(other){
+coerce(other){
   if ('unit' == other.nodeName) {
     var a = this
       , b = other
@@ -206,9 +198,10 @@ Unit.prototype.coerce = function(other){
     // keyframes interpolation
     if ('%' == other.val) return new nodes.Unit(0, '%');
     var val = parseFloat(other.val);
-    if (isNaN(val)) Node.prototype.coerce.call(this, other);
+    if (isNaN(val)) super.coerce(other);
     return new nodes.Unit(val);
   } else {
-    return Node.prototype.coerce.call(this, other);
+    return super.coerce(other);
   }
-};
+}
+}

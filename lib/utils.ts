@@ -9,13 +9,13 @@
  * Module dependencies.
  */
 
-var nodes = require('./nodes')
-  , basename = require('path').basename
-  , relative = require('path').relative
-  , join = require('path').join
-  , isAbsolute = require('path').isAbsolute
-  , glob = require('glob')
-  , fs = require('fs');
+import nodes = require('./nodes');
+import {basename} from 'path';
+import {relative} from 'path';
+import {join} from 'path';
+import {isAbsolute} from 'path';
+import glob = require('glob');
+import fs = require('fs');
 
 /**
  * Check if `path` looks absolute.
@@ -25,7 +25,7 @@ var nodes = require('./nodes')
  * @api private
  */
 
-exports.absolute = isAbsolute || function(path){
+export var absolute = isAbsolute || function(path){
   // On Windows the path could start with a drive letter, i.e. a:\\ or two leading backslashes.
   // Also on Windows, the path may have been normalized to forward slashes, so check for this too.
   return path.substr(0, 2) == '\\\\' || '/' === path.charAt(0) || /^[a-z]:[\\\/]/i.test(path);
@@ -42,7 +42,7 @@ exports.absolute = isAbsolute || function(path){
  * @api private
  */
 
-exports.lookup = function(path, paths, ignore){
+export function lookup(path, paths, ignore?){
   var lookup
     , i = paths.length;
 
@@ -70,7 +70,7 @@ exports.lookup = function(path, paths, ignore){
       // Ignore
     }
   }
-};
+}
 
 /**
  * Like `utils.lookup` but uses `glob` to find files.
@@ -81,7 +81,7 @@ exports.lookup = function(path, paths, ignore){
  * @return {Array}
  * @api private
  */
-exports.find = function(path, paths, ignore) {
+export function find(path, paths, ignore) {
   var lookup
     , found
     , i = paths.length;
@@ -101,17 +101,14 @@ exports.find = function(path, paths, ignore) {
       return found;
     }
   }
-};
+}
 
 /**
  * Lookup index file inside dir with given `name`.
  *
- * @param {String} name
- * @return {Array}
  * @api private
  */
-
-exports.lookupIndex = function(name, paths, filename){
+export function lookupIndex(name: string, paths, filename): any[] {
   // foo/index.styl
   var found = exports.find(join(name, 'index.styl'), paths, filename);
   if (!found) {
@@ -137,7 +134,7 @@ exports.lookupIndex = function(name, paths, filename){
     }
     return found;
   }
-};
+}
 
 /**
  * Format the given `err` with the given `options`.
@@ -152,23 +149,21 @@ exports.lookupIndex = function(name, paths, filename){
  *
  * @param {Error} err
  * @param {Object} options
- * @return {Error}
  * @api private
  */
 
-exports.formatException = function(err, options){
-  var lineno = options.lineno
+export function formatException(err, options): Error {
+  let lineno = options.lineno
     , column = options.column
     , filename = options.filename
     , str = options.input
-    , context = options.context || 8
-    , context = context / 2
+    , context: any = (options.context || 8) / 2
     , lines = ('\n' + str).split('\n')
     , start = Math.max(lineno - context, 1)
     , end = Math.min(lines.length, lineno + context)
     , pad = end.toString().length;
 
-  var context = lines.slice(start, end).map(function(line, i){
+  context = lines.slice(start, end).map((line, i) => {
     var curr = i + start;
     return '   '
       + Array(pad - curr.toString().length + 1).join(' ')
@@ -191,7 +186,7 @@ exports.formatException = function(err, options){
   if (err.fromStylus) err.stack = 'Error: ' + err.message;
 
   return err;
-};
+}
 
 /**
  * Assert that `node` is of the given `type`, or throw.
@@ -202,7 +197,7 @@ exports.formatException = function(err, options){
  * @api public
  */
 
-exports.assertType = function(node, type, param){
+export function assertType(node, type, param?){
   exports.assertPresent(node, param);
   if (node.nodeName == type) return;
   var actual = node.nodeName
@@ -211,7 +206,7 @@ exports.assertType = function(node, type, param){
       + type + ', but got '
       + actual + ':' + node;
   throw new Error('TypeError: ' + msg);
-};
+}
 
 /**
  * Assert that `node` is a `String` or `Ident`.
@@ -221,7 +216,7 @@ exports.assertType = function(node, type, param){
  * @api public
  */
 
-exports.assertString = function(node, param){
+export function assertString(node, param?){
   exports.assertPresent(node, param);
   switch (node.nodeName) {
     case 'string':
@@ -233,7 +228,7 @@ exports.assertString = function(node, param){
         , msg = 'expected string, ident or literal, but got ' + actual + ':' + node;
       throw new Error('TypeError: ' + msg);
   }
-};
+}
 
 /**
  * Assert that `node` is a `RGBA` or `HSLA`.
@@ -243,7 +238,7 @@ exports.assertString = function(node, param){
  * @api public
  */
 
-exports.assertColor = function(node, param){
+export function assertColor(node, param?){
   exports.assertPresent(node, param);
   switch (node.nodeName) {
     case 'rgba':
@@ -254,7 +249,7 @@ exports.assertColor = function(node, param){
         , msg = 'expected rgba or hsla, but got ' + actual + ':' + node;
       throw new Error('TypeError: ' + msg);
   }
-};
+}
 
 /**
  * Assert that param `name` is given, aka the `node` is passed.
@@ -264,11 +259,11 @@ exports.assertColor = function(node, param){
  * @api public
  */
 
-exports.assertPresent = function(node, name){
+export function assertPresent(node, name){
   if (node) return;
   if (name) throw new Error('"' + name + '" argument required');
   throw new Error('argument missing');
-};
+}
 
 /**
  * Unwrap `expr`.
@@ -281,14 +276,14 @@ exports.assertPresent = function(node, name){
  * @api public
  */
 
-exports.unwrap = function(expr){
+export function unwrap(expr){
   // explicitly preserve the expression
   if (expr.preserve) return expr;
   if ('arguments' != expr.nodeName && 'expression' != expr.nodeName) return expr;
   if (1 != expr.nodes.length) return expr;
   if ('arguments' != expr.nodes[0].nodeName && 'expression' != expr.nodes[0].nodeName) return expr;
   return exports.unwrap(expr.nodes[0]);
-};
+}
 
 /**
  * Coerce JavaScript values to their Stylus equivalents.
@@ -299,7 +294,7 @@ exports.unwrap = function(expr){
  * @api public
  */
 
-exports.coerce = function(val, raw){
+export function coerce(val, raw?){
   switch (typeof val) {
     case 'function':
       return val;
@@ -310,12 +305,12 @@ exports.coerce = function(val, raw){
     case 'number':
       return new nodes.Unit(val);
     default:
-      if (null == val) return nodes.null;
+      if (null == val) return nodes.nullNode;
       if (Array.isArray(val)) return exports.coerceArray(val, raw);
       if (val.nodeName) return val;
       return exports.coerceObject(val, raw);
   }
-};
+}
 
 /**
  * Coerce a javascript `Array` to a Stylus `Expression`.
@@ -326,13 +321,13 @@ exports.coerce = function(val, raw){
  * @api private
  */
 
-exports.coerceArray = function(val, raw){
+export function coerceArray(val, raw){
   var expr = new nodes.Expression;
   val.forEach(function(val){
     expr.push(exports.coerce(val, raw));
   });
   return expr;
-};
+}
 
 /**
  * Coerce a javascript object to a Stylus `Expression` or `Object`.
@@ -347,7 +342,7 @@ exports.coerceArray = function(val, raw){
  * @api public
  */
 
-exports.coerceObject = function(obj, raw){
+export function coerceObject(obj, raw){
   var node = raw ? new nodes.Object : new nodes.Expression
     , val;
 
@@ -362,7 +357,7 @@ exports.coerceObject = function(obj, raw){
   }
 
   return node;
-};
+}
 
 /**
  * Return param names for `fn`.
@@ -372,11 +367,11 @@ exports.coerceObject = function(obj, raw){
  * @api private
  */
 
-exports.params = function(fn){
+export function params(fn){
   return fn
     .toString()
     .match(/\(([^)]*)\)/)[1].split(/ *, */);
-};
+}
 
 /**
  * Merge object `b` with `a`.
@@ -387,7 +382,7 @@ exports.params = function(fn){
  * @return {Object} a
  * @api private
  */
-exports.merge = function(a, b, deep) {
+export function merge(a, b, deep?: number) {
   for (var k in b) {
     if (deep && a[k]) {
       var nodeA = exports.unwrap(a[k]).first
@@ -403,7 +398,7 @@ exports.merge = function(a, b, deep) {
     }
   }
   return a;
-};
+}
 
 /**
  * Returns an array with unique values.
@@ -413,7 +408,7 @@ exports.merge = function(a, b, deep) {
  * @api private
  */
 
-exports.uniq = function(arr){
+export function uniq(arr){
   var obj = {}
     , ret = [];
 
@@ -424,7 +419,7 @@ exports.uniq = function(arr){
     ret.push(arr[i]);
   }
   return ret;
-};
+}
 
 /**
  * Compile selector strings in `arr` from the bottom-up
@@ -447,7 +442,7 @@ exports.uniq = function(arr){
  * @api private
  */
 
-exports.compileSelectors = function(arr, leaveHidden){
+export function compileSelectors(arr, leaveHidden?){
   var selectors = []
     , Parser = require('./selector-parser')
     , indent = (this.indent || '')
@@ -499,7 +494,7 @@ exports.compileSelectors = function(arr, leaveHidden){
 
   // Return the list with unique selectors only
   return exports.uniq(selectors);
-};
+}
 
 /**
  * Attempt to parse string.
@@ -509,7 +504,7 @@ exports.compileSelectors = function(arr, leaveHidden){
  * @api private
  */
 
-exports.parseString = function(str){
+export function parseString(str){
   var Parser = require('./parser')
     , parser
     , ret;
@@ -521,4 +516,4 @@ exports.parseString = function(str){
     ret = new nodes.Literal(str);
   }
   return ret;
-};
+}

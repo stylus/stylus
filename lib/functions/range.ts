@@ -1,5 +1,5 @@
-var utils = require('../utils')
-  , nodes = require('../nodes');
+import utils = require('../utils');
+import nodes = require('../nodes');
 
 /**
  * Returns a list of units from `start` to `stop`
@@ -13,7 +13,7 @@ var utils = require('../utils')
  * @api public
  */
 
-module.exports = function range(start, stop, step){
+export = function range(start, stop, step){
   utils.assertType(start, 'unit', 'start');
   utils.assertType(stop, 'unit', 'stop');
   if (step) {

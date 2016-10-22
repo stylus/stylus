@@ -9,7 +9,7 @@
  * Module dependencies.
  */
 
-var Node = require('./node');
+import Node = require('./node');
 
 /**
  * Initialize a new `UnaryOp` with `op`, and `expr`.
@@ -19,17 +19,9 @@ var Node = require('./node');
  * @api public
  */
 
-var UnaryOp = module.exports = function UnaryOp(op, expr){
-  Node.call(this);
-  this.op = op;
-  this.expr = expr;
-};
-
-/**
- * Inherit from `Node.prototype`.
- */
-
-UnaryOp.prototype.__proto__ = Node.prototype;
+export = class UnaryOp extends Node {constructor(public op, public expr?){
+  super();
+}
 
 /**
  * Return a clone of this node.
@@ -38,7 +30,7 @@ UnaryOp.prototype.__proto__ = Node.prototype;
  * @api public
  */
 
-UnaryOp.prototype.clone = function(parent){
+clone(parent){
   var clone = new UnaryOp(this.op);
   clone.expr = this.expr.clone(parent, clone);
   clone.lineno = this.lineno;
@@ -54,7 +46,7 @@ UnaryOp.prototype.clone = function(parent){
  * @api public
  */
 
-UnaryOp.prototype.toJSON = function(){
+toJSON(){
   return {
     __type: 'UnaryOp',
     op: this.op,
@@ -63,4 +55,5 @@ UnaryOp.prototype.toJSON = function(){
     column: this.column,
     filename: this.filename
   };
-};
+}
+}

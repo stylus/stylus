@@ -9,7 +9,7 @@
  * Module dependencies.
  */
 
-var Node = require('./node');
+import Node = require('./node');
 
 /**
  * Initialize a new `BinOp` with `op`, `left` and `right`.
@@ -20,18 +20,10 @@ var Node = require('./node');
  * @api public
  */
 
-var BinOp = module.exports = function BinOp(op, left, right){
-  Node.call(this);
-  this.op = op;
-  this.left = left;
-  this.right = right;
-};
-
-/**
- * Inherit from `Node.prototype`.
- */
-
-BinOp.prototype.__proto__ = Node.prototype;
+export = class BinOp extends Node {
+  constructor(public op, public left?, public right?){
+  super();
+}
 
 /**
  * Return a clone of this node.
@@ -40,7 +32,7 @@ BinOp.prototype.__proto__ = Node.prototype;
  * @api public
  */
 
-BinOp.prototype.clone = function(parent){
+clone(parent){
   var clone = new BinOp(this.op);
   clone.left = this.left.clone(parent, clone);
   clone.right = this.right && this.right.clone(parent, clone);
@@ -57,7 +49,7 @@ BinOp.prototype.clone = function(parent){
  * @return {String}
  * @api public
  */
-BinOp.prototype.toString = function() {
+toString() {
   return this.left.toString() + ' ' + this.op + ' ' + this.right.toString();
 };
 
@@ -68,8 +60,8 @@ BinOp.prototype.toString = function() {
  * @api public
  */
 
-BinOp.prototype.toJSON = function(){
-  var json = {
+toJSON(){
+  var json: any = {
     __type: 'BinOp',
     left: this.left,
     right: this.right,
@@ -80,4 +72,5 @@ BinOp.prototype.toJSON = function(){
   };
   if (this.val) json.val = this.val;
   return json;
-};
+}
+}

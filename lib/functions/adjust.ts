@@ -1,4 +1,4 @@
-var utils = require('../utils');
+import utils = require('../utils');
 
 /**
  * Adjust HSL `color` `prop` by `amount`.
@@ -10,7 +10,7 @@ var utils = require('../utils');
  * @api private
  */
 
-module.exports = function adjust(color, prop, amount){
+export = function adjust(color, prop, amount){
   utils.assertColor(color, 'color');
   utils.assertString(prop, 'prop');
   utils.assertType(amount, 'unit', 'amount');

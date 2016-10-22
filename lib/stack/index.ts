@@ -11,15 +11,10 @@
  * @api private
  */
 
-var Stack = module.exports = function Stack() {
-  Array.apply(this, arguments);
-};
-
-/**
- * Inherit from `Array.prototype`.
- */
-
-Stack.prototype.__proto__ = Array.prototype;
+export = class Stack extends Array {
+  constructor() {
+  super((<any>arguments));
+}
 
 /**
  * Push the given `frame`.
@@ -28,7 +23,7 @@ Stack.prototype.__proto__ = Array.prototype;
  * @api public
  */
 
-Stack.prototype.push = function(frame){
+push(frame){
   frame.stack = this;
   frame.parent = this.currentFrame;
   return [].push.apply(this, arguments);
@@ -41,9 +36,9 @@ Stack.prototype.push = function(frame){
  * @api private
  */
 
-Stack.prototype.__defineGetter__('currentFrame', function(){
+get currentFrame(){
   return this[this.length - 1];
-});
+}
 
 /**
  * Lookup stack frame for the given `block`.
@@ -53,13 +48,13 @@ Stack.prototype.__defineGetter__('currentFrame', function(){
  * @api private
  */
 
-Stack.prototype.getBlockFrame = function(block){
+getBlockFrame(block){
   for (var i = 0; i < this.length; ++i) {
     if (block == this[i].block) {
       return this[i];
     }
   }
-};
+}
 
 /**
  * Lookup the given local variable `name`, relative
@@ -74,10 +69,9 @@ Stack.prototype.getBlockFrame = function(block){
  * @api private
  */
 
-Stack.prototype.lookup = function(name){
+lookup(name){
   var block = this.currentFrame.block
-    , val
-    , ret;
+    , val;
 
   do {
     var frame = this.getBlockFrame(block);
@@ -85,7 +79,7 @@ Stack.prototype.lookup = function(name){
       return val;
     }
   } while (block = block.parent);
-};
+}
 
 /**
  * Custom inspect.
@@ -94,11 +88,11 @@ Stack.prototype.lookup = function(name){
  * @api private
  */
 
-Stack.prototype.inspect = function(){
+inspect(){
   return this.reverse().map(function(frame){
     return frame.inspect();
   }).join('\n');
-};
+}
 
 /**
  * Return stack string formatted as:
@@ -109,7 +103,7 @@ Stack.prototype.inspect = function(){
  * @api private
  */
 
-Stack.prototype.toString = function(){
+toString(){
   var block
     , node
     , buf = []
@@ -132,4 +126,5 @@ Stack.prototype.toString = function(){
   }
 
   return buf.join('\n');
-};
+}
+}

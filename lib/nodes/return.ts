@@ -9,8 +9,8 @@
  * Module dependencies.
  */
 
-var Node = require('./node')
-  , nodes = require('./');
+import Node = require('./node');
+import nodes = require('./');
 
 /**
  * Initialize a new `Return` node with the given `expr`.
@@ -19,15 +19,10 @@ var Node = require('./node')
  * @api public
  */
 
-var Return = module.exports = function Return(expr){
-  this.expr = expr || nodes.null;
-};
-
-/**
- * Inherit from `Node.prototype`.
- */
-
-Return.prototype.__proto__ = Node.prototype;
+export = class Return extends Node {
+  constructor(public expr = nodes.nullNode){
+  super();
+}
 
 /**
  * Return a clone of this node.
@@ -36,14 +31,14 @@ Return.prototype.__proto__ = Node.prototype;
  * @api public
  */
 
-Return.prototype.clone = function(parent){
+clone(parent){
   var clone = new Return();
   clone.expr = this.expr.clone(parent, clone);
   clone.lineno = this.lineno;
   clone.column = this.column;
   clone.filename = this.filename;
   return clone;
-};
+}
 
 /**
  * Return a JSON representation of this node.
@@ -52,7 +47,7 @@ Return.prototype.clone = function(parent){
  * @api public
  */
 
-Return.prototype.toJSON = function(){
+toJSON(){
   return {
     __type: 'Return',
     expr: this.expr,
@@ -60,4 +55,5 @@ Return.prototype.toJSON = function(){
     column: this.column,
     filename: this.filename
   };
-};
+}
+}

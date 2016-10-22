@@ -9,9 +9,9 @@
  * Module dependencies.
  */
 
-var Evaluator = require('../visitor/evaluator')
-  , utils = require('../utils')
-  , nodes = require('./');
+import Evaluator = require('../visitor/evaluator');
+import utils = require('../utils');
+import nodes = require('./');
 
 /**
  * Initialize a new `CoercionError` with the given `msg`.
@@ -20,32 +20,30 @@ var Evaluator = require('../visitor/evaluator')
  * @api private
  */
 
-function CoercionError(msg) {
+class CoercionError extends Error {
+  constructor(msg) {
+    super();
   this.name = 'CoercionError';
   this.message = msg;
   Error.captureStackTrace(this, CoercionError);
 }
-
-/**
- * Inherit from `Error.prototype`.
- */
-
-CoercionError.prototype.__proto__ = Error.prototype;
-
+}
 /**
  * Node constructor.
  *
  * @api public
  */
 
-var Node = module.exports = function Node(){
+export = class Node {
+  lineno;
+  column;
+  filename;
+  val;
+  constructor(){
   this.lineno = nodes.lineno || 1;
   this.column = nodes.column || 1;
   this.filename = nodes.filename;
 };
-
-Node.prototype = {
-  constructor: Node,
 
   /**
    * Return this node.
@@ -56,7 +54,7 @@ Node.prototype = {
 
   get first() {
     return this;
-  },
+  }
 
   /**
    * Return hash.
@@ -67,7 +65,7 @@ Node.prototype = {
 
   get hash() {
     return this.val;
-  },
+  }
 
   /**
    * Return node name.
@@ -77,8 +75,8 @@ Node.prototype = {
    */
 
   get nodeName() {
-    return this.constructor.name.toLowerCase();
-  },
+    return (<any>this.constructor).name.toLowerCase();
+  }
 
   /**
    * Return this node.
@@ -87,9 +85,9 @@ Node.prototype = {
    * @api public
    */
 
-  clone: function(){
+  clone(..._): any {
     return this;
-  },
+  }
 
   /**
    * Return a JSON representation of this node.
@@ -98,13 +96,13 @@ Node.prototype = {
    * @api public
    */
 
-  toJSON: function(){
+  toJSON(): any {
     return {
       lineno: this.lineno,
       column: this.column,
       filename: this.filename
     };
-  },
+  }
 
   /**
    * Nodes by default evaluate to themselves.
@@ -113,9 +111,9 @@ Node.prototype = {
    * @api public
    */
 
-  eval: function(){
+  eval(){
     return new Evaluator(this).evaluate();
-  },
+  }
 
   /**
    * Return true.
@@ -124,9 +122,9 @@ Node.prototype = {
    * @api public
    */
 
-  toBoolean: function(){
-    return nodes.true;
-  },
+  toBoolean(){
+    return nodes.trueNode;
+  }
 
   /**
    * Return the expression, or wrap this node in an expression.
@@ -135,12 +133,12 @@ Node.prototype = {
    * @api public
    */
 
-  toExpression: function(){
+  toExpression(){
     if ('expression' == this.nodeName) return this;
     var expr = new nodes.Expression;
     expr.push(this);
     return expr;
-  },
+  }
 
   /**
    * Return false if `op` is generally not coerced.
@@ -150,7 +148,7 @@ Node.prototype = {
    * @api private
    */
 
-  shouldCoerce: function(op){
+  shouldCoerce(op: string): boolean {
     switch (op) {
       case 'is a':
       case 'in':
@@ -160,18 +158,13 @@ Node.prototype = {
       default:
         return true;
     }
-  },
+  }
 
   /**
    * Operate on `right` with the given `op`.
-   *
-   * @param {String} op
-   * @param {Node} right
-   * @return {Node}
-   * @api public
    */
 
-  operate: function(op, right){
+  operate(op: string, right: Node, val?): Node {
     switch (op) {
       case 'is a':
         if ('string' == right.first.nodeName) {
@@ -208,10 +201,10 @@ Node.prototype = {
 
         for (var i = 0; i < len; ++i) {
           if (hash == vals[i].hash) {
-            return nodes.true;
+            return nodes.trueNode;
           }
         }
-        return nodes.false;
+        return nodes.falseNode;
       case '&&':
         var a = this.toBoolean()
           , b = right.toBoolean();
@@ -233,7 +226,7 @@ Node.prototype = {
         }
         throw new Error(msg);
     }
-  },
+  }
 
   /**
    * Default coercion throws.
@@ -243,8 +236,8 @@ Node.prototype = {
    * @api public
    */
 
-  coerce: function(other){
+  coerce(other){
     if (other.nodeName == this.nodeName) return other;
     throw new CoercionError('cannot coerce ' + other + ' to ' + this.nodeName);
   }
-};
+}

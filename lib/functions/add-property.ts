@@ -1,5 +1,5 @@
-var utils = require('../utils')
-  , nodes = require('../nodes');
+import utils = require('../utils');
+import nodes = require('../nodes');
 
 /**
  * Add property `name` with the given `expr`
@@ -11,7 +11,9 @@ var utils = require('../utils')
  * @api public
  */
 
-(module.exports = function addProperty(name, expr){
+export = class addProperty {
+  private closestBlock;
+  constructor(name, expr){
   utils.assertType(name, 'expression', 'name');
   name = utils.unwrap(name).first;
   utils.assertString(name, 'name');
@@ -26,4 +28,7 @@ var utils = require('../utils')
   block.nodes = head.concat(tail);
 
   return prop;
-}).raw = true;
+}
+
+  static raw = true;
+}

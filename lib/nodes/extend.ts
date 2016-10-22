@@ -9,7 +9,7 @@
  * Module dependencies.
  */
 
-var Node = require('./node');
+import Node = require('./node');
 
 /**
  * Initialize a new `Extend` with the given `selectors` array.
@@ -18,16 +18,11 @@ var Node = require('./node');
  * @api public
  */
 
-var Extend = module.exports = function Extend(selectors){
-  Node.call(this);
+export = class Extend extends Node {
+  constructor(public selectors){
+  super();
   this.selectors = selectors;
-};
-
-/**
- * Inherit from `Node.prototype`.
- */
-
-Extend.prototype.__proto__ = Node.prototype;
+}
 
 /**
  * Return a clone of this node.
@@ -36,9 +31,9 @@ Extend.prototype.__proto__ = Node.prototype;
  * @api public
  */
 
-Extend.prototype.clone = function(){
+clone(){
   return new Extend(this.selectors);
-};
+}
 
 /**
  * Return `@extend selectors`.
@@ -47,9 +42,9 @@ Extend.prototype.clone = function(){
  * @api public
  */
 
-Extend.prototype.toString = function(){
+toString(){
   return '@extend ' + this.selectors.join(', ');
-};
+}
 
 /**
  * Return a JSON representation of this node.
@@ -58,7 +53,7 @@ Extend.prototype.toString = function(){
  * @api public
  */
 
-Extend.prototype.toJSON = function(){
+toJSON(){
   return {
     __type: 'Extend',
     selectors: this.selectors,
@@ -66,4 +61,5 @@ Extend.prototype.toJSON = function(){
     column: this.column,
     filename: this.filename
   };
-};
+}
+}

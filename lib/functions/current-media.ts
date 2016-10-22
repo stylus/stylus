@@ -1,4 +1,4 @@
-var nodes = require('../nodes');
+import nodes = require('../nodes');
 
 /**
  * Returns the @media string for the current block
@@ -7,7 +7,7 @@ var nodes = require('../nodes');
  * @api public
  */
 
-module.exports = function currentMedia(){
+export = function currentMedia(){
   var self = this;
   return new nodes.String(lookForMedia(this.closestBlock.node) || '');
 

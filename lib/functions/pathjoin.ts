@@ -1,4 +1,4 @@
-var path = require('path');
+import path = require('path');
 
 /**
  * Peform a path join.
@@ -8,9 +8,13 @@ var path = require('path');
  * @api public
  */
 
-(module.exports = function pathjoin(){
+export = class pathjoin {
+	constructor(){
   var paths = [].slice.call(arguments).map(function(path){
     return path.first.string;
   });
   return path.join.apply(null, paths).replace(/\\/g, '/');
-}).raw = true;
+}
+
+	static raw = true;
+}

@@ -7,7 +7,7 @@
  * @api private
  */
 
-var getCache = module.exports = function(name, options){
+export = function getCache(name, options?){
   if ('function' == typeof name) return new name(options);
 
   var cache;
@@ -22,4 +22,4 @@ var getCache = module.exports = function(name, options){
       cache = require('./null');
   }
   return new cache(options);
-};
+}

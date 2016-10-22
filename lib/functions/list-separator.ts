@@ -1,5 +1,5 @@
-var utils = require('../utils')
-  , nodes = require('../nodes');
+import utils = require('../utils');
+import nodes = require('../nodes');
 
 /**
  * Return the separator of the given `list`.
@@ -19,7 +19,11 @@ var utils = require('../utils')
  * @api public
  */
 
-(module.exports = function listSeparator(list){
+export = class listSeparator {
+	constructor(list){
   list = utils.unwrap(list);
   return new nodes.String(list.isList ? ',' : ' ');
-}).raw = true;
+}
+
+	static raw = true;
+}

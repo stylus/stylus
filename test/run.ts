@@ -3,13 +3,14 @@
  * Module dependencies.
  */
 
-var stylus = require('../')
-  , fs = require('fs')
-  , should = require('should');
+import stylus = require('../');
+import fs = require('fs');
+import 'should';
 
 // integration cases
 
 addSuite('integration', readDir('test/cases'), function(test){
+  console.log('test:', test);
   var path = 'test/cases/' + test + '.styl'
     , styl = readFile(path)
     , css = readFile('test/cases/' + test + '.css')
@@ -30,6 +31,34 @@ addSuite('integration', readDir('test/cases'), function(test){
     actual.trim().should.equal(css);
   });
 }, ['index']);
+
+// var test2 = 'bifs.s';
+// describe.only('integration2', function(){
+//
+//     it(test2, function(){
+//       console.log('styl:' + 'test/cases/' + test2 + '.styl');
+//       console.log('css:' + 'test/cases/' + test2 + '.css');
+//       var path = 'test/cases/' + test2+ '.styl'
+//         , styl = readFile(path)
+//         , css = readFile('test/cases/' + test2 + '.css')
+//         , style = stylus(styl)
+//         .set('filename', path)
+//         .include(__dirname + '/images')
+//         .include(__dirname + '/cases/import.basic')
+//         .define('url', stylus.url());
+//
+//       if (~test2.indexOf('compress')) style.set('compress', true);
+//       if (~test2.indexOf('include')) style.set('include css', true);
+//       if (~test2.indexOf('prefix.')) style.set('prefix', 'prefix-');
+//       if (~test2.indexOf('hoist.')) style.set('hoist atrules', true);
+//       if (~test2.indexOf('resolver')) style.define('url', stylus.resolver());
+//
+//       style.render(function(err, actual){
+//         if (err) throw err;
+//         actual.trim().should.equal(css);
+//       });
+//     });
+// });
 
 // converter cases
 
@@ -185,9 +214,9 @@ describe('JS API', function(){
     var path = __dirname + '/cases/import.loop/'
       , styl = fs.readFileSync(path + 'test.styl', 'utf-8');
 
-    (function() {
+    (<any>(function() {
       stylus(styl, { paths: [path] }).render();
-    }).should.throw(/import loop has been found/);
+    })).should.throw(/import loop has been found/);
   });
 
   it('conditional assignment with define', function(){
@@ -210,7 +239,7 @@ describe('JS API', function(){
 
 // helper functions
 
-function addSuite(desc, cases, fn, ignore) {
+function addSuite(desc, cases, fn, ignore?) {
   describe(desc, function(){
     cases.forEach(function(test){
       var name = normalizeName(test);
@@ -221,7 +250,7 @@ function addSuite(desc, cases, fn, ignore) {
   });
 }
 
-function readDir(dir, ext){
+function readDir(dir, ext?){
   ext = ext || '.styl';
   return fs.readdirSync(dir).filter(function(file){
     return ~file.indexOf(ext);

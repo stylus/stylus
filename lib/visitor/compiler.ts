@@ -8,9 +8,9 @@
  * Module dependencies.
  */
 
-var Visitor = require('./')
-  , utils = require('../utils')
-  , fs = require('fs');
+import Visitor = require('./');
+import utils = require('../utils');
+import fs = require('fs');
 
 /**
  * Initialize a new `Compiler` with the given `root` Node
@@ -24,22 +24,28 @@ var Visitor = require('./')
  * @api public
  */
 
-var Compiler = module.exports = function Compiler(root, options) {
-  options = options || {};
+export = class Compiler extends Visitor {
+  compress;
+  firebug;
+  linenos;
+  spaces;
+  indents;
+  stack;
+  buf;
+  last;
+  keyframe;
+  isCondition;
+  isURL;
+
+  constructor(root, options: any = {}) {
+  super(root);
   this.compress = options.compress;
   this.firebug = options.firebug;
   this.linenos = options.linenos;
   this.spaces = options['indent spaces'] || 2;
   this.indents = 1;
-  Visitor.call(this, root);
   this.stack = [];
 };
-
-/**
- * Inherit from `Visitor.prototype`.
- */
-
-Compiler.prototype.__proto__ = Visitor.prototype;
 
 /**
  * Compile to css, and return a string of CSS.
@@ -48,7 +54,7 @@ Compiler.prototype.__proto__ = Visitor.prototype;
  * @api private
  */
 
-Compiler.prototype.compile = function(){
+compile() {
   return this.visit(this.root);
 };
 
@@ -61,7 +67,7 @@ Compiler.prototype.compile = function(){
  * @api private
  */
 
-Compiler.prototype.out = function(str, node){
+out(str, node?) {
   return str;
 };
 
@@ -72,10 +78,10 @@ Compiler.prototype.out = function(str, node){
  * @api private
  */
 
-Compiler.prototype.__defineGetter__('indent', function(){
+get indent() {
   if (this.compress) return '';
   return new Array(this.indents).join(Array(this.spaces + 1).join(' '));
-});
+}
 
 /**
  * Check if given `node` needs brackets.
@@ -85,7 +91,7 @@ Compiler.prototype.__defineGetter__('indent', function(){
  * @api private
  */
 
-Compiler.prototype.needBrackets = function(node){
+needBrackets(node) {
   return 1 == this.indents
     || 'atrule' != node.nodeName
     || node.hasOnlyProperties;
@@ -95,7 +101,7 @@ Compiler.prototype.needBrackets = function(node){
  * Visit Root.
  */
 
-Compiler.prototype.visitRoot = function(block){
+visitRoot(block) {
   this.buf = '';
   for (var i = 0, len = block.nodes.length; i < len; ++i) {
     var node = block.nodes[i];
@@ -110,7 +116,7 @@ Compiler.prototype.visitRoot = function(block){
  * Visit Block.
  */
 
-Compiler.prototype.visitBlock = function(block){
+visitBlock(block) {
   var node
     , separator = this.compress ? '' : '\n'
     , needBrackets
@@ -120,12 +126,12 @@ Compiler.prototype.visitBlock = function(block){
     needBrackets = this.needBrackets(block.node);
 
     if (this.compress) {
-        for (var i = block.nodes.length - 1; i >= 0; --i) {
-            if (block.nodes[i].nodeName === 'property') {
-                lastPropertyIndex = i;
-                break;
-            }
+      for (var i = block.nodes.length - 1; i >= 0; --i) {
+        if (block.nodes[i].nodeName === 'property') {
+          lastPropertyIndex = i;
+          break;
         }
+      }
     }
     if (needBrackets) {
       this.buf += this.out(this.compress ? '{' : ' {\n');
@@ -200,7 +206,7 @@ Compiler.prototype.visitBlock = function(block){
  * Visit Keyframes.
  */
 
-Compiler.prototype.visitKeyframes = function(node){
+visitKeyframes(node) {
   if (!node.frames) return;
 
   var prefix = 'official' == node.prefix
@@ -224,7 +230,7 @@ Compiler.prototype.visitKeyframes = function(node){
  * Visit Media.
  */
 
-Compiler.prototype.visitMedia = function(media){
+visitMedia(media) {
   var val = media.val;
   if (!media.hasOutput || !val.nodes.length) return;
 
@@ -241,7 +247,7 @@ Compiler.prototype.visitMedia = function(media){
  * Visit QueryList.
  */
 
-Compiler.prototype.visitQueryList = function(queries){
+visitQueryList(queries) {
   for (var i = 0, len = queries.nodes.length; i < len; ++i) {
     this.visit(queries.nodes[i]);
     if (len - 1 != i) this.buf += this.out(',' + (this.compress ? '' : ' '));
@@ -252,7 +258,7 @@ Compiler.prototype.visitQueryList = function(queries){
  * Visit Query.
  */
 
-Compiler.prototype.visitQuery = function(node){
+visitQuery(node) {
   var len = node.nodes.length;
   if (node.predicate) this.buf += this.out(node.predicate + ' ');
   if (node.type) this.buf += this.out(node.type + (len ? ' and ' : ''));
@@ -266,7 +272,7 @@ Compiler.prototype.visitQuery = function(node){
  * Visit Feature.
  */
 
-Compiler.prototype.visitFeature = function(node){
+visitFeature(node) {
   if (!node.expr) {
     return node.name;
   } else if (node.expr.isEmpty) {
@@ -280,7 +286,7 @@ Compiler.prototype.visitFeature = function(node){
  * Visit Import.
  */
 
-Compiler.prototype.visitImport = function(imported){
+visitImport(imported) {
   this.buf += this.out('@import ' + this.visit(imported.path) + ';\n', imported);
 };
 
@@ -288,7 +294,7 @@ Compiler.prototype.visitImport = function(imported){
  * Visit Atrule.
  */
 
-Compiler.prototype.visitAtrule = function(atrule){
+visitAtrule(atrule) {
   var newline = this.compress ? '' : '\n';
 
   this.buf += this.out(this.indent + '@' + atrule.type, atrule);
@@ -314,7 +320,7 @@ Compiler.prototype.visitAtrule = function(atrule){
  * Visit Supports.
  */
 
-Compiler.prototype.visitSupports = function(node){
+visitSupports(node) {
   if (!node.hasOutput) return;
 
   this.buf += this.out(this.indent + '@supports ', node);
@@ -326,17 +332,17 @@ Compiler.prototype.visitSupports = function(node){
   this.visit(node.block);
   --this.indents;
   this.buf += this.out(this.indent + '}' + (this.compress ? '' : '\n'));
-},
+}
 
 /**
  * Visit Comment.
  */
 
-Compiler.prototype.visitComment = function(comment){
+visitComment(comment) {
   return this.compress
     ? comment.suppress
-      ? ''
-      : comment.str
+    ? ''
+    : comment.str
     : comment.str;
 };
 
@@ -344,7 +350,7 @@ Compiler.prototype.visitComment = function(comment){
  * Visit Function.
  */
 
-Compiler.prototype.visitFunction = function(fn){
+visitFunction(fn) {
   return fn.name;
 };
 
@@ -352,7 +358,7 @@ Compiler.prototype.visitFunction = function(fn){
  * Visit Charset.
  */
 
-Compiler.prototype.visitCharset = function(charset){
+visitCharset(charset) {
   return '@charset ' + this.visit(charset.val) + ';';
 };
 
@@ -360,7 +366,7 @@ Compiler.prototype.visitCharset = function(charset){
  * Visit Namespace.
  */
 
-Compiler.prototype.visitNamespace = function(namespace){
+visitNamespace(namespace) {
   return '@namespace '
     + (namespace.prefix ? this.visit(namespace.prefix) + ' ' : '')
     + this.visit(namespace.val) + ';';
@@ -370,7 +376,7 @@ Compiler.prototype.visitNamespace = function(namespace){
  * Visit Literal.
  */
 
-Compiler.prototype.visitLiteral = function(lit){
+visitLiteral(lit) {
   var val = lit.val;
   if (lit.css) val = val.replace(/^  /gm, '');
   return val;
@@ -380,7 +386,7 @@ Compiler.prototype.visitLiteral = function(lit){
  * Visit Boolean.
  */
 
-Compiler.prototype.visitBoolean = function(bool){
+visitBoolean(bool) {
   return bool.toString();
 };
 
@@ -388,7 +394,7 @@ Compiler.prototype.visitBoolean = function(bool){
  * Visit RGBA.
  */
 
-Compiler.prototype.visitRGBA = function(rgba){
+visitRGBA(rgba) {
   return rgba.toString();
 };
 
@@ -396,7 +402,7 @@ Compiler.prototype.visitRGBA = function(rgba){
  * Visit HSLA.
  */
 
-Compiler.prototype.visitHSLA = function(hsla){
+visitHSLA(hsla) {
   return hsla.rgba.toString();
 };
 
@@ -404,7 +410,7 @@ Compiler.prototype.visitHSLA = function(hsla){
  * Visit Unit.
  */
 
-Compiler.prototype.visitUnit = function(unit){
+visitUnit(unit) {
   var type = unit.type || ''
     , n = unit.val
     , float = n != (n | 0);
@@ -426,7 +432,7 @@ Compiler.prototype.visitUnit = function(unit){
  * Visit Group.
  */
 
-Compiler.prototype.visitGroup = function(group){
+visitGroup(group) {
   var stack = this.keyframe ? [] : this.stack
     , comma = this.compress ? ',' : ',\n';
 
@@ -463,7 +469,7 @@ Compiler.prototype.visitGroup = function(group){
  * Visit Ident.
  */
 
-Compiler.prototype.visitIdent = function(ident){
+visitIdent(ident) {
   return ident.name;
 };
 
@@ -471,7 +477,7 @@ Compiler.prototype.visitIdent = function(ident){
  * Visit String.
  */
 
-Compiler.prototype.visitString = function(string){
+visitStringNode(string) {
   return this.isURL
     ? string.val
     : string.toString();
@@ -481,7 +487,7 @@ Compiler.prototype.visitString = function(string){
  * Visit Null.
  */
 
-Compiler.prototype.visitNull = function(node){
+visitNull(node) {
   return '';
 };
 
@@ -489,9 +495,9 @@ Compiler.prototype.visitNull = function(node){
  * Visit Call.
  */
 
-Compiler.prototype.visitCall = function(call){
+visitCall(call) {
   this.isURL = 'url' == call.name;
-  var args = call.args.nodes.map(function(arg){
+  var args = call.args.nodes.map(function (arg) {
     return this.visit(arg);
   }, this).join(this.compress ? ',' : ', ');
   if (this.isURL) args = '"' + args + '"';
@@ -503,21 +509,23 @@ Compiler.prototype.visitCall = function(call){
  * Visit Expression.
  */
 
-Compiler.prototype.visitExpression = function(expr){
+visitExpression(expr) {
   var buf = []
     , self = this
     , len = expr.nodes.length
-    , nodes = expr.nodes.map(function(node){ return self.visit(node); });
+    , nodes = expr.nodes.map(function (node) {
+    return self.visit(node);
+  });
 
-  nodes.forEach(function(node, i){
+  nodes.forEach(function (node, i) {
     var last = i == len - 1;
     buf.push(node);
     if ('/' == nodes[i + 1] || '/' == node) return;
     if (last) return;
 
     var space = self.isURL || (self.isCondition
-        && (')' == nodes[i + 1] || '(' == node))
-        ? '' : ' ';
+    && (')' == nodes[i + 1] || '(' == node))
+      ? '' : ' ';
 
     buf.push(expr.isList
       ? (self.compress ? ',' : ', ')
@@ -531,13 +539,13 @@ Compiler.prototype.visitExpression = function(expr){
  * Visit Arguments.
  */
 
-Compiler.prototype.visitArguments = Compiler.prototype.visitExpression;
+visitArguments = this.visitExpression;
 
 /**
  * Visit Property.
  */
 
-Compiler.prototype.visitProperty = function(prop){
+visitProperty(prop) {
   var val = this.visit(prop.expr).trim()
     , name = (prop.name || prop.segments.join(''))
     , arr = [];
@@ -554,23 +562,24 @@ Compiler.prototype.visitProperty = function(prop){
  * Debug info.
  */
 
-Compiler.prototype.debugInfo = function(node){
+debugInfo(node) {
 
   var path = node.filename == 'stdin' ? 'stdin' : fs.realpathSync(node.filename)
     , line = (node.nodes && node.nodes.length ? node.nodes[0].lineno : node.lineno) || 1;
 
-  if (this.linenos){
+  if (this.linenos) {
     this.buf += '\n/* ' + 'line ' + line + ' : ' + path + ' */\n';
   }
 
-  if (this.firebug){
+  if (this.firebug) {
     // debug info for firebug, the crazy formatting is needed
-    path = 'file\\\:\\\/\\\/' + path.replace(/([.:/\\])/g, function(m) {
-      return '\\' + (m === '\\' ? '\/' : m)
-    });
+    path = 'file\\\:\\\/\\\/' + path.replace(/([.:/\\])/g, function (m) {
+        return '\\' + (m === '\\' ? '\/' : m)
+      });
     line = '\\00003' + line;
     this.buf += '\n@media -stylus-debug-info'
       + '{filename{font-family:' + path
       + '}line{font-family:' + line + '}}\n';
   }
+}
 }

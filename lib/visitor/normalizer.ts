@@ -9,9 +9,9 @@
  * Module dependencies.
  */
 
-var Visitor = require('./')
-  , nodes = require('../nodes')
-  , utils = require('../utils');
+import Visitor = require('./');
+import nodes = require('../nodes');
+import utils = require('../utils');
 
 /**
  * Initialize a new `Normalizer` with the given `root` Node.
@@ -27,20 +27,20 @@ var Visitor = require('./')
  * @api public
  */
 
-var Normalizer = module.exports = function Normalizer(root, options) {
-  options = options || {};
-  Visitor.call(this, root);
+export = class Normalizer extends Visitor {
+  private hoist;
+  private stack;
+  private map;
+  private imports;
+  private rootIndex;
+  private charset;
+  constructor(root, options = {}) {
+  super(root);
   this.hoist = options['hoist atrules'];
   this.stack = [];
   this.map = {};
   this.imports = [];
 };
-
-/**
- * Inherit from `Visitor.prototype`.
- */
-
-Normalizer.prototype.__proto__ = Visitor.prototype;
 
 /**
  * Normalize the node tree.
@@ -49,7 +49,7 @@ Normalizer.prototype.__proto__ = Visitor.prototype;
  * @api private
  */
 
-Normalizer.prototype.normalize = function(){
+normalize() {
   var ret = this.visit(this.root);
 
   if (this.hoist) {
@@ -70,13 +70,13 @@ Normalizer.prototype.normalize = function(){
  * @api private
  */
 
-Normalizer.prototype.bubble = function(node){
+bubble(node) {
   var props = []
     , other = []
     , self = this;
 
   function filterProps(block) {
-    block.nodes.forEach(function(node) {
+    block.nodes.forEach(function (node) {
       node = self.visit(node);
 
       switch (node.nodeName) {
@@ -111,7 +111,7 @@ Normalizer.prototype.bubble = function(node){
     block.column = node.column;
     block.filename = node.filename;
 
-    props.forEach(function(prop){
+    props.forEach(function (prop) {
       block.push(prop);
     });
 
@@ -120,7 +120,7 @@ Normalizer.prototype.bubble = function(node){
 
     node.block.nodes = [];
     node.block.push(group);
-    other.forEach(function(n){
+    other.forEach(function (n) {
       node.block.push(n);
     });
 
@@ -139,7 +139,7 @@ Normalizer.prototype.bubble = function(node){
  * @api private
  */
 
-Normalizer.prototype.closestGroup = function(block){
+closestGroup(block) {
   var parent = block.parent
     , node;
   while (parent && (node = parent.node)) {
@@ -152,7 +152,7 @@ Normalizer.prototype.closestGroup = function(block){
  * Visit Root.
  */
 
-Normalizer.prototype.visitRoot = function(block){
+visitRoot(block) {
   var ret = new nodes.Root
     , node;
 
@@ -178,7 +178,7 @@ Normalizer.prototype.visitRoot = function(block){
  * Visit Property.
  */
 
-Normalizer.prototype.visitProperty = function(prop){
+visitProperty(prop) {
   this.visit(prop.expr);
   return prop;
 };
@@ -187,8 +187,8 @@ Normalizer.prototype.visitProperty = function(prop){
  * Visit Expression.
  */
 
-Normalizer.prototype.visitExpression = function(expr){
-  expr.nodes = expr.nodes.map(function(node){
+visitExpression(expr) {
+  expr.nodes = expr.nodes.map(function (node) {
     // returns `block` literal if mixin's block
     // is used as part of a property value
     if ('block' == node.nodeName) {
@@ -206,7 +206,7 @@ Normalizer.prototype.visitExpression = function(expr){
  * Visit Block.
  */
 
-Normalizer.prototype.visitBlock = function(block){
+visitBlock(block) {
   var node;
 
   if (block.hasProperties) {
@@ -239,13 +239,13 @@ Normalizer.prototype.visitBlock = function(block){
  * Visit Group.
  */
 
-Normalizer.prototype.visitGroup = function(group){
+visitGroup(group) {
   var stack = this.stack
     , map = this.map
     , parts;
 
   // normalize interpolated selectors with comma
-  group.nodes.forEach(function(selector, i){
+  group.nodes.forEach(function (selector, i) {
     if (!~selector.val.indexOf(',')) return;
     if (~selector.val.indexOf('\\,')) {
       selector.val = selector.val.replace(/\\,/g, ',');
@@ -254,7 +254,7 @@ Normalizer.prototype.visitGroup = function(group){
     parts = selector.val.split(',');
     var root = '/' == selector.val.charAt(0)
       , part, s;
-    for (var k = 0, len = parts.length; k < len; ++k){
+    for (var k = 0, len = parts.length; k < len; ++k) {
       part = parts[k].trim();
       if (root && k > 0 && !~part.indexOf('&')) {
         part = '/' + part;
@@ -270,7 +270,7 @@ Normalizer.prototype.visitGroup = function(group){
   var selectors = utils.compileSelectors(stack, true);
 
   // map for extension lookup
-  selectors.forEach(function(selector){
+  selectors.forEach(function (selector) {
     map[selector] = map[selector] || [];
     map[selector].push(group);
   });
@@ -286,26 +286,26 @@ Normalizer.prototype.visitGroup = function(group){
  * Visit Function.
  */
 
-Normalizer.prototype.visitFunction = function(){
-  return nodes.null;
+visitFunction() {
+  return nodes.nullNode;
 };
 
 /**
  * Visit Media.
  */
 
-Normalizer.prototype.visitMedia = function(media){
+visitMedia(media) {
   var medias = []
     , group = this.closestGroup(media.block)
     , parent;
 
   function mergeQueries(block) {
-    block.nodes.forEach(function(node, i){
+    block.nodes.forEach(function (node, i) {
       switch (node.nodeName) {
         case 'media':
           node.val = media.val.merge(node.val);
           medias.push(node);
-          block.nodes[i] = nodes.null;
+          block.nodes[i] = nodes.nullNode;
           break;
         case 'block':
           mergeQueries(node);
@@ -321,7 +321,7 @@ Normalizer.prototype.visitMedia = function(media){
   this.bubble(media);
 
   if (medias.length) {
-    medias.forEach(function(node){
+    medias.forEach(function (node) {
       if (group) {
         group.block.push(node);
       } else {
@@ -342,7 +342,7 @@ Normalizer.prototype.visitMedia = function(media){
  * Visit Supports.
  */
 
-Normalizer.prototype.visitSupports = function(node){
+visitSupports(node) {
   this.bubble(node);
   return node;
 };
@@ -351,7 +351,7 @@ Normalizer.prototype.visitSupports = function(node){
  * Visit Atrule.
  */
 
-Normalizer.prototype.visitAtrule = function(node){
+visitAtrule(node) {
   if (node.block) node.block = this.visit(node.block);
   return node;
 };
@@ -360,8 +360,8 @@ Normalizer.prototype.visitAtrule = function(node){
  * Visit Keyframes.
  */
 
-Normalizer.prototype.visitKeyframes = function(node){
-  var frames = node.block.nodes.filter(function(frame){
+visitKeyframes(node) {
+  var frames = node.block.nodes.filter(function (frame) {
     return frame.block && frame.block.hasProperties;
   });
   node.frames = frames.length;
@@ -372,18 +372,18 @@ Normalizer.prototype.visitKeyframes = function(node){
  * Visit Import.
  */
 
-Normalizer.prototype.visitImport = function(node){
+visitImport(node) {
   this.imports.push(node);
-  return this.hoist ? nodes.null : node;
+  return this.hoist ? nodes.nullNode : node;
 };
 
 /**
  * Visit Charset.
  */
 
-Normalizer.prototype.visitCharset = function(node){
+visitCharset(node) {
   this.charset = node;
-  return this.hoist ? nodes.null : node;
+  return this.hoist ? nodes.nullNode : node;
 };
 
 /**
@@ -394,25 +394,25 @@ Normalizer.prototype.visitCharset = function(node){
  * @api private
  */
 
-Normalizer.prototype.extend = function(group, selectors){
+extend(group, selectors) {
   var map = this.map
     , self = this
     , parent = this.closestGroup(group.block);
 
-  group.extends.forEach(function(extend){
+  group.extends.forEach(function (extend) {
     var groups = map[extend.selector];
     if (!groups) {
       if (extend.optional) return;
-      var err = new Error('Failed to @extend "' + extend.selector + '"');
+      var err: any = new Error('Failed to @extend "' + extend.selector + '"');
       err.lineno = extend.lineno;
       err.column = extend.column;
       throw err;
     }
-    selectors.forEach(function(selector){
+    selectors.forEach(function (selector) {
       var node = new nodes.Selector;
       node.val = selector;
       node.inherits = false;
-      groups.forEach(function(group){
+      groups.forEach(function (group) {
         // prevent recursive extend
         if (!parent || (parent != group)) self.extend(group, selectors);
         group.push(node);
@@ -422,3 +422,4 @@ Normalizer.prototype.extend = function(group, selectors){
 
   group.block = this.visit(group.block);
 };
+}

@@ -9,7 +9,7 @@
  * Module dependencies.
  */
 
-var Node = require('./node');
+import Node = require('./node');
 
 /**
  * Initialize a new `Function` with `name`, `params`, and `body`.
@@ -20,13 +20,14 @@ var Node = require('./node');
  * @api public
  */
 
-var Function = module.exports = function Function(name, params, body){
-  Node.call(this);
-  this.name = name;
-  this.params = params;
-  this.block = body;
+export = class Function extends Node {
+  private fn;
+  private block;
+
+  constructor(public name, public params?, public body?){
+  super();
   if ('function' == typeof params) this.fn = params;
-};
+}
 
 /**
  * Check function arity.
@@ -35,15 +36,9 @@ var Function = module.exports = function Function(name, params, body){
  * @api public
  */
 
-Function.prototype.__defineGetter__('arity', function(){
+get arity(){
   return this.params.length;
-});
-
-/**
- * Inherit from `Node.prototype`.
- */
-
-Function.prototype.__proto__ = Node.prototype;
+}
 
 /**
  * Return hash.
@@ -52,9 +47,9 @@ Function.prototype.__proto__ = Node.prototype;
  * @api public
  */
 
-Function.prototype.__defineGetter__('hash', function(){
+get hash(){
   return 'function ' + this.name;
-});
+}
 
 /**
  * Return a clone of this node.
@@ -63,7 +58,7 @@ Function.prototype.__defineGetter__('hash', function(){
  * @api public
  */
 
-Function.prototype.clone = function(parent){
+clone(parent){
   if (this.fn) {
     var clone = new Function(
         this.name
@@ -77,7 +72,7 @@ Function.prototype.clone = function(parent){
   clone.column = this.column;
   clone.filename = this.filename;
   return clone;
-};
+}
 
 /**
  * Return <name>(param1, param2, ...).
@@ -86,7 +81,7 @@ Function.prototype.clone = function(parent){
  * @api public
  */
 
-Function.prototype.toString = function(){
+toString(){
   if (this.fn) {
     return this.name
       + '('
@@ -101,7 +96,7 @@ Function.prototype.toString = function(){
       + this.params.nodes.join(', ')
       + ')';
   }
-};
+}
 
 /**
  * Return a JSON representation of this node.
@@ -110,8 +105,8 @@ Function.prototype.toString = function(){
  * @api public
  */
 
-Function.prototype.toJSON = function(){
-  var json = {
+toJSON(){
+  var json: any = {
     __type: 'Function',
     name: this.name,
     lineno: this.lineno,
@@ -125,4 +120,5 @@ Function.prototype.toJSON = function(){
     json.block = this.block;
   }
   return json;
-};
+}
+}

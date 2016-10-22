@@ -9,7 +9,7 @@
  * Module dependencies.
  */
 
-var Node = require('./node');
+import Node = require('./node');
 
 /**
  * Initialize a new `Root` node.
@@ -17,15 +17,11 @@ var Node = require('./node');
  * @api public
  */
 
-var Root = module.exports = function Root(){
-  this.nodes = [];
-};
-
-/**
- * Inherit from `Node.prototype`.
- */
-
-Root.prototype.__proto__ = Node.prototype;
+export = class Root extends Node {
+  nodes = [];
+  constructor(){
+    super();
+}
 
 /**
  * Push a `node` to this block.
@@ -34,9 +30,9 @@ Root.prototype.__proto__ = Node.prototype;
  * @api public
  */
 
-Root.prototype.push = function(node){
+push(node){
   this.nodes.push(node);
-};
+}
 
 /**
  * Unshift a `node` to this block.
@@ -45,9 +41,9 @@ Root.prototype.push = function(node){
  * @api public
  */
 
-Root.prototype.unshift = function(node){
+unshift(node){
   this.nodes.unshift(node);
-};
+}
 
 /**
  * Return a clone of this node.
@@ -56,7 +52,7 @@ Root.prototype.unshift = function(node){
  * @api public
  */
 
-Root.prototype.clone = function(){
+clone(){
   var clone = new Root();
   clone.lineno = this.lineno;
   clone.column = this.column;
@@ -65,7 +61,7 @@ Root.prototype.clone = function(){
     clone.push(node.clone(clone, clone));
   });
   return clone;
-};
+}
 
 /**
  * Return "root".
@@ -74,9 +70,9 @@ Root.prototype.clone = function(){
  * @api public
  */
 
-Root.prototype.toString = function(){
+toString(){
   return '[Root]';
-};
+}
 
 /**
  * Return a JSON representation of this node.
@@ -85,7 +81,7 @@ Root.prototype.toString = function(){
  * @api public
  */
 
-Root.prototype.toJSON = function(){
+toJSON(){
   return {
     __type: 'Root',
     nodes: this.nodes,
@@ -93,4 +89,5 @@ Root.prototype.toJSON = function(){
     column: this.column,
     filename: this.filename
   };
-};
+}
+}

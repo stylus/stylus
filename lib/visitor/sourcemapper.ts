@@ -8,15 +8,15 @@
  * Module dependencies.
  */
 
-var Compiler = require('./compiler')
-  , SourceMapGenerator = require('source-map').SourceMapGenerator
-  , basename = require('path').basename
-  , extname = require('path').extname
-  , dirname = require('path').dirname
-  , join = require('path').join
-  , relative = require('path').relative
-  , sep = require('path').sep
-  , fs = require('fs');
+import Compiler = require('./compiler');
+import {SourceMapGenerator} from 'source-map';
+import {basename} from 'path';
+import {extname} from 'path';
+import {dirname} from 'path';
+import {join} from 'path';
+import {relative} from 'path';
+import {sep} from 'path';
+import fs = require('fs');
 
 /**
  * Initialize a new `SourceMapper` generator with the given `root` Node
@@ -26,7 +26,21 @@ var Compiler = require('./compiler')
  * @api public
  */
 
-var SourceMapper = module.exports = function SourceMapper(root, options){
+export = class SourceMapper extends Compiler {
+  private column;
+  private lineno;
+  private contents;
+  private filename;
+  private dest;
+  private basePath;
+  private inline;
+  private comment;
+  private basename;
+  private utf8;
+  private map;
+
+  constructor(root, options) {
+    super(root, options);
   options = options || {};
   this.column = 1;
   this.lineno = 1;
@@ -50,14 +64,7 @@ var SourceMapper = module.exports = function SourceMapper(root, options){
     file: this.basename,
     sourceRoot: sourcemap.sourceRoot || null
   });
-  Compiler.call(this, root, options);
 };
-
-/**
- * Inherit from `Compiler.prototype`.
- */
-
-SourceMapper.prototype.__proto__ = Compiler.prototype;
 
 /**
  * Generate and write source map.
@@ -66,19 +73,18 @@ SourceMapper.prototype.__proto__ = Compiler.prototype;
  * @api private
  */
 
-var compile = Compiler.prototype.compile;
-SourceMapper.prototype.compile = function(){
-  var css = compile.call(this)
+compile() {
+  var css = super.compile()
     , out = this.basename + '.map'
     , url = this.normalizePath(this.dest
-      ? join(this.dest, out)
-      : join(dirname(this.filename), out))
+    ? join(this.dest, out)
+    : join(dirname(this.filename), out))
     , map;
 
   if (this.inline) {
     map = this.map.toString();
     url = 'data:application/json;'
-      + (this.utf8 ?  'charset=utf-8;' : '') + 'base64,'
+      + (this.utf8 ? 'charset=utf-8;' : '') + 'base64,'
       + new Buffer(map).toString('base64');
   }
   if (this.inline || false !== this.comment)
@@ -95,7 +101,7 @@ SourceMapper.prototype.compile = function(){
  * @api private
  */
 
-SourceMapper.prototype.out = function(str, node){
+out(str, node) {
   if (node && node.lineno) {
     var filename = this.normalizePath(node.filename);
 
@@ -128,7 +134,7 @@ SourceMapper.prototype.out = function(str, node){
  * @api private
  */
 
-SourceMapper.prototype.move = function(str){
+move(str) {
   var lines = str.match(/\n/g)
     , idx = str.lastIndexOf('\n');
 
@@ -146,7 +152,7 @@ SourceMapper.prototype.move = function(str){
  * @api private
  */
 
-SourceMapper.prototype.normalizePath = function(path){
+normalizePath(path) {
   path = relative(this.dest || this.basePath, path);
   if ('\\' == sep) {
     path = path.replace(/^[a-z]:\\/i, '/')
@@ -159,20 +165,19 @@ SourceMapper.prototype.normalizePath = function(path){
  * Visit Literal.
  */
 
-var literal = Compiler.prototype.visitLiteral;
-SourceMapper.prototype.visitLiteral = function(lit){
-  var val = literal.call(this, lit)
+visitLiteral(lit) {
+  var val = super.visitLiteral(lit)
     , filename = this.normalizePath(lit.filename)
     , indentsRe = /^\s+/
     , lines = val.split('\n');
 
   // add mappings for multiline literals
   if (lines.length > 1) {
-    lines.forEach(function(line, i) {
+    lines.forEach(function (line, i) {
       var indents = line.match(indentsRe)
         , column = indents && indents[0]
-            ? indents[0].length
-            : 0;
+        ? indents[0].length
+        : 0;
 
       if (lit.css) column += 2;
 
@@ -196,8 +201,8 @@ SourceMapper.prototype.visitLiteral = function(lit){
  * Visit Charset.
  */
 
-var charset = Compiler.prototype.visitCharset;
-SourceMapper.prototype.visitCharset = function(node){
+visitCharset(node) {
   this.utf8 = ('utf-8' == node.val.string.toLowerCase());
-  return charset.call(this, node);
-};
+  return super.visitCharset(node);
+}
+}

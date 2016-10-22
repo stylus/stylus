@@ -9,9 +9,9 @@
  * Module dependencies.
  */
 
-var Node = require('./node')
-  , nodes = require('../nodes')
-  , utils = require('../utils');
+import Node = require('./node');
+import Expression = require('../nodes/expression');
+import utils = require('../utils');
 
 /**
  * Initialize a new `Arguments`.
@@ -19,16 +19,12 @@ var Node = require('./node')
  * @api public
  */
 
-var Arguments = module.exports = function Arguments(){
-  nodes.Expression.call(this);
-  this.map = {};
-};
+export = class Arguments extends Expression {
+  map = {};
 
-/**
- * Inherit from `nodes.Expression.prototype`.
- */
-
-Arguments.prototype.__proto__ = nodes.Expression.prototype;
+  constructor() {
+    super();
+}
 
 /**
  * Initialize an `Arguments` object with the nodes
@@ -39,7 +35,7 @@ Arguments.prototype.__proto__ = nodes.Expression.prototype;
  * @api public
  */
 
-Arguments.fromExpression = function(expr){
+static fromExpression(expr) {
   var args = new Arguments
     , len = expr.nodes.length;
   args.lineno = expr.lineno;
@@ -49,7 +45,7 @@ Arguments.fromExpression = function(expr){
     args.push(expr.nodes[i]);
   }
   return args;
-};
+}
 
 /**
  * Return a clone of this node.
@@ -58,8 +54,8 @@ Arguments.fromExpression = function(expr){
  * @api public
  */
 
-Arguments.prototype.clone = function(parent){
-  var clone = nodes.Expression.prototype.clone.call(this, parent);
+clone(parent) {
+  var clone = super.clone(parent);
   clone.map = {};
   for (var key in this.map) {
     clone.map[key] = this.map[key].clone(parent, clone);
@@ -69,7 +65,7 @@ Arguments.prototype.clone = function(parent){
   clone.column = this.column;
   clone.filename = this.filename;
   return clone;
-};
+}
 
 /**
  * Return a JSON representation of this node.
@@ -78,7 +74,7 @@ Arguments.prototype.clone = function(parent){
  * @api public
  */
 
-Arguments.prototype.toJSON = function(){
+toJSON() {
   return {
     __type: 'Arguments',
     map: this.map,
@@ -89,4 +85,5 @@ Arguments.prototype.toJSON = function(){
     filename: this.filename,
     nodes: this.nodes
   };
-};
+}
+}

@@ -2,17 +2,18 @@
  * Module dependencies.
  */
 
-var crypto = require('crypto')
-  , fs = require('fs')
-  , join = require('path').join
-  , version = require('../../package').version
-  , nodes = require('../nodes');
+import crypto = require('crypto');
+import fs = require('fs');
+import {join} from 'path';
+var version = require('../../package').version;
+import nodes = require('../nodes');
 
-var FSCache = module.exports = function(options) {
-  options = options || {};
+export = class FSCache {
+  private _location;
+  constructor(options = {}) {
   this._location = options['cache location'] || '.styl-cache';
   if (!fs.existsSync(this._location)) fs.mkdirSync(this._location);
-};
+}
 
 /**
  * Set cache item with given `key` to `value`.
@@ -22,9 +23,9 @@ var FSCache = module.exports = function(options) {
  * @api private
  */
 
-FSCache.prototype.set = function(key, value) {
+set(key, value) {
   fs.writeFileSync(join(this._location, key), JSON.stringify(value));
-};
+}
 
 /**
  * Get cache item with given `key`.
@@ -34,10 +35,10 @@ FSCache.prototype.set = function(key, value) {
  * @api private
  */
 
-FSCache.prototype.get = function(key) {
+get(key) {
   var data = fs.readFileSync(join(this._location, key), 'utf-8');
   return JSON.parse(data, FSCache.fromJSON);
-};
+}
 
 /**
  * Check if cache has given `key`.
@@ -47,9 +48,9 @@ FSCache.prototype.get = function(key) {
  * @api private
  */
 
-FSCache.prototype.has = function(key) {
+has(key) {
   return fs.existsSync(join(this._location, key));
-};
+}
 
 /**
  * Generate key for the source `str` with `options`.
@@ -60,11 +61,11 @@ FSCache.prototype.has = function(key) {
  * @api private
  */
 
-FSCache.prototype.key = function(str, options) {
+key(str, options) {
   var hash = crypto.createHash('sha1');
   hash.update(str + version + options.prefix);
   return hash.digest('hex');
-};
+}
 
 /**
  * JSON to Stylus nodes converter.
@@ -72,9 +73,10 @@ FSCache.prototype.key = function(str, options) {
  * @api private
  */
 
-FSCache.fromJSON = function(key, val) {
+static fromJSON(key, val) {
   if (val && val.__type) {
     val.__proto__ = nodes[val.__type].prototype;
   }
   return val;
-};
+}
+}

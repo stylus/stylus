@@ -9,7 +9,7 @@
  * Module dependencies.
  */
 
-var Node = require('./node');
+import Node = require('./node');
 
 /**
  * Initialize a new `QueryList`.
@@ -17,16 +17,11 @@ var Node = require('./node');
  * @api public
  */
 
-var QueryList = module.exports = function QueryList(){
-  Node.call(this);
-  this.nodes = [];
-};
-
-/**
- * Inherit from `Node.prototype`.
- */
-
-QueryList.prototype.__proto__ = Node.prototype;
+export = class QueryList extends Node {
+  nodes = [];
+  constructor(){
+  super();
+}
 
 /**
  * Return a clone of this node.
@@ -35,7 +30,7 @@ QueryList.prototype.__proto__ = Node.prototype;
  * @api public
  */
 
-QueryList.prototype.clone = function(parent){
+clone(parent){
   var clone = new QueryList;
   clone.lineno = this.lineno;
   clone.column = this.column;
@@ -44,7 +39,7 @@ QueryList.prototype.clone = function(parent){
     clone.push(this.nodes[i].clone(parent, clone));
   }
   return clone;
-};
+}
 
 /**
  * Push the given `node`.
@@ -53,9 +48,9 @@ QueryList.prototype.clone = function(parent){
  * @api public
  */
 
-QueryList.prototype.push = function(node){
+push(node){
   this.nodes.push(node);
-};
+}
 
 /**
  * Merges this query list with the `other`.
@@ -65,7 +60,7 @@ QueryList.prototype.push = function(node){
  * @api private
  */
 
-QueryList.prototype.merge = function(other){
+merge(other){
   var list = new QueryList
     , merged;
   this.nodes.forEach(function(query){
@@ -75,7 +70,7 @@ QueryList.prototype.merge = function(other){
     }
   });
   return list;
-};
+}
 
 /**
  * Return "<a>, <b>, <c>"
@@ -84,11 +79,11 @@ QueryList.prototype.merge = function(other){
  * @api public
  */
 
-QueryList.prototype.toString = function(){
+toString(){
   return '(' + this.nodes.map(function(node){
     return node.toString();
   }).join(', ') + ')';
-};
+}
 
 /**
  * Return a JSON representation of this node.
@@ -97,7 +92,7 @@ QueryList.prototype.toString = function(){
  * @api public
  */
 
-QueryList.prototype.toJSON = function(){
+toJSON(){
   return {
     __type: 'QueryList',
     nodes: this.nodes,
@@ -105,4 +100,5 @@ QueryList.prototype.toJSON = function(){
     column: this.column,
     filename: this.filename
   };
-};
+}
+}

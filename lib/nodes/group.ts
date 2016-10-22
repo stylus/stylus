@@ -9,7 +9,7 @@
  * Module dependencies.
  */
 
-var Node = require('./node');
+import Node = require('./node');
 
 /**
  * Initialize a new `Group`.
@@ -17,17 +17,13 @@ var Node = require('./node');
  * @api public
  */
 
-var Group = module.exports = function Group(){
-  Node.call(this);
-  this.nodes = [];
-  this.extends = [];
-};
+export = class Group extends Node {
+  private nodes = [];
+  private extends = [];
 
-/**
- * Inherit from `Node.prototype`.
- */
-
-Group.prototype.__proto__ = Node.prototype;
+  constructor(){
+  super();
+}
 
 /**
  * Push the given `selector` node.
@@ -36,17 +32,17 @@ Group.prototype.__proto__ = Node.prototype;
  * @api public
  */
 
-Group.prototype.push = function(selector){
+push(selector){
   this.nodes.push(selector);
-};
+}
 
 /**
  * Return this set's `Block`.
  */
 
-Group.prototype.__defineGetter__('block', function(){
+get block(){
   return this.nodes[0].block;
-});
+}
 
 /**
  * Assign `block` to each selector in this set.
@@ -55,11 +51,11 @@ Group.prototype.__defineGetter__('block', function(){
  * @api public
  */
 
-Group.prototype.__defineSetter__('block', function(block){
+set block(block){
   for (var i = 0, len = this.nodes.length; i < len; ++i) {
     this.nodes[i].block = block;
   }
-});
+}
 
 /**
  * Check if this set has only placeholders.
@@ -68,9 +64,9 @@ Group.prototype.__defineSetter__('block', function(block){
  * @api public
  */
 
-Group.prototype.__defineGetter__('hasOnlyPlaceholders', function(){
+get hasOnlyPlaceholders(){
   return this.nodes.every(function(selector) { return selector.isPlaceholder; });
-});
+}
 
 /**
  * Return a clone of this node.
@@ -79,7 +75,7 @@ Group.prototype.__defineGetter__('hasOnlyPlaceholders', function(){
  * @api public
  */
 
-Group.prototype.clone = function(parent){
+clone(parent){
   var clone = new Group;
   clone.lineno = this.lineno;
   clone.column = this.column;
@@ -89,7 +85,7 @@ Group.prototype.clone = function(parent){
   clone.filename = this.filename;
   clone.block = this.block.clone(parent, clone);
   return clone;
-};
+}
 
 /**
  * Return a JSON representation of this node.
@@ -98,7 +94,7 @@ Group.prototype.clone = function(parent){
  * @api public
  */
 
-Group.prototype.toJSON = function(){
+toJSON(){
   return {
     __type: 'Group',
     nodes: this.nodes,
@@ -107,4 +103,5 @@ Group.prototype.toJSON = function(){
     column: this.column,
     filename: this.filename
   };
-};
+}
+}

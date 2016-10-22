@@ -1,4 +1,4 @@
-var nodes = require('../nodes');
+import nodes = require('../nodes');
 
 /**
  * Get Math `prop`.
@@ -8,6 +8,6 @@ var nodes = require('../nodes');
  * @api private
  */
 
-module.exports = function math(prop){
+export = function math(prop){
   return new nodes.Unit(Math[prop.string]);
 };

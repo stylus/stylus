@@ -1,4 +1,4 @@
-var utils = require('../utils');
+import utils = require('../utils');
 
 /**
  * Pop a value from `expr`.
@@ -8,7 +8,11 @@ var utils = require('../utils');
  * @api public
  */
 
-(module.exports = function pop(expr) {
+export = class pop {
+	constructor(expr) {
   expr = utils.unwrap(expr);
   return expr.nodes.pop();
-}).raw = true;
+}
+
+	static raw = true;
+}

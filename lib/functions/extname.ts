@@ -1,5 +1,5 @@
-var utils = require('../utils')
-  , path = require('path');
+import utils = require('../utils');
+import path = require('path');
 
 /**
  * Return the extname of `path`.
@@ -9,7 +9,7 @@ var utils = require('../utils')
  * @api public
  */
 
-module.exports = function extname(p){
+export = function extname(p){
   utils.assertString(p, 'path');
   return path.extname(p.val);
 };

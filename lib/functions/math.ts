@@ -1,5 +1,5 @@
-var utils = require('../utils')
-  , nodes = require('../nodes');
+import utils = require('../utils');
+import nodes = require('../nodes');
 
 /**
  * Apply Math `fn` to `n`.
@@ -10,7 +10,7 @@ var utils = require('../utils')
  * @api private
  */
 
-module.exports = function math(n, fn){
+export = function math(n, fn){
   utils.assertType(n, 'unit', 'n');
   utils.assertString(fn, 'fn');
   return new nodes.Unit(Math[fn.string](n.val), n.type);

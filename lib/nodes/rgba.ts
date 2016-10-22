@@ -9,11 +9,11 @@
  * Module dependencies.
  */
 
-var Node = require('./node')
-  , HSLA = require('./hsla')
-  , functions = require('../functions')
-  , adjust = functions.adjust
-  , nodes = require('./');
+import Node = require('./node');
+import HSLA = require('./hsla');
+import functions = require('../functions');
+var adjust = functions.adjust;
+import nodes = require('./');
 
 /**
  * Initialize a new `RGBA` with the given r,g,b,a component values.
@@ -25,21 +25,24 @@ var Node = require('./node')
  * @api public
  */
 
-var RGBA = exports = module.exports = function RGBA(r,g,b,a){
-  Node.call(this);
+export = class RGBA extends Node {
+  r;
+  g;
+  b;
+  a;
+  name;
+  rgba;
+  raw;
+
+  constructor(r,g,b,a){
+  super();
   this.r = clamp(r);
   this.g = clamp(g);
   this.b = clamp(b);
   this.a = clampAlpha(a);
   this.name = '';
   this.rgba = this;
-};
-
-/**
- * Inherit from `Node.prototype`.
- */
-
-RGBA.prototype.__proto__ = Node.prototype;
+}
 
 /**
  * Return an `RGBA` without clamping values.
@@ -52,14 +55,14 @@ RGBA.prototype.__proto__ = Node.prototype;
  * @api public
  */
 
-RGBA.withoutClamping = function(r,g,b,a){
+static withoutClamping(r,g,b,a){
   var rgba = new RGBA(0,0,0,0);
   rgba.r = r;
   rgba.g = g;
   rgba.b = b;
   rgba.a = a;
   return rgba;
-};
+}
 
 /**
  * Return a clone of this node.
@@ -68,7 +71,7 @@ RGBA.withoutClamping = function(r,g,b,a){
  * @api public
  */
 
-RGBA.prototype.clone = function(){
+clone(){
   var clone = new RGBA(
       this.r
     , this.g
@@ -80,7 +83,7 @@ RGBA.prototype.clone = function(){
   clone.column = this.column;
   clone.filename = this.filename;
   return clone;
-};
+}
 
 /**
  * Return a JSON representation of this node.
@@ -89,7 +92,7 @@ RGBA.prototype.clone = function(){
  * @api public
  */
 
-RGBA.prototype.toJSON = function(){
+toJSON(){
   return {
     __type: 'RGBA',
     r: this.r,
@@ -102,7 +105,7 @@ RGBA.prototype.toJSON = function(){
     column: this.column,
     filename: this.filename
   };
-};
+}
 
 /**
  * Return true.
@@ -111,9 +114,9 @@ RGBA.prototype.toJSON = function(){
  * @api public
  */
 
-RGBA.prototype.toBoolean = function(){
-  return nodes.true;
-};
+toBoolean(){
+  return nodes.trueNode;
+}
 
 /**
  * Return `HSLA` representation.
@@ -122,9 +125,9 @@ RGBA.prototype.toBoolean = function(){
  * @api public
  */
 
-RGBA.prototype.__defineGetter__('hsla', function(){
+get hsla(){
   return HSLA.fromRGBA(this);
-});
+}
 
 /**
  * Return hash.
@@ -133,9 +136,9 @@ RGBA.prototype.__defineGetter__('hsla', function(){
  * @api public
  */
 
-RGBA.prototype.__defineGetter__('hash', function(){
+get hash(){
   return this.toString();
-});
+}
 
 /**
  * Add r,g,b,a to the current component values.
@@ -148,13 +151,13 @@ RGBA.prototype.__defineGetter__('hash', function(){
  * @api public
  */
 
-RGBA.prototype.add = function(r,g,b,a){
+add(r,g,b,a){
   return new RGBA(
       this.r + r
     , this.g + g
     , this.b + b
     , this.a + a);
-};
+}
 
 /**
  * Subtract r,g,b,a from the current component values.
@@ -167,13 +170,13 @@ RGBA.prototype.add = function(r,g,b,a){
  * @api public
  */
 
-RGBA.prototype.sub = function(r,g,b,a){
+sub(r,g,b,a){
   return new RGBA(
       this.r - r
     , this.g - g
     , this.b - b
     , a == 1 ? this.a : this.a - a);
-};
+}
 
 /**
  * Multiply rgb components by `n`.
@@ -183,13 +186,13 @@ RGBA.prototype.sub = function(r,g,b,a){
  * @api public
  */
 
-RGBA.prototype.multiply = function(n){
+multiply(n){
   return new RGBA(
       this.r * n
     , this.g * n
     , this.b * n
     , this.a); 
-};
+}
 
 /**
  * Divide rgb components by `n`.
@@ -199,13 +202,13 @@ RGBA.prototype.multiply = function(n){
  * @api public
  */
 
-RGBA.prototype.divide = function(n){
+divide(n){
   return new RGBA(
       this.r / n
     , this.g / n
     , this.b / n
     , this.a); 
-};
+}
 
 /**
  * Operate on `right` with the given `op`.
@@ -216,13 +219,13 @@ RGBA.prototype.divide = function(n){
  * @api public
  */
 
-RGBA.prototype.operate = function(op, right){
+operate(op, right){
   if ('in' != op) right = right.first
 
   switch (op) {
     case 'is a':
       if ('string' == right.nodeName && 'color' == right.string) {
-        return nodes.true;
+        return nodes.trueNode;
       }
       break;
     case '+':
@@ -268,8 +271,8 @@ RGBA.prototype.operate = function(op, right){
       }
       break;
   }
-  return Node.prototype.operate.call(this, op, right);
-};
+  return super.operate(op, right);
+}
 
 /**
  * Return #nnnnnn, #nnn, or rgba(n,n,n,n) string representation of the color.
@@ -278,7 +281,7 @@ RGBA.prototype.operate = function(op, right){
  * @api public
  */
 
-RGBA.prototype.toString = function(){
+toString(){
   function pad(n) {
     return n < 16
       ? '0' + n.toString(16)
@@ -307,7 +310,7 @@ RGBA.prototype.toString = function(){
       + this.b + ','
       + (+this.a.toFixed(3)) + ')';
   }
-};
+}
 
 /**
  * Return a `RGBA` from the given `hsla`.
@@ -317,7 +320,7 @@ RGBA.prototype.toString = function(){
  * @api public
  */
 
-exports.fromHSLA = function(hsla){
+static fromHSLA(hsla){
   var h = hsla.h / 360
     , s = hsla.s / 100
     , l = hsla.l / 100
@@ -340,7 +343,8 @@ exports.fromHSLA = function(hsla){
   }
   
   return new RGBA(r,g,b,a);
-};
+}
+}
 
 /**
  * Clamp `n` >= 0 and <= 255.

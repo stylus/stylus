@@ -1,5 +1,5 @@
-var utils = require('../utils')
-  , nodes = require('../nodes');
+import utils = require('../utils');
+import nodes = require('../nodes');
 
 /**
  * Return a `Literal` `num` converted to the provided `base`, padded to `width`
@@ -12,7 +12,8 @@ var utils = require('../utils')
  * @api public
  */
 
-(module.exports = function(num, base, width) {
+export = class baseConvert {
+	constructor(num, base, width) {
   utils.assertPresent(num, 'number');
   utils.assertPresent(base, 'base');
   num = utils.unwrap(num).nodes[0].val;
@@ -23,4 +24,7 @@ var utils = require('../utils')
     result = '0' + result;
   }
   return new nodes.Literal(result);
-}).raw = true;
+}
+
+	static raw = true;
+}

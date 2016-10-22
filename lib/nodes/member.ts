@@ -9,7 +9,7 @@
  * Module dependencies.
  */
 
-var Node = require('./node');
+import Node = require('./node');
 
 /**
  * Initialize a new `Member` with `left` and `right`.
@@ -19,17 +19,9 @@ var Node = require('./node');
  * @api public
  */
 
-var Member = module.exports = function Member(left, right){
-  Node.call(this);
-  this.left = left;
-  this.right = right;
-};
-
-/**
- * Inherit from `Node.prototype`.
- */
-
-Member.prototype.__proto__ = Node.prototype;
+export = class Member extends Node {constructor(public left?, public right?){
+  super();
+}
 
 /**
  * Return a clone of this node.
@@ -38,7 +30,7 @@ Member.prototype.__proto__ = Node.prototype;
  * @api public
  */
 
-Member.prototype.clone = function(parent){
+clone(parent){
   var clone = new Member;
   clone.left = this.left.clone(parent, clone);
   clone.right = this.right.clone(parent, clone);
@@ -47,7 +39,7 @@ Member.prototype.clone = function(parent){
   clone.column = this.column;
   clone.filename = this.filename;
   return clone;
-};
+}
 
 /**
  * Return a JSON representation of this node.
@@ -56,8 +48,8 @@ Member.prototype.clone = function(parent){
  * @api public
  */
 
-Member.prototype.toJSON = function(){
-  var json = {
+toJSON(){
+  var json: any = {
     __type: 'Member',
     left: this.left,
     right: this.right,
@@ -67,7 +59,7 @@ Member.prototype.toJSON = function(){
   };
   if (this.val) json.val = this.val;
   return json;
-};
+}
 
 /**
  * Return a string representation of this node.
@@ -76,7 +68,8 @@ Member.prototype.toJSON = function(){
  * @api public
  */
 
-Member.prototype.toString = function(){
+toString(){
   return this.left.toString()
     + '.' + this.right.toString();
-};
+}
+}

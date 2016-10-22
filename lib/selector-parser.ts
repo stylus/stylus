@@ -3,7 +3,7 @@
  * Copyright (c) Automattic <developer.wordpress.com>
  * MIT Licensed
  */
-
+var trimRight = require('trim-right');
 var COMBINATORS = ['>', '+', '~'];
 
 /**
@@ -16,15 +16,20 @@ var COMBINATORS = ['>', '+', '~'];
  * @api private
  */
 
-var SelectorParser = module.exports = function SelectorParser(str, stack, parts) {
-  this.str = str;
-  this.stack = stack || [];
-  this.parts = parts || [];
+export = class SelectorParser {
+  pos;
+  level;
+  nested;
+  ignore;
+  raw;
+  constructor(public str,
+              public stack = [],
+              public parts = []) {
   this.pos = 0;
   this.level = 2;
   this.nested = true;
   this.ignore = false;
-};
+}
 
 /**
  * Consume the given `len` and move current position.
@@ -32,19 +37,17 @@ var SelectorParser = module.exports = function SelectorParser(str, stack, parts)
  * @param {Number} len
  * @api private
  */
-
-SelectorParser.prototype.skip = function(len) {
+skip(len) {
   this.str = this.str.substr(len);
   this.pos += len;
-};
+}
 
 /**
  * Consume spaces.
  */
-
-SelectorParser.prototype.skipSpaces = function() {
+skipSpaces() {
   while (' ' == this.str[0]) this.skip(1);
-};
+}
 
 /**
  * Fetch next token.
@@ -52,8 +55,7 @@ SelectorParser.prototype.skipSpaces = function() {
  * @return {String}
  * @api private
  */
-
-SelectorParser.prototype.advance = function() {
+advance() {
   return this.root()
     || this.relative()
     || this.initial()
@@ -61,25 +63,23 @@ SelectorParser.prototype.advance = function() {
     || this.parent()
     || this.partial()
     || this.char();
-};
+}
 
 /**
  * '/'
  */
-
-SelectorParser.prototype.root = function() {
+root() {
   if (!this.pos && '/' == this.str[0]
     && 'deep' != this.str.slice(1, 5)) {
     this.nested = false;
     this.skip(1);
   }
-};
+}
 
 /**
  * '../'
  */
-
-SelectorParser.prototype.relative = function(multi) {
+relative(multi?) {
   if ((!this.pos || multi) && '../' == this.str.slice(0, 3)) {
     this.nested = false;
     this.skip(3);
@@ -93,25 +93,23 @@ SelectorParser.prototype.relative = function(multi) {
       }
     }
   }
-};
+}
 
 /**
  * '~/'
  */
-
-SelectorParser.prototype.initial = function() {
+initial() {
   if (!this.pos && '~' == this.str[0] && '/' == this.str[1]) {
     this.nested = false;
     this.skip(2);
     return this.stack[0];
   }
-};
+}
 
 /**
  * '\' ('&' | '^')
  */
-
-SelectorParser.prototype.escaped = function() {
+escaped() {
   if ('\\' == this.str[0]) {
     var char = this.str[1];
     if ('&' == char || '^' == char) {
@@ -119,13 +117,12 @@ SelectorParser.prototype.escaped = function() {
       return char;
     }
   }
-};
+}
 
 /**
  * '&'
  */
-
-SelectorParser.prototype.parent = function() {
+parent() {
   if ('&' == this.str[0]) {
     this.nested = false;
 
@@ -142,13 +139,12 @@ SelectorParser.prototype.parent = function() {
     if (!this.raw)
       return this.stack[this.stack.length - 1];
   }
-};
+}
 
 /**
  * '^[' range ']'
  */
-
-SelectorParser.prototype.partial = function() {
+partial() {
   if ('^' == this.str[0] && '[' == this.str[1]) {
     this.skip(2);
     this.skipSpaces();
@@ -163,14 +159,13 @@ SelectorParser.prototype.partial = function() {
       this.ignore = true;
     }
   }
-};
+}
 
 /**
  * '-'? 0-9+
  */
-
-SelectorParser.prototype.number = function() {
-  var i =  0, ret = '';
+number() {
+  var i = 0, ret = '';
   if ('-' == this.str[i])
     ret += this.str[i++];
 
@@ -182,13 +177,12 @@ SelectorParser.prototype.number = function() {
     this.skip(i);
     return Number(ret);
   }
-};
+}
 
 /**
  * number ('..' number)?
  */
-
-SelectorParser.prototype.range = function() {
+range() {
   var start = this.number()
     , ret;
 
@@ -207,18 +201,18 @@ SelectorParser.prototype.range = function() {
     }
 
     if (end < len - 1) {
-      ret = this.parts.slice(start, end + 1).map(function(part) {
+      ret = this.parts.slice(start, end + 1).map(function (part) {
         var selector = new SelectorParser(part, this.stack, this.parts);
         selector.raw = true;
         return selector.parse();
-      }, this).map(function(selector) {
+      }, this).map(function (selector) {
         return (selector.nested ? ' ' : '') + selector.val;
       }).join('').trim();
     }
   } else {
     ret = this.stack[
       start < 0 ? this.stack.length + start - 1 : start
-    ];
+      ];
   }
 
   if (ret) {
@@ -226,17 +220,16 @@ SelectorParser.prototype.range = function() {
   } else {
     this.ignore = true;
   }
-};
+}
 
 /**
  * .+
  */
-
-SelectorParser.prototype.char = function() {
+char() {
   var char = this.str[0];
   this.skip(1);
   return char;
-};
+}
 
 /**
  * Parses the selector.
@@ -244,8 +237,7 @@ SelectorParser.prototype.char = function() {
  * @return {Object}
  * @api private
  */
-
-SelectorParser.prototype.parse = function() {
+parse() {
   var val = '';
   while (this.str.length) {
     val += this.advance() || '';
@@ -254,5 +246,6 @@ SelectorParser.prototype.parse = function() {
       break;
     }
   }
-  return { val: val.trimRight(), nested: this.nested };
-};
+  return {val: trimRight(val), nested: this.nested};
+}
+}

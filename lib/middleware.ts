@@ -8,14 +8,13 @@
  * Module dependencies.
  */
 
-var stylus = require('./stylus')
-  , fs = require('fs')
-  , url = require('url')
-  , dirname = require('path').dirname
-  , mkdirp = require('mkdirp')
-  , join = require('path').join
-  , sep = require('path').sep
-  , debug = require('debug')('stylus:middleware');
+import stylus = require('./stylus');
+import fs = require('fs');
+import url = require('url');
+import {dirname} from 'path';
+var mkdirp = require('mkdirp');
+import {join, sep} from 'path';
+var debug = require('debug')('stylus:middleware');
 
 /**
  * Import map.
@@ -78,7 +77,7 @@ var imports = {};
  * @api public
  */
 
-module.exports = function(options){
+export = function(options){
   options = options || {};
 
   // Accept src/dest dir
@@ -105,7 +104,7 @@ module.exports = function(options){
       options.sourcemap.inline = true;
     }
 
-    return stylus(str)
+    return (<any>stylus)(str)
       .set('filename', path)
       .set('compress', options.compress)
       .set('firebug', options.firebug)
@@ -117,6 +116,34 @@ module.exports = function(options){
   return function stylus(req, res, next){
     if ('GET' != req.method && 'HEAD' != req.method) return next();
     var path = url.parse(req.url).pathname;
+
+    // Ignore ENOENT to fall through as 404
+    function error(err) {
+      next('ENOENT' == err.code
+        ? null
+        : err);
+    }
+
+    // Compile to cssPath
+    function compile() {
+      debug('read %s', cssPath);
+      fs.readFile(stylusPath, 'utf8', function(err, str){
+        if (err) return error(err);
+        var style = options.compile(str, stylusPath);
+        var paths = style.options._imports = [];
+        imports[stylusPath] = null;
+        style.render(function(err, css){
+          if (err) return next(err);
+          debug('render %s', stylusPath);
+          imports[stylusPath] = paths;
+          mkdirp(dirname(cssPath), parseInt('0700', 8), function(err){
+            if (err) return error(err);
+            fs.writeFile(cssPath, css, 'utf8', next);
+          });
+        });
+      });
+    }
+
     if (/\.css$/.test(path)) {
 
       if (typeof dest == 'string') {
@@ -134,35 +161,8 @@ module.exports = function(options){
         ? src(path)
         : join(src, path.replace('.css', '.styl'));
 
-      // Ignore ENOENT to fall through as 404
-      function error(err) {
-        next('ENOENT' == err.code
-          ? null
-          : err);
-      }
-
       // Force
       if (force) return compile();
-
-      // Compile to cssPath
-      function compile() {
-        debug('read %s', cssPath);
-        fs.readFile(stylusPath, 'utf8', function(err, str){
-          if (err) return error(err);
-          var style = options.compile(str, stylusPath);
-          var paths = style.options._imports = [];
-          imports[stylusPath] = null;
-          style.render(function(err, css){
-            if (err) return next(err);
-            debug('render %s', stylusPath);
-            imports[stylusPath] = paths;
-            mkdirp(dirname(cssPath), parseInt('0700', 8), function(err){
-              if (err) return error(err);
-              fs.writeFile(cssPath, css, 'utf8', next);
-            });
-          });
-        });
-      }
 
       // Re-compile on server restart, disregarding
       // mtimes since we need to map imports

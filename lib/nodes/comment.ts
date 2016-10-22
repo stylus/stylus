@@ -9,7 +9,7 @@
  * Module dependencies.
  */
 
-var Node = require('./node');
+import Node = require('./node');
 
 /**
  * Initialize a new `Comment` with the given `str`.
@@ -20,18 +20,17 @@ var Node = require('./node');
  * @api public
  */
 
-var Comment = module.exports = function Comment(str, suppress, inline){
-  Node.call(this);
+export = class Comment extends Node {
+  private str;
+  private suppress;
+  private inline;
+
+  constructor(str, suppress, inline){
+  super();
   this.str = str;
   this.suppress = suppress;
   this.inline = inline;
-};
-
-/**
- * Inherit from `Node.prototype`.
- */
-
-Comment.prototype.__proto__ = Node.prototype;
+}
 
 /**
  * Return a JSON representation of this node.
@@ -40,7 +39,7 @@ Comment.prototype.__proto__ = Node.prototype;
  * @api public
  */
 
-Comment.prototype.toJSON = function(){
+toJSON(){
   return {
     __type: 'Comment',
     str: this.str,
@@ -50,7 +49,7 @@ Comment.prototype.toJSON = function(){
     column: this.column,
     filename: this.filename
   };
-};
+}
 
 /**
  * Return comment.
@@ -59,6 +58,7 @@ Comment.prototype.toJSON = function(){
  * @api public
  */
 
-Comment.prototype.toString = function(){
+toString(){
   return this.str;
-};
+}
+}

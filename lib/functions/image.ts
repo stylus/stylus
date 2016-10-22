@@ -10,11 +10,11 @@
  * Module dependencies.
  */
 
-var utils = require('../utils')
-  , nodes = require('../nodes')
-  , fs = require('fs')
-  , path = require('path')
-  , sax = require('sax');
+import utils = require('../utils');
+import nodes = require('../nodes');
+import fs = require('fs');
+import path_ = require('path');
+var sax = require('sax');
 
 /**
  * Initialize a new `Image` with the given `ctx` and `path.
@@ -24,11 +24,17 @@ var utils = require('../utils')
  * @api private
  */
 
-var Image = module.exports = function Image(ctx, path) {
+export class Image {
+  path;
+  fd;
+  length;
+  extname;
+
+  constructor(public ctx, path) {
   this.ctx = ctx;
   this.path = utils.lookup(path, ctx.paths);
   if (!this.path) throw new Error('failed to locate file ' + path);
-};
+}
 
 /**
  * Open the image for reading.
@@ -36,10 +42,10 @@ var Image = module.exports = function Image(ctx, path) {
  * @api private
  */
 
-Image.prototype.open = function(){
+open() {
   this.fd = fs.openSync(this.path, 'r');
   this.length = fs.fstatSync(this.fd).size;
-  this.extname = path.extname(this.path).slice(1);
+  this.extname = path_.extname(this.path).slice(1);
 };
 
 /**
@@ -48,7 +54,7 @@ Image.prototype.open = function(){
  * @api private
  */
 
-Image.prototype.close = function(){
+close() {
   if (this.fd) fs.closeSync(this.fd);
 };
 
@@ -64,10 +70,10 @@ Image.prototype.close = function(){
  * @api private
  */
 
-Image.prototype.type = function(){
+type() {
   var type
     , buf = new Buffer(4);
-  
+
   fs.readSync(this.fd, buf, 0, 4, 0);
 
   // GIF
@@ -92,7 +98,7 @@ Image.prototype.type = function(){
  * @api private
  */
 
-Image.prototype.size = function(){
+size() {
   var type = this.type()
     , width
     , height
@@ -101,8 +107,13 @@ Image.prototype.size = function(){
     , blockSize
     , parser;
 
-  function uint16(b) { return b[1] << 8 | b[0]; }
-  function uint32(b) { return b[0] << 24 | b[1] << 16 | b[2] << 8 | b[3]; } 
+  function uint16(b) {
+    return b[1] << 8 | b[0];
+  }
+
+  function uint32(b) {
+    return b[0] << 24 | b[1] << 16 | b[2] << 8 | b[3];
+  }
 
   // Determine dimensions
   switch (type) {
@@ -145,7 +156,7 @@ Image.prototype.size = function(){
       fs.readSync(this.fd, buf, 0, offset, 0);
       buf = buf.toString('utf8');
       parser = sax.parser(true);
-      parser.onopentag = function(node) {
+      parser.onopentag = function (node) {
         if ('svg' == node.name && node.attributes.width && node.attributes.height) {
           width = parseInt(node.attributes.width, 10);
           height = parseInt(node.attributes.height, 10);
@@ -160,3 +171,4 @@ Image.prototype.size = function(){
 
   return [width, height];
 };
+}

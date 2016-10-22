@@ -9,7 +9,7 @@
  * Module dependencies.
  */
 
-var Node = require('./node');
+import Node = require('./node');
 
 /**
  * Initialize a new `Params` with `name`, `params`, and `body`.
@@ -20,10 +20,13 @@ var Node = require('./node');
  * @api public
  */
 
-var Params = module.exports = function Params(){
-  Node.call(this);
-  this.nodes = [];
-};
+export = class Params extends Node {
+
+  nodes = [];
+
+  constructor(){
+    super();
+  }
 
 /**
  * Check function arity.
@@ -32,15 +35,9 @@ var Params = module.exports = function Params(){
  * @api public
  */
 
-Params.prototype.__defineGetter__('length', function(){
+get length(){
   return this.nodes.length;
-});
-
-/**
- * Inherit from `Node.prototype`.
- */
-
-Params.prototype.__proto__ = Node.prototype;
+}
 
 /**
  * Push the given `node`.
@@ -49,9 +46,9 @@ Params.prototype.__proto__ = Node.prototype;
  * @api public
  */
 
-Params.prototype.push = function(node){
+push(node){
   this.nodes.push(node);
-};
+}
 
 /**
  * Return a clone of this node.
@@ -60,7 +57,7 @@ Params.prototype.push = function(node){
  * @api public
  */
 
-Params.prototype.clone = function(parent){
+clone(parent){
   var clone = new Params;
   clone.lineno = this.lineno;
   clone.column = this.column;
@@ -69,7 +66,7 @@ Params.prototype.clone = function(parent){
     clone.push(node.clone(parent, clone));
   });
   return clone;
-};
+}
 
 /**
  * Return a JSON representation of this node.
@@ -78,7 +75,7 @@ Params.prototype.clone = function(parent){
  * @api public
  */
 
-Params.prototype.toJSON = function(){
+toJSON(){
   return {
     __type: 'Params',
     nodes: this.nodes,
@@ -86,5 +83,6 @@ Params.prototype.toJSON = function(){
     column: this.column,
     filename: this.filename
   };
-};
+}
+}
 

@@ -8,7 +8,7 @@
  * Module dependencies.
  */
 
-var Atrule = require('./atrule');
+import Atrule = require('./atrule');
 
 /**
  * Initialize a new supports node.
@@ -17,16 +17,10 @@ var Atrule = require('./atrule');
  * @api public
  */
 
-var Supports = module.exports = function Supports(condition){
-  Atrule.call(this, 'supports');
-  this.condition = condition;
-};
-
-/**
- * Inherit from `Atrule.prototype`.
- */
-
-Supports.prototype.__proto__ = Atrule.prototype;
+export = class Supports extends Atrule {
+  constructor(public condition?){
+  super('supports');
+}
 
 /**
  * Return a clone of this node.
@@ -35,7 +29,7 @@ Supports.prototype.__proto__ = Atrule.prototype;
  * @api public
  */
 
-Supports.prototype.clone = function(parent){
+clone(parent){
   var clone = new Supports;
   clone.condition = this.condition.clone(parent, clone);
   clone.block = this.block.clone(parent, clone);
@@ -43,7 +37,7 @@ Supports.prototype.clone = function(parent){
   clone.column = this.column;
   clone.filename = this.filename;
   return clone;
-};
+}
 
 /**
  * Return a JSON representation of this node.
@@ -52,7 +46,7 @@ Supports.prototype.clone = function(parent){
  * @api public
  */
 
-Supports.prototype.toJSON = function(){
+toJSON(){
   return {
     __type: 'Supports',
     condition: this.condition,
@@ -61,7 +55,7 @@ Supports.prototype.toJSON = function(){
     column: this.column,
     filename: this.filename
   };
-};
+}
 
 /**
  * Return @supports
@@ -70,6 +64,7 @@ Supports.prototype.toJSON = function(){
  * @api public
  */
 
-Supports.prototype.toString = function(){
+toString(){
   return '@supports ' + this.condition;
-};
+}
+}

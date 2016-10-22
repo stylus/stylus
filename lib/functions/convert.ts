@@ -1,4 +1,4 @@
-var utils = require('../utils');
+import utils = require('../utils');
 
 /**
  * Like `unquote` but tries to convert
@@ -9,7 +9,7 @@ var utils = require('../utils');
  * @api public
  */
 
-module.exports = function convert(str){
+export = function convert(str){
   utils.assertString(str, 'str');
   return utils.parseString(str.string);
 };

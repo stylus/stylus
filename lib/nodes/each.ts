@@ -9,8 +9,8 @@
  * Module dependencies.
  */
 
-var Node = require('./node')
-  , nodes = require('./');
+import Node = require('./node');
+import nodes = require('./');
 
 /**
  * Initialize a new `Each` node with the given `val` name,
@@ -23,19 +23,11 @@ var Node = require('./node')
  * @api public
  */
 
-var Each = module.exports = function Each(val, key, expr, block){
-  Node.call(this);
+export = class Each extends Node {
+  constructor(val, public key, public expr?, public block?) {
+    super();
   this.val = val;
-  this.key = key;
-  this.expr = expr;
-  this.block = block;
-};
-
-/**
- * Inherit from `Node.prototype`.
- */
-
-Each.prototype.__proto__ = Node.prototype;
+}
 
 /**
  * Return a clone of this node.
@@ -44,7 +36,7 @@ Each.prototype.__proto__ = Node.prototype;
  * @api public
  */
 
-Each.prototype.clone = function(parent){
+clone(parent){
   var clone = new Each(this.val, this.key);
   clone.expr = this.expr.clone(parent, clone);
   clone.block = this.block.clone(parent, clone);
@@ -52,7 +44,7 @@ Each.prototype.clone = function(parent){
   clone.column = this.column;
   clone.filename = this.filename;
   return clone;
-};
+}
 
 /**
  * Return a JSON representation of this node.
@@ -61,7 +53,7 @@ Each.prototype.clone = function(parent){
  * @api public
  */
 
-Each.prototype.toJSON = function(){
+toJSON(){
   return {
     __type: 'Each',
     val: this.val,
@@ -72,4 +64,5 @@ Each.prototype.toJSON = function(){
     column: this.column,
     filename: this.filename
   };
-};
+}
+}

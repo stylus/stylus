@@ -9,8 +9,8 @@
  * Module dependencies.
  */
 
-var Node = require('./node')
-  , nodes = require('./');
+import Node = require('./node');
+import nodes = require('./');
 
 /**
  * Initialize a new `Ident` by `name` with the given `val` node.
@@ -20,13 +20,18 @@ var Node = require('./node')
  * @api public
  */
 
-var Ident = module.exports = function Ident(name, val, mixin){
-  Node.call(this);
-  this.name = name;
+export = class Ident extends Node {
+  string;
+  mixin;
+  property;
+  rest;
+
+  constructor(public name, val?, mixin?){
+  super();
   this.string = name;
-  this.val = val || nodes.null;
+  this.val = val || nodes.nullNode;
   this.mixin = !!mixin;
-};
+}
 
 /**
  * Check if the variable has a value.
@@ -35,9 +40,9 @@ var Ident = module.exports = function Ident(name, val, mixin){
  * @api public
  */
 
-Ident.prototype.__defineGetter__('isEmpty', function(){
+get isEmpty(){
   return undefined == this.val;
-});
+}
 
 /**
  * Return hash.
@@ -46,15 +51,9 @@ Ident.prototype.__defineGetter__('isEmpty', function(){
  * @api public
  */
 
-Ident.prototype.__defineGetter__('hash', function(){
+get hash(){
   return this.name;
-});
-
-/**
- * Inherit from `Node.prototype`.
- */
-
-Ident.prototype.__proto__ = Node.prototype;
+}
 
 /**
  * Return a clone of this node.
@@ -63,7 +62,7 @@ Ident.prototype.__proto__ = Node.prototype;
  * @api public
  */
 
-Ident.prototype.clone = function(parent){
+clone(parent){
   var clone = new Ident(this.name);
   clone.val = this.val.clone(parent, clone);
   clone.mixin = this.mixin;
@@ -73,7 +72,7 @@ Ident.prototype.clone = function(parent){
   clone.property = this.property;
   clone.rest = this.rest;
   return clone;
-};
+}
 
 /**
  * Return a JSON representation of this node.
@@ -82,7 +81,7 @@ Ident.prototype.clone = function(parent){
  * @api public
  */
 
-Ident.prototype.toJSON = function(){
+toJSON(){
   return {
     __type: 'Ident',
     name: this.name,
@@ -94,7 +93,7 @@ Ident.prototype.toJSON = function(){
     column: this.column,
     filename: this.filename
   };
-};
+}
 
 /**
  * Return <name>.
@@ -103,9 +102,9 @@ Ident.prototype.toJSON = function(){
  * @api public
  */
 
-Ident.prototype.toString = function(){
+toString(){
   return this.name;
-};
+}
 
 /**
  * Coerce `other` to an ident.
@@ -115,7 +114,7 @@ Ident.prototype.toString = function(){
  * @api public
  */
 
-Ident.prototype.coerce = function(other){
+coerce(other){
   switch (other.nodeName) {
     case 'ident':
     case 'string':
@@ -126,7 +125,7 @@ Ident.prototype.coerce = function(other){
     default:
       return Node.prototype.coerce.call(this, other);
   }
-};
+}
 
 /**
  * Operate on `right` with the given `op`.
@@ -137,7 +136,7 @@ Ident.prototype.coerce = function(other){
  * @api public
  */
 
-Ident.prototype.operate = function(op, right){
+operate(op, right){
   var val = right.first;
   switch (op) {
     case '-':
@@ -153,4 +152,5 @@ Ident.prototype.operate = function(op, right){
       return new nodes.Ident(this.string + this.coerce(val).string);
   }
   return Node.prototype.operate.call(this, op, right);
-};
+}
+}

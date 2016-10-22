@@ -1,5 +1,5 @@
-var utils = require('../utils')
-  , nodes = require('../nodes');
+import utils = require('../utils');
+import nodes = require('../nodes');
 
 /**
  * Return the opposites of the given `positions`.
@@ -14,7 +14,8 @@ var utils = require('../utils')
  * @api public
  */
 
-(module.exports = function oppositePosition(positions){
+export = class oppositePosition {
+	constructor(positions){
   var expr = [];
   utils.unwrap(positions).nodes.forEach(function(pos, i){
     utils.assertString(pos, 'position ' + i);
@@ -29,4 +30,7 @@ var utils = require('../utils')
     expr.push(new nodes.Literal(pos));
   });
   return expr;
-}).raw = true;
+}
+
+	static raw = true;
+}

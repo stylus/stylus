@@ -1,6 +1,6 @@
-var utils = require('../utils')
-  , nodes = require('../nodes')
-  , hsla = require('./hsla');
+import utils = require('../utils');
+import nodes = require('../nodes');
+import hsla = require('./hsla');
 
 /**
  * Convert the given `color` to an `HSLA` node,
@@ -21,7 +21,7 @@ var utils = require('../utils')
  * @api public
  */
 
-module.exports = function hsl(hue, saturation, lightness){
+export = function hsl(hue, saturation, lightness){
   if (1 == arguments.length) {
     utils.assertColor(hue, 'color');
     return hue.hsla;

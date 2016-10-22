@@ -9,7 +9,7 @@
  * Module dependencies.
  */
 
-var Node = require('./node');
+import Node = require('./node');
 
 /**
  * Initialize a new `Feature` with the given `segs`.
@@ -18,17 +18,14 @@ var Node = require('./node');
  * @api public
  */
 
-var Feature = module.exports = function Feature(segs){
-  Node.call(this);
-  this.segments = segs;
+export = class Feature extends Node {
+  private expr;
+  private name;
+
+  constructor(public segments?: Array<any>){
+  super();
   this.expr = null;
-};
-
-/**
- * Inherit from `Node.prototype`.
- */
-
-Feature.prototype.__proto__ = Node.prototype;
+}
 
 /**
  * Return a clone of this node.
@@ -37,7 +34,7 @@ Feature.prototype.__proto__ = Node.prototype;
  * @api public
  */
 
-Feature.prototype.clone = function(parent){
+clone(parent){
   var clone = new Feature;
   clone.segments = this.segments.map(function(node){ return node.clone(parent, clone); });
   if (this.expr) clone.expr = this.expr.clone(parent, clone);
@@ -46,7 +43,7 @@ Feature.prototype.clone = function(parent){
   clone.column = this.column;
   clone.filename = this.filename;
   return clone;
-};
+}
 
 /**
  * Return "<ident>" or "(<ident>: <expr>)"
@@ -55,13 +52,13 @@ Feature.prototype.clone = function(parent){
  * @api public
  */
 
-Feature.prototype.toString = function(){
+toString(){
   if (this.expr) {
     return '(' + this.segments.join('') + ': ' + this.expr.toString() + ')';
   } else {
     return this.segments.join('');
   }
-};
+}
 
 /**
  * Return a JSON representation of this node.
@@ -70,8 +67,8 @@ Feature.prototype.toString = function(){
  * @api public
  */
 
-Feature.prototype.toJSON = function(){
-  var json = {
+toJSON(){
+  var json: any = {
     __type: 'Feature',
     segments: this.segments,
     lineno: this.lineno,
@@ -81,4 +78,5 @@ Feature.prototype.toJSON = function(){
   if (this.expr) json.expr = this.expr;
   if (this.name) json.name = this.name;
   return json;
-};
+}
+}

@@ -1,4 +1,4 @@
-var utils = require('../utils');
+import utils = require('../utils');
 
 /**
  * Return the current selector or compile
@@ -9,7 +9,9 @@ var utils = require('../utils');
  * @api public
  */
 
-(module.exports = function selector(){
+export = class selector {
+  selectorStack;
+	constructor(){
   var stack = this.selectorStack
     , args = [].slice.call(arguments);
 
@@ -46,7 +48,10 @@ var utils = require('../utils');
   }
 
   return stack.length ? utils.compileSelectors(stack).join(',') : '&';
-}).raw = true;
+}
+
+	static raw = true;
+}
 
 function pushToStack(selectors, stack) {
   selectors.forEach(function(sel) {
@@ -57,7 +62,7 @@ function pushToStack(selectors, stack) {
 }
 
 function parse(selector) {
-  var Parser = new require('../parser')
+  var Parser = new (<any>require)('../parser')
     , parser = new Parser(selector)
     , nodes;
   parser.state.push('selector-parts');

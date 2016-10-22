@@ -1,5 +1,5 @@
-var utils = require('../utils')
-  , nodes = require('../nodes');
+import utils = require('../utils');
+import nodes = require('../nodes');
 
 /**
  * Returns the relative luminance of the given `color`,
@@ -21,7 +21,7 @@ var utils = require('../utils')
  * @api public
  */
 
-module.exports = function luminosity(color){
+export = function luminosity(color){
   utils.assertColor(color);
   color = color.rgba;
   function processChannel(channel) {

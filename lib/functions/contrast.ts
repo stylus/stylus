@@ -1,7 +1,7 @@
-var utils = require('../utils')
-  , nodes = require('../nodes')
-  , blend = require('./blend')
-  , luminosity = require('./luminosity');
+import utils = require('../utils');
+import nodes = require('../nodes');
+import blend = require('./blend');
+import luminosity = require('./luminosity');
 
 /**
  * Returns the contrast ratio object between `top` and `bottom` colors,
@@ -22,7 +22,7 @@ var utils = require('../utils')
  * @api public
  */
 
-module.exports = function contrast(top, bottom){
+export = function contrast(top, bottom){
   if ('rgba' != top.nodeName && 'hsla' != top.nodeName) {
     return new nodes.Literal('contrast(' + (top.isNull ? '' : top.toString()) + ')');
   }
@@ -45,6 +45,10 @@ module.exports = function contrast(top, bottom){
     return Math.round(ratio * 10) / 10;
   }
 
+  function processChannel(topChannel, bottomChannel) {
+    return Math.min(Math.max(0, (topChannel - bottomChannel * bottom.a) / (1 - bottom.a)), 255);
+  }
+
   if (1 <= bottom.a) {
     var resultRatio = new nodes.Unit(contrast(top, bottom));
     result.set('ratio', resultRatio);
@@ -55,9 +59,6 @@ module.exports = function contrast(top, bottom){
     var onBlack = contrast(top, blend(bottom, new nodes.RGBA(0, 0, 0, 1)))
       , onWhite = contrast(top, blend(bottom, new nodes.RGBA(255, 255, 255, 1)))
       , max = Math.max(onBlack, onWhite);
-    function processChannel(topChannel, bottomChannel) {
-      return Math.min(Math.max(0, (topChannel - bottomChannel * bottom.a) / (1 - bottom.a)), 255);
-    }
     var closest = new nodes.RGBA(
       processChannel(top.r, bottom.r),
       processChannel(top.g, bottom.g),

@@ -11,9 +11,8 @@
  * @api private
  */
 
-var Scope = module.exports = function Scope() {
-  this.locals = {};
-};
+export = class Scope {
+  private locals = {};
 
 /**
  * Add `ident` node to the current scope.
@@ -22,9 +21,9 @@ var Scope = module.exports = function Scope() {
  * @api private
  */
 
-Scope.prototype.add = function(ident){
+add(ident){
   this.locals[ident.name] = ident.val;
-};
+}
 
 /**
  * Lookup the given local variable `name`.
@@ -34,9 +33,9 @@ Scope.prototype.add = function(ident){
  * @api private
  */
 
-Scope.prototype.lookup = function(name){
+lookup(name){
   return hasOwnProperty(this.locals, name) ? this.locals[name] : undefined;
-};
+}
 
 /**
  * Custom inspect.
@@ -45,12 +44,13 @@ Scope.prototype.lookup = function(name){
  * @api public
  */
 
-Scope.prototype.inspect = function(){
+inspect(){
   var keys = Object.keys(this.locals).map(function(key){ return '@' + key; });
   return '[Scope'
     + (keys.length ? ' ' + keys.join(', ') : '')
     + ']';
-};
+}
+}
 
 /**
  * @param {Object} obj

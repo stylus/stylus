@@ -9,9 +9,8 @@
  * Module dependencies.
  */
 
-var Node = require('./node')
-  , nodes = require('./')
-  , nativeObj = {}.constructor;
+import Node = require('./node');
+import nodes = require('./');
 
 /**
  * Initialize a new `Object`.
@@ -19,16 +18,16 @@ var Node = require('./node')
  * @api public
  */
 
-var Object = module.exports = function Object(){
-  Node.call(this);
-  this.vals = {};
+export = class ObjectNode extends Node {
+  vals = {};
+
+  constructor(){
+  super();
 };
 
-/**
- * Inherit from `Node.prototype`.
- */
-
-Object.prototype.__proto__ = Node.prototype;
+get nodeName() {
+  return 'object';
+}
 
 /**
  * Set `key` to `val`.
@@ -39,10 +38,10 @@ Object.prototype.__proto__ = Node.prototype;
  * @api public
  */
 
-Object.prototype.set = function(key, val){
+set(key, val){
   this.vals[key] = val;
   return this;
-};
+}
 
 /**
  * Return length.
@@ -51,9 +50,9 @@ Object.prototype.set = function(key, val){
  * @api public
  */
 
-Object.prototype.__defineGetter__('length', function() {
-  return nativeObj.keys(this.vals).length;
-});
+get length() {
+  return Object.keys(this.vals).length;
+}
 
 /**
  * Get `key`.
@@ -63,9 +62,9 @@ Object.prototype.__defineGetter__('length', function() {
  * @api public
  */
 
-Object.prototype.get = function(key){
-  return this.vals[key] || nodes.null;
-};
+get(key){
+  return this.vals[key] || nodes.nullNode;
+}
 
 /**
  * Has `key`?
@@ -75,7 +74,7 @@ Object.prototype.get = function(key){
  * @api public
  */
 
-Object.prototype.has = function(key){
+has(key){
   return key in this.vals;
 };
 
@@ -88,7 +87,7 @@ Object.prototype.has = function(key){
  * @api public
  */
 
-Object.prototype.operate = function(op, right){
+operate(op, right){
   switch (op) {
     case '.':
     case '[]':
@@ -98,20 +97,20 @@ Object.prototype.operate = function(op, right){
         , a
         , b;
       if ('object' != right.nodeName || this.length != right.length)
-        return nodes.false;
+        return nodes.falseNode;
       for (var key in vals) {
         a = vals[key];
         b = right.vals[key];
         if (a.operate(op, b).isFalse)
-          return nodes.false;
+          return nodes.falseNode;
       }
-      return nodes.true;
+      return nodes.trueNode;
     case '!=':
       return this.operate('==', right).negate();
     default:
-      return Node.prototype.operate.call(this, op, right);
+      return super.operate(op, right);
   }
-};
+}
 
 /**
  * Return Boolean based on the length of this object.
@@ -120,9 +119,9 @@ Object.prototype.operate = function(op, right){
  * @api public
  */
 
-Object.prototype.toBoolean = function(){
+toBoolean(){
   return nodes.Boolean(this.length);
-};
+}
 
 /**
  * Convert object to string with properties.
@@ -131,7 +130,7 @@ Object.prototype.toBoolean = function(){
  * @api private
  */
 
-Object.prototype.toBlock = function(){
+toBlock(){
   var str = '{'
     , key
     , val;
@@ -160,7 +159,7 @@ Object.prototype.toBlock = function(){
     }
     return node.toString();
   }
-};
+}
 
 /**
  * Return a clone of this node.
@@ -169,8 +168,8 @@ Object.prototype.toBlock = function(){
  * @api public
  */
 
-Object.prototype.clone = function(parent){
-  var clone = new Object;
+clone(parent){
+  var clone = new ObjectNode;
   clone.lineno = this.lineno;
   clone.column = this.column;
   clone.filename = this.filename;
@@ -178,7 +177,7 @@ Object.prototype.clone = function(parent){
     clone.vals[key] = this.vals[key].clone(parent, clone);
   }
   return clone;
-};
+}
 
 /**
  * Return a JSON representation of this node.
@@ -187,7 +186,7 @@ Object.prototype.clone = function(parent){
  * @api public
  */
 
-Object.prototype.toJSON = function(){
+toJSON(){
   return {
     __type: 'Object',
     vals: this.vals,
@@ -195,7 +194,7 @@ Object.prototype.toJSON = function(){
     column: this.column,
     filename: this.filename
   };
-};
+}
 
 /**
  * Return "{ <prop>: <val> }"
@@ -204,10 +203,11 @@ Object.prototype.toJSON = function(){
  * @api public
  */
 
-Object.prototype.toString = function(){
+toString(){
   var obj = {};
   for (var prop in this.vals) {
     obj[prop] = this.vals[prop].toString();
   }
   return JSON.stringify(obj);
-};
+}
+}

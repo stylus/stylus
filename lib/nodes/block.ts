@@ -9,7 +9,7 @@
  * Module dependencies.
  */
 
-var Node = require('./node');
+import Node = require('./node');
 
 /**
  * Initialize a new `Block` node with `parent` Block.
@@ -18,19 +18,15 @@ var Node = require('./node');
  * @api public
  */
 
-var Block = module.exports = function Block(parent, node){
-  Node.call(this);
+export = class Block extends Node {
+  nodes;
+  scope;
+
+  constructor(public parent, public node){
+  super();
   this.nodes = [];
-  this.parent = parent;
-  this.node = node;
   this.scope = true;
 };
-
-/**
- * Inherit from `Node.prototype`.
- */
-
-Block.prototype.__proto__ = Node.prototype;
 
 /**
  * Check if this block has properties..
@@ -39,13 +35,13 @@ Block.prototype.__proto__ = Node.prototype;
  * @api public
  */
 
-Block.prototype.__defineGetter__('hasProperties', function(){
+get hasProperties(){
   for (var i = 0, len = this.nodes.length; i < len; ++i) {
     if ('property' == this.nodes[i].nodeName) {
       return true;
     }
   }
-});
+}
 
 /**
  * Check if this block has @media nodes.
@@ -54,7 +50,7 @@ Block.prototype.__defineGetter__('hasProperties', function(){
  * @api public
  */
 
-Block.prototype.__defineGetter__('hasMedia', function(){
+get hasMedia(){
   for (var i = 0, len = this.nodes.length; i < len; ++i) {
     var nodeName = this.nodes[i].nodeName;
     if ('media' == nodeName) {
@@ -62,7 +58,7 @@ Block.prototype.__defineGetter__('hasMedia', function(){
     }
   }
   return false;
-});
+}
 
 /**
  * Check if this block is empty.
@@ -71,9 +67,9 @@ Block.prototype.__defineGetter__('hasMedia', function(){
  * @api public
  */
 
-Block.prototype.__defineGetter__('isEmpty', function(){
+get isEmpty(){
   return !this.nodes.length;
-});
+}
 
 /**
  * Return a clone of this node.
@@ -82,7 +78,7 @@ Block.prototype.__defineGetter__('isEmpty', function(){
  * @api public
  */
 
-Block.prototype.clone = function(parent, node){
+clone(parent, node){
   parent = parent || this.parent;
   var clone = new Block(parent, node || this.node);
   clone.lineno = this.lineno;
@@ -93,7 +89,7 @@ Block.prototype.clone = function(parent, node){
     clone.push(node.clone(clone, clone));
   });
   return clone;
-};
+}
 
 /**
  * Push a `node` to this block.
@@ -102,9 +98,9 @@ Block.prototype.clone = function(parent, node){
  * @api public
  */
 
-Block.prototype.push = function(node){
+push(node){
   this.nodes.push(node);
-};
+}
 
 /**
  * Return a JSON representation of this node.
@@ -113,7 +109,7 @@ Block.prototype.push = function(node){
  * @api public
  */
 
-Block.prototype.toJSON = function(){
+toJSON(){
   return {
     __type: 'Block',
     // parent: this.parent,
@@ -124,4 +120,5 @@ Block.prototype.toJSON = function(){
     filename: this.filename,
     nodes: this.nodes
   };
-};
+}
+}

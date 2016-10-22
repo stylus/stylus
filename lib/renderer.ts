@@ -9,20 +9,14 @@
  * Module dependencies.
  */
 
-var Parser = require('./parser')
-  , EventEmitter = require('events').EventEmitter
-  , Evaluator = require('./visitor/evaluator')
-  , Normalizer = require('./visitor/normalizer')
-  , events = new EventEmitter
-  , utils = require('./utils')
-  , nodes = require('./nodes')
-  , join = require('path').join;
-
-/**
- * Expose `Renderer`.
- */
-
-module.exports = Renderer;
+import Parser = require('./parser');
+import {EventEmitter} from 'events';
+import Evaluator = require('./visitor/evaluator');
+import Normalizer = require('./visitor/normalizer');
+var events = new EventEmitter;
+import utils = require('./utils');
+import nodes = require('./nodes');
+import {join} from 'path';
 
 /**
  * Initialize a new `Renderer` with the given `str` and `options`.
@@ -32,7 +26,16 @@ module.exports = Renderer;
  * @api public
  */
 
-function Renderer(str, options) {
+export = class Renderer extends EventEmitter {
+  private options;
+  private str;
+  private events;
+  private parser;
+  private evaluator;
+  private nodes;
+  private sourcemap;
+  constructor(str, options) {
+    super();
   options = options || {};
   options.globals = options.globals || {};
   options.functions = options.functions || {};
@@ -48,25 +51,19 @@ function Renderer(str, options) {
 }
 
 /**
- * Inherit from `EventEmitter.prototype`.
- */
-
-Renderer.prototype.__proto__ = EventEmitter.prototype;
-
-/**
  * Expose events explicitly.
  */
 
-module.exports.events = events;
+static events = events;
 
-/**
+  /**
  * Parse and evaluate AST, then callback `fn(err, css, js)`.
  *
  * @param {Function} [fn]
  * @api public
  */
 
-Renderer.prototype.render = function(fn){
+render(fn) {
   var parser = this.parser = new Parser(this.str, this.options);
 
   // use plugin(s)
@@ -98,7 +95,7 @@ Renderer.prototype.render = function(fn){
     // expose sourcemap
     if (this.options.sourcemap) this.sourcemap = compiler.map.toJSON();
   } catch (err) {
-    var options = {};
+    var options: any = {};
     options.input = err.input || this.str;
     options.filename = err.filename || this.options.filename;
     options.lineno = err.lineno || parser.lexer.lineno;
@@ -110,12 +107,12 @@ Renderer.prototype.render = function(fn){
   // fire `end` event
   var listeners = this.listeners('end');
   if (fn) listeners.push(fn);
-  for (var i = 0, len = listeners.length; i < len; i++) {
+  for (let i = 0, len = listeners.length; i < len; i++) {
     var ret = listeners[i](null, css);
     if (ret) css = ret;
   }
   if (!fn) return css;
-};
+}
 
 /**
  * Get dependencies of the compiled file.
@@ -125,8 +122,8 @@ Renderer.prototype.render = function(fn){
  * @api public
  */
 
-Renderer.prototype.deps = function(filename){
-  var opts = utils.merge({ cache: false }, this.options);
+deps(filename) {
+  var opts = utils.merge({cache: false}, this.options);
   if (filename) opts.filename = filename;
 
   var DepsResolver = require('./visitor/deps-resolver')
@@ -141,14 +138,14 @@ Renderer.prototype.deps = function(filename){
     // resolve dependencies
     return resolver.resolve();
   } catch (err) {
-    var options = {};
+    var options: any = {};
     options.input = err.input || this.str;
     options.filename = err.filename || opts.filename;
     options.lineno = err.lineno || parser.lexer.lineno;
     options.column = err.column || parser.lexer.column;
     throw utils.formatException(err, options);
   }
-};
+}
 
 /**
  * Set option `key` to `val`.
@@ -159,10 +156,10 @@ Renderer.prototype.deps = function(filename){
  * @api public
  */
 
-Renderer.prototype.set = function(key, val){
+set(key, val) {
   this.options[key] = val;
   return this;
-};
+}
 
 /**
  * Get option `key`.
@@ -172,9 +169,9 @@ Renderer.prototype.set = function(key, val){
  * @api public
  */
 
-Renderer.prototype.get = function(key){
+get(key) {
   return this.options[key];
-};
+}
 
 /**
  * Include the given `path` to the lookup paths array.
@@ -184,10 +181,10 @@ Renderer.prototype.get = function(key){
  * @api public
  */
 
-Renderer.prototype.include = function(path){
+include(path) {
   this.options.paths.push(path);
   return this;
-};
+}
 
 /**
  * Use the given `fn`.
@@ -200,10 +197,10 @@ Renderer.prototype.include = function(path){
  * @api public
  */
 
-Renderer.prototype.use = function(fn){
+use(fn) {
   fn.call(this, this);
   return this;
-};
+}
 
 /**
  * Define function or global var with the given `name`. Optionally
@@ -216,7 +213,7 @@ Renderer.prototype.use = function(fn){
  * @api public
  */
 
-Renderer.prototype.define = function(name, fn, raw){
+define(name, fn, raw) {
   fn = utils.coerce(fn, raw);
 
   if (fn.nodeName) {
@@ -228,7 +225,7 @@ Renderer.prototype.define = function(name, fn, raw){
   this.options.functions[name] = fn;
   if (undefined != raw) fn.raw = raw;
   return this;
-};
+}
 
 /**
  * Import the given `file`.
@@ -238,9 +235,9 @@ Renderer.prototype.define = function(name, fn, raw){
  * @api public
  */
 
-Renderer.prototype.import = function(file){
+import(file) {
   this.options.imports.push(file);
   return this;
-};
-
+}
+}
 

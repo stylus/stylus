@@ -1,4 +1,4 @@
-var utils = require('../utils');
+import utils = require('../utils');
 
 /**
  * Throw an error with the given `msg`.
@@ -9,7 +9,7 @@ var utils = require('../utils');
 
 module.exports = function error(msg){
   utils.assertType(msg, 'string', 'msg');
-  var err = new Error(msg.val);
+  var err: any = new Error(msg.val);
   err.fromStylus = true;
   throw err;
 };

@@ -8,17 +8,17 @@
  * Module dependencies.
  */
 
-var Lexer = require('./lexer')
-  , nodes = require('./nodes')
-  , Token = require('./token')
-  , units = require('./units')
-  , errors = require('./errors')
-  , cache = require('./cache');
+import Lexer = require('./lexer');
+import nodes = require('./nodes');
+import Token = require('./token');
+import units = require('./units');
+import errors = require('./errors');
+import cache = require('./cache');
 
 // debuggers
 
 var debug = {
-    lexer: require('debug')('stylus:lexer')
+  lexer: require('debug')('stylus:lexer')
   , selector: require('debug')('stylus:parser:selector')
 };
 
@@ -27,7 +27,7 @@ var debug = {
  */
 
 var selectorTokens = [
-    'ident'
+  'ident'
   , 'string'
   , 'selector'
   , 'function'
@@ -148,7 +148,27 @@ var pseudoSelectors = [
  * @api private
  */
 
-var Parser = module.exports = function Parser(str, options) {
+export = class Parser {
+  static cache;
+  hash;
+  lexer;
+  prefix;
+  root;
+  state;
+  stash;
+  parens;
+  css;
+  prevState;
+  bracketed;
+  parent;
+  allowPostfix;
+  private cond;
+  private selectorScope;
+  private inProperty;
+  private _ident;
+  private operand;
+
+constructor(str, options?) {
   var self = this;
   options = options || {};
   Parser.cache = Parser.cache || Parser.getCache(options);
@@ -164,11 +184,10 @@ var Parser = module.exports = function Parser(str, options) {
   this.stash = [];
   this.parens = 0;
   this.css = 0;
-  this.state.pop = function(){
+  this.state.pop = function () {
     self.prevState = [].pop.call(this);
   };
 };
-
 /**
  * Get cache instance.
  *
@@ -176,24 +195,11 @@ var Parser = module.exports = function Parser(str, options) {
  * @return {Object}
  * @api private
  */
-
-Parser.getCache = function(options) {
+static getCache = function (options) {
   return false === options.cache
     ? cache(false)
     : cache(options.cache || 'memory', options);
 };
-
-/**
- * Parser prototype.
- */
-
-Parser.prototype = {
-
-  /**
-   * Constructor.
-   */
-
-  constructor: Parser,
 
   /**
    * Return current state.
@@ -202,9 +208,9 @@ Parser.prototype = {
    * @api private
    */
 
-  currentState: function() {
+  currentState() {
     return this.state[this.state.length - 1];
-  },
+  }
 
   /**
    * Return previous state.
@@ -213,9 +219,9 @@ Parser.prototype = {
    * @api private
    */
 
-  previousState: function() {
+  previousState() {
     return this.state[this.state.length - 2];
-  },
+  }
 
   /**
    * Parse the input, then return the root node.
@@ -224,7 +230,7 @@ Parser.prototype = {
    * @api private
    */
 
-  parse: function(){
+  parse() {
     var block = this.parent = this.root;
     if (Parser.cache.has(this.hash)) {
       block = Parser.cache.get(this.hash);
@@ -242,7 +248,7 @@ Parser.prototype = {
       Parser.cache.set(this.hash, block);
     }
     return block;
-  },
+  }
 
   /**
    * Throw an `Error` with the given `msg`.
@@ -251,14 +257,14 @@ Parser.prototype = {
    * @api private
    */
 
-  error: function(msg){
+  error(msg) {
     var type = this.peek().type
       , val = undefined == this.peek().val
-        ? ''
-        : ' ' + this.peek().toString();
+      ? ''
+      : ' ' + this.peek().toString();
     if (val.trim() == type.trim()) val = '';
     throw new errors.ParseError(msg.replace('{peek}', '"' + type + val + '"'));
-  },
+  }
 
   /**
    * Accept the given token `type`, and return it,
@@ -269,11 +275,11 @@ Parser.prototype = {
    * @api private
    */
 
-  accept: function(type){
+  accept(type) {
     if (type == this.peek().type) {
       return this.next();
     }
-  },
+  }
 
   /**
    * Expect token `type` and return it, throw otherwise.
@@ -283,12 +289,12 @@ Parser.prototype = {
    * @api private
    */
 
-  expect: function(type){
+  expect(type) {
     if (type != this.peek().type) {
       this.error('expected "' + type + '", got {peek}');
     }
     return this.next();
-  },
+  }
 
   /**
    * Get the next token.
@@ -297,7 +303,7 @@ Parser.prototype = {
    * @api private
    */
 
-  next: function() {
+  next() {
     var tok = this.stash.length
       ? this.stash.pop()
       : this.lexer.next()
@@ -312,7 +318,7 @@ Parser.prototype = {
     nodes.column = column;
     debug.lexer('%s %s', tok.type, tok.val || '');
     return tok;
-  },
+  }
 
   /**
    * Peek with lookahead(1).
@@ -321,9 +327,9 @@ Parser.prototype = {
    * @api private
    */
 
-  peek: function() {
+  peek() {
     return this.lexer.peek();
-  },
+  }
 
   /**
    * Lookahead `n` tokens.
@@ -333,9 +339,9 @@ Parser.prototype = {
    * @api private
    */
 
-  lookahead: function(n){
+  lookahead(n) {
     return this.lexer.lookahead(n);
-  },
+  }
 
   /**
    * Check if the token at `n` is a valid selector token.
@@ -345,7 +351,7 @@ Parser.prototype = {
    * @api private
    */
 
-  isSelectorToken: function(n) {
+  isSelectorToken(n) {
     var la = this.lookahead(n).type;
     switch (la) {
       case 'for':
@@ -359,7 +365,7 @@ Parser.prototype = {
       default:
         return ~selectorTokens.indexOf(la);
     }
-  },
+  }
 
   /**
    * Check if the token at `n` is a pseudo selector.
@@ -369,10 +375,10 @@ Parser.prototype = {
    * @api private
    */
 
-  isPseudoSelector: function(n){
+  isPseudoSelector(n) {
     var val = this.lookahead(n).val;
     return val && ~pseudoSelectors.indexOf(val.name);
-  },
+  }
 
   /**
    * Check if the current line contains `type`.
@@ -382,7 +388,7 @@ Parser.prototype = {
    * @api private
    */
 
-  lineContains: function(type){
+  lineContains(type) {
     var i = 1
       , la;
 
@@ -390,13 +396,13 @@ Parser.prototype = {
       if (~['indent', 'outdent', 'newline', 'eos'].indexOf(la.type)) return;
       if (type == la.type) return true;
     }
-  },
+  }
 
   /**
    * Valid selector tokens.
    */
 
-  selectorToken: function() {
+  selectorToken() {
     if (this.isSelectorToken(1)) {
       if ('{' == this.peek().type) {
         // unclosed, must be a block
@@ -420,7 +426,7 @@ Parser.prototype = {
       }
       return this.next();
     }
-  },
+  }
 
   /**
    * Skip the given `tokens`.
@@ -429,46 +435,46 @@ Parser.prototype = {
    * @api private
    */
 
-  skip: function(tokens) {
+  skip(tokens) {
     while (~tokens.indexOf(this.peek().type))
       this.next();
-  },
+  }
 
   /**
    * Consume whitespace.
    */
 
-  skipWhitespace: function() {
+  skipWhitespace() {
     this.skip(['space', 'indent', 'outdent', 'newline']);
-  },
+  }
 
   /**
    * Consume newlines.
    */
 
-  skipNewlines: function() {
+  skipNewlines() {
     while ('newline' == this.peek().type)
       this.next();
-  },
+  }
 
   /**
    * Consume spaces.
    */
 
-  skipSpaces: function() {
+  skipSpaces() {
     while ('space' == this.peek().type)
       this.next();
-  },
+  }
 
   /**
    * Consume spaces and comments.
    */
 
-  skipSpacesAndComments: function() {
+  skipSpacesAndComments() {
     while ('space' == this.peek().type
-      || 'comment' == this.peek().type)
+    || 'comment' == this.peek().type)
       this.next();
-  },
+  }
 
   /**
    * Check if the following sequence of tokens
@@ -476,10 +482,10 @@ Parser.prototype = {
    * `{` or indentation.
    */
 
-  looksLikeFunctionDefinition: function(i) {
+  looksLikeFunctionDefinition(i) {
     return 'indent' == this.lookahead(i).type
       || '{' == this.lookahead(i).type;
-  },
+  }
 
   /**
    * Check if the following sequence of tokens
@@ -490,7 +496,7 @@ Parser.prototype = {
    * @api private
    */
 
-  looksLikeSelector: function(fromProperty) {
+  looksLikeSelector(fromProperty?) {
     var i = 1
       , brace;
 
@@ -502,11 +508,11 @@ Parser.prototype = {
     // Assume selector when an ident is
     // followed by a selector
     while ('ident' == this.lookahead(i).type
-      && ('newline' == this.lookahead(i + 1).type
-         || ',' == this.lookahead(i + 1).type)) i += 2;
+    && ('newline' == this.lookahead(i + 1).type
+    || ',' == this.lookahead(i + 1).type)) i += 2;
 
     while (this.isSelectorToken(i)
-      || ',' == this.lookahead(i).type) {
+    || ',' == this.lookahead(i).type) {
 
       if ('selector' == this.lookahead(i).type)
         return true;
@@ -523,7 +529,7 @@ Parser.prototype = {
       // Pseudo-elements
       if (':' == this.lookahead(i).type
         && ':' == this.lookahead(i + 1).type)
-        return true; 
+        return true;
 
       // #a after an ident and newline
       if ('color' == this.lookahead(i).type
@@ -560,7 +566,7 @@ Parser.prototype = {
       // as 'td:th-child(1)' may look like a property
       // and function call to the parser otherwise
       if (':' == this.lookahead(i++).type
-        && !this.lookahead(i-1).space
+        && !this.lookahead(i - 1).space
         && this.isPseudoSelector(i))
         return true;
 
@@ -588,13 +594,13 @@ Parser.prototype = {
     // css-style mode, false on ; }
     if (this.css) {
       if (';' == this.lookahead(i).type ||
-          '}' == this.lookahead(i - 1).type)
+        '}' == this.lookahead(i - 1).type)
         return false;
     }
 
     // Trailing separators
     while (!~[
-        'indent'
+      'indent'
       , 'outdent'
       , 'newline'
       , 'for'
@@ -606,14 +612,14 @@ Parser.prototype = {
 
     if ('indent' == this.lookahead(i).type)
       return true;
-  },
+  }
 
   /**
    * Check if the following sequence of tokens
    * forms an attribute selector.
    */
 
-  looksLikeAttributeSelector: function(n) {
+  looksLikeAttributeSelector(n) {
     var type = this.lookahead(n).type;
     if ('=' == type && this.bracketed) return true;
     return ('ident' == type || 'string' == type)
@@ -621,14 +627,14 @@ Parser.prototype = {
       && ('newline' == this.lookahead(n + 2).type || this.isSelectorToken(n + 2))
       && !this.lineContains(':')
       && !this.lineContains('=');
-  },
+  }
 
   /**
    * Check if the following sequence of tokens
    * forms a keyframe block.
    */
 
-  looksLikeKeyframe: function() {
+  looksLikeKeyframe() {
     var i = 2
       , type;
     switch (this.lookahead(i).type) {
@@ -638,17 +644,17 @@ Parser.prototype = {
         return true;
       case 'newline':
         while ('unit' == this.lookahead(++i).type
-            || 'newline' == this.lookahead(i).type) ;
+        || 'newline' == this.lookahead(i).type) ;
         type = this.lookahead(i).type;
         return 'indent' == type || '{' == type;
     }
-  },
+  }
 
   /**
    * Check if the current state supports selectors.
    */
 
-  stateAllowsSelector: function() {
+  stateAllowsSelector() {
     switch (this.currentState()) {
       case 'root':
       case 'atblock':
@@ -659,7 +665,7 @@ Parser.prototype = {
       case 'for':
         return true;
     }
-  },
+  }
 
   /**
    * Try to assign @block to the node.
@@ -668,13 +674,13 @@ Parser.prototype = {
    * @private
    */
 
-  assignAtblock: function(expr) {
+  assignAtblock(expr) {
     try {
       expr.push(this.atblock(expr));
-    } catch(err) {
+    } catch (err) {
       this.error('invalid right-hand side operand in assignment, got {peek}');
     }
-  },
+  }
 
   /**
    *   statement
@@ -682,7 +688,7 @@ Parser.prototype = {
    * | statement 'unless' expression
    */
 
-  statement: function() {
+  statement() {
     var stmt = this.stmt()
       , state = this.prevState
       , block
@@ -703,7 +709,7 @@ Parser.prototype = {
       case 'expression':
       case 'function arguments':
         while (op =
-             this.accept('if')
+          this.accept('if')
           || this.accept('unless')
           || this.accept('for')) {
           switch (op.type) {
@@ -729,7 +735,7 @@ Parser.prototype = {
     }
 
     return stmt;
-  },
+  }
 
   /**
    *    ident
@@ -752,7 +758,7 @@ Parser.prototype = {
    *  | 'return' expression
    */
 
-  stmt: function() {
+  stmt() {
     var type = this.peek().type;
     switch (type) {
       case 'keyframes':
@@ -820,13 +826,13 @@ Parser.prototype = {
         if (expr.isEmpty) this.error('unexpected {peek}');
         return expr;
     }
-  },
+  }
 
   /**
    * indent (!outdent)+ outdent
    */
 
-  block: function(node, scope) {
+  block(node, scope?) {
     var delim
       , stmt
       , next
@@ -882,23 +888,23 @@ Parser.prototype = {
 
     this.parent = block.parent;
     return block;
-  },
+  }
 
   /**
    * comment space*
    */
 
-  comment: function(){
+  comment() {
     var node = this.next().val;
     this.skipSpaces();
     return node;
-  },
+  }
 
   /**
    * for val (',' key) in expr
    */
 
-  for: function() {
+  for() {
     this.expect('for');
     var key
       , val = this.id().name;
@@ -911,25 +917,25 @@ Parser.prototype = {
     each.block = this.block(each, false);
     this.state.pop();
     return each;
-  },
+  }
 
   /**
    * return expression
    */
 
-  return: function() {
+  return() {
     this.expect('return');
     var expr = this.expression();
     return expr.isEmpty
       ? new nodes.Return
       : new nodes.Return(expr);
-  },
+  }
 
   /**
    * unless expression block
    */
 
-  unless: function() {
+  unless() {
     this.expect('unless');
     this.state.push('conditional');
     this.cond = true;
@@ -938,13 +944,13 @@ Parser.prototype = {
     node.block = this.block(node, false);
     this.state.pop();
     return node;
-  },
+  }
 
   /**
    * if expression block (else block)?
    */
 
-  if: function() {
+  if() {
     this.expect('if');
     this.state.push('conditional');
     this.cond = true;
@@ -969,7 +975,7 @@ Parser.prototype = {
     }
     this.state.pop();
     return node;
-  },
+  }
 
   /**
    * @block
@@ -977,20 +983,20 @@ Parser.prototype = {
    * @param {Expression} [node]
    */
 
-  atblock: function(node){
+  atblock(node?) {
     if (!node) this.expect('atblock');
     node = new nodes.Atblock;
     this.state.push('atblock');
     node.block = this.block(node, false);
     this.state.pop();
     return node;
-  },
+  }
 
   /**
    * atrule selector? block?
    */
 
-  atrule: function(){
+  atrule() {
     var type = this.expect('atrule').val
       , node = new nodes.Atrule(type)
       , tok;
@@ -1005,33 +1011,35 @@ Parser.prototype = {
       this.state.pop();
     }
     return node;
-  },
+  }
 
   /**
    * scope
    */
 
-  scope: function(){
+  scope() {
     this.expect('scope');
     var selector = this.selectorParts()
-      .map(function(selector) { return selector.val; })
+      .map(function (selector) {
+        return selector.val;
+      })
       .join('');
     this.selectorScope = selector.trim();
-    return nodes.null;
-  },
+    return nodes.nullNode;
+  }
 
   /**
    * supports
    */
 
-  supports: function(){
+  supports() {
     this.expect('supports');
     var node = new nodes.Supports(this.supportsCondition());
     this.state.push('atrule');
     node.block = this.block(node);
     this.state.pop();
     return node;
-  },
+  }
 
   /**
    *   supports negation
@@ -1039,7 +1047,7 @@ Parser.prototype = {
    * | expression
    */
 
-  supportsCondition: function(){
+  supportsCondition() {
     var node = this.supportsNegation()
       || this.supportsOp();
     if (!node) {
@@ -1048,26 +1056,26 @@ Parser.prototype = {
       this.cond = false;
     }
     return node;
-  },
+  }
 
   /**
    * 'not' supports feature
    */
 
-  supportsNegation: function(){
+  supportsNegation() {
     if (this.accept('not')) {
       var node = new nodes.Expression;
       node.push(new nodes.Literal('not'));
       node.push(this.supportsFeature());
       return node;
     }
-  },
+  }
 
   /**
    * supports feature (('and' | 'or') supports feature)+
    */
 
-  supportsOp: function(){
+  supportsOp() {
     var feature = this.supportsFeature()
       , op
       , expr;
@@ -1080,14 +1088,14 @@ Parser.prototype = {
       }
       return expr;
     }
-  },
+  }
 
   /**
    *   ('(' supports condition ')')
    * | feature
    */
 
-  supportsFeature: function(){
+  supportsFeature() {
     this.skipSpacesAndComments();
     if ('(' == this.peek().type) {
       var la = this.lookahead(2).type;
@@ -1105,13 +1113,13 @@ Parser.prototype = {
         return node;
       }
     }
-  },
+  }
 
   /**
    * extend
    */
 
-  extend: function(){
+  extend() {
     var tok = this.expect('extend')
       , selectors = []
       , sel
@@ -1133,32 +1141,32 @@ Parser.prototype = {
 
       this.skip(['!', 'ident']);
       sel.optional = true;
-    } while(this.accept(','));
+    } while (this.accept(','));
 
     node = new nodes.Extend(selectors);
     node.lineno = tok.lineno;
     node.column = tok.column;
     return node;
-  },
+  }
 
   /**
    * media queries
    */
 
-  media: function() {
+  media() {
     this.expect('media');
     this.state.push('atrule');
     var media = new nodes.Media(this.queries());
     media.block = this.block(media);
     this.state.pop();
     return media;
-  },
+  }
 
   /**
    * query (',' query)*
    */
 
-  queries: function() {
+  queries() {
     var queries = new nodes.QueryList
       , skip = ['comment', 'newline', 'space'];
 
@@ -1168,7 +1176,7 @@ Parser.prototype = {
       this.skip(skip);
     } while (this.accept(','));
     return queries;
-  },
+  }
 
   /**
    *   expression
@@ -1176,7 +1184,7 @@ Parser.prototype = {
    * | feature ('and' feature)*
    */
 
-  query: function() {
+  query() {
     var query = new nodes.Query
       , expr
       , pred
@@ -1213,13 +1221,13 @@ Parser.prototype = {
     } while (this.accept('&&'));
 
     return query;
-  },
+  }
 
   /**
    * '(' ident ( ':'? expression )? ')'
    */
 
-  feature: function() {
+  feature() {
     this.skipSpacesAndComments();
     this.expect('(');
     this.skipSpacesAndComments();
@@ -1234,13 +1242,13 @@ Parser.prototype = {
     this.expect(')');
     this.skipSpacesAndComments();
     return node;
-  },
+  }
 
   /**
    * @-moz-document call (',' call)* block
    */
 
-  mozdocument: function(){
+  mozdocument() {
     this.expect('-moz-document');
     var mozdocument = new nodes.Atrule('-moz-document')
       , calls = [];
@@ -1254,44 +1262,44 @@ Parser.prototype = {
     mozdocument.block = this.block(mozdocument, false);
     this.state.pop();
     return mozdocument;
-  },
+  }
 
   /**
    * import expression
    */
 
-  import: function() {
+  import() {
     this.expect('import');
     this.allowPostfix = true;
     return new nodes.Import(this.expression(), false);
-  },
+  }
 
   /**
    * require expression
    */
 
-  require: function() {
+  require() {
     this.expect('require');
     this.allowPostfix = true;
     return new nodes.Import(this.expression(), true);
-  },
+  }
 
   /**
    * charset string
    */
 
-  charset: function() {
+  charset() {
     this.expect('charset');
     var str = this.expect('string').val;
     this.allowPostfix = true;
     return new nodes.Charset(str);
-  },
+  }
 
   /**
    * namespace ident? (string | url)
    */
 
-  namespace: function() {
+  namespace() {
     var str
       , prefix;
     this.expect('namespace');
@@ -1305,13 +1313,13 @@ Parser.prototype = {
     str = this.accept('string') || this.url();
     this.allowPostfix = true;
     return new nodes.Namespace(str, prefix);
-  },
+  }
 
   /**
    * keyframes name block
    */
 
-  keyframes: function() {
+  keyframes() {
     var tok = this.expect('keyframes')
       , keyframes;
 
@@ -1325,25 +1333,25 @@ Parser.prototype = {
     this.state.pop();
 
     return keyframes;
-  },
+  }
 
   /**
    * literal
    */
 
-  literal: function() {
+  literal() {
     return this.expect('literal').val;
-  },
+  }
 
   /**
    * ident space?
    */
 
-  id: function() {
+  id() {
     var tok = this.expect('ident');
     this.accept('space');
     return tok.val;
-  },
+  }
 
   /**
    *   ident
@@ -1352,7 +1360,7 @@ Parser.prototype = {
    * | selector
    */
 
-  ident: function() {
+  ident() {
     var i = 2
       , la = this.lookahead(i).type;
 
@@ -1373,7 +1381,7 @@ Parser.prototype = {
         if ('space' == this.lookahead(i - 1).type) return this.selector();
         if (this._ident == this.peek()) return this.id();
         while ('=' != this.lookahead(++i).type
-          && !~['[', ',', 'newline', 'indent', 'eos'].indexOf(this.lookahead(i).type)) ;
+        && !~['[', ',', 'newline', 'indent', 'eos'].indexOf(this.lookahead(i).type)) ;
         if ('=' == this.lookahead(i).type) {
           this._ident = this.peek();
           return this.expression();
@@ -1384,8 +1392,8 @@ Parser.prototype = {
       case '[':
         if (this._ident == this.peek()) return this.id();
         while (']' != this.lookahead(i++).type
-          && 'selector' != this.lookahead(i).type
-          && 'eos' != this.lookahead(i).type) ;
+        && 'selector' != this.lookahead(i).type
+        && 'eos' != this.lookahead(i).type) ;
         if ('=' == this.lookahead(i).type) {
           this._ident = this.peek();
           return this.expression();
@@ -1458,13 +1466,13 @@ Parser.prototype = {
             return id;
         }
     }
-  },
+  }
 
   /**
    * '*'? (ident | '{' expression '}')+
    */
 
-  interpolate: function() {
+  interpolate() {
     var node
       , segs = []
       , star;
@@ -1478,9 +1486,9 @@ Parser.prototype = {
         segs.push(this.expression());
         this.expect('}');
         this.state.pop();
-      } else if (node = this.accept('-')){
+      } else if (node = this.accept('-')) {
         segs.push(new nodes.Literal('-'));
-      } else if (node = this.accept('ident')){
+      } else if (node = this.accept('ident')) {
         segs.push(node.val);
       } else {
         break;
@@ -1488,14 +1496,14 @@ Parser.prototype = {
     }
     if (!segs.length) this.expect('ident');
     return segs;
-  },
+  }
 
   /**
    *   property ':'? expression
    * | ident
    */
 
-  property: function() {
+  property() {
     if (this.looksLikeSelector(true)) return this.selector();
 
     // property
@@ -1519,7 +1527,7 @@ Parser.prototype = {
     this.accept(';');
 
     return ret;
-  },
+  }
 
   /**
    *   selector ',' selector
@@ -1527,7 +1535,7 @@ Parser.prototype = {
    * | selector block
    */
 
-  selector: function() {
+  selector() {
     var arr
       , group = new nodes.Group
       , scope = this.selectorScope
@@ -1557,9 +1565,9 @@ Parser.prototype = {
     this.state.pop();
 
     return group;
-  },
+  }
 
-  selectorParts: function(){
+  selectorParts() {
     var tok
       , arr = [];
 
@@ -1605,25 +1613,25 @@ Parser.prototype = {
     }
 
     return arr;
-  },
+  }
 
   /**
    * ident ('=' | '?=') expression
    */
 
-  assignment: function() {
+  assignment() {
     var op
       , node
       , name = this.id().name;
 
     if (op =
-         this.accept('=')
-      || this.accept('?=')
-      || this.accept('+=')
-      || this.accept('-=')
-      || this.accept('*=')
-      || this.accept('/=')
-      || this.accept('%=')) {
+        this.accept('=')
+        || this.accept('?=')
+        || this.accept('+=')
+        || this.accept('-=')
+        || this.accept('*=')
+        || this.accept('/=')
+        || this.accept('%=')) {
       this.state.push('assignment');
       var expr = this.list();
       // @block support
@@ -1649,14 +1657,14 @@ Parser.prototype = {
     }
 
     return node;
-  },
+  }
 
   /**
    *   definition
    * | call
    */
 
-  function: function() {
+  function () {
     var parens = 1
       , i = 2
       , tok;
@@ -1665,19 +1673,19 @@ Parser.prototype = {
     // with a function call or definition. Here
     // we pair parens to prevent false negatives
     out:
-    while (tok = this.lookahead(i++)) {
-      switch (tok.type) {
-        case 'function':
-        case '(':
-          ++parens;
-          break;
-        case ')':
-          if (!--parens) break out;
-          break;
-        case 'eos':
-          this.error('failed to find closing paren ")"');
+      while (tok = this.lookahead(i++)) {
+        switch (tok.type) {
+          case 'function':
+          case '(':
+            ++parens;
+            break;
+          case ')':
+            if (!--parens) break out;
+            break;
+          case 'eos':
+            this.error('failed to find closing paren ")"');
+        }
       }
-    }
 
     // Definition or call
     switch (this.currentState()) {
@@ -1688,26 +1696,26 @@ Parser.prototype = {
           ? this.functionDefinition()
           : this.expression();
     }
-  },
+  }
 
   /**
    * url '(' (expression | urlchars)+ ')'
    */
 
-  url: function() {
+  url() {
     this.expect('function');
     this.state.push('function arguments');
     var args = this.args();
     this.expect(')');
     this.state.pop();
     return new nodes.Call('url', args);
-  },
+  }
 
   /**
    * '+'? ident '(' expression ')' block?
    */
 
-  functionCall: function() {
+  functionCall() {
     var withBlock = this.accept('+');
     if ('url' == this.peek().val.name) return this.url();
     var name = this.expect('function').val.name;
@@ -1724,13 +1732,13 @@ Parser.prototype = {
       this.state.pop();
     }
     return call;
-  },
+  }
 
   /**
    * ident '(' params ')' block
    */
 
-  functionDefinition: function() {
+  functionDefinition() {
     var name = this.expect('function').val.name;
 
     // params
@@ -1747,7 +1755,7 @@ Parser.prototype = {
     fn.block = this.block(fn);
     this.state.pop();
     return new nodes.Ident(name, fn);
-  },
+  }
 
   /**
    *   ident
@@ -1756,7 +1764,7 @@ Parser.prototype = {
    * | ident ',' ident
    */
 
-  params: function() {
+  params() {
     var tok
       , node
       , params = new nodes.Params;
@@ -1773,13 +1781,13 @@ Parser.prototype = {
       this.skipWhitespace();
     }
     return params;
-  },
+  }
 
   /**
    * (ident ':')? expression (',' (ident ':')? expression)*
    */
 
-  args: function() {
+  args() {
     var args = new nodes.Arguments
       , keyword;
 
@@ -1789,20 +1797,20 @@ Parser.prototype = {
         keyword = this.next().val.string;
         this.expect(':');
         args.map[keyword] = this.expression();
-      // arg
+        // arg
       } else {
         args.push(this.expression());
       }
     } while (this.accept(','));
 
     return args;
-  },
+  }
 
   /**
    * expression (',' expression)*
    */
 
-  list: function() {
+  list() {
     var node = this.expression();
 
     while (this.accept(',')) {
@@ -1816,13 +1824,13 @@ Parser.prototype = {
       }
     }
     return node;
-  },
+  }
 
   /**
    * negation+
    */
 
-  expression: function() {
+  expression() {
     var node
       , expr = new nodes.Expression;
     this.state.push('expression');
@@ -1836,25 +1844,25 @@ Parser.prototype = {
       expr.column = expr.nodes[0].column;
     }
     return expr;
-  },
+  }
 
   /**
    *   'not' ternary
    * | ternary
    */
 
-  negation: function() {
+  negation() {
     if (this.accept('not')) {
       return new nodes.UnaryOp('!', this.negation());
     }
     return this.ternary();
-  },
+  }
 
   /**
    * logical ('?' expression ':' expression)?
    */
 
-  ternary: function() {
+  ternary() {
     var node = this.logical();
     if (this.accept('?')) {
       var trueExpr = this.expression();
@@ -1863,26 +1871,26 @@ Parser.prototype = {
       node = new nodes.Ternary(node, trueExpr, falseExpr);
     }
     return node;
-  },
+  }
 
   /**
    * typecheck (('&&' | '||') typecheck)*
    */
 
-  logical: function() {
+  logical() {
     var op
       , node = this.typecheck();
     while (op = this.accept('&&') || this.accept('||')) {
       node = new nodes.BinOp(op.type, node, this.typecheck());
     }
     return node;
-  },
+  }
 
   /**
    * equality ('is a' equality)*
    */
 
-  typecheck: function() {
+  typecheck() {
     var op
       , node = this.equality();
     while (op = this.accept('is a')) {
@@ -1892,13 +1900,13 @@ Parser.prototype = {
       this.operand = false;
     }
     return node;
-  },
+  }
 
   /**
    * in (('==' | '!=') in)*
    */
 
-  equality: function() {
+  equality() {
     var op
       , node = this.in();
     while (op = this.accept('==') || this.accept('!=')) {
@@ -1908,13 +1916,13 @@ Parser.prototype = {
       this.operand = false;
     }
     return node;
-  },
+  }
 
   /**
    * relational ('in' relational)*
    */
 
-  in: function() {
+  in() {
     var node = this.relational();
     while (this.accept('in')) {
       this.operand = true;
@@ -1923,17 +1931,17 @@ Parser.prototype = {
       this.operand = false;
     }
     return node;
-  },
+  }
 
   /**
    * range (('>=' | '<=' | '>' | '<') range)*
    */
 
-  relational: function() {
+  relational() {
     var op
       , node = this.range();
     while (op =
-         this.accept('>=')
+      this.accept('>=')
       || this.accept('<=')
       || this.accept('<')
       || this.accept('>')
@@ -1944,13 +1952,13 @@ Parser.prototype = {
       this.operand = false;
     }
     return node;
-  },
+  }
 
   /**
    * additive (('..' | '...') additive)*
    */
 
-  range: function() {
+  range() {
     var op
       , node = this.additive();
     if (op = this.accept('...') || this.accept('..')) {
@@ -1960,13 +1968,13 @@ Parser.prototype = {
       this.operand = false;
     }
     return node;
-  },
+  }
 
   /**
    * multiplicative (('+' | '-') multiplicative)*
    */
 
-  additive: function() {
+  additive() {
     var op
       , node = this.multiplicative();
     while (op = this.accept('+') || this.accept('-')) {
@@ -1975,17 +1983,17 @@ Parser.prototype = {
       this.operand = false;
     }
     return node;
-  },
+  }
 
   /**
    * defined (('**' | '*' | '/' | '%') defined)*
    */
 
-  multiplicative: function() {
+  multiplicative() {
     var op
       , node = this.defined();
     while (op =
-         this.accept('**')
+      this.accept('**')
       || this.accept('*')
       || this.accept('/')
       || this.accept('%')) {
@@ -2001,35 +2009,35 @@ Parser.prototype = {
       }
     }
     return node;
-  },
+  }
 
   /**
    *    unary 'is defined'
    *  | unary
    */
 
-  defined: function() {
+  defined() {
     var node = this.unary();
     if (this.accept('is defined')) {
       if (!node) this.error('illegal unary "is defined", missing left-hand operand');
       node = new nodes.BinOp('is defined', node);
     }
     return node;
-  },
+  }
 
   /**
    *   ('!' | '~' | '+' | '-') unary
    * | subscript
    */
 
-  unary: function() {
+  unary() {
     var op
       , node;
     if (op =
-         this.accept('!')
-      || this.accept('~')
-      || this.accept('+')
-      || this.accept('-')) {
+        this.accept('!')
+        || this.accept('~')
+        || this.accept('+')
+        || this.accept('-')) {
       this.operand = true;
       node = this.unary();
       if (!node) this.error('illegal unary "' + op + '"');
@@ -2038,14 +2046,14 @@ Parser.prototype = {
       return node;
     }
     return this.subscript();
-  },
+  }
 
   /**
    *   member ('[' expression ']')+ '='?
    * | member
    */
 
-  subscript: function() {
+  subscript() {
     var node = this.member()
       , id;
     while (this.accept('[')) {
@@ -2060,14 +2068,14 @@ Parser.prototype = {
       if (node.val.isEmpty) this.assignAtblock(node.val);
     }
     return node;
-  },
+  }
 
   /**
    *   primary ('.' id)+ '='?
    * | primary
    */
-  
-  member: function() {
+
+  member() {
     var node = this.primary();
     if (node) {
       while (this.accept('.')) {
@@ -2082,14 +2090,14 @@ Parser.prototype = {
       }
     }
     return node;
-  },
+  }
 
   /**
    *   '{' '}'
    * | '{' pair (ws pair)* '}'
    */
 
-  object: function(){
+  object() {
     var obj = new nodes.Object
       , id, val, comma;
     this.expect('{');
@@ -2112,7 +2120,7 @@ Parser.prototype = {
     }
 
     return obj;
-  },
+  }
 
   /**
    *   unit
@@ -2128,7 +2136,7 @@ Parser.prototype = {
    * | '(' expression ')' '%'?
    */
 
-  primary: function() {
+  primary() {
     var tok;
     this.skipSpaces();
 
@@ -2179,4 +2187,4 @@ Parser.prototype = {
           : this.functionCall();
     }
   }
-};
+}

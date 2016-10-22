@@ -9,8 +9,8 @@
  * Module dependencies.
  */
 
-var Block = require('./block')
-  , Node = require('./node');
+import Block = require('./block');
+import Node = require('./node');
 
 /**
  * Initialize a new `Selector` with the given `segs`.
@@ -19,18 +19,12 @@ var Block = require('./block')
  * @api public
  */
 
-var Selector = module.exports = function Selector(segs){
-  Node.call(this);
-  this.inherits = true;
-  this.segments = segs;
-  this.optional = false;
-};
-
-/**
- * Inherit from `Node.prototype`.
- */
-
-Selector.prototype.__proto__ = Node.prototype;
+export = class Selector extends Node {
+  inherits = true;
+  optional = false;
+  constructor(public segments?){
+  super();
+}
 
 /**
  * Return the selector string.
@@ -39,9 +33,9 @@ Selector.prototype.__proto__ = Node.prototype;
  * @api public
  */
 
-Selector.prototype.toString = function(){
+toString(){
   return this.segments.join('') + (this.optional ? ' !optional' : '');
-};
+}
 
 /**
  * Check if this is placeholder selector.
@@ -50,9 +44,9 @@ Selector.prototype.toString = function(){
  * @api public
  */
 
-Selector.prototype.__defineGetter__('isPlaceholder', function(){
+get isPlaceholder(){
   return this.val && ~this.val.substr(0, 2).indexOf('$');
-});
+}
 
 /**
  * Return a clone of this node.
@@ -61,7 +55,7 @@ Selector.prototype.__defineGetter__('isPlaceholder', function(){
  * @api public
  */
 
-Selector.prototype.clone = function(parent){
+clone(parent){
   var clone = new Selector;
   clone.lineno = this.lineno;
   clone.column = this.column;
@@ -71,7 +65,7 @@ Selector.prototype.clone = function(parent){
   clone.segments = this.segments.map(function(node){ return node.clone(parent, clone); });
   clone.optional = this.optional;
   return clone;
-};
+}
 
 /**
  * Return a JSON representation of this node.
@@ -80,7 +74,7 @@ Selector.prototype.clone = function(parent){
  * @api public
  */
 
-Selector.prototype.toJSON = function(){
+toJSON(){
   return {
     __type: 'Selector',
     inherits: this.inherits,
@@ -91,4 +85,5 @@ Selector.prototype.toJSON = function(){
     column: this.column,
     filename: this.filename
   };
-};
+}
+}

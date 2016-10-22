@@ -9,7 +9,7 @@
  * Module dependencies.
  */
 
-var Atrule = require('./atrule');
+import Atrule = require('./atrule');
 
 /**
  * Initialize a new `Keyframes` with the given `segs`,
@@ -20,17 +20,11 @@ var Atrule = require('./atrule');
  * @api public
  */
 
-var Keyframes = module.exports = function Keyframes(segs, prefix){
-  Atrule.call(this, 'keyframes');
+export = class Keyframes extends Atrule {
+  constructor(segs?, public prefix = 'official'){
+    super('keyframes');
   this.segments = segs;
-  this.prefix = prefix || 'official';
-};
-
-/**
- * Inherit from `Atrule.prototype`.
- */
-
-Keyframes.prototype.__proto__ = Atrule.prototype;
+}
 
 /**
  * Return a clone of this node.
@@ -39,7 +33,7 @@ Keyframes.prototype.__proto__ = Atrule.prototype;
  * @api public
  */
 
-Keyframes.prototype.clone = function(parent){
+clone(parent){
   var clone = new Keyframes;
   clone.lineno = this.lineno;
   clone.column = this.column;
@@ -48,7 +42,7 @@ Keyframes.prototype.clone = function(parent){
   clone.prefix = this.prefix;
   clone.block = this.block.clone(parent, clone);
   return clone;
-};
+}
 
 /**
  * Return a JSON representation of this node.
@@ -57,7 +51,7 @@ Keyframes.prototype.clone = function(parent){
  * @api public
  */
 
-Keyframes.prototype.toJSON = function(){
+toJSON(){
   return {
     __type: 'Keyframes',
     segments: this.segments,
@@ -67,7 +61,7 @@ Keyframes.prototype.toJSON = function(){
     column: this.column,
     filename: this.filename
   };
-};
+}
 
 /**
  * Return `@keyframes name`.
@@ -76,6 +70,7 @@ Keyframes.prototype.toJSON = function(){
  * @api public
  */
 
-Keyframes.prototype.toString = function(){
+toString(){
   return '@keyframes ' + this.segments.join('');
-};
+}
+}

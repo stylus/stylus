@@ -8,7 +8,7 @@
  * Module dependencies.
  */
 
-var Node = require('./node');
+import Node = require('./node');
 
 /**
  * Initialize a new `@block` node.
@@ -16,23 +16,21 @@ var Node = require('./node');
  * @api public
  */
 
-var Atblock = module.exports = function Atblock(){
-  Node.call(this);
+export = class Atblock extends Node {
+  block;
+  fileno;
+
+  constructor(){
+  super();
 };
 
 /**
  * Return `block` nodes.
  */
 
-Atblock.prototype.__defineGetter__('nodes', function(){
+get nodes(){
   return this.block.nodes;
-});
-
-/**
- * Inherit from `Node.prototype`.
- */
-
-Atblock.prototype.__proto__ = Node.prototype;
+}
 
 /**
  * Return a clone of this node.
@@ -41,7 +39,7 @@ Atblock.prototype.__proto__ = Node.prototype;
  * @api public
  */
 
-Atblock.prototype.clone = function(parent){
+clone(parent) {
   var clone = new Atblock;
   clone.block = this.block.clone(parent, clone);
   clone.lineno = this.lineno;
@@ -57,7 +55,7 @@ Atblock.prototype.clone = function(parent){
  * @api public
  */
 
-Atblock.prototype.toString = function(){
+toString(){
   return '@block';
 };
 
@@ -68,7 +66,7 @@ Atblock.prototype.toString = function(){
  * @api public
  */
 
-Atblock.prototype.toJSON = function(){
+toJSON(): any {
   return {
     __type: 'Atblock',
     block: this.block,
@@ -76,4 +74,5 @@ Atblock.prototype.toJSON = function(){
     column: this.column,
     fileno: this.fileno
   };
-};
+}
+}

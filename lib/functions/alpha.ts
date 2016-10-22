@@ -1,5 +1,5 @@
-var nodes = require('../nodes')
-  , rgba = require('./rgba');
+import nodes = require('../nodes');
+import rgba = require('./rgba');
 
 /**
  * Return the alpha component of the given `color`,
@@ -22,7 +22,7 @@ var nodes = require('../nodes')
  * @api public
  */
 
-module.exports = function alpha(color, value){
+export = function alpha(color, value){
   color = color.rgba;
   if (value) {
     return rgba(

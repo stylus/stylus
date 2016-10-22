@@ -8,55 +8,53 @@
  * Module dependencies.
  */
 
-var Renderer = require('./renderer')
-  , nodes = require('./nodes')
-  , utils = require('./utils');
+import Renderer = require('./renderer');
 
 /**
  * Export render as the module.
  */
 
-exports = module.exports = render;
+exports = module.exports = stylus;
 
 /**
  * Library version.
  */
 
-exports.version = require('../package').version;
+export var version = require('../package').version;
 
 /**
  * Expose nodes.
  */
 
-exports.nodes = nodes;
+export var nodes = require('./nodes');
 
 /**
  * Expose BIFs.
  */
 
-exports.functions = require('./functions');
+export var functions = require('./functions');
 
 /**
  * Expose utils.
  */
 
-exports.utils = require('./utils');
+export var utils = require('./utils');
 
 /**
  * Expose middleware.
  */
 
-exports.middleware = require('./middleware');
+export var middleware = require('./middleware');
 
 /**
  * Expose constructors.
  */
 
-exports.Visitor = require('./visitor');
-exports.Parser = require('./parser');
-exports.Evaluator = require('./visitor/evaluator');
-exports.Normalizer = require('./visitor/normalizer');
-exports.Compiler = require('./visitor/compiler');
+export var Visitor = require('./visitor');
+export var Parser = require('./parser');
+export var Evaluator = require('./visitor/evaluator');
+export var Normalizer = require('./visitor/normalizer');
+export var Compiler = require('./visitor/compiler');
 
 /**
  * Convert the given `css` to `stylus` source.
@@ -66,7 +64,7 @@ exports.Compiler = require('./visitor/compiler');
  * @api public
  */
 
-exports.convertCSS = require('./convert/css');
+export var convertCSS = require('./convert/css');
 
 /**
  * Render the given `str` with `options` and callback `fn(err, css)`.
@@ -77,7 +75,7 @@ exports.convertCSS = require('./convert/css');
  * @api public
  */
 
-exports.render = function(str, options, fn){
+export var render = function(str, options, fn){
   if ('function' == typeof options) fn = options, options = {};
   return new Renderer(str, options).render(fn);
 };
@@ -91,7 +89,7 @@ exports.render = function(str, options, fn){
  * @api public
  */
 
-function render(str, options) {
+function stylus(str, options) {
   return new Renderer(str, options);
 }
 
@@ -99,5 +97,5 @@ function render(str, options) {
  * Expose optional functions.
  */
 
-exports.url = require('./functions/url');
-exports.resolver = require('./functions/resolver');
+export var url = require('./functions/url');
+export var resolver = require('./functions/resolver');

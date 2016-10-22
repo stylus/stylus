@@ -8,7 +8,7 @@
  * Module dependencies.
  */
 
-var Node = require('./node');
+import Node = require('./node');
 
 /**
  * Initialize a new `Namespace` with the given `val` and `prefix`
@@ -18,17 +18,11 @@ var Node = require('./node');
  * @api public
  */
 
-var Namespace = module.exports = function Namespace(val, prefix){
-  Node.call(this);
+export = class Namespace extends Node {
+  constructor(val, public prefix){
+  super();
   this.val = val;
-  this.prefix = prefix;
-};
-
-/**
- * Inherit from `Node.prototype`.
- */
-
-Namespace.prototype.__proto__ = Node.prototype;
+}
 
 /**
  * Return @namespace "val".
@@ -37,9 +31,9 @@ Namespace.prototype.__proto__ = Node.prototype;
  * @api public
  */
 
-Namespace.prototype.toString = function(){
+toString(){
   return '@namespace ' + (this.prefix ? this.prefix + ' ' : '') + this.val;
-};
+}
 
 /**
  * Return a JSON representation of this node.
@@ -48,7 +42,7 @@ Namespace.prototype.toString = function(){
  * @api public
  */
 
-Namespace.prototype.toJSON = function(){
+toJSON(){
   return {
     __type: 'Namespace',
     val: this.val,
@@ -57,4 +51,5 @@ Namespace.prototype.toJSON = function(){
     column: this.column,
     filename: this.filename
   };
-};
+}
+}

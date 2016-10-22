@@ -1,4 +1,4 @@
-var utils = require('../utils');
+import utils = require('../utils');
 
 /**
  * Unshift the given args to `expr`.
@@ -9,10 +9,14 @@ var utils = require('../utils');
  * @api public
  */
 
-(module.exports = function(expr){
+export = class unshift {
+  constructor(expr){
   expr = utils.unwrap(expr);
   for (var i = 1, len = arguments.length; i < len; ++i) {
     expr.nodes.unshift(utils.unwrap(arguments[i]));
   }
   return expr.nodes.length;
-}).raw = true;
+}
+
+	static raw = true;
+}

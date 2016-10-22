@@ -9,8 +9,8 @@
  * Module dependencies.
  */
 
-var Node = require('./node')
-  , nodes = require('./');
+import Node = require('./node');
+import nodes = require('./');
 
 /**
  * Initialize a new `Boolean` node with the given `val`.
@@ -19,20 +19,14 @@ var Node = require('./node')
  * @api public
  */
 
-var Boolean = module.exports = function Boolean(val){
-  Node.call(this);
+export = class Boolean extends Node {constructor(val){
+  super();
   if (this.nodeName) {
     this.val = !!val;
   } else {
     return new Boolean(val);
   }
-};
-
-/**
- * Inherit from `Node.prototype`.
- */
-
-Boolean.prototype.__proto__ = Node.prototype;
+}
 
 /**
  * Return `this` node.
@@ -41,9 +35,9 @@ Boolean.prototype.__proto__ = Node.prototype;
  * @api public
  */
 
-Boolean.prototype.toBoolean = function(){
+toBoolean(){
   return this;
-};
+}
 
 /**
  * Return `true` if this node represents `true`.
@@ -52,9 +46,9 @@ Boolean.prototype.toBoolean = function(){
  * @api public
  */
 
-Boolean.prototype.__defineGetter__('isTrue', function(){
+get isTrue(){
   return this.val;
-});
+}
 
 /**
  * Return `true` if this node represents `false`.
@@ -63,9 +57,9 @@ Boolean.prototype.__defineGetter__('isTrue', function(){
  * @api public
  */
 
-Boolean.prototype.__defineGetter__('isFalse', function(){
+get isFalse(){
   return ! this.val;
-});
+}
 
 /**
  * Negate the value.
@@ -74,9 +68,9 @@ Boolean.prototype.__defineGetter__('isFalse', function(){
  * @api public
  */
 
-Boolean.prototype.negate = function(){
+negate(){
   return new Boolean(!this.val);
-};
+}
 
 /**
  * Return 'Boolean'.
@@ -85,9 +79,9 @@ Boolean.prototype.negate = function(){
  * @api public
  */
 
-Boolean.prototype.inspect = function(){
+inspect(){
   return '[Boolean ' + this.val + ']';
-};
+}
 
 /**
  * Return 'true' or 'false'.
@@ -96,11 +90,11 @@ Boolean.prototype.inspect = function(){
  * @api public
  */
 
-Boolean.prototype.toString = function(){
+toString(){
   return this.val
     ? 'true'
     : 'false';
-};
+}
 
 /**
  * Return a JSON representaiton of this node.
@@ -109,9 +103,10 @@ Boolean.prototype.toString = function(){
  * @api public
  */
 
-Boolean.prototype.toJSON = function(){
+toJSON(){
   return {
     __type: 'Boolean',
     val: this.val
   };
-};
+}
+}

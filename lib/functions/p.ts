@@ -1,5 +1,5 @@
-var utils = require('../utils')
-  , nodes = require('../nodes');
+import utils = require('../utils');
+import nodes = require('../nodes');
 
 /**
  * Inspect the given `expr`.
@@ -8,11 +8,15 @@ var utils = require('../utils')
  * @api public
  */
 
-(module.exports = function p(){
+export = class p {
+	constructor(){
   [].slice.call(arguments).forEach(function(expr){
     expr = utils.unwrap(expr);
     if (!expr.nodes.length) return;
     console.log('\u001b[90minspect:\u001b[0m %s', expr.toString().replace(/^\(|\)$/g, ''));
-  })
-  return nodes.null;
-}).raw = true;
+  });
+  return nodes.nullNode;
+}
+
+	static raw = true;
+}

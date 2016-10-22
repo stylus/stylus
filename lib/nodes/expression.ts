@@ -9,9 +9,9 @@
  * Module dependencies.
  */
 
-var Node = require('./node')
-  , nodes = require('../nodes')
-  , utils = require('../utils');
+import Node = require('./node');
+import nodes = require('../nodes');
+import utils = require('../utils');
 
 /**
  * Initialize a new `Expression`.
@@ -20,11 +20,14 @@ var Node = require('./node')
  * @api public
  */
 
-var Expression = module.exports = function Expression(isList){
-  Node.call(this);
+export = class Expression extends Node {
+  nodes;
+  preserve;
+
+  constructor(public isList?){
+  super();
   this.nodes = [];
-  this.isList = isList;
-};
+}
 
 /**
  * Check if the variable has a value.
@@ -33,9 +36,9 @@ var Expression = module.exports = function Expression(isList){
  * @api public
  */
 
-Expression.prototype.__defineGetter__('isEmpty', function(){
+get isEmpty(){
   return !this.nodes.length;
-});
+}
 
 /**
  * Return the first node in this expression.
@@ -44,11 +47,11 @@ Expression.prototype.__defineGetter__('isEmpty', function(){
  * @api public
  */
 
-Expression.prototype.__defineGetter__('first', function(){
+get first(){
   return this.nodes[0]
     ? this.nodes[0].first
-    : nodes.null;
-});
+    : nodes.nullNode;
+}
 
 /**
  * Hash all the nodes in order.
@@ -57,27 +60,21 @@ Expression.prototype.__defineGetter__('first', function(){
  * @api public
  */
 
-Expression.prototype.__defineGetter__('hash', function(){
+get hash(){
   return this.nodes.map(function(node){
     return node.hash;
   }).join('::');
-});
-
-/**
- * Inherit from `Node.prototype`.
- */
-
-Expression.prototype.__proto__ = Node.prototype;
+}
 
 /**
  * Return a clone of this node.
- * 
+ *
  * @return {Node}
  * @api public
  */
 
-Expression.prototype.clone = function(parent){
-  var clone = new this.constructor(this.isList);
+clone(parent){
+  var clone = new (<any>this.constructor)(this.isList);
   clone.preserve = this.preserve;
   clone.lineno = this.lineno;
   clone.column = this.column;
@@ -95,9 +92,9 @@ Expression.prototype.clone = function(parent){
  * @api public
  */
 
-Expression.prototype.push = function(node){
+push(node){
   this.nodes.push(node);
-};
+}
 
 /**
  * Operate on `right` with the given `op`.
@@ -108,7 +105,7 @@ Expression.prototype.push = function(node){
  * @api public
  */
 
-Expression.prototype.operate = function(op, right, val){
+operate(op, right, val){
   switch (op) {
     case '[]=':
       var self = this
@@ -121,7 +118,7 @@ Expression.prototype.operate = function(op, right, val){
         if ('unit' == unit.nodeName) {
           var i = unit.val < 0 ? len + unit.val : unit.val
             , n = i;
-          while (i-- > len) self.nodes[i] = nodes.null;
+          while (i-- > len) self.nodes[i] = nodes.nullNode;
           self.nodes[n] = val;
         } else if (unit.string) {
           node = self.nodes[0];
@@ -143,7 +140,7 @@ Expression.prototype.operate = function(op, right, val){
         if (node) expr.push(node);
       });
       return expr.isEmpty
-        ? nodes.null
+        ? nodes.nullNode
         : utils.unwrap(expr);
     case '||':
       return this.toBoolean().isTrue
@@ -158,19 +155,18 @@ Expression.prototype.operate = function(op, right, val){
         , right = right.toExpression()
         , a
         , b;
-      if (len != right.nodes.length) return nodes.false;
+      if (len != right.nodes.length) return nodes.falseNode;
       for (var i = 0; i < len; ++i) {
         a = this.nodes[i];
         b = right.nodes[i];
         if (a.operate(op, b).isTrue) continue;
-        return nodes.false;
+        return nodes.falseNode;
       }
-      return nodes.true;
-      break;
+      return nodes.trueNode;
     default:
       return this.first.operate(op, right, val);
   }
-};
+}
 
 /**
  * Expressions with length > 1 are truthy,
@@ -181,10 +177,10 @@ Expression.prototype.operate = function(op, right, val){
  * @api public
  */
 
-Expression.prototype.toBoolean = function(){
-  if (this.nodes.length > 1) return nodes.true;
+toBoolean(){
+  if (this.nodes.length > 1) return nodes.trueNode;
   return this.first.toBoolean();
-};
+}
 
 /**
  * Return "<a> <b> <c>" or "<a>, <b>, <c>" if
@@ -194,11 +190,11 @@ Expression.prototype.toBoolean = function(){
  * @api public
  */
 
-Expression.prototype.toString = function(){
+toString(){
   return '(' + this.nodes.map(function(node){
     return node.toString();
   }).join(this.isList ? ', ' : ' ') + ')';
-};
+}
 
 /**
  * Return a JSON representation of this node.
@@ -207,7 +203,7 @@ Expression.prototype.toString = function(){
  * @api public
  */
 
-Expression.prototype.toJSON = function(){
+toJSON(){
   return {
     __type: 'Expression',
     isList: this.isList,
@@ -217,4 +213,5 @@ Expression.prototype.toJSON = function(){
     filename: this.filename,
     nodes: this.nodes
   };
-};
+}
+}

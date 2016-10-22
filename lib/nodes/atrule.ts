@@ -8,7 +8,7 @@
  * Module dependencies.
  */
 
-var Node = require('./node');
+import Node = require('./node');
 
 /**
  * Initialize a new at-rule node.
@@ -17,16 +17,13 @@ var Node = require('./node');
  * @api public
  */
 
-var Atrule = module.exports = function Atrule(type){
-  Node.call(this);
-  this.type = type;
-};
+export = class Atrule extends Node {
+  block;
+  segments;
 
-/**
- * Inherit from `Node.prototype`.
- */
-
-Atrule.prototype.__proto__ = Node.prototype;
+  constructor(public type: string){
+  super();
+}
 
 /**
  * Check if at-rule's block has only properties.
@@ -35,7 +32,7 @@ Atrule.prototype.__proto__ = Node.prototype;
  * @api public
  */
 
-Atrule.prototype.__defineGetter__('hasOnlyProperties', function(){
+get hasOnlyProperties(){
   if (!this.block) return false;
 
   var nodes = this.block.nodes;
@@ -51,7 +48,7 @@ Atrule.prototype.__defineGetter__('hasOnlyProperties', function(){
     }
   }
   return true;
-});
+}
 
 /**
  * Return a clone of this node.
@@ -60,7 +57,7 @@ Atrule.prototype.__defineGetter__('hasOnlyProperties', function(){
  * @api public
  */
 
-Atrule.prototype.clone = function(parent){
+clone(parent){
   var clone = new Atrule(this.type);
   if (this.block) clone.block = this.block.clone(parent, clone);
   clone.segments = this.segments.map(function(node){ return node.clone(parent, clone); });
@@ -77,8 +74,8 @@ Atrule.prototype.clone = function(parent){
  * @api public
  */
 
-Atrule.prototype.toJSON = function(){
-  var json = {
+toJSON(){
+  var json: any = {
     __type: 'Atrule',
     type: this.type,
     segments: this.segments,
@@ -97,7 +94,7 @@ Atrule.prototype.toJSON = function(){
  * @api public
  */
 
-Atrule.prototype.toString = function(){
+toString(){
   return '@' + this.type;
 };
 
@@ -108,9 +105,10 @@ Atrule.prototype.toString = function(){
  * @api public
  */
 
-Atrule.prototype.__defineGetter__('hasOutput', function(){
+get hasOutput(){
   return !!this.block && hasOutput(this.block);
-});
+}
+}
 
 function hasOutput(block) {
   var nodes = block.nodes;

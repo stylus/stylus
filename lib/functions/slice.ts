@@ -1,5 +1,5 @@
-var utils = require('../utils'),
-    nodes = require('../nodes');
+import utils = require('../utils');
+import nodes = require('../nodes');
 
 /**
  * This is a heler function for the slice method
@@ -10,7 +10,8 @@ var utils = require('../utils'),
  * @return {String|Literal|Null}
  * @api public
 */
-(module.exports = function slice(val, start, end) {
+export = class slice {
+	constructor(val, start, end) {
   start = start && start.nodes[0].val;
   end = end && end.nodes[0].val;
 
@@ -25,4 +26,7 @@ var utils = require('../utils'),
   return val[0] instanceof nodes.Ident
     ? new nodes.Ident(result)
     : new nodes.String(result);
-}).raw = true;
+}
+
+	static raw = true;
+}

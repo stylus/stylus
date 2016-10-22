@@ -9,8 +9,8 @@
  * Module dependencies.
  */
 
-var Node = require('./node')
-  , nodes = require('./');
+import Node = require('./node');
+import nodes = require('./');
 
 /**
  * Initialize a new `Null` node.
@@ -18,13 +18,10 @@ var Node = require('./node')
  * @api public
  */
 
-var Null = module.exports = function Null(){};
-
-/**
- * Inherit from `Node.prototype`.
- */
-
-Null.prototype.__proto__ = Node.prototype;
+export = class Null extends Node {
+  constructor(){
+    super();
+  };
 
 /**
  * Return 'Null'.
@@ -33,10 +30,10 @@ Null.prototype.__proto__ = Node.prototype;
  * @api public
  */
 
-Null.prototype.inspect = 
-Null.prototype.toString = function(){
+inspect = this.toString;
+toString(){
   return 'null';
-};
+}
 
 /**
  * Return false.
@@ -45,9 +42,9 @@ Null.prototype.toString = function(){
  * @api public
  */
 
-Null.prototype.toBoolean = function(){
-  return nodes.false;
-};
+toBoolean(){
+  return nodes.falseNode;
+}
 
 /**
  * Check if the node is a null node.
@@ -56,9 +53,9 @@ Null.prototype.toBoolean = function(){
  * @api public
  */
 
-Null.prototype.__defineGetter__('isNull', function(){
+get isNull(){
   return true;
-});
+}
 
 /**
  * Return hash.
@@ -67,9 +64,9 @@ Null.prototype.__defineGetter__('isNull', function(){
  * @api public
  */
 
-Null.prototype.__defineGetter__('hash', function(){
+get hash(){
   return null;
-});
+}
 
 /**
  * Return a JSON representation of this node.
@@ -78,11 +75,12 @@ Null.prototype.__defineGetter__('hash', function(){
  * @api public
  */
 
-Null.prototype.toJSON = function(){
+toJSON(){
   return {
     __type: 'Null',
     lineno: this.lineno,
     column: this.column,
     filename: this.filename
   };
-};
+}
+}

@@ -1,5 +1,5 @@
-var utils = require('../utils')
-  , path = require('path');
+import utils = require('../utils');
+import path = require('path');
 
 /**
 *  Use the given `plugin`

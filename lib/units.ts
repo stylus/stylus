@@ -7,7 +7,7 @@
 
 // units found in http://www.w3.org/TR/css3-values
 
-module.exports = [
+export = [
     'em', 'ex', 'ch', 'rem' // relative lengths
   , 'vw', 'vh', 'vmin', 'vmax' // relative viewport-percentage lengths
   , 'cm', 'mm', 'in', 'pt', 'pc', 'px' // absolute lengths

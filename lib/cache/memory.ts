@@ -2,16 +2,19 @@
  * Module dependencies.
  */
 
-var crypto = require('crypto')
-  , nodes = require('../nodes');
+import crypto = require('crypto');
+import nodes = require('../nodes');
 
-var MemoryCache = module.exports = function(options) {
-  options = options || {};
+export = class MemoryCache {
+  private limit;
+  private _cache = {};
+  private length = 0;
+  private head = null;
+  private tail = null;
+
+  constructor(options = {}) {
   this.limit = options['cache limit'] || 256;
-  this._cache = {};
-  this.length = 0;
-  this.head = this.tail = null;
-};
+}
 
 /**
  * Set cache item with given `key` to `value`.
@@ -21,7 +24,7 @@ var MemoryCache = module.exports = function(options) {
  * @api private
  */
 
-MemoryCache.prototype.set = function(key, value) {
+set(key, value) {
   var clone = value.clone()
     , item;
 
@@ -50,7 +53,7 @@ MemoryCache.prototype.set = function(key, value) {
  * @api private
  */
 
-MemoryCache.prototype.get = function(key) {
+get(key) {
   var item = this._cache[key]
     , val = item.value.clone();
 
@@ -78,7 +81,7 @@ MemoryCache.prototype.get = function(key) {
  * @api private
  */
 
-MemoryCache.prototype.has = function(key) {
+has(key) {
   return !!this._cache[key];
 };
 
@@ -91,7 +94,7 @@ MemoryCache.prototype.has = function(key) {
  * @api private
  */
 
-MemoryCache.prototype.key = function(str, options) {
+key(str, options) {
   var hash = crypto.createHash('sha1');
   hash.update(str + options.prefix);
   return hash.digest('hex');
@@ -103,7 +106,7 @@ MemoryCache.prototype.key = function(str, options) {
  * @api private
  */
 
-MemoryCache.prototype.purge = function() {
+purge() {
   var item = this.head;
 
   if (this.head.next) {
@@ -113,4 +116,5 @@ MemoryCache.prototype.purge = function() {
 
   this._cache[item.key] = item.prev = item.next = null;
   this.length--;
-};
+}
+}

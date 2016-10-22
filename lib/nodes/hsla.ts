@@ -9,8 +9,8 @@
  * Module dependencies.
  */
 
-var Node = require('./node')
-  , nodes = require('./');
+import Node = require('./node');
+import nodes = require('./');
 
 /**
  * Initialize a new `HSLA` with the given h,s,l,a component values.
@@ -22,20 +22,21 @@ var Node = require('./node')
  * @api public
  */
 
-var HSLA = exports = module.exports = function HSLA(h,s,l,a){
-  Node.call(this);
+export = class HSLA extends Node {
+  private h;
+  private s;
+  private l;
+  private a;
+  private hsla;
+
+  constructor(h,s,l,a){
+  super();
   this.h = clampDegrees(h);
   this.s = clampPercentage(s);
   this.l = clampPercentage(l);
   this.a = clampAlpha(a);
   this.hsla = this;
-};
-
-/**
- * Inherit from `Node.prototype`.
- */
-
-HSLA.prototype.__proto__ = Node.prototype;
+}
 
 /**
  * Return hsla(n,n,n,n).
@@ -44,7 +45,7 @@ HSLA.prototype.__proto__ = Node.prototype;
  * @api public
  */
 
-HSLA.prototype.toString = function(){
+toString(){
   return 'hsla('
     + this.h + ','
     + this.s.toFixed(0) + '%,'
@@ -59,7 +60,7 @@ HSLA.prototype.toString = function(){
  * @api public
  */
 
-HSLA.prototype.clone = function(parent){
+clone(parent){
   var clone = new HSLA(
       this.h
     , this.s
@@ -78,7 +79,7 @@ HSLA.prototype.clone = function(parent){
  * @api public
  */
 
-HSLA.prototype.toJSON = function(){
+toJSON(){
   return {
     __type: 'HSLA',
     h: this.h,
@@ -98,9 +99,9 @@ HSLA.prototype.toJSON = function(){
  * @api public
  */
 
-HSLA.prototype.__defineGetter__('rgba', function(){
+get rgba(){
   return nodes.RGBA.fromHSLA(this);
-});
+}
 
 /**
  * Return hash.
@@ -109,9 +110,9 @@ HSLA.prototype.__defineGetter__('rgba', function(){
  * @api public
  */
 
-HSLA.prototype.__defineGetter__('hash', function(){
+get hash(){
   return this.rgba.toString();
-});
+}
 
 /**
  * Add h,s,l to the current component values.
@@ -123,13 +124,13 @@ HSLA.prototype.__defineGetter__('hash', function(){
  * @api public
  */
 
-HSLA.prototype.add = function(h,s,l){
+add(h,s,l){
   return new HSLA(
       this.h + h
     , this.s + s
     , this.l + l
     , this.a);
-};
+}
 
 /**
  * Subtract h,s,l from the current component values.
@@ -141,9 +142,9 @@ HSLA.prototype.add = function(h,s,l){
  * @api public
  */
 
-HSLA.prototype.sub = function(h,s,l){
+sub(h,s,l){
   return this.add(-h, -s, -l);
-};
+}
 
 /**
  * Operate on `right` with the given `op`.
@@ -154,7 +155,7 @@ HSLA.prototype.sub = function(h,s,l){
  * @api public
  */
 
-HSLA.prototype.operate = function(op, right){
+operate(op, right){
   switch (op) {
     case '==':
     case '!=':
@@ -169,17 +170,17 @@ HSLA.prototype.operate = function(op, right){
     default:
       return this.rgba.operate(op, right).hsla;
   }
-};
+}
 
 /**
  * Return `HSLA` representation of the given `color`.
  *
- * @param {RGBA} color
+ * @param {RGBA} rgba
  * @return {HSLA}
  * @api public
  */
 
-exports.fromRGBA = function(rgba){
+static fromRGBA(rgba){
   var r = rgba.r / 255
     , g = rgba.g / 255
     , b = rgba.b / 255
@@ -221,10 +222,10 @@ exports.fromRGBA = function(rgba){
  * @api public
  */
 
-HSLA.prototype.adjustLightness = function(percent){
+adjustLightness(percent){
   this.l = clampPercentage(this.l + this.l * (percent / 100));
   return this;
-};
+}
 
 /**
  * Adjust hue by `deg`.
@@ -234,10 +235,11 @@ HSLA.prototype.adjustLightness = function(percent){
  * @api public
  */
 
-HSLA.prototype.adjustHue = function(deg){
+adjustHue(deg){
   this.h = clampDegrees(this.h + deg);
   return this;
-};
+}
+}
 
 /**
  * Clamp degree `n` >= 0 and <= 360.

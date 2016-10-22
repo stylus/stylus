@@ -9,13 +9,13 @@
  * Module dependencies.
  */
 
-var Compiler = require('../visitor/compiler')
-  , events = require('../renderer').events
-  , nodes = require('../nodes')
-  , parse = require('url').parse
-  , extname = require('path').extname
-  , utils = require('../utils')
-  , fs = require('fs');
+import Compiler = require('../visitor/compiler');
+var  events = require('../renderer').events;
+import nodes = require('../nodes');
+import {parse} from 'url';
+import {extname} from 'path';
+import utils = require('../utils');
+import fs = require('fs');
 
 /**
  * Mime table.
@@ -40,7 +40,7 @@ var defaultMimes = {
 var encodingTypes = {
   BASE_64: 'base64',
   UTF8: 'charset=utf-8'
-}
+};
 
 /**
  * Return a url() function with the given `options`.
@@ -131,12 +131,12 @@ module.exports = function(options) {
 
     // Encode
     return new nodes.Literal('url("data:' + mime + ';' +  encoding + ',' + result + '")');
-  };
+  }
 
-  fn.raw = true;
+  (<any>fn).raw = true;
   return fn;
 };
 
 // Exporting default mimes so we could easily access them
-module.exports.mimes = defaultMimes;
+export var mimes = defaultMimes;
 

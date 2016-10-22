@@ -4,6 +4,8 @@
  * MIT Licensed
  */
 
+var parse = require('css-parse');
+
 /**
  * Convert the given `css` to Stylus source.
  *
@@ -12,7 +14,7 @@
  * @api public
  */
 
-module.exports = function(css){
+export = function css(css){
   return new Converter(css).stylus();
 };
 
@@ -23,9 +25,11 @@ module.exports = function(css){
  * @api private
  */
 
-function Converter(css) {
-  var parse = require('css-parse');
-  this.css = css;
+class Converter {
+  root;
+  indents;
+
+  constructor(public css) {
   this.root = parse(css, { position: false });
   this.indents = 0;
 }
@@ -37,9 +41,9 @@ function Converter(css) {
  * @api private
  */
 
-Converter.prototype.stylus = function(){
+stylus(){
   return this.visitRules(this.root.stylesheet.rules);
-};
+}
 
 /**
  * Return indent string.
@@ -48,9 +52,9 @@ Converter.prototype.stylus = function(){
  * @api private
  */
 
-Converter.prototype.__defineGetter__('indent', function(){
+get indent(){
   return Array(this.indents + 1).join('  ');
-});
+}
 
 /**
  * Visit `node`.
@@ -60,7 +64,7 @@ Converter.prototype.__defineGetter__('indent', function(){
  * @api private
  */
 
-Converter.prototype.visit = function(node){
+visit(node){
   switch (node.type) {
     case 'rule':
     case 'comment':
@@ -76,7 +80,7 @@ Converter.prototype.visit = function(node){
       var name = node.type[0].toUpperCase() + node.type.slice(1);
       return this['visit' + name](node);
   }
-};
+}
 
 /**
  * Visit the rules on `node`.
@@ -86,13 +90,13 @@ Converter.prototype.visit = function(node){
  * @api private
  */
 
-Converter.prototype.visitRules = function(node){
+visitRules(node){
   var buf = '';
   for (var i = 0, len = node.length; i < len; ++i) {
     buf += this.visit(node[i]);
   }
   return buf;
-};
+}
 
 /**
  * Visit Media `node`.
@@ -102,14 +106,14 @@ Converter.prototype.visitRules = function(node){
  * @api private
  */
 
-Converter.prototype.visitMedia = function(node){
+visitMedia(node){
   var buf = this.indent + '@media ' + node.media;
   buf += '\n';
   ++this.indents;
   buf += this.visitRules(node.rules);
   --this.indents;
   return buf;
-};
+}
 
 /**
  * Visit Declaration `node`.
@@ -119,14 +123,14 @@ Converter.prototype.visitMedia = function(node){
  * @api private
  */
 
-Converter.prototype.visitDeclaration = function(node){
+visitDeclaration(node){
   if ('comment' == node.type) {
     return this.visitComment(node);
   } else {
     var buf = this.indent + node.property + ': ' + node.value + '\n';
     return buf;
   }
-};
+}
 
 /**
  * Visit Rule `node`.`
@@ -136,7 +140,7 @@ Converter.prototype.visitDeclaration = function(node){
  * @api private
  */
 
-Converter.prototype.visitRule = function(node){
+visitRule(node){
   var buf = this.indent + node.selectors.join(',\n' + this.indent) + '\n';
   ++this.indents;
   for (var i = 0, len = node.declarations.length; i < len; ++i) {
@@ -144,7 +148,7 @@ Converter.prototype.visitRule = function(node){
   }
   --this.indents;
   return buf + '\n';
-};
+}
 
 /**
  * Visit Comment `node`.`
@@ -154,10 +158,10 @@ Converter.prototype.visitRule = function(node){
  * @api private
  */
 
-Converter.prototype.visitComment = function(node){
+visitComment(node){
   var buf = this.indent + '/*' + node.comment + '*/';
   return buf + '\n';
-};
+}
 
 /**
  * Visit Charset `node`.`
@@ -167,10 +171,10 @@ Converter.prototype.visitComment = function(node){
  * @api private
  */
 
-Converter.prototype.visitCharset = function(node){
+visitCharset(node){
   var buf = this.indent + '@charset ' + node.charset;
   return buf + '\n';
-};
+}
 
 /**
  * Visit Namespace `node`.`
@@ -180,10 +184,10 @@ Converter.prototype.visitCharset = function(node){
  * @api private
  */
 
-Converter.prototype.visitNamespace = function(node){
+visitNamespace(node){
   var buf = this.indent + '@namespace ' + node.namespace;
   return buf + '\n';
-};
+}
 
 /**
  * Visit Import `node`.`
@@ -193,10 +197,10 @@ Converter.prototype.visitNamespace = function(node){
  * @api private
  */
 
-Converter.prototype.visitImport = function(node){
+visitImport(node){
   var buf = this.indent + '@import ' + node.import;
   return buf + '\n';
-};
+}
 
 /**
  * Visit Document `node`.`
@@ -206,14 +210,14 @@ Converter.prototype.visitImport = function(node){
  * @api private
  */
 
-Converter.prototype.visitDocument = function(node){
+visitDocument(node){
   var buf = this.indent + '@' + node.vendor + 'document ' + node.document;
   buf += '\n';
   ++this.indents;
   buf += this.visitRules(node.rules);
   --this.indents;
   return buf;
-};
+}
 
 /**
  * Visit Keyframes `node`.`
@@ -223,7 +227,7 @@ Converter.prototype.visitDocument = function(node){
  * @api private
  */
 
-Converter.prototype.visitKeyframes = function(node){
+visitKeyframes(node){
   var buf = this.indent + '@keyframes ' + node.name;
   buf += '\n';
   ++this.indents;
@@ -232,7 +236,7 @@ Converter.prototype.visitKeyframes = function(node){
   }
   --this.indents;
   return buf;
-};
+}
 
 /**
  * Visit Keyframe `node`.`
@@ -242,7 +246,7 @@ Converter.prototype.visitKeyframes = function(node){
  * @api private
  */
 
-Converter.prototype.visitKeyframe = function(node){
+visitKeyframe(node){
   var buf = this.indent + node.values.join(', ');
   buf += '\n';
   ++this.indents;
@@ -251,7 +255,7 @@ Converter.prototype.visitKeyframe = function(node){
   }
   --this.indents;
   return buf;
-};
+}
 
 /**
  * Visit Page `node`.`
@@ -261,7 +265,7 @@ Converter.prototype.visitKeyframe = function(node){
  * @api private
  */
 
-Converter.prototype.visitPage = function(node){
+visitPage(node){
   var buf = this.indent + '@page' + (node.selectors.length ? ' ' + node.selectors.join(', ') : '');
   buf += '\n';
   ++this.indents;
@@ -270,7 +274,7 @@ Converter.prototype.visitPage = function(node){
   }
   --this.indents;
   return buf;
-};
+}
 
 /**
  * Visit Supports `node`.`
@@ -280,14 +284,14 @@ Converter.prototype.visitPage = function(node){
  * @api private
  */
 
-Converter.prototype.visitSupports = function(node){
+visitSupports(node){
   var buf = this.indent + '@supports ' + node.supports;
   buf += '\n';
   ++this.indents;
   buf += this.visitRules(node.rules);
   --this.indents;
   return buf;
-};
+}
 
 /**
  * Visit Host `node`.`
@@ -297,11 +301,12 @@ Converter.prototype.visitSupports = function(node){
  * @api private
  */
 
-Converter.prototype.visitHost = function(node){
+visitHost(node){
   var buf = this.indent + '@host';
   buf += '\n';
   ++this.indents;
   buf += this.visitRules(node.rules);
   --this.indents;
   return buf;
-};
+}
+}

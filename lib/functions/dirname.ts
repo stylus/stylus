@@ -1,5 +1,5 @@
-var utils = require('../utils')
-  , path = require('path');
+import utils = require('../utils');
+import path = require('path');
 
 /**
  * Return the dirname of `path`.
@@ -9,7 +9,7 @@ var utils = require('../utils')
  * @api public
  */
 
-module.exports = function dirname(p){
+export = function dirname(p){
   utils.assertString(p, 'path');
   return path.dirname(p.val).replace(/\\/g, '/');
 };

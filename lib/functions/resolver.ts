@@ -2,14 +2,14 @@
  * Module dependencies.
  */
 
-var Compiler = require('../visitor/compiler')
-  , nodes = require('../nodes')
-  , parse = require('url').parse
-  , relative = require('path').relative
-  , join = require('path').join
-  , dirname = require('path').dirname
-  , extname = require('path').extname
-  , sep = require('path').sep;
+import Compiler = require('../visitor/compiler');
+import nodes = require('../nodes');
+import {parse} from 'url';
+import {relative} from 'path';
+import {join} from 'path';
+import {dirname} from 'path';
+import {extname} from 'path';
+import {sep} from 'path';;
 
 /**
  * Return a url() function which resolves urls.
@@ -31,7 +31,7 @@ var Compiler = require('../visitor/compiler')
  * @api public
  */
 
-module.exports = function(options) {
+export = function(options) {
   options = options || {};
 
   function resolver(url) {
@@ -76,10 +76,10 @@ module.exports = function(options) {
     if ('\\' == sep) res = res.replace(/\\/g, '/');
 
     return new nodes.Literal('url("' + res + '")');
-  };
+  }
 
   // Expose options to Evaluator
-  resolver.options = options;
-  resolver.raw = true;
+  (<any>resolver).options = options;
+  (<any>resolver).raw = true;
   return resolver;
 };

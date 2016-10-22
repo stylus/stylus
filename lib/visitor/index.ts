@@ -12,20 +12,22 @@
  * @api private
  */
 
-var Visitor = module.exports = function Visitor(root) {
-  this.root = root;
-};
+export = class Visitor {
+  root;
+  constructor(root) {
+    this.root = root;
+  }
 
-/**
- * Visit the given `node`.
- *
- * @param {Node|Array} node
- * @api public
- */
+  /**
+   * Visit the given `node`.
+   *
+   * @param {Node|Array} node
+   * @api public
+   */
 
-Visitor.prototype.visit = function(node, fn){
-  var method = 'visit' + node.constructor.name;
-  if (this[method]) return this[method](node);
-  return node;
-};
-
+  visit(node, fn?) {
+    var method = 'visit' + node.constructor.name;
+    if (this[method]) return this[method](node);
+    return node;
+  }
+}
