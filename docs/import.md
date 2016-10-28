@@ -61,6 +61,37 @@ Render the literal CSS __@import__ shown below:
 
 Along with `@import`, Stylus also has `@require`. It works almost in the same way, with the exception of importing any given file only once.
 
+## Custom resolver
+
+If needed, using the `importResolver` option, you can specify a custom resolver to resolve relative imported paths.
+
+That option is a function that should return an array of paths. Its parameters are:
+- name: the path that was passed to `@import` or `@require`
+- currentFilename: the path of the file in which the import is locate
+- defaultResolver: the default resolver function, which can be called as a fallback
+
+In the example below, we set the `importResolver` option to look for the imported file in the folder 'imports' under the current file's parent folder, and fallback to the default resolver if not found.
+
+      /**
+       * Module dependencies.
+       */
+
+      var stylus = require('../')
+        , fs = require('fs'),
+        , path = require('path')
+        , str = fs.readFileSync(__dirname + '/test.styl', 'utf8');
+
+      stylus(str)
+        .set('filename', __dirname + '/test.styl')
+        .set('importResolver', function (name, currentFilename, defaultResolver) { 
+          var filePath = path.dirname(currentFilename) + '/imports/' + name + '.styl';
+          return fs.existsSync(filePath) ? [filePath] : defaultResolver();
+        })
+        .render(function(err, css){
+          if (err) throw err;
+          console.log(css);
+        });
+
 ## Block-level import
 
 Stylus supports block-level import. It means that you can use `@import` not only at root level, but also nested inside other selectors or at-rules.

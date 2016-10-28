@@ -24,6 +24,8 @@ addSuite('integration', readDir('test/cases'), function(test){
   if (~test.indexOf('prefix.')) style.set('prefix', 'prefix-');
   if (~test.indexOf('hoist.')) style.set('hoist atrules', true);
   if (~test.indexOf('resolver')) style.define('url', stylus.resolver());
+  if (test === 'import.custom') style.set('importResolver', createCustomImportsResolver('test/cases/import/custom'));
+  if (test === 'require.custom') style.set('importResolver', createCustomImportsResolver('test/cases/require/custom'));
 
   style.render(function(err, actual){
     if (err) throw err;
@@ -48,6 +50,8 @@ addSuite('dependency resolver', readDir('test/deps-resolver'), function(test){
     , styl = readFile(path)
     , deps = readFile('test/deps-resolver/' + test + '.deps')
     , style = stylus(styl).set('filename', path);
+
+  if (test === 'custom') style.set('importResolver', createCustomImportsResolver('test/deps-resolver/custom'));
 
   style.deps().join('\n').trim().should.equal(deps);
 });
@@ -209,6 +213,23 @@ describe('JS API', function(){
 });
 
 // helper functions
+
+function createCustomImportsResolver(importsFolder) {
+  return function (path, currentFilename, defaultResolver) {
+    //replace "nested-a" by "nested/a"
+    var fullPath = importsFolder + '/' + path.replace(/-/g, '/')
+      , fullStylusPath = fullPath;
+
+    if (!/\.styl$/i.test(fullStylusPath)) fullStylusPath += '.styl';
+    if (fs.existsSync(fullStylusPath)) {
+      return [fullStylusPath];
+    }
+    if (fs.existsSync(fullPath + '/index.styl')) {
+      return [fullPath + '/index.styl'];
+    }
+    return defaultResolver();
+  }
+}
 
 function addSuite(desc, cases, fn, ignore) {
   describe(desc, function(){

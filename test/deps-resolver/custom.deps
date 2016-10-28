@@ -1,0 +1,3 @@
+test/deps-resolver/custom/blue.styl
+test/deps-resolver/custom/nested/green.styl
+test/deps-resolver/custom/nested/red/index.styl
