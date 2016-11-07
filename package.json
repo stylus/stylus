@@ -24,22 +24,31 @@
     "stylus": "./bin/stylus"
   },
   "scripts": {
+    "postinstall": "tsc",
     "prepublish": "npm prune",
     "test": "mocha test/ test/middleware/ --require should --bail --check-leaks --reporter dot",
     "test-cov": "mocha test/ test/middleware/ --require should --bail --reporter html-cov > coverage.html"
   },
   "dependencies": {
+    "@types/glob": "^5.0.30",
+    "@types/minimatch": "^2.0.29",
+    "@types/mocha": "^2.2.32",
+    "@types/node": "^6.0.46",
+    "@types/should": "^8.1.30",
+    "@types/source-map": "^0.1.29",
     "css-parse": "1.7.x",
-    "mkdirp": "0.5.x",
     "debug": "*",
-    "sax": "0.5.x",
     "glob": "7.0.x",
-    "source-map": "0.1.x"
+    "mkdirp": "0.5.x",
+    "sax": "0.5.x",
+    "source-map": "0.1.x",
+    "trim-right": "^1.0.1"
   },
   "devDependencies": {
-    "should": "8.x",
+    "jscoverage": "0.3.8",
     "mocha": "*",
-    "jscoverage": "0.3.8"
+    "should": "8.x",
+    "typescript": "^2.0.3"
   },
   "bugs": {
     "url": "https://github.com/stylus/stylus/issues"

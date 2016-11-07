@@ -1,0 +1,2 @@
+
+export = require('./stylus');
