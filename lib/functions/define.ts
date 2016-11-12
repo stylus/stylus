@@ -4,13 +4,13 @@ import nodes = require('../nodes');
 /**
  * Set a variable `name` on current scope.
  *
- * @param {String} name
+ * @param {StringNode} name
  * @param {Expression} expr
- * @param {Boolean} [global]
+ * @param {BooleanNode} [global]
  * @api public
  */
 
-export = function define(name, expr, global){
+export function define(name, expr, global){
   utils.assertType(name, 'string', 'name');
   expr = utils.unwrap(expr);
   var scope = this.currentScope;
@@ -20,4 +20,4 @@ export = function define(name, expr, global){
   var node = new nodes.Ident(name.val, expr);
   scope.add(node);
   return nodes.nullNode;
-};
+}

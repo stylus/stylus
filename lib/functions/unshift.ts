@@ -9,7 +9,7 @@ import utils = require('../utils');
  * @api public
  */
 
-export = class unshift {
+export class unshift {
   constructor(expr){
   expr = utils.unwrap(expr);
   for (var i = 1, len = arguments.length; i < len; ++i) {

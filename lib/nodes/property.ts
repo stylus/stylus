@@ -9,7 +9,7 @@
  * Module dependencies.
  */
 
-import Node = require('./node');
+import {Node} from './node';
 
 /**
  * Initialize a new `Property` with the given `segs` and optional `expr`.
@@ -19,7 +19,7 @@ import Node = require('./node');
  * @api public
  */
 
-export = class Property extends Node {
+export class Property extends Node {
   name;
   literal;
   constructor(public segments, public expr?){

@@ -8,17 +8,17 @@
  * Module dependencies.
  */
 
-import Node = require('./node');
+import {Node} from './node';
 
 /**
  * Initialize a new `Namespace` with the given `val` and `prefix`
  *
- * @param {String|Call} val
- * @param {String} [prefix]
+ * @param {StringNode|Call} val
+ * @param {StringNode} [prefix]
  * @api public
  */
 
-export = class Namespace extends Node {
+export class Namespace extends Node {
   constructor(val, public prefix){
   super();
   this.val = val;

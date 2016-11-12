@@ -9,17 +9,16 @@
  * Module dependencies.
  */
 
-import Node = require('./node');
-import nodes = require('./');
+import {Node} from './node';
 
 /**
  * Initialize a new `Literal` with the given `str`.
  *
- * @param {String} str
+ * @param {StringNode} str
  * @api public
  */
 
-export = class Literal extends Node {
+export class Literal extends Node {
   prefixed = false;
   constructor(public string){
   super();
@@ -76,11 +75,11 @@ coerce(other){
  * @api public
  */
 
-operate(op, right){
+operate(op, right): Node {
   var val = right.first;
   switch (op) {
     case '+':
-      return new nodes.Literal(this.string + this.coerce(val).string);
+      return new Literal(this.string + this.coerce(val).string);
     default:
       return super.operate(op, right);
   }

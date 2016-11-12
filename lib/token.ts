@@ -14,7 +14,7 @@ import {inspect} from 'util';
 /**
  * Initialize a new `Token` with the given `type` and `val`.
  *
- * @param {String} type
+ * @param {StringNode} type
  * @param {Mixed} val
  * @api private
  */

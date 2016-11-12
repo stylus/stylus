@@ -9,18 +9,18 @@
  * Module dependencies.
  */
 
-import Node = require('./node');
+import {Node} from './node';
 import nodes = require('./');
 
 /**
  * Initialize a new `Ident` by `name` with the given `val` node.
  *
- * @param {String} name
+ * @param {StringNode} name
  * @param {Node} val
  * @api public
  */
 
-export = class Ident extends Node {
+export class Ident extends Node {
   string;
   mixin;
   property;

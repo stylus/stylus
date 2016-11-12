@@ -9,16 +9,16 @@
  * Module dependencies.
  */
 
-import Atrule = require('./atrule');
+import {Atrule} from './atrule';
 
 /**
  * Initialize a new `Media` with the given `val`
  *
- * @param {String} val
+ * @param {StringNode} val
  * @api public
  */
 
-export = class Media extends Atrule {
+export class Media extends Atrule {
   constructor(val?){
   super('media');
   this.val = val;

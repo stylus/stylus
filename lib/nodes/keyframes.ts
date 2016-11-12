@@ -9,18 +9,18 @@
  * Module dependencies.
  */
 
-import Atrule = require('./atrule');
+import {Atrule} from './atrule';
 
 /**
  * Initialize a new `Keyframes` with the given `segs`,
  * and optional vendor `prefix`.
  *
  * @param {Array} segs
- * @param {String} prefix
+ * @param {StringNode} prefix
  * @api public
  */
 
-export = class Keyframes extends Atrule {
+export class Keyframes extends Atrule {
   constructor(segs?, public prefix = 'official'){
     super('keyframes');
   this.segments = segs;

@@ -9,17 +9,17 @@
  * Module dependencies.
  */
 
-import Node = require('./node');
+import {Node} from './node';
 
 /**
  * Initialize a new `Call` with `name` and `args`.
  *
- * @param {String} name
+ * @param {StringNode} name
  * @param {Expression} args
  * @api public
  */
 
-export = class Call extends Node {
+export class Call extends Node {
   block;
 
   constructor(public name, public args?){

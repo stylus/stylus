@@ -13,7 +13,7 @@ import nodes = require('../nodes');
  * @api public
  */
 
-export = function range(start, stop, step){
+export function range(start, stop, step){
   utils.assertType(start, 'unit', 'start');
   utils.assertType(stop, 'unit', 'stop');
   if (step) {

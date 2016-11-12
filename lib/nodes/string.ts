@@ -8,7 +8,7 @@
  * Module dependencies.
  */
 
-import Node = require('./node');
+import {Node} from './node';
 import {s as sprintf} from '../functions';
 import utils = require('../utils');
 import nodes = require('./');
@@ -16,12 +16,12 @@ import nodes = require('./');
 /**
  * Initialize a new `String` with the given `val`.
  *
- * @param {String} val
- * @param {String} quote
+ * @param {StringNode} val
+ * @param {StringNode} quote
  * @api public
  */
 
-export = class StringNode extends Node {
+export class StringNode extends Node {
   string;
   prefixed = false;
   quote;
@@ -92,7 +92,7 @@ toJSON(){
  */
 
 toBoolean(){
-  return nodes.Boolean(this.val.length);
+  return nodes.booleanNode(this.val.length);
 }
 
 /**

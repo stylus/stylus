@@ -10,18 +10,19 @@
  */
 
 import nodes = require('./nodes');
+import glob = require('glob');
+import fs = require('fs');
 import {basename} from 'path';
 import {relative} from 'path';
 import {join} from 'path';
 import {isAbsolute} from 'path';
-import glob = require('glob');
-import fs = require('fs');
+import {ObjectNode, Node, Expression, Unit, BooleanNode, StringNode} from './nodes';
 
 /**
  * Check if `path` looks absolute.
  *
- * @param {String} path
- * @return {Boolean}
+ * @param {StringNode} path
+ * @return {BooleanNode}
  * @api private
  */
 
@@ -276,38 +277,32 @@ export function assertPresent(node, name){
  * @api public
  */
 
-export function unwrap(expr){
+export function unwrap(expr) {
   // explicitly preserve the expression
   if (expr.preserve) return expr;
   if ('arguments' != expr.nodeName && 'expression' != expr.nodeName) return expr;
   if (1 != expr.nodes.length) return expr;
   if ('arguments' != expr.nodes[0].nodeName && 'expression' != expr.nodes[0].nodeName) return expr;
-  return exports.unwrap(expr.nodes[0]);
+  return unwrap(expr.nodes[0]);
 }
 
 /**
  * Coerce JavaScript values to their Stylus equivalents.
- *
- * @param {Mixed} val
- * @param {Boolean} [raw]
- * @return {Node}
- * @api public
  */
-
-export function coerce(val, raw?){
+export function coerce(val: Function | string | boolean | number | Node, raw?: boolean) {
   switch (typeof val) {
     case 'function':
       return val;
     case 'string':
-      return new nodes.String(val);
+      return new StringNode(val);
     case 'boolean':
-      return new nodes.Boolean(val);
+      return new BooleanNode(val);
     case 'number':
-      return new nodes.Unit(val);
+      return new Unit(val);
     default:
       if (null == val) return nodes.nullNode;
       if (Array.isArray(val)) return exports.coerceArray(val, raw);
-      if (val.nodeName) return val;
+      if ((<Node>val).nodeName) return val;
       return exports.coerceObject(val, raw);
   }
 }
@@ -335,24 +330,18 @@ export function coerceArray(val, raw){
  * For example `{ foo: 'bar', bar: 'baz' }` would become
  * the expression `(foo 'bar') (bar 'baz')`. If `raw` is true
  * given `obj` would become a Stylus hash object.
- *
- * @param {Object} obj
- * @param {Boolean} [raw]
- * @return {Expression|Object}
- * @api public
  */
-
-export function coerceObject(obj, raw){
-  var node = raw ? new nodes.Object : new nodes.Expression
+export function coerceObject(obj, raw: boolean): Expression | ObjectNode {
+  var node = raw ? new ObjectNode : new nodes.Expression
     , val;
 
   for (var key in obj) {
     val = exports.coerce(obj[key], raw);
-    key = new nodes.Ident(key);
+    key = new nodes.Ident(key) as any;
     if (raw) {
-      node.set(key, val);
+      (<ObjectNode>node).set(key, val);
     } else {
-      node.push(exports.coerceArray([key, val]));
+      (<Expression>node).push(exports.coerceArray([key, val]));
     }
   }
 

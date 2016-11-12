@@ -1,6 +1,6 @@
 import nodes = require('../nodes');
-import hsla = require('./hsla');
-import component = require('./component');
+import {hsla} from './hsla';
+import {component} from './component';
 
 /**
  * Return the hue component of the given `color`,
@@ -20,7 +20,7 @@ import component = require('./component');
  * @api public
  */
 
-export = function hue(color, value){
+export function hue(color, value){
   if (value) {
     var hslaColor = color.hsla;
     return hsla(
@@ -30,5 +30,5 @@ export = function hue(color, value){
       new nodes.Unit(hslaColor.a)
     )
   }
-  return component(color, new nodes.String('hue'));
+  return component(color, new nodes.StringNode('hue'));
 };

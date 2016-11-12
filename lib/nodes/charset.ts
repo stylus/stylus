@@ -9,16 +9,16 @@
  * Module dependencies.
  */
 
-import Node = require('./node');
+import {Node} from './node';
 
 /**
  * Initialize a new `Charset` with the given `val`
  *
- * @param {String} val
+ * @param {StringNode} val
  * @api public
  */
 
-export = class Charset extends Node {
+export class Charset extends Node {
   constructor(val){
     super();
   this.val = val;

@@ -43,12 +43,12 @@ var typeMap = {
  * Return component `name` for the given `color`.
  *
  * @param {RGBA|HSLA} color
- * @param {String} name
+ * @param {StringNode} name
  * @return {Unit}
  * @api public
  */
 
-export = function component(color, name) {
+export function component(color, name) {
   utils.assertColor(color, 'color');
   utils.assertString(name, 'name');
   var name = name.string
@@ -57,4 +57,4 @@ export = function component(color, name) {
     , name = componentMap[name];
   if (!name) throw new Error('invalid color component "' + name + '"');
   return new nodes.Unit(color[type][name], unit);
-};
+}

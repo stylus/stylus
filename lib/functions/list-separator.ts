@@ -15,14 +15,14 @@ import nodes = require('../nodes');
  *    // => ','
  *
  * @param {Experssion} list
- * @return {String}
+ * @return {StringNode}
  * @api public
  */
 
 export = class listSeparator {
 	constructor(list){
   list = utils.unwrap(list);
-  return new nodes.String(list.isList ? ',' : ' ');
+  return new nodes.StringNode(list.isList ? ',' : ' ');
 }
 
 	static raw = true;

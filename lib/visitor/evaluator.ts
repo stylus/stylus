@@ -8,14 +8,15 @@
  * Module dependencies.
  */
 
-import Visitor = require('./');
+import {Visitor} from './index';
+import {Stack} from '../stack/index';
+import {Frame} from '../stack/frame';
+import {dirname} from 'path';
+import {url} from '../functions/url';
 import units = require('../units');
 import nodes = require('../nodes');
-import Stack = require('../stack');
-import Frame = require('../stack/frame');
 import utils = require('../utils');
 import bifs = require('../functions');
-import {dirname} from 'path';
 import colors = require('../colors');
 var debug = require('debug')('stylus:evaluator')
 import fs = require('fs');
@@ -102,6 +103,17 @@ function importFile(node, file, literal) {
   return ret;
 }
 
+export interface EvaluetorOptions {
+  imports;
+  globals;
+  paths;
+  prefix;
+  filename;
+  includeCSS;
+  functions;
+  warn;
+}
+
 /**
  * Initialize a new `Evaluator` with the given `root` Node
  * and the following `options`.
@@ -115,7 +127,7 @@ function importFile(node, file, literal) {
  * @api private
  */
 
-export = class Evaluator extends Visitor {
+export class Evaluator extends Visitor {
   functions;
   stack;
   imports;
@@ -136,9 +148,8 @@ export = class Evaluator extends Visitor {
   property;
   _selector;
 
-  constructor(root, options?) {
+  constructor(root, options: EvaluetorOptions = <any>{}) {
   super(root);
-  options = options || {};
   var functions = this.functions = options.functions || {};
   this.stack = new Stack;
   this.imports = options.imports || [];
@@ -202,7 +213,7 @@ setup() {
   this.populateGlobalScope();
   this.imports.forEach(function (file) {
     var expr = new nodes.Expression;
-    expr.push(new nodes.String(file));
+    expr.push(new nodes.StringNode(file));
     imports.push(new nodes.Import(expr));
   }, this);
 
@@ -233,7 +244,7 @@ populateGlobalScope() {
   // expose url function
   scope.add(new nodes.Ident(
     'embedurl',
-    new nodes.Function('embedurl', require('../functions/url')({
+    new nodes.Function('embedurl', url({
       limit: false
     }))
   ));
@@ -451,7 +462,7 @@ visitEach(each) {
   if (1 == len && 'object' == expr.nodes[0].nodeName) {
     obj = expr.nodes[0];
     for (var prop in obj.vals) {
-      val.val = new nodes.String(prop);
+      val.val = new nodes.StringNode(prop);
       key.val = obj.get(prop);
       visitBody(key, val);
     }
@@ -972,7 +983,7 @@ invokeFunction(fn, args, content) {
   // mixin scope introspection
   scope.add(new nodes.Ident('mixin', this.return
     ? nodes.falseNode
-    : new nodes.String(mixinBlock.nodeName)));
+    : new nodes.StringNode(mixinBlock.nodeName)));
 
   // current property
   if (this.property) {
@@ -1229,7 +1240,7 @@ mixinObject(object) {
 eval(vals) {
   if (!vals) return nodes.nullNode;
   var len = vals.length
-    , node = nodes.nullNode;
+    , node: any = nodes.nullNode;
 
   try {
     for (var i = 0; i < len; ++i) {
@@ -1483,7 +1494,7 @@ lookupFunction(name) {
 
 isDefined(node) {
   if ('ident' == node.nodeName) {
-    return nodes.Boolean(this.lookup(node.name));
+    return nodes.booleanNode(this.lookup(node.name));
   } else {
     throw new Error('invalid "is defined" check on non-variable ' + node);
   }
@@ -1505,7 +1516,7 @@ propertyExpression(prop, name) {
     , val = prop.expr.clone();
 
   // name
-  expr.push(new nodes.String(prop.name));
+  expr.push(new nodes.StringNode(prop.name));
 
   // replace cyclic call with __CALL__
   function replace(node) {

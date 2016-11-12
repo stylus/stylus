@@ -8,7 +8,7 @@ import utils = require('../utils');
  * @api public
  */
 
-export = class pop {
+export class pop {
 	constructor(expr) {
   expr = utils.unwrap(expr);
   return expr.nodes.pop();

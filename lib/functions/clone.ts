@@ -8,7 +8,7 @@ import utils = require('../utils');
  * @api public
  */
 
-export = class clone {
+export class clone {
 	constructor(expr){
   utils.assertPresent(expr, 'expr');
   return expr.clone();

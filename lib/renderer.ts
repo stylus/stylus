@@ -11,32 +11,44 @@
 
 import Parser = require('./parser');
 import {EventEmitter} from 'events';
-import Evaluator = require('./visitor/evaluator');
+import {Evaluator} from './visitor/evaluator';
 import Normalizer = require('./visitor/normalizer');
-var events = new EventEmitter;
 import utils = require('./utils');
 import nodes = require('./nodes');
 import {join} from 'path';
+import {Compiler} from './visitor/compiler';
+import {SourceMapper} from './visitor/sourcemapper';
+import {DepsResolver} from './visitor/deps-resolver';
+
+export var events = new EventEmitter;
 
 /**
  * Initialize a new `Renderer` with the given `str` and `options`.
  *
- * @param {String} str
- * @param {Object} options
+ * @param {StringNode} str
+ * @param {ObjectNode} options
  * @api public
  */
 
-export = class Renderer extends EventEmitter {
-  private options;
-  private str;
-  private events;
+export interface RendererOptions {
+  globals?: any;
+  functions?: any;
+  use?: any;
+  imports?: any;
+  paths?: any;
+  filename?: any;
+  Evaluator?: any;
+  sourcemap?: any;
+}
+
+export class Renderer extends EventEmitter {
+  events: EventEmitter = events;
   private parser;
   private evaluator;
   private nodes;
   private sourcemap;
-  constructor(str, options) {
+  constructor(public str, private options: RendererOptions = <any>{}) {
     super();
-  options = options || {};
   options.globals = options.globals || {};
   options.functions = options.functions || {};
   options.use = options.use || [];
@@ -45,16 +57,7 @@ export = class Renderer extends EventEmitter {
   options.paths = options.paths || [];
   options.filename = options.filename || 'stylus';
   options.Evaluator = options.Evaluator || Evaluator;
-  this.options = options;
-  this.str = str;
-  this.events = events;
 }
-
-/**
- * Expose events explicitly.
- */
-
-static events = events;
 
   /**
  * Parse and evaluate AST, then callback `fn(err, css, js)`.
@@ -63,7 +66,7 @@ static events = events;
  * @api public
  */
 
-render(fn) {
+render(fn: (err, css?, js?) => any) {
   var parser = this.parser = new Parser(this.str, this.options);
 
   // use plugin(s)
@@ -88,12 +91,12 @@ render(fn) {
 
     // compile
     var compiler = this.options.sourcemap
-      ? new (require('./visitor/sourcemapper'))(ast, this.options)
-      : new (require('./visitor/compiler'))(ast, this.options)
+      ? new SourceMapper(ast, this.options)
+      : new Compiler(ast, this.options)
       , css = compiler.compile();
 
     // expose sourcemap
-    if (this.options.sourcemap) this.sourcemap = compiler.map.toJSON();
+    if (this.options.sourcemap) this.sourcemap = (<SourceMapper>compiler).map.toJSON();
   } catch (err) {
     var options: any = {};
     options.input = err.input || this.str;
@@ -122,12 +125,11 @@ render(fn) {
  * @api public
  */
 
-deps(filename) {
+deps(filename: string) {
   var opts = utils.merge({cache: false}, this.options);
   if (filename) opts.filename = filename;
 
-  var DepsResolver = require('./visitor/deps-resolver')
-    , parser = new Parser(this.str, opts);
+  var parser = new Parser(this.str, opts);
 
   try {
     nodes.filename = opts.filename;
@@ -149,39 +151,23 @@ deps(filename) {
 
 /**
  * Set option `key` to `val`.
- *
- * @param {String} key
- * @param {Mixed} val
- * @return {Renderer} for chaining
- * @api public
  */
-
-set(key, val) {
+set(key: string, val): Renderer {
   this.options[key] = val;
   return this;
 }
 
 /**
  * Get option `key`.
- *
- * @param {String} key
- * @return {Mixed} val
- * @api public
  */
-
-get(key) {
+get(key: string) {
   return this.options[key];
 }
 
 /**
  * Include the given `path` to the lookup paths array.
- *
- * @param {String} path
- * @return {Renderer} for chaining
- * @api public
  */
-
-include(path) {
+include(path: string): Renderer {
   this.options.paths.push(path);
   return this;
 }
@@ -191,13 +177,9 @@ include(path) {
  *
  * This allows for plugins to alter the renderer in
  * any way they wish, exposing paths etc.
- *
- * @param {Function}
- * @return {Renderer} for chaining
- * @api public
  */
 
-use(fn) {
+use(fn: Function): Renderer {
   fn.call(this, this);
   return this;
 }
@@ -213,7 +195,7 @@ use(fn) {
  * @api public
  */
 
-define(name, fn, raw) {
+define(name: string, fn, raw): Renderer {
   fn = utils.coerce(fn, raw);
 
   if (fn.nodeName) {
@@ -229,13 +211,9 @@ define(name, fn, raw) {
 
 /**
  * Import the given `file`.
- *
- * @param {String} file
- * @return {Renderer} for chaining
- * @api public
  */
 
-import(file) {
+import_(file: string): Renderer {
   this.options.imports.push(file);
   return this;
 }

@@ -20,7 +20,7 @@ import utils = require('../utils');
  *    // => 'ident'
  *
  * @param {Node} node
- * @return {String}
+ * @return {StringNode}
  * @api public
  */
 

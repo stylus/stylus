@@ -1,6 +1,8 @@
 import utils = require('../utils');
 import nodes = require('../nodes');
 import {readFileSync as readFile} from 'fs';
+import {Null} from '../nodes/null';
+import {ObjectNode} from '../nodes/object';
 
 /**
  * Convert a .json file into stylus variables or object.
@@ -29,13 +31,13 @@ import {readFileSync as readFile} from 'fs';
  *    body
  *      width: vars.width
  *
- * @param {String} path
- * @param {Boolean} [local]
- * @param {String} [namePrefix]
+ * @param {StringNode} path
+ * @param {BooleanNode} [local]
+ * @param {StringNode} [namePrefix]
  * @api public
 */
 
-export = function(path, local, namePrefix){
+export function json(path, local, namePrefix): Null | ObjectNode {
   utils.assertString(path, 'path');
 
   // lookup
@@ -61,7 +63,7 @@ export = function(path, local, namePrefix){
   }
 
   function convert(obj, options){
-    var ret = new nodes.Object()
+    var ret = new nodes.ObjectNode()
       , leaveStrings = options.get('leave-strings').toBoolean();
 
     for (var key in obj) {
@@ -78,7 +80,7 @@ export = function(path, local, namePrefix){
     }
     return ret;
   }
-};
+}
 
 /**
  * Old `json` BIF.
@@ -93,7 +95,7 @@ function oldJson(json, local, namePrefix){
   } else {
     namePrefix = '';
   }
-  local = local ? local.toBoolean() : new nodes.Boolean(local);
+  local = local ? local.toBoolean() : new nodes.BooleanNode(local);
   var scope = local.isTrue ? this.currentScope : this.global.scope;
 
   convert(json);

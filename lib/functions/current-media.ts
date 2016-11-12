@@ -3,13 +3,13 @@ import nodes = require('../nodes');
 /**
  * Returns the @media string for the current block
  *
- * @return {String}
+ * @return {StringNode}
  * @api public
  */
 
 export = function currentMedia(){
   var self = this;
-  return new nodes.String(lookForMedia(this.closestBlock.node) || '');
+  return new nodes.StringNode(lookForMedia(this.closestBlock.node) || '');
 
   function lookForMedia(node){
     if ('media' == node.nodeName) {

@@ -9,8 +9,8 @@
  * Module dependencies.
  */
 
-import Node = require('./node');
-import Expression = require('../nodes/expression');
+import {Node} from './node';
+import {Expression} from './expression';
 import utils = require('../utils');
 
 /**
@@ -19,7 +19,7 @@ import utils = require('../utils');
  * @api public
  */
 
-export = class Arguments extends Expression {
+export class Arguments extends Expression {
   map = {};
 
   constructor() {
@@ -49,13 +49,10 @@ static fromExpression(expr) {
 
 /**
  * Return a clone of this node.
- *
- * @return {Node}
- * @api public
  */
 
-clone(parent) {
-  var clone = super.clone(parent);
+clone(parent): Node {
+  var clone = <Arguments>super.clone(parent);
   clone.map = {};
   for (var key in this.map) {
     clone.map[key] = this.map[key].clone(parent, clone);

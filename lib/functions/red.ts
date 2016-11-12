@@ -1,5 +1,5 @@
 import nodes = require('../nodes');
-import rgba = require('./rgba');
+import {rgba} from './rgba';
 
 /**
  * Return the red component of the given `color`,
@@ -19,7 +19,7 @@ import rgba = require('./rgba');
  * @api public
  */
 
-export = function red(color, value){
+export function red(color, value){
   color = color.rgba;
   if (value) {
     return rgba(

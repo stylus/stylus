@@ -6,7 +6,7 @@ import nodes = require('../nodes');
  * @api public
  */
 
-module.exports = function trace(){
+export function trace(){
   console.log(this.stack);
   return nodes.nullNode;
-};
+}

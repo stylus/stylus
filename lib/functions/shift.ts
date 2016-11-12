@@ -8,7 +8,7 @@ import utils = require('../utils');
  * @api public
  */
 
- export = class shift{
+ export class shift{
    constructor(expr){
    expr = utils.unwrap(expr);
    return expr.nodes.shift();

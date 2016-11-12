@@ -8,7 +8,7 @@ import nodes = require('../nodes');
  * @api public
  */
 
-export = class p {
+export class p {
 	constructor(){
   [].slice.call(arguments).forEach(function(expr){
     expr = utils.unwrap(expr);

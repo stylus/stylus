@@ -8,7 +8,7 @@
  * Module dependencies.
  */
 
-import Atrule = require('./atrule');
+import {Atrule} from './atrule';
 
 /**
  * Initialize a new supports node.
@@ -17,7 +17,7 @@ import Atrule = require('./atrule');
  * @api public
  */
 
-export = class Supports extends Atrule {
+export class Supports extends Atrule {
   constructor(public condition?){
   super('supports');
 }

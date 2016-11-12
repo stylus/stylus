@@ -23,7 +23,7 @@ import nodes = require('../nodes');
  * @api public
  */
 
-export = function rgba(red, green, blue, alpha){
+export function rgba(red, green, blue, alpha){
   switch (arguments.length) {
     case 1:
       utils.assertColor(red);

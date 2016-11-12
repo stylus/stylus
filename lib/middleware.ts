@@ -72,7 +72,7 @@ var imports = {};
  * 
  *      app.use(connect.static(__dirname + '/public'));
  * 
- * @param {Object} options
+ * @param {ObjectNode} options
  * @return {Function}
  * @api public
  */

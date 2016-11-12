@@ -3,37 +3,38 @@
  * Module dependencies.
  */
 
-import Visitor = require('./');
+import {Visitor} from './';
 import Parser = require('../parser');
 import nodes = require('../nodes');
 import utils = require('../utils');
 import {dirname} from 'path';
 import fs = require('fs');
 
+export interface DepsResolverOptions {
+  filename;
+  paths: any[];
+}
+
 /**
  * Initialize a new `DepsResolver` with the given `root` Node
  * and the `options`.
  *
  * @param {Node} root
- * @param {Object} options
+ * @param {ObjectNode} options
  * @api private
  */
 
-export = class DepsResolver extends Visitor {
+export class DepsResolver extends Visitor {
   private filename;
   private paths;
-  private options;
-  private functions;
-  private deps;
+  private functions = {};
+  private deps = [];
 
-  constructor(root, options) {
+  constructor(root, private options: DepsResolverOptions) {
     super(root);
     this.filename = options.filename;
     this.paths = options.paths || [];
     this.paths.push(dirname(options.filename || '.'));
-    this.options = options;
-    this.functions = {};
-    this.deps = [];
   }
 
 visit(node) {

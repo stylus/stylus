@@ -9,20 +9,20 @@
  * Module dependencies.
  */
 
-import Node = require('./node');
+import {Node} from './node';
 
 /**
  * Initialize a new `Function` with `name`, `params`, and `body`.
  *
- * @param {String} name
+ * @param {StringNode} name
  * @param {Params|Function} params
  * @param {Block} body
  * @api public
  */
 
-export = class Function extends Node {
-  private fn;
-  private block;
+export class Function extends Node {
+  fn;
+  block;
 
   constructor(public name, public params?, public body?){
   super();

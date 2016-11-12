@@ -12,12 +12,12 @@ import nodes = require('../nodes');
  *    unquote(sans-serif)
  *    // => sans-serif
  *
- * @param {String|Ident} string
+ * @param {StringNode|Ident} string
  * @return {Literal}
  * @api public
  */
 
-module.exports = function unquote(string){
+export function unquote(string){
   utils.assertString(string, 'string');
   return new nodes.Literal(string.string);
 };

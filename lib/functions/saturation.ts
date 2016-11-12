@@ -1,6 +1,6 @@
 import nodes = require('../nodes');
-import hsla = require('./hsla');
-import component = require('./component');
+import {hsla} from './hsla';
+import {component} from './component';
 
 /**
  * Return the saturation component of the given `color`,
@@ -20,7 +20,7 @@ import component = require('./component');
  * @api public
  */
 
-export = function saturation(color, value){
+export function saturation(color, value){
   if (value) {
     var hslaColor = color.hsla;
     return hsla(
@@ -30,6 +30,6 @@ export = function saturation(color, value){
       new nodes.Unit(hslaColor.a)
     )
   }
-  return component(color, new nodes.String('saturation'));
-};
+  return component(color, new nodes.StringNode('saturation'));
+}
 

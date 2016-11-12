@@ -1,18 +1,18 @@
 import utils = require('../utils');
 import nodes = require('../nodes');
-import Compiler = require('../visitor/compiler');
+import {Compiler} from '../visitor/compiler';
 
 /**
  * Return a `Literal` with the given `fmt`, and
  * variable number of arguments.
  *
- * @param {String} fmt
+ * @param {StringNode} fmt
  * @param {Node} ...
  * @return {Literal}
  * @api public
  */
 
-export = class s{
+export class s {
   options;
   constructor(fmt){
   fmt = utils.unwrap(fmt).nodes[0];
@@ -34,7 +34,7 @@ export = class s{
     }
   });
 
-  return new nodes.Literal(str);
+  return new nodes.Literal(str) as any;
 }
 
   static raw = true;

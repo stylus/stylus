@@ -9,7 +9,7 @@
  * Module dependencies.
  */
 
-import Node = require('./node');
+import {Node} from './node';
 
 /**
  * Initialize a new `Block` node with `parent` Block.
@@ -18,11 +18,11 @@ import Node = require('./node');
  * @api public
  */
 
-export = class Block extends Node {
+export class Block extends Node {
   nodes;
   scope;
 
-  constructor(public parent, public node){
+  constructor(public parent?, public node?){
   super();
   this.nodes = [];
   this.scope = true;
@@ -78,7 +78,7 @@ get isEmpty(){
  * @api public
  */
 
-clone(parent, node){
+clone(parent, node?){
   parent = parent || this.parent;
   var clone = new Block(parent, node || this.node);
   clone.lineno = this.lineno;

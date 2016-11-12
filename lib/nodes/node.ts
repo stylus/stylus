@@ -9,14 +9,16 @@
  * Module dependencies.
  */
 
-import Evaluator = require('../visitor/evaluator');
+import {Evaluator} from '../visitor/evaluator';
 import utils = require('../utils');
 import nodes = require('./');
+import {BooleanNode} from './boolean';
+import {Expression} from './expression';
 
 /**
  * Initialize a new `CoercionError` with the given `msg`.
  *
- * @param {String} msg
+ * @param {StringNode} msg
  * @api private
  */
 
@@ -34,7 +36,7 @@ class CoercionError extends Error {
  * @api public
  */
 
-export = class Node {
+export class Node {
   lineno;
   column;
   filename;
@@ -47,12 +49,8 @@ export = class Node {
 
   /**
    * Return this node.
-   *
-   * @return {Node}
-   * @api public
    */
-
-  get first() {
+  get first(): Node {
     return this;
   }
 
@@ -69,23 +67,16 @@ export = class Node {
 
   /**
    * Return node name.
-   *
-   * @return {String}
-   * @api public
    */
 
-  get nodeName() {
+  get nodeName(): string {
     return (<any>this.constructor).name.toLowerCase();
   }
 
   /**
    * Return this node.
-   * 
-   * @return {Node}
-   * @api public
    */
-
-  clone(..._): any {
+  clone(..._): Node {
     return this;
   }
 
@@ -111,18 +102,15 @@ export = class Node {
    * @api public
    */
 
-  eval(){
+  eval(): Node {
     return new Evaluator(this).evaluate();
   }
 
   /**
    * Return true.
-   *
-   * @return {Boolean}
-   * @api public
    */
 
-  toBoolean(){
+  toBoolean(): BooleanNode {
     return nodes.trueNode;
   }
 
@@ -133,8 +121,8 @@ export = class Node {
    * @api public
    */
 
-  toExpression(){
-    if ('expression' == this.nodeName) return this;
+  toExpression(): Expression {
+    if ('expression' == this.nodeName) return <any>this;
     var expr = new nodes.Expression;
     expr.push(this);
     return expr;
@@ -144,7 +132,7 @@ export = class Node {
    * Return false if `op` is generally not coerced.
    *
    * @param {String} op
-   * @return {Boolean}
+   * @return {BooleanNode}
    * @api private
    */
 
@@ -168,22 +156,22 @@ export = class Node {
     switch (op) {
       case 'is a':
         if ('string' == right.first.nodeName) {
-          return nodes.Boolean(this.nodeName == right.val);
+          return nodes.booleanNode(this.nodeName == right.val);
         } else {
           throw new Error('"is a" expects a string, got ' + right.toString());
         }
       case '==':
-        return nodes.Boolean(this.hash == right.hash);
+        return nodes.booleanNode(this.hash == right.hash);
       case '!=':
-        return nodes.Boolean(this.hash != right.hash);
+        return nodes.booleanNode(this.hash != right.hash);
       case '>=':
-        return nodes.Boolean(this.hash >= right.hash);
+        return nodes.booleanNode(this.hash >= right.hash);
       case '<=':
-        return nodes.Boolean(this.hash <= right.hash);
+        return nodes.booleanNode(this.hash <= right.hash);
       case '>':
-        return nodes.Boolean(this.hash > right.hash);
+        return nodes.booleanNode(this.hash > right.hash);
       case '<':
-        return nodes.Boolean(this.hash < right.hash);
+        return nodes.booleanNode(this.hash < right.hash);
       case '||':
         return this.toBoolean().isTrue
           ? this
@@ -196,7 +184,7 @@ export = class Node {
 
         // 'prop' in obj
         if (1 == len && 'object' == vals[0].nodeName) {
-          return nodes.Boolean(vals[0].has(this.hash));
+          return nodes.booleanNode(vals[0].has(this.hash));
         }
 
         for (var i = 0; i < len; ++i) {

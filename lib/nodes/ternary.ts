@@ -9,7 +9,7 @@
  * Module dependencies.
  */
 
-import Node = require('./node');
+import {Node} from './node';
 
 /**
  * Initialize a new `Ternary` with `cond`, `trueExpr` and `falseExpr`.
@@ -20,7 +20,7 @@ import Node = require('./node');
  * @api public
  */
 
-export = class Ternary extends Node {
+export class Ternary extends Node {
   constructor(public cond?, public trueExpr?, public falseExpr?){
   super();
 }

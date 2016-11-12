@@ -10,7 +10,7 @@
  */
 
 import Block = require('./block');
-import Node = require('./node');
+import {Node} from './node';
 
 /**
  * Initialize a new `Selector` with the given `segs`.
@@ -19,7 +19,7 @@ import Node = require('./node');
  * @api public
  */
 
-export = class Selector extends Node {
+export class Selector extends Node {
   inherits = true;
   optional = false;
   constructor(public segments?){

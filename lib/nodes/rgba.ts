@@ -9,8 +9,8 @@
  * Module dependencies.
  */
 
-import Node = require('./node');
-import HSLA = require('./hsla');
+import {Node} from './node';
+import {HSLA} from './hsla';
 import functions = require('../functions');
 var adjust = functions.adjust;
 import nodes = require('./');
@@ -25,7 +25,7 @@ import nodes = require('./');
  * @api public
  */
 
-export = class RGBA extends Node {
+export class RGBA extends Node {
   r;
   g;
   b;
@@ -233,7 +233,7 @@ operate(op, right){
         case 'unit':
           var n = right.val;
           switch (right.type) {
-            case '%': return adjust(this, new nodes.String('lightness'), right);
+            case '%': return adjust(this, new nodes.StringNode('lightness'), right);
             case 'deg': return this.hsla.adjustHue(n).rgba;
             default: return this.add(n,n,n,0);
           }
@@ -248,7 +248,7 @@ operate(op, right){
         case 'unit':
           var n = right.val;
           switch (right.type) {
-            case '%': return adjust(this, new nodes.String('lightness'), new nodes.Unit(-n, '%'));
+            case '%': return adjust(this, new nodes.StringNode('lightness'), new nodes.Unit(-n, '%'));
             case 'deg': return this.hsla.adjustHue(-n).rgba;
             default: return this.sub(n,n,n,0);
           }
@@ -366,6 +366,6 @@ function clamp(n) {
  * @api private
  */
 
-function clampAlpha(n) {
+function clampAlpha(n: number): number {
   return Math.max(0, Math.min(n, 1));
 }

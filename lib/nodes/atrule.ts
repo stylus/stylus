@@ -8,31 +8,24 @@
  * Module dependencies.
  */
 
-import Node = require('./node');
+import {Node} from './node';
 
-/**
- * Initialize a new at-rule node.
- *
- * @param {String} type
- * @api public
- */
-
-export = class Atrule extends Node {
+export class Atrule extends Node {
   block;
   segments;
 
+  /**
+   * Initialize a new at-rule node.
+   */
   constructor(public type: string){
   super();
 }
 
 /**
  * Check if at-rule's block has only properties.
- *
- * @return {Boolean}
- * @api public
  */
 
-get hasOnlyProperties(){
+get hasOnlyProperties(): boolean {
   if (!this.block) return false;
 
   var nodes = this.block.nodes;
@@ -52,12 +45,8 @@ get hasOnlyProperties(){
 
 /**
  * Return a clone of this node.
- *
- * @return {Node}
- * @api public
  */
-
-clone(parent){
+clone(parent: Node): Node {
   var clone = new Atrule(this.type);
   if (this.block) clone.block = this.block.clone(parent, clone);
   clone.segments = this.segments.map(function(node){ return node.clone(parent, clone); });
@@ -69,12 +58,9 @@ clone(parent){
 
 /**
  * Return a JSON representation of this node.
- *
- * @return {Object}
- * @api public
  */
 
-toJSON(){
+toJSON() {
   var json: any = {
     __type: 'Atrule',
     type: this.type,
@@ -89,23 +75,15 @@ toJSON(){
 
 /**
  * Return @<type>.
- *
- * @return {String}
- * @api public
  */
-
-toString(){
-  return '@' + this.type;
+toString(): string {
+  return `@${this.type}`;
 };
 
 /**
  * Check if the at-rule's block has output nodes.
- *
- * @return {Boolean}
- * @api public
  */
-
-get hasOutput(){
+get hasOutput(): boolean {
   return !!this.block && hasOutput(this.block);
 }
 }

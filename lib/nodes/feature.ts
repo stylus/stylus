@@ -9,7 +9,7 @@
  * Module dependencies.
  */
 
-import Node = require('./node');
+import {Node} from './node';
 
 /**
  * Initialize a new `Feature` with the given `segs`.
@@ -18,8 +18,8 @@ import Node = require('./node');
  * @api public
  */
 
-export = class Feature extends Node {
-  private expr;
+export class Feature extends Node {
+  expr;
   private name;
 
   constructor(public segments?: Array<any>){

@@ -1,4 +1,4 @@
-var plugin = function(options){
+export = function plugin(options){
   return function(style){
     var nodes = this.nodes;
 
@@ -18,14 +18,13 @@ var plugin = function(options){
       var val = options[name.val];
       switch (typeof val) {
         case 'boolean':
-          return new nodes.Boolean(val);
+          return new nodes.BooleanNode(val);
         case 'number':
           return new nodes.Unit(val);
         case 'string':
         default:
-          return new nodes.String(val);
+          return new nodes.StringNode(val);
       }
     });
   };
 };
-module.exports = plugin;

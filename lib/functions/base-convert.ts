@@ -1,19 +1,16 @@
 import utils = require('../utils');
 import nodes = require('../nodes');
+import {Literal} from '../nodes/literal';
 
-/**
- * Return a `Literal` `num` converted to the provided `base`, padded to `width`
- * with zeroes (default width is 2)
- *
- * @param {Number} num
- * @param {Number} base
- * @param {Number} width
- * @return {Literal}
- * @api public
- */
+export class baseConvert {
 
-export = class baseConvert {
-	constructor(num, base, width) {
+  /**
+   * Return a `Literal` `num` converted to the provided `base`, padded to `width`
+   * with zeroes (default width is 2)
+   * @return {Literal}
+   * @api public
+   */
+  constructor(num: number, base: number, width: number) {
   utils.assertPresent(num, 'number');
   utils.assertPresent(base, 'base');
   num = utils.unwrap(num).nodes[0].val;

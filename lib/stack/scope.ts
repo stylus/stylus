@@ -11,7 +11,7 @@
  * @api private
  */
 
-export = class Scope {
+export class Scope {
   private locals = {};
 
 /**

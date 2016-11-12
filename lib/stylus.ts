@@ -8,7 +8,7 @@
  * Module dependencies.
  */
 
-import Renderer = require('./renderer');
+import {Renderer, RendererOptions} from './renderer';
 
 /**
  * Export render as the module.
@@ -59,26 +59,26 @@ export var Compiler = require('./visitor/compiler');
 /**
  * Convert the given `css` to `stylus` source.
  *
- * @param {String} css
- * @return {String}
+ * @param {StringNode} css
+ * @return {StringNode}
  * @api public
  */
 
-export var convertCSS = require('./convert/css');
+export {css as convertCSS} from './convert/css';
 
 /**
  * Render the given `str` with `options` and callback `fn(err, css)`.
  *
- * @param {String} str
- * @param {Object|Function} options
+ * @param {StringNode} str
+ * @param {ObjectNode|Function} options
  * @param {Function} fn
  * @api public
  */
 
-export var render = function(str, options, fn){
+export function render(str, options: RendererOptions, fn){
   if ('function' == typeof options) fn = options, options = {};
   return new Renderer(str, options).render(fn);
-};
+}
 
 /**
  * Return a new `Renderer` for the given `str` and `options`.
@@ -89,7 +89,7 @@ export var render = function(str, options, fn){
  * @api public
  */
 
-function stylus(str, options) {
+function stylus(str, options: RendererOptions) {
   return new Renderer(str, options);
 }
 
@@ -97,5 +97,5 @@ function stylus(str, options) {
  * Expose optional functions.
  */
 
-export var url = require('./functions/url');
+export {url} from './functions/url';
 export var resolver = require('./functions/resolver');

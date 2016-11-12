@@ -1,5 +1,5 @@
 import nodes = require('../nodes');
-import rgba = require('./rgba');
+import {rgba} from './rgba';
 
 /**
  * Return the blue component of the given `color`,
@@ -19,7 +19,7 @@ import rgba = require('./rgba');
  * @api public
  */
 
-export = function blue(color, value){
+export function blue(color, value){
   color = color.rgba;
   if (value) {
     return rgba(
@@ -30,4 +30,4 @@ export = function blue(color, value){
     );
   }
   return new nodes.Unit(color.b, '');
-};
+}

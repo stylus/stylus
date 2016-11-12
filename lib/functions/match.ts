@@ -17,14 +17,14 @@ var VALID_FLAGS = 'igm';
  *   match($regex, 'lorem ipsum')
  *   // => null
  *
- * @param {String} pattern
- * @param {String|Ident} val
- * @param {String|Ident} [flags='']
- * @return {String|Null}
+ * @param {StringNode} pattern
+ * @param {StringNode|Ident} val
+ * @param {StringNode|Ident} [flags='']
+ * @return {StringNode|Null}
  * @api public
  */
 
-export = function match(pattern, val, flags){
+export function match(pattern, val, flags){
   utils.assertType(pattern, 'string', 'pattern');
   utils.assertString(val, 'val');
   var re = new RegExp(pattern.val, validateFlags(flags) ? flags.string : '');

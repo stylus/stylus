@@ -9,21 +9,21 @@
  * Module dependencies.
  */
 
-import Node = require('./node');
+import {Node} from './node';
 import nodes = require('./');
 
 /**
  * Initialize a new `Each` node with the given `val` name,
  * `key` name, `expr`, and `block`.
  *
- * @param {String} val
- * @param {String} key
+ * @param {StringNode} val
+ * @param {StringNode} key
  * @param {Expression} expr
  * @param {Block} block
  * @api public
  */
 
-export = class Each extends Node {
+export class Each extends Node {
   constructor(val, public key, public expr?, public block?) {
     super();
   this.val = val;

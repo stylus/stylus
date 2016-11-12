@@ -1,5 +1,5 @@
 import nodes = require('../nodes');
-import rgba = require('./rgba');
+import {rgba} from './rgba';
 
 /**
  * Return the alpha component of the given `color`,
@@ -22,7 +22,7 @@ import rgba = require('./rgba');
  * @api public
  */
 
-export = function alpha(color, value){
+export function alpha(color, value){
   color = color.rgba;
   if (value) {
     return rgba(
@@ -33,4 +33,4 @@ export = function alpha(color, value){
     );
   }
   return new nodes.Unit(color.a, '');
-};
+}

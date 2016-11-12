@@ -9,45 +9,39 @@
  * Module dependencies.
  */
 
-import Node = require('./node');
+import {Node} from './node';
 import nodes = require('../nodes');
 import utils = require('../utils');
+import {BooleanNode} from './boolean';
 
 /**
  * Initialize a new `Expression`.
  *
- * @param {Boolean} isList
+ * @param {BooleanNode} isList
  * @api public
  */
 
-export = class Expression extends Node {
-  nodes;
+export class Expression extends Node {
+  nodes: Node[] = [];
   preserve;
 
   constructor(public isList?){
   super();
-  this.nodes = [];
 }
 
 /**
  * Check if the variable has a value.
- *
- * @return {Boolean}
- * @api public
  */
 
-get isEmpty(){
+get isEmpty(): boolean {
   return !this.nodes.length;
 }
 
 /**
  * Return the first node in this expression.
- *
- * @return {Node}
- * @api public
  */
 
-get first(){
+get first(): Node {
   return this.nodes[0]
     ? this.nodes[0].first
     : nodes.nullNode;
@@ -55,12 +49,8 @@ get first(){
 
 /**
  * Hash all the nodes in order.
- *
- * @return {String}
- * @api public
  */
-
-get hash(){
+get hash(): string {
   return this.nodes.map(function(node){
     return node.hash;
   }).join('::');
@@ -68,12 +58,9 @@ get hash(){
 
 /**
  * Return a clone of this node.
- *
- * @return {Node}
- * @api public
  */
 
-clone(parent){
+clone(parent: Node): Node {
   var clone = new (<any>this.constructor)(this.isList);
   clone.preserve = this.preserve;
   clone.lineno = this.lineno;
@@ -87,31 +74,23 @@ clone(parent){
 
 /**
  * Push the given `node`.
- *
- * @param {Node} node
- * @api public
  */
 
-push(node){
+push(node: Node){
   this.nodes.push(node);
 }
 
 /**
  * Operate on `right` with the given `op`.
- *
- * @param {String} op
- * @param {Node} right
- * @return {Node}
- * @api public
  */
 
-operate(op, right, val){
+operate(op: string, right: Expression, val: Node){
   switch (op) {
     case '[]=':
       var self = this
         , range = utils.unwrap(right).nodes
-        , val = utils.unwrap(val)
-        , len
+        , val = <Node>utils.unwrap(val)
+        , len: number
         , node;
       range.forEach(function(unit){
         len = self.nodes.length;
@@ -172,12 +151,8 @@ operate(op, right, val){
  * Expressions with length > 1 are truthy,
  * otherwise the first value's toBoolean()
  * method is invoked.
- *
- * @return {Boolean}
- * @api public
  */
-
-toBoolean(){
+toBoolean(): BooleanNode {
   if (this.nodes.length > 1) return nodes.trueNode;
   return this.first.toBoolean();
 }
@@ -185,12 +160,8 @@ toBoolean(){
 /**
  * Return "<a> <b> <c>" or "<a>, <b>, <c>" if
  * the expression represents a list.
- *
- * @return {String}
- * @api public
  */
-
-toString(){
+toString(): string {
   return '(' + this.nodes.map(function(node){
     return node.toString();
   }).join(this.isList ? ', ' : ' ') + ')';

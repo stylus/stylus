@@ -11,7 +11,7 @@
  * @api private
  */
 
-export = class Stack extends Array {
+export class Stack extends Array {
   constructor() {
   super((<any>arguments));
 }

@@ -3,7 +3,7 @@ import nodes = require('../nodes');
 /**
  * Get Math `prop`.
  *
- * @param {String} prop
+ * @param {StringNode} prop
  * @return {Unit}
  * @api private
  */

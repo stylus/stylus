@@ -1,6 +1,6 @@
 import utils = require('../utils');
 import nodes = require('../nodes');
-import rgba = require('./rgba');
+import {rgba} from './rgba';
 
 /**
  * Return a `RGBA` from the r,g,b channels.
@@ -20,7 +20,7 @@ import rgba = require('./rgba');
  * @api public
  */
 
-export = function rgb(red, green, blue){
+export function rgb(red, green, blue){
   switch (arguments.length) {
     case 1:
       utils.assertColor(red);

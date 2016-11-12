@@ -1,13 +1,16 @@
 /**
  * Get cache object by `name`.
  *
- * @param {String|Function} name
- * @param {Object} options
- * @return {Object}
+ * @param {StringNode|Function} name
+ * @param {ObjectNode} options
+ * @return {ObjectNode}
  * @api private
  */
 
-export = function getCache(name, options?){
+import {MemoryCache} from './memory';
+import {NullCache} from './null';
+
+export function getCache(name, options?){
   if ('function' == typeof name) return new name(options);
 
   var cache;
@@ -16,10 +19,10 @@ export = function getCache(name, options?){
     //   cache = require('./fs')
     //   break;
     case 'memory':
-      cache = require('./memory');
+      cache = MemoryCache;
       break;
     default:
-      cache = require('./null');
+      cache = NullCache;
   }
   return new cache(options);
 }

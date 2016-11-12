@@ -9,7 +9,7 @@
  * Module dependencies.
  */
 
-import Node = require('./node');
+import {Node} from './node';
 
 /**
  * Initialize a new `Root` node.
@@ -17,7 +17,7 @@ import Node = require('./node');
  * @api public
  */
 
-export = class Root extends Node {
+export class Root extends Node {
   nodes = [];
   constructor(){
     super();

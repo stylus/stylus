@@ -14,7 +14,7 @@ import nodes = require('../nodes');
  * @api public
  */
 
-export = class oppositePosition {
+export class oppositePosition {
 	constructor(positions){
   var expr = [];
   utils.unwrap(positions).nodes.forEach(function(pos, i){

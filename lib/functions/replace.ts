@@ -4,14 +4,14 @@ import nodes = require('../nodes');
 /**
  * Returns string with all matches of `pattern` replaced by `replacement` in given `val`
  *
- * @param {String} pattern
- * @param {String} replacement
- * @param {String|Ident} val
- * @return {String|Ident}
+ * @param {StringNode} pattern
+ * @param {StringNode} replacement
+ * @param {StringNode|Ident} val
+ * @return {StringNode|Ident}
  * @api public
  */
 
-export = function replace(pattern, replacement, val){
+export function replace(pattern, replacement, val){
   utils.assertString(pattern, 'pattern');
   utils.assertString(replacement, 'replacement');
   utils.assertString(val, 'val');
@@ -19,5 +19,5 @@ export = function replace(pattern, replacement, val){
   var res = val.string.replace(pattern, replacement.string);
   return val instanceof nodes.Ident
     ? new nodes.Ident(res)
-    : new nodes.String(res);
+    : new nodes.StringNode(res);
 };

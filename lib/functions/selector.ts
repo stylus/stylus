@@ -4,12 +4,12 @@ import utils = require('../utils');
  * Return the current selector or compile
  * selector from a string or a list.
  *
- * @param {String|Expression}
- * @return {String}
+ * @param {StringNode|Expression}
+ * @return {StringNode}
  * @api public
  */
 
-export = class selector {
+export class selector {
   selectorStack;
 	constructor(){
   var stack = this.selectorStack

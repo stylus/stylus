@@ -9,18 +9,18 @@
  * Module dependencies.
  */
 
-import Node = require('./node');
+import {Node} from './node';
 
 /**
  * Initialize a new `Comment` with the given `str`.
  *
- * @param {String} str
- * @param {Boolean} suppress
- * @param {Boolean} inline
+ * @param {StringNode} str
+ * @param {BooleanNode} suppress
+ * @param {BooleanNode} inline
  * @api public
  */
 
-export = class Comment extends Node {
+export class Comment extends Node {
   private str;
   private suppress;
   private inline;

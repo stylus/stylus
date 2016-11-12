@@ -21,7 +21,7 @@ import nodes = require('../nodes');
  * @api public
  */
 
-export = function luminosity(color){
+export function luminosity(color){
   utils.assertColor(color);
   color = color.rgba;
   function processChannel(channel) {

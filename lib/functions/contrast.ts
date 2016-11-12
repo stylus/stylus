@@ -1,7 +1,7 @@
 import utils = require('../utils');
-import nodes = require('../nodes');
-import blend = require('./blend');
-import luminosity = require('./luminosity');
+import {blend} from './blend';
+import {luminosity} from './luminosity';
+import {Literal, ObjectNode, Unit, RGBA, HSLA, Null} from '../nodes';
 
 /**
  * Returns the contrast ratio object between `top` and `bottom` colors,
@@ -22,13 +22,13 @@ import luminosity = require('./luminosity');
  * @api public
  */
 
-export = function contrast(top, bottom){
-  if ('rgba' != top.nodeName && 'hsla' != top.nodeName) {
-    return new nodes.Literal('contrast(' + (top.isNull ? '' : top.toString()) + ')');
+export function contrast(top, bottom): Literal | ObjectNode {
+  if (!(top instanceof RGBA) && !(top instanceof HSLA)) {
+    return new Literal('contrast(' + (top.isNull ? '' : top.toString()) + ')');
   }
-  var result = new nodes.Object();
+  var result = new ObjectNode();
   top = top.rgba;
-  bottom = bottom || new nodes.RGBA(255, 255, 255, 1);
+  bottom = bottom || new RGBA(255, 255, 255, 1);
   utils.assertColor(bottom);
   bottom = bottom.rgba;
   function contrast(top, bottom) {
@@ -50,16 +50,16 @@ export = function contrast(top, bottom){
   }
 
   if (1 <= bottom.a) {
-    var resultRatio = new nodes.Unit(contrast(top, bottom));
+    var resultRatio = new Unit(contrast(top, bottom));
     result.set('ratio', resultRatio);
-    result.set('error', new nodes.Unit(0));
+    result.set('error', new Unit(0));
     result.set('min', resultRatio);
     result.set('max', resultRatio);
   } else {
-    var onBlack = contrast(top, blend(bottom, new nodes.RGBA(0, 0, 0, 1)))
-      , onWhite = contrast(top, blend(bottom, new nodes.RGBA(255, 255, 255, 1)))
+    var onBlack = contrast(top, blend(bottom, new RGBA(0, 0, 0, 1)))
+      , onWhite = contrast(top, blend(bottom, new RGBA(255, 255, 255, 1)))
       , max = Math.max(onBlack, onWhite);
-    var closest = new nodes.RGBA(
+    var closest = new RGBA(
       processChannel(top.r, bottom.r),
       processChannel(top.g, bottom.g),
       processChannel(top.b, bottom.b),
@@ -67,10 +67,10 @@ export = function contrast(top, bottom){
     );
     var min = contrast(top, blend(bottom, closest));
 
-    result.set('ratio', new nodes.Unit(Math.round((min + max) * 50) / 100));
-    result.set('error', new nodes.Unit(Math.round((max - min) * 50) / 100));
-    result.set('min', new nodes.Unit(min));
-    result.set('max', new nodes.Unit(max));
+    result.set('ratio', new Unit(Math.round((min + max) * 50) / 100));
+    result.set('error', new Unit(Math.round((max - min) * 50) / 100));
+    result.set('min', new Unit(min));
+    result.set('max', new Unit(max));
   }
   return result;
 }

@@ -26,8 +26,8 @@ import {Image} from './image';
  *    image-size('nosuchimage.png', true)[0]
  *    // => 0
  *
- * @param {String} img
- * @param {Boolean} ignoreErr
+ * @param {StringNode} img
+ * @param {BooleanNode} ignoreErr
  * @return {Expression}
  * @api public
  */

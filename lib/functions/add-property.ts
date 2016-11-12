@@ -1,19 +1,20 @@
 import utils = require('../utils');
 import nodes = require('../nodes');
+import {Expression} from '../nodes/expression';
 
 /**
  * Add property `name` with the given `expr`
  * to the mixin-able block.
  *
- * @param {String|Ident|Literal} name
+ * @param {StringNode|Ident|Literal} name
  * @param {Expression} expr
  * @return {Property}
  * @api public
  */
 
-export = class addProperty {
+export class addProperty {
   private closestBlock;
-  constructor(name, expr){
+  constructor(name, expr: Expression){
   utils.assertType(name, 'expression', 'name');
   name = utils.unwrap(name).first;
   utils.assertString(name, 'name');
@@ -27,7 +28,7 @@ export = class addProperty {
   head.push(prop);
   block.nodes = head.concat(tail);
 
-  return prop;
+  return <any>prop;
 }
 
   static raw = true;

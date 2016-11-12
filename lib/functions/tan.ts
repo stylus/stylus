@@ -9,7 +9,7 @@ import nodes = require('../nodes');
  * @api public
  */
 
-module.exports = function tan(angle) {
+export function tan(angle) {
   utils.assertType(angle, 'unit', 'angle');
 
   var radians = angle.val;
@@ -25,4 +25,4 @@ module.exports = function tan(angle) {
     , tan = Math.round(m * sin / cos ) / m;
 
   return new nodes.Unit(tan, '');
-};
+}

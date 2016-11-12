@@ -4,12 +4,12 @@ import path = require('path');
 /**
  * Return the dirname of `path`.
  *
- * @param {String} path
- * @return {String}
+ * @param {StringNode} path
+ * @return {StringNode}
  * @api public
  */
 
-export = function dirname(p){
+export function dirname(p){
   utils.assertString(p, 'path');
   return path.dirname(p.val).replace(/\\/g, '/');
 };

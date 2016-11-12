@@ -12,7 +12,7 @@ import path = require('path');
 *     // => width: 110
 */
 
-module.exports = function use(plugin, options){
+export function use(plugin, options){
   utils.assertString(plugin, 'plugin');
 
   if (options) {

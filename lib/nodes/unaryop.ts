@@ -9,17 +9,17 @@
  * Module dependencies.
  */
 
-import Node = require('./node');
+import {Node} from './node';
 
 /**
  * Initialize a new `UnaryOp` with `op`, and `expr`.
  *
- * @param {String} op
+ * @param {StringNode} op
  * @param {Node} expr
  * @api public
  */
 
-export = class UnaryOp extends Node {constructor(public op, public expr?){
+export class UnaryOp extends Node {constructor(public op, public expr?){
   super();
 }
 

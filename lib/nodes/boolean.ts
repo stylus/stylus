@@ -9,33 +9,35 @@
  * Module dependencies.
  */
 
-import Node = require('./node');
+import {Node} from './node';
 import nodes = require('./');
+
+export function booleanNode(val): BooleanNode {
+  return new BooleanNode(val);
+}
 
 /**
  * Initialize a new `Boolean` node with the given `val`.
  *
- * @param {Boolean} val
+ * @param {BooleanNode} val
  * @api public
  */
 
-export = class Boolean extends Node {constructor(val){
+export class BooleanNode extends Node {
+  constructor(val){
   super();
-  if (this.nodeName) {
-    this.val = !!val;
-  } else {
-    return new Boolean(val);
-  }
+  this.val = !!val;
 }
+
+  get nodeName() {
+    return 'boolean';
+  }
 
 /**
  * Return `this` node.
- *
- * @return {Boolean}
- * @api public
  */
 
-toBoolean(){
+toBoolean(): BooleanNode {
   return this;
 }
 
@@ -46,51 +48,39 @@ toBoolean(){
  * @api public
  */
 
-get isTrue(){
+get isTrue(): boolean {
   return this.val;
 }
 
 /**
  * Return `true` if this node represents `false`.
- *
- * @return {Boolean}
- * @api public
  */
 
-get isFalse(){
+get isFalse(): boolean {
   return ! this.val;
 }
 
 /**
  * Negate the value.
- *
- * @return {Boolean}
- * @api public
  */
 
-negate(){
-  return new Boolean(!this.val);
+negate(): BooleanNode {
+  return new BooleanNode(!this.val);
 }
 
 /**
  * Return 'Boolean'.
- *
- * @return {String}
- * @api public
  */
 
-inspect(){
+inspect(): string {
   return '[Boolean ' + this.val + ']';
 }
 
 /**
  * Return 'true' or 'false'.
- *
- * @return {String}
- * @api public
  */
 
-toString(){
+toString(): string {
   return this.val
     ? 'true'
     : 'false';
@@ -98,9 +88,6 @@ toString(){
 
 /**
  * Return a JSON representaiton of this node.
- *
- * @return {Object}
- * @api public
  */
 
 toJSON(){

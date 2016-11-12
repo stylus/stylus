@@ -9,7 +9,7 @@
  * Module dependencies.
  */
 
-import Scope = require('./scope');
+import {Scope} from './scope';
 
 /**
  * Initialize a new `Frame` with the given `block`.
@@ -18,7 +18,7 @@ import Scope = require('./scope');
  * @api private
  */
 
-export = class Frame {
+export class Frame {
   _scope;
   block;
   parent;

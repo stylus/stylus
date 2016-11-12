@@ -23,7 +23,7 @@ import nodes = require('../nodes');
  * @api public
  */
 
-module.exports = function transparentify(top, bottom, alpha){
+export function transparentify(top, bottom, alpha){
   utils.assertColor(top);
   top = top.rgba;
   // Handle default arguments

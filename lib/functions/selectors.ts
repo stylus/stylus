@@ -16,7 +16,7 @@ import Parser = require('../selector-parser');
  * @api public
  */
 
-module.exports = function selectors(){
+export function selectors(){
   var stack = this.selectorStack
     , expr = new nodes.Expression(true);
 
@@ -26,18 +26,18 @@ module.exports = function selectors(){
         , nested;
 
       if (group.length > 1) {
-        expr.push(new nodes.String(group.map(function(selector) {
+        expr.push(new nodes.StringNode(group.map(function(selector) {
           nested = new Parser(selector.val).parse().nested;
           return (nested && i ? '& ' : '') + selector.val;
         }).join(',')))
       } else {
         var selector = group[0].val
         nested = new Parser(selector).parse().nested;
-        expr.push(new nodes.String((nested && i ? '& ' : '') + selector));
+        expr.push(new nodes.StringNode((nested && i ? '& ' : '') + selector));
       }
     }
   } else {
-    expr.push(new nodes.String('&'));
+    expr.push(new nodes.StringNode('&'));
   }
   return expr;
-};
+}

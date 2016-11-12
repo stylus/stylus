@@ -3,13 +3,13 @@ import utils = require('../utils');
 /**
  * Merge the object `dest` with the given args.
  *
- * @param {Object} dest
- * @param {Object} ...
- * @return {Object} dest
+ * @param {ObjectNode} dest
+ * @param {ObjectNode} ...
+ * @return {ObjectNode} dest
  * @api public
  */
 
-export = class merge {
+export class merge {
 	constructor(dest){
   utils.assertPresent(dest, 'dest');
   dest = utils.unwrap(dest).first;

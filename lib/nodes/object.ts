@@ -9,7 +9,7 @@
  * Module dependencies.
  */
 
-import Node = require('./node');
+import {Node} from './node';
 import nodes = require('./');
 
 /**
@@ -18,7 +18,7 @@ import nodes = require('./');
  * @api public
  */
 
-export = class ObjectNode extends Node {
+export class ObjectNode extends Node {
   vals = {};
 
   constructor(){
@@ -120,7 +120,7 @@ operate(op, right){
  */
 
 toBoolean(){
-  return nodes.Boolean(this.length);
+  return nodes.booleanNode(this.length);
 }
 
 /**

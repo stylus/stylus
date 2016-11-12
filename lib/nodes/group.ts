@@ -9,7 +9,7 @@
  * Module dependencies.
  */
 
-import Node = require('./node');
+import {Node} from './node';
 
 /**
  * Initialize a new `Group`.
@@ -17,8 +17,8 @@ import Node = require('./node');
  * @api public
  */
 
-export = class Group extends Node {
-  private nodes = [];
+export class Group extends Node {
+  nodes = [];
   private extends = [];
 
   constructor(){
@@ -75,7 +75,7 @@ get hasOnlyPlaceholders(){
  * @api public
  */
 
-clone(parent){
+clone(parent?){
   var clone = new Group;
   clone.lineno = this.lineno;
   clone.column = this.column;

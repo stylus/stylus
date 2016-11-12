@@ -9,9 +9,10 @@
  * Module dependencies.
  */
 
-import Visitor = require('./');
+import {Visitor} from './';
 import nodes = require('../nodes');
 import utils = require('../utils');
+import {Group} from '../nodes/group';
 
 /**
  * Initialize a new `Normalizer` with the given `root` Node.
@@ -139,7 +140,7 @@ bubble(node) {
  * @api private
  */
 
-closestGroup(block) {
+closestGroup(block): Group {
   var parent = block.parent
     , node;
   while (parent && (node = parent.node)) {

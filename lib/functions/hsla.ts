@@ -21,7 +21,7 @@ import nodes = require('../nodes');
  * @api public
  */
 
-export = function hsla(hue, saturation, lightness, alpha){
+export function hsla(hue, saturation, lightness, alpha){
   switch (arguments.length) {
     case 1:
       utils.assertColor(hue);

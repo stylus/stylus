@@ -2,7 +2,7 @@
  * Module dependencies.
  */
 
-export = class NullCache {
+export class NullCache {
 
 /**
  * Set cache item with given `key` to `value`.

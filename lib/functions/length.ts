@@ -8,7 +8,7 @@ import utils = require('../utils');
  * @api public
  */
 
-export = class length {
+export class length {
 	constructor(expr){
   if (expr) {
     if (expr.nodes) {

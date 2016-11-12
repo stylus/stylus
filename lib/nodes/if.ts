@@ -9,17 +9,17 @@
  * Module dependencies.
  */
 
-import Node = require('./node');
+import {Node} from './node';
 
 /**
  * Initialize a new `If` with the given `cond`.
  *
  * @param {Expression} cond
- * @param {Boolean|Block} negate, block
+ * @param {BooleanNode|Block} negate, block
  * @api public
  */
 
-export = class If extends Node {
+export class If extends Node {
   elses;
   block;
   negate;

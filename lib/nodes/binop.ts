@@ -9,18 +9,18 @@
  * Module dependencies.
  */
 
-import Node = require('./node');
+import {Node} from './node';
 
 /**
  * Initialize a new `BinOp` with `op`, `left` and `right`.
  *
- * @param {String} op
+ * @param {StringNode} op
  * @param {Node} left
  * @param {Node} right
  * @api public
  */
 
-export = class BinOp extends Node {
+export class BinOp extends Node {
   constructor(public op, public left?, public right?){
   super();
 }

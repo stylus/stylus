@@ -12,7 +12,7 @@
  * @api private
  */
 
-export = class Visitor {
+export class Visitor {
   root;
   constructor(root) {
     this.root = root;

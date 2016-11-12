@@ -3,12 +3,12 @@ import path = require('path');
 /**
  * Peform a path join.
  *
- * @param {String} path
- * @return {String}
+ * @param {StringNode} path
+ * @return {StringNode}
  * @api public
  */
 
-export = class pathjoin {
+export class pathjoin {
 	constructor(){
   var paths = [].slice.call(arguments).map(function(path){
     return path.first.string;

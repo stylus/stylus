@@ -9,7 +9,7 @@
  * Module dependencies.
  */
 
-import Node = require('./node');
+import {Node} from './node';
 
 /**
  * Initialize a new `Extend` with the given `selectors` array.
@@ -18,7 +18,7 @@ import Node = require('./node');
  * @api public
  */
 
-export = class Extend extends Node {
+export class Extend extends Node {
   constructor(public selectors){
   super();
   this.selectors = selectors;

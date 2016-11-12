@@ -9,8 +9,10 @@
  * Module dependencies.
  */
 
-import Node = require('./node');
+import {Node} from './node';
 import nodes = require('./');
+import {Expression} from './expression';
+import {Null} from './null';
 
 /**
  * Initialize a new `Return` node with the given `expr`.
@@ -19,8 +21,8 @@ import nodes = require('./');
  * @api public
  */
 
-export = class Return extends Node {
-  constructor(public expr = nodes.nullNode){
+export class Return extends Node {
+  constructor(public expr: any = nodes.nullNode){
   super();
 }
 
@@ -33,7 +35,7 @@ export = class Return extends Node {
 
 clone(parent){
   var clone = new Return();
-  clone.expr = this.expr.clone(parent, clone);
+  clone.expr = this.expr.clone(parent);
   clone.lineno = this.lineno;
   clone.column = this.column;
   clone.filename = this.filename;

@@ -4,13 +4,13 @@ import nodes = require('../nodes');
 /**
  * This is a heler function for the slice method
  *
- * @param {String|Ident} vals
+ * @param {StringNode|Ident} vals
  * @param {Unit} start [0]
  * @param {Unit} end [vals.length]
- * @return {String|Literal|Null}
+ * @return {StringNode|Literal|Null}
  * @api public
 */
-export = class slice {
+export class slice {
 	constructor(val, start, end) {
   start = start && start.nodes[0].val;
   end = end && end.nodes[0].val;
@@ -25,7 +25,7 @@ export = class slice {
 
   return val[0] instanceof nodes.Ident
     ? new nodes.Ident(result)
-    : new nodes.String(result);
+    : new nodes.StringNode(result);
 }
 
 	static raw = true;

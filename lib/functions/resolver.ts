@@ -2,7 +2,7 @@
  * Module dependencies.
  */
 
-import Compiler = require('../visitor/compiler');
+import {Compiler} from '../visitor/compiler';
 import nodes = require('../nodes');
 import {parse} from 'url';
 import {relative} from 'path';
@@ -26,7 +26,7 @@ import {sep} from 'path';;
  *      .define('url', stylus.resolver({ nocheck: true }))
  *      .render(function(err, css){ ... })
  *
- * @param {Object} [options]
+ * @param {ObjectNode} [options]
  * @return {Function}
  * @api public
  */

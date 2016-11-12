@@ -9,7 +9,7 @@
  * Module dependencies.
  */
 
-import Node = require('./node');
+import {Node} from './node';
 
 /**
  * Initialize a new `QueryList`.
@@ -17,7 +17,7 @@ import Node = require('./node');
  * @api public
  */
 
-export = class QueryList extends Node {
+export class QueryList extends Node {
   nodes = [];
   constructor(){
   super();

@@ -9,7 +9,7 @@
  * Module dependencies.
  */
 
-import Node = require('./node');
+import {Node} from './node';
 
 /**
  * Initialize a new `Query`.
@@ -17,7 +17,7 @@ import Node = require('./node');
  * @api public
  */
 
-export = class Query extends Node {
+export class Query extends Node {
   nodes = [];
   type: any = '';
   predicate: any = '';

@@ -9,7 +9,7 @@
  * Module dependencies.
  */
 
-import Node = require('./node');
+import {Node} from './node';
 import nodes = require('./');
 
 /**
@@ -18,7 +18,7 @@ import nodes = require('./');
  * @api public
  */
 
-export = class Null extends Node {
+export class Null extends Node {
   constructor(){
     super();
   };
@@ -26,7 +26,7 @@ export = class Null extends Node {
 /**
  * Return 'Null'.
  *
- * @return {String}
+ * @return {StringNode}
  * @api public
  */
 

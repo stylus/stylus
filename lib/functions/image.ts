@@ -20,7 +20,7 @@ var sax = require('sax');
  * Initialize a new `Image` with the given `ctx` and `path.
  *
  * @param {Evaluator} ctx
- * @param {String} path
+ * @param {StringNode} path
  * @api private
  */
 

@@ -8,7 +8,7 @@
 /**
  * Initialize a new `ParseError` with the given `msg`.
  *
- * @param {String} msg
+ * @param {StringNode} msg
  * @api private
  */
 
@@ -24,7 +24,7 @@ export class ParseError extends Error {
 /**
  * Initialize a new `SyntaxError` with the given `msg`.
  *
- * @param {String} msg
+ * @param {StringNode} msg
  * @api private
  */
 

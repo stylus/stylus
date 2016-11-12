@@ -10,7 +10,7 @@ var COMBINATORS = ['>', '+', '~'];
  * Initialize a new `SelectorParser`
  * with the given `str` and selectors `stack`.
  *
- * @param {String} str
+ * @param {StringNode} str
  * @param {Array} stack
  * @param {Array} parts
  * @api private

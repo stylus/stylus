@@ -9,8 +9,9 @@
  * Module dependencies.
  */
 
-import Node = require('./node');
+import {Node} from './node';
 import nodes = require('./');
+import {RGBA} from './rgba';
 
 /**
  * Initialize a new `HSLA` with the given h,s,l,a component values.
@@ -22,7 +23,7 @@ import nodes = require('./');
  * @api public
  */
 
-export = class HSLA extends Node {
+export class HSLA extends Node {
   private h;
   private s;
   private l;
@@ -99,7 +100,7 @@ toJSON(){
  * @api public
  */
 
-get rgba(){
+get rgba(): RGBA {
   return nodes.RGBA.fromHSLA(this);
 }
 

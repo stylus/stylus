@@ -9,7 +9,7 @@ import utils = require('../utils');
  * @api public
  */
 
-export = class push{
+export class push{
   constructor(expr){
   expr = utils.unwrap(expr);
   for (var i = 1, len = arguments.length; i < len; ++i) {

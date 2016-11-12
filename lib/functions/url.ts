@@ -9,8 +9,8 @@
  * Module dependencies.
  */
 
-import Compiler = require('../visitor/compiler');
-var  events = require('../renderer').events;
+import {Compiler} from '../visitor/compiler';
+import {events} from '../renderer';
 import nodes = require('../nodes');
 import {parse} from 'url';
 import {extname} from 'path';
@@ -21,7 +21,7 @@ import fs = require('fs');
  * Mime table.
  */
 
-var defaultMimes = {
+export var mimes = {
     '.gif': 'image/gif'
   , '.png': 'image/png'
   , '.jpg': 'image/jpeg'
@@ -57,17 +57,17 @@ var encodingTypes = {
  *      .define('url', stylus.url({ paths: [__dirname + '/public'] }))
  *      .render(function(err, css){ ... })
  *
- * @param {Object} options
+ * @param {ObjectNode} options
  * @return {Function}
  * @api public
  */
 
-module.exports = function(options) {
+export function url(options) {
   options = options || {};
 
   var _paths = options.paths || [];
   var sizeLimit = null != options.limit ? options.limit : 30000;
-  var mimes = options.mimes || defaultMimes;
+  var _mimes = options.mimes || mimes;
 
   /**
    * @param {object} url - The path to the image you want to encode.
@@ -87,7 +87,7 @@ module.exports = function(options) {
     // Parse literal
     url = parse(url);
     var ext = extname(url.pathname)
-      , mime = mimes[ext]
+      , mime = _mimes[ext]
       , hash = url.hash || ''
       , literal = new nodes.Literal('url("' + url.href + '")')
       , paths = _paths.concat(this.paths)
@@ -135,8 +135,4 @@ module.exports = function(options) {
 
   (<any>fn).raw = true;
   return fn;
-};
-
-// Exporting default mimes so we could easily access them
-export var mimes = defaultMimes;
-
+}

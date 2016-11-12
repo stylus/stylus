@@ -9,18 +9,18 @@
  * Module dependencies.
  */
 
-import Node = require('./node');
+import {Node} from './node';
 
 /**
  * Initialize a new `Params` with `name`, `params`, and `body`.
  *
- * @param {String} name
+ * @param {StringNode} name
  * @param {Params} params
  * @param {Expression} body
  * @api public
  */
 
-export = class Params extends Node {
+export class Params extends Node {
 
   nodes = [];
 

@@ -8,7 +8,7 @@
  * Module dependencies.
  */
 
-import Visitor = require('./');
+import {Visitor} from './index';
 import utils = require('../utils');
 import fs = require('fs');
 
@@ -24,7 +24,7 @@ import fs = require('fs');
  * @api public
  */
 
-export = class Compiler extends Visitor {
+export class Compiler extends Visitor {
   compress;
   firebug;
   linenos;

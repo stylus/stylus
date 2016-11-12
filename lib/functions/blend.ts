@@ -21,7 +21,7 @@ import nodes = require('../nodes');
  * @api public
  */
 
-export = function blend(top, bottom){
+export function blend(top, bottom){
   // TODO: different blend modes like overlay etc.
   utils.assertColor(top);
   top = top.rgba;
@@ -34,4 +34,4 @@ export = function blend(top, bottom){
     top.g * top.a + bottom.g * (1 - top.a),
     top.b * top.a + bottom.b * (1 - top.a),
     top.a + bottom.a - top.a * bottom.a);
-};
+}

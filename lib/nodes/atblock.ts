@@ -8,7 +8,7 @@
  * Module dependencies.
  */
 
-import Node = require('./node');
+import {Node} from './node';
 
 /**
  * Initialize a new `@block` node.
@@ -16,7 +16,7 @@ import Node = require('./node');
  * @api public
  */
 
-export = class Atblock extends Node {
+export class Atblock extends Node {
   block;
   fileno;
 

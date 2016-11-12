@@ -29,8 +29,8 @@ var alias = {
 /**
  * Initialize a new `Lexer` with the given `str` and `options`.
  *
- * @param {String} str
- * @param {Object} options
+ * @param {StringNode} str
+ * @param {ObjectNode} options
  * @api private
  */
 
@@ -605,7 +605,7 @@ export = class Lexer {
   boolean() {
     var captures;
     if (captures = /^(true|false)\b([ \t]*)/.exec(this.str)) {
-      var val = nodes.Boolean('true' == captures[1]);
+      var val = new nodes.BooleanNode('true' == captures[1]);
       this.skip(captures);
       var tok = new Token('boolean', val);
       tok.space = captures[2];
@@ -739,7 +739,7 @@ export = class Lexer {
         , quote = captures[0][0];
       this.skip(captures);
       str = str.slice(1,-1).replace(/\\n/g, '\n');
-      return new Token('string', new nodes.String(str, quote));
+      return new Token('string', new nodes.StringNode(str, quote));
     }
   }
 

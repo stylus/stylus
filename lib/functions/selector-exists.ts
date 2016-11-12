@@ -3,12 +3,12 @@ import utils = require('../utils');
 /**
  * Returns true if the given selector exists.
  *
- * @param {String} sel
- * @return {Boolean}
+ * @param {StringNode} sel
+ * @return {BooleanNode}
  * @api public
  */
 
-module.exports = function selectorExists(sel) {
+export function selectorExists(sel) {
   utils.assertString(sel, 'selector');
 
   if (!this.__selectorsMap__) {
@@ -20,4 +20,4 @@ module.exports = function selectorExists(sel) {
   }
 
   return sel.string in this.__selectorsMap__;
-};
+}

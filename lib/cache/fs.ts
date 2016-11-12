@@ -8,7 +8,7 @@ import {join} from 'path';
 var version = require('../../package').version;
 import nodes = require('../nodes');
 
-export = class FSCache {
+export class FSCache {
   private _location;
   constructor(options = {}) {
   this._location = options['cache location'] || '.styl-cache';

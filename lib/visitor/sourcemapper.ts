@@ -8,7 +8,7 @@
  * Module dependencies.
  */
 
-import Compiler = require('./compiler');
+import {Compiler} from './compiler';
 import {SourceMapGenerator} from 'source-map';
 import {basename} from 'path';
 import {extname} from 'path';
@@ -26,7 +26,7 @@ import fs = require('fs');
  * @api public
  */
 
-export = class SourceMapper extends Compiler {
+export class SourceMapper extends Compiler {
   private column;
   private lineno;
   private contents;
@@ -37,7 +37,7 @@ export = class SourceMapper extends Compiler {
   private comment;
   private basename;
   private utf8;
-  private map;
+  map;
 
   constructor(root, options) {
     super(root, options);

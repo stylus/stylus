@@ -5,7 +5,7 @@
 import crypto = require('crypto');
 import nodes = require('../nodes');
 
-export = class MemoryCache {
+export class MemoryCache {
   private limit;
   private _cache = {};
   private length = 0;

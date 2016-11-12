@@ -13,7 +13,7 @@ import nodes = require('./nodes');
 import Token = require('./token');
 import units = require('./units');
 import errors = require('./errors');
-import cache = require('./cache');
+import {getCache as cache} from './cache/index';
 
 // debuggers
 
@@ -143,8 +143,8 @@ var pseudoSelectors = [
 /**
  * Initialize a new `Parser` with the given `str` and `options`.
  *
- * @param {String} str
- * @param {Object} options
+ * @param {StringNode} str
+ * @param {ObjectNode} options
  * @api private
  */
 
@@ -191,8 +191,8 @@ constructor(str, options?) {
 /**
  * Get cache instance.
  *
- * @param {Object} options
- * @return {Object}
+ * @param {ObjectNode} options
+ * @return {ObjectNode}
  * @api private
  */
 static getCache = function (options) {
@@ -1095,7 +1095,7 @@ static getCache = function (options) {
    * | feature
    */
 
-  supportsFeature() {
+  supportsFeature(): any {
     this.skipSpacesAndComments();
     if ('(' == this.peek().type) {
       var la = this.lookahead(2).type;
@@ -1107,7 +1107,7 @@ static getCache = function (options) {
         var node = new nodes.Expression;
         node.push(new nodes.Literal('('));
         node.push(this.supportsCondition());
-        this.expect(')')
+        this.expect(')');
         node.push(new nodes.Literal(')'));
         this.skipSpacesAndComments();
         return node;
@@ -1227,7 +1227,7 @@ static getCache = function (options) {
    * '(' ident ( ':'? expression )? ')'
    */
 
-  feature() {
+  feature(): any {
     this.skipSpacesAndComments();
     this.expect('(');
     this.skipSpacesAndComments();
@@ -1535,7 +1535,7 @@ static getCache = function (options) {
    * | selector block
    */
 
-  selector() {
+  selector(): any {
     var arr
       , group = new nodes.Group
       , scope = this.selectorScope
@@ -1664,7 +1664,7 @@ static getCache = function (options) {
    * | call
    */
 
-  function () {
+  function(): any {
     var parens = 1
       , i = 2
       , tok;
@@ -2098,7 +2098,7 @@ static getCache = function (options) {
    */
 
   object() {
-    var obj = new nodes.Object
+    var obj = new nodes.ObjectNode
       , id, val, comma;
     this.expect('{');
     this.skipWhitespace();

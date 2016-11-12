@@ -9,7 +9,7 @@
  * Module dependencies.
  */
 
-import Node = require('./node');
+import {Node} from './node';
 import nodes = require('./');
 
 /**
@@ -31,12 +31,14 @@ var FACTOR_TABLE = {
  * Initialize a new `Unit` with the given `val` and unit `type`
  * such as "px", "pt", "in", etc.
  *
- * @param {String} val
- * @param {String} type
+ * @param {StringNode} val
+ * @param {StringNode} type
  * @api public
  */
 
-export = class Unit extends Node {constructor(public val, public type){
+export class Unit extends Node {
+  raw;
+  constructor(public val, public type?){
   super();
 }
 
@@ -48,7 +50,7 @@ export = class Unit extends Node {constructor(public val, public type){
  */
 
 toBoolean(){
-  return nodes.Boolean(this.type
+  return nodes.booleanNode(this.type
       ? true
       : this.val);
 }

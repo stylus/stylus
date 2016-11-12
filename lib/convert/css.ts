@@ -4,24 +4,25 @@
  * MIT Licensed
  */
 
+import {Import} from '../nodes/import';
 var parse = require('css-parse');
 
 /**
  * Convert the given `css` to Stylus source.
  *
- * @param {String} css
- * @return {String}
+ * @param {StringNode} css
+ * @return {StringNode}
  * @api public
  */
 
-export = function css(css){
+export function css(css){
   return new Converter(css).stylus();
 };
 
 /**
  * Initialize a new `Converter` with the given `css`.
  *
- * @param {String} css
+ * @param {StringNode} css
  * @api private
  */
 

@@ -3,7 +3,7 @@ import utils = require('../utils');
 /**
  * Prefix css classes in a block
  *
- * @param {String} prefix
+ * @param {StringNode} prefix
  * @param {Block} block
  * @return {Block}
  * @api private

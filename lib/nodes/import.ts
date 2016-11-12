@@ -9,7 +9,7 @@
  * Module dependencies.
  */
 
-import Node = require('./node');
+import {Node} from './node';
 
 /**
  * Initialize a new `Import` with the given `expr`.
@@ -18,7 +18,7 @@ import Node = require('./node');
  * @api public
  */
 
-export = class Import extends Node {
+export class Import extends Node {
   mtime;
   constructor(public path?, public once = false){
   super();

@@ -5,12 +5,12 @@ import nodes = require('../nodes');
  * Assign `type` to the given `unit` or return `unit`'s type.
  *
  * @param {Unit} unit
- * @param {String|Ident} type
+ * @param {StringNode|Ident} type
  * @return {Unit}
  * @api public
  */
 
-module.exports = function unit(unit, type){
+export function unit(unit, type){
   utils.assertType(unit, 'unit', 'unit');
 
   // Assign
@@ -20,4 +20,4 @@ module.exports = function unit(unit, type){
   } else {
     return unit.type || '';
   }
-};
+}

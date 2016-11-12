@@ -9,7 +9,7 @@
  * Module dependencies.
  */
 
-import Node = require('./node');
+import {Node} from './node';
 
 /**
  * Initialize a new `Member` with `left` and `right`.
@@ -19,7 +19,8 @@ import Node = require('./node');
  * @api public
  */
 
-export = class Member extends Node {constructor(public left?, public right?){
+export class Member extends Node {
+  constructor(public left?, public right?){
   super();
 }
 
