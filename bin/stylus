@@ -362,7 +362,7 @@ if (sourcemap && !files.length) sourcemap = false;
 /**
  * Open the default browser to the CSS property `name`.
  *
- * @param {String} name
+ * @param {StringNode} name
  */
 
 function help(name) {
@@ -812,6 +812,6 @@ function usePlugins(style) {
 
 function importFiles(style) {
   imports.forEach(function(file) {
-    style.import(file);
+    style.import_(file);
   });
 }

@@ -4,4 +4,12 @@ testing
 .DS_Store
 /node_modules
 coverage.html
-lib-cov
+/yarn.lock
+/lib/**/*.js.map
+/lib/**/*.js
+/test/**/*.js.map
+/test/**/*.js
+/typings/
+/npm-debug.log
+/index.js
+/index.js.map
