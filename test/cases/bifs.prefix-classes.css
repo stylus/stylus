@@ -7,6 +7,30 @@
 .prefix-test2 {
   width: 1px;
 }
+.outer-prefix-test {
+  width: 1px;
+}
+.outer-prefix-test2 {
+  width: 1px;
+}
+.outer-prefix-test2 .test3 {
+  width: 1px;
+}
+.outer-prefix-test2 .test4 {
+  width: 1px;
+}
+.outer-prefix-test2 .test4 .other-prefix-test5 {
+  width: 1px;
+}
+.outer-prefix-test2 .test4 .other-prefix-test6 {
+  width: 1px;
+}
+.test7 {
+  width: 1px;
+}
+.test8 {
+  width: 1px;
+}
 .bar {
   width: 10px;
 }

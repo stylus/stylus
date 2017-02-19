@@ -11,6 +11,27 @@ foo()
   .test2
     width: 1px
 
++prefix-classes('outer-prefix-')
+  .test
+    width: 1px
+  .test2
+    width: 1px
+    +prefix-classes('')
+      .test3
+        width: 1px
+      .test4
+        width: 1px
+        +prefix-classes('other-prefix-')
+          .test5
+            width: 1px
+          .test6
+            width: 1px
+  +prefix-classes('')
+    .test7
+      width: 1px
+    .test8
+      width: 1px
+
 +foo()
   width: 10px
   +prefix-classes('prefix2-')
