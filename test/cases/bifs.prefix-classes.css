@@ -7,6 +7,42 @@
 .prefix-test2 {
   width: 1px;
 }
+.outer-prefix-test {
+  width: 1px;
+}
+.outer-prefix-test2 {
+  width: 1px;
+}
+.outer-prefix-test2 .test3 {
+  width: 1px;
+}
+.outer-prefix-test2 .test4 {
+  width: 1px;
+}
+.outer-prefix-test2 .test4 .other-prefix-test5 {
+  width: 1px;
+}
+.outer-prefix-test2 .test4 .other-prefix-test6 {
+  width: 1px;
+}
+.test7 {
+  width: 1px;
+}
+.test8 {
+  width: 1px;
+}
+.prefix-test {
+  width: 1px;
+}
+.prefix-test .prefix-test2 {
+  width: 1px;
+}
+.prefix-test .prefix-test3 {
+  color: #00f;
+}
+.prefix-test2 .prefix-test4 .prefix-test6 {
+  color: #008000;
+}
 .bar {
   width: 10px;
 }
