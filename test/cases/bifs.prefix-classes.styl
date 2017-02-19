@@ -32,6 +32,18 @@ foo()
     .test8
       width: 1px
 
++prefix-classes('prefix-')
+  .test
+    width: 1px
+    .test2
+      width: 1px
+      ../ .test3
+        color: blue
+      .test4
+        .test5
+          ^[1..-2] .test6
+            color: green
+
 +foo()
   width: 10px
   +prefix-classes('prefix2-')
