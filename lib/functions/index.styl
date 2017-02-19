@@ -284,3 +284,14 @@ cache()
     /$cache_placeholder_for_{$id}
       $stylus_mixin_cache[$key] = $id
       {block}
+
+// Percentage function to convert a number, e.g. ".45", into a percentage, e.g. "45%"
+
+percentage(num)
+  return unit(num * 100, '%')
+
+// Returns the position of a `value` within a `list`
+
+index(list, value)
+  for val, i in list
+    return i if val == value

@@ -1,11 +1,16 @@
 .embed-no-hash {
   color: #c00;
-  background: url("circle.svg");
+  background: embedurl("circle.svg");
 }
 
 .embed-with-hash {
   color: #c00;
-  background: url("circle.svg#some-id");
+  background: embedurl("circle.svg#some-id");
+}
+
+.embed-with-utf8 {
+  color: #c00;
+  background: embedurl("circle.svg", "utf8");
 }
 
 .too-big-no-hash {

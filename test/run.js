@@ -4,7 +4,8 @@
  */
 
 var stylus = require('../')
-  , fs = require('fs');
+  , fs = require('fs')
+  , should = require('should');
 
 // integration cases
 
@@ -67,7 +68,7 @@ addSuite('sourcemap', readDir('test/sourcemap'), function(test){
     if (inline) {
       style.sourcemap.sourcesContent.should.not.be.empty;
       if (~test.indexOf('utf-8')) comment += 'charset=utf-8;';
-      css.should.include(comment + 'base64,');
+      css.should.containEql(comment + 'base64,');
     } else {
       style.sourcemap.should.eql(JSON.parse(expected));
     }
@@ -109,6 +110,15 @@ describe('JS API', function(){
           }
         }
       ).should.equal("body{foo:baz}");
+  });
+
+  it('use variable from options object inside expression', function() {
+    stylus('body { color: rgba(convert($red), .5) }', {
+      globals: {
+        $red: '#E20303'
+      },
+      compress: true
+    }).render().should.equal('body{color:rgba(226,3,3,0.5)}');
   });
 
   it('use functions from options object', function(){
@@ -178,6 +188,23 @@ describe('JS API', function(){
     (function() {
       stylus(styl, { paths: [path] }).render();
     }).should.throw(/import loop has been found/);
+  });
+
+  it('conditional assignment with define', function(){
+    stylus('foo ?= baz; body { test: foo }', { compress: true })
+      .define('foo', new stylus.nodes.Literal('bar'))
+      .render().should.equal("body{test:bar}");
+  });
+
+  it('sourcemap with dest option set to a file name', function(){
+    var style = stylus('body { color: red }', {
+      compress: true,
+      sourcemap: true,
+      filename: 'test.styl',
+      dest: 'test/build.css'
+    });
+    style.render().should.equal('body{color:#f00}/*# sourceMappingURL=build.css.map */');
+    style.sourcemap.sources[0].should.equal('../test.styl');
   });
 });
 

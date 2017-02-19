@@ -8,6 +8,13 @@
 $ npm install stylus -g
 ```
 
+## Basic Usage
+Watch and compile a stylus file from command line with 
+```bash
+stylus -w style.styl -o style.css
+```
+You can also [try all stylus features on stylus-lang.com](http://stylus-lang.com/try.html), build something with stylus on [codepen](http://codepen.io) or integrate stylus with [gulp](http://gulpjs.com/) using [gulp-stylus](https://www.npmjs.com/package/gulp-stylus) or [gulp-accord](https://www.npmjs.com/package/gulp-accord).
+
 ### Example
 
 ```stylus
@@ -106,7 +113,7 @@ form input {
   - VIM [Syntax](https://github.com/wavded/vim-stylus)
   - Espresso [Sugar](https://github.com/aljs/Stylus.sugar)
   - [Firebug extension](docs/firebug.md)
-  - heroku [web service](http://styl.heroku.com) for compiling stylus
+  - heroku [web service](http://styl.herokuapp.com/) for compiling stylus
   - [style guide](https://github.com/lepture/ganam) parser and generator
   - transparent vendor-specific function expansion
 
@@ -125,13 +132,13 @@ form input {
 
 ### CMS Support
 
-   - [DocPad](https://github.com/bevry/docpad)
+   - [DocPad](https://github.com/docpad/docpad)
    - [Punch](https://github.com/laktek/punch-stylus-compiler)
 
 ### Screencasts
 
-  - [Stylus Intro](http://screenr.com/bNY)
-  - [CSS Syntax & Postfix Conditionals](http://screenr.com/A8v)
+  - [Stylus Intro](http://www.screenr.com/bNY)
+  - [CSS Syntax & Postfix Conditionals](http://www.screenr.com/A8v)
 
 ### Authors
 
@@ -140,6 +147,10 @@ form input {
 ### More Information
 
   - Language [comparisons](docs/compare.md)
+
+## Code of Conduct
+
+Please note that this project is released with a [Contributor Code of Conduct](Code_of_Conduct.md). By participating in this project you agree to abide by its terms.
 
 ## License 
 
