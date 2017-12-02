@@ -3,7 +3,7 @@ layout: default
 permalink: docs/import.html
 ---
 
-# @import and @require
+# @import, @require, & @insert
 
 Stylus supports both literal __@import__ for CSS, as well as dynamic importing or requiring of other Stylus sheets.
 
@@ -60,6 +60,16 @@ Render the literal CSS __@import__ shown below:
 ## Require
 
 Along with `@import`, Stylus also has `@require`. It works almost in the same way, with the exception of importing any given file only once.
+
+## Insert
+
+Distinct from `@import` and `@require`, Stylus has `@insert`.  It works like a C preprocessor `#include`, inserting the text of the inserted CSS file directly into output.
+
+To insert the raw text of `reset.css`:
+
+     @insert "reset.css"
+
+The `@insert` line would then be replaced by the contents of `reset.css`, followed by a newline `\n`.
 
 ## Block-level import
 
