@@ -129,6 +129,7 @@ form input {
    - [Meteor](http://docs.meteor.com/#stylus)
    - [Grails](http://grails.org/plugin/stylus-asset-pipeline)
    - [Derby](https://github.com/derbyjs/derby-stylus)
+   - [Laravel](https://laravel.com/docs/5.5/mix#stylus)
 
 ### CMS Support
 
