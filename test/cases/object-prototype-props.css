@@ -1,0 +1,8 @@
+body {
+  foo: constructor;
+}
+body {
+  foo: foo;
+  foo: constructor;
+  foo: hasOwnProperty;
+}

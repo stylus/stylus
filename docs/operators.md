@@ -438,7 +438,7 @@ The ternary operator works as we would expect in most languages. It's the only o
 
 ## Casting
 
- As an terse alternative to the `unit()` built-in function, the syntax `(expr) unit` may be used to force the suffix. 
+ As a terse alternative to the `unit()` built-in function, the syntax `(expr) unit` may be used to force the suffix. 
 
     body
       n = 5

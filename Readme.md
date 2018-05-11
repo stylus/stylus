@@ -110,7 +110,7 @@ form input {
   - TextMate [bundle](docs/textmate.md)
   - Coda/SubEtha Edit [Syntax mode](https://github.com/atljeremy/Stylus.mode)
   - gedit [language-spec](docs/gedit.md)
-  - VIM [Syntax](https://github.com/wavded/vim-stylus)
+  - VIM [Syntax](https://github.com/iloginow/vim-stylus)
   - Espresso [Sugar](https://github.com/aljs/Stylus.sugar)
   - [Firebug extension](docs/firebug.md)
   - heroku [web service](http://styl.herokuapp.com/) for compiling stylus
@@ -129,6 +129,7 @@ form input {
    - [Meteor](http://docs.meteor.com/#stylus)
    - [Grails](http://grails.org/plugin/stylus-asset-pipeline)
    - [Derby](https://github.com/derbyjs/derby-stylus)
+   - [Laravel](https://laravel.com/docs/5.5/mix#stylus)
 
 ### CMS Support
 

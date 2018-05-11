@@ -3,6 +3,8 @@ body {
   test: 'rgba';
   test: 'ident';
   test: 10 20 30 40 50;
+  test: true;
+  test: true;
   test: 11.334em;
   test: 5.5em;
 }
