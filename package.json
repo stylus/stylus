@@ -34,7 +34,7 @@
     "debug": "*",
     "sax": "0.5.x",
     "glob": "7.0.x",
-    "source-map": "0.1.x"
+    "source-map": "^0.6.1"
   },
   "devDependencies": {
     "should": "8.x",
