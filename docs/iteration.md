@@ -53,6 +53,16 @@ Yields:
       foo: 4;
       foo: 5;
     }
+    
+Usage with strings:
+
+    for num in (1..10)
+      .box{num}
+        animation: box + num 5s infinite
+      
+      @keframes box{num}
+        0%   { left: 0px }
+        100% { left: (num * 30px) }
               
 ## Mixins
 
