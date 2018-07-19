@@ -1,6 +1,8 @@
-# Stylus [![Build Status](https://travis-ci.org/stylus/stylus.svg?branch=master)](https://travis-ci.org/stylus/stylus)
+# Stylus
 
- Stylus is a revolutionary new language, providing an efficient, dynamic, and expressive way to generate CSS. Supporting both an indented syntax and regular CSS style.
+[![Build Status](https://travis-ci.org/stylus/stylus.svg?branch=master)](https://travis-ci.org/stylus/stylus)
+
+Stylus is a revolutionary new language, providing an efficient, dynamic, and expressive way to generate CSS. Supporting both an indented syntax and regular CSS style.
 
 ## Installation
 
