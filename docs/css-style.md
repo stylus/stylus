@@ -46,7 +46,7 @@ permalink: docs/css-style.html
        border-radius: 5px;
      }
 
-While Stylus don't support _every_ possible CSS-like syntax, if can understand even such code:
+While Stylus don't support _every_ possible CSS-like syntax, it can understand even such code:
 
         border-radius() {
           -webkit-border-radius: arguments;
