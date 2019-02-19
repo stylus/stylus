@@ -138,7 +138,6 @@ form input {
 
 ### Screencasts
 
-  - [Stylus Intro](http://www.screenr.com/bNY)
   - [CSS Syntax & Postfix Conditionals](http://www.screenr.com/A8v)
 
 ### Authors
