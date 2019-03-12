@@ -1,4 +1,11 @@
+$c = {
+  colors: #ccc #ddd
+}
 
+$p = {
+  color: #fff
+  backGroundColor: $c.colors[1]
+}
 size = 14px
 font-family = 'Lucida Grande', Arial, sans-serif
 $type = solid
@@ -15,3 +22,6 @@ body
 a
   font 11px Impact, font-family, serif
   border 1px $type #fff
+  color $p.color
+  background-color $p.backGroundColor
+  margin size

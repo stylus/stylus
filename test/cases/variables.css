@@ -9,4 +9,7 @@ body {
 a {
   font: 11px Impact, 'Lucida Grande', Arial, sans-serif, serif;
   border: 1px solid #fff;
+  color: #fff;
+  background-color: #ddd;
+  margin: 14px;
 }
