@@ -8,6 +8,7 @@ $c = {
 }
 
 $p = {
+  show: true
   color: #fff
   pinBorder: 10px
   backGroundColor: $c.colors[1]
@@ -45,3 +46,6 @@ em
 
   &-pin
     absolute top - ($p.pinBorder[0] + 1px)
+    background-color $p.backGroundColor
+    if $p.show
+      top 10px

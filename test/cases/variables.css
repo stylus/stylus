@@ -26,4 +26,6 @@ em {
 a.margins-pin,
 em-pin {
   absolute: top -11px;
+  background-color: #ddd;
+  top: 10px;
 }
