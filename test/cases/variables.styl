@@ -1,3 +1,7 @@
+a = {
+  margins: 10px 20px 30px 40px
+}
+
 $c = {
   colors: #ccc #ddd
   border: 10px 20px 30px
@@ -24,8 +28,10 @@ a
   font 11px Impact, font-family, serif
   border 1px $type #fff
   color $p.color
-  background-color $p.backGroundColor
+  background 10px $p.backGroundColor
   margin size
 
+a.margins,
 em
   padding 10px $c.border[1]
+  margins a.margins[0] a.margins[1] a.margins[2] a.margins[3]

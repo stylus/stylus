@@ -10,9 +10,11 @@ a {
   font: 11px Impact, 'Lucida Grande', Arial, sans-serif, serif;
   border: 1px solid #fff;
   color: #fff;
-  background-color: #ddd;
+  background: 10px #ddd;
   margin: 14px;
 }
+a.margins,
 em {
   padding: 10px 20px;
+  margins: 10px 20px 30px 40px;
 }
