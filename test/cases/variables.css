@@ -29,3 +29,11 @@ em-pin {
   background-color: #ddd;
   top: 10px;
 }
+.test {
+  background-color: #ddd;
+  height: 10px;
+  line-height: 10px;
+}
+.test_some {
+  color: #f00;
+}
