@@ -23,3 +23,7 @@ em {
   padding: 10px 20px;
   margins: 10px 20px 30px 40px;
 }
+a.margins-pin,
+em-pin {
+  absolute: top -11px;
+}

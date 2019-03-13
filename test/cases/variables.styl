@@ -9,6 +9,7 @@ $c = {
 
 $p = {
   color: #fff
+  pinBorder: 10px
   backGroundColor: $c.colors[1]
   backGroundColor2: $c.colors[0]
   widthBreakPoint: 1024px
@@ -41,3 +42,6 @@ a.margins,
 em
   padding 10px $c.border[1]
   margins a.margins[0] a.margins[1] a.margins[2] a.margins[3]
+
+  &-pin
+    absolute top - ($p.pinBorder[0] + 1px)
