@@ -10,6 +10,8 @@ $c = {
 $p = {
   color: #fff
   backGroundColor: $c.colors[1]
+  backGroundColor2: $c.colors[0]
+  widthBreakPoint: 1024px
 }
 size = 14px
 font-family = 'Lucida Grande', Arial, sans-serif
@@ -29,6 +31,10 @@ a
   border 1px $type #fff
   color $p.color
   background 10px $p.backGroundColor
+
+  @media screen and (max-width $p.widthBreakPoint)
+    background 20px $p.backGroundColor2
+
   margin size
 
 a.margins,

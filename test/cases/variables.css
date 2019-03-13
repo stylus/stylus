@@ -13,6 +13,11 @@ a {
   background: 10px #ddd;
   margin: 14px;
 }
+@media screen and (max-width: 1024px) {
+  a {
+    background: 20px #ccc;
+  }
+}
 a.margins,
 em {
   padding: 10px 20px;
