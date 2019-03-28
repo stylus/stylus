@@ -32,7 +32,9 @@
     "css-parse": "~2.0.0",
     "debug": "~3.1.0",
     "glob": "~7.1.2",
+    "mkdirp": "^0.5.1",
     "sax": "~1.2.4",
+    "semver": "^6.0.0",
     "source-map": "~0.7.2"
   },
   "devDependencies": {
