@@ -18,22 +18,31 @@ a {
     background: 20px #ccc;
   }
 }
-a.margins,
+.test div input.margin[type] {
+  padding: 20px;
+}
+.test div input.margin[type] div input.margin[type=text] {
+  color: #f00;
+}
+a.margin,
 em {
   padding: 10px 20px;
-  margins: 10px 20px 30px 40px;
+  margin: 10px 20px 30px 40px;
+  padding-left: 10px;
 }
-a.margins-pin,
+a.margin-pin,
 em-pin {
   absolute: top -11px;
   background-color: #ddd;
   top: 10px;
 }
 .test {
+  background: linear-gradient(rgba(255,255,255,0) 0%, #f0f 90%);
   background-color: #ddd;
   height: 10px;
   line-height: 10px;
 }
 .test_some {
   color: #f00;
+  background: #ddd;
 }
