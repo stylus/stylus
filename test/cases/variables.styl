@@ -13,6 +13,7 @@ $p = {
 		m: 14px 15px
 		l: 17px 18px
 	}
+	gap: 11px
   show: true
   color: #fff
   indexA: 0
@@ -27,6 +28,9 @@ size = 14px
 font-family = 'Lucida Grande', Arial, sans-serif
 $type = solid
 blue = #00c
+
+font-size-cont(b)
+  font-size (b.columns)px
 
 body
   color blue(blue)
@@ -74,6 +78,11 @@ em
 
     &_size_{size}&_shape_square
       width val[0]
+
+.test2
+  &__modal-body
+    margin-top $p.gap
+    font-size-cont({columns: 6})
 
 .test
   background linear-gradient(alpha($p.backGround, 0) 0%, $p.backGround2 90%)

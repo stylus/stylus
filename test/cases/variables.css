@@ -60,6 +60,10 @@ em-pin {
 .test1_size_l.test1_shape_square {
   width: 17px;
 }
+.test2__modal-body {
+  margin-top: 11px;
+  font-size: 6px;
+}
 .test {
   background: linear-gradient(rgba(255,255,255,0) 0%, #f0f 90%);
   background-color: #ddd;
