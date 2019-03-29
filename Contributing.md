@@ -12,6 +12,7 @@ Current maintainers of Stylus are:
 
 - Roman Komarov ([@kizu](https://github.com/kizu)),
 - Mikhail Korepanov ([@panya](https://github.com/panya)).
+- Valeriy Chupurnov ([@xdan](https://github.com/xdan)).
 
 If you'll have any questions, feel free to mention us or use emails from our profiles to contact us.
 
