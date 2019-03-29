@@ -35,6 +35,7 @@
     "mkdirp": "~0.5.x",
     "safer-buffer": "^2.1.2",
     "sax": "~1.2.4",
+    "semver": "^6.0.0",
     "source-map": "^0.7.3"
   },
   "devDependencies": {
