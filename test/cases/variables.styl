@@ -8,6 +8,11 @@ $c = {
 }
 
 $p = {
+	sizes: {
+		s: 12px 13px
+		m: 14px 15px
+		l: 17px 18px
+	}
   show: true
   color: #fff
   indexA: 0
@@ -59,6 +64,16 @@ em
     background-color $p.backGroundColor
     if $p.show
       top 10px
+
+.test1
+  background-color $p.backGroundColor
+  for size, val in $p.sizes
+    &_size_{size}
+      height val[0]
+      font-size val[1]
+
+    &_size_{size}&_shape_square
+      width val[0]
 
 .test
   background linear-gradient(alpha($p.backGround, 0) 0%, $p.backGround2 90%)

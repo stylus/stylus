@@ -36,6 +36,30 @@ em-pin {
   background-color: #ddd;
   top: 10px;
 }
+.test1 {
+  background-color: #ddd;
+}
+.test1_size_s {
+  height: 12px;
+  font-size: 13px;
+}
+.test1_size_s.test1_shape_square {
+  width: 12px;
+}
+.test1_size_m {
+  height: 14px;
+  font-size: 15px;
+}
+.test1_size_m.test1_shape_square {
+  width: 14px;
+}
+.test1_size_l {
+  height: 17px;
+  font-size: 18px;
+}
+.test1_size_l.test1_shape_square {
+  width: 17px;
+}
 .test {
   background: linear-gradient(rgba(255,255,255,0) 0%, #f0f 90%);
   background-color: #ddd;
