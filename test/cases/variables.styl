@@ -1,8 +1,40 @@
+a
+  font 11px Impact, font-family, serif
+  border 1px $type #fff
 
+a = {
+  margin: 10px 20px 30px 40px
+}
+
+$c = {
+  colors: #ccc #ddd
+  border: 10px 20px 30px
+}
+
+$p = {
+	sizes: {
+		s: 12px 13px
+		m: 14px 15px
+		l: 17px 18px
+	}
+	gap: 11px
+  show: true
+  color: #fff
+  indexA: 0
+  pinBorder: 10px
+  backGroundColor: $c.colors[1]
+  backGroundColor2: $c.colors[0]
+  backGround: #fff
+  backGround2: #ff00ff
+  widthBreakPoint: 1024px
+}
 size = 14px
 font-family = 'Lucida Grande', Arial, sans-serif
 $type = solid
 blue = #00c
+
+font-size-cont(b)
+  font-size (b.columns)px
 
 body
   color blue(blue)
@@ -15,6 +47,56 @@ body
 a
   font 11px Impact, font-family, serif
   border 1px $type #fff
+  color $p.color
+  background 10px $p.backGroundColor
+
+  @media screen and (max-width $p.widthBreakPoint)
+    background 20px $p.backGroundColor2
+
+  margin size
+
+.test
+  div input.margin[type]
+    padding $c.border[1]
+    div input.margin[type=text]
+      color red
+
+a.margin,
+em
+  padding 10px $c.border[1]
+  margin a.margin[0] a.margin[1] a.margin[2] a.margin[3]
+  padding-left a.margin[$p.indexA]
+
+  &-pin
+    absolute top - ($p.pinBorder[0] + 1px)
+    background-color $p.backGroundColor
+    if $p.show
+      top 10px
+
+.test1
+  background-color $p.backGroundColor
+  for size, val in $p.sizes
+    &_size_{size}
+      height val[0]
+      font-size val[1]
+
+    &_size_{size}&_shape_square
+      width val[0]
+
+.test2
+  &__modal-body
+    margin-top $p.gap
+    font-size-cont({columns: 6})
+
+.test
+  background linear-gradient(alpha($p.backGround, 0) 0%, $p.backGround2 90%)
+  background-color $p.backGroundColor
+  height 10px
+  line-height @height
+
+  &_some
+    color red
+    background $p.backGroundColor
 
 .classA
   font size
@@ -22,3 +104,5 @@ a
 
 .classB
   @apply classA
+
+
