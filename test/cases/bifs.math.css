@@ -35,6 +35,8 @@
   test6: 0;
   test7: -1;
   test8: 0;
+  test9: 0;
+  test10: 0.841470985;
 }
 .math_cos {
   test1: 1;
@@ -45,6 +47,8 @@
   test6: -1;
   test7: 0;
   test8: 1;
+  test9: 1;
+  test10: 0.540302306;
 }
 .math_tan {
   test1: 0;

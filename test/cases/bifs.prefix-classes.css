@@ -7,6 +7,18 @@
 .prefix-test2 {
   width: 1px;
 }
+.prefix-test {
+  width: 1px;
+}
+.prefix-test .prefix-test2 {
+  width: 1px;
+}
+.prefix-test .prefix-test3 {
+  color: #00f;
+}
+.prefix-test2 .prefix-test4 .prefix-test6 {
+  color: #008000;
+}
 .bar {
   width: 10px;
 }

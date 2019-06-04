@@ -38,14 +38,14 @@ radians-to-degrees(angle)
   angle * (180 / PI)
 
 degrees-to-radians(angle)
-  unit(angle * (PI / 180),'')
+  angle * (PI / 180)
 
 sin(n)
-  n = degrees-to-radians(n) if unit(n) == 'deg'
+  n = unit(n) == 'deg' ? degrees-to-radians(unit(n, '')) : unit(n, '')
   round(math(n, 'sin'), 9)
 
 cos(n)
-  n = degrees-to-radians(n) if unit(n) == 'deg'
+  n = unit(n) == 'deg' ? degrees-to-radians(unit(n, '')) : unit(n, '')
   round(math(n, 'cos'), 9)
 
 // Rounding Math functions

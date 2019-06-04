@@ -11,7 +11,9 @@ var fs = require('fs')
   , extname = require('path').extname
   , resolve = require('path').resolve
   , join = require('path').join
-  , isWindows = process.platform === 'win32';
+  , isWindows = process.platform === 'win32'
+  , semver = require('semver')
+  , mkdirSync = semver.satisfies(process.version, '>=10.12.0') ? fs.mkdirSync : require('mkdirp').sync;
 
 /**
  * Arguments.
@@ -58,6 +60,12 @@ var print = false;
  */
 
 var firebug = false;
+
+/**
+ * Quiet flag
+ */
+
+var quiet = false;
 
 /**
  * Sourcemap flag
@@ -172,9 +180,10 @@ var usage = [
   , '    -d, --compare           Display input along with output'
   , '    -f, --firebug           Emits debug infos in the generated CSS that'
   , '                            can be used by the FireStylus Firebug plugin'
-  , '    -l, --line-numbers      Emits comments in the generated CSS'
+	, '    -l, --line-numbers      Emits comments in the generated CSS'
   , '                            indicating the corresponding Stylus line'
   , '    -m, --sourcemap         Generates a sourcemap in sourcemaps v3 format'
+	, '    -q, --quiet     				 Less noisy output'
   , '    --sourcemap-inline      Inlines sourcemap with full source text in base64 format'
   , '    --sourcemap-root <url>  "sourceRoot" property of the generated sourcemap'
   , '    --sourcemap-base <path> Base <path> from which sourcemap and all sources are relative'
@@ -228,6 +237,10 @@ while (args.length) {
     case '--sourcemap':
       sourcemap = {};
       break;
+		case '-q':
+		case '--quiet':
+			quiet = true;
+			break;
     case '--sourcemap-inline':
       sourcemap = sourcemap || {};
       sourcemap.inline = true;
@@ -711,6 +724,9 @@ function writeFile(file, css) {
   // --print support
   if (print) return process.stdout.write(css);
   var path = createPath(file);
+
+  mkdirSync(dirname(path), { recursive: true })
+
   fs.writeFile(path, css, function(err){
     if (err) throw err;
     console.log('  \033[90mcompiled\033[0m %s', path);
@@ -725,6 +741,9 @@ function writeFile(file, css) {
 
 function writeSourcemap(file, sourcemap) {
   var path = createPath(file, true);
+
+  mkdirSync(dirname(path), { recursive: true })
+
   fs.writeFile(path, JSON.stringify(sourcemap), function(err){
     if (err) throw err;
     // don't output log message if --print is present
@@ -753,7 +772,9 @@ function watch(file, rootFile) {
     console.error('Stylus CLI Error: Watch and print cannot be used together');
     process.exit(1);
   }
-  console.log('  \033[90mwatching\033[0m %s', file);
+  if(!quiet){
+		console.log('  \033[90mwatching\033[0m %s', file);
+	}
   // if is windows use fs.watch api instead
   // TODO: remove watchFile when fs.watch() works on osx etc
   if (isWindows) {

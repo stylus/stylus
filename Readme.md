@@ -1,6 +1,11 @@
-# Stylus [![Build Status](https://travis-ci.org/stylus/stylus.svg?branch=master)](https://travis-ci.org/stylus/stylus)
+# Stylus
 
- Stylus is a revolutionary new language, providing an efficient, dynamic, and expressive way to generate CSS. Supporting both an indented syntax and regular CSS style.
+[![Build Status](https://travis-ci.org/stylus/stylus.svg?branch=master)](https://travis-ci.org/stylus/stylus)
+[![npm version](https://badge.fury.io/js/stylus.svg)](https://badge.fury.io/js/stylus)
+[![npm](https://img.shields.io/npm/dm/stylus.svg)](https://www.npmjs.com/package/stylus)
+[![Join the community on Spectrum](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/stylus)
+
+Stylus is a revolutionary new language, providing an efficient, dynamic, and expressive way to generate CSS. Supporting both an indented syntax and regular CSS style.
 
 ## Installation
 
@@ -138,7 +143,6 @@ form input {
 
 ### Screencasts
 
-  - [Stylus Intro](http://www.screenr.com/bNY)
   - [CSS Syntax & Postfix Conditionals](http://www.screenr.com/A8v)
 
 ### Authors
