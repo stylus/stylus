@@ -10,3 +10,10 @@ a {
   font: 11px Impact, 'Lucida Grande', Arial, sans-serif, serif;
   border: 1px solid #fff;
 }
+.classA {
+  font: 14px;
+  border: 1px solid #fff;
+}
+.classB {
+  @apply classA;
+}
