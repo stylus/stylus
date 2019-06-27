@@ -152,6 +152,12 @@ var deps = false;
 var hoist = false;
 
 /**
+ * Specify custom file extension.
+ */
+
+var ext = '.css';
+
+/**
  * Usage docs.
  */
 
@@ -191,6 +197,7 @@ var usage = [
   , '    -p, --print             Print out the compiled CSS'
   , '    --import <file>         Import stylus <file>'
   , '    --include-css           Include regular CSS on @import'
+  , '	 --ext			 Specify custom file extension for compiled file, default .css'	
   , '    -D, --deps              Display dependencies of the compiled file'
   , '    --disable-cache         Disable caching'
   , '    --hoist-atrules         Move @import and @charset to the top'
@@ -290,6 +297,10 @@ while (args.length) {
       break;
     case '--include-css':
       includeCSS = true;
+      break;
+    case '--ext':
+      ext = args.shift();
+      if (!ext) throw new Error('--ext <ext> required');
       break;
     case '--disable-cache':
       disableCache = true;
@@ -706,7 +717,7 @@ function createPath(file, sourceMap) {
     return [dest, sourceMap ? '.map' : ''].join('');
   }
   // --out support
-  out = [basename(file, extname(file)), sourceMap ? '.css.map' : '.css'].join('');
+  out = [basename(file, extname(file)), sourceMap ? ext + '.map' : ext].join('');
   return dest
     ? join(dest, out)
     : join(dirname(file), out);
