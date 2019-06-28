@@ -1,3 +1,4 @@
+
 ---
 layout: default
 permalink: docs/mixins.html
@@ -47,6 +48,29 @@ To take this further, we can utilize the automatic `arguments` local variable, c
       border-radius arguments
 
 Now we can pass values like `border-radius 1px 2px / 3px 4px`!
+
+Also we can make use of the [interpolation](http://stylus-lang.com/docs/interpolation.html) `{param}`:
+
+	border(side, args...)
+		if side
+			border-{side}  args
+		else
+			border args
+	
+	.border-thick
+	  border('left' , 10px, 'darkred')
+	
+	.border
+	  border('' , 1px, 'darkred')
+	  
+Rendering: 
+	
+	.border-thick {
+	  border-left: 10px 'darkred';
+	}
+	.border {
+	  border: 1px 'darkred';
+	}
 
 Another great use of this is the addition of transparent support for vendor-specifics—such as `opacity` support for IE:
 
