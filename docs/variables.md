@@ -21,10 +21,10 @@ Compiles to:
 Variables can even consist of an expression list:
 
     font-size = 14px
-    font = font-size "Lucida Grande", Arial
+    font-stack = "Lucida Grande", Arial, sans-serif
 
     body
-      font font, sans-serif
+      font font-size font-stack
 
 Compiles to:
 

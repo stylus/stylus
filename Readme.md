@@ -1,6 +1,11 @@
-# Stylus [![Build Status](https://travis-ci.org/stylus/stylus.svg?branch=master)](https://travis-ci.org/stylus/stylus)
+# Stylus
 
- Stylus is a revolutionary new language, providing an efficient, dynamic, and expressive way to generate CSS. Supporting both an indented syntax and regular CSS style.
+[![Build Status](https://travis-ci.org/stylus/stylus.svg?branch=master)](https://travis-ci.org/stylus/stylus)
+[![npm version](https://badge.fury.io/js/stylus.svg)](https://badge.fury.io/js/stylus)
+[![npm](https://img.shields.io/npm/dm/stylus.svg)](https://www.npmjs.com/package/stylus)
+[![Join the community on Spectrum](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/stylus)
+
+Stylus is a revolutionary new language, providing an efficient, dynamic, and expressive way to generate CSS. Supporting both an indented syntax and regular CSS style.
 
 ## Installation
 
@@ -110,7 +115,7 @@ form input {
   - TextMate [bundle](docs/textmate.md)
   - Coda/SubEtha Edit [Syntax mode](https://github.com/atljeremy/Stylus.mode)
   - gedit [language-spec](docs/gedit.md)
-  - VIM [Syntax](https://github.com/wavded/vim-stylus)
+  - VIM [Syntax](https://github.com/iloginow/vim-stylus)
   - Espresso [Sugar](https://github.com/aljs/Stylus.sugar)
   - [Firebug extension](docs/firebug.md)
   - heroku [web service](http://styl.herokuapp.com/) for compiling stylus
@@ -129,6 +134,7 @@ form input {
    - [Meteor](http://docs.meteor.com/#stylus)
    - [Grails](http://grails.org/plugin/stylus-asset-pipeline)
    - [Derby](https://github.com/derbyjs/derby-stylus)
+   - [Laravel](https://laravel.com/docs/5.5/mix#stylus)
 
 ### CMS Support
 
@@ -137,7 +143,6 @@ form input {
 
 ### Screencasts
 
-  - [Stylus Intro](http://www.screenr.com/bNY)
   - [CSS Syntax & Postfix Conditionals](http://www.screenr.com/A8v)
 
 ### Authors
