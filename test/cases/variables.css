@@ -74,3 +74,10 @@ em-pin {
   color: #f00;
   background: #ddd;
 }
+.classA {
+  font: 14px;
+  border: 1px solid #fff;
+}
+.classB {
+  @apply classA;
+}
