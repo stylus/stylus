@@ -12,6 +12,7 @@ Makefile
 bm.js
 
 docs/
+.idea/
 editors/
 test/
 graphics/
