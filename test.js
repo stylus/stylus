@@ -1,12 +1,31 @@
 var stylus = require('./');
 
 
-const value = `.test
-  font 12px
+const value = `
+$IMG = {
+  temp: {
+    selectors: ("test" "test1")
+    props: {
+      pop: "dies"
+    }
+  }
+}
 
-  a.s tr td:nth-child(n + 1)
-    font 10px`;
+add-property(name, expr)
+  {name} expr
+
+generateImgClasses()
+  for $img, $obj in $IMG
+    {join(",", $obj.selectors)}
+      for $prop in $IMG
+        add-property($prop, "url(%s)" % $img)
+
+html
+  generateImgClasses()`;
 
 stylus(value).render((err, css) => {
+	if (err) {
+		throw err;
+	}
 	console.log(css);
 });

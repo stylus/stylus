@@ -2,3 +2,7 @@ body {
   foo: bar;
   bar: baz;
 }
+html test,
+html test1 {
+  temp: url('temp');
+}
