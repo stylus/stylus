@@ -1,12 +1,7 @@
-another()
-  foo bar
-  bar baz
-  return
-  baz raz
+var stylus = require('./');
 
-body
-  another()
 
+const value = `
 $IMG = {
   temp: {
     selectors: ("test" "test1")
@@ -26,4 +21,11 @@ generateImgClasses()
         add-property($prop, "url(%s)" % $img)
 
 html
-  generateImgClasses()
+  generateImgClasses()`;
+
+stylus(value).render((err, css) => {
+	if (err) {
+		throw err;
+	}
+	console.log(css);
+});
