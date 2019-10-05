@@ -14,6 +14,7 @@ Current maintainers of Stylus are:
 - Mikhail Korepanov ([@panya](https://github.com/panya)).
 - Valeriy Chupurnov ([@xdan](https://github.com/xdan)).
 
+
 If you'll have any questions, feel free to mention us or use emails from our profiles to contact us.
 
 
@@ -131,7 +132,7 @@ We follow [semver](http://semver.org/). We're in `0.x` at the moment, however, a
 
 Each minor release should be first compiled into `rc-`branch. Minor release *should not* have fixes in it, as patch-release should be published before a minor one if there are fixes. This would deliver the fixes to the people using the fixed minor, but `x` at patch version.
 
-Patch releases don't need their own `rc` branches, as they could be released from the `dev` branch. 
+Patch releases don't need their own `rc` branches, as they could be released from the `dev` branch.
 
 
 ### Adding tests
