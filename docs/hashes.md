@@ -38,6 +38,29 @@ Note that while you can't use variables or interpolations in curly braces define
     
     foo.baz
     // => raz
+    
+### Anonymous hash
+
+We can create an anonymous hash object for list; it's a kind object with out variable name.
+
+    list = foo {int: 1, str: '1'} {node: a-node, color: #32E}
+
+    list[0]
+    // => foo
+    
+    type(list[0])
+    // => 'ident'
+    
+    type(list[1])
+    // => 'object'
+    
+    list[1].int
+    // => 1
+    
+    list[2].color
+    // => #32E
+    
+You now can create a JSON-alike variable. It works well with iteration and conditional statement as well.
 
 ## Getters
 
