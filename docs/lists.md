@@ -76,11 +76,7 @@ To make multidimensional list, aka. nested list, we have three ways to do it.
     mother-list = 1px solid #000, 2px solid #321, none, 3px solid #341
 
 
-Be aware that `()` operator and `,` doesn't create a list, it works as a level-separator.
-
-Which means doing this `list = ((x))` doesn't create a multidimensional list with single item, in fact, the `()` will be ignore and the list will be a plain variable `list = x`. Learn more at [Separator ()](#separator-).
-
-On the other hand `,` will cause a bug if it is used like this `wrong = x,`.
+Be aware that `()` operator and `,` doesn't create a list, it works as a level-separator. Which means doing this `list = ((x))` doesn't create a multidimensional list with single item, in fact, the `()` will be ignore and the list will be a plain variable `list = x`. Learn more at [Separator ()](#separator-). On the other hand `,` will cause a bug if it is used like this `wrong = x,`.
 
 
 **Stylus**: nested variables style
@@ -127,17 +123,41 @@ Help yourself: [test it online][nested-ls]
     
 
 ### Almost advance - Map
-Map is a key-value list. It's allow to access to list with a string address. In Stylus, map can be created by hash object. Because of this, this technique is also called hash list.
+Map is a key-value list. It's allow to access to list with a string address. In Stylus, map is created by hash object. Because of this, the technique is also called hash list.
 
+**Stylus**
 
+    /**
+    * map = {item1: 1, item2: '2', item3: etc}
+    * map = {
+    *   item1: 1,
+    *   item2: '2',
+    *   item3: etc
+    * }
+    */
+    map = {
+        x: 5px
+        y: 15px
+        color: blue
+    }
+
+    div {
+        box-shadow: map['x'] map.y map['color']
+    }
+    
+**CSS**
+
+    div {
+        box-shadow: 5px 15px blue
+    }
+    
+Help yourself: [test it online][map]
 
 ### Advance - Multi-line syntax
-One-line syntax is useful for a small piece of code. However, stylus lists're usually used as a data holder. This makes the code quite large. As keeping it in one-line could upset colleagues, this section was made for the sense of justice, the clean code morality.
+One-line syntax is useful for a small piece of code. However, stylus lists're usually used as a data holder. This makes the code quite large. As keeping it in one-line could end up causing bloodshed, this section was made for the sake of peace.
 
 #### Multi-line list
-In order to cut down the size of one-line to multi-line, separator comma `,` is used. The first line must have simple syntax with the comma at the end of line `variable = item,`. Following line can be indent or not. The end of list could use semi-colon `;` for readable reason, this is optional.
-
-The comma, in this case, can be understand as an indicator which tells that parser that the next line is an item of the closet defined variable `=`. With this in mind, we can see that the line has no comma is the end of list.
+To cut down the size of one-line to multi-line, we use separator commas `,`. The comma can be understand as an indicator which tells that parser that the next line is an item of the closet defined variable `=`. With this logic, we can see why the end of list must have no comma.
 
 **Stylus**
 
@@ -177,16 +197,14 @@ Help yourself: [test it online][multiline-ls]
 It is strongly recommended to have multi-line for nested list. It also quite convenience for some properties has multi-value.
 
 #### Multi-line map
-Comma is useful in simple case, but if the list is wrap in a hash object/map, the comma become a problem. Because of that, a trick was found to fool the parser. In short, we will make the parser thought it still in a line, but from users' view it's actually more than a line.
-
-The parser detect an item of a list by separator (which are comma and space). But what inside the item is a different story. The secret lies in the pattern -> close Parentheses or Curly Braces | space/single item | open Parentheses or Curly Braces <-. Something like this `} (` or `){`.
+Comma is useful in simple case. For a complex case such as a list inside a map (hash object), comma is no longer a list separator but a hash separator. To make a multi-line map, we have to work around with a pair of Parentheses or Curly Braces. We simply keep a bracket in the first line (the defining variable line) and all the following brackets in same lines. Everything inside brackets can freely have a new line. In short, see the example below.
 
 **Stylus**
 
     /**
     * multi-line = {        <- must have
     *       first-hash
-    *   } {
+    *   } {                 <- must be in the same line
     *       2nd-hash
     *   } (
     *       3, 4, 5
@@ -225,21 +243,31 @@ The parser detect an item of a list by separator (which are comma and space). Bu
 Help yourself: [test it online][multiline-map]
 
 
-## In-action
+## Operators
+Below are friendly for list operators. For detail document, see [Operators page](/docs/operators.html).
 
-### Operators
+### Separator ()
 
-#### Separator ()
+Indicating a new list. If parentheses is empty or only has one variable, it will become a normal variable. A way to create multidimensional list.
 
-#### Subscript []
+### Subscript []
 
-#### Range .. …
+This operator allows us to access to the list's items. It support multidimensional list, map and anything return a list expression such as a function return a list can also be used.
 
-#### Additive: + -
+### Range .. …
 
-### Iteration
+A short way for creating a one-dimentional list number. `..` is inclusive and `...` is exclusive.
+
+### The rest operators
+
+Any operators have not mention may not work with lists or only work with the first item of the list.
+
+## Iteration
+
+List and map are the main part of the loop. With map, we can get both key and value from the loop. For detail and example, see [Iteration page](/docs/iteration.html).
 
 ## BIF
+
 BIF stands for Build-in function. Below is a list of BIF for handling list.
 
 - [Push(list, args…)](/docs/bifs.html#pushexpr-args) | add
@@ -257,6 +285,8 @@ BIF stands for Build-in function. Below is a list of BIF for handling list.
 [basic-ls]: /try.html#?code=border-items-list%20%3D%201px%20solid%20%23000%0A%0Adiv%20%7B%0A%20%20%20%20border-width%3A%20border-items-list%5B0%5D%0A%20%20%20%20border-style%3A%20border-items-list%5B1%5D%0A%20%20%20%20border-color%3A%20border-items-list%5B2%5D%0A%7D%0A%0Adiv.no2%20%7B%0A%20%20%20%20border%3A%20border-items-list%0A%7D
 
 [nested-ls]: /try.html#?code=border%20%3D%20(1px%20solid%20%23000)%20(2px%20solid%20%23321)%20(3px%20solid%20%23341)%20none%0A%0Aborder-alter%20%3D%201px%20solid%20%23000%2C%202px%20solid%20%23321%2C%203px%20solid%20%23341%2C%20none%0A%0Ashadow%20%3D%20list-0%2C%20list-1%2C%20list-2%0Alist-0%20%3D%205px%205px%20blue%0Alist-1%20%3D%2010px%2010px%20red%0Alist-2%20%3D%2015px%2015px%20green%0A%0Amotherbox%20%7B%0A%20%20border%3A%20border%5B0%5D%0A%20%20box-shadow%3A%20shadow%0A%7D
+
+[map]: /try.html#?code=map%20%3D%20%7B%0A%20%20%20%20x%3A%205px%0A%20%20%20%20y%3A%2015px%0A%20%20%20%20color%3A%20blue%0A%7D%0A%0Adiv%20%7B%0A%20%20%20%20box-shadow%3A%20map%5B'x'%5D%20map.y%20map%5B'color'%5D%0A%7D
 
 [multiline-ls]: /try.html#?code=list%20%3D%20(5px%205px%20blue)%2C%0A%20%20%20%2010px%2010px%20red%2C%0A%20%20%20%20(15px%2015px%20green)%0A%20%20%20%20%0Adiv.shadow%20%7B%0A%20%20%20%20box-shadow%3A%20list%5B0%5D%0A%7D%0A%0Adiv.superShadow%20%7B%0A%20%20%20%20box-shadow%3A%20list%0A%7D
 
