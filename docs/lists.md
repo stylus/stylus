@@ -244,7 +244,7 @@ Help yourself: [test it online][multiline-map]
 
 ## List detector 
 
-Because list is just an expression, `typeof()` cannot help us to distinguish a list and a variable. To find out whether or not the variable is a list or single value, we can use `index()` or `length()` BIF. Simple put a list to `length()`, if its value is greater than 1, it is a list.
+Because list is just an expression, `typeof()` cannot help us to distinguish a list and a variable; `typeof()` will always return `ident` type for list. To find out whether or not the variable is a list or single value, we can use `index()` or `length()` BIF. Simple put a list to `length()`, if its value is greater than 1, it is a list.
 
 ```STYL
 function isList(expr)
