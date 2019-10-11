@@ -15,13 +15,13 @@ Current maintainers of Stylus are:
 - Valeriy Chupurnov ([@xdan](https://github.com/xdan)).
 
 
-If you'll have any questions, feel free to mention us or use emails from our profiles to contact us.
+If you have any questions, feel free to contact us via our profile email or mentioning us in the repository.
 
 
 
 ## Code of Conduct
 
-Please note that this project is released with a [Contributor Code of Conduct](Code_of_Conduct.md). By participating in this project you agree to abide by its terms.
+Please note that this project is released with a [Contributor Code of Conduct](Code_of_Conduct.md). By participating in the project, you agree to abide by its terms.
 
 
 
@@ -58,7 +58,7 @@ We'll close your PR or issue if:
 1. It's a duplicate of an existing issue.
 2. Outside of the scope of the project.
 3. The bug is not reproducible.
-4. You are unresponsive after a few days.
+4. You don't response after a few days.
 5. The feature request introduces too much complexity (or too many edge cases) to the tool
     - We weigh a request's complexity with the value it brings to the community.
 
@@ -128,7 +128,7 @@ The following branches should always be there. Do not fork them directly, always
 
 ### Releasing workflow
 
-We follow [semver](http://semver.org/). We're in `0.x` at the moment, however, as Stylus is already widely used, we don't introduce backwards-incompatible changes to our minor releases.
+We currently apply [semver](http://semver.org/). We're in `0.x` at the moment, however, as Stylus is already widely used, we don't introduce backwards-incompatible changes to our minor releases.
 
 Each minor release should be first compiled into `rc-`branch. Minor release *should not* have fixes in it, as patch-release should be published before a minor one if there are fixes. This would deliver the fixes to the people using the fixed minor, but `x` at patch version.
 
