@@ -259,7 +259,7 @@ Below are friendly for list operators. For detail document, see [Operators page]
 
 ### Separator ()
 
-Indicating a new list. If parentheses is empty or only has one variable, it will become a normal variable. A way to create multidimensional list.
+Indicating a new list. If parentheses is empty or only has one variable, it will become a normal variable. We can also use it to create empty variable.
 
 ### Subscript []
 
