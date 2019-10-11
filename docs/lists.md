@@ -5,7 +5,7 @@ permalink: docs/lists.html
 
 # Lists
 
-Stylus list is a collection of different kind of items. In another word, it is an array, map, list in other programming languages. 
+Stylus list is an expression collection of different kind of items. In another word, it is an array, map, list in other programming languages.
 
 ## Syntax
 Its syntax is similar to CSS syntax for shorthand properties, but not completely alike. We can create a list by define a variable with at least two items. Each item is separated by a space `' '` or a comma `,`. 
@@ -242,6 +242,17 @@ Comma is useful in simple case. For a complex case such as a list inside a map (
 
 Help yourself: [test it online][multiline-map]
 
+## List detector 
+
+Because list is just an expression, `typeof()` cannot help us to distinguish a list and a variable. To find out whether or not the variable is a list or single value, we can use `index()` or `length()` BIF. Simple put a list to `length()`, if its value is greater than 1, it is a list.
+
+```STYL
+function isList(expr)
+    if length(expr) > 1
+        true
+    else
+        false
+```
 
 ## Operators
 Below are friendly for list operators. For detail document, see [Operators page](/docs/operators.html).
@@ -274,6 +285,7 @@ BIF stands for Build-in function. Below is a list of BIF for handling list.
 - [unshift(list, args…)](/docs/bifs.html#unshiftexpr-args) | add
 - [pop(list)](/docs/bifs.html#popexpr) | remove
 - [shift(list)](/docs/bifs.html#shiftexpr) | remove
+- [length([expr])](/docs/bifs.html#lengthexpr) | info
 - [index(list, value)](/docs/bifs.html#indexlist-value) | info
 - [list-separator(list)](/docs/bifs.html#list-separatorlist) | info
 - [range(start, stop[, step])](/docs/bifs.html#rangestart-stop-step) | generate
