@@ -197,7 +197,7 @@ Help yourself: [test it online][multiline-ls]
 It is strongly recommended to have multi-line for nested list. It also quite convenience for some properties has multi-value.
 
 #### Multi-line map
-Comma is useful in simple case. For a complex case such as a list inside a map (hash object), comma is no longer a list separator but a hash separator. To make a multi-line map, we have to work around with a pair of Parentheses or Curly Braces. We simply keep a bracket in the first line (the defining variable line) and all the following brackets in same lines. Everything inside brackets can freely have a new line. In short, see the example below.
+Comma is useful in simple case. For a complex case such as a list inside a map (hash object), comma is no longer a list separator but a hash separator. To make a multi-line map, we have to work around with a pair of Parentheses or Curly Braces. We simply keep the open bracket of the first item in the same line with the defined variable line. All the following brackets in same lines in close - open pattern. Everything inside brackets can freely have a new line. In short, see the example below.
 
 **Stylus**
 
@@ -206,7 +206,7 @@ Comma is useful in simple case. For a complex case such as a list inside a map (
     *       first-hash
     *   } {                 <- must be in the same line
     *       2nd-hash
-    *   } (
+    *   } or-an-item (      <- this is ok too
     *       3, 4, 5
     *   ) (
     *       6 7 8
@@ -263,7 +263,7 @@ Indicating a new list. If parentheses is empty or only has one variable, it will
 
 ### Subscript []
 
-This operator allows us to access to the list's items. It support multidimensional list, map and anything return a list expression such as a function return a list can also be used. 
+This operator allows us to access to the list's items. It support multidimensional list, map and anything return a list expression such as a function return a list can also be used. The `[0]` always returns a value if the variable exists. The `[n]` will return `null` value if no item is in the `n` position.
 
 ### Range .. …
 
