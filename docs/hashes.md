@@ -41,7 +41,7 @@ Note that while you can't use variables or interpolations in curly braces define
     
 ### Anonymous hash
 
-We can create an anonymous hash object for list; it's a kind object with out variable name.
+We can create anonymous hash objects for list, a kind object with out variable name.
 
     list = foo {int: 1, str: '1'} {node: a-node, color: #32E}
 
@@ -60,7 +60,7 @@ We can create an anonymous hash object for list; it's a kind object with out var
     list[2].color
     // => #32E
     
-You now can create a JSON-alike variable. It works well with iteration and conditional statement as well.
+To access its values, we can use both brackets syntax (`['str']`) and dot syntax (`.`). Brackets syntax works well for programming, meanwhile dot syntax is more readable and JSON-alike syntax. It works well with iteration and conditional statement as well.
 
 ## Getters
 
