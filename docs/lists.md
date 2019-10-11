@@ -244,7 +244,7 @@ Help yourself: [test it online][multiline-map]
 
 ## List detector 
 
-Because list is just an expression, `typeof()` cannot help us to distinguish a list and a variable; `typeof()` will always return `ident` type for list. To find out whether or not the variable is a list or single value, we can use `index()` or `length()` BIF. Simple put a list to `length()`, if its value is greater than 1, it is a list.
+Because list is just an expression, `typeof()` cannot help us to distinguish a list and a variable; `typeof()` will always return `ident` type for list. To find out whether or not the variable is a list or single value, we can use `length()` BIF. Simple put a list to `length()`, if its value is greater than 1, it is a list.
 
 ```STYL
 function isList(expr)
@@ -263,7 +263,7 @@ Indicating a new list. If parentheses is empty or only has one variable, it will
 
 ### Subscript []
 
-This operator allows us to access to the list's items. It support multidimensional list, map and anything return a list expression such as a function return a list can also be used.
+This operator allows us to access to the list's items. It support multidimensional list, map and anything return a list expression such as a function return a list can also be used. 
 
 ### Range .. …
 
