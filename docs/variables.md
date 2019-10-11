@@ -12,8 +12,7 @@ We may assign expressions to variables and use them throughout our stylesheet:
      body
        font font-size Arial, sans-serif
 
-Compiles to:
-
+     //Compiles to:
      body {
        font: 14px Arial, sans-serif;
      }
@@ -26,8 +25,7 @@ Variables can even consist of an expression list:
     body
       font font-size font-stack
 
-Compiles to:
-
+    //Compiles to:
     body {
       font: 14px "Lucida Grande", Arial, sans-serif;
     }
@@ -37,6 +35,18 @@ Identifiers (variable names, functions, etc.) may also include the `$` character
     $font-size = 14px
     body {
       font: $font-size sans-serif;
+    }
+    
+We can not use null to create empty variable, but parentheses `()` can do that:
+
+    empty = ()
+    body {
+      font: empty sans-serif;
+    }
+
+    //Compiles to:
+    body {
+      font: sans-serif;
     }
 
 ## Property Lookup
