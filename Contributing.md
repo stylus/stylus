@@ -15,7 +15,7 @@ Current maintainers of Stylus are:
 - Valeriy Chupurnov ([@xdan](https://github.com/xdan)).
 
 
-If you have any questions, feel free to contact us via our profile email or mentioning us in the repository.
+If you have any questions, feel free to contact us via our profile email or mention us in the repository.
 
 
 
@@ -58,7 +58,7 @@ We'll close your PR or issue if:
 1. It's a duplicate of an existing issue.
 2. Outside of the scope of the project.
 3. The bug is not reproducible.
-4. You don't response after a few days.
+4. You don't respond after a few days.
 5. The feature request introduces too much complexity (or too many edge cases) to the tool
     - We weigh a request's complexity with the value it brings to the community.
 
