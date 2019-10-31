@@ -171,6 +171,36 @@ But the following is evaluated as `14px` ÷ `1.5`:
 
 This is _only_ required for the `/` operator.
 
+### Shorthand operators: += -= *= /= %=
+
+Shorthand operators works like other common language. With list variable, the first value will be use to execute the operators and overwrite the list to turn it to a single-value variable. With string, node values only += works as an appending function. With number type value, all operators work exactly like a normal math. Similar for color value.
+
+    n = 12
+    n += 8
+    // => n = 20
+    
+    int-list = 12 23 0 32
+    int-list %= 2
+    // => 12 % 2 = 0 (mod operator)
+    // => int-list = 0
+    
+    mixed-list = node 23 'str'
+    mixed-list %= 2
+    // => error
+    
+    mixed-list = node 23 'str' #2e7
+    mixed-list += 2
+    // => mixed-list = node2
+    
+    s = 'str'
+    s += 2
+    // => s = 'str2'
+    
+    c = #0e0
+    c -= #0e0
+    // => c = #000    
+
+
 ### Exponent: **
 
 The Exponent operator:
