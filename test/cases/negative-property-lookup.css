@@ -1,0 +1,10 @@
+.negative-property-lookup {
+  margin-top: 20px;
+  bottom: -20px;
+  top: -10px;
+}
+.another-example {
+  margin-top: 20px;
+  bottom: -20px;
+  top: -10px;
+}
