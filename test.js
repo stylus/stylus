@@ -1,31 +1,12 @@
-var stylus = require('./');
+let stylus = require('./')
+let fs = require('fs')
 
+let file = 'test/cases/functions.url.styl'
 
-const value = `
-$IMG = {
-  temp: {
-    selectors: ("test" "test1")
-    props: {
-      pop: "dies"
-    }
-  }
-}
+let style = stylus(fs.readFileSync(file, 'utf-8'))
+  .set('filename', file)
+  .include(__dirname + '/test/images')
+  .include(__dirname + '/test/cases/import.basic')
+  .define('url', stylus.url())
 
-add-property(name, expr)
-  {name} expr
-
-generateImgClasses()
-  for $img, $obj in $IMG
-    {join(",", $obj.selectors)}
-      for $prop in $IMG
-        add-property($prop, "url(%s)" % $img)
-
-html
-  generateImgClasses()`;
-
-stylus(value).render((err, css) => {
-	if (err) {
-		throw err;
-	}
-	console.log(css);
-});
+console.log(style.render())
