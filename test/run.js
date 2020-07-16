@@ -9,31 +9,27 @@ var stylus = require('../')
 
 // integration cases
 
-addSuite('integration', readDir('test/cases'), function(test){
+addSuite('integration', readDir('test/cases'), function(test) {
   var path = 'test/cases/' + test + '.styl'
     , styl = readFile(path)
     , css = readFile('test/cases/' + test + '.css')
     , style = stylus(styl)
-        .set('filename', path)
-        .include(__dirname + '/images')
-        .include(__dirname + '/cases/import.basic')
-        .define('url', stylus.url());
+      .set('filename', path)
+      .include(__dirname + '/images')
+      .include(__dirname + '/cases/import.basic');
 
-  if (~test.indexOf('compress')) style.set('compress', true);
-  if (~test.indexOf('include')) style.set('include css', true);
-  if (~test.indexOf('prefix.')) style.set('prefix', 'prefix-');
-  if (~test.indexOf('hoist.')) style.set('hoist atrules', true);
-  if (~test.indexOf('resolver')) style.define('url', stylus.resolver());
+  if(~test.indexOf('compress')) style.set('compress', true);
+  if(~test.indexOf('include')) style.set('include css', true);
+  if(~test.indexOf('prefix.')) style.set('prefix', 'prefix-');
+  if(~test.indexOf('hoist.')) style.set('hoist atrules', true);
+  if(~test.indexOf('resolver')) style.define('url', stylus.resolver());
 
-  style.render(function(err, actual){
-    if (err) throw err;
-    actual.trim().should.equal(css);
-  });
+  style.render().trim().should.equal(css);
 }, ['index']);
 
 // converter cases
 
-addSuite('converter', readDir('test/converter', '.css'), function(test){
+addSuite('converter', readDir('test/converter', '.css'), function(test) {
   var path = 'test/converter/' + test + '.styl'
     , styl = readFile(path)
     , css = readFile('test/converter/' + test + '.css');
@@ -43,18 +39,19 @@ addSuite('converter', readDir('test/converter', '.css'), function(test){
 
 // deps resolver cases
 
-addSuite('dependency resolver', readDir('test/deps-resolver'), function(test){
+addSuite('dependency resolver', readDir('test/deps-resolver'), function(test) {
   var path = 'test/deps-resolver/' + test + '.styl'
     , styl = readFile(path)
     , deps = readFile('test/deps-resolver/' + test + '.deps')
-    , style = stylus(styl).set('filename', path);
+    , style = stylus(styl)
+      .set('filename', path);
 
   style.deps().join('\n').trim().should.equal(deps);
 });
 
 // sourcemap cases
 
-addSuite('sourcemap', readDir('test/sourcemap'), function(test){
+addSuite('sourcemap', readDir('test/sourcemap'), function(test) {
   var inline = ~test.indexOf('inline')
     , path = 'test/sourcemap/' + test + '.styl'
     , styl = readFile(path)
@@ -64,10 +61,10 @@ addSuite('sourcemap', readDir('test/sourcemap'), function(test){
     , comment = 'sourceMappingURL=data:application/json;';
 
   style.render(function(err, css) {
-    if (err) throw err;
-    if (inline) {
+    if(err) throw err;
+    if(inline) {
       style.sourcemap.sourcesContent.should.not.be.empty;
-      if (~test.indexOf('utf-8')) comment += 'charset=utf-8;';
+      if(~test.indexOf('utf-8')) comment += 'charset=utf-8;';
       css.should.containEql(comment + 'base64,');
     } else {
       style.sourcemap.should.eql(JSON.parse(expected));
@@ -77,8 +74,8 @@ addSuite('sourcemap', readDir('test/sourcemap'), function(test){
 
 // JS API
 
-describe('JS API', function(){
-  it('define a variable with object as hash', function(){
+describe('JS API', function() {
+  it('define a variable with object as hash', function() {
     stylus('body { foo: test-obj.baz.foo.quz; bar: test-obj.bar[0].foo  }')
       .set('compress', true)
       .define('test-obj', {
@@ -89,7 +86,7 @@ describe('JS API', function(){
       }, true).render().should.equal("body{foo:'quz';bar:1}");
   });
 
-  it('define a variable with object as list', function(){
+  it('define a variable with object as list', function() {
     stylus('body { foo: test-obj  }')
       .set('compress', true)
       .define('test-obj', {
@@ -99,17 +96,14 @@ describe('JS API', function(){
       }).render().should.equal("body{foo:baz foo quz 'quz'}");
   });
 
-  it('use variable from options object', function(){
+  it('use variable from options object', function() {
     stylus
-      .render(
-        'body { foo: bar  }',
-        {
-          compress: true,
-          globals: {
-            'bar': 'baz'
-          }
+      .render('body { foo: bar  }', {
+        compress: true,
+        globals: {
+          'bar': 'baz'
         }
-      ).should.equal("body{foo:baz}");
+      }).should.equal("body{foo:baz}");
   });
 
   it('use variable from options object inside expression', function() {
@@ -121,7 +115,7 @@ describe('JS API', function(){
     }).render().should.equal('body{color:rgba(226,3,3,0.5)}');
   });
 
-  it('use functions from options object', function(){
+  it('use functions from options object', function() {
     stylus
       .render(
         'body { foo: add(4, 3); bar: something() }',
@@ -139,7 +133,7 @@ describe('JS API', function(){
       ).should.equal("body{foo:7;bar:foobar}");
   });
 
-  it('use plugin(s) from options object', function(){
+  it('use plugin(s) from options object', function() {
     var plugin = function(key, value) {
       return function(style) {
         style.define(key, new stylus.nodes.Literal(value));
@@ -157,7 +151,7 @@ describe('JS API', function(){
     }).render().should.equal('body{foo:baz;foo:fred}');
   });
 
-  it('import cloning with cache', function(){
+  it('import cloning with cache', function() {
     var path = __dirname + '/cases/import.basic/'
       , styl = readFile(path + 'clone.styl')
       , css = 'body{background:linear-gradient(from bottom,#f00,#00f)}';
@@ -169,7 +163,7 @@ describe('JS API', function(){
       .render().should.equal(css);
   });
 
-  it('import cloning with cache #2', function(){
+  it('import cloning with cache #2', function() {
     var path = __dirname + '/cases/import.basic/'
       , styl = fs.readFileSync(path + 'clone2.styl', 'utf-8').replace(/\r/g, '')
       , css = 'body{color:#f00}body{color:#00f}body{color:#00f}body{color:#00f}body{color:#008000}';
@@ -181,7 +175,7 @@ describe('JS API', function(){
       .render().should.equal(css);
   });
 
-  it('import loop detection', function(){
+  it('import loop detection', function() {
     var path = __dirname + '/cases/import.loop/'
       , styl = fs.readFileSync(path + 'test.styl', 'utf-8');
 
@@ -190,13 +184,13 @@ describe('JS API', function(){
     }).should.throw(/import loop has been found/);
   });
 
-  it('conditional assignment with define', function(){
+  it('conditional assignment with define', function() {
     stylus('foo ?= baz; body { test: foo }', { compress: true })
       .define('foo', new stylus.nodes.Literal('bar'))
       .render().should.equal("body{test:bar}");
   });
 
-  it('sourcemap with dest option set to a file name', function(){
+  it('sourcemap with dest option set to a file name', function() {
     var style = stylus('body { color: red }', {
       compress: true,
       sourcemap: true,
@@ -211,33 +205,33 @@ describe('JS API', function(){
 // helper functions
 
 function addSuite(desc, cases, fn, ignore) {
-  describe(desc, function(){
-    cases.forEach(function(test){
+  describe(desc, function() {
+    cases.forEach(function(test) {
       var name = normalizeName(test);
 
-      if (ignore && ~ignore.indexOf(name)) return;
+      if(ignore && ~ignore.indexOf(name)) return;
       it(name, fn.bind(this, test));
     });
   });
 }
 
-function readDir(dir, ext){
+function readDir(dir, ext) {
   ext = ext || '.styl';
-  return fs.readdirSync(dir).filter(function(file){
+  return fs.readdirSync(dir).filter(function(file) {
     return ~file.indexOf(ext);
-  }).map(function(file){
+  }).map(function(file) {
     return file.replace(ext, '');
   });
 }
 
-function readFile(path){
+function readFile(path) {
   return normalizeContent(fs.readFileSync(path, 'utf-8'));
 }
 
-function normalizeName(name){
+function normalizeName(name) {
   return name.replace(/[-.]/g, ' ');
 }
 
-function normalizeContent(str){
+function normalizeContent(str) {
   return str.replace(/\r/g, '').trim();
 }
