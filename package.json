@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "jscoverage": "~0.6.0",
-    "mocha": "^5.2.0",
+    "mocha": "^8.0.1",
     "should": "^13.2.3"
   },
   "bugs": {
