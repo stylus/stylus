@@ -71,3 +71,12 @@
   test8: -0.707106781;
   test9: -0.5;
 }
+.math_atan {
+  test1: 45deg;
+}
+.math_asin {
+  test1: 44.999999985deg;
+}
+.math_acos {
+  test1: 45.000000015deg;
+}
