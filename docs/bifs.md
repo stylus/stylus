@@ -739,10 +739,10 @@ Join the given `vals` with `delim`.
 
 The `split()` method splits a string or ident into a list of strings by separating the string into substrings.
 
-    split(_, bar1_bar2_bar3)
+    split('_', bar1_bar2_bar3)
     // => bar1 bar2 bar3
 
-    split(_, 'bar1_bar2_bar3')
+    split('_', 'bar1_bar2_bar3')
     // => 'bar1' 'bar2' 'bar3'
 
 
