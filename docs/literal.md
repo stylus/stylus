@@ -8,14 +8,16 @@ permalink: docs/literal.html
  If for any reason Stylus cannot accommodate a specific need, you can always resort to literal CSS with `@css`:
  
      
-     @css {
-       body {
-         font: 14px;
-       }
-     }
-
+    @css {
+        .ie-opacity {
+            filter: progid:DXImageTransform.Microsoft.Alpha(opacity=25);
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=25)";
+        }
+    }
+    
 Compiling to:
 
-    body {
-      font: 14px;
+    .ie-opacity {        
+            filter: progid:DXImageTransform.Microsoft.Alpha(opacity=25);
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=25)";
     }

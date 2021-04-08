@@ -1,0 +1,74 @@
+@supports (display: flex) {
+  div {
+    display: flex;
+  }
+}
+@supports ((transition-property: color !important)) {
+  body {
+    color: #00f;
+  }
+}
+@supports ((transition-property: color) or (animation-name: foo)) and (transform: rotate(10deg)) {
+  body {
+    color: #f00;
+  }
+}
+@supports not (display: flex) {
+  body {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    color: #000;
+  }
+  #navigation {
+    width: 25%;
+  }
+  #article {
+    width: 75%;
+  }
+}
+@supports (display: flex) {
+  body {
+    color: #008000;
+  }
+}
+@supports (display: flex) {
+  body {
+    background: #0c0;
+  }
+}
+@supports (display: flex) {
+  body {
+    color: #ff0;
+  }
+}
+@supports (foo: 1) {
+  body {
+    foo: 1;
+  }
+}
+@supports (foo: 2) {
+  body {
+    foo: 2;
+  }
+}
+@supports (foo: 3) {
+  body {
+    foo: 3;
+  }
+}
+@supports (display: flex) {
+  body {
+    color: #000;
+  }
+}
+@supports ((background-blend-mode: normal) and (not (mask-type: alpha))) {
+  select {
+    padding: 9px 16px 9px 10px;
+  }
+}
+@supports (-webkit-font-feature-settings: "smcp", "c2sc") {
+  body {
+    color: #f00;
+  }
+}

@@ -63,6 +63,14 @@ body {
   display: -ms-flex;
   display: flex;
 }
+@media print {
+  body {
+    display: block;
+    foo: -webkit-something(4px);
+    foo: -moz-something(4px);
+    foo: something(4px);
+  }
+}
 @-moz-keyframes foo {
   0% {
     display: -moz-flex;

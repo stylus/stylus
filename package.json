@@ -1,7 +1,7 @@
 {
   "name": "stylus",
   "description": "Robust, expressive, and feature-rich CSS superset",
-  "version": "0.45.1",
+  "version": "0.54.5",
   "author": "TJ Holowaychuk <tj@vision-media.ca>",
   "keywords": [
     "css",
@@ -11,7 +11,10 @@
     "jade",
     "language"
   ],
-  "repository": "git://github.com/LearnBoost/stylus",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/stylus/stylus"
+  },
   "main": "./index.js",
   "browserify": "./lib/browserify.js",
   "engines": {
@@ -22,19 +25,30 @@
   },
   "scripts": {
     "prepublish": "npm prune",
-    "test": "mocha test/ test/middleware/ --require should --bail --reporter dot",
+    "test": "mocha test/ test/middleware/ --require should --bail --check-leaks --reporter dot",
     "test-cov": "mocha test/ test/middleware/ --require should --bail --reporter html-cov > coverage.html"
   },
   "dependencies": {
-    "css-parse": "1.7.x",
-    "mkdirp": "0.3.x",
-    "debug": "*",
-    "sax": "0.5.x",
-    "glob": "3.2.x"
+    "css-parse": "~2.0.0",
+    "debug": "~3.1.0",
+    "glob": "~7.1.2",
+    "mkdirp": "~0.5.x",
+    "sax": "~1.2.4",
+    "source-map": "~0.7.2"
   },
   "devDependencies": {
-    "should": "*",
-    "mocha": "*",
-    "jscoverage": "0.3.8"
-  }
+    "should": "~13.2.1",
+    "mocha": "~5.0.1",
+    "jscoverage": "~0.6.0"
+  },
+  "bugs": {
+    "url": "https://github.com/stylus/stylus/issues"
+  },
+  "homepage": "https://github.com/stylus/stylus",
+  "directories": {
+    "doc": "docs",
+    "example": "examples",
+    "test": "test"
+  },
+  "license": "MIT"
 }

@@ -1,0 +1,42 @@
+.test1 {
+  color: rgba(255,255,255,0);
+}
+.test2 {
+  color: #000;
+}
+.test3 {
+  color: rgba(0,0,0,0.5);
+}
+.test4 {
+  color: rgba(255,255,255,0.5);
+}
+.test5 {
+  color: rgba(255,255,255,0.25);
+}
+.test6 {
+  color: rgba(255,0,0,0.5);
+}
+.test7 {
+  color: rgba(0,124,104,0.26);
+}
+.test8 {
+  color: rgba(87,0,55,0.77);
+}
+.test9 {
+  color: rgba(14,255,80,0.43);
+}
+.test10 {
+  color: rgba(47,229,79,0.5);
+}
+.test11 {
+  color: rgba(74,74,74,0.7);
+}
+.test12 {
+  color: rgba(183,183,183,0.7);
+}
+.test13 {
+  color: rgba(145,0,129,0.67);
+}
+.test14 {
+  color: rgba(0,72,108,0.76);
+}

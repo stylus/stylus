@@ -1,0 +1,47 @@
+grid-use-placeholders   =   true
+grid-old-ie-delta       =   -0.00031
+grid-decimals           =   4
+grid-columns            =   12
+grid-wrapper            =   950px
+grid-gutter             =   24px
+grid-push               =   true
+grid-pull               =   true
+grid-breakpoints        =   {
+  small: '(min-width: 35.5em)'
+  medium: '(min-width: 48em)'
+  large: '(min-width: 64em)'
+}
+ 
+beginning = grid-use-placeholders ? '$' : '.'
+ 
+calcColumnWidth(i, adjust = 0)
+    return unit(floor((i / grid-columns + adjust) * 100, grid-decimals), '%')
+ 
+convertNumberToWord(num)
+    for word, i in zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty twentyone twentytwo twentythree twentyfour
+        if num is i
+            return word
+ 
+ 
+.column,
+$column
+  test: test
+ 
+ 
+for key, i in keys(grid-breakpoints)
+    value = values(grid-breakpoints)[i]
+    media = 'screen and ' + value
+ 
+    @media media
+        for i in 1..grid-columns
+            $lol,
+            {beginning + key + '-' + convertNumberToWord(i)}
+                @extends {beginning}column
+                width: calcColumnWidth(i)
+                *width: calcColumnWidth(i, grid-old-ie-delta)
+ 
+.sidebar
+    @extends {beginning + 'small-five'}
+ 
+.wrapper
+    @extends {beginning + 'small-seven'}

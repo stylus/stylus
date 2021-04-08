@@ -21,6 +21,8 @@
 @namespace svg "http://www.w3.org/2000/svg"
 @namespace "foo" if true
 @namespace foo   "http://example.com/foo";
+@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+@namespace url("http://www.w3.org/1999/xhtml");
 
 @region div.region:first-of-type
   p
@@ -37,10 +39,6 @@
   @viewport
     width: device-width;
 
-@supports (display: flex)
-  div
-    display: flex;
-
 foo(i)
   a = 'bar'
   @foo {a}{i} {
@@ -49,3 +47,22 @@ foo(i)
 
 for i in 1..5
   foo(i)
+
+foo()
+  width: 1000px
+
+  for i in 1..2
+    @font-face
+      font-family: 'Arial-' + i
+
+.foo
+  foo()
+
+@foo
+  $bar
+    color: red
+
+@foo bar baz
+
+.bar
+  @extend $bar

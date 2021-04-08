@@ -161,6 +161,14 @@
     color: #008000;
   }
 }
+div {
+  color: #00f;
+}
+@keyframes lol {
+  from {
+    color: #f00;
+  }
+}
 @-moz-keyframes foo {
   from {
     width: 100%;
@@ -222,5 +230,18 @@
   }
   100% {
     color: #ff0;
+  }
+}
+@keyframes foo {
+  0% {
+    color: #f00;
+  }
+  100% {
+    color: #00f;
+  }
+}
+@keyframes foo {
+  0% {
+    bar: baz;
   }
 }

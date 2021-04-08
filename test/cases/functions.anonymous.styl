@@ -1,0 +1,11 @@
+mixin(add) {
+  mul = @(c, d) {
+    c * d
+  }
+  width: add(2, 3) + mul(4, 5)
+}
+
+body
+  mixin(@(a, b) {
+    return a + b;
+  })

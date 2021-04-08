@@ -21,15 +21,15 @@ Compiles to:
 Variables can even consist of an expression list:
 
     font-size = 14px
-    font = font-size "Lucida Grande", Arial
+    font-stack = "Lucida Grande", Arial, sans-serif
 
     body
-      font font sans-serif
+      font font-size font-stack
 
 Compiles to:
 
     body {
-      font: 14px "Lucida Grande", Arial sans-serif;
+      font: 14px "Lucida Grande", Arial, sans-serif;
     }
 
 Identifiers (variable names, functions, etc.) may also include the `$` character. For example:

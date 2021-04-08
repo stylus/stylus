@@ -9,4 +9,31 @@ body {
 a {
   font: 11px Impact, 'Lucida Grande', Arial, sans-serif, serif;
   border: 1px solid #fff;
+  color: #fff;
+  background: 10px #ddd;
+  margin: 14px;
+}
+@media screen and (max-width: 1024px) {
+  a {
+    background: 20px #ccc;
+  }
+}
+a.margins,
+em {
+  padding: 10px 20px;
+  margins: 10px 20px 30px 40px;
+}
+a.margins-pin,
+em-pin {
+  absolute: top -11px;
+  background-color: #ddd;
+  top: 10px;
+}
+.test {
+  background-color: #ddd;
+  height: 10px;
+  line-height: 10px;
+}
+.test_some {
+  color: #f00;
 }

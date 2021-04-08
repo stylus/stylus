@@ -1,0 +1,74 @@
+@supports (display: flex)
+  div
+    display: flex;
+
+@supports ((transition-property color !important))
+  body
+    color: blue
+
+@supports ((transition-property color) or (animation-name: foo)) and (transform: rotate(10deg))
+  body
+    color: red
+
+feature = flex
+@supports not ( {'dis' + 'play'}: feature ) {
+  body {
+    width: 100%;
+    height: 100%;
+    background: white;
+    color: black;
+  }
+
+  #navigation {
+    width: 25%;
+  }
+  #article {
+    width: 75%;
+  }
+}
+
+cond = '(display: flex)'
+
+@supports cond {
+  body {
+    color: green;
+  }
+}
+
+obj = {
+  cond: cond
+}
+
+@supports obj.cond {
+  body {
+    background: #0c0;
+  }
+}
+
+if true
+  @supports (display: flex)
+    body
+      color: yellow
+
+for i in 1..3
+  @supports (foo: i)
+    body
+      foo: i
+
+body
+  @supports (display: flex)
+    color: black
+
+@supports (display: flex) {
+  body {
+    /* comment */
+  }
+}
+
+@supports ( (background-blend-mode: normal) and ( not ( mask-type: alpha) ) )
+  select
+    padding: 9px 16px 9px 10px
+
+@supports (-webkit-font-feature-settings: "smcp", "c2sc")
+  body
+    color: red

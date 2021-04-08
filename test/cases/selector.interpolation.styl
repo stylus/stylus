@@ -50,7 +50,7 @@ for selector in selectors
       padding: 0
 
 .foo_hack
-  &{",x::-moz-focus-inner"}
+  &{",/x::-moz-focus-inner"}
     padding: 0
 
 .foo_hack2
@@ -62,4 +62,8 @@ for selector in selectors
     width: 10px
 
   .bar_escaped_comma{'[title^=\,\&z\,]'}
+    width: 10px
+
+.wrapper
+  {'.foo, .bar'}
     width: 10px

@@ -43,6 +43,31 @@ Yielding:
       }
     }
 
+## Nested media queries
+
+You can nest `@media`s one into another and they would combine into one:
+
+    @media (max-width: 500px)
+      .foo
+        color: #000
+
+      @media (min-width: 100px), (min-height: 200px)
+        .foo
+          color: #100
+
+Would yield to
+
+    @media (max-width: 500px) {
+      .foo {
+        color: #000;
+      }
+    }
+    @media (max-width: 500px) and (min-width: 100px), (max-width: 500px) and (min-height: 200px) {
+      .foo {
+        color: #100;
+      }
+    }
+
 ## Interpolations and variables
 
 You can use both interpolations and variables inside media queries, so it is possible to do things like this:

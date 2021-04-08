@@ -33,3 +33,8 @@
     height: 50px;
   }
 }
+@media only screen and (min-width: 400px) {
+  .baz {
+    min-width: 400px;
+  }
+}

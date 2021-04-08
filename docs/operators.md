@@ -73,7 +73,17 @@ With:
 
 ### Subscript []
 
- The subscript operator allows us to grab a value inside an expression via index. Parenthesized expressions may act as tuples (e.g. `(15px 5px)`, `(1 2 3)`).
+ The subscript operator allows us to grab a value inside an expression via index (zero-based).
+ Negative index values starts with the last element in the expression.
+
+     list = 1 2 3
+     list[0]
+     // => 1
+
+     list[-1]
+     // => 3
+
+ Parenthesized expressions may act as tuples (e.g. `(15px 5px)`, `(1 2 3)`).
  
  Below is an example that uses tuples for error handling (and showcasing the versatility of this construct):
  
@@ -111,6 +121,9 @@ With:
 
      1...5
      // => 1 2 3 4
+
+     5..1
+     // => 5 4 3 2 1
 
 ### Additive: + -
 
@@ -425,7 +438,7 @@ The ternary operator works as we would expect in most languages. It's the only o
 
 ## Casting
 
- As an terse alternative to the `unit()` built-in function, the syntax `(expr) unit` may be used to force the suffix. 
+ As a terse alternative to the `unit()` built-in function, the syntax `(expr) unit` may be used to force the suffix. 
 
     body
       n = 5

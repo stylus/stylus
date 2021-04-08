@@ -1,0 +1,15 @@
+.column,
+.sidebar,
+.wrapper {
+  test: test;
+}
+@media screen and (min-width: 35.5em) {
+  .sidebar {
+    width: 41.6666%;
+    *width: 41.6356%;
+  }
+  .wrapper {
+    width: 58.3333%;
+    *width: 58.3023%;
+  }
+}

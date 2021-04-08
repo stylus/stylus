@@ -11,5 +11,7 @@ body {
   foo: 2in;
   foo: 50cm;
   foo: 12.834645669291339pt;
+  foo: bar10px;
+  foo: bar10em;
+  foo: bar10;
 }
-

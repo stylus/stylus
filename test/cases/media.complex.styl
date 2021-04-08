@@ -52,9 +52,9 @@ for column in 1 2 3
     .foo
       width: 20px
 
-condition = all
+condition = 'all and (width: 100px)'
 
-@media condition and (width: 100px)
+@media condition
   body
     width: 10px
 
@@ -98,3 +98,138 @@ a = 'desktop'
 @media breakpoints[a]['max']
   body
     color: blue
+
+foo()
+  width: 1000px
+
+  for i in 1..2
+    @media (min-width: 2**(i+7)px)
+      width: 100px*i
+
+.foo
+  foo()
+
+@media breakpoints[a]['max'] {
+  body {
+    color: blue
+  }
+}
+
+@media (min-width: 400px)
+  @media (-webkit-min-device-pixel-ratio: 1.5)
+    .button
+      background: url(button@2x.png)
+
+@media (max-width: 500px)
+  .foo
+    color: #000
+
+  @media (min-width: 100px)
+    .foo
+      color: #100
+
+@media print
+  .foo
+    color: red
+
+  @media not print
+    .foo
+      color: blue
+
+body
+  @media print
+    color: red
+
+    @media (min-width: 500px), (max-width: 1000px)
+      width: 100%
+
+@media screen
+  .sidebar, .header, .footer
+    @media (orientation: landscape)
+      width: 650px;
+
+@media only screen
+  @media (min-width: 800px)
+    @media (-webkit-min-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 13/10), (min-resolution: 120dpi), (min-resolution: 1.3dppx)
+      body
+        color: red
+
+@media screen
+  foo()
+    body
+      color: red
+
+  foo()
+
+bluefy()
+  @media (height 100px)
+    color blue
+
+@media (width 100px)
+  .x
+    color red
+    bluefy()
+
+bar(width)
+  @media (width width)
+    body
+      color red
+
+@media screen
+  if true
+    bar(500px)
+
+link = '&:link, &:visited'
+
+ul
+  &.left
+    li
+      a
+        {link}
+          color: blue
+          @media only screen and (max-width: 699px)
+            border-right: 0
+
+a = 'all and (-webkit-min-device-pixel-ratio:1.5),(min--moz-device-pixel-ratio:1.5),(-o-min-device-pixel-ratio:1.5/1),(min-device-pixel-ratio:1.5),(min-resolution:138dpi),(min-resolution:1.5dppx)'
+@media screen
+  @media a
+    body
+      color: red
+
+background-mix() {
+  background-color: #fff;
+  @media only screen {
+    @media (min-width: 100px) {
+      @media (max-width: 500px) {
+        color: blue;
+      }
+      background-color: #000;
+    }
+  }
+}
+
+body {
+  background-mix()
+}
+
+.foo
+  for j in 8..10
+    @media (min-width: (1200 / 16 * j / 10)em)
+      @media (min-height: (780 / 16 * j / 10)em)
+        font-size: (j / 10)em
+
+mixin()
+  $placeholder-print
+    $background
+      background-color: purple
+  .test
+    @extend $placeholder-print $background
+
+@media print
+  mixin()
+
+@media print
+  @import 'print.css'
+  @css {
+    body { color: red }
+  }

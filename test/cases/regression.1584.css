@@ -1,0 +1,7 @@
+@font-face {
+  font-family: "foo";
+  font-weight: normal;
+  font-style: normal;
+  src: url("foo.eot");
+  src: local("foo"), url("foo.eot?#iefix") format('embedded-opentype'), url("foo.woff") format('woff'), url("foo.ttf") format('truetype'), url("foo.svg#foo") format('svg');
+}

@@ -34,7 +34,7 @@
     background-color: #bf5340;
   }
 }
-@media all and (min-width: 100px), only print and (width: 100px), (monochrome) {
+@media all and (min-width: 100px /* foo */), only print and (width: 100px), (monochrome) {
   body {
     color: #0c0;
   }
@@ -73,4 +73,137 @@
   body {
     color: #00f;
   }
+}
+.foo {
+  width: 1000px;
+}
+@media (min-width: 256px) {
+  .foo {
+    width: 100px;
+  }
+}
+@media (min-width: 512px) {
+  .foo {
+    width: 200px;
+  }
+}
+@media only screen and (max-width: 1020px) {
+  body {
+    color: #00f;
+  }
+}
+@media (min-width: 400px) and (-webkit-min-device-pixel-ratio: 1.5) {
+  .button {
+    background: url("button@2x.png");
+  }
+}
+@media (max-width: 500px) {
+  .foo {
+    color: #000;
+  }
+}
+@media (max-width: 500px) and (min-width: 100px) {
+  .foo {
+    color: #100;
+  }
+}
+@media print {
+  .foo {
+    color: #f00;
+  }
+}
+@media print {
+  body {
+    color: #f00;
+  }
+}
+@media print and (min-width: 500px), print and (max-width: 1000px) {
+  body {
+    width: 100%;
+  }
+}
+@media screen and (orientation: landscape) {
+  .sidebar,
+  .header,
+  .footer {
+    width: 650px;
+  }
+}
+@media only screen and (min-width: 800px) and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min-width: 800px) and (-o-min-device-pixel-ratio: 13/10), only screen and (min-width: 800px) and (min-resolution: 120dpi), only screen and (min-width: 800px) and (min-resolution: 1.3dppx) {
+  body {
+    color: #f00;
+  }
+}
+@media screen {
+  body {
+    color: #f00;
+  }
+}
+@media (width: 100px) {
+  .x {
+    color: #f00;
+  }
+}
+@media (width: 100px) and (height: 100px) {
+  .x {
+    color: #00f;
+  }
+}
+@media screen and (width: 500px) {
+  body {
+    color: #f00;
+  }
+}
+ul.left li a:link,
+ul.left li a:visited {
+  color: #00f;
+}
+@media only screen and (max-width: 699px) {
+  ul.left li a:link,
+  ul.left li a:visited {
+    border-right: 0;
+  }
+}
+@media screen and (min--moz-device-pixel-ratio: 1.5), screen and (-o-min-device-pixel-ratio: 1.5/1), screen and (min-device-pixel-ratio: 1.5), screen and (min-resolution: 138dpi), screen and (min-resolution: 1.5dppx) {
+  body {
+    color: #f00;
+  }
+}
+body {
+  background-color: #fff;
+}
+@media only screen and (min-width: 100px) {
+  body {
+    background-color: #000;
+  }
+}
+@media only screen and (min-width: 100px) and (max-width: 500px) {
+  body {
+    color: #00f;
+  }
+}
+@media (min-width: 60em) and (min-height: 39em) {
+  .foo {
+    font-size: 0.8em;
+  }
+}
+@media (min-width: 67.5em) and (min-height: 43.875em) {
+  .foo {
+    font-size: 0.9em;
+  }
+}
+@media (min-width: 75em) and (min-height: 48.75em) {
+  .foo {
+    font-size: 1em;
+  }
+}
+@media print {
+  .test {
+    background-color: #800080;
+  }
+}
+@media print {
+@import 'print.css';
+
+  body { color: red }
 }

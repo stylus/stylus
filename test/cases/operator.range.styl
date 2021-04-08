@@ -18,8 +18,11 @@ body
   foo large[length(large) - 1]
   foo reversed[length(reversed) - 1]
   
-  foo small[-1] == null
+  foo small[-1] == 5
   foo small[123123] == null
+
+  small[-1..-2] = 'foo'
+  foo small[-1..-2] == ('foo' 'foo')
 
 body
   start = 1

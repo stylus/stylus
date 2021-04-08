@@ -1,7 +1,10 @@
 .popup {
-  box-shadow: 0 -2px 2px #525f7a, 0 -10px 10px #29303d, 0 0 15px #000, inset 0 5px 1px rgba(5,19,46,0.4), inset 0 0 5px rgba(5,19,46,0.1), inset 0 20px 15px #fff, inset 0 1px 0 #000, inset 0 -50px 50px -40px rgba(5,19,46,0.3), inset 0 -1px 0px #29303d, inset 0 -2px 0px #525f7a, inset 0 -2px 1px #94a0b8, inset 0 -3px 0px #679, inset 0 -4px 0px #679, inset 0 -5px 0px #a3adc2, inset 0 -5px 1px #679, inset 0 -6px 0px #8592ad, inset 0 -7px 0px #8592ad, inset 0 -8px 0px #c2c9d6, inset 0 -8px 1px #a3adc2, inset 0 -9px 0px #fff, inset 0 -20px 20px rgba(5,19,46,0.15), inset 25px 20px 15px rgba(82,95,122,0.1), inset 50px 20px 50px rgba(82,95,122,0.1);
+  box-shadow: 0 -2px 2px #525f7a, 0 -10px 10px #29303d, 0 0 15px #000, inset 0 5px 1px rgba(5,19,46,0.4), inset 0 0 5px rgba(5,19,46,0.1), inset 0 20px 15px #fff, inset 0 1px 0 #000, inset 0 1px 0 #000, inset 0 -50px 50px -40px rgba(5,19,46,0.3), inset 0 -1px 0px #29303d, inset 0 -2px 0px #525f7a, inset 0 -2px 1px #94a0b8, inset 0 -3px 0px #679, inset 0 -4px 0px #679, inset 0 -5px 0px #a3adc2, inset 0 -5px 1px #679, inset 0 -6px 0px #8592ad, inset 0 -7px 0px #8592ad, inset 0 -8px 0px #c2c9d6, inset 0 -8px 1px #a3adc2, inset 0 -9px 0px #fff, inset 0 -20px 20px rgba(5,19,46,0.15), inset 25px 20px 15px rgba(82,95,122,0.1), inset 50px 20px 50px rgba(82,95,122,0.1);
   foo: 'bar';
 }
 body {
   font-families: Helvetica, Arial, sans-serif;
+}
+body {
+  foo: 'bar';
 }

@@ -89,13 +89,6 @@ percent-to-decimal(n)
   else
     n
 
-// color components
-
-alpha(color) { component(hsl(color), 'alpha') }
-hue(color) { component(hsl(color), 'hue') }
-saturation(color) { component(hsl(color), 'saturation') }
-lightness(color) { component(hsl(color), 'lightness') }
-
 // check if n is an odd number
 
 odd(n)
@@ -139,7 +132,7 @@ darken(color, amount)
 lighten(color, amount)
   adjust(color, 'lightness', amount)
 
-// decerase opacity by amount
+// decrease opacity by amount
 
 fade-out(color, amount)
   color - rgba(black, percent-to-decimal(amount))
@@ -186,7 +179,7 @@ mix(color1, color2, weight = 50%)
     push(rgb, floor(pair[0] * w1 + pair[1] * w2))
 
   a1 = alpha(color1) * p
-  a2 = alpha(color1) * (1 - p)
+  a2 = alpha(color2) * (1 - p)
   alpha = a1 + a2
 
   rgba(rgb[0], rgb[1], rgb[2], alpha)
@@ -195,10 +188,7 @@ mix(color1, color2, weight = 50%)
 
 invert(color = '')
   if color is a 'color'
-    r = 255 - red(color)
-    g = 255 - green(color)
-    b = 255 - blue(color)
-    rgba(r,g,b,alpha(color))
+    rgba(#fff - color, alpha(color))
   else
     unquote( "invert(" + color + ")" )
 
@@ -294,3 +284,14 @@ cache()
     /$cache_placeholder_for_{$id}
       $stylus_mixin_cache[$key] = $id
       {block}
+
+// Percentage function to convert a number, e.g. ".45", into a percentage, e.g. "45%"
+
+percentage(num)
+  return unit(num * 100, '%')
+
+// Returns the position of a `value` within a `list`
+
+index(list, value)
+  for val, i in list
+    return i if val == value

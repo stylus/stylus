@@ -92,3 +92,34 @@ foo = {
 .test
   {foo}
   baz: foo.padding
+
+button = {
+  width: 400px,
+  box-shadow: 1px 1px 1px #000 \, 1px 1px 1px #0c0
+}
+
+.button
+  {button}
+
+mixin(content)
+  {content}
+
+body
+  mixin({ left: 0.5px })
+
+bar($baz)
+  {$baz}
+
+.test
+  $foo = 10px, 20px
+  bar({
+    box-shadow: $foo
+  })
+
+bar($baz)
+  {$baz}
+
+.test
+  bar({
+    box-shadow: inset 0 0 0 1px rgba(#000,0.05)
+  })

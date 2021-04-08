@@ -1,6 +1,8 @@
 .lol,
 .foo__child,
-.sub__child {
+.sub__child,
+.foo2__child,
+.sub2__child {
   height: 20px;
 }
 .foo,

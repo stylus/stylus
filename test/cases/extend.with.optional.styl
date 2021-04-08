@@ -1,0 +1,12 @@
+.tester
+  color #FFF
+
+$tester2
+  font-size 12px
+
+$tester3
+  border-radius 1px
+
+.end
+  @extend .tester !optional, notExist1 !optional, $notExist2 !optional, $tester2 !optional, {'$test' + 'er3'} !optional
+  border #AAA

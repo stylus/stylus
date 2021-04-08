@@ -14,6 +14,12 @@
                             0%
                           ), 
 
+    inset 0 1px 0         hsl(
+                            219
+                          , 20%
+                          , 0%
+                          ),
+
     inset 0 -50px 50px -40px hsla(220, 80%, 10%, .3),
 
     inset 0 -1px 0px      hsl(220, 20%, 20%),
@@ -41,3 +47,21 @@ families = Helvetica,
 
 body
   font-families: families
+
+a = {}
+
+bar(obj, bool)
+  obj.params = { foo: 'bar' }
+
+baz(params)
+  body
+    foo: params.foo
+
+foo()
+  if true
+    bar(a,
+      true)
+
+  baz(a.params)
+
+foo()

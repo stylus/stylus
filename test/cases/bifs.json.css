@@ -1,4 +1,4 @@
-@media screen and (min-width:1px) and (max-width:400px) {
+@media screen and (min-width: 1px) and (max-width: 400px) {
   body {
     display: none;
     color: #a27400;
@@ -13,7 +13,7 @@
     text-shadow: 0 1px rgba(0,0,0,0.5);
   }
 }
-@media screen and (min-width:1501px) {
+@media screen and (min-width: 1501px) {
   body {
     -webkit-transition: width 1s ease-out;
   }
@@ -39,4 +39,10 @@ body {
   margin: 20px;
   -webkit-transition: width 1s ease-out;
   border: #f00;
+}
+.icon {
+  content: '';
+}
+body {
+  test: true;
 }

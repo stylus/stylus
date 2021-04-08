@@ -7,3 +7,7 @@
 #baz .hide .stuff {
   display: none;
 }
+.foo h1,
+.foo h2 {
+  color: #f00;
+}

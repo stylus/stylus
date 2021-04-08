@@ -1,16 +1,23 @@
-# Stylus [![Build Status](https://travis-ci.org/LearnBoost/stylus.svg?branch=master)](https://travis-ci.org/LearnBoost/stylus)
+# Stylus [![Build Status](https://travis-ci.org/stylus/stylus.svg?branch=master)](https://travis-ci.org/stylus/stylus)
 
  Stylus is a revolutionary new language, providing an efficient, dynamic, and expressive way to generate CSS. Supporting both an indented syntax and regular CSS style.
 
 ## Installation
 
 ```bash
-$ npm install stylus
+$ npm install stylus -g
 ```
+
+## Basic Usage
+Watch and compile a stylus file from command line with 
+```bash
+stylus -w style.styl -o style.css
+```
+You can also [try all stylus features on stylus-lang.com](http://stylus-lang.com/try.html), build something with stylus on [codepen](http://codepen.io) or integrate stylus with [gulp](http://gulpjs.com/) using [gulp-stylus](https://www.npmjs.com/package/gulp-stylus) or [gulp-accord](https://www.npmjs.com/package/gulp-accord).
 
 ### Example
 
-```
+```stylus
 border-radius()
   -webkit-border-radius: arguments
   -moz-border-radius: arguments
@@ -46,7 +53,7 @@ form input {
 
 the following is equivalent to the indented version of Stylus source, using the CSS syntax instead:
 
-```
+```stylus
 border-radius() {
   -webkit-border-radius: arguments
   -moz-border-radius: arguments
@@ -103,46 +110,54 @@ form input {
   - TextMate [bundle](docs/textmate.md)
   - Coda/SubEtha Edit [Syntax mode](https://github.com/atljeremy/Stylus.mode)
   - gedit [language-spec](docs/gedit.md)
-  - VIM [Syntax](https://github.com/wavded/vim-stylus)
+  - VIM [Syntax](https://github.com/iloginow/vim-stylus)
+  - Espresso [Sugar](https://github.com/aljs/Stylus.sugar)
   - [Firebug extension](docs/firebug.md)
-  - heroku [web service](http://styl.heroku.com) for compiling stylus
+  - heroku [web service](http://styl.herokuapp.com/) for compiling stylus
   - [style guide](https://github.com/lepture/ganam) parser and generator
   - transparent vendor-specific function expansion
 
 ### Community modules
 
-  - https://github.com/LearnBoost/stylus/wiki
+  - https://github.com/stylus/stylus/wiki
 
 ### Framework Support
 
    - [Connect](docs/middleware.md)
    - [Play! 2.0](https://github.com/patiencelabs/play-stylus)
-   - [Ruby On Rails](https://github.com/lucasmazza/ruby-stylus)
+   - [Ruby On Rails](https://github.com/forgecrafted/ruby-stylus-source)
    - [Meteor](http://docs.meteor.com/#stylus)
+   - [Grails](http://grails.org/plugin/stylus-asset-pipeline)
+   - [Derby](https://github.com/derbyjs/derby-stylus)
+   - [Laravel](https://laravel.com/docs/5.5/mix#stylus)
 
 ### CMS Support
 
-   - [DocPad](https://github.com/bevry/docpad)
+   - [DocPad](https://github.com/docpad/docpad)
    - [Punch](https://github.com/laktek/punch-stylus-compiler)
 
 ### Screencasts
 
-  - [Stylus Intro](http://screenr.com/bNY)
-  - [CSS Syntax & Postfix Conditionals](http://screenr.com/A8v)
+  - [Stylus Intro](http://www.screenr.com/bNY)
+  - [CSS Syntax & Postfix Conditionals](http://www.screenr.com/A8v)
 
 ### Authors
 
-  - [TJ Holowaychuk (visionmedia)](http://github.com/visionmedia)
+  - [TJ Holowaychuk (tj)](https://github.com/tj)
 
 ### More Information
 
   - Language [comparisons](docs/compare.md)
 
+## Code of Conduct
+
+Please note that this project is released with a [Contributor Code of Conduct](Code_of_Conduct.md). By participating in this project you agree to abide by its terms.
+
 ## License 
 
 (The MIT License)
 
-Copyright (c) 2010 LearnBoost &lt;dev@learnboost.com&gt;
+Copyright (c) Automattic &lt;developer.wordpress.com&gt;
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

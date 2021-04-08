@@ -1,0 +1,10 @@
+.test
+  test1: contrast(#000).ratio
+  test2: contrast(#fff, white).ratio
+  test3: contrast(red, lime).ratio
+  test4: contrast(#000, rgba(#FFF, 0.5)).ratio
+  test4_min: contrast(#000, rgba(#FFF, 0.5)).min
+  test4_max: contrast(#000, rgba(#FFF, 0.5)).max
+  test5: contrast(hsla(200,50%,50%,1), hsla(200,0%,00%,1)).ratio
+  filter: contrast()
+  filter: contrast(200%)

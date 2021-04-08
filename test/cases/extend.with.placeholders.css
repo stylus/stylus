@@ -45,3 +45,21 @@ a.error:hover {
 .boo {
   background: #f00;
 }
+#thing .blurg {
+  display: none;
+}
+#thing .blurg,
+#thing .goomba {
+  visibility: hidden;
+}
+.foo,
+.bar {
+  padding: 0;
+}
+@media screen {
+  #a article,
+  .test,
+  .blurg {
+    padding-bottom: 67px;
+  }
+}

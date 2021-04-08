@@ -1,0 +1,15 @@
+@media screen and (max-width: 499px) {
+  .foo {
+    width: 200px;
+  }
+}
+@media screen and (min-width: 500px) {
+  .foo {
+    width: 50%;
+  }
+}
+@media screen and (min-width: 900px) {
+  .foo {
+    width: 25%;
+  }
+}

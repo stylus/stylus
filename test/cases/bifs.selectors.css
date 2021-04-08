@@ -1,0 +1,12 @@
+.a .b__c {
+  foo: '.a';
+  bar: '& .b';
+  baz: '&__c';
+}
+.a .c .d,
+.b .c .d {
+  test: '.a,.b', '& .c', '& .d';
+}
+.wrapper > figure {
+  test: '.wrapper', '& > figure';
+}

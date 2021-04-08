@@ -1,0 +1,11 @@
+.test {
+  test1: 21;
+  test2: 1;
+  test3: 2.9;
+  test4: 13.15;
+  test4_min: 5.3;
+  test4_max: 21;
+  test5: 6.3;
+  filter: contrast();
+  filter: contrast(200%);
+}

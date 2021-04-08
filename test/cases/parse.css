@@ -1,6 +1,7 @@
 /** main **/
 body {
   color: #f00;
+  border: 1px solid #00f;
 }
 body {
   color: #00f;
@@ -17,4 +18,53 @@ body .nested {
 body {
   color: #f00;
   width: 100px;
+}
+body {
+  color: #666;
+}
+a:hover {
+  color: #333;
+}
+h1 {
+  font-family: 'Economica', sans-serif;
+}
+a:hover {
+  color: #000;
+}
+@media screen {
+  body {
+    color: #f00;
+  }
+}
+@-moz-keyframes foo {
+  from {
+    color: #f00;
+  }
+  to {
+    color: #00f;
+  }
+}
+@-webkit-keyframes foo {
+  from {
+    color: #f00;
+  }
+  to {
+    color: #00f;
+  }
+}
+@-o-keyframes foo {
+  from {
+    color: #f00;
+  }
+  to {
+    color: #00f;
+  }
+}
+@keyframes foo {
+  from {
+    color: #f00;
+  }
+  to {
+    color: #00f;
+  }
 }

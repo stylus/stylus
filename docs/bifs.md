@@ -5,52 +5,66 @@ permalink: docs/bifs.html
 
 # Built-in Functions
 
-## red(color)
+## Color Functions
 
-Return the red component of the given `color`.
+### red(color[, value])
 
-     red(#c00)
-     // => 204
+Return the red component of the given `color`, or set the red component to the optional second `value` argument.
 
-## green(color)
+    red(#c00)
+    // => 204
 
-Return the green component of the given `color`.
+    red(#000, 255)
+    // => #f00
 
-     green(#0c0)
-     // => 204
+### green(color[, value])
 
-## blue(color)
+Return the green component of the given `color`, or set the green component to the optional second `value` argument.
 
-Return the blue component of the given `color`.
+    green(#0c0)
+    // => 204
 
-     blue(#00c)
-     // => 204
+    green(#000, 255)
+    // => #0f0
 
-## alpha(color)
+### blue(color[, value])
 
-Return the alpha component of the given `color`.
+Return the blue component of the given `color`, or set the blue component to the optional second `value` argument.
 
-      alpha(#fff)
-      // => 1
+    blue(#00c)
+    // => 204
 
-      alpha(rgba(0,0,0,0.3))
-      // => 0.3
+    blue(#000, 255)
+    // => #00f
 
-## dark(color)
+### alpha(color[, value])
+
+Return the alpha component of the given `color`, or set the alpha component to the optional second `value` argument.
+
+    alpha(#fff)
+    // => 1
+
+    alpha(rgba(0,0,0,0.3))
+    // => 0.3
+
+    alpha(#fff, 0.5)
+    // => rgba(255,255,255,0.5)
+
+### dark(color)
 
 Check if `color` is dark:
 
-      dark(black)
-      // => true
+    dark(black)
+    // => true
 
-      dark(#005716)
-      // => true
+    dark(#005716)
+    // => true
 
-      dark(white)
-      // => false
+    dark(white)
+    // => false
 
 
-## light(color)
+### light(color)
 
 Check if `color` is light:
 
@@ -63,88 +77,424 @@ Check if `color` is light:
     light(#00FF40)
     // => true
 
-## hue(color)
+### hue(color[, value])
 
-Return the hue of the given `color`.
+Return the hue of the given `color`, or set the hue component to the optional second `value` argument.
 
-    hue(hsla(50deg, 100%, 80%))
+    hue(hsl(50deg, 100%, 80%))
     // => 50deg
 
-## saturation(color)
+    hue(#00c, 90deg)
+    // => #6c0
 
-Return the saturation of the given `color`.
+### saturation(color[, value])
 
-    saturation(hsla(50deg, 100%, 80%))
+Return the saturation of the given `color`, or set the saturation component to the optional second `value` argument.
+
+    saturation(hsl(50deg, 100%, 80%))
     // => 100%
 
-## lightness(color)
+    saturation(#00c, 50%)
+    // => #339
 
-Return the lightness of the given `color`.
+### lightness(color[, value])
 
-    lightness(hsla(50deg, 100%, 80%))
+Return the lightness of the given `color`, or set the lightness component to the optional second `value` argument.
+
+    lightness(hsl(50deg, 100%, 80%))
     // => 80%
 
-## push(expr, args...)
+    lightness(#00c, 80%)
+    // => #99f
 
- Push the given `args` to `expr`.
+### hsla(color | h,s,l,a)
 
-     nums = 1 2
-     push(nums, 3, 4, 5)
+Convert the given `color` to an `HSLA` node, or h,s,l,a component values.
 
-     nums
-     // => 1 2 3 4 5
+    hsla(10deg, 50%, 30%, 0.5)
+    // => HSLA
 
- Aliased as `append()`
+    hsla(#ffcc00)
+    // => HSLA
 
-## unshift(expr, args...)
+### hsl(color | h,s,l)
 
- Unshift the given `args` to `expr`.
+Convert the given `color` to an `HSLA` node, or h,s,l,a component values.
 
-     nums = 4 5
-     unshift(nums, 3, 2, 1)
+    hsl(10, 50, 30)
+    // => HSLA
 
-     nums
-     // => 1 2 3 4 5
+    hsl(#ffcc00)
+    // => HSLA
 
- Aliased as `prepend()`
+### rgba(color | r,g,b,a)
 
-## keys(pairs)
+Return `RGBA` from the r,g,b,a channels, or provide a `color` to tweak the alpha.
 
-  Return keys in the given `pairs`:
+    rgba(255,0,0,0.5)
+    // => rgba(255,0,0,0.5)
 
-     pairs = (one 1) (two 2) (three 3)
-     keys(pairs)
-     // => one two three
+    rgba(255,0,0,1)
+    // => #ff0000
 
-## values(pairs)
+    rgba(#ffcc00, 0.5)
+    // rgba(255,204,0,0.5)
 
-  Return values in the given `pairs`:
+Alternatively, Stylus supports the `#rgba` and `#rrggbbaa` notations as well:
 
-     pairs = (one 1) (two 2) (three 3)
-     values(pairs)
-     // => 1 2 3
+    #fc08
+    // => rgba(255,204,0,0.5)
 
-## typeof(node)
+    #ffcc00ee
+    // => rgba(255,204,0,0.9)
+
+### rgb(color | r,g,b)
+
+Return a `RGBA` from the r,g,b channels or cast to an `RGBA` node.
+
+    rgb(255,204,0)
+    // => #ffcc00
+
+    rgb(#fff)
+    // => #fff
+
+### blend(top[, bottom])
+
+Blends the given `top` color over the `bottom` one using the normal blending. The `bottom` argument is optional, and defaults to `#fff`.
+
+    blend(rgba(#FFF, 0.5), #000)
+    // => #808080
+
+    blend(rgba(#FFDE00,.42), #19C261)
+    // => #7ace38
+
+    blend(rgba(lime, 0.5), rgba(red, 0.25))
+    // => rgba(128,128,0,0.625)
+
+### lighten(color, amount)
+
+Lighten the given `color` by `amount`. 
+
+This function is unit-sensitive; it supports percentages, for example, as shown here:
+
+    lighten(#2c2c2c, 30)
+    // => #787878
+
+    lighten(#2c2c2c, 30%)
+    // => #393939
+
+### darken(color, amount)
+
+Darken the given `color` by `amount`.
+
+This function is unit-sensitive; it supports percentages, for example, as shown here:
+
+    darken(#D62828, 30)
+    // => #551010
+
+    darken(#D62828, 30%)
+    // => #961c1c
+
+### desaturate(color, amount)
+
+Desaturate the given `color` by `amount`.
+
+    desaturate(#f00, 40%)
+    // => #c33
+
+### saturate(color, amount)
+
+Saturate the given `color` by `amount`.
+
+    saturate(#c33, 40%)
+    // => #f00
+
+### complement(color)
+
+Gives the complementary color. Equivalent to spinning hue by `180deg`.
+
+    complement(#fd0cc7)
+    // => #0cfd42
+
+### invert(color)
+
+Inverts the color. The red, green, and blue values are inverted. Opacity is left alone.
+
+    invert(#d62828)
+    // => #29d7d7
+
+### spin(color, amount)
+
+Spins hue of the given `color` by `amount`.
+
+    spin(#ff0000, 90deg)
+    // => #80ff00
+
+### grayscale(color)
+
+Gives the grayscale equivalent of the given color. Equivalent to `desaturate(color, 100%)`.
+
+    grayscale(#fd0cc7)
+    // => #0cfd42
+
+### mix(color1, color2[, amount])
+
+Mix two colors by a given amount. The `amount` is optional and is defaulted to `50%`.
+
+    mix(#000, #fff, 30%)
+    // => #b2b2b2
+
+### tint(color, amount)
+
+Mix the given color with white.
+
+    tint(#fd0cc7,66%)
+    // => #feaceb
+
+### shade(color, amount)
+
+Mix the given color with black.
+
+    shade(#fd0cc7,66%)
+    // => #560443
+
+### luminosity(color)
+
+Returns the [relative luminance](http://www.w3.org/TR/WCAG20/#relativeluminancedef) of the given `color`.
+
+    luminosity(white)
+    // => 1
+
+    luminosity(#000)
+    // => 0
+
+    luminosity(red)
+    // => 0.2126
+
+### contrast(top[, bottom])
+
+Returns the [contrast ratio](http://www.w3.org/TR/2008/REC-WCAG20-20081211/#contrast-ratiodef) object between `top` and `bottom` colors, based on [script](https://github.com/LeaVerou/contrast-ratio/blob/gh-pages/color.js#L108) underlying “[contrast ratio](http://leaverou.github.io/contrast-ratio/)” tool by Lea Verou.
+
+The second argument is optional and is defaulted to `#fff`.
+
+The main key in the returned object is `ratio`, it also have `min` and `max` values that are different from the `ratio` only when the `bottom` color is transparent. In that case the `error` also contains an error margin.
+
+    contrast(#000, #fff).ratio
+    => 21
+    contrast(#000, rgba(#FFF, 0.5))
+    => { "ratio": "13.15;", "error": "-7.85", "min": "5.3", "max": "21" }
+
+### transparentify(top[, bottom, alpha])
+
+Returns the transparent version of the given `top` color, as if it was blend over the given `bottom` color (or the closest to it, if it is possible).
+
+The second argument is optional and is defaulted to `#fff`.
+
+The third argument is optional and overrides the autodetected alpha.
+
+    transparentify(#808080)
+    => rgba(0,0,0,0.5)
+
+    transparentify(#414141, #000)
+    => rgba(255,255,255,0.25)
+
+    transparentify(#91974C, #F34949, 0.5)
+    => rgba(47,229,79,0.5)
+
+
+## Path Functions
+
+### basename(path[, ext])
+
+Returns the basename of `path`, (optionally) with `ext` extension removed.
+
+    basename('images/foo.png')
+    // => "foo.png"
+
+    basename('images/foo.png', '.png')
+    // => "foo"
+
+### dirname(path)
+
+Returns the dirname of `path`.
+
+    dirname('images/foo.png')
+    // => "images"
+
+### extname(path)
+
+Returns the filename extension of `path` including the dot.
+
+    extname('images/foo.png')
+    // => ".png"
+
+
+### pathjoin(...)
+
+Peform a path join.
+
+    pathjoin('images', 'foo.png')
+    // => "images/foo.png"
+
+    path = 'images/foo.png'
+    ext = extname(path)
+    pathjoin(dirname(path), basename(path, ext) + _thumb + ext)
+    // => 'images/foo_thumb.png'
+
+
+## List / Hash Functions
+
+### push(expr, args...)
+
+Push the given `args` to `expr`.
+
+    nums = 1 2
+    push(nums, 3, 4, 5)
+
+    nums
+    // => 1 2 3 4 5
+
+Aliased as `append()`.
+
+### pop(expr)
+
+Pop a value from `expr`.
+
+    nums = 4 5 3 2 1
+    num = pop(nums)
+
+    nums
+    // => 4 5 3 2
+    num
+    // => 1
+
+### shift(expr)
+
+Shift an element from `expr`.
+
+    nums = 4 5 3 2 1
+    num = shift(nums)
+
+    nums
+    // => 5 3 2 1
+    num
+    // => 4
+
+### unshift(expr, args...)
+
+Unshift the given `args` to `expr`.
+
+    nums = 4 5
+    unshift(nums, 3, 2, 1)
+
+    nums
+    // => 1 2 3 4 5
+
+Aliased as `prepend()`.
+
+### index(list, value)
+
+Returns the (zero-based) index of `value` within a `list`.
+
+    list = 1 2 3
+
+    index(list, 2)
+    // => 1
+
+    index(1px solid red, red)
+    // => 2
+
+### keys(pairs)
+
+Return keys in the given `pairs`:
+
+    pairs = (one 1) (two 2) (three 3)
+    keys(pairs)
+    // => one two three
+
+### values(pairs)
+
+Return values in the given `pairs`:
+
+    pairs = (one 1) (two 2) (three 3)
+    values(pairs)
+    // => 1 2 3
+
+### list-separator(list)
+
+Return the separator of the given `list`.
+
+    list1 = a b c
+    list-separator(list1)
+    // => ' '
+
+    list2 = a, b, c
+    list-separator(list2)
+    // => ','
+
+### length([expr])
+
+Parenthesized expressions may act as tuples, the `length()` function returns the length of such expressions.
+
+    length((1 2 3 4))
+    // => 4
+
+    length((1 2))
+    // => 2
+
+    length((1))
+    // => 1
+
+    length(())
+    // => 0
+
+    length(1 2 3)
+    // => 3
+
+    length(1)
+    // => 1
+
+    length()
+    // => 0
+
+### last(expr)
+
+Return the _last_ value in the given `expr`:
+
+    nums = 1 2 3
+    last(nums)
+    last(1 2 3)
+    // => 3
+
+    list = (one 1) (two 2) (three 3)
+    last(list)
+    // => (three 3)
+
+
+
+## Unit Functions
+
+### typeof(node)
 
 Return type of `node` as a string.
 
-      type(12)
-      // => 'unit'
+    type(12)
+    // => 'unit'
 
-      typeof(12)
-      // => 'unit'
+    typeof(12)
+    // => 'unit'
 
-      typeof(#fff)
-      // => 'rgba'
+    typeof(#fff)
+    // => 'rgba'
 
-      type-of(#fff)
-      // => 'rgba'
+    type-of(#fff)
+    // => 'rgba'
 
 Aliased as `type-of` and `type`.
 
-## unit(unit[, type])
+### unit(val[, type])
 
-Return a string for the type of `unit` or an empty string,
+Return a string indicating the type of `val` or an empty string,
 or assign the given `type` without unit conversion.
 
     unit(10)
@@ -159,59 +509,57 @@ or assign the given `type` without unit conversion.
     unit(15%, px)
     // => 15px
 
-## match(pattern, string)
+### percentage(num)
 
-Test if `string` matches the given `pattern`.
+Convert a `num` to a percentage.
 
-    match('^foo(bar)?', foo)
-    match('^foo(bar)?', foobar)
-    // => true
+    percentage(.5)
+    // => 50%
 
-    match('^foo(bar)?', 'foo')
-    match('^foo(bar)?', 'foobar')
-    // => true
+    percentage(4 / 100)
+    // => 4%
 
-    match('^foo(bar)?', 'bar')
-    // => false
 
-## abs(unit)
+## Math Functions
 
-      abs(-5px)
-      // => 5px
+### abs(unit)
 
-      abs(5px)
-      // => 5px
+    abs(-5px)
+    // => 5px
 
-## ceil(unit)
+    abs(5px)
+    // => 5px
 
-      ceil(5.5in)
-      // => 6in
+### ceil(unit)
 
-## floor(unit)
+    ceil(5.5in)
+    // => 6in
 
-      floor(5.6px)
-      // => 5px
+### floor(unit)
 
-## round(unit)
+    floor(5.6px)
+    // => 5px
 
-      round(5.5px)
-      // => 6px
+### round(unit)
 
-      round(5.4px)
-      // => 5px
+    round(5.5px)
+    // => 6px
+
+    round(5.4px)
+    // => 5px
 
 **Note:** All rounding functions can accept optional `precision` argument — you can pass the number of digits you want to save after the period:
 
-      ceil(5.52px,1)
-      // => 5.6px
+    ceil(5.52px,1)
+    // => 5.6px
 
-      floor(5.57px,1)
-      // => 5.5px
+    floor(5.57px,1)
+    // => 5.5px
 
-      round(5.52px,1)
-      // => 5.5px
+    round(5.52px,1)
+    // => 5.5px
 
-## sin(angle)
+### sin(angle)
 
 Returns the value of sine for the given `angle`. If the angle is given as a degree unit, like `45deg`, it is treated as a degree, otherwise it is treated as radians.
 
@@ -221,14 +569,14 @@ Returns the value of sine for the given `angle`. If the angle is given as a degr
     sin(3*PI/4)
     // => 0.707106781
 
-## cos(angle)
+### cos(angle)
 
 Returns the value of cosine for the given `angle`. If the angle is given as a degree unit, like `45deg`, it is treated as a degree, otherwise it is treated as radians.
 
     cos(180deg)
     // => -1
 
-## tan(angle)
+### tan(angle)
 
 Returns the value of tangent for the given `angle`. If the angle is given as a degree unit, like `45deg`, it is treated as a degree, otherwise it is treated as radians.
 
@@ -238,39 +586,85 @@ Returns the value of tangent for the given `angle`. If the angle is given as a d
     tan(90deg)
     // => Infinity
 
-## min(a, b)
+### min(a, b)
 
-      min(1, 5)
-      // => 1
+    min(1, 5)
+    // => 1
 
-## max(a, b)
+### max(a, b)
 
       max(1, 5)
       // => 5
 
-## even(unit)
+### even(unit)
 
-      even(6px)
-      // => true
+    even(6px)
+    // => true
 
-## odd(unit)
+### odd(unit)
 
-      odd(5mm)
-      // => true
+    odd(5mm)
+    // => true
 
-## sum(nums)
+### sum(nums)
 
-      sum(1 2 3)
-      // => 6
+    sum(1 2 3)
+    // => 6
 
-## avg(nums)
+### avg(nums)
 
-     avg(1 2 3)
-     // => 2
+    avg(1 2 3)
+    // => 2
 
-## base-convert(num, base, width)
+### range(start, stop[, step])
 
-Returns a `Literal` `num` converted to the provided `base`, padded to `width` with zeroes (default width is 2)
+Returns a list of units from `start` to `stop` (included) by given `step`. 
+
+The `step` argument defaults to `1` if omitted.  It cannot be `0`.
+
+    range(1, 6)
+    // equals to `1..6`
+    // 1 2 3 4 5 6
+
+    range(1, 6, 2)
+    // 1 3 5
+
+    range(-6, -1, 2)
+    // -6 -4 -2
+
+    range(1px, 3px, 0.5px)
+    // 1px 1.5px 2px 2.5px 3px
+
+It is most often used in `for` loops:
+
+    for i in range(10px, 50px, 10)
+      .col-{i}
+        width: i
+
+Yields:
+
+    .col-10 {
+      width: 10px;
+    }
+    .col-20 {
+      width: 20px;
+    }
+    .col-30 {
+      width: 30px;
+    }
+    .col-40 {
+      width: 40px;
+    }
+    .col-50 {
+      width: 50px;
+    }
+
+
+### base-convert(num, base, width)
+
+Returns a `Literal` `num` converted to the provided `base`, padded with `width` zeroes. 
+
+Width defaults to `2`.
 
     base-convert(1, 10, 3)
     // => 001
@@ -278,199 +672,178 @@ Returns a `Literal` `num` converted to the provided `base`, padded to `width` wi
     base-convert(14, 16, 1)
     // => e
 
-    base-convert(42, 1)
+    base-convert(42, 2)
     // => 101010
 
 
-## join(delim, vals...)
+## String Functions
 
-  Join the given `vals` with `delim`.
+### match(pattern, string[, flags])
 
-      join(' ', 1 2 3)
-      // => "1 2 3"
+Returns any matches of `pattern` (regular expression) in `string`.
 
-      join(',', 1 2 3)
-      // => "1,2,3"
+    match('^(height|width)?([<>=]{1,})(.*)', 'height>=1024px')
+    // => 'height>=1024px' 'height' '>=' '1024px'
 
-      join(', ', foo bar baz)
-      // => "foo, bar, baz"
+    match('^foo(?:bar)?', 'foo')
+    // => 'foo'
 
-      join(', ', foo, bar, baz)
-      // => "foo, bar, baz"
+    match('^foo(?:bar)?', 'foobar')
+    // => 'foobar'
 
-      join(', ', 1 2, 3 4, 5 6)
-      // => "1 2, 3 4, 5 6"
+    match('^foo(?:bar)?', 'bar')
+    // => null
 
-## hsla(color | h,s,l,a)
+    match('ain', 'The rain in SPAIN stays mainly in the plain')
+    // => 'ain'
 
-Convert the given `color` to an `HSLA` node,
-or h,s,l,a component values.
+    match('ain', 'The rain in SPAIN stays mainly in the plain', g)
+    // => 'ain' 'ain' 'ain'
 
-     hslaa(10deg, 50%, 30%, 0.5)
-     // => HSLA
+    match('ain', 'The rain in SPAIN stays mainly in the plain', 'gi')
+    // => 'ain' 'AIN' 'ain' 'ain'
 
-     hslaa(#ffcc00)
-     // => HSLA
 
-## hsla(color | h,s,l)
+### replace(pattern, replacement, val)
 
-Convert the given `color` to an `HSLA` node,
-or h,s,l component values.
+Return the string `val`, after replacing with all `pattern` matches with `replacement`.
 
-     hsla(10, 50, 30)
-     // => HSLA
+    replace(i, e, 'griin')
+    // => 'green'
 
-     hsla(#ffcc00)
-     // => HSLA
+    replace(i, e, griin)
+    // => #008000
 
-## rgba(color | r,g,b,a)
 
-Return `RGBA` from the r,g,b,a channels or provide a `color` to tweak the alpha.
+### join(delim, vals...)
 
-      rgba(255,0,0,0.5)
-      // => rgba(255,0,0,0.5)
+Join the given `vals` with `delim`.
 
-      rgba(255,0,0,1)
-      // => #ff0000
+    join(' ', 1 2 3)
+    // => "1 2 3"
 
-      rgba(#ffcc00, 0.5)
-      // rgba(255,204,0,0.5)
+    join(',', 1 2 3)
+    // => "1,2,3"
 
- Alternatively stylus supports the `#rgba` and `#rrggbbaa` notations as well:
+    join(', ', foo bar baz)
+    // => "foo, bar, baz"
 
-    #fc08
-    // => rgba(255,204,0,0.5)
+    join(', ', foo, bar, baz)
+    // => "foo, bar, baz"
 
-    #ffcc00ee
-    // => rgba(255,204,0,0.9)
+    join(', ', 1 2, 3 4, 5 6)
+    // => "1 2, 3 4, 5 6"
 
-## rgb(color | r,g,b)
 
-Return a `RGBA` from the r,g,b channels or cast to an `RGBA` node.
+### split(delim, val)
 
-    rgb(255,204,0)
-    // => #ffcc00
+The `split()` method splits a string or ident into a list of strings by separating the string into substrings.
 
-    rgb(#fff)
-    // => #fff
+    split(_, bar1_bar2_bar3)
+    // => bar1 bar2 bar3
 
-## lighten(color, amount)
+    split(_, 'bar1_bar2_bar3')
+    // => 'bar1' 'bar2' 'bar3'
 
-Lighten the given `color` by `amount`. This function is
-unit-sensitive, for example supporting percentages as shown
-below.
 
-    lighten(#2c2c2c, 30)
-    // => #787878
+### substr(val, start, length)
 
-    lighten(#2c2c2c, 30%)
-    // => #393939
+The `substr()` method returns the characters in a string beginning at the specified location through the specified number of characters.
 
-## darken(color, amount)
+    substr(ident, 1, 2)
+    // => de
 
-Darken the given `color` by `amount`.This function is
-unit-sensitive, for example supporting percentages as shown
-below.
+    substr('string', 1, 2)
+    // => 'tr'
 
-    darken(#D62828, 30)
-    // => #551010
-
-    darken(#D62828, 30%)
-    // => #961c1c
-
-## desaturate(color, amount)
-
-Desaturate the given `color` by `amount`.
-
-    desaturate(#f00, 40%)
-    // => #c33
-
-## saturate(color, amount)
-
-Saturate the given `color` by `amount`.
-
-    saturate(#c33, 40%)
+    val = dredd
+    substr(substr(val, 1), 0, 3)
     // => #f00
 
-## complement(color)
 
-Gives the complementary color. Equals to spinning hue to 180deg.
+### slice(val, start[, end])
 
-    complement(#fd0cc7)
-    // => #0cfd42
+The `slice()` method extracts a section of a string/list and returns a new string/list.
 
-## invert(color)
+    slice('lorem' 'ipsum' 'dolor', 1, 2)
+    slice('lorem' 'ipsum' 'dolor', 1, -1)
+    // => 'ipsum'
+    
+    slice('lorem ipsum', 1, 5)
+    // => 'orem'
+    slice(rredd, 1, -1)
+    // => #f00
+    
+    slice(1px solid black, 1)
+    // => solid #000
 
-Inverts the color. The red, green, and blue values are inverted, while the opacity is left alone.
 
-    invert(#d62828)
-    // => #29d7d7
+### unquote(str | ident)
 
-## grayscale(color)
+Unquote the given `str`, and return it as a `Literal` node.
 
-Gives the grayscale equivalent of the given color. Equals to desaturate by 100%.
+    unquote("sans-serif")
+    // => sans-serif
 
-    grayscale(#fd0cc7)
-    // => #0cfd42
+    unquote(sans-serif)
+    // => sans-serif
 
-## tint(color, amount)
+    unquote('1px / 2px')
+    // => 1px / 2px
 
-Mix the given color with white.
 
-    tint(#fd0cc7,66%)
-    // => #feaceb
+### convert(str)
 
-## shade(color, amount)
+Like `unquote()` but tries to convert the given `str` to a Stylus node.
 
-Mix the given color with black.
+    unit = convert('40px')
+    typeof(unit)
+    // => 'unit'
 
-    shade(#fd0cc7,66%)
-    // => #560443
+    color = convert('#fff')
+    typeof(color)
+    // => 'rgba'
 
-## unquote(str | ident)
+    foo = convert('foo')
+    typeof(foo)
+    // => 'ident'
 
-  Unquote the given `str` and returned as a `Literal` node.
 
-       unquote("sans-serif")
-       // => sans-serif
+### s(fmt, ...)
 
-       unquote(sans-serif)
-       // => sans-serif
+The `s()` function is similar to `unquote()`, in that it returns a `Literal` node. However, it accepts a format string similar to C's `sprintf()`. 
 
-       unquote('1px / 2px')
-       // => 1px / 2px
+Currently, the only specifier is `%s`.
 
-## s(fmt, ...)
+    s('bar()');
+    // => bar()
 
- The `s()` function is similar to `unquote()`, in that it returns
- a `Literal` node, however it accepts a format string much like C's `sprintf()`. Currently the only specifier is `%s`.
+    s('bar(%s)', 'baz');
+    // => bar("baz")
 
-        s('bar()');
-        // => bar()
+    s('bar(%s)', baz);
+    // => bar(baz)
 
-        s('bar(%s)', 'baz');
-        // => bar("baz")
+    s('bar(%s)', 15px);
+    // => bar(15px)
 
-        s('bar(%s)', baz);
-        // => bar(baz)
+    s('rgba(%s, %s, %s, 0.5)', 255, 100, 50);
+    // => rgba(255, 100, 50, 0.5)
 
-        s('bar(%s)', 15px);
-        // => bar(15px)
+    s('bar(%Z)', 15px);
+    // => bar(%Z)
 
-        s('rgba(%s, %s, %s, 0.5)', 255, 100, 50);
-        // => rgba(255, 100, 50, 0.5)
-
-        s('bar(%Z)', 15px);
-        // => bar(%Z)
-
-        s('bar(%s, %s)', 15px);
-        // => bar(15px, null)
+    s('bar(%s, %s)', 15px);
+    // => bar(15px, null)
 
 Check out the `%` string operator for equivalent behaviour.
 
-## `called-from` property
 
-`called-from` property contains the list of the functions the current function was called from in the reverse order (the first item is the deepest function).
+## Utility Functions
+
+### `called-from` property
+
+`called-from` property contains the list of the functions the current function was called from in reverse order (the first item is the deepest function).
 
     foo()
       bar()
@@ -484,20 +857,20 @@ Check out the `%` string operator for equivalent behaviour.
     foo()
     // => bar foo
 
-## current-media()
+### current-media()
 
-`current-media()` function returns the string of the current block's `@media` rule or `''` if there is no `@media` above the block.
+`current-media()` function returns the string of the current block's `@media` rule (or `''` if there is no `@media` above the block).
 
     @media only screen and (min-width: 1024px)
       current-media()
     // => '@media (only screen and (min-width: (1024px)))'
 
 
-## +cache(keys...)
+### +cache(keys...)
 
 `+cache` is a really powerful built-in function that allows you to create your own “cachable” mixins.
 
-“Cachable mixin” is the one, that would apply its contents to the given selector on the first call, but would `@extend` the first call's selector at the second call with the same params.
+A “cachable mixin” is one that would apply its contents to the given selector on the first call, but would `@extend` the first call's selector at the second call with the same params.
 
     size($width, $height = $width)
       +cache('w' + $width)
@@ -531,9 +904,9 @@ Would yield to
 
 See how the selectors are grouped together by the used property.
 
-## +prefix-classes(prefix)
+### +prefix-classes(prefix)
 
-Stylus comes with a block mixin `prefix-classes` that can be used for prefixing the classes inside any given Stylus' block. For example:
+Stylus comes with a block mixin `prefix-classes` that can be used for prefixing the classes inside any given Stylus block. For example:
 
     +prefix-classes('foo-')
       .bar
@@ -545,11 +918,39 @@ Yields:
       width: 10px;
     }
 
-## define(name, expr)
+### lookup(name)
 
-Allows to create or overwrite a variable with a given name, passed as a string, onto current scope.
+Allows looking up the value of a variable called `name`, passed as a string.
+Returns `null` if the variable is undefined.
 
-This bif can be useful on those cases in which you'd wish interpolation in variable names:
+Useful when you need to get a value of a variable with dynamically
+generated name:
+
+    font-size-1 = 10px
+    font-size-2 = 20px
+    font-size-3 = 30px
+
+    for i in 1..3
+      .text-{i}
+        font-size: lookup('font-size-' + i)
+
+Yields:
+
+    .text-1 {
+      font-size: 10px;
+    }
+    .text-2 {
+      font-size: 20px;
+    }
+    .text-3 {
+      font-size: 30px;
+    }
+
+### define(name, expr[, global])
+
+Allows to create or overwrite a variable with a given `name`, passed as a string, onto current scope (or global scope if `global` is true).
+
+This <abbr title="Built-In Function">BIF</abbr> can be useful in those cases where you need interpolation in variable names:
 
     prefix = 'border'
     border = { color: #000, length: 1px, style: solid }
@@ -566,40 +967,15 @@ yields:
       border: 1px solid #000;
     }
 
-## operate(op, left, right)
+### operate(op, left, right)
 
-  Perform the given `op` on the `left` and `right` operands:
+Perform the given `op` on the `left` and `right` operands:
 
-      op = '+'
-      operate(op, 15, 5)
-      // => 20
+    op = '+'
+    operate(op, 15, 5)
+    // => 20
 
-## length([expr])
-
-  Parenthesized expressions may act as tuples, the `length()` function returns the length of such expressions.
-
-    length((1 2 3 4))
-    // => 4
-
-    length((1 2))
-    // => 2
-
-    length((1))
-    // => 1
-
-    length(())
-    // => 0
-
-    length(1 2 3)
-    // => 3
-
-    length(1)
-    // => 1
-
-    length()
-    // => 0
-
-## selector()
+### selector()
 
 Returns the compiled current selector or `&` if called at root level.
 
@@ -612,181 +988,255 @@ Returns the compiled current selector or `&` if called at root level.
         selector()
     // '.foo:hover'
 
-## warn(msg)
+### selector-exists(selector)
 
-  Warn with the given error `msg`, does not exit.
+Returns true if `selector` exists..
 
-      warn("oh noes!")
+    .foo
+      color red
 
-## error(msg)
+      a
+        font-size 12px
 
-  Exits with the given error `msg`.
+    selector-exists('.foo') // true
+    selector-exists('.foo a') // true
+    selector-exists('.foo li') // false
+    selector-exists('.bar') // false
+
+This method does not take into account the current context meaning:
+
+    .foo
+      color red
+
+      a
+        font-size 12px
+
+      selector-exists('a') // false
+      selector-exists(selector() + ' a') // true
+
+
+### opposite-position(positions)
+
+Return the opposite of the given `positions`.
+
+    opposite-position(right)
+    // => left
+
+    opposite-position(top left)
+    // => bottom right
+
+    opposite-position('top' 'left')
+    // => bottom right
+
+### image-size(path)
+
+Returns the `width` and `height` of the image found at `path`. Lookups are performed in the same manner as `@import`, altered by the `paths` setting.
+
+    width(img)
+      return image-size(img)[0]
+
+    height(img)
+      return image-size(img)[1]
+
+    image-size('tux.png')
+    // => 405px 250px
+
+    image-size('tux.png')[0] == width('tux.png')
+    // => true
+
+### embedurl(path[, encoding])
+
+Returns an inline image as a `url()` literal, encoded with `encoding`. 
+
+(Available encodings: `base64` (default), and `utf8`).
+
+    background: embedurl('logo.png')
+    // => background: url("data:image/png;base64,…")
+
+    background: embedurl('logo.svg', 'utf8')
+    // => background: url("data:image/svg+xml;charset=utf-8,…")
+
+### add-property(name, expr)
+
+Adds property `name`, with the given `expr` to the closest block.
+
+For example:
+
+    something()
+      add-property('bar', 1 2 3)
+      s('bar')
+
+    body
+      foo: something()
+
+yields:
+
+    body {
+      bar: 1 2 3;
+      foo: bar;
+    }
+
+Next, the "magic" `current-property` local variable comes into play. This variable is automatically available to function bodies, and contains an expression with the current property's name, and value.
+
+For example, if we were to inspect this local variable using `p()`, we get the following:
+
+    p(current-property)
+    // => "foo" (foo __CALL__ bar baz)
+
+    p(current-property[0])
+    // => "foo"
+
+    p(current-property[1])
+    // => foo __CALL__ bar baz
+
+Using `current-property` we can take our example a bit further, and duplicate the property with new values, and a conditional to ensure the function is only used within a property value.
+
+    something(n)
+      if current-property
+        add-property(current-property[0], s('-webkit-something(%s)', n))
+        add-property(current-property[0], s('-moz-something(%s)', n))
+        s('something(%s)', n)
+      else
+        error('something() must be used within a property')
+
+    body {
+      foo: something(15px) bar;
+    }
+
+yields:
+
+    body {
+      foo: -webkit-something(15px);
+      foo: -moz-something(15px);
+      foo: something(15px) bar;
+    }
+
+If you noticed in the example above, `bar` is only present for the initial call, since we returned `something(15px)`, it remained in-place within the expression, however the others do not take the rest of the expression into account.
+
+Our more robust solution below defines a function named `replace()` which clones the expression to prevent mutation, replaces the string value of an expression with another, and returns the cloned expression. We then move on to replace `__CALL__` within the expressions, which represents the cyclic call to `something()`.
+
+    replace(expr, str, val)
+      expr = clone(expr)
+      for e, i in expr
+        if str == e
+          expr[i] = val
+      expr
+
+    something(n)
+      if current-property
+        val = current-property[1]
+        webkit = replace(val, '__CALL__', s('-webkit-something(%s)', n))
+        moz = replace(val, '__CALL__', s('-moz-something(%s)', n))
+        add-property(current-property[0], webkit)
+        add-property(current-property[0], moz)
+        s('something(%s)', n)
+      else
+        error('something() must be used within a property')
+
+    body
+      foo: something(5px) bar baz
+
+yields:
+
+    body {
+      foo: -webkit-something(5px) bar baz;
+      foo: -moz-something(5px) bar baz;
+      foo: something(5px) bar baz;
+    }
+
+Our implementation is now fully transparent both in regards to the property it is called within, and the position of the call. 
+
+This powerful concept aids in transparent vendor support for function calls, such as gradients.
+
+
+## Console Functions
+ 
+### warn(msg)
+
+Warn with the given error `msg`. Does not exit.
+
+    warn("oh noes!")
+
+### error(msg)
+
+Exit Stylus with the given error `msg`.
 
     add(a, b)
       unless a is a 'unit' and b is a 'unit'
         error('add() expects units')
       a + b
 
-## last(expr)
+### p(expr)
 
- Return the _last_ value in the given `expr`:
+Inspect the given `expr`:
 
-      nums = 1 2 3
-      last(nums)
-      last(1 2 3)
-      // => 3
+    fonts = Arial, sans-serif
+    p('test')
+    p(123)
+    p((1 2 3))
+    p(fonts)
+    p(#fff)
+    p(rgba(0,0,0,0.2))
 
-      list = (one 1) (two 2) (three 3)
-      last(list)
-      // => (three 3)
+    add(a, b)
+      a + b
 
-## p(expr)
-
- Inspect the given `expr`:
-
-     fonts = Arial, sans-serif
-     p('test')
-     p(123)
-     p((1 2 3))
-     p(fonts)
-     p(#fff)
-     p(rgba(0,0,0,0.2))
-
-     add(a, b)
-       a + b
-
-     p(add)
+    p(add)
 
 stdout:
 
-     inspect: "test"
-     inspect: 123
-     inspect: 1 2 3
-     inspect: Arial, sans-serif
-     inspect: #fff
-     inspect: rgba(0,0,0,0.2)
-     inspect: add(a, b)
+    inspect: "test"
+    inspect: 123
+    inspect: 1 2 3
+    inspect: Arial, sans-serif
+    inspect: #fff
+    inspect: rgba(0,0,0,0.2)
+    inspect: add(a, b)
 
-## opposite-position(positions)
 
- Return the opposites of the given `positions`.
+## External File Functions
 
-     opposite-position(right)
-     // => left
+### json(path[, options])
 
-     opposite-position(top left)
-     // => bottom right
+Convert the JSON file at `path` into Stylus variables or an object. Nested variable object keys are joined with a dash (`-`).
 
-     opposite-position('top' 'left')
-     // => bottom right
+For example, the following sample `media-queries.json` file:
 
-## image-size(path)
-
-  Returns the `width` and `height` of the image found at `path`. Lookups are performed in the same manner as `@import`, altered by the `paths` setting.
-
-      width(img)
-        return image-size(img)[0]
-
-      height(img)
-        return image-size(img)[1]
-
-      image-size('tux.png')
-      // => 405px 250px
-
-      image-size('tux.png')[0] == width('tux.png')
-      // => true
-
-## add-property(name, expr)
-
-  Adds property `name`, with the given `expr` to the closest block.
-
-  For example:
-
-      something()
-        add-property('bar', 1 2 3)
-        s('bar')
-
-      body
-        foo: something()
-
-yields:
-
-      body {
-        bar: 1 2 3;
-        foo: bar;
-      }
-
-  Next the "magic" `current-property` local variable comes into play. This variable is automatically available to function bodies, and contains an expression with the current property's name, and value.
-
-  For example if we were to inspect this local variable using `p()`, we
-  get the following:
-
-        p(current-property)
-        // => "foo" (foo __CALL__ bar baz)
-
-        p(current-property[0])
-        // => "foo"
-
-        p(current-property[1])
-        // => foo __CALL__ bar baz
-
-  Using `current-property` we can take our example a bit further, and duplicate the property with new values, and a conditional to ensure the function is only used within a property value.
-
-        something(n)
-          if current-property
-            add-property(current-property[0], s('-webkit-something(%s)', n))
-            add-property(current-property[0], s('-moz-something(%s)', n))
-            s('something(%s)', n)
-          else
-            error('something() must be used within a property')
-
-        body {
-          foo: something(15px) bar;
+    {
+        "small": "screen and (max-width:400px)",
+        "tablet": {
+            "landscape": "screen and (min-width:600px) and (orientation:landscape)",
+            "portrait": "screen and (min-width:600px) and (orientation:portrait)"
         }
+    }
 
-yields:
+May be used in the following ways:
 
-        body {
-          foo: -webkit-something(15px);
-          foo: -moz-something(15px);
-          foo: something(15px) bar;
-        }
+    json('media-queries.json')
 
-  If you noticed in the example above, `bar` is only present for the initial call, since we returned `something(15px)`, it remained in-place within the expression, however the others do not take the rest of the expression into account.
+    @media small
+    // => @media screen and (max-width:400px)
 
-  Our more robust solution below, defines a function named `replace()` which clones the expression to prevent mutation, replaces the string value of an expression with another, and returns the cloned expression. We then move on to replace `__CALL__` within the expressions, which represents the cyclic call to `something()`.
+    @media tablet-landscape
+    // => @media screen and (min-width:600px) and (orientation:landscape)
 
-        replace(expr, str, val)
-          expr = clone(expr)
-          for e, i in expr
-            if str == e
-              expr[i] = val
-          expr
+    vars = json('vars.json', { hash: true })
+    body
+      width: vars.width
 
-        something(n)
-          if current-property
-            val = current-property[1]
-            webkit = replace(val, '__CALL__', s('-webkit-something(%s)', n))
-            moz = replace(val, '__CALL__', s('-moz-something(%s)', n))
-            add-property(current-property[0], webkit)
-            add-property(current-property[0], moz)
-            s('something(%s)', n)
-          else
-            error('something() must be used within a property')
+    vars = json('vars.json', { hash: true, leave-strings: true })
+    typeof(vars.icon)
+    // => 'string'
 
-yields:
+    // don't throw an error if the JSON file doesn't exist
+    optional = json('optional.json', { hash: true, optional: true })
+    typeof(optional)
+    // => 'null'
 
-          body {
-            foo: foo -webkit-something(5px) bar baz;
-            foo: foo -moz-something(5px) bar baz;
-            foo: foo something(5px) bar baz;
-          }
 
-Our implementation is now fully transparent both in regards to the property it is called within, and the position of the call. This powerful concept aids in transparent vendor support for function calls, such as gradients.
+### use(path)
 
-## use(path)
-
-You can use any given js-plugin at given `path` with `use()` function right inside your '.styl' files, like this:
+You can use any JS-plugin at given `path` with `use()` function right inside your `.styl` files, like this:
 
     use("plugins/add.js")
 
@@ -804,7 +1254,7 @@ And the `add.js` plugin in this case looks this way:
     };
     module.exports = plugin;
 
-If you'd like to return any Stylus objects like `RGBA`, `Ident` or `Unit`, you could use the provided Stylus nodes like this:
+If you'd like to return any Stylus objects like `RGBA`, `Ident`, or `Unit`, you could use the provided Stylus nodes like this:
 
     var plugin = function(){
       return function(style){
@@ -816,18 +1266,19 @@ If you'd like to return any Stylus objects like `RGBA`, `Ident` or `Unit`, you c
     };
     module.exports = plugin;
 
-You can pass any options as an optional second argument, using the [hash object](hashes.html):
+You can pass any options as an optional second argument, using a [hash object](hashes.html):
 
     use("plugins/add.js", { foo: bar })
 
-## Undefined Functions
 
-  Undefined functions will output as literals, so for example
-  we may call `rgba-stop(50%, #fff)` within our css, and it will
-  output as you would expect. We can use this within helpers as well.
+### Undefined Functions
 
-  In the example below we simply define the function `stop()` which
-  returns the literal `rgba-stop()` call.
+Undefined functions are output as literals. So, for example,
+we may call `rgba-stop(50%, #fff)` within our css, and it will
+output as you would expect. We can use this within helpers as well.
+
+In the example below we simply define the function `stop()` which
+returns the literal `rgba-stop()` call.
 
     stop(pos, rgba)
       rgba-stop(pos, rgba)

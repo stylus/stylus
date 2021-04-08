@@ -75,3 +75,37 @@ for i in 1..3
 .boo
   background: red
   @extend $hide_at_640
+
+$test-thing
+  display none
+
+$test-thang
+  visibility hidden
+
+#thing
+  .blurg
+    @extends $test-thing
+
+@media only screen
+  #thing
+    .blurg
+      @extends $test-thang
+  #thing .goomba
+    @extends $test-thang
+
+$foo
+  .foo
+    padding: 0
+
+.foo,
+.bar
+  @extends $foo .foo
+
+@media screen
+  $troopa
+  #a article
+  .test
+    padding-bottom: 67px
+
+.blurg
+  @extends $troopa

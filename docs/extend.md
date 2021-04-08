@@ -10,8 +10,8 @@ permalink: docs/extend.html
 
 ## “Extending” with mixins
 
-  Although you can use mixins to achieve a similar effect, this can lead to duplicate CSS. A typical pattern is to define several classes as shown below, then combine them on the element such as "warning message". 
-  
+  Although you can use mixins to achieve a similar effect, this can lead to duplicate CSS. A typical pattern is to define several classes as shown below, then combine them on the element such as "warning message".
+
   While this technique works just fine, it's difficult to maintain.
 
       .message,
@@ -41,7 +41,7 @@ permalink: docs/extend.html
 
 
   Here's a more complex example, demonstrating how __`@extend`__ cascades:
-  
+
       red = #E33E1E
       yellow = #E2E21E
 
@@ -66,7 +66,7 @@ permalink: docs/extend.html
         color: red
 
   Yielding the following CSS:
-  
+
       .message,
       .warning,
       .error,
@@ -90,19 +90,19 @@ permalink: docs/extend.html
       }
 
   Where Stylus currently differs from SASS is, SASS won't allow  __`@extend`__ nested selectors:
-  
+
      form
        button
          padding: 10px
 
      a.button
-       @extend form button 
+       @extend form button
      Syntax error: Can't extend form button: can't extend nested selectors
              on line 6 of standard input
        Use --trace for backtrace.
 
    With Stylus, as long as the selectors match, it works!
-   
+
        form
          input[type=text]
            padding: 5px
@@ -114,9 +114,9 @@ permalink: docs/extend.html
          padding: 10px
 
    Yielding:
-   
+
         form input[type=text],
-        form textarea {
+        textarea {
           padding: 5px;
           border: 1px solid #eee;
           color: #ddd;
@@ -124,7 +124,7 @@ permalink: docs/extend.html
         textarea {
           padding: 10px;
         }
-      
+
 ## Extending multiple selectors
 
 Stylus allows you to extend multiple selectors at once, just write them with the comma:
@@ -185,3 +185,19 @@ Yielding:
     }
 
 Note that if the selector is not extended, it won't be in the resulting CSS, so it's a powerful way to create a library of extendable code. While you can insert code through mixins, they would insert the same code every time you use them, while extending placeholders would give you compact output.
+
+## Optional extending
+
+Sometimes it might be usefull to be able to extend something that might or might not exist depending on the context. You can suffix any selector with `!optional` to achieve this:
+
+    $specialDesign
+      color: #FFF
+
+    .btn
+      @extend .design !optional, $specialDesign !optional
+
+Yielding:
+
+    .btn {
+      color: #fff;
+    }

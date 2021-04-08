@@ -5,3 +5,4 @@ testing
 /node_modules
 coverage.html
 lib-cov
+.idea

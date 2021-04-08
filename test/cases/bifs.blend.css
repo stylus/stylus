@@ -1,0 +1,16 @@
+.test {
+  color: #808080;
+  background: #808080;
+  border-color: #fff;
+  border-bottom-color: #7ace38;
+}
+.test_simples {
+  color: #0f0;
+  color: #0f0;
+  color: #00f;
+  color: rgba(128,128,0,0.625);
+}
+.test_hsla {
+  color: #004d00;
+  color: #356020;
+}

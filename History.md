@@ -1,3 +1,310 @@
+0.54.5 / 2016-04-28
+===================
+
+  * Fix: [CLI] Correct console output for Node 6.0
+
+0.54.4 / 2016-04-27
+===================
+
+  * Fix: Correct extname checks for Node 6.0
+
+0.54.3 / 2016-04-26
+===================
+
+  * Fix: Proper embedurl encoding for svg files with a hash.
+  * Fix: Validate this.dest before using path.extname.
+  * Fix: Update node-glob version.
+
+0.54.2 / 2016-03-11
+===================
+
+  * Fix: False-positive import loop with empty imported file.
+
+0.54.0 / 2016-03-05
+===================
+
+  * Feature: Added initial reference selector.
+  * Feature: New `embedurl()` bif with optional utf8 uncoding support for SVG.
+  * Feature: New `index()` bif.
+  * Feature: New `percentage()` bif.
+  * Feature: New `slice()` bif, #2115.
+  * Feature: Support for UTF-8 encoding of urls, #2084.
+  * Feature: Added `global` flag to `define()` function.
+  * Feature: `match()` bif now returns the matched values instead of a boolean, #2109.
+  * Feature: Added an optional `flags` argument to `match()` bif, #2109.
+  * Docs: Added basic “getting started” to Readme, #2073.
+  * Docs: Updated information about error reporting.
+  * Fix: `selectors()` now returns proper subselectors.
+  * Fix: No more unneeded spaces with partial reference selector using ranges.
+  * Fix: Proper evaluating of the default arguments.
+  * Fix: Evaluate variables in current-media function.
+  * Fix: Validate regexp flags for `match` function.
+  * Fix: Proper conditional assignment and "define" method.
+  * Fix: Proper relative paths in sourcemaps if --out flag is set to a filename.
+  * Fix: Proper errors with `--include-css` and `--resolve-url` used concurrently.
+  * Fix: [Evaluator] Support for function as a default argument for functions.
+  * Fix: [Lexer] Proper multiline comments inside multiline expressions.
+  * Fix: [JS API] Proper variables from options object inside expressions.
+  * Fix: [Renderer] No more caching of parsed AST for deps-resolver.
+
+0.53.0 / 2015-12-14
+===================
+
+  * Feature: Numeric partial references.
+  * Feature: Relative references.
+  * Feature: New `selectors()` bif.
+  * Feature: Support for comma-separated lists as `selector()`'s arguments.
+  * Docs: Reworked contribution guidelines.
+  * Docs: Added Contributor Code of Conduct.
+  * Fix: Support for multiple consecutive parent references.
+  * Fix: Proper removal of parent references at the root when combinators are present.
+  * Fix: Don't add space before unknown units.
+  * Fix: Allow comma-separated lists in `@supports` value.
+  * Fix: No more error message for "assertType" without parameter name.
+  * Fix: Proper middleware overlap function on windows. Thanks to #2029 by @bcomnes.
+  * Fix: Better absolute path detection for Windows. Thanks to #2033 by @mlohbihler.
+  * Refactoring: Moved bifs to separate files.
+
+
+0.52.4 / 2015-09-04
+===================
+
+  * Fix: Revert changes in "looksLikeSelector" method.
+
+0.52.3 / 2015-09-04
+===================
+
+  * Fix: Another parsing regression.
+
+0.52.2 / 2015-09-03
+===================
+
+  * Fix: A parsing regression.
+
+0.52.1 / 2015-09-03
+===================
+
+  * Fix: Correct line numbers in error messages for files with CSS comments.
+  * Fix: Better absolute urls detection.
+  * Fix: Added type assertions to "substr", "split" and "replace" bifs.
+  * Fix: Atrules parsing with a block at a new line.
+  * Fix: Bug with commented indented lines at the end of a file.
+  * Fix: Stylus error messages for Node 0.12+.
+  * Fix: A bug with arguments cloning.
+
+0.52.0 / 2015-07-19
+===================
+
+  * Feature: new url resolver without url checks (`--resolve-url-nocheck`).
+  * Feature: New option to json bif ("leave-strings").
+  * Feature: New option to json bif ("optional").
+  * Feature: Adding utf-8 charset to inline sourcemap.
+  * Feature: allow inline CSS comments inside value.
+  * Fix: shouldn't fail to compile in strict mode, #1923.
+  * Fix: Paths should be normalized for windows support, #1954.
+  * Fix: Proper parsing of selector groups with placeholder and color-like ID.
+  * Fix: Proper import loop detection.
+  * Fix: Correct output of namespaces and charsets inside imports.
+  * Fix: Indented comments shouldn't cause errors.
+  * Fix: Proper way of parsing lists in "convert" bif.
+  * Fix: Proper comma escaping in an object interpolation.
+  * Fix: Allow no whitespace between keyframes name and the following curly brace.
+
+0.51.1 / 2015-04-28
+===================
+
+  * Fixed `;` at the end of blockless unknown at-rules.
+  * Fixed float units convertion by `convert` bif.
+
+0.51.0 / 2015-04-23
+===================
+
+  * Added support for cascading extend.
+  * Added "transparent" as a named color.
+  * Added support for blockless unknown at-rules.
+  * Made math more strict.
+  * Fixed bug with extending nested placeholder selectors inside MQ.
+  * Fixed imports inside `@media` blocks.
+  * Fixed url resolver to consider `--out` options.
+  * Fixed parsing of multiple "else if" statements.
+  * Fixed an edge case with recursive extend.
+  * Fixed regression with nested media queries.
+  * Fixed parsing of nested comments.
+  * Fixed checking paths overlap if 'dest' is a function in middleware.
+
+0.50.0 / 2015-02-05
+===================
+
+  * Added `!optional` directive for extending, #1757.
+  * Added `selector-exists` bif, #1758.
+  * Added `remove` bif for removing items from hashes.
+  * Added optional recursive hash merging, #1771.
+  * Added optional (`--hoist-atrules` flag) `@import` and `@charset` hoisting.
+  * Added a way to output to specific file path with CLI, #1800.
+  * Fixed regression with using `@media` inside `+cache`.
+  * Fixed `resolve-url` for hash urls, #1778.
+  * Fixed `mix` bif for differently transparent colors, #1792.
+  * Fixed bug with postfix `&` without comma.
+  * Fixed incorrectly imported functions defined in other files with nested @require.
+  * Fixed duplicated selectors when extending into placeholders with MQ.
+  * Fixed `filter: contrast()` error.
+  * Fixed the cloning of cached nodes.
+  * Fixed incorrect filenames included in source maps, #1812.
+  * Fixed stripping of unsuppressed comments from nested blocks.
+  * Fixed build error for multiple files, #1813.
+  * Fixed error handling slightly.
+  * Fixed (throwing error) edge case of watching and printing at the same time, #1798.
+  * Fixed watch to log to std.err, #1796.
+  * Fixed indent in complex rules at CSS to Stylus conversion, #1808.
+
+0.49.3 / 2014-11-06
+===================
+
+  * Fixed regression with `block` keyword inside block mixin.
+
+0.49.2 / 2014-10-14
+===================
+
+  * Fixed regression #1727 + small fixes for #1717.
+  * Fixed nested selectors when using nested and bubbled media queries.
+  * Fixed issue when mixin's block is used as part of a property value.
+  * Fixed hardcoded `.styl` extension from CLI (added `extname` arg).
+
+0.49.1 / 2014-09-24
+===================
+
+  * Fixed an output order of nested media queries.
+  * Fixed regression with cached nodes.
+  * Fixed support for `Woff2` and `WebP` mime-tipes, #1699.
+
+0.49.0 / 2014-09-22
+===================
+
+  * Added a way to use plugins in stylus.render options, #1697.
+  * Added LRU for memory caching.
+  * Now returning literal CSS on parser error when `--resolve-url` is set.
+  * Now not showing JS stack trace for stylus' `error()` calls.
+  * Fixed inconsistent source maps' field orders.
+  * Fixed bug with calling functions inside an inline loop.
+  * Fixed bug with nested media queries inside a mixin.
+  * Fixed bug with extending nested selector inside placeholder selector.
+  * Fixed bug with alpha variable for hsla/rgba.
+  * Fixed extending of rules inside unknown at-rules.
+  * Fixed incorrect merging of media queries using variables.
+  * Fixed bubbling for `@keyframes`.
+  * Fixed incorrect `@supports` parsing.
+  * Fixed `url()` support for `@namespace`.
+  * Fixed incorrect filename and column information for cached nodes.
+  * Fixed `--sourcemap-base` to be ignored when `--out` is present.
+  * Fixed outputting sourcemap log message when `--print` was present.
+
+0.48.1 / 2014-08-21
+===================
+
+  * Fixed sourcemap paths when `--out` flag is present, #1668.
+  * Fixed the naming convention for maps: `.styl.map` => `.css.map`, #1668.
+
+0.48.0 / 2014-08-20
+===================
+
+  * Added basic sourcemaps support, #1655.
+  * Added info on columns for sourcemaps and better error reporting.
+  * Added `globals` and `functions` keys to options object in JS API, #1653.
+  * Added `rebeccapurple` named color.
+  * Added `unicode-range` support (#1648).
+  * Changed the behaviour of adding percents together to the more sane one, #1664.
+  * Fixed bug with property lookup inside mixin block (#1645).
+  * Fixed a bug with nested media queries inside mixins (#1643).
+  * Fixed an `@extend` inside `@media` queries with multi-level selectors (#1658).
+  * Fixed bug with cloning of an interpolated selector with comma (#1660).
+  * Fixed bug with nested media queries in conditionals.
+  * Fixed a bug with cached imports (#1641).
+  * Fixed `@css` literal that generated `u+0085` characters instead of newlines (#1663).
+  * Fixed escaped comma (`\,`) inside hashes (#1666).
+  * Fixed a string representation of HSLA node to preserve `%` (#1439).
+  * Fixed incorrect position of inline comments (#1597).
+  * Fixed a bug with an apostrophe and a colon in a single-line comment (#1647).
+
+0.47.3 / 2014-07-22
+===================
+
+  * Fixed support for schema-less urls inside `url()`.
+
+0.47.2 / 2014-07-19
+===================
+
+  * Fixed comma-first multiline syntax, #1634.
+  * Fixed hsla arguments for different color functions, #1619.
+  * Fixed Bug with @media and placeholder selectors, #1625.
+  * Fixed bug with nested media queries, 1620.
+  * Fixed broken URL parsing for source and destination paths, #1613.
+
+0.47.1 / 2014-07-02
+===================
+
+  * Fixed treatment of unknown pseudo-elements, #1608.
+  * Fixed unit expression precedence error, #1611.
+
+0.47.0 / 2014-07-01
+===================
+
+  * Added support for anonymous functions, #1580.
+  * A lot of better color functions, #1526:
+      * Added support for two arguments for `hsla`.
+      * Added component setters (`red`, `hue`, `alpha` etc.).
+      * Added `luminosity` bif.
+      * Added `blend` bif.
+      * Added `contrast` bif.
+      * Added `transparentify` bif.
+  * Added `list-separator` bif, #1576.
+  * Added symlinks support to CLI, #1577.
+  * Added idents and units coercion, #1605.
+  * Fixed `@keyframes` parsing issue.
+  * Fixed parse error when `{` is on a new line in at-rules.
+  * Fixed an issue with multiline parsing.
+  * Fixed another issue with cached imports, #1587.
+  * Fixed illegal unary "%", missing left-hand operand, #1586.
+  * Reverted #1527.
+
+0.46.3 / 2014-06-09
+===================
+
+  * Fixed parse error, #1582.
+
+0.46.2 / 2014-06-04
+===================
+
+  * Fixed regression with double writing of transparent mixin value, #1574.
+
+0.46.1 / 2014-06-04
+===================
+
+  * Fixed regression with a root reference in interpolated selectors, #1573.
+
+0.46.0 / 2014-06-03
+===================
+
+  * Added support for nested media queries, #1540.
+  * Added `convert` built-in function, #1545.
+  * Added negative index values support for subscripts, #1564.
+  * Add short-circuit evaluation for logical operators, #1532.
+  * Fixed the dropped commas in splat arguments, #1525.
+  * Fixed double-writing the `@media` and other at-rules in mixins, #1535.
+  * Fixed unit expression precedence error, #1537.
+  * Fixed comments inside the property expressions, #1538.
+  * Fixed handling of the `@css` and `unquote` inside groups, #1527.
+  * Fixed incorrect line numbers on errors, #1543.
+  * Fixed import cloning with cache, #1548.
+  * Fixed cloning to preserve `property.literal`, #1558.
+  * Fixed bifs arguments cloning bug, #1560.
+  * Fixed bug with nested interpolated selectors with a comma, 1568.
+  * Fixed `current-property` ignored in property lookup, #1565.
+  * Fixed `current-property`'s value to be evaluated in the right context, #1562.
+  * Fixed spaces and comments inside a hash declaration, #1554.
+  * Fixed aliases for transparent mixins, #1557.
+  * Fixed compilation fail when 'dest' path doesn't end with '/', #1541.
+  * Fixed bug with CSS to Stylus `@keyframes` converting, #1549.
+
 0.45.1 / 2014-05-16
 ===================
 
@@ -138,9 +445,9 @@
 0.41.0 / 2013-11-30
 ==================
 
-  * Added basic [block mixins](http://learnboost.github.io/stylus/docs/mixins.html#block-mixins) (`+foo`) with block interpolation (`block`), #1223.
-  * Added [`selector()` bif](http://learnboost.github.io/stylus/docs/selectors.html#selector-bif), #1249.
-  * Added [hash interpolation to blocks](http://learnboost.github.io/stylus/docs/hashes.html#interpolation), #1202.
+  * Added basic [block mixins](http://stylus-lang.com/docs/mixins.html#block-mixins) (`+foo`) with block interpolation (`block`), #1223.
+  * Added [`selector()` bif](http://stylus-lang.com/docs/selectors.html#selector-bif), #1249.
+  * Added [hash interpolation to blocks](http://stylus-lang.com/docs/hashes.html#interpolation), #1202.
   * Fixed parent reference in root context from returning `&`.
   * Fixed bug with double writing media blocks, 1ed44a81
   * Fixed a lot of regressions after hashes, #1230, #1236, #1237, #1248.
@@ -897,7 +1204,7 @@ Closes #401
   * Added `avg(nums)` built-in function
   * Added `join(delim, vals)` built-in function
   * Added `Evaluator#{currentScope,currentBlock}`
-  * Added multi-line function paramter definition support
+  * Added multi-line function parameter definition support
   * Changed: `0` is falsey, `0%`, `0em`, `0px` etc truthy. Closes #160
   * Fixed `for` implicit __return__ value
   * Fixed `for` explicit __return__ value

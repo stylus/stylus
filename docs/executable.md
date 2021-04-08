@@ -32,13 +32,19 @@ Stylus ships with the `stylus` executable for converting Stylus to CSS.
                                 can be used by the FireStylus Firebug plugin
         -l, --line-numbers      Emits comments in the generated CSS
                                 indicating the corresponding Stylus line
+        -m, --sourcemap         Generates a sourcemap in sourcemaps v3 format
+        --sourcemap-inline      Inlines sourcemap with full source text in base64 format
+        --sourcemap-root <url>  "sourceRoot" property of the generated sourcemap
+        --sourcemap-base <path> Base <path> from which sourcemap and all sources are relative
         -P, --prefix [prefix]   Prefix all css classes
         -p, --print             Print out the compiled CSS
         --import <file>         Import stylus <file>
         --include-css           Include regular CSS on @import
         -D, --deps              Display dependencies of the compiled file
         --disable-cache         Disable caching
+        --hoist-atrules         Move @import and @charset to the top
         -r, --resolve-url       Resolve relative urls inside imports
+        --resolve-url-nocheck   Like --resolve-url but without file existence check
         -V, --version           Display the version of Stylus
         -h, --help              Display help information
 
@@ -75,7 +81,7 @@ Try Stylus some in the terminal!  Type below and press `CTRL-D` for `__EOF__`:
       $ stylus --line-numbers <path>
 
   Or the `firebug` option if you want to use
-  the [FireStylus extension for Firebug](//github.com/LearnBoost/stylus/blob/master/docs/firebug.md):
+  the [FireStylus extension for Firebug](//github.com/stylus/stylus/blob/master/docs/firebug.md):
 
       $ stylus --firebug <path>
 
@@ -175,7 +181,7 @@ Will give us list of the imports paths:
 
 ## Utilizing Plugins
 
- For this example we'l use the [nib](https://github.com/visionmedia/nib) Stylus plugin to illustrate its CLI usage.
+ For this example we'll use the [nib](https://github.com/visionmedia/nib) Stylus plugin to illustrate its CLI usage.
 
  Suppose we have the following Stylus, which imports nib to use its `linear-gradient()` function.
 
@@ -225,4 +231,8 @@ Will give us list of the imports paths:
       background: -moz-linear-gradient(top, #fff 0%, #000 100%);
       background: linear-gradient(top, #fff 0%, #000 100%);
     }
+
+If you need to pass arguments to the plugin, use the `--with` option. `--with` evaluates any valid javascript expression and passes its value to the plugin. For example:
+
+    $ stylus < test.styl --use ../node_modules/autoprefixer-stylus --with "{ browsers: ['ie 7', 'ie 8'] }"
 

@@ -3,7 +3,128 @@ body {
   background: 204;
   background: 0;
   background: 0.4;
+}
+.setters {
+  background: #0c0;
+  background: #f00;
+  background: #fc0;
+  background: rgba(255,255,255,0.5);
+  background: #3c0;
+  background: #f30;
+  background: #fc3;
+  background: rgba(255,255,255,0.5);
+}
+body {
+  background: 255;
+  background: 204;
+  background: 0;
+  background: 0.4;
+}
+.setters {
+  background: #0c0;
+  background: #f00;
+  background: #fc0;
+  background: rgba(255,255,255,0.5);
+  background: #3c0;
+  background: #f30;
+  background: #fc3;
+  background: rgba(255,255,255,0.5);
+}
+body {
+  background: 255;
+  background: 204;
+  background: 0;
+  background: 0.4;
+}
+.setters {
+  background: rgba(0,204,0,0.5);
+  background: rgba(255,0,0,0.5);
+  background: rgba(255,204,0,0.5);
+  background: rgba(255,255,255,0.5);
+  background: rgba(51,204,0,0.5);
+  background: rgba(255,51,0,0.5);
+  background: rgba(255,204,51,0.5);
+  background: rgba(255,255,255,0.5);
+}
+body {
+  background: 255;
+  background: 204;
+  background: 0;
+  background: 0.4;
+}
+.setters {
+  background: #0c0;
+  background: #f00;
+  background: #fc0;
+  background: rgba(255,255,255,0.5);
+  background: #3c0;
+  background: #f30;
+  background: #fc3;
+  background: rgba(255,255,255,0.5);
+}
+body {
+  background: 255;
+  background: 204;
+  background: 0;
+  background: 0.4;
+}
+.setters {
+  background: rgba(0,204,0,0.5);
+  background: rgba(255,0,0,0.5);
+  background: rgba(255,204,0,0.5);
+  background: rgba(255,255,255,0.5);
+  background: rgba(51,204,0,0.5);
+  background: rgba(255,51,0,0.5);
+  background: rgba(255,204,51,0.5);
+  background: rgba(255,255,255,0.5);
+}
+body {
   background: 15deg;
   background: 100%;
   background: 60%;
+}
+.setters {
+  background: #6c0;
+  background: #339;
+  background: #ccf;
+}
+body {
+  background: 15deg;
+  background: 100%;
+  background: 60%;
+}
+.setters {
+  background: #6c0;
+  background: #339;
+  background: #ccf;
+}
+body {
+  background: 15deg;
+  background: 100%;
+  background: 60%;
+}
+.setters {
+  background: rgba(102,204,0,0.5);
+  background: rgba(51,51,153,0.5);
+  background: rgba(204,204,255,0.5);
+}
+body {
+  background: 15deg;
+  background: 100%;
+  background: 60%;
+}
+.setters {
+  background: #6c0;
+  background: #339;
+  background: #ccf;
+}
+body {
+  background: 15deg;
+  background: 100%;
+  background: 60%;
+}
+.setters {
+  background: rgba(102,204,0,0.5);
+  background: rgba(51,51,153,0.5);
+  background: rgba(204,204,255,0.5);
 }

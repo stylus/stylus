@@ -12,3 +12,6 @@ body {
 .bar {
   color: rgba(0,0,0,0.5);
 }
+img {
+  width: auto !important;
+}

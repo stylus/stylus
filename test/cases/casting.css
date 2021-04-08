@@ -10,3 +10,8 @@ body {
 body {
   foo: 25deg;
 }
+body {
+  foo: foo bar 1pt;
+  foo: foo bar 10px;
+  foo: foo 285px bar;
+}

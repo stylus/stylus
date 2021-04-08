@@ -139,6 +139,7 @@ body {
   color-teal: #008080;
   color-thistle: #d8bfd8;
   color-tomato: #ff6347;
+  color-transparent: transparent;
   color-turquoise: #40e0d0;
   color-violet: #ee82ee;
   color-wheat: #f5deb3;
@@ -146,4 +147,5 @@ body {
   color-whitesmoke: #f5f5f5;
   color-yellow: #ff0;
   color-yellowgreen: #9acd32;
+  color-rebeccapurple: #639;
 }

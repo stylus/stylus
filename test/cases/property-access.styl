@@ -89,3 +89,14 @@ body
   @media screen and (orientation: portrait)
     padding-left: 20px
     padding-right: @padding-left
+
+breakpoint($point)
+  if $point == lg
+    @media only screen and (min-width: 960px)
+      {block}
+
+div
+  padding-left: 10px
+  +breakpoint(lg)
+    padding-left: 20px
+    padding-right: @padding-left

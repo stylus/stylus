@@ -93,3 +93,14 @@ image(path, w = auto, h = auto)
 
 #logo
   image: '/images/logo.png' 50px 100px
+
+nav#sticky-nav
+  .logo
+    image: '../img/logo.png' 56px 56px
+
+  @media (max-width: 640px), (max-height: 320px)
+    .logo
+      width: 42px
+      height: 42px
+      margin-top: -(@height / 2)
+      image: '../img/logo-dark.png' 42px 42px

@@ -53,6 +53,23 @@ foo() {
   baz: selector('&:hover, &:active')
 }
 
+.foo {
+  .bar {
+    .baz {
+      baz: selector('^[0]:hover')
+      baz: selector('^[1]:hover') == selector('../:hover')
+      baz: selector('^[0] ^[1..1]:hover')
+      baz: selector('^[2..2] ^[-1..1]:hover')
+    }
+  }
+}
+
+.foo
+  & > .bar
+    ^[0] ^[1..1],
+    ^[1..1]
+      test: selector('^[1..1]')
+
 qux() {
   {selector()} {
     baz: selector('&__qux')
@@ -70,3 +87,23 @@ qux() {
   &:hover
     bar[0] = selector()
   baz: bar
+
+.test
+  color: red
+  /{selector()}__foo
+    border: 1px solid
+    @extend .test
+  /{selector()}__bar
+    border-radius: 4px
+    @extend .test
+
+selector-list = '.a', '.b', '.c, .d'
+
+{selector(selector-list)}
+  color: red
+
+{selector('.a', '.b', '^[0]:hover .e, ^[1]:hover .f')}
+  color: green
+
+{selector('.a' '.b' '.c')}
+  color: blue

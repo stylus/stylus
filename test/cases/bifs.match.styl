@@ -1,3 +1,4 @@
+// truthy falsy tests
 pad(type = padding)
   if match('^pad', type)
     padding 5px
@@ -13,3 +14,49 @@ if false
 else if match('foo', 'foo')
   body
     bar baz
+
+
+// checking to see if the matched values are correct
+body
+  content match('^(height|width)?([<>=]{1,})(.*)', 'height>=1024px')
+
+
+// testing to make sure passing flags returns the expected result
+body
+  no-flags match('ain', 'The rain in SPAIN stays mainly in the plain')
+  g-flag match('ain', 'The rain in SPAIN stays mainly in the plain', g)
+  gi-flag match('ain', 'The rain in SPAIN stays mainly in the plain', 'gi')
+
+
+
+// more complex use case
+unit-intervals ?= { 'px': 1, 'em': 0.01, 'rem': 0.1 }
+media(expression = '>=1024px')
+  parsed-expression = match('^(height|width)?([<>=]{1,})(.*)', expression)
+  operator = parsed-expression[2]
+  direction = match('>', operator) ? 'min' : 'max'
+  type = direction + '-' + (parsed-expression[1] || 'width')
+  value = convert(parsed-expression[3])
+  query = ''
+
+  unless match('=', operator)
+    value = operate(direction == 'min' ? '+' : '-', value, unit-intervals[unit(value)])
+
+  @media ({type}: value)
+    {block}
+
++media('>400px')
+  body
+    margin: 1px;
+
++media('<400px')
+  body
+    margin: 2px;
+
++media('>=400px')
+  body
+    margin: 3px;
+
++media('<=400px')
+  body
+    margin: 4px;

@@ -1,9 +1,143 @@
+// red, green, blue & alpha components
+
+// --- hex
 body
   background red(#fc0)
   background green(#fc0)
   background blue(#fc0)
   background alpha(#fff - rgba(0,0,0,.6))
-  
+
+.setters
+  background red(#fc0, 0)
+  background green(#fc0, 0)
+  background blue(#fc0, 0)
+  background alpha(#fff, 0.5)
+  background red(#fc0, 20%)
+  background green(#fc0, 20%)
+  background blue(#fc0, 20%)
+  background alpha(#fff, 50%)
+
+// --- rgb
+body
+  background red(rgb(255,204,0))
+  background green(rgb(255,204,0))
+  background blue(rgb(255,204,0))
+  background alpha(rgb(255,255,255) - rgba(0,0,0,.6))
+
+.setters
+  background red(rgb(255,204,0), 0)
+  background green(rgb(255,204,0), 0)
+  background blue(rgb(255,204,0), 0)
+  background alpha(rgb(255,255,255), 0.5)
+  background red(rgb(255,204,0), 20%)
+  background green(rgb(255,204,0), 20%)
+  background blue(rgb(255,204,0), 20%)
+  background alpha(rgb(255,255,255), 50%)
+
+// --- rgba
+body
+  background red(rgba(255,204,0,0.5))
+  background green(rgba(255,204,0,0.5))
+  background blue(rgba(255,204,0,0.5))
+  background alpha(rgba(255,255,255,1) - rgba(0,0,0,.6))
+
+.setters
+  background red(rgba(255,204,0,0.5), 0)
+  background green(rgba(255,204,0,0.5), 0)
+  background blue(rgba(255,204,0,0.5), 0)
+  background alpha(rgba(255,255,255,1), 0.5)
+  background red(rgba(255,204,0,0.5), 20%)
+  background green(rgba(255,204,0,0.5), 20%)
+  background blue(rgba(255,204,0,0.5), 20%)
+  background alpha(rgba(255,255,255,1), 50%)
+
+// --- hsl
+body
+  background red(hsl(48,100,50))
+  background green(hsl(48,100,50))
+  background blue(hsl(48,100,50))
+  background alpha(hsl(0,0,100) - rgba(0,0,0,.6))
+
+.setters
+  background red(hsl(48,100,50), 0)
+  background green(hsl(48,100,50), 0)
+  background blue(hsl(48,100,50), 0)
+  background alpha(hsl(0,0,100), 0.5)
+  background red(hsl(48,100,50), 20%)
+  background green(hsl(48,100,50), 20%)
+  background blue(hsl(48,100,50), 20%)
+  background alpha(hsl(0,0,100), 50%)
+
+// --- hsla
+body
+  background red(hsla(48,100,50,0.5))
+  background green(hsla(48,100,50,0.5))
+  background blue(hsla(48,100,50,0.5))
+  background alpha(hsla(0,0,100,1) - rgba(0,0,0,.6))
+
+.setters
+  background red(hsla(48,100,50,0.5), 0)
+  background green(hsla(48,100,50,0.5), 0)
+  background blue(hsla(48,100,50,0.5), 0)
+  background alpha(hsla(0,0,100,1), 0.5)
+  background red(hsla(48,100,50,0.5), 20%)
+  background green(hsla(48,100,50,0.5), 20%)
+  background blue(hsla(48,100,50,0.5), 20%)
+  background alpha(hsla(0,0,100,1), 50%)
+
+// hue, saturation, lightness components
+
+// --- hex
+body
+  background hue(#f63)
+  background saturation(#f63)
+  background lightness(#f63)
+
+.setters
+  background hue(#00c, 90deg)
+  background saturation(#00c, 50%)
+  background lightness(#00c, 90%)
+
+// --- rgb
+body
+  background hue(rgb(255,102,51))
+  background saturation(rgb(255,102,51))
+  background lightness(rgb(255,102,51))
+
+.setters
+  background hue(rgb(0,0,204), 90deg)
+  background saturation(rgb(0,0,204), 50%)
+  background lightness(rgb(0,0,204), 90%)
+
+// --- rgba
+body
+  background hue(rgba(255,102,51,0.5))
+  background saturation(rgba(255,102,51,0.5))
+  background lightness(rgba(255,102,51,0.5))
+
+.setters
+  background hue(rgba(0,0,204,0.5), 90deg)
+  background saturation(rgba(0,0,204,0.5), 50%)
+  background lightness(rgba(0,0,204,0.5), 90%)
+
+// --- hsl
+body
   background hue(hsl(15deg,100%,60%))
   background saturation(hsl(15deg,100%,60%))
   background lightness(hsl(15deg,100%,60%))
+
+.setters
+  background hue(hsl(240,100,40), 90deg)
+  background saturation(hsl(240,100,40), 50%)
+  background lightness(hsl(240,100,40), 90%)
+
+// --- hsla
+body
+  background hue(hsla(15deg,100%,60%,0.5))
+  background saturation(hsla(15deg,100%,60%,0.5))
+  background lightness(hsla(15deg,100%,60%,0.5))
+
+.setters
+  background hue(hsla(240,100,40,0.5), 90deg)
+  background saturation(hsla(240,100,40,0.5), 50%)
+  background lightness(hsla(240,100,40,0.5), 90%)

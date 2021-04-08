@@ -64,3 +64,28 @@ body {
 body {
   color: #00f;
 }
+body {
+  margin: 10px;
+  height: 40px;
+  width: 500px;
+}
+body {
+  test: false;
+  test: true;
+  test: true;
+  test: true;
+  test: true;
+  test: false;
+}
+body {
+  test: #673;
+  test: #669;
+  test: #668;
+  test: #667;
+  test: #666;
+  test: {"free-plan":"(#ccc)","freelancer":"(#ccc)","small-business":"(#ccc)","professional-business":"(#ccc)","enterprise":"(#ccc)"};
+}
+body {
+  test: 1;
+  test: 4 5 6;
+}

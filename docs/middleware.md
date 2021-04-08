@@ -26,6 +26,7 @@ Return Connect middleware with the given `options`.
                   be used by the FireStylus Firebug plugin
       `linenos`   Emits comments in the generated css indicating 
                   the corresponding stylus line
+      `sourcemap` Generates a sourcemap in sourcemaps v3 format
 
 ### Examples
 

@@ -31,3 +31,10 @@ semi-transparent()
 
 .bar
   color: semi-transparent(0, 0, 0)
+
+width()
+  push(arguments, !important)
+  {current-property[0]}: arguments;
+
+img
+  width: unquote('auto');

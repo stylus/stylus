@@ -45,3 +45,96 @@ zzzs()
   /
     .raz
       width: 120px
+
+foo /deep/
+  color: red
+
+  /deep/
+    color: red
+
+.foo
+  &__bar
+    &_baz
+      width: 10px
+
+      ^[-1]:hover &
+        width: 20px
+
+    &[disabled]
+      width: 100px
+
+.foo
+  .bar
+    width: 10px
+    &[href^='../']
+    &[href^='"../"']
+      color: red
+
+.foo
+  .bar
+    width: 10px
+
+    &,
+    ../ .baz
+      height: 10px
+
+.foo
+  color: blue
+  && + .bar
+    color: red
+
+.a,
+.b
+  & .c
+    width: 10px
+
+    ^[0]_hover .d
+      height: 10px
+
+.foo
+  & .bar
+    width: 10px
+
+    ^[0]:hover ^[1..-1]
+      width: 20px
+
+.foo
+  \\^[ 0..5  ]:hover
+    color: red
+
+& > .foo
+  color: red
+
+&   + .foo
+  color: red
+
+&   ~  .foo
+  color: blue
+
+.a
+  .b
+    ^[0] .c,
+    ^[10] .c
+      test: selector('^[0]')
+      test: selector('^[1]')
+      test: selector('^[10]')
+
+    ^[10] .c
+      what: ever
+
+.foo
+  .bar
+    ~/
+      test: selector('~/')
+      test: selector('.baz ~/')
+
+.s1
+  &-s2
+    &-s3
+      &-s4
+        ^[2]
+          // first three levels of selectors
+          syntax: "^[2]"
+        ^[0..2]
+          // I expect this to be identical to the above, but it's not
+          syntax: "^[0..2]"

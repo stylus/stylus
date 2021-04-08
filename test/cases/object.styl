@@ -111,3 +111,53 @@ bar = {}
 body
   if true
     bar[length(bar['baz'])] = 'raz'
+
+obj = {
+  /* margin */
+  foobar: 10px
+
+  /* height */
+  ,bar  : 40px
+
+  ,  baz /* comment */  : 500px
+}
+
+body
+  margin: obj.foobar
+  height: obj.bar
+  width: obj.baz
+
+obj1 = {}
+obj2 = { foo: 1, bar: 2 }
+
+body
+  test: obj1 == obj2
+  test: obj2 != obj1
+  test: obj1 == {}
+  test: obj2 == { foo: 1, bar: 2 }
+
+  obj2.qux = { baz: 1 }
+  test: obj2 == { foo: 1, bar: 2, qux: { baz: 1 } }
+  test: obj == 42
+
+plans = {
+  'free-plan': #673,
+  'freelancer': #669,
+  'small-business': #668,
+  'professional-business': #667,
+  'enterprise': #666
+}
+
+body
+  for plan in free-plan freelancer small-business professional-business enterprise
+    test: plans[plan]
+    plans[plan] = #ccc
+  test: plans
+
+obj = {}
+obj.list = 1, 2, 3
+
+body
+  test: obj.list[0]
+  obj['list'] = 4, 5, 6
+  test: obj.list[0..2]

@@ -1,0 +1,7 @@
+list1 = 1 2 3
+list2 = 4, 5, 6
+
+body
+  test: list-separator(list1) == ' '
+  test: list-separator(list2) == ','
+  test: list-separator(1px) == ' '

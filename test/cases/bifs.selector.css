@@ -32,7 +32,17 @@ broken selector {
 .foo {
   baz: '.foo:hover';
   baz: 'li a';
-  baz: '.foo:hover, .foo:active';
+  baz: '.foo:hover,.foo:active';
+}
+.foo .bar .baz {
+  baz: '.foo:hover';
+  baz: true;
+  baz: '.foo .bar:hover';
+  baz: '.baz .bar .baz:hover';
+}
+.foo .bar,
+.bar {
+  test: '.bar';
 }
 .qux .qux {
   baz: '.qux .qux__qux';
@@ -41,4 +51,26 @@ broken selector {
 .bar {
   baz: '.foo:hover,.bar:hover';
   baz: '.foo:hover,.bar:hover';
+}
+.test,
+.test__foo,
+.test__bar {
+  color: #f00;
+}
+.test__foo {
+  border: 1px solid;
+}
+.test__bar {
+  border-radius: 4px;
+}
+.a .b .c,
+.a .b .d {
+  color: #f00;
+}
+.a:hover .e,
+.a .b:hover .f {
+  color: #008000;
+}
+.a .b .c {
+  color: #00f;
 }
