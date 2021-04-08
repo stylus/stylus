@@ -8,12 +8,14 @@ a.prefix-button {
   text-decoration: none;
 }
 form button,
-a.prefix-button button {
+a.prefix-button button,
+a.prefix-button {
   padding: 10px;
   color: #f00;
 }
 form button:hover,
-a.prefix-button button:hover {
+a.prefix-button button:hover,
+a.prefix-button:hover {
   color: #00f;
 }
 body,

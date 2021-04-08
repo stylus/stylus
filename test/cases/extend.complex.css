@@ -8,12 +8,14 @@ a.button {
   text-decoration: none;
 }
 form button,
-a.button button {
+a.button button,
+a.button {
   padding: 10px;
   color: #f00;
 }
 form button:hover,
-a.button button:hover {
+a.button button:hover,
+a.button:hover {
   color: #00f;
 }
 body,
