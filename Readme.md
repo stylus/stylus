@@ -119,7 +119,9 @@ form input {
   - Espresso [Sugar](https://github.com/aljs/Stylus.sugar)
   - [Firebug extension](docs/firebug.md)
   - heroku [web service](http://styl.herokuapp.com/) for compiling stylus
-  - [style guide](https://github.com/lepture/ganam) parser and generator
+  - style guide parsers and generators
+      - [ganam](https://github.com/lepture/ganam)
+      - [kss](https://github.com/kneath/kss) (now natively supports stylus)
   - transparent vendor-specific function expansion
 
 ### Community modules
