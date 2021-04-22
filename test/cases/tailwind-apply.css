@@ -1,0 +1,6 @@
+.tailwind-no-variants {
+  @apply bg-blue-700 text-orange-200;
+}
+.tailwind-variants {
+  @apply bg-white sm:bg-red-100 focus:font-black;
+}
