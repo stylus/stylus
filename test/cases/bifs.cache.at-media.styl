@@ -38,3 +38,42 @@ bar()
 
 .h
   bar()
+
+
+$media-breakpoints ?= {
+  'sm': 568px,
+  'md': 768px,
+  'lg': 1024px,
+  'xl': 1400px
+}
+
+reset($size = '')
+  +cache('reset-' + $size)
+    list-style none outside none
+    margin-left 0
+    margin-right 0
+    padding 0
+
+$at = '\@'
+for $breakpoint, $value in $media-breakpoints
+  @media (min-width: $value)
+    .foo{$at}{$breakpoint}
+      reset($breakpoint)
+      width 50px
+
+    .bar{$at}{$breakpoint}
+      reset($breakpoint)
+      width 60px
+
+
+@media (min-width: $media-breakpoints.sm)
+  .qux{$at}sm
+    reset('sm')
+
+@media (min-width: 568px)
+  .quux{$at}sm
+    reset('sm')
+
+@media (min-width: $media-breakpoints.sm)
+  .garply{$at}sm
+    reset('sm')

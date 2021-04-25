@@ -1,0 +1,91 @@
+/// Creates a list of global breakpoints
+$media-breakpoints ?= {
+  'sm': 568px,
+  'md': 768px,
+  'lg': 1024px,
+  'xl': 1400px
+}
+
+$media-breakpoints-list = split(',', ',>=' + join(',>=', keys($media-breakpoints)))
+
+/// Creates a list of static expressions or media types
+$media-expressions ?= {
+  'screen': 'screen',
+  'print': 'print',
+  'handheld': 'handheld',
+  'retina2x': '(-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi)',
+  'retina3x': '(-webkit-min-device-pixel-ratio: 3) and (min-resolution: 350dpi)'
+}
+
+/// Defines a number to be added or subtracted from each unit when declaring breakpoints with exclusive intervals
+$unit-intervals ?= { 'px': 1, 'em': 0.01, 'rem': 0.1 }
+
+media($breakpoint) {
+  require-string($breakpoint)
+  $parsed-query = parse-query($breakpoint)
+  if !$parsed-query.value {
+    $media = $m = ''
+    {block}
+  } else {
+    @media ({$parsed-query.type} : $parsed-query.size) {
+      // set the current media state
+      if $parsed-query.value in keys($media-breakpoints) {
+        $media = $m = '\@' + $parsed-query.value
+      }
+
+      {block}
+    }
+  }
+}
+
+parse-query($expression) {
+  if !$expression {
+    return { 'expression': '', 'type': '', 'size': '', 'operator': '', 'value': '' }
+  }
+
+  if $expression in keys($media-expressions) {
+    return unquote($media-expressions[$expression]);
+  }
+
+  $parsed-query = match('^(height|width)?([<>=]{1,})(.*)', $expression)
+  $type = $parsed-query[1] || 'width'
+  $operator = split('', $parsed-query[2])
+  $operator-length = length($operator)
+  $value = $parsed-query[3]
+  $size = ''
+
+  if $value in keys($media-breakpoints) {
+    // is a defined breakpoint
+    $size = $media-breakpoints[$value];
+  } else {
+    // a number was passed so convert it to a usable unit
+    $size = convert($value)
+  }
+
+  // get the unit size to modify the passed breakpoint if needed
+  $unit = $unit-intervals[unit($size)]
+
+  if $operator[0] == '>' {
+    $type = 'min-' + $type
+
+    if $operator-length == 1 {
+      $size += $unit
+    }
+  } else if $operator[0] == '<'{
+    $type = 'max-' + $type
+
+    if $operator-length == 1 {
+      $size -= $unit
+    }
+  } else {
+    warn($expression + ' is missing an operator.');
+  }
+
+  return {
+    'expression': $type + ': ' + $size,
+    'type': $type,
+    'size': $size,
+    'operator': join('', $operator),
+    'value': $value
+  }
+}

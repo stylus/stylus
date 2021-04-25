@@ -1,31 +1,15 @@
-.a,
-.d {
-  width: 10px;
+.foo,
+.bar {
+  list-style: none outside none;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
 }
-.b {
-  width: 20px;
+.foo {
+  background: #f00;
 }
-@media only screen and (min-width: 1024px) {
-  .c,
-  .e {
-    width: 10px;
-  }
-}
-@media only screen and (min-width: 1024px) {
-  .f {
-    width: 20px;
-  }
-}
-@media only screen and (min-width: 1600px) {
-  .f,
-  .g {
-    width: 10px;
-  }
-}
-@media only screen and (min-width: 600px) {
-  .h {
-    width: 10px;
-  }
+.bar {
+  background: #00f;
 }
 @media (min-width: 568px) {
   .foo\@sm,
@@ -39,10 +23,10 @@
     padding: 0;
   }
   .foo\@sm {
-    width: 50px;
+    background: #f00;
   }
   .bar\@sm {
-    width: 60px;
+    background: #00f;
   }
 }
 @media (min-width: 768px) {
@@ -54,10 +38,10 @@
     padding: 0;
   }
   .foo\@md {
-    width: 50px;
+    background: #f00;
   }
   .bar\@md {
-    width: 60px;
+    background: #00f;
   }
 }
 @media (min-width: 1024px) {
@@ -69,10 +53,10 @@
     padding: 0;
   }
   .foo\@lg {
-    width: 50px;
+    background: #f00;
   }
   .bar\@lg {
-    width: 60px;
+    background: #00f;
   }
 }
 @media (min-width: 1400px) {
@@ -84,9 +68,9 @@
     padding: 0;
   }
   .foo\@xl {
-    width: 50px;
+    background: #f00;
   }
   .bar\@xl {
-    width: 60px;
+    background: #00f;
   }
 }

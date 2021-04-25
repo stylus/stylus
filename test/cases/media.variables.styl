@@ -1,0 +1,36 @@
+$scope = 'initial scope'
+
+.foo
+  scope $scope
+
+.bar
+  scope $scope
+
+
+@media (min-width: 500px)
+  $scope = '@media (min-width: 500px)'
+  .foo
+    scope $scope
+
+  .bar
+    $scope = '@media (min-width: 500px) .bar'
+    scope $scope
+
+
+// the following should retain the same `$scope` that was
+// declared above in the media query
+@media (min-width: 500px)
+  .foo
+    scope $scope
+
+  .bar
+    scope $scope
+
+
+// these should still be the initial scope because
+// they weren't decleared in the same media query
+.foo
+  scope $scope
+
+.bar
+  scope $scope

@@ -1,0 +1,34 @@
+@import 'mixins/media'
+
+// Note: `$media` is being set in the `media` mixin that is being imported
+
+reset()
+  +cache('reset')
+    list-style none outside none unless @list-style
+    margin-left 0 unless @margin-left
+    margin-right 0 unless @margin-right
+    padding 0 unless @padding
+
+
+for $breakpoint in $media-breakpoints-list
+  +media($breakpoint)
+    .foo{$media}
+      reset()
+      background: red;
+
+    .bar{$media}
+      reset()
+      background: blue;
+
+
++media('>=sm')
+  .qux{$media}
+    reset('sm')
+
++media('>=sm')
+  .quux{$media}
+    reset('sm')
+
++media('>=sm')
+  .garply{$media}
+    reset('sm')
