@@ -9,7 +9,7 @@ on:
   pull_request:
 
 jobs:
-  test:
+  node_tests:
     name: 'Test stylus on ${{matrix.os}} with node${{matrix.node}}'
     strategy:
       matrix:
