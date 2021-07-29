@@ -1,9 +1,9 @@
-# Stylus
+<p align="center"><a href="https://vuejs.org" target="_blank" rel="noopener noreferrer"><img width="150" src="https://stylus-lang.com/img/stylus-logo.svg" alt="Vue logo"></a></p>
 
 [![Build Status](https://github.com/stylus/stylus/actions/workflows/ci.yml/badge.svg?branch=dev)](https://github.com/stylus/stylus/actions?query=branch%3Adev)
 [![npm version](https://badge.fury.io/js/stylus.svg)](https://badge.fury.io/js/stylus)
 [![npm](https://img.shields.io/npm/dm/stylus.svg)](https://www.npmjs.com/package/stylus)
-[![Join the community on Spectrum](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/stylus)
+[![Join the community on github discussion](https://img.shields.io/badge/Join%20the%20community-on%20discussions-%23754ffb?logo=googlechat&logoColor=white)](https://github.com/stylus/stylus/discussions)
 
 Stylus is a revolutionary new language, providing an efficient, dynamic, and expressive way to generate CSS. Supporting both an indented syntax and regular CSS style.
 
