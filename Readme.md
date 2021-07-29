@@ -1,4 +1,4 @@
-<p align="center"><a href="https://stylus-lang.com" target="_blank" rel="noopener noreferrer"><img width="150" src="./graphics/Logos/stylus.png" alt="Vue logo"></a></p>
+<p align="center"><a href="https://stylus-lang.com" target="_blank" rel="noopener noreferrer"><img width="150" src="./graphics/Logos/stylus.png" alt="Stylus logo"></a></p>
 
 [![Build Status](https://github.com/stylus/stylus/actions/workflows/ci.yml/badge.svg?branch=dev)](https://github.com/stylus/stylus/actions?query=branch%3Adev)
 [![npm version](https://badge.fury.io/js/stylus.svg)](https://badge.fury.io/js/stylus)
