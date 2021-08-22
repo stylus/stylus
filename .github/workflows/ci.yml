@@ -13,7 +13,7 @@ jobs:
     name: 'Test stylus on ${{matrix.os}} with node${{matrix.node}}'
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-latest, macos-latest, windows-latest]
         # Latest four Nodejs LTS version
         node: [10, 12, 14, 16]
     runs-on: ${{ matrix.os }}
