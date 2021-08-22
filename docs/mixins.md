@@ -1,4 +1,3 @@
-
 ---
 layout: default
 permalink: docs/mixins.html
