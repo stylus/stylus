@@ -1,3 +1,38 @@
+0.54.8 / 2020-07-16
+===================
+
+  * Feature: Patched Renderer.deps() to recognize identifiers as import paths. [#2519](https://github.com/stylus/stylus/pull/2519)
+  * Fix: fix for Node v14 'Accessing non-existent property' errors [#2538](https://github.com/stylus/stylus/pull/2538) 
+  * Fix: tests on windows [#2523](https://github.com/stylus/stylus/pull/2523) 
+  * Fix: fixed an issue when running Stylus inside of an .asar archive [#2520](https://github.com/stylus/stylus/pull/2520)
+  * Fix: fix property lookup negation [#2506](https://github.com/stylus/stylus/pull/2506) closes [#2485](https://github.com/stylus/stylus/issues/2485)
+
+0.54.7 / 2019-08-21
+===================
+
+  * Fix: bug in hash access [#2484](https://github.com/stylus/stylus/pull/2484)
+
+0.54.6 / 2019-08-19
+===================
+
+  * Feature: Extend length method to work with strings [#2110](https://github.com/stylus/stylus/pull/2110)
+  * Feature: add quiet flag to have a more "quiet" output. [#2088](https://github.com/stylus/stylus/pull/2088)
+  * Feature: Support for cssnext nested at-rule syntax (apply, nested) [#2335](https://github.com/stylus/stylus/pull/2335)
+  * Feature: Make prefix-classes work with partial and range refs in selectors [#2278](https://github.com/stylus/stylus/pull/2278) 
+  * Feature: Extend in block level import [#2270](https://github.com/stylus/stylus/pull/2270)
+  * chore: Use mkdir() recursive option instead of mkdirp() [#2426](https://github.com/stylus/stylus/pull/2426)
+  * chore: Define function arguments explicitly [#2417](https://github.com/stylus/stylus/pull/2417)
+  * Fix issue with cos & sin not stripping rad unit. [#2284](https://github.com/stylus/stylus/pull/2284)
+  * Fix: handle empty at-rules [#2416](https://github.com/stylus/stylus/pull/2416)
+  * Fix: Do not use the deprecated Buffer() constructor [#2424](https://github.com/stylus/stylus/pull/2424)
+  * Fix: 'imports' couldn't be set as a option [#2425](https://github.com/stylus/stylus/pull/2411) closes [#2411](https://github.com/stylus/stylus/pull/2411)
+  * Fix: no such directory error in Stylus Executable [#2421](https://github.com/stylus/stylus/pull/2421)
+  * Fix: define column for mixin [#2456](https://github.com/stylus/stylus/pull/2456)
+  * Fix: work with hash [#2453](https://github.com/stylus/stylus/pull/2453)
+  * Fix: check whether captureStackTrace exists [#2394](https://github.com/stylus/stylus/pull/2394)
+
+
+
 0.54.5 / 2016-04-28
 ===================
 
