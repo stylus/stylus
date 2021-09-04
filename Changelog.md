@@ -1,3 +1,11 @@
+0.55.0 / 2021-09-04
+===================
+
+  * Fearure: Add deg and fr as exceptions for 0 value unit omission. [#2578](https://github.com/stylus/stylus/pull/2578)
+  * Feature: Add inverse trigonometric functions as bifs. [#2186](https://github.com/stylus/stylus/pull/2186) closes [#1567](https://github.com/stylus/stylus/issues/1567)
+  * Fix: Bug fixes of encoding png image in url lib function. [#2549](https://github.com/stylus/stylus/pull/2549)
+  * Refactoring: Replace dependency css-parse with css. [#2554](https://github.com/stylus/stylus/pull/2554)
+
 0.54.8 / 2020-07-16
 ===================
 
