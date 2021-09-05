@@ -94,3 +94,15 @@ label input:blank,
 label span {
   color: #014;
 }
+label input:is,
+label span {
+  color: #015;
+}
+label input:has,
+label span {
+  color: #016;
+}
+label input:where,
+label span {
+  color: #017;
+}
