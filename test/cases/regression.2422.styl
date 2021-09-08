@@ -1,0 +1,18 @@
+forsooth = 4px
+for-something = 5
+if_bar = 700
+
+for-tablet-portrait-up()
+  @media (min-width: 600px)
+    {block}
+
+.foobar
+  border-radius: forsooth
+  columns: for-something
+
+  for --num in 1 2 3
+    foo: --num
+
+  +for-tablet-portrait-up()
+    columns: 1
+    font-weight: if_bar
