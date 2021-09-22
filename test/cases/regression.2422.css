@@ -1,0 +1,13 @@
+.foobar {
+  border-radius: 4px;
+  columns: 5;
+  foo: 1;
+  foo: 2;
+  foo: 3;
+}
+@media (min-width: 600px) {
+  .foobar {
+    columns: 1;
+    font-weight: 700;
+  }
+}
