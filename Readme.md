@@ -1,9 +1,10 @@
-# Stylus
+<p align="center"><a href="https://stylus-lang.com" target="_blank" rel="noopener noreferrer"><img width="150" src="https://raw.githubusercontent.com/stylus/stylus/dev/graphics/Logos/stylus.png" alt="Stylus logo"></a></p>
 
-[![Build Status](https://travis-ci.org/stylus/stylus.svg?branch=master)](https://travis-ci.org/stylus/stylus)
-[![npm version](https://badge.fury.io/js/stylus.svg)](https://badge.fury.io/js/stylus)
+[![Build Status](https://github.com/stylus/stylus/actions/workflows/ci.yml/badge.svg?branch=dev)](https://github.com/stylus/stylus/actions?query=branch%3Adev)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-brightgreen.svg)](https://github.com/stylus/stylus/pulse)
+[![npm version](https://img.shields.io/npm/v/stylus?color=brightgreen)](https://www.npmjs.com/package/stylus)
 [![npm](https://img.shields.io/npm/dm/stylus.svg)](https://www.npmjs.com/package/stylus)
-[![Join the community on Spectrum](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/stylus)
+[![Join the community on github discussion](https://img.shields.io/badge/Join%20the%20community-on%20discussions-%23754ffb?logo=googlechat&logoColor=white)](https://github.com/stylus/stylus/discussions)
 
 Stylus is a revolutionary new language, providing an efficient, dynamic, and expressive way to generate CSS. Supporting both an indented syntax and regular CSS style.
 
@@ -18,7 +19,35 @@ Watch and compile a stylus file from command line with
 ```bash
 stylus -w style.styl -o style.css
 ```
-You can also [try all stylus features on stylus-lang.com](http://stylus-lang.com/try.html), build something with stylus on [codepen](http://codepen.io) or integrate stylus with [gulp](http://gulpjs.com/) using [gulp-stylus](https://www.npmjs.com/package/gulp-stylus) or [gulp-accord](https://www.npmjs.com/package/gulp-accord).
+You can also [try all stylus features on stylus-lang.com](http://stylus-lang.com/try.html), build something with stylus on [codepen](http://codepen.io) or [RunKit](https://npm.runkit.com/stylus)
+
+### IDE/Editor Support
+
+| IDE/Editor | built-in support | guide | plugin support |
+| ------------- | ------------- |  ------------- |   ------------- |
+| <img src="https://simpleicons.org/icons/webstorm.svg" width="15px" /> WebStorm | ✅ &nbsp;[bug report](https://youtrack.jetbrains.com/issues/WEB) | [Using stylus with webstorm](https://www.jetbrains.com/help/webstorm/transpiling-stylus-to-css.html) | N/A  |
+| <img src="https://simpleicons.org/icons/visualstudiocode.svg" width="15px" /> VSCode | ❌ | N/A | [Stylus](https://marketplace.visualstudio.com/items?itemName=sysoev.language-stylus)(maintainer: [@iChenLei](https://github.com/ichenlei) [@d4rkr00t](https://github.com/d4rkr00t))  |
+| <img src="https://simpleicons.org/icons/sublimetext.svg" width="15px" /> Sublime 2/3 | ❌ | N/A |[Stylus](https://packagecontrol.io/packages/Stylus)(maintainer: [@billymoon](https://github.com/billymoon))  |
+| <img src="https://simpleicons.org/icons/atom.svg" width="15px" /> Atom | ❌ | N/A | [Stylus](https://atom.io/packages/stylus)(maintainer: [@matthojo](https://github.com/matthojo)) |
+| <img src="https://simpleicons.org/icons/vim.svg" width="15px" /> Vim | ❌ | N/A | [vim-stylus](https://github.com/iloginow/vim-stylus)(maintainer: [@iloginow](https://github.com/iloginow)) |
+
+> Missing your favorite IDE/Editor support ? Please report to us via [stylus issues](https://github.com/stylus/stylus/issues)
+
+### Modern bundler/task-runner Support
+
+| Bundler | built-in support | guide | plugin support |
+| ------------- | ------------- |  ------------- |  ------------- |
+| <img src="https://simpleicons.org/icons/webpack.svg" width="15px"> webpack | ✅ | [Using stylus with webpack](https://webpack.js.org/loaders/stylus-loader/) | [stylus-loader](https://github.com/webpack-contrib/stylus-loader) |
+| <img src="https://simpleicons.org/icons/vite.svg" width="15px"> vite | ✅  | [Using stylus with vite](https://vitejs.dev/guide/features.html#css-pre-processors) |  N/A |
+| <img src="https://avatars.githubusercontent.com/u/32607881?s=20&v=4" width="15px"> parcel | ✅  | [Using stylus with parcel v1](https://parceljs.org/stylus.html) \| [v2](https://v2.parceljs.org/languages/stylus/) | N/A |
+| <img src="https://avatars.githubusercontent.com/u/23119087?s=20&v=4" width="15px"> fuse-box | ✅  | [Using stylus with fuse-box](https://fuse-box.org/docs/plugins/stylus-plugin) | N/A |
+| <img src="https://avatars.githubusercontent.com/u/44914786?s=20&v=4" width="15px"> snowpack | ❌  | [Snowpack plugins guide](https://www.snowpack.dev/reference/plugins) |  [snowpack-plugin-stylus](https://github.com/fansenze/snowpack-plugin-stylus) |
+| <img src="https://simpleicons.org/icons/gulp.svg" width="15px"> gulp | ❌  | N/A | [gulp-stylus](https://github.com/stevelacy/gulp-stylus) |
+| <img src="https://simpleicons.org/icons/grunt.svg" width="15px"> grunt | ❌  | N/A | [grunt-contrib-stylus](https://github.com/gruntjs/grunt-contrib-stylus) |
+| <img src="https://simpleicons.org/icons/rollupdotjs.svg" width="15px"> rollup | ❌ | N/A | [rollup-plugin-stylus-compiler](https://github.com/RJHwang/rollup-plugin-stylus-compiler) |
+
+
+> Missing your favorite modern bundler/task-runner support ? Please report to us via [stylus issues](https://github.com/stylus/stylus/issues)
 
 ### Example
 
@@ -126,24 +155,9 @@ form input {
 
   - https://github.com/stylus/stylus/wiki
 
-### Framework Support
+### Stylus cheatsheet
 
-   - [Connect](docs/middleware.md)
-   - [Play! 2.0](https://github.com/patiencelabs/play-stylus)
-   - [Ruby On Rails](https://github.com/forgecrafted/ruby-stylus-source)
-   - [Meteor](http://docs.meteor.com/#stylus)
-   - [Grails](http://grails.org/plugin/stylus-asset-pipeline)
-   - [Derby](https://github.com/derbyjs/derby-stylus)
-   - [Laravel](https://laravel.com/docs/5.5/mix#stylus)
-
-### CMS Support
-
-   - [DocPad](https://github.com/docpad/docpad)
-   - [Punch](https://github.com/laktek/punch-stylus-compiler)
-
-### Screencasts
-
-  - [CSS Syntax & Postfix Conditionals](http://www.screenr.com/A8v)
+  - [Stylus cheatsheet](https://devhints.io/stylus), very useful stylus syntax code snippet for you
 
 ### Authors
 
@@ -151,7 +165,7 @@ form input {
 
 ### More Information
 
-  - Language [comparisons](docs/compare.md)
+  - Language [comparisons](docs/compare.md), compare Less Sass and Stylus.
 
 ## Code of Conduct
 

@@ -1,7 +1,7 @@
 {
   "name": "stylus",
   "description": "Robust, expressive, and feature-rich CSS superset",
-  "version": "0.54.7",
+  "version": "0.55.0",
   "author": "TJ Holowaychuk <tj@vision-media.ca>",
   "keywords": [
     "css",
@@ -25,23 +25,21 @@
   },
   "scripts": {
     "prepublish": "npm prune",
-    "test": "mocha test/ test/middleware/ --require should --bail --check-leaks --reporter dot",
-    "test-cov": "mocha test/ test/middleware/ --require should --bail --reporter html-cov > coverage.html"
+    "test": "mocha test/ test/middleware/ --require chai --bail --check-leaks --reporter dot",
+    "test-cov": "mocha test/ test/middleware/ --require chai --bail --reporter html-cov > coverage.html"
   },
   "dependencies": {
-    "css-parse": "~2.0.0",
-    "debug": "~3.1.0",
+    "css": "^3.0.0",
+    "debug": "^4.3.2",
     "glob": "^7.1.6",
-    "mkdirp": "~1.0.4",
     "safer-buffer": "^2.1.2",
     "sax": "~1.2.4",
-    "semver": "^6.3.0",
     "source-map": "^0.7.3"
   },
   "devDependencies": {
+    "chai": "^4.3.4",
     "jscoverage": "~0.6.0",
-    "mocha": "^8.0.1",
-    "should": "^13.2.3"
+    "mocha": "^9.0.3"
   },
   "bugs": {
     "url": "https://github.com/stylus/stylus/issues"

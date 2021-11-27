@@ -4,14 +4,17 @@
 .travis.yml
 
 History.md
+Changelog.md
 Workflow.md
 Code_of_Conduct.md
 Contributing.md
+SECURITY.md
 Makefile
 
 bm.js
 
 docs/
+.github/
 .idea/
 editors/
 test/

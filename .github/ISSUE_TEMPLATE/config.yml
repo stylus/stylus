@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+contact_links:
+  - name: ✨ Feature Request / idea
+    url: https://github.com/stylus/stylus/discussions/new
+    about: Missing something in Stylus? Let us know.
+  - name: 💬 Question / Discussion
+    url: https://github.com/stylus/stylus/discussions/new
+    about: Feel free to ask anything
+  - name: 📖 View documentation
+    url: https://stylus-lang.com
+    about: Official Stylus documentation    
+  - name: ❓ StackOverflow
+    url: https://stackoverflow.com/questions/tagged/stylus
+    about: Ask question or find answers on Stack overflow

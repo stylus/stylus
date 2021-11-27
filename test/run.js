@@ -5,7 +5,8 @@
 
 var stylus = require('../')
   , fs = require('fs')
-  , should = require('should');
+  , isWindows = process.platform === 'win32'
+  , should = require('chai').should();
 
 // integration cases
 
@@ -17,6 +18,13 @@ addSuite('integration', readDir('test/cases'), function(test) {
       .set('filename', path)
       .include(__dirname + '/images')
       .include(__dirname + '/cases/import.basic');
+
+  // TODO skip url test ci on windows platform
+  // cause '\r\n' and `\n` generate different hash string   
+  // relative commit https://github.com/stylus/stylus/commit/fe0c090a5c0c0db73f4afd3a803af33996548d01 
+  if (isWindows && (test || '').includes('functions.url')) {
+    return;
+  }
 
   if(~test.indexOf('compress')) style.set('compress', true);
   if(~test.indexOf('include')) style.set('include css', true);
@@ -65,7 +73,7 @@ addSuite('sourcemap', readDir('test/sourcemap'), function(test) {
     if(inline) {
       style.sourcemap.sourcesContent.should.not.be.empty;
       if(~test.indexOf('utf-8')) comment += 'charset=utf-8;';
-      css.should.containEql(comment + 'base64,');
+      css.should.contain(comment + 'base64,');
     } else {
       style.sourcemap.should.eql(JSON.parse(expected));
     }
