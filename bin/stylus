@@ -12,8 +12,7 @@ var fs = require('fs')
   , resolve = require('path').resolve
   , join = require('path').join
   , isWindows = process.platform === 'win32'
-  , semver = require('semver')
-  , mkdirSync = semver.satisfies(process.version, '>=10.12.0') ? fs.mkdirSync : require('mkdirp').sync;
+  , mkdirSync = fs.mkdirSync;
 
 /**
  * Arguments.
