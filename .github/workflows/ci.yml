@@ -50,7 +50,7 @@ jobs:
     name: 'Compat test stylus on ubuntu with node${{matrix.node}}'
     strategy:
       matrix:
-        os: [ubuntu-latest],
+        os: [ubuntu-latest]
         node: [10, 12, 14, 17]
     runs-on: ${{ matrix.os }}
     steps:
