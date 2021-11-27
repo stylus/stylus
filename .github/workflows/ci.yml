@@ -64,3 +64,18 @@ jobs:
        run: node --version && npm --version 
      - name: Run Test
        run: npm run test
+
+  benchmark:
+    name: 'Run stylus benchmark with node16'
+    runs-on: ubuntu-latest
+    steps:
+     - uses: actions/checkout@v2
+     - uses: actions/setup-node@v2
+       with:
+         node-version: '16'
+     - name: Install npm dependencies
+       run: npm install
+     - name: Print put node & npm version
+       run: node --version && npm --version 
+     - name: Run Benchmark
+       run: node ./bm.js
