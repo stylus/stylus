@@ -25,6 +25,7 @@
   },
   "scripts": {
     "prepublish": "npm prune",
+    "build:browser": "node ./browser/compile.js | cat browser/head.js - browser/foot.js > stylus.js",
     "test": "mocha test/ test/middleware/ --require chai --bail --check-leaks --reporter dot",
     "test-cov": "mocha test/ test/middleware/ --require chai --bail --reporter html-cov > coverage.html"
   },

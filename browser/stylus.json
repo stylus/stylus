@@ -1,0 +1,6 @@
+{
+  "name": "stylus",
+  "scripts": [
+    "lib/visitor/normalizer.js"
+  ]
+}
