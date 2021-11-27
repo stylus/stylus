@@ -47,7 +47,7 @@ jobs:
      #  run: npm run test-cov
 
   compat_node_tests:
-    name: 'Compat test stylus on ubuntu with node${{matrix.node}}'
+    name: 'Compat test stylus on ${{matrix.os}} with node${{matrix.node}}'
     strategy:
       matrix:
         os: [ubuntu-latest]
