@@ -1,3 +1,10 @@
+0.56.0 / 2021-12-18
+===================
+  * Deps: upgrade debug version from v3 to v4. [#2643](https://github.com/stylus/stylus/pull/2643)
+  * Deps: remove dependencies semver and mkdirp. [2641](https://github.com/stylus/stylus/pull/2641)
+  * Fix: variable names beginning with a keyword and dash. [#2634](https://github.com/stylus/stylus/pull/2634)
+  * Fix: @import url() error in dependency resolver. [#2632](https://github.com/stylus/stylus/pull/2632)
+
 0.55.0 / 2021-09-04
 ===================
 
