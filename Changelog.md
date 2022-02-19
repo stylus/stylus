@@ -1,3 +1,7 @@
+0.57.0 / 2022-02-19
+===================
+  * Fix: remove lib-cov and outdated deps. [#2659](https://github.com/stylus/stylus/pull/2659)
+
 0.56.0 / 2021-12-18
 ===================
   * Deps: upgrade debug version from v3 to v4. [#2643](https://github.com/stylus/stylus/pull/2643)
