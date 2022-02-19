@@ -1,8 +1,6 @@
 css
-lib-cov
 testing
 .DS_Store
 /node_modules
 coverage.html
-lib-cov
 .idea
