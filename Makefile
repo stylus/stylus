@@ -19,12 +19,6 @@ TM_BUNDLE_DEST = $(shell $(DETERMINE_TEXTMATE_BUNDLE_PATH))
 test:
 	@npm test
 
-test-cov: lib-cov
-	@STYLUS_COV=1 npm run-script test-cov
-
-lib-cov: lib
-	./node_modules/.bin/jscoverage $< $@
-
 install-bundle:
 	mkdir -p "$(TM_BUNDLE_DEST)"
 	cp -fr "$(TM_BUNDLE)" "$(TM_BUNDLE_DEST)"
@@ -35,4 +29,4 @@ update-bundle:
 benchmark:
 	@node bm.js
 
-.PHONY: test install-bundle update-bundle benchmark test-cov
+.PHONY: test install-bundle update-bundle benchmark
