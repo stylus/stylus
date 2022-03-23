@@ -17,7 +17,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
      # Pull repo to test machine
-     - uses: actions/checkout@v2
+     - uses: actions/checkout@v3
      # Configures the node version used on GitHub-hosted runners
      - uses: actions/setup-node@v2
        with:
@@ -54,7 +54,7 @@ jobs:
         node: [10, 12, 14, 17]
     runs-on: ${{ matrix.os }}
     steps:
-     - uses: actions/checkout@v2
+     - uses: actions/checkout@v3
      - uses: actions/setup-node@v2
        with:
          node-version: ${{ matrix.node }}
@@ -69,7 +69,7 @@ jobs:
     name: 'Run stylus benchmark with node16'
     runs-on: ubuntu-latest
     steps:
-     - uses: actions/checkout@v2
+     - uses: actions/checkout@v3
      - uses: actions/setup-node@v2
        with:
          node-version: '16'
