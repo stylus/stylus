@@ -19,7 +19,7 @@ jobs:
      # Pull repo to test machine
      - uses: actions/checkout@v3
      # Configures the node version used on GitHub-hosted runners
-     - uses: actions/setup-node@v2
+     - uses: actions/setup-node@v3
        with:
          # The Node.js version to configure
          node-version: '16'
@@ -55,7 +55,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
      - uses: actions/checkout@v3
-     - uses: actions/setup-node@v2
+     - uses: actions/setup-node@v3
        with:
          node-version: ${{ matrix.node }}
      - name: Install npm dependencies
@@ -70,7 +70,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
      - uses: actions/checkout@v3
-     - uses: actions/setup-node@v2
+     - uses: actions/setup-node@v3
        with:
          node-version: '16'
      - name: Install npm dependencies
