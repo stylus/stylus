@@ -31,7 +31,7 @@
   "dependencies": {
     "css": "^3.0.0",
     "debug": "^4.3.2",
-    "glob": "^7.1.6",
+    "glob": "^8.0.1",
     "safer-buffer": "^2.1.2",
     "sax": "~1.2.4",
     "source-map": "^0.7.3"
