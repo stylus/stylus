@@ -40,3 +40,6 @@ Make sure to clone the project repo, then run:
 ``` bash
 $ npm install stylus -g 
 ```
+## Communication
+
+Most of the communication will be located primarily within the Issues discussion. For any active discussion, please check out the [CSS Discord Server](https://github.com/stylus/stylus/issues/2414#:~:text=https%3A//discord.gg/pFc6XmH).
