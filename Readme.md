@@ -157,7 +157,7 @@ form input {
 
 ### Community modules
 
-For all developers interested in contributing, please be sure to check out our Contribution Guide before making any pull requests to the project.
+For all developers interested in contributing, please be sure to check out our [Contribution Guide](./.github/CONTRIBUTING.md) before making any pull requests to the project.
 
 ### Stylus cheatsheet
 
