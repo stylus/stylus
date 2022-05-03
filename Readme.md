@@ -155,7 +155,7 @@ form input {
 
   - https://github.com/stylus/stylus/wiki
 
-### Community modules
+### Contribution Guide
 
 For all developers interested in contributing, please be sure to check out our [Contribution Guide](./.github/CONTRIBUTING.md) before making any pull requests to the project.
 
