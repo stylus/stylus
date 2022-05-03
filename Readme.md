@@ -155,6 +155,10 @@ form input {
 
   - https://github.com/stylus/stylus/wiki
 
+### Community modules
+
+For all developers interested in contributing, please be sure to check out our Contribution Guide before making any pull requests to the project.
+
 ### Stylus cheatsheet
 
   - [Stylus cheatsheet](https://devhints.io/stylus), very useful stylus syntax code snippet for you
