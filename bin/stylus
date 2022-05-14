@@ -739,7 +739,7 @@ function writeFile(file, css) {
 
   fs.writeFile(path, css, function(err){
     if (err) throw err;
-    console.log('  \033[90mcompiled\033[0m %s', path);
+    if (!quiet) console.log('  \033[90mcompiled\033[0m %s', path);
     // --watch support
     watch(file, file);
   });
@@ -757,7 +757,7 @@ function writeSourcemap(file, sourcemap) {
   fs.writeFile(path, JSON.stringify(sourcemap), function(err){
     if (err) throw err;
     // don't output log message if --print is present
-    if (!print) console.log('  \033[90mgenerated\033[0m %s', path);
+    if (!print && !quiet) console.log('  \033[90mgenerated\033[0m %s', path);
   });
 }
 
