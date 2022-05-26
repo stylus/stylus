@@ -83,3 +83,23 @@ label
   input:blank
   span
     color #014
+
+:is(header, main, footer) p:hover
+  color: red;
+  cursor: pointer;
+:where(header, main, footer) p:hover
+  color: red
+  cursor: pointer
+a:where(:not(:hover))
+  text-decoration: none
+a:has(> img)
+  color: red
+
+input
+  color #a7a7a7
+  &:not(:last-child)
+    color #000
+
+@media (min-width: 0px)
+  div :not(.icon)
+    display: none
