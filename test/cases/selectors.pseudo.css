@@ -94,3 +94,32 @@ label input:blank,
 label span {
   color: #014;
 }
+:is(header,
+main,
+footer) p:hover {
+  color: #f00;
+  cursor: pointer;
+}
+:where(header,
+main,
+footer) p:hover {
+  color: #f00;
+  cursor: pointer;
+}
+a:where(:not(:hover)) {
+  text-decoration: none;
+}
+a:has(> img) {
+  color: #f00;
+}
+input {
+  color: #a7a7a7;
+}
+input:not(:last-child) {
+  color: #000;
+}
+@media (min-width: 0px) {
+  div :not(.icon) {
+    display: none;
+  }
+}
