@@ -1,3 +1,11 @@
+0.58.0 / 2022-05-28
+===================
+  * feat: support full css level 4 logical combination selectors (`:is`, `:where`, `:not`, `:has`). [#2684](https://github.com/stylus/stylus/pull/2684)
+  * deps: drop [`safer-buffer`](https://www.npmjs.com/package/safer-buffer). [#2682](https://github.com/stylus/stylus/pull/2682)
+  * chore: ci add code coverage benchmark. [#2683](https://github.com/stylus/stylus/pull/2683)
+  * chore: delete unused .gitmodules file. [#2687](https://github.com/stylus/stylus/pull/2687)
+  * chore: remove unused require. [#2686](https://github.com/stylus/stylus/pull/2686)
+
 0.57.0 / 2022-02-19
 ===================
   * Fix: remove lib-cov and outdated deps. [#2659](https://github.com/stylus/stylus/pull/2659)
