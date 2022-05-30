@@ -4,12 +4,17 @@ Thank you for your interest in contributing to Stylus. Please be sure to review 
 
 ## Issue Reporting Guidelines
 
-In case you encounter any issues, be sure to submit them on the **Issues** tab, with the following information:
-- How to reproduce the issue
-- Current Behavior (i.e. what's the bug)
-- Expected Behavior (i.e. how it should function)
-- Environment Information (for example, stylus and nodejs versions)
-- Any additional information
+Before submitting an issue on GitHub, try searching for the issue. Use the search bar to search through already created issues that may be related to your problem.
+- If an issue exists, subscribe to the issue to get updates. Be sure to read over the existing discussions, you may be able to contribute to the issue that can help the team address it.
+- Otherwise, see the template below on how to add an issue.
+
+### Tips
+
+We encourage contributors to write meaningful issue posts that will help us figure out a solution.
+- Write a meaningful title that summarizes the issue:
+> Rendering of '#' Characters In Inline SVG Data Started to Cause A Chrome Deprecation Warning
+- Take a screenshot of the issue and include it in your post.
+- Make sure to add any relevant code (check out [GitHub's Formatting Guide](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#links))
 
 See the full issue template [here](./ISSUE_TEMPLATE/bug.md)
 
@@ -40,6 +45,27 @@ Make sure to clone the project repo, then run:
 ``` bash
 $ npm install stylus -g 
 ```
+## Frequently Asked Questions
+
+### What do I need to know to contribute to the codebase?
+
+Stylus runs on JavaScript and CSS. If you're interested in contributing to the codebase, you will need to be familiar with JavaScript, and some technologies like NPM.
+
+### How can I report a new bug?
+
+If you've encountered a bug, do the following steps first to resolve the problem:
+1. **Ask for help in the Discussion forum**. 
+2. **Search for your issue on GitHub**. If you've seen your issue being discussed in the discussion section, chances are that it may have a post on the issue section. If an existing post exists, be sure to thumbs up the author's post in the issue thread.
+3. **Create a New Issue**: After doing the above and not encountering any previously mentioned issues, then create a new issue. See the full issue template [here](./ISSUE_TEMPLATE/bug.md)
+
+### Where do I start if I want to work on an issue?
+
+Head over to the Issues section and go through any _help wanted_ issues for a quick list of all issues that are available to be worked on. These issues are available to anyone and do not require permission.
+
+### I need help and can't find the answer in the documentation
+
+We encourage everyone to ask for help by submitting a post on our Discussions section. 
+
 ## Communication
 
 Most of the communication will be located primarily within the Issues discussion. For any active discussion, please check out the [CSS Discord Server](https://github.com/stylus/stylus/issues/2414#:~:text=https%3A//discord.gg/pFc6XmH).
