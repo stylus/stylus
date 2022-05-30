@@ -36,5 +36,6 @@ merge of your pull request!
 - [ ] Documentation
 - [ ] Unit Tests
 - [ ] Code complete
+- [ ] Changelog
 
 <!-- feel free to add additional comments -->
