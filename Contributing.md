@@ -22,11 +22,11 @@ If you'll have any questions, feel free to mention us or use emails from our pro
 
 Looking to contribute to Stylus? Here's how you can help:
 
-- [send pull requests](https://github.com/hdezgeraldo/stylus/blob/hdezgeraldo-patch-1/Contributing.md#pull-requests)
-- [report bugs](https://github.com/hdezgeraldo/stylus/blob/hdezgeraldo-patch-1/Contributing.md#filing-bugs)
-- [ask questions](https://github.com/hdezgeraldo/stylus/blob/hdezgeraldo-patch-1/Contributing.md#asking-questions)
-- [fix existing issues](https://github.com/hdezgeraldo/stylus/blob/hdezgeraldo-patch-1/Contributing.md#fixing-existing-issues)
-- [suggest new features and enhancements](https://github.com/hdezgeraldo/stylus/blob/hdezgeraldo-patch-1/Contributing.md#proposing-features)
+- [send pull requests](#pull-requests)
+- [report bugs](#bug-reports)
+- [ask questions](#asking-questions)
+- [fix existing issues](#fixing-existing-issues)
+- [suggest new features and enhancements](#proposing-features)
 - write, rewrite, fix and enhance docs
 - contribute in other ways if you'd like
 
