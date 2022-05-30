@@ -157,7 +157,7 @@ form input {
 
 ### Contribution Guide
 
-For all developers interested in contributing, please be sure to check out our [Contribution Guide](./.github/CONTRIBUTING.md) before making any pull requests to the project.
+Please read our [Contribution Guide](Contributing.md) before making any pull requests to the project. Included are directions for opening issues, workflows, and coding standards.
 
 ### Stylus cheatsheet
 
