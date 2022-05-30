@@ -18,41 +18,32 @@ Current maintainers of Stylus are:
 
 If you'll have any questions, feel free to mention us or use emails from our profiles to contact us.
 
-
-
-## Code of Conduct
-
-Please note that this project is released with a [Contributor Code of Conduct](Code_of_Conduct.md). By participating in this project you agree to abide by its terms.
-
-
-
 ## How you can help
 
-You're welcome to:
+Looking to contribute to Stylus? Here's how you can help:
 
-- send pull requests;
-- report bugs;
-- ask questions;
-- fix existing issues;
-- suggest new features and enhancements;
-- write, rewrite, fix and enhance docs;
-- contribute in other ways if you'd like.
+- [send pull requests](https://github.com/hdezgeraldo/stylus/blob/hdezgeraldo-patch-1/Contributing.md#pull-requests)
+- [report bugs](https://github.com/hdezgeraldo/stylus/blob/hdezgeraldo-patch-1/Contributing.md#filing-bugs)
+- [ask questions](https://github.com/hdezgeraldo/stylus/blob/hdezgeraldo-patch-1/Contributing.md#asking-questions)
+- [fix existing issues](https://github.com/hdezgeraldo/stylus/blob/hdezgeraldo-patch-1/Contributing.md#fixing-existing-issues)
+- [suggest new features and enhancements](https://github.com/hdezgeraldo/stylus/blob/hdezgeraldo-patch-1/Contributing.md#proposing-features)
+- write, rewrite, fix and enhance docs
+- contribute in other ways if you'd like
 
-
-### Pull-requests
+## Pull-requests
 
 If you fixed or added something useful to the project, you can send a pull-request. It will be reviewed by a maintainer and accepted, or commented for rework, or declined.
 
-#### Before submitting a PR:
+### Before submitting a PR:
 
 1. Make sure you have tests for your modifications.
 2. Run npm test locally to catch any errors.
 
-#### Why did you close my pull request or issue?
+### Why did you close my pull request or issue?
 
 Nothing is worse than a project with hundreds of stale issues. To keep things orderly, the maintainers try to close/resolve issues as quickly as possible.
 
-#### PR/Issue closing criteria
+### PR/Issue closing criteria
 
 We'll close your PR or issue if:
 
@@ -66,36 +57,43 @@ We'll close your PR or issue if:
 Please do not take offense if your ticket is closed. We're only trying to keep the number of issues manageable.
 
 
-### Filing bugs
+## Bug reports
 
-If you found an error, typo, or any other flaw in the project, please report it using [GitHub Issues](https://github.com/stylus/stylus/issues). Try searching the issues to see if there is an existing report of your bug, and if you'd find it, you could bump it by adding your test case there.
+A bug report details a _demonstrable problem_ that is found within the code of the repository. 
 
-When it comes to bugs, the more details you provide, the easier it is to reproduce the issue and the faster it could be fixed.
+Guideline for bug reports include:
+
+1. **Validate your HTML** - Ensure that the problem you discovered isn't caused by an error in your browser.
+2. **Use [GitHub Issue](https://github.com/stylus/stylus/issues) Search** - Try searching the issues to see if there is an existing report of your bug, and if you'd find it, you could bump it by adding your test case there. If an issue exists, subscribe to the issue to get the latest updates.
+3. **Check if the issue has been fixed** - make sure to reproduce the bug using the latest `master` repository.
+
+If you found an error, typo, or any other flaw in the project, please report it using [GitHub Issues](https://github.com/stylus/stylus/issues). When it comes to bugs, the more details you provide, the easier it is to reproduce the issue and the faster it could be fixed.
 
 The best case would be if you'd provide a minimal reproducible test case illustrating a bug. For most cases just a code snippet would be enough, for more complex cases you can create gists or even test repos on GitHub — we would be glad to look into any problems you'll have with Stylus.
 
 
-### Asking questions
+## Asking questions
 
 GitHub issues is not the best place for asking questions like “why my code won't work” or “is there a way to do X in Stylus”, but we are constantly monitoring the [stylus tag at StackOverflow](http://stackoverflow.com/unanswered/tagged/stylus), so feel free to ask there! It would make it easier for other people to get answers and to keep GitHub Issues for bugs and feature requests.
 
 
-### Fixing existing issues
+## Fixing existing issues
 
-If you'd like to work on an existing issue, just leave a comment on the issue saying that you'll work on a PR fixing it.
+If you'd like to work on an existing issue, leave a comment on the issue saying that you'll work on a PR fixing it.
 
-Also, check out the [c: Easy](https://github.com/stylus/stylus/labels/c%3A%20Easy) label for a set of beginner-friendly tickets, as this is the easiest way to start contributing to Stylus.
+We use several labels to help organize and identify issues. Check out the following labels for a set of beginner-friendly tickets as this is the best way to start contributing to Stylus:
+- `c: Easy`
+- `help wanted`
+- `good first issue`
 
+For a complete look at our labels, see the [project labels page](https://github.com/stylus/stylus/labels).
 
-### Proposing features
+## Proposing features
 
 If you've got an idea for a new feature, file an issue providing some details on your idea. Try searching the issues to see if there is an existing proposal for your feature and feel free to bump it by providing your use case or explaining why this feature is important for you.
 
 We should note that not everything should be done as a “Stylus feature”, some features better be a Stylus plug-ins, some could be much faster implemented using a post-processor, some are just not in the scope of the project.
 
-
-
-* * *
 
 ## Workflow
 
@@ -150,6 +148,9 @@ Then at the root of the project you can run `npm test` or `mocha` to execute all
 
 Each `.styl` file has a corresponding `.css` file. The `.styl` is the mock, and the `.css` is the expected result.
 
+## Code of Conduct
+
+Please note that this project is released with a [Contributor Code of Conduct](Code_of_Conduct.md). By participating in this project you agree to abide by its terms.
 
 * * *
 
