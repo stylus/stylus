@@ -23,28 +23,13 @@ jobs:
        with:
          # The Node.js version to configure
          node-version: '16'
-     # Caching dependencies to speed up workflows    
-     - name: Get npm cache directory
-       id: npm-cache-dir
-       run: |
-          echo "::set-output name=dir::$(npm config get cache)"
-     - uses: actions/cache@v3
-       id: npm-cache # use this to check for `cache-hit` ==> if: steps.npm-cache.outputs.cache-hit != 'true'
-       with:
-         path: ${{ steps.npm-cache-dir.outputs.dir }}
-         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-         restore-keys: |
-           ${{ runner.os }}-node-
      - name: Install npm dependencies
        run: npm install
-     - name: Print put node & npm version
+     - name: Print node & npm version
        # Output useful info for debugging.
        run: node --version && npm --version 
      - name: Run Test
-       run: npm run test     
-     # Not work currently, need investigate
-     #- name: Run Test Cov
-     #  run: npm run test-cov
+       run: npm run test
 
   compat_node_tests:
     name: 'Compat test stylus on ${{matrix.os}} with node${{matrix.node}}'
