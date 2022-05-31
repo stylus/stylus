@@ -1,3 +1,8 @@
+0.58.1 / 2022-05-31
+===================
+  * fix: bin/stylus in npm packages contains windows style line endings [#2691](https://github.com/stylus/stylus/issues/2691)
+  * ci: add yarn bin/stylus execute regression test [#2692](https://github.com/stylus/stylus/pull/2692)
+
 0.58.0 / 2022-05-28
 ===================
   * feat: support full css level 4 logical combination selectors (`:is`, `:where`, `:not`, `:has`). [#2684](https://github.com/stylus/stylus/pull/2684)
