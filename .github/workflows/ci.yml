@@ -95,9 +95,7 @@ jobs:
      - name: Install yarn global
        run: npm install -g yarn
      - name: Run Yarn
-       run: cd ./test/yarn
-       run: yarn install
-       run: yarn run stylus --version
+       run: cd ./test/yarn && yarn install && yarn run stylus --version
   
   coverage:
     name: 'Run nyc for code coverage'
