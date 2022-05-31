@@ -80,7 +80,7 @@ jobs:
      - name: open a new folder
        run: cd ./test/yarn
      - name: Run Yarn
-       run: yarn install && yarn add stylus@latest && yarn run stylus
+       run: yarn install && yarn add stylus@latest && yarn run stylus --version
   
   coverage:
     name: 'Run nyc for code coverage'
