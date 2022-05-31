@@ -1,6 +1,4 @@
 {
     "name": "yarn-regression",
-    "dependencies": {
-        "stylus": "file:../../"
-    }
+    "dependencies": {}
 }
