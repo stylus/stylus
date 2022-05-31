@@ -80,6 +80,25 @@ jobs:
      - name: Run Benchmark
        run: node ./bm.js
   
+  yarn-regression:
+    name: 'yarn exec stylus regression test'
+    runs-on: macos-latest
+    steps:
+     - uses: actions/checkout@v3
+     - uses: actions/setup-node@v3
+       with:
+         node-version: '18'
+     - name: Install npm dependencies
+       run: npm install
+     - name: Print put node & npm version
+       run: node --version && npm --version
+     - name: Install yarn global
+       run: npm install -g yarn
+     - name: Run Yarn
+       run: cd ./test/yarn
+       run: yarn install
+       run: yarn run stylus --version
+  
   coverage:
     name: 'Run nyc for code coverage'
     runs-on: ubuntu-latest
