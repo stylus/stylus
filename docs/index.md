@@ -3,7 +3,7 @@ layout: home
 sidebar: false
 
 title: Stylus
-titleTemplate: A blazing fast unit test framework powered by Vite
+titleTemplate: An expressive, robust, feature-rich CSS language built for nodejs
 
 hero:
   name: Stylus
