@@ -7,7 +7,7 @@ permalink: docs/functions.url.html
 
 ## Data URI Image Inlining
 
-Stylus is bundled with an optional function named `url()`, which replaces the literal `url()` calls (and conditionally inlines them using base64 [Data URIs](http://en.wikipedia.org/wiki/Data_URI_scheme)).
+Stylus is bundled with an optional function named `url()`, which replaces the literal `url()` calls (and conditionally inlines them using base64 [Data URIs](https://en.wikipedia.org/wiki/Data_URI_scheme)).
 
 ## Example
 

@@ -5,7 +5,7 @@ permalink: docs/middleware.html
 
 # Connect Middleware
 
-Stylus ships with [Connect](http://www.senchalabs.org/connect/) middleware for auto-compiling Stylus sheets whenever they're modified.
+Stylus ships with [Connect](https://github.com/senchalabs/connect) middleware for auto-compiling Stylus sheets whenever they're modified.
 
 ## stylus.middleware(options)
 

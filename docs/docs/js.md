@@ -201,7 +201,7 @@ stylus('@import "a"; @import "b"')
 
 // => ['a.styl', 'b.styl']
 ```
-See also [--deps CLI flag](http://stylus-lang.com/docs/executable.html#list-dependencies).
+See also [--deps CLI flag](https://stylus-lang.com/docs/executable.html#list-dependencies).
 
 ## stylus.resolver([options])
 
@@ -215,7 +215,7 @@ stylus(str)
   });
 ```
 
-See also [--resolve-url CLI flag](http://stylus-lang.com/docs/executable.html#resolving-relative-urls-inside-imports).
+See also [--resolve-url CLI flag](https://stylus-lang.com/docs/executable.html#resolving-relative-urls-inside-imports).
 
 Options:
 

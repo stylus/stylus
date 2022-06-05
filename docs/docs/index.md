@@ -111,7 +111,7 @@ body {
 
 ### Get styling with Stylus
 
-Installing Stylus is very easy once you have [Node.js](http://nodejs.org/).
+Installing Stylus is very easy once you have [Node.js](https://nodejs.org/).
 So get the binaries for your platform and make sure that they also include npm, Node's package manager.
 
 Now, type in your terminal:
@@ -122,7 +122,7 @@ $ npm install stylus -g
 
 If you want an expressive css language for nodejs with these
 features or the features listed below, head over to 
-[GitHub](http://github.com/stylus/stylus)
+[GitHub](https://github.com/stylus/stylus)
 for more information.
 
 

@@ -56,7 +56,7 @@ border-radius()
 
 Now we can pass values like `border-radius 1px 2px / 3px 4px`!
 
-Also we can make use of the [interpolation](http://stylus-lang.com/docs/interpolation.html) `{param}`:
+Also we can make use of the [interpolation](https://stylus-lang.com/docs/interpolation.html) `{param}`:
 
 ```stylus
 border(side, args...)

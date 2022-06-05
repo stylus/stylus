@@ -5,7 +5,7 @@ permalink: docs/extend.html
 
 # @extend
 
-The Stylus __@extend__ directive is inspired by (and essentially the same as) the [SASS Implementation](http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#extend), with few subtle differences. This feature significantly simplifies maintenance of semantic rulesets that inherit from other semantic rulesets.
+The Stylus __@extend__ directive is inspired by (and essentially the same as) the [SASS Implementation](https://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#extend), with few subtle differences. This feature significantly simplifies maintenance of semantic rulesets that inherit from other semantic rulesets.
 
 
 ## “Extending” with mixins
@@ -170,7 +170,7 @@ Yielding:
 ```
 ## Extending placeholder selectors
 
-Stylus has a feature similar to the one in [Sass](http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#placeholders) — placeholder selectors.
+Stylus has a feature similar to the one in [Sass](https://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#placeholders) — placeholder selectors.
 
 Those selectors should start with a `$` symbol (for example, `$foo`), and are not yielded in the resulting CSS. But you can still extend them:
 

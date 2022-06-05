@@ -312,7 +312,7 @@ shade(#fd0cc7,66%)
 
 ### luminosity(color)
 
-Returns the [relative luminance](http://www.w3.org/TR/WCAG20/#relativeluminancedef) of the given `color`.
+Returns the [relative luminance](https://www.w3.org/TR/WCAG20/#relativeluminancedef) of the given `color`.
 
 ```stylus
 luminosity(white)
@@ -327,7 +327,7 @@ luminosity(red)
 
 ### contrast(top[, bottom])
 
-Returns the [contrast ratio](http://www.w3.org/TR/2008/REC-WCAG20-20081211/#contrast-ratiodef) object between `top` and `bottom` colors, based on [script](https://github.com/LeaVerou/contrast-ratio/blob/gh-pages/color.js#L108) underlying “[contrast ratio](http://leaverou.github.io/contrast-ratio/)” tool by Lea Verou.
+Returns the [contrast ratio](https://www.w3.org/TR/2008/REC-WCAG20-20081211/#contrast-ratiodef) object between `top` and `bottom` colors, based on [script](https://github.com/LeaVerou/contrast-ratio/blob/gh-pages/color.js#L108) underlying “[contrast ratio](https://leaverou.github.io/contrast-ratio/)” tool by Lea Verou.
 
 The second argument is optional and is defaulted to `#fff`.
 
