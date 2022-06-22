@@ -47,5 +47,6 @@
     "example": "examples",
     "test": "test"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "funding": "https://opencollective.com/stylus"
 }
