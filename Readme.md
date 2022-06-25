@@ -10,7 +10,7 @@ Stylus is a revolutionary new language, providing an efficient, dynamic, and exp
 
 ## Sponsors
 
-You can sponsor stylus ongoing development via [opencollective](https://opencollective.com/stylus/) os [paypal](https://www.paypal.com/paypalme/iChenLei/) !
+You can sponsor stylus ongoing development via [opencollective](https://opencollective.com/stylus/) or [paypal](https://www.paypal.com/paypalme/iChenLei/) !
 
 <table>
   <tbody>
