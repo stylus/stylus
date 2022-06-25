@@ -59,7 +59,7 @@ stylus -w style.styl -o style.css
 ```
 You can also [try all stylus features on stylus-lang.com](http://stylus-lang.com/try.html), build something with stylus on [codepen](http://codepen.io) or [RunKit](https://npm.runkit.com/stylus)
 
-## 📖 New Docs (alpha)
+### 📖 New Docs (alpha)
 
 Try our new [official documentation website](http://stylus-docs.netlify.app/) and give us feedback via [github issues](https://github.com/stylus/stylus/issues), thanks.
 
