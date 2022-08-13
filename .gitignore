@@ -2,5 +2,8 @@ css
 testing
 .DS_Store
 /node_modules
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
 coverage.html
 .idea
