@@ -1,3 +1,7 @@
+0.59.0 / 2022-08-13
+===================
+  * deps: switching from css to @adobe/css-tools [#2709](https://github.com/stylus/stylus/pull/2709)
+
 0.58.1 / 2022-05-31
 ===================
   * fix: bin/stylus in npm packages contains windows style line endings [#2691](https://github.com/stylus/stylus/issues/2691)
