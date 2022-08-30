@@ -1,6 +1,6 @@
 # These are supported funding model platforms
 
-github: null
+github: [stylus]
 patreon: null # Replace with a single Patreon username
 open_collective: stylus
 ko_fi: null # Replace with a single Ko-fi username
