@@ -1,7 +1,7 @@
 {
   "name": "stylus",
   "description": "Robust, expressive, and feature-rich CSS superset",
-  "version": "0.58.1",
+  "version": "0.59.0",
   "author": "TJ Holowaychuk <tj@vision-media.ca>",
   "keywords": [
     "css",
@@ -28,7 +28,7 @@
     "test": "mocha test/ test/middleware/ --require chai --bail --check-leaks --reporter dot"
   },
   "dependencies": {
-    "css": "^3.0.0",
+    "@adobe/css-tools": "^4.0.1",
     "debug": "^4.3.2",
     "glob": "^7.1.6",
     "sax": "~1.2.4",
@@ -47,5 +47,6 @@
     "example": "examples",
     "test": "test"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "funding": "https://opencollective.com/stylus"
 }
