@@ -33,6 +33,15 @@ export default defineConfig({
     ['link', { href: font, rel: 'stylesheet' }],
     ['link', { rel: 'mask-icon', href: '/logo.svg', color: '#ffffff' }],
     ['link', { rel: 'apple-touch-icon', href: '/stylus.png', sizes: '180x180' }],
+    [
+      'script',
+      { async: 'true', src: 'https://www.googletagmanager.com/gtag/js?id=G-ZWB0JH7RJV' }
+    ],
+    [
+      'script',
+      {},
+      "window.dataLayer = window.dataLayer || [];\nfunction gtag(){dataLayer.push(arguments);}\ngtag('js', new Date());\ngtag('config', 'G-ZWB0JH7RJV');"
+    ]
   ],
   lastUpdated: true,
   markdown: {
