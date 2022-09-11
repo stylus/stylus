@@ -6,6 +6,7 @@ import '@vue/runtime-core'
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     HomePage: typeof import('./components/HomePage.vue')['default']
+    Runkit: typeof import('./components/Runkit.vue')['default']
   }
 }
 

@@ -5,6 +5,7 @@ import '../style/main.css'
 import '../style/vars.css'
 import 'uno.css'
 import HomePage from '../components/HomePage.vue'
+import Runkit from '../components/Runkit.vue'
 
 if (inBrowser)
   import('./pwa')
@@ -16,5 +17,8 @@ export default {
       'home-features-after': () => h(HomePage),
     })
   },
+  enhanceApp({ app }) {
+    app.component('Runkit', Runkit)
+  }
 }
 

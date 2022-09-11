@@ -76,6 +76,7 @@ export default defineConfig({
     },
 
     nav: [
+      { text: 'Playground', link: '/try' },
       { text: 'Features', link: '/docs/' },
       { text: 'API', link: '/docs/js' },
       { text: 'CLI', link: '/docs/executable' },
