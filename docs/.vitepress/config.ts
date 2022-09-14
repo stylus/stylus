@@ -60,11 +60,11 @@ export default defineConfig({
       text: 'Suggest changes to this page',
     },
 
-    // algolia: {
-    //   appId: '',
-    //   apiKey: '',
-    //   indexName: ''
-    // },
+    algolia: {
+      appId: 'O7LII3IXQM',
+      apiKey: '141079ddcec4eb7078fa8873bea53a03',
+      indexName: 'stylus-lang'
+    },
 
     localeLinks: {
       text: 'English',
