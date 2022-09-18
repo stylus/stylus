@@ -398,16 +398,16 @@ function help(name) {
   switch (browser) {
     case 'safari':
     case 'webkit':
-      url = 'https://developer.apple.com/library/safari/search/?q=' + name;
+      url = 'https://developer.apple.com/search/?q=' + name;
       break;
     case 'opera':
-      url = 'https://dev.opera.com/search/?term=' + name;
+      url = 'https://dev.opera.com/search/?q=' + name;
       break;
     case 'w3c':
       url = 'https://www.google.com/search?q=site%3Awww.w3.org%2FTR+' + name;
       break;
     case 'ms':
-      url = 'https://social.msdn.microsoft.com/search/en-US/ie?query=' + name + '&refinement=59%2c61';
+      url = 'https://learn.microsoft.com/en-us/search/?terms=' + name;
       break;
     case 'caniuse':
       url = 'https://caniuse.com/#search=' + name;
@@ -416,7 +416,7 @@ function help(name) {
       url = 'https://www.google.com/search?q=site%3Awww.quirksmode.org+' + name;
       break;
     default:
-      url = 'https://developer.mozilla.org/en/CSS/' + name;
+      url = 'https://developer.mozilla.org/en-US/docs/Web/CSS/' + name;
   }
 
   switch (process.platform) {
