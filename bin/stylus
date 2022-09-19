@@ -410,7 +410,7 @@ function help(name) {
       url = 'https://learn.microsoft.com/en-us/search/?terms=' + name;
       break;
     case 'caniuse':
-      url = 'https://caniuse.com/#search=' + name;
+      url = 'https://caniuse.com/?search=' + name;
       break;
     case 'quirksmode':
       url = 'https://www.google.com/search?q=site%3Awww.quirksmode.org+' + name;
