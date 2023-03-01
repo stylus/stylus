@@ -34,5 +34,5 @@ features:
   - title: IDE support
     details: Both VSCode (with stylus extension) and WebStorm (builtin) support stylus development
   - title: All optional
-    details: braces, semi-colons and more can be omit in your code, keep clean and less
+    details: braces, semi-colons and more can be omitted in your code, keep clean and less
 ---
