@@ -10,7 +10,7 @@ on:
 
 jobs:
   node_tests:
-    name: 'Test stylus on ${{matrix.os}} with node16'
+    name: 'Test stylus on ${{matrix.os}} with node18'
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
