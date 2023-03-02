@@ -9,7 +9,7 @@ permalink: docs/comments.html
 
 ## Single-line comments
 
-Single-line comments look like JavaScript comments, but are not outputted in the resulting CSS.
+Single-line comments look like JavaScript comments, but are not output in the resulting CSS.
 
 ```stylus
 // I'm a comment!
@@ -19,7 +19,7 @@ body
 
 ## Multi-line comments
 
-Multi-line comments look identical to regular CSS comments. However, they are only outputted when the `compress` option is not used.
+Multi-line comments look identical to regular CSS comments. However, they are only output when the `compress` option is not used.
 
 ```stylus
 /*
