@@ -3,12 +3,12 @@ layout: home
 sidebar: false
 
 title: Stylus
-titleTemplate: An expressive, robust, feature-rich CSS language built for nodejs
+titleTemplate: An expressive, robust, feature-rich CSS language built for Node.js
 
 hero:
   name: Stylus
-  text: Expressive, dynamic and robust CSSs
-  tagline: An expressive, robust, feature-rich CSS language built for nodejs
+  text: Expressive, dynamic, and robust CSS
+  tagline: An expressive, robust, feature-rich CSS language built for Node.js
   image:
     src: /logo.svg
     alt: Stylus
@@ -27,12 +27,12 @@ hero:
       link: https://github.com/stylus/stylus
 
 features:
-  - title: Born for Nodejs
-    details: TJ create this project for nodejs ecosystem since 2010
+  - title: Born for Node.js
+    details: TJ created this project for the Node.js Ecosystem in 2010
   - title: CSS Compatible
-    details: Don't like indented syntax ? ok, it's optional! You can write stylus like css-style without pain
+    details: Don't like indented syntax? OK, it's optional! You can write Stylus like CSS without the pain
   - title: IDE support
-    details: Both VSCode (with stylus extension) and WebStorm (builtin) support stylus development
+    details: Both VSCode (with Stylus extension) and WebStorm (built in) support Stylus development
   - title: All optional
-    details: braces, semi-colons and more can be omit in your code, keep clean and less
+    details: Braces, semi-colons, and more can be omitted from your code to keep it clean and smaller
 ---
