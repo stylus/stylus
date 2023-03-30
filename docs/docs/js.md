@@ -66,7 +66,7 @@ stylus(str)
 });
 ```
 
-## .define(name, node)
+## .define(name, node[, raw])
 
 By passing a `Node`, we may define a global variable. This is useful when exposing conditional features within your library depending on the availability of another. For example the **Nib** extension library conditionally supports node-canvas, providing image generation. 
  
@@ -88,6 +88,8 @@ Stylus also casts JavaScript values to their Stylus equivalents when possible. H
 .define('list', { foo: 'bar', bar: 'baz' })
 .define('families', ['Helvetica Neue', 'Helvetica', 'sans-serif'])
 ```
+
+Note: In default, The JavaScript object variable will coerce to a tuple-array-like expression. For example `{ foo: 'bar', bar: 'baz' }` would become the expression `(foo 'bar') (bar 'baz')`. If you want to get a [hash object](https://stylus-lang.com/docs/hashes.html) return, please set `raw` to `true`.
 
 These same rules apply to return values in js functions as well:
 
