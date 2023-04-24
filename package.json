@@ -30,7 +30,7 @@
   "dependencies": {
     "@adobe/css-tools": "^4.0.1",
     "debug": "^4.3.2",
-    "glob": "^7.1.6",
+    "glob": "^10.2.2",
     "sax": "~1.2.4",
     "source-map": "^0.7.3"
   },
