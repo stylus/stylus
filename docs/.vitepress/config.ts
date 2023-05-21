@@ -70,6 +70,7 @@ export default defineConfig({
       text: 'English',
       items: [
         { text: '中文', link: 'https://www.stylus-lang.cn' },
+        { text: '中文（Zcopy）', link: 'https://stylus.zcopy.site' },
         { text: '中文(张鑫旭)', link: 'https://www.zhangxinxu.com/jq/stylus' },
       ],
     },
