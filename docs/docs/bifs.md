@@ -272,6 +272,15 @@ spin(#ff0000, 90deg)
 // => #80ff00
 ```
 
+### spin_ryb(color, amount)
+
+Spins hue of the given `color` by `amount` on the artistic RYB colorwheel.
+
+```stylus
+spin(#ff0000, 180deg)
+// => #00ff00
+```
+
 ### grayscale(color)
 
 Gives the grayscale equivalent of the given color. Equivalent to `desaturate(color, 100%)`.
