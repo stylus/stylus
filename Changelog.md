@@ -1,3 +1,7 @@
+0.60.0 / 2022-06-20
+===================
+ * feat: add spin_ryb Built-in function [#2803](https://github.com/stylus/stylus/pull/2803)
+
 0.59.0 / 2022-08-13
 ===================
   * deps: switching from css to @adobe/css-tools [#2709](https://github.com/stylus/stylus/pull/2709)
