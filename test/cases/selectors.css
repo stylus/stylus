@@ -132,3 +132,6 @@ paper {
 paper paper-input::shadow .color {
   background: #f00;
 }
+[style="color: rgb(0, 186, 124)"] {
+  color: #f00;
+}
