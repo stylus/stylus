@@ -25,7 +25,8 @@
   },
   "scripts": {
     "prepublish": "npm prune",
-    "test": "mocha test/ test/middleware/ --require chai --bail --check-leaks --reporter dot"
+    "test": "mocha test/ test/middleware/ --require chai --bail --check-leaks --reporter dot",
+    "test:deno": "deno run -A test/deno.ts"
   },
   "dependencies": {
     "@adobe/css-tools": "^4.0.1",
