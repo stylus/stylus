@@ -115,4 +115,4 @@ jobs:
        # Output useful info for debugging.
        run: deno --version
      - name: Run Test
-       run: deno run -A test/deno.ts
+       run: deno run -A deno/test.ts
