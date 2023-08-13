@@ -29,7 +29,7 @@
     "test:deno": "deno run -A deno/test.ts"
   },
   "dependencies": {
-    "@adobe/css-tools": "^4.0.1",
+    "@adobe/css-tools": "~4.2.0",
     "debug": "^4.3.2",
     "glob": "^7.1.6",
     "sax": "~1.2.4",
