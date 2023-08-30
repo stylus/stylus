@@ -96,3 +96,23 @@ jobs:
        run: npm install
      - name: Run nyc
        run: npx nyc@latest npm run test
+    
+  deno_tests:
+    name: 'Test stylus on ${{matrix.os}} with latest stable deno'
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+     # Pull repo to test machine
+     - uses: actions/checkout@v3
+     # Configures the deno version used on GitHub-hosted runners
+     - uses: denoland/setup-deno@v1
+       with:
+         # Run with latest stable Deno
+         deno-version: v1.x
+     - name: Print deno version
+       # Output useful info for debugging.
+       run: deno --version
+     - name: Run Test
+       run: deno run -A deno/test.ts
