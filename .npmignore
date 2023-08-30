@@ -13,6 +13,7 @@ Makefile
 
 bm.js
 
+deno/
 docs/
 .github/
 .idea/
