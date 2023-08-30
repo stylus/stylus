@@ -1,3 +1,7 @@
+0.60.0 / 2023-08-30
+===================
+  * feat: support [deno](https://deno.com) [#2813](https://github.com/stylus/stylus/pull/2813)
+
 0.59.0 / 2022-08-13
 ===================
   * deps: switching from css to @adobe/css-tools [#2709](https://github.com/stylus/stylus/pull/2709)
