@@ -1,3 +1,8 @@
+0.61.0 / 2023-11-04
+===================
+  * chore: drop support for NodeJS 10 and 12 [#2834](https://github.com/stylus/stylus/pull/2834)
+  * fix: fix [CVE-2023-26364](https://github.com/advisories/GHSA-hpx4-r86g-5jrg)
+
 0.60.0 / 2023-08-30
 ===================
   * feat: support [deno](https://deno.com) [#2813](https://github.com/stylus/stylus/pull/2813)
