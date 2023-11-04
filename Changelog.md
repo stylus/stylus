@@ -1,7 +1,3 @@
-0.61.0 / 
-===================
-  * chore: drop support for NodeJS 10 and 12
-
 0.60.0 / 2023-08-30
 ===================
   * feat: support [deno](https://deno.com) [#2813](https://github.com/stylus/stylus/pull/2813)
