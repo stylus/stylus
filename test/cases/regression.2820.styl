@@ -1,0 +1,17 @@
+$JIG_CONFIG = {
+	color: #f00
+}
+$jig---config ?= null
+if !($jig---config is a 'object')
+	if jig---config is defined
+		$jig---config = jig---config
+	else if $JIG_CONFIG is defined
+		$jig---config = $JIG_CONFIG
+	else if JIG_CONFIG is defined
+		$jig---config = JIG_CONFIG
+
+if !($jig---config is a 'object')
+	error('jig:globals | jig config is undefined or not a hash')
+
+.main
+	color: $jig---config.color
