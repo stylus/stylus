@@ -1,3 +1,7 @@
+0.62.0 / 2023-11-18
+===================
+  * fix: super call regression [#2843](https://github.com/stylus/stylus/pull/2843)
+
 0.61.0 / 2023-11-04
 ===================
   * chore: drop support for NodeJS 10 and 12 [#2834](https://github.com/stylus/stylus/pull/2834)
