@@ -31,10 +31,6 @@ You can sponsor stylus ongoing development via [opencollective](https://opencoll
          <p style="font-size: 30px">Your Logo</p>
       </td>
       <td width="50%" align="center">
-        <a href="http://opencollective.com/stylus/">
-          <img alt="opencollective stylus" src="https://opencollective.com/webpack/donate/button@2x.png?color=blue" />
-        </a>
-        or
         <a href="https://www.paypal.com/paypalme/iChenLei/">
           <img alt="Paypal stylus" src="https://www.paypalobjects.com/digitalassets/c/website/marketing/apac/C2/logos-buttons/optimize/Full_Online_Tray_RGB.png" />
         </a>
