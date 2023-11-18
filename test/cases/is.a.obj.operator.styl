@@ -1,0 +1,13 @@
+// https://github.com/stylus/stylus/pull/2840#issuecomment-1806769376
+IS_A_OBJECT = {
+    height: 10px
+}
+
+add(a, b)
+  if IS_A_OBJECT is a 'object'
+    a + b
+  else
+    error('is a operator not work as expect')
+
+body
+  padding s('%spx', add(1, 4))
