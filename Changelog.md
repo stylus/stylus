@@ -1,3 +1,7 @@
+0.63.0 / 2024-03-05
+===================
+  * update vulnerable dependency [#2861](https://github.com/stylus/stylus/pull/2861)
+
 0.62.0 / 2023-11-18
 ===================
   * fix: super call regression [#2843](https://github.com/stylus/stylus/pull/2843)
