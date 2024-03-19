@@ -154,12 +154,16 @@ mix(color1, color2, weight = 50%)
     error("Weight must be between 0% and 100%")
 
   if length(color1) == 2
+  {
     weight = color1[0]
     color1 = color1[1]
+  }
 
   else if length(color2) == 2
+  {
     weight = 100 - color2[0]
     color2 = color2[1]
+  }
 
   require-color(color1)
   require-color(color2)
