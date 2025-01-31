@@ -73,7 +73,7 @@ jobs:
      - uses: actions/checkout@v4
      - uses: actions/setup-node@v4
        with:
-         node-version: '16'
+         node-version: '22'
      - name: Print put node & npm version
        run: node --version && npm --version
      - name: Install yarn global
