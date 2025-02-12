@@ -20,7 +20,7 @@
     "https-localhost": "^4.7.1",
     "unocss": "^0.52.7",
     "unplugin-vue-components": "^0.25.0",
-    "vite-plugin-pwa": "^0.12.0",
+    "vite-plugin-pwa": "^0.21.1",
     "vitepress": "^1.0.0-alpha.1",
     "workbox-window": "^6.5.3"
   }
