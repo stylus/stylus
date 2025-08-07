@@ -2,7 +2,8 @@
 
 layout: default
 
-permalink: /
+permalink: /2qimbgmy8a94fbckosqd1gr26fnvee4l
+
 
 ---
 
