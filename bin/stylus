@@ -660,27 +660,51 @@ function displayDeps() {
 
 function compileFile(file) {
   // ensure file exists
-  fs.stat(file, function(err, stat){
+  fs.stat(file, function (err, stat) {
     if (err) throw err;
+
     // file
     if (stat.isFile()) {
-      fs.readFile(file, 'utf8', function(err, str){
+      // In --watch mode, ensure the entry file itself is watched
+      if (watchers) watch(file, file);
+
+      fs.readFile(file, 'utf8', function (err, str) {
         if (err) throw err;
         options.filename = file;
         options._imports = [];
-        var style = stylus(str, options);
-        if (includeCSS) style.set('include css', true);
-        if (disableCache) style.set('cache', false);
-        if (sourcemap) style.set('sourcemap', sourcemap);
 
-        usePlugins(style);
-        importFiles(style);
-        style.render(function(err, css){
+        var style;
+        try {
+          // Guard against synchronous errors during setup (parser / plugins / imports)
+          style = stylus(str, options);
+          if (includeCSS) style.set('include css', true);
+          if (disableCache) style.set('cache', false);
+          if (sourcemap) style.set('sourcemap', sourcemap);
+
+          usePlugins(style);
+          importFiles(style);
+        } catch (e) {
+          if (watchers) {
+            // In watch mode: log the error but keep the process alive
+            console.error(e.stack || e.message);
+            // Wait for the next file change to retry
+            return;
+          } else {
+            // Non-watch mode: preserve original behavior (re-throw)
+            throw e;
+          }
+        }
+
+        function onRendered(err, css) {
+          // Always watch discovered imports once render() has finished
           watchImports(file, options._imports);
+
           if (err) {
             if (watchers) {
+              // Existing behavior: in watch mode, only log the error
               console.error(err.stack || err.message);
             } else {
+              // Non-watch mode: re-throw to preserve CLI behavior
               throw err;
             }
           } else {
@@ -690,17 +714,38 @@ function compileFile(file) {
               writeSourcemap(file, style.sourcemap);
             }
           }
-        });
+        }
+
+        try {
+          // Extra guard: prevent svg-stylus / rework from crashing the process
+          // via a synchronous throw inside render()
+          style.render(onRendered);
+        } catch (e) {
+          if (watchers) {
+            // Even if render() throws synchronously, make sure we still watch
+            // any imports that Stylus discovered before the error
+            watchImports(file, options._imports);
+            console.error(e.stack || e.message);
+            // Keep the process alive and wait for the next change
+            return;
+          } else {
+            throw e;
+          }
+        }
       });
-    // directory
+
+      // directory
     } else if (stat.isDirectory()) {
-      fs.readdir(file, function(err, files){
+      fs.readdir(file, function (err, files) {
         if (err) throw err;
-        files.filter(function(path){
-          return path.match(/\.styl$/);
-        }).map(function(path){
-          return join(file, path);
-        }).forEach(compileFile);
+        files
+          .filter(function (path) {
+            return path.match(/\.styl$/);
+          })
+          .map(function (path) {
+            return join(file, path);
+          })
+          .forEach(compileFile);
       });
     }
   });
