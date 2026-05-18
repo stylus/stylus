@@ -1,0 +1,18 @@
+@scope ( .feature ) to ( .limit ) {
+  .spacey {
+    color: #00f;
+  }
+}
+@scope ( .feature , .sidebar ) to ( .limit , .ceiling ) {
+  .range {
+    color: #008000;
+  }
+}
+@scope (.modern) to (.limit) {
+  .inside-modern {
+    color: #ff0;
+  }
+}
+#legacy a {
+  color: #000;
+}

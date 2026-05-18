@@ -1,0 +1,28 @@
+@scope (.braced) {
+  .child {
+    color: #f00;
+  }
+}
+@scope (.feature) {
+  :scope {
+    color: #800080;
+  }
+}
+@scope (.article-body) to (:scope > figure) {
+  img {
+    border: 1px solid #000;
+  }
+}
+@scope (main > [data-scope=root]) to (.limit:hover) {
+  .target {
+    color: #008000;
+  }
+}
+@scope (.widget) {
+  .button {
+    color: #f00;
+  }
+  .button:hover {
+    color: #00f;
+  }
+}

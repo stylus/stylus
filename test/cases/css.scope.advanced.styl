@@ -1,0 +1,23 @@
+@scope (.braced) {
+  .child {
+    color: red;
+  }
+}
+
+@scope (.feature)
+  :scope
+    color: purple
+
+@scope (.article-body) to (:scope > figure)
+  img
+    border: 1px solid black
+
+@scope (main > [data-scope=root]) to (.limit:hover)
+  .target
+    color: green
+
+@scope (.widget)
+  .button
+    color: red
+    &:hover
+      color: blue
