@@ -192,6 +192,24 @@ describe('JS API', function() {
     }).should.throw(/import loop has been found/);
   });
 
+  it('throws for modern @scope without a body', function() {
+    (function() {
+      stylus('@scope (.root)', { filename: 'scope-error.styl' }).render();
+    }).should.throw(/expected "indent"/);
+  });
+
+  it('throws for implicit-root @scope limits', function() {
+    (function() {
+      stylus('@scope to (.limit) { .global { color: blue; } }', { filename: 'scope-limit-only-error.styl' }).render();
+    }).should.throw(/expected "\(" after @scope/);
+  });
+
+  it('throws for bare @scope blocks without an explicit root or limit', function() {
+    (function() {
+      stylus('@scope { .global { color: blue; } }', { filename: 'scope-bare-error.styl' }).render();
+    }).should.throw(/expected "\(" after @scope/);
+  });
+
   it('conditional assignment with define', function() {
     stylus('foo ?= baz; body { test: foo }', { compress: true })
       .define('foo', new stylus.nodes.Literal('bar'))

@@ -37,6 +37,55 @@ Would compile to
   }
 }
 ```
+
+## `@scope`
+
+Stylus supports modern CSS `@scope` as a normal at-rule:
+
+```stylus
+@scope (.root)
+  .child
+    color: red
+
+@scope (.root) to (.limit)
+  .title
+    color: blue
+```
+
+Would compile to
+
+```css
+@scope (.root) {
+  .child {
+    color: #f00;
+  }
+}
+@scope (.root) to (.limit) {
+  .title {
+    color: #00f;
+  }
+}
+```
+
+Stylus also keeps its legacy `@scope <selector>` behavior:
+
+```stylus
+@scope #sidebar
+
+a
+  color: red
+```
+
+Would compile to
+
+```css
+#sidebar a {
+  color: #f00;
+}
+```
+
+That legacy form works differently from CSS `@scope`: it prefixes subsequent root-level selectors with the given selector, rather than keeping selectors unchanged inside an `@scope` block.
+
 ## Unknown at-rules
 
 Stylus supports any yet unknown @-rules, so it is future-friendly, as any new at-rules in CSS could be written in indentation-based syntax of Stylus and would be rendered perfectly:
