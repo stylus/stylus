@@ -1,0 +1,63 @@
+// Keep commas inside functional selectors out of the outer selector list.
+
+:is(.a, .b)
+  .item
+    color red
+
+.scope
+  :is(.a, .b)
+    .item
+      color red
+
+.menu-item:is(:hover, :focus)
+  color red
+
+.parent
+  &:is(.a, .b)
+    .item
+      color red
+
+:where(.a, .b)
+  .item
+    color red
+
+:not(.disabled, :has(> .icon, + .sibling))
+  .item
+    color red
+
+:has(> .a, + .b)
+  .item
+    color red
+
+:nth-child(2n + 1 of .a, .b)
+  .item
+    color red
+
+.first, :is(.second, .third), .last
+  .item
+    color red
+
+[data-value="a,b"]
+  .item
+    color red
+
+:is([data-value="),x"], :not(.c, .d))
+  .item
+    color red
+
+:is(
+  .multiline-a,
+  .multiline-b
+)
+  .item
+    color red
+
+.extend-target:is(.a, .b)
+  color red
+
+.extended
+  @extend .extend-target:is(.a, .b)
+
+:is(.escaped-a\\\, .escaped-b)
+  .item
+    color red
