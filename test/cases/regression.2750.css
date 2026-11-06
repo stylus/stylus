@@ -1,0 +1,45 @@
+:is(.a, .b) .item {
+  color: #f00;
+}
+.scope :is(.a, .b) .item {
+  color: #f00;
+}
+.menu-item:is(:hover, :focus) {
+  color: #f00;
+}
+.parent:is(.a, .b) .item {
+  color: #f00;
+}
+:where(.a, .b) .item {
+  color: #f00;
+}
+:not(.disabled, :has(> .icon, + .sibling)) .item {
+  color: #f00;
+}
+:has(> .a, + .b) .item {
+  color: #f00;
+}
+:nth-child(2n + 1 of .a, .b) .item {
+  color: #f00;
+}
+.first .item,
+:is(.second, .third) .item,
+.last .item {
+  color: #f00;
+}
+[data-value="a,b"] .item {
+  color: #f00;
+}
+:is([data-value="),x"], :not(.c, .d)) .item {
+  color: #f00;
+}
+:is(.multiline-a,.multiline-b) .item {
+  color: #f00;
+}
+.extend-target:is(.a, .b),
+.extended {
+  color: #f00;
+}
+:is(.escaped-a,.escaped-b) .item {
+  color: #f00;
+}

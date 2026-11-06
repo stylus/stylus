@@ -1,0 +1,38 @@
+:is(.a, .b) .item {
+  color: #f00;
+}
+.wrapper :not(.a, :has(> .b, + .c)) .item,
+.wrapper .fallback .item {
+  color: #f00;
+}
+.attributes [data-value="a,b"] .item,
+.attributes [data-other=",)"] .item {
+  color: #f00;
+}
+.quoted [data-value="a\",b"] .item,
+.quoted .fallback .item {
+  color: #f00;
+}
+:is(.a, .b) .item,
+.fallback .item {
+  color: #f00;
+}
+.legacy :is(.a, .b) .item,
+.legacy .fallback .item {
+  color: #f00;
+}
+.bif:is(.a, .b) .item {
+  color: #f00;
+}
+.single-quoted [data-value='a,b'] .item,
+.single-quoted .fallback .item {
+  color: #f00;
+}
+.escaped-parens .bracket\(x .item,
+.escaped-parens .bracket\)x .item {
+  color: #f00;
+}
+.comments :is(.a, .b /* (, */) .item,
+.comments .fallback .item {
+  color: #f00;
+}

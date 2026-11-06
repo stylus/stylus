@@ -94,15 +94,11 @@ label input:blank,
 label span {
   color: #014;
 }
-:is(header,
-main,
-footer) p:hover {
+:is(header, main, footer) p:hover {
   color: #f00;
   cursor: pointer;
 }
-:where(header,
-main,
-footer) p:hover {
+:where(header, main, footer) p:hover {
   color: #f00;
   cursor: pointer;
 }

@@ -1,0 +1,51 @@
+// Preserve functional and attribute commas when expanding interpolated lists.
+
+selector = ':is(.a, .b)'
+{selector}
+  .item
+    color red
+
+.wrapper
+  {':not(.a, :has(> .b, + .c)), .fallback'}
+    .item
+      color red
+
+.attributes
+  {'[data-value="a,b"], [data-other=",)"]'}
+    .item
+      color red
+
+.quoted
+  {'[data-value="a\",b"], .fallback'}
+    .item
+      color red
+
+.root
+  /{':is(.a, .b), .fallback'}
+    .item
+      color red
+
+.legacy
+  {':is(.a\, .b), .fallback'}
+    .item
+      color red
+
+.bif
+  /{selector('&:is(.a, .b)')}
+    .item
+      color red
+
+.single-quoted
+  {"[data-value='a,b'], .fallback"}
+    .item
+      color red
+
+.escaped-parens
+  {'.bracket\(x, .bracket\)x'}
+    .item
+      color red
+
+.comments
+  {':is(.a, .b /* (, */), .fallback'}
+    .item
+      color red

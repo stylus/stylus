@@ -1,0 +1,6 @@
+// Compression must not move selector fragments across functional arguments.
+
+.scope
+  :is(.a, .b), :where(.c, .d)
+    .item
+      color red
