@@ -1,0 +1,1 @@
+body{padding:clamp(0px,2%,15px);width:clamp(0em,var(--preferred,0px),15em);height:clamp(0px,clamp(0em,2vw,3em),15px);font-size:CLAMP(0rem,2vw,3rem);width:MIN(0px,2%);height:MAX(0px,2%);opacity:clamp(0,.5,1);width:clamp(0px,calc(2vw + 0px),15px);margin:clamp(0px,2%,15px) 0;padding:0;width:var(--width,0)}
